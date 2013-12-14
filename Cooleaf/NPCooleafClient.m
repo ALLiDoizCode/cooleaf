@@ -61,4 +61,20 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     }];
 }
 
+- (void)fetchEventList:(void(^)(NSArray *events))completion
+{
+    NSString *path = @"/events.json";
+    
+    if (_apiPrefix.length > 0)
+        path = [_apiPrefix stringByAppendingString:path];
+    
+    [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (completion)
+            completion(responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (completion)
+            completion(nil);
+    }];
+}
+
 @end

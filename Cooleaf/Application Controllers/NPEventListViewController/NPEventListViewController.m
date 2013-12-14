@@ -7,9 +7,14 @@
 //
 
 #import "NPEventListViewController.h"
+#import "NPCooleafClient.h"
 
 @interface NPEventListViewController ()
-
+{
+    NSArray *_events;
+}
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation NPEventListViewController
@@ -27,6 +32,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [_activityIndicator startAnimating];
+    [[NPCooleafClient sharedClient] fetchEventList:^(NSArray *events) {
+        [_activityIndicator stopAnimating];
+        _events = events;
+        [_tableView reloadData];
+        NSLog(@"Fetched %@", events);
+    }];
 }
 
 - (void)didReceiveMemoryWarning

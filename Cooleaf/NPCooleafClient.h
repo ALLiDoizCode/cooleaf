@@ -16,4 +16,6 @@
 
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password  completion:(void(^)(NSError *error))completion;
 
+- (void)fetchEventList:(void(^)(NSArray *events))completion;
+
 @end
