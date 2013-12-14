@@ -6,16 +6,35 @@
 //  Copyright (c) 2013 Nova Project. All rights reserved.
 //
 
+#import <SSKeychain/SSKeychain.h>
+
 #import "NPAppDelegate.h"
+#import "NPCooleafClient.h"
+#import "NPEventListViewController.h"
+#import "NPLoginViewController.h"
 
 @implementation NPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:21.0/255.0 green:137.0/255.0 blue:212.0/255.0 alpha:1.0], NSForegroundColorAttributeName, nil]];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[NPEventListViewController new]];
+    
     [self.window makeKeyAndVisible];
+    
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    if (!username || ![SSKeychain passwordForService:@"cooleaf" account:username])
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
+        });
+    }
+    
     return YES;
 }
 

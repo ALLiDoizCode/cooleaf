@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NPLoginViewController">
+            <connections>
+                <outlet property="activityIndicator" destination="5xt-GF-Jzl" id="Tpp-3n-ZJE"/>
+                <outlet property="credentialsView" destination="TGA-Vc-qG5" id="z58-v0-0vk"/>
+                <outlet property="forgotPasswdBtn" destination="486-UH-7L1" id="zy9-2Q-7yf"/>
+                <outlet property="logoView" destination="dk5-to-K2z" id="Pij-WS-bKN"/>
+                <outlet property="passwordField" destination="5hP-Sv-1u9" id="e6I-HZ-coz"/>
+                <outlet property="signInBtn" destination="8WJ-uY-BaE" id="BsF-is-9u3"/>
+                <outlet property="signInBtnBg" destination="BYQ-im-SYF" id="Lm6-bd-qKa"/>
+                <outlet property="usernameField" destination="YV5-Km-UTH" id="aCH-Lk-rg7"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="LoginBanner" translatesAutoresizingMaskIntoConstraints="NO" id="dk5-to-K2z">
+                    <rect key="frame" x="79" y="50" width="163" height="36"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </imageView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TGA-Vc-qG5">
+                    <rect key="frame" x="20" y="101" width="280" height="121"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nmg-3p-YxW">
+                            <rect key="frame" x="1" y="1" width="278" height="59"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username or email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YV5-Km-UTH">
+                                    <rect key="frame" x="20" y="15" width="238" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="k82-lD-XeF"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGh-kU-ldo">
+                            <rect key="frame" x="1" y="61" width="278" height="59"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5hP-Sv-1u9">
+                                    <rect key="frame" x="20" y="15" width="238" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="Xiw-vc-Usg"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.76470588235294112" green="0.81176470588235294" blue="0.81960784313725488" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BYQ-im-SYF">
+                    <rect key="frame" x="20" y="230" width="280" height="54"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8WJ-uY-BaE">
+                            <rect key="frame" x="5" y="0.0" width="268" height="54"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                            <state key="normal" title="Sign in">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="signInTapped:" destination="-1" eventType="touchUpInside" id="c6V-dS-N14"/>
+                            </connections>
+                        </button>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="5xt-GF-Jzl">
+                            <rect key="frame" x="240" y="17" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.082352941176470587" green="0.53725490196078429" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="486-UH-7L1">
+                    <rect key="frame" x="79" y="287" width="163" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Forgot password?">
+                        <color key="titleColor" red="0.082352941176470587" green="0.53725490196078429" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="forgotPasswdTapped:" destination="-1" eventType="touchUpInside" id="rbZ-BF-Pmj"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.96862745098039216" green="0.96078431372549022" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="LoginBanner" width="163" height="36"/>
+    </resources>
+</document>

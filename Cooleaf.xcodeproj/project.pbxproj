@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		091C2FA9FE63464F90BF2AC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF39234F1654A6DBFF21105 /* libPods.a */; };
 		D9809548185CA557008F2B61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9809547185CA557008F2B61 /* Foundation.framework */; };
 		D980954A185CA557008F2B61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9809549185CA557008F2B61 /* CoreGraphics.framework */; };
 		D980954C185CA557008F2B61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D980954B185CA557008F2B61 /* UIKit.framework */; };
@@ -19,6 +20,11 @@
 		D9809563185CA557008F2B61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D980954B185CA557008F2B61 /* UIKit.framework */; };
 		D980956B185CA557008F2B61 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9809569185CA557008F2B61 /* InfoPlist.strings */; };
 		D980956D185CA557008F2B61 /* CooleafTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D980956C185CA557008F2B61 /* CooleafTests.m */; };
+		D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D980957A185CA7AC008F2B61 /* NPEventListViewController.m */; };
+		D980957D185CA7AC008F2B61 /* NPEventListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D980957B185CA7AC008F2B61 /* NPEventListViewController.xib */; };
+		D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D980957F185CA7D2008F2B61 /* NPLoginViewController.m */; };
+		D9809582185CA7D2008F2B61 /* NPLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9809580185CA7D2008F2B61 /* NPLoginViewController.xib */; };
+		D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9809584185CA86A008F2B61 /* NPCooleafClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B891F2FE48245189AE30E1A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		BFF39234F1654A6DBFF21105 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9809544185CA557008F2B61 /* Cooleaf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cooleaf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9809547185CA557008F2B61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9809549185CA557008F2B61 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +56,14 @@
 		D9809568185CA557008F2B61 /* CooleafTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CooleafTests-Info.plist"; sourceTree = "<group>"; };
 		D980956A185CA557008F2B61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D980956C185CA557008F2B61 /* CooleafTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CooleafTests.m; sourceTree = "<group>"; };
+		D9809579185CA7AC008F2B61 /* NPEventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPEventListViewController.h; path = "Application Controllers/NPEventListViewController/NPEventListViewController.h"; sourceTree = "<group>"; };
+		D980957A185CA7AC008F2B61 /* NPEventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPEventListViewController.m; path = "Application Controllers/NPEventListViewController/NPEventListViewController.m"; sourceTree = "<group>"; };
+		D980957B185CA7AC008F2B61 /* NPEventListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPEventListViewController.xib; path = "Application Controllers/NPEventListViewController/NPEventListViewController.xib"; sourceTree = "<group>"; };
+		D980957E185CA7D2008F2B61 /* NPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPLoginViewController.h; path = "Application Controllers/NPLoginViewController/NPLoginViewController.h"; sourceTree = "<group>"; };
+		D980957F185CA7D2008F2B61 /* NPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPLoginViewController.m; path = "Application Controllers/NPLoginViewController/NPLoginViewController.m"; sourceTree = "<group>"; };
+		D9809580185CA7D2008F2B61 /* NPLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPLoginViewController.xib; path = "Application Controllers/NPLoginViewController/NPLoginViewController.xib"; sourceTree = "<group>"; };
+		D9809583185CA86A008F2B61 /* NPCooleafClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPCooleafClient.h; sourceTree = "<group>"; };
+		D9809584185CA86A008F2B61 /* NPCooleafClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPCooleafClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +74,7 @@
 				D980954A185CA557008F2B61 /* CoreGraphics.framework in Frameworks */,
 				D980954C185CA557008F2B61 /* UIKit.framework in Frameworks */,
 				D9809548185CA557008F2B61 /* Foundation.framework in Frameworks */,
+				091C2FA9FE63464F90BF2AC1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +98,7 @@
 				D9809566185CA557008F2B61 /* CooleafTests */,
 				D9809546185CA557008F2B61 /* Frameworks */,
 				D9809545185CA557008F2B61 /* Products */,
+				7B891F2FE48245189AE30E1A /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +118,7 @@
 				D9809549185CA557008F2B61 /* CoreGraphics.framework */,
 				D980954B185CA557008F2B61 /* UIKit.framework */,
 				D9809560185CA557008F2B61 /* XCTest.framework */,
+				BFF39234F1654A6DBFF21105 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -107,10 +126,13 @@
 		D980954D185CA557008F2B61 /* Cooleaf */ = {
 			isa = PBXGroup;
 			children = (
+				D9809576185CA709008F2B61 /* Application Controllers */,
 				D9809556185CA557008F2B61 /* NPAppDelegate.h */,
 				D9809557185CA557008F2B61 /* NPAppDelegate.m */,
 				D9809559185CA557008F2B61 /* Images.xcassets */,
 				D980954E185CA557008F2B61 /* Supporting Files */,
+				D9809583185CA86A008F2B61 /* NPCooleafClient.h */,
+				D9809584185CA86A008F2B61 /* NPCooleafClient.m */,
 			);
 			path = Cooleaf;
 			sourceTree = "<group>";
@@ -144,6 +166,35 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D9809576185CA709008F2B61 /* Application Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D9809578185CA71A008F2B61 /* NPEventListViewController */,
+				D9809577185CA710008F2B61 /* NPLoginViewController */,
+			);
+			name = "Application Controllers";
+			sourceTree = "<group>";
+		};
+		D9809577185CA710008F2B61 /* NPLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D980957E185CA7D2008F2B61 /* NPLoginViewController.h */,
+				D980957F185CA7D2008F2B61 /* NPLoginViewController.m */,
+				D9809580185CA7D2008F2B61 /* NPLoginViewController.xib */,
+			);
+			name = NPLoginViewController;
+			sourceTree = "<group>";
+		};
+		D9809578185CA71A008F2B61 /* NPEventListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D9809579185CA7AC008F2B61 /* NPEventListViewController.h */,
+				D980957A185CA7AC008F2B61 /* NPEventListViewController.m */,
+				D980957B185CA7AC008F2B61 /* NPEventListViewController.xib */,
+			);
+			name = NPEventListViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,9 +202,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9809570185CA557008F2B61 /* Build configuration list for PBXNativeTarget "Cooleaf" */;
 			buildPhases = (
+				FA520D10F0204430A4C3A1ED /* Check Pods Manifest.lock */,
 				D9809540185CA557008F2B61 /* Sources */,
 				D9809541185CA557008F2B61 /* Frameworks */,
 				D9809542185CA557008F2B61 /* Resources */,
+				1FE1FBE329B04B51A79254A2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,8 +273,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9809582185CA7D2008F2B61 /* NPLoginViewController.xib in Resources */,
 				D9809552185CA557008F2B61 /* InfoPlist.strings in Resources */,
 				D980955A185CA557008F2B61 /* Images.xcassets in Resources */,
+				D980957D185CA7AC008F2B61 /* NPEventListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,11 +290,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1FE1FBE329B04B51A79254A2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA520D10F0204430A4C3A1ED /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D9809540185CA557008F2B61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */,
+				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
+				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
 				D9809558185CA557008F2B61 /* NPAppDelegate.m in Sources */,
 				D9809554185CA557008F2B61 /* main.m in Sources */,
 			);
@@ -357,6 +448,7 @@
 		};
 		D9809571185CA557008F2B61 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B891F2FE48245189AE30E1A /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -370,6 +462,7 @@
 		};
 		D9809572185CA557008F2B61 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B891F2FE48245189AE30E1A /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -442,6 +535,7 @@
 				D9809572185CA557008F2B61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D9809573185CA557008F2B61 /* Build configuration list for PBXNativeTarget "CooleafTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +544,7 @@
 				D9809575185CA557008F2B61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
