@@ -25,6 +25,9 @@
 		D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D980957F185CA7D2008F2B61 /* NPLoginViewController.m */; };
 		D9809582185CA7D2008F2B61 /* NPLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9809580185CA7D2008F2B61 /* NPLoginViewController.xib */; };
 		D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D9809584185CA86A008F2B61 /* NPCooleafClient.m */; };
+		D9809588185CCFFB008F2B61 /* NPEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9809587185CCFFB008F2B61 /* NPEventCell.m */; };
+		D980958A185CD013008F2B61 /* NPEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9809589185CD013008F2B61 /* NPEventCell.xib */; };
+		D980958D185F2C5D008F2B61 /* NSFileManager+ImageCaching.m in Sources */ = {isa = PBXBuildFile; fileRef = D980958C185F2C5D008F2B61 /* NSFileManager+ImageCaching.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,11 @@
 		D9809580185CA7D2008F2B61 /* NPLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPLoginViewController.xib; path = "Application Controllers/NPLoginViewController/NPLoginViewController.xib"; sourceTree = "<group>"; };
 		D9809583185CA86A008F2B61 /* NPCooleafClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPCooleafClient.h; sourceTree = "<group>"; };
 		D9809584185CA86A008F2B61 /* NPCooleafClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPCooleafClient.m; sourceTree = "<group>"; };
+		D9809586185CCFFB008F2B61 /* NPEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPEventCell.h; path = "Application Controllers/NPEventListViewController/NPEventCell.h"; sourceTree = "<group>"; };
+		D9809587185CCFFB008F2B61 /* NPEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPEventCell.m; path = "Application Controllers/NPEventListViewController/NPEventCell.m"; sourceTree = "<group>"; };
+		D9809589185CD013008F2B61 /* NPEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPEventCell.xib; path = "Application Controllers/NPEventListViewController/NPEventCell.xib"; sourceTree = "<group>"; };
+		D980958B185F2C5D008F2B61 /* NSFileManager+ImageCaching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+ImageCaching.h"; sourceTree = "<group>"; };
+		D980958C185F2C5D008F2B61 /* NSFileManager+ImageCaching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ImageCaching.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +141,8 @@
 				D980954E185CA557008F2B61 /* Supporting Files */,
 				D9809583185CA86A008F2B61 /* NPCooleafClient.h */,
 				D9809584185CA86A008F2B61 /* NPCooleafClient.m */,
+				D980958B185F2C5D008F2B61 /* NSFileManager+ImageCaching.h */,
+				D980958C185F2C5D008F2B61 /* NSFileManager+ImageCaching.m */,
 			);
 			path = Cooleaf;
 			sourceTree = "<group>";
@@ -188,6 +198,9 @@
 		D9809578185CA71A008F2B61 /* NPEventListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D9809586185CCFFB008F2B61 /* NPEventCell.h */,
+				D9809587185CCFFB008F2B61 /* NPEventCell.m */,
+				D9809589185CD013008F2B61 /* NPEventCell.xib */,
 				D9809579185CA7AC008F2B61 /* NPEventListViewController.h */,
 				D980957A185CA7AC008F2B61 /* NPEventListViewController.m */,
 				D980957B185CA7AC008F2B61 /* NPEventListViewController.xib */,
@@ -276,6 +289,7 @@
 				D9809582185CA7D2008F2B61 /* NPLoginViewController.xib in Resources */,
 				D9809552185CA557008F2B61 /* InfoPlist.strings in Resources */,
 				D980955A185CA557008F2B61 /* Images.xcassets in Resources */,
+				D980958A185CD013008F2B61 /* NPEventCell.xib in Resources */,
 				D980957D185CA7AC008F2B61 /* NPEventListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,11 +342,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9809588185CCFFB008F2B61 /* NPEventCell.m in Sources */,
 				D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */,
 				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
 				D9809558185CA557008F2B61 /* NPAppDelegate.m in Sources */,
 				D9809554185CA557008F2B61 /* main.m in Sources */,
+				D980958D185F2C5D008F2B61 /* NSFileManager+ImageCaching.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

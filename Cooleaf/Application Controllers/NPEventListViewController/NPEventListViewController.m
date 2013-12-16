@@ -8,11 +8,13 @@
 
 #import "NPEventListViewController.h"
 #import "NPCooleafClient.h"
+#import "NPEventCell.h"
 
 @interface NPEventListViewController ()
 {
     NSArray *_events;
 }
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
@@ -36,8 +38,11 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [_tableView registerNib:[UINib nibWithNibName:@"NPEventCell" bundle:nil] forCellReuseIdentifier:@"NPEventCell"];
+    [_tableView setHidden:YES];
     [_activityIndicator startAnimating];
     [[NPCooleafClient sharedClient] fetchEventList:^(NSArray *events) {
+        [_tableView setHidden:NO];
         [_activityIndicator stopAnimating];
         _events = events;
         [_tableView reloadData];
@@ -49,6 +54,25 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _events.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NPEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPEventCell"];
+    
+    cell.event = _events[indexPath.row];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [NPEventCell cellHeightForEvent:_events[indexPath.row]];
 }
 
 @end

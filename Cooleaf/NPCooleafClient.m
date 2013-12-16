@@ -8,11 +8,15 @@
 
 #import "NPCooleafClient.h"
 #import <SSKeychain/SSKeychain.h>
+#import "NSFileManager+ImageCaching.h"
 
 @interface NPCooleafClient ()
 
+@property (nonatomic, copy) NSMutableDictionary *downloadedImages;
+@property (nonatomic, copy) NSMutableDictionary *imageRequests;
 @property (nonatomic, copy) NSString *apiPrefix;
 
+- (void)synchronizeImageIndex;
 @end
 
 @implementation NPCooleafClient
@@ -37,6 +41,12 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
             [reqSerializer setValue:@"coca-cola" forHTTPHeaderField:@"X-Organization"];
             _sharedClient.requestSerializer = reqSerializer;
             _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
+            NSURL *imageIndexURL = [[[NSFileManager defaultManager] cacheDirectory] URLByAppendingPathComponent:@"index.dat"];
+            NSMutableDictionary *imageIndex = [[NSDictionary dictionaryWithContentsOfURL:imageIndexURL] mutableCopy];
+            if (!imageIndex)
+                imageIndex = [NSMutableDictionary new];
+            _sharedClient.downloadedImages = imageIndex;
+            _sharedClient.imageRequests = [NSMutableDictionary new];
         });
     
     return _sharedClient;
@@ -75,6 +85,66 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
         if (completion)
             completion(nil);
     }];
+}
+
+- (void)synchronizeImageIndex
+{
+    [NSKeyedArchiver archiveRootObject:_downloadedImages toFile:[[[[NSFileManager defaultManager] cacheDirectory] URLByAppendingPathComponent:@"index.dat"] path]];
+}
+
+- (void)fetchImage:(NSString *)imagePath completion:(void(^)(NSString *imagePath, UIImage *image))completion
+{
+    // Check if the image is already downloaded
+    if (_downloadedImages[imagePath])
+    {
+        UIImage *image = [UIImage imageWithContentsOfFile:[[[[NSFileManager defaultManager] cacheDirectory] URLByAppendingPathComponent:_downloadedImages[imagePath]] path]];
+        if (completion)
+            completion(imagePath, image);
+    }
+    else
+    {
+        NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"GET" URLString:[[NSURL URLWithString:imagePath relativeToURL:self.baseURL] absoluteString] parameters:nil];
+        AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            // Save the image information first
+            NSData *data = (NSData *)responseObject;
+            NSString *filename = [[NSFileManager defaultManager] temporaryFilenameWithExtension:@"jpg"];
+            [data writeToURL:[[[NSFileManager defaultManager] cacheDirectory] URLByAppendingPathComponent:filename] atomically:NO];
+            _downloadedImages[imagePath] = filename;
+            [self synchronizeImageIndex];
+            UIImage *image = [UIImage imageWithData:data];
+            
+            // For all saved actions - trigger
+            for (id block in _imageRequests[imagePath])
+            {
+                void (^completionBlock)(NSString *imagePath, UIImage *image) = block;
+                
+                completionBlock(imagePath, image);
+            }
+            [_imageRequests removeObjectForKey:imagePath];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            for (id block in _imageRequests[imagePath])
+            {
+                void (^completionBlock)(NSString *imagePath, UIImage *image) = block;
+                
+                completionBlock(imagePath, nil);
+            }
+            [_imageRequests removeObjectForKey:imagePath];
+            
+        }];
+        
+        if (_imageRequests[imagePath])
+        {
+            [_imageRequests[imagePath] addObject:[completion copy]];
+        }
+        else
+        {
+            _imageRequests[imagePath] = [NSMutableArray arrayWithObject:[completion copy]];
+        }
+        
+        operation.responseSerializer = [AFHTTPResponseSerializer new];
+        [self.operationQueue addOperation:operation];
+    }
 }
 
 @end
