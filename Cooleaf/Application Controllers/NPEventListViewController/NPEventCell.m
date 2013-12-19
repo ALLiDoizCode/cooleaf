@@ -64,9 +64,10 @@
     _eventTags.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1];
     _eventTags.textAlignment = NSTextAlignmentRight;
     
+    NSString *imageUrlString = [_event[@"image"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x350"];
     // Download image for event
-    [[NPCooleafClient sharedClient] fetchImage:_event[@"image"] completion:^(NSString *imagePath, UIImage *image) {
-       if ([imagePath compare:_event[@"image"]] == NSOrderedSame)
+    [[NPCooleafClient sharedClient] fetchImage:imageUrlString completion:^(NSString *imagePath, UIImage *image) {
+       if ([imagePath compare:imageUrlString] == NSOrderedSame)
        {
            _eventImage.image = image;
        }

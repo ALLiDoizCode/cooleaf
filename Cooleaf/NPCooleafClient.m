@@ -11,9 +11,11 @@
 #import "NSFileManager+ImageCaching.h"
 
 @interface NPCooleafClient ()
+{
+    NSMutableDictionary *_downloadedImages;
+    NSMutableDictionary *_imageRequests;
+}
 
-@property (nonatomic, copy) NSMutableDictionary *downloadedImages;
-@property (nonatomic, copy) NSMutableDictionary *imageRequests;
 @property (nonatomic, copy) NSString *apiPrefix;
 
 - (void)synchronizeImageIndex;
@@ -21,7 +23,7 @@
 
 @implementation NPCooleafClient
 
-static NSString * const kNPCooleafClientBaseURLString = @"http://cooleaf-staging.monterail.eu";
+static NSString * const kNPCooleafClientBaseURLString = @"http://cooleaf-staging.h1.monterail.eu";
 static NSString * const kNPCooleafClientAPIPrefix = @"/api/v1";
 static NSString * const kNPCooleafClientAPIAuthLogin = @"cooleaf";
 static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
@@ -33,23 +35,34 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     if (!_sharedClient)
         dispatch_once(&oncePredicate, ^{
             _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kNPCooleafClientBaseURLString]];
-            _sharedClient.apiPrefix = kNPCooleafClientAPIPrefix;
-//            _sharedClient.credential = [[NSURLCredential alloc] initWithUser:kNPCooleafClientAPIAuthLogin password:kNPCooleafClientAPIAuthPassword persistence:NSURLCredentialPersistencePermanent];
-            AFHTTPRequestSerializer *reqSerializer = [AFHTTPRequestSerializer serializer];
-            if (kNPCooleafClientAPIAuthLogin.length > 0)
-                [reqSerializer setAuthorizationHeaderFieldWithUsername:kNPCooleafClientAPIAuthLogin password:kNPCooleafClientAPIAuthPassword];
-            [reqSerializer setValue:@"coca-cola" forHTTPHeaderField:@"X-Organization"];
-            _sharedClient.requestSerializer = reqSerializer;
-            _sharedClient.responseSerializer = [AFJSONResponseSerializer serializer];
-            NSURL *imageIndexURL = [[[NSFileManager defaultManager] cacheDirectory] URLByAppendingPathComponent:@"index.dat"];
-            NSMutableDictionary *imageIndex = [[NSDictionary dictionaryWithContentsOfURL:imageIndexURL] mutableCopy];
-            if (!imageIndex)
-                imageIndex = [NSMutableDictionary new];
-            _sharedClient.downloadedImages = imageIndex;
-            _sharedClient.imageRequests = [NSMutableDictionary new];
         });
     
     return _sharedClient;
+}
+
+- (instancetype)initWithBaseURL:(NSURL *)url
+{
+    self = [super initWithBaseURL:url];
+    if (self)
+    {
+        _apiPrefix = kNPCooleafClientAPIPrefix;
+        AFHTTPRequestSerializer *reqSerializer = [AFHTTPRequestSerializer serializer];
+        if (kNPCooleafClientAPIAuthLogin.length > 0)
+            [reqSerializer setAuthorizationHeaderFieldWithUsername:kNPCooleafClientAPIAuthLogin password:kNPCooleafClientAPIAuthPassword];
+        [reqSerializer setValue:@"coca-cola" forHTTPHeaderField:@"X-Organization"];
+        self.requestSerializer = reqSerializer;
+        self.responseSerializer = [AFJSONResponseSerializer serializer];
+        NSURL *imageIndexURL = [[[NSFileManager defaultManager] cacheDirectory] URLByAppendingPathComponent:@"index.dat"];
+        NSMutableDictionary *imageIndex = [[NSDictionary dictionaryWithContentsOfURL:imageIndexURL] mutableCopy];
+        if (!imageIndex)
+            imageIndex = [NSMutableDictionary new];
+        _downloadedImages = imageIndex;
+        _imageRequests = [NSMutableDictionary new];
+        
+    }
+    
+    return self;
+    
 }
 
 - (AFHTTPRequestOperation *)loginWithUsername:(NSString *)username password:(NSString *)password  completion:(void(^)(NSError *error))completion
@@ -103,7 +116,8 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     }
     else
     {
-        NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"GET" URLString:[[NSURL URLWithString:imagePath relativeToURL:self.baseURL] absoluteString] parameters:nil];
+        NSURL *imageURLPath = [NSURL URLWithString:[NSString stringWithFormat:@"http:%@", imagePath]];
+        NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"GET" URLString:[imageURLPath absoluteString] parameters:nil];
         AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
             // Save the image information first
             NSData *data = (NSData *)responseObject;

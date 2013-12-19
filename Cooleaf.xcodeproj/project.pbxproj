@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		091C2FA9FE63464F90BF2AC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF39234F1654A6DBFF21105 /* libPods.a */; };
 		D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */; };
+		D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664FA186339360084BBB2 /* UIFont+ApplicationFont.m */; };
 		D9809548185CA557008F2B61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9809547185CA557008F2B61 /* Foundation.framework */; };
 		D980954A185CA557008F2B61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9809549185CA557008F2B61 /* CoreGraphics.framework */; };
 		D980954C185CA557008F2B61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D980954B185CA557008F2B61 /* UIKit.framework */; };
@@ -46,6 +47,8 @@
 		BFF39234F1654A6DBFF21105 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94664F61863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+NPBarButtonItems.h"; path = "Custom Controllers/UIBarButtonItem+NPBarButtonItems.h"; sourceTree = "<group>"; };
 		D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+NPBarButtonItems.m"; path = "Custom Controllers/UIBarButtonItem+NPBarButtonItems.m"; sourceTree = "<group>"; };
+		D94664F9186339360084BBB2 /* UIFont+ApplicationFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+ApplicationFont.h"; path = "Custom Controllers/UIFont+ApplicationFont.h"; sourceTree = "<group>"; };
+		D94664FA186339360084BBB2 /* UIFont+ApplicationFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+ApplicationFont.m"; path = "Custom Controllers/UIFont+ApplicationFont.m"; sourceTree = "<group>"; };
 		D9809544185CA557008F2B61 /* Cooleaf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cooleaf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9809547185CA557008F2B61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9809549185CA557008F2B61 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -107,6 +110,8 @@
 			children = (
 				D94664F61863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.h */,
 				D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */,
+				D94664F9186339360084BBB2 /* UIFont+ApplicationFont.h */,
+				D94664FA186339360084BBB2 /* UIFont+ApplicationFont.m */,
 			);
 			name = "Custom Controllers";
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 			files = (
 				D9809588185CCFFB008F2B61 /* NPEventCell.m in Sources */,
 				D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */,
+				D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */,
 				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
 				D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */,
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,

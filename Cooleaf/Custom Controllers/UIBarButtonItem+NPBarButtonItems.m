@@ -14,7 +14,7 @@
 + (UIBarButtonItem *)buttonItemWithTitle:(NSString *)title target:(id)target selector:(SEL)selector
 {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.titleLabel.font = [UIFont fontWithName:@"AvenirNext-Medium" size:13];
+    btn.titleLabel.font = [UIFont applicationFontOfSize:13];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setBackgroundColor:[UIColor colorWithRed:40.0/255.0 green:179.0/255.0 blue:37.0/255.0 alpha:1]];
