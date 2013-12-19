@@ -52,8 +52,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
         [reqSerializer setValue:@"coca-cola" forHTTPHeaderField:@"X-Organization"];
         self.requestSerializer = reqSerializer;
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        NSURL *imageIndexURL = [[[NSFileManager defaultManager] cacheDirectory] URLByAppendingPathComponent:@"index.dat"];
-        NSMutableDictionary *imageIndex = [[NSDictionary dictionaryWithContentsOfURL:imageIndexURL] mutableCopy];
+        NSMutableDictionary *imageIndex = [[NSKeyedUnarchiver unarchiveObjectWithFile:[[[[NSFileManager defaultManager] cacheDirectory] URLByAppendingPathComponent:@"index.dat"] path]] mutableCopy];
         if (!imageIndex)
             imageIndex = [NSMutableDictionary new];
         _downloadedImages = imageIndex;

@@ -46,18 +46,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _forgotPasswdBtn.titleLabel.font = [UIFont applicationFontOfSize:15];
+    _forgotPasswdBtn.titleLabel.font = [UIFont mediumApplicationFontOfSize:15];
     _tableView.tableFooterView = _footerView;
     _usernameField = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, 290, 44)];
     _usernameField.placeholder = NSLocalizedString(@"Email address", @"Email address placeholder on login screen");
-    _usernameField.font = [UIFont applicationFontOfSize:15];
+    _usernameField.font = [UIFont mediumApplicationFontOfSize:15];
     _usernameField.delegate = self;
     _usernameField.returnKeyType = UIReturnKeyNext;
     _usernameField.keyboardType = UIKeyboardTypeEmailAddress;
     _usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     _passwordField = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, 290, 44)];
     _passwordField.placeholder = NSLocalizedString(@"Password", @"Password placeholder on login screen");
-    _passwordField.font = [UIFont applicationFontOfSize:15];
+    _passwordField.font = [UIFont mediumApplicationFontOfSize:15];
     _passwordField.delegate = self;
     _passwordField.returnKeyType = UIReturnKeySend;
     _passwordField.secureTextEntry = YES;

@@ -12,9 +12,10 @@
 @interface NPEventCell ()
 {
     NSDateFormatter *_dateFormatter;
+    NSDateFormatter *_dateFormatter2;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *eventImage;
-@property (weak, nonatomic) IBOutlet UILabel *eventTitle;
+@property (weak, nonatomic) IBOutlet UITextView *eventTitle;
 @property (weak, nonatomic) IBOutlet UILabel *eventDate;
 @property (weak, nonatomic) IBOutlet UITextView *eventTags;
 
@@ -46,9 +47,18 @@
     if (!_dateFormatter)
     {
         _dateFormatter = [NSDateFormatter new];
+        _dateFormatter.dateFormat = @"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'z";
     }
     NSDate *eventTime = [_dateFormatter dateFromString:_event[@"start_time"]];
-    NSLog(@"Date is %@", eventTime);
+
+    if (!_dateFormatter2)
+    {
+        _dateFormatter2 = [NSDateFormatter new];
+        _dateFormatter2.dateStyle = NSDateFormatterLongStyle;
+        _dateFormatter2.timeStyle = NSDateFormatterNoStyle;
+    }
+    
+    _eventDate.text = [_dateFormatter2 stringFromDate:eventTime];
     
     NSMutableString *hashes = [NSMutableString string];
     for (NSString *hash in _event[@"categories_names"])
@@ -58,13 +68,8 @@
         else
             [hashes appendFormat:@"#%@", hash];
     }
-    
-    _eventTags.text = hashes;
-    _eventTags.font = [UIFont boldSystemFontOfSize:14];
-    _eventTags.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1];
-    _eventTags.textAlignment = NSTextAlignmentRight;
-    
-    NSString *imageUrlString = [_event[@"image"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x350"];
+        
+    NSString *imageUrlString = [_event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x350"];
     // Download image for event
     [[NPCooleafClient sharedClient] fetchImage:imageUrlString completion:^(NSString *imagePath, UIImage *image) {
        if ([imagePath compare:imageUrlString] == NSOrderedSame)

@@ -12,6 +12,17 @@
 
 + (UIFont *)applicationFontOfSize:(CGFloat)size
 {
-    return [UIFont fontWithName:@"AvenirNext-Medium" size:size];
+    return [UIFont fontWithName:@"HelveticaNeue" size:size];//[UIFont fontWithName:@"AvenirNext-Medium" size:size];
 }
+
++ (UIFont *)mediumApplicationFontOfSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"HelveticaNeue-Medium" size:size];
+}
+
++ (UIFont *)boldApplicationFontOfSize:(CGFloat)size
+{
+    return [UIFont fontWithName:@"HelveticaNeue-Bold" size:size];
+}
+
 @end

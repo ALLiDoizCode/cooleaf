@@ -11,5 +11,6 @@
 @interface UIFont (ApplicationFont)
 
 + (UIFont *)applicationFontOfSize:(CGFloat)size;
-
++ (UIFont *)boldApplicationFontOfSize:(CGFloat)size;
++ (UIFont *)mediumApplicationFontOfSize:(CGFloat)size;
 @end
