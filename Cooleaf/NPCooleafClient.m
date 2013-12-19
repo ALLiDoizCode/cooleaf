@@ -52,13 +52,13 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     return _sharedClient;
 }
 
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password  completion:(void(^)(NSError *error))completion
+- (AFHTTPRequestOperation *)loginWithUsername:(NSString *)username password:(NSString *)password  completion:(void(^)(NSError *error))completion
 {
     NSString *path = @"/authorize.json";
     
     if (_apiPrefix.length > 0)
         path = [_apiPrefix stringByAppendingString:path];
-    [self POST:path parameters:@{@"email": username, @"password": password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    return [self POST:path parameters:@{@"email": username, @"password": password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         _userData = [responseObject copy];
         
         [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NPLoginViewController : UIViewController <UITextFieldDelegate>
+@interface NPLoginViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end

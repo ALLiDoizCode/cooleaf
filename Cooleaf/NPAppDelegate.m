@@ -18,23 +18,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:21.0/255.0 green:137.0/255.0 blue:212.0/255.0 alpha:1.0], NSForegroundColorAttributeName, nil]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"AvenirNext-Medium" size:18], NSFontAttributeName, nil]];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     self.window.backgroundColor = [UIColor whiteColor];
     
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[NPEventListViewController new]];
     
-    [self.window makeKeyAndVisible];
-    
+    [self.window makeKeyAndVisible];    
     NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     if (!username || ![SSKeychain passwordForService:@"cooleaf" account:username])
     {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
-        });
+//        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.window.rootViewController presentViewController:[[UINavigationController alloc] initWithRootViewController:[NPLoginViewController new]] animated:NO completion:nil];
+//        });
     }
-    
+
     return YES;
 }
 
