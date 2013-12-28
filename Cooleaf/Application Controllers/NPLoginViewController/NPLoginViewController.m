@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Nova Project. All rights reserved.
 //
 
+#import <SSKeychain/SSKeychain.h>
 #import "NPLoginViewController.h"
 #import "NPCooleafClient.h"
 #import "UIBarButtonItem+NPBarButtonItems.h"
@@ -16,11 +17,16 @@
 {
     AFHTTPRequestOperation *_loginOperation;
 }
-@property (strong, nonatomic) IBOutlet UITextField *usernameField;
-@property (strong, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *usernameField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswdBtn;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UIView *footerView;
+@property (weak, nonatomic) IBOutlet UIButton *signInBtn;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *globalSpinner;
+@property (weak, nonatomic) IBOutlet UIImageView *logoView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 
 - (IBAction)signInTapped:(id)sender;
 - (IBAction)forgotPasswdTapped:(id)sender;
@@ -35,9 +41,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.title = NSLocalizedString(@"Welcome", @"Login screen title");
-        self.navigationItem.rightBarButtonItem = [UIBarButtonItem buttonItemWithTitle:NSLocalizedString(@"Sign in", @"sign in button title")
-                                                                               target:self selector:@selector(signInTapped:)];
+        self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     }
     
     return self;
@@ -46,31 +50,63 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _forgotPasswdBtn.titleLabel.font = [UIFont mediumApplicationFontOfSize:15];
-    _tableView.tableFooterView = _footerView;
-    _usernameField = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, 290, 44)];
-    _usernameField.placeholder = NSLocalizedString(@"Email address", @"Email address placeholder on login screen");
-    _usernameField.font = [UIFont mediumApplicationFontOfSize:15];
-    _usernameField.delegate = self;
-    _usernameField.returnKeyType = UIReturnKeyNext;
-    _usernameField.keyboardType = UIKeyboardTypeEmailAddress;
-    _usernameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    _passwordField = [[UITextField alloc] initWithFrame:CGRectMake(15, 0, 290, 44)];
-    _passwordField.placeholder = NSLocalizedString(@"Password", @"Password placeholder on login screen");
-    _passwordField.font = [UIFont mediumApplicationFontOfSize:15];
-    _passwordField.delegate = self;
-    _passwordField.returnKeyType = UIReturnKeySend;
-    _passwordField.secureTextEntry = YES;
+    _containerView.hidden = YES;
+    _forgotPasswdBtn.hidden = YES;
+    _containerView.layer.cornerRadius = 4.0;
+    
+    if ([UIScreen mainScreen].bounds.size.height < 500)
+    {
+        _containerView.transform = CGAffineTransformMakeTranslation(0, -100);
+        _forgotPasswdBtn.transform = CGAffineTransformMakeTranslation(0, -170);
+        _logoView.transform = CGAffineTransformMakeTranslation(-2, -48);
+        _globalSpinner.transform = CGAffineTransformMakeTranslation(0, -80);
+    }
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        _logoView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        _logoView.hidden = YES;
+        
+        NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+        if (username && [SSKeychain passwordForService:@"cooleaf" account:username])
+        {
+            [_globalSpinner startAnimating];
+            _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:username password:[SSKeychain passwordForService:@"cooleaf" account:username]
+                                                                     completion:^(NSError *error) {
+                if (error)
+                {
+                    [self unlockView];
+                }
+                else
+                {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+            }];
+        }
+        else
+        {
+            _containerView.alpha = 0.0;
+            _containerView.hidden = NO;
+            _forgotPasswdBtn.hidden = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                _containerView.alpha = 1.0;
+                _forgotPasswdBtn.alpha = 1.0;
+            } completion:^(BOOL finished) {
+                if (username)
+                {
+                    _usernameField.text = username;
+                    [_passwordField becomeFirstResponder];
+                }
+                else
+                {
+                    [_usernameField becomeFirstResponder];
+                }
+                
+            }];
+        }
 
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"username"])
-    {
-        _usernameField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-        [_passwordField becomeFirstResponder];
-    }
-    else
-    {
-        [_usernameField becomeFirstResponder];
-    }
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,10 +118,31 @@
 - (void)unlockView
 {
     _loginOperation = nil;
-    self.title = NSLocalizedString(@"Welcome", @"Login view title");
-    self.navigationItem.leftBarButtonItem = nil;
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem buttonItemWithTitle:NSLocalizedString(@"Sign in", @"sign in button title")
-                                                                           target:self selector:@selector(signInTapped:)];
+    [_spinner stopAnimating];
+    [_globalSpinner stopAnimating];
+    if (_containerView.hidden)
+    {
+        _containerView.alpha = 0.0;
+        _containerView.hidden = NO;
+        _forgotPasswdBtn.hidden = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            _containerView.alpha = 1.0;
+            _forgotPasswdBtn.alpha = 1.0;
+        } completion:^(BOOL finished) {
+            NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+            if (username)
+            {
+                _usernameField.text = username;
+                [_passwordField becomeFirstResponder];
+            }
+            else
+            {
+                [_usernameField becomeFirstResponder];
+            }
+        }];
+    }
+    [_forgotPasswdBtn setTitle:NSLocalizedString(@"Forgot password?", @"Forgot password button title on login screen") forState:UIControlStateNormal];
+    _signInBtn.hidden = NO;
     _usernameField.enabled = YES;
     _passwordField.enabled = YES;
     _forgotPasswdBtn.enabled = YES;
@@ -106,16 +163,11 @@
     }
     
     // Testing
-    self.title = NSLocalizedString(@"Loading...", @"Login view title during login action");
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem buttonItemWithTitle:NSLocalizedString(@"Cancel", @"Cancel button on login screen")
-                                                                          target:self selector:@selector(cancelLogin:)];
-    UIActivityIndicatorView *aV = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aV];
-    [aV startAnimating];
-    
+    _signInBtn.hidden = YES;
+    [_forgotPasswdBtn setTitle:NSLocalizedString(@"Cancel", @"Cancel button title on login screen") forState:UIControlStateNormal];
+    [_spinner startAnimating];
     _usernameField.enabled = NO;
     _passwordField.enabled = NO;
-    _forgotPasswdBtn.enabled = NO;
     _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:_usernameField.text password:_passwordField.text completion:^(NSError *error) {
         [self unlockView];
         if (error)
@@ -124,6 +176,7 @@
                                                          message:NSLocalizedString(@"Wrong username or password", @"Wrong credentials given. Server responded with error")
                                                         delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
             [av show];
+            
         }
         else
         {
@@ -140,35 +193,12 @@
     [self unlockView];
 }
 
-- (IBAction)forgotPasswdTapped:(id)sender {
+- (IBAction)forgotPasswdTapped:(id)sender
+{
+    if (_loginOperation)
+        [self cancelLogin:sender];
 }
 
-- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 2;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LoginCell"];
-    
-    [cell.contentView addSubview:((indexPath.row == 0) ? _usernameField : _passwordField)];
-    UIView *sep = [[UIView alloc] initWithFrame:CGRectMake(0, (indexPath.row == 0) ? 0 : 43, 320, 1)];
-    sep.backgroundColor = [UIColor colorWithRed:214.0/255.0 green:214.0/255.0 blue:220.0/255.0 alpha:1];
-    [cell.contentView addSubview:sep];
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return (section == 0) ? 50.0 : 0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0;
-    
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

@@ -26,13 +26,7 @@
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[NPEventListViewController new]];
     
     [self.window makeKeyAndVisible];    
-    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-    if (!username || ![SSKeychain passwordForService:@"cooleaf" account:username])
-    {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.window.rootViewController presentViewController:[[UINavigationController alloc] initWithRootViewController:[NPLoginViewController new]] animated:NO completion:nil];
-//        });
-    }
+    [self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
 
     return YES;
 }

@@ -74,7 +74,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
         _userData = [responseObject copy];
         
         [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
-//        [SSKeychain setPassword:password forService:@"cooleaf" account:username];
+        [SSKeychain setPassword:password forService:@"cooleaf" account:username];
         if (completion)
             completion(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
