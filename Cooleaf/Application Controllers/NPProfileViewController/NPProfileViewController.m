@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *positionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
+@property (strong, nonatomic) UIImageView *companyView;
 
 - (void)logoutTapped:(id)sender;
 
@@ -54,6 +56,30 @@
     
     _nameLabel.text = uD[@"name"];
     _positionLabel.text = [NSString stringWithFormat:@"%@\n%@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
+    
+    int c = 3;
+    NSMutableString *cats = [NSMutableString new];
+    for (NSDictionary *cat in uD[@"categories"])
+    {
+        c--;
+        [cats appendFormat:@"#%@", cat[@"name"]];
+        if (c > 0)
+            [cats appendString:@"\n"];
+        
+        if (c <= 0)
+            break;
+    }
+    _tagsLabel.text = cats;
+    NSURL *companyBannerURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"role"][@"organization"][@"links"][@"logo_thumb"][@"href"]];
+    [[NPCooleafClient sharedClient] fetchImage:companyBannerURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+       if (image && [imagePath isEqualToString:companyBannerURL.absoluteString])
+       {
+           _companyView = [[UIImageView alloc] initWithImage:image];
+           _companyView.frame = CGRectMake(0, self.view.bounds.size.height - (image.size.height/2.0), 320, (image.size.height/2.0));
+           _companyView.contentMode = UIViewContentModeCenter;
+           [self.view addSubview:_companyView];
+       }
+    }];
     NSLog(@"Got data %@", [NPCooleafClient sharedClient].userData);
 }
 

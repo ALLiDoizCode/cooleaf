@@ -39,12 +39,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [_tableView registerNib:[UINib nibWithNibName:@"NPEventCell" bundle:nil] forCellReuseIdentifier:@"NPEventCell"];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [_tableView registerNib:[UINib nibWithNibName:@"NPEventCell" bundle:nil] forCellReuseIdentifier:@"NPEventCell"];
+    if (_events)
+        return;
     [_tableView setHidden:YES];
     [_activityIndicator startAnimating];
     _loadingEvents.hidden = NO;
