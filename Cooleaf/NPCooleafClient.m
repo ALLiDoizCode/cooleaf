@@ -49,7 +49,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
         AFHTTPRequestSerializer *reqSerializer = [AFHTTPRequestSerializer serializer];
         if (kNPCooleafClientAPIAuthLogin.length > 0)
             [reqSerializer setAuthorizationHeaderFieldWithUsername:kNPCooleafClientAPIAuthLogin password:kNPCooleafClientAPIAuthPassword];
-        [reqSerializer setValue:@"coca-cola" forHTTPHeaderField:@"X-Organization"];
+//        [reqSerializer setValue:@"coca-cola" forHTTPHeaderField:@"X-Organization"];
         self.requestSerializer = reqSerializer;
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         NSMutableDictionary *imageIndex = [[NSKeyedUnarchiver unarchiveObjectWithFile:[[[[NSFileManager defaultManager] cacheDirectory] URLByAppendingPathComponent:@"index.dat"] path]] mutableCopy];
@@ -72,15 +72,22 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
         path = [_apiPrefix stringByAppendingString:path];
     return [self POST:path parameters:@{@"email": username, @"password": password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         _userData = [responseObject copy];
-        
+        [self.requestSerializer setValue:_userData[@"role"][@"organization"][@"subdomain"] forHTTPHeaderField:@"X-Organization"];
         [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
         [SSKeychain setPassword:password forService:@"cooleaf" account:username];
         if (completion)
             completion(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [SSKeychain deletePasswordForService:@"cooleaf" account:username];
         if (completion)
             completion(error);
     }];
+}
+
+- (void)logout
+{
+    [SSKeychain deletePasswordForService:@"cooleaf" account:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
+    _userData = nil;
 }
 
 - (void)fetchEventList:(void(^)(NSArray *events))completion
@@ -115,8 +122,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     }
     else
     {
-        NSURL *imageURLPath = [NSURL URLWithString:[NSString stringWithFormat:@"http:%@", imagePath]];
-        NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"GET" URLString:[imageURLPath absoluteString] parameters:nil];
+        NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:@"GET" URLString:imagePath parameters:nil];
         AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
             // Save the image information first
             NSData *data = (NSData *)responseObject;

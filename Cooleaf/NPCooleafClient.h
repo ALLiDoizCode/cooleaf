@@ -16,6 +16,8 @@
 
 - (AFHTTPRequestOperation *)loginWithUsername:(NSString *)username password:(NSString *)password  completion:(void(^)(NSError *error))completion;
 
+- (void)logout;
+
 - (void)fetchEventList:(void(^)(NSArray *events))completion;
 
 - (void)fetchImage:(NSString *)imagePath completion:(void(^)(NSString *imagePath, UIImage *image))completion;

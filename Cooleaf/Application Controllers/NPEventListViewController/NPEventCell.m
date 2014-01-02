@@ -69,7 +69,7 @@
             [hashes appendFormat:@"#%@", hash];
     }
         
-    NSString *imageUrlString = [_event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x350"];
+    NSString *imageUrlString = [@"http:" stringByAppendingString:[_event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x150"]];
     // Download image for event
     [[NPCooleafClient sharedClient] fetchImage:imageUrlString completion:^(NSString *imagePath, UIImage *image) {
        if ([imagePath compare:imageUrlString] == NSOrderedSame)

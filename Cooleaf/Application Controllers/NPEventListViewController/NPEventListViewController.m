@@ -9,6 +9,7 @@
 #import "NPEventListViewController.h"
 #import "NPCooleafClient.h"
 #import "NPEventCell.h"
+#import "NPProfileViewController.h"
 
 @interface NPEventListViewController ()
 {
@@ -17,6 +18,10 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *noEventsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *loadingEvents;
+
+- (void)profileTapped:(id)sender;
 @end
 
 @implementation NPEventListViewController
@@ -26,6 +31,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Upcoming Events", @"Event list view title");
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ProfileIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(profileTapped:)];
     }
     return self;
 }
@@ -41,11 +47,21 @@
     [_tableView registerNib:[UINib nibWithNibName:@"NPEventCell" bundle:nil] forCellReuseIdentifier:@"NPEventCell"];
     [_tableView setHidden:YES];
     [_activityIndicator startAnimating];
+    _loadingEvents.hidden = NO;
+    _noEventsLabel.hidden = YES;
     [[NPCooleafClient sharedClient] fetchEventList:^(NSArray *events) {
-        [_tableView setHidden:NO];
         [_activityIndicator stopAnimating];
+        _loadingEvents.hidden = YES;
         _events = events;
-        [_tableView reloadData];
+        if (_events.count > 0)
+        {
+            [_tableView setHidden:NO];
+            [_tableView reloadData];
+        }
+        else
+        {
+            _noEventsLabel.hidden = NO;
+        }
         NSLog(@"Fetched %@", events);
     }];
 }
@@ -54,6 +70,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)profileTapped:(id)sender
+{
+    [self.navigationController pushViewController:[NPProfileViewController new] animated:YES];
 }
 
 - (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
