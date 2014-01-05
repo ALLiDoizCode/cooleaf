@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NPEventCell : UITableViewCell
+@interface NPEventCell : UITableViewCell <UIGestureRecognizerDelegate>
 
 @property (nonatomic, setter = setEvent:) NSDictionary *event;
 

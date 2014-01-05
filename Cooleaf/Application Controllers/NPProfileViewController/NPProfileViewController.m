@@ -38,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _avatarView.layer.cornerRadius = 36.0;
     UIImage *avatarPlaceholder = nil;
     NSDictionary *uD = [NPCooleafClient sharedClient].userData;
     if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])
@@ -46,7 +47,7 @@
         avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderMaleBig"];
     
     _avatarView.image = avatarPlaceholder;
-    NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"big"]];
+    NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"versions"][@"big"]];
     [[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
         if (image && [imagePath isEqual:avatarURL.absoluteString])
         {
@@ -62,7 +63,7 @@
     for (NSDictionary *cat in uD[@"categories"])
     {
         c--;
-        [cats appendFormat:@"#%@", cat[@"name"]];
+        [cats appendFormat:@"#%@", [cat[@"name"] uppercaseString]];
         if (c > 0)
             [cats appendString:@"\n"];
         
@@ -70,7 +71,7 @@
             break;
     }
     _tagsLabel.text = cats;
-    NSURL *companyBannerURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"role"][@"organization"][@"links"][@"logo_thumb"][@"href"]];
+    NSURL *companyBannerURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"role"][@"organization"][@"logo"][@"versions"][@"thumb"]];
     [[NPCooleafClient sharedClient] fetchImage:companyBannerURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
        if (image && [imagePath isEqualToString:companyBannerURL.absoluteString])
        {
