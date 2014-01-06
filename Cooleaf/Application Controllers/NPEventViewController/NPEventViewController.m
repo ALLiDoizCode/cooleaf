@@ -8,12 +8,21 @@
 
 #import "NPEventViewController.h"
 #import "NPCooleafClient.h"
+#import "NPAttendeesViewController.h"
 
 // Cells
 #import "NPAttendeesCell.h"
+#import "NPDateCell.h"
+#import "NPLocationCell.h"
+#import "NPDetailsCell.h"
+#import "NPTodosCell.h"
 
 enum {
     NPEventCell_Attendees = 0,
+    NPEventCell_Date,
+    NPEventCell_Location,
+    NPEventCell_Details,
+    NPEventCell_Todos,
     
     NPEventCell_Count
 };
@@ -66,6 +75,10 @@ enum {
     
     // Register cell types
     [_tableView registerNib:[UINib nibWithNibName:@"NPAttendeesCell" bundle:nil] forCellReuseIdentifier:@"NPAttendeesCell"];
+    [_tableView registerNib:[UINib nibWithNibName:@"NPDateCell" bundle:nil] forCellReuseIdentifier:@"NPDateCell"];
+    [_tableView registerNib:[UINib nibWithNibName:@"NPLocationCell" bundle:nil] forCellReuseIdentifier:@"NPLocationCell"];
+    [_tableView registerNib:[UINib nibWithNibName:@"NPDetailsCell" bundle:nil] forCellReuseIdentifier:@"NPDetailsCell"];
+    [_tableView registerNib:[UINib nibWithNibName:@"NPTodosCell" bundle:nil] forCellReuseIdentifier:@"NPTodosCell"];
     
     _tableView.tableHeaderView = _tableHeaderView;
     [self setEvent:_events[_eventIdx]];
@@ -140,7 +153,7 @@ enum {
     
     // Resize header
     f = _tableHeaderView.frame;
-    f.size.height = 135 + shift;
+    f.size.height = 155 + shift;
     _tableHeaderView.frame = f;
     
     // Reassign header again
@@ -187,7 +200,7 @@ enum {
 
 - (void)updateCells
 {
-    NSLog(@"Time to update cells for %@", _currentEvent);
+    [_tableView reloadData];
 }
 
 - (IBAction)joinTapped:(id)sender
@@ -294,13 +307,126 @@ enum {
     switch (indexPath.row) {
         case NPEventCell_Attendees:
         {
-            return nil;
+            NPAttendeesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPAttendeesCell"];
+            cell.selfAttended = [_currentEvent[@"attending"] boolValue];
+            cell.attendees = _currentEvent[@"participants"];
+            return cell;
             
         }
         break;
             
+        case NPEventCell_Date:
+        {
+            NPDateCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPDateCell"];
+            cell.dateString = _currentEvent[@"start_time"];
+            cell.title = _currentEvent[@"name"];
+            return cell;
+        }
+        break;
+            
+        case NPEventCell_Location:
+        {
+            NPLocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPLocationCell"];
+            cell.address = _currentEvent[@"address"];
+            return cell;
+        }
+        break;
+            
+        case NPEventCell_Details:
+        {
+            NPDetailsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPDetailsCell"];
+            cell.detailsText = _currentEvent[@"description"];
+            return cell;
+        }
+        break;
+            
+        case NPEventCell_Todos:
+        {
+            NPTodosCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPTodosCell"];
+            // Find appropriate widget
+            for (NSDictionary *widget in _currentEvent[@"widgets"])
+            {
+                if ([widget[@"type"] isEqualToString:@"todo"])
+                {
+                    cell.todosCount = [widget[@"propositions"] count];
+                    break;
+                }
+            }
+            return cell;
+        }
+            break;
         default:
             return nil;
+            break;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case NPEventCell_Attendees:
+            if ([_currentEvent[@"participants"] count] > 0)
+                return 79.0;
+            else
+                return 44.0;
+            break;
+            
+        case NPEventCell_Date:
+            return 94.0;
+            break;
+
+        case NPEventCell_Location:
+            return 163.0;
+            break;
+            
+        case NPEventCell_Todos:
+            return 53.0;
+            break;
+            
+        case NPEventCell_Details:
+            return [NPDetailsCell cellHeightForText:_currentEvent[@"description"]];
+            break;
+        default:
+            break;
+    }
+    
+    return 0;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case NPEventCell_Attendees:
+            if ([_currentEvent[@"participants"] count] > 0)
+                return YES;
+            break;
+        case NPEventCell_Todos:
+            return YES;
+            break;
+        default:
+            break;
+    }
+    
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    switch (indexPath.row) {
+        case NPEventCell_Todos:
+        {
+            NSLog(@"Show me todo list");
+        }
+            break;
+        case NPEventCell_Attendees:
+        {
+            NPAttendeesViewController *aV = [NPAttendeesViewController new];
+            aV.attendees = _currentEvent[@"participants"];
+            [self.navigationController pushViewController:aV animated:YES];
+        }
+        default:
             break;
     }
 }

@@ -10,4 +10,7 @@
 
 @interface NPAttendeesCell : UITableViewCell
 
+@property (nonatomic, setter = setAttendees:) NSArray *attendees;
+@property (nonatomic, assign) BOOL selfAttended;
+
 @end

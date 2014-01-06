@@ -14,6 +14,20 @@
 		D93AAC71187AFE0700E9B96A /* NPEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC6F187AFE0700E9B96A /* NPEventViewController.xib */; };
 		D93AAC74187B170C00E9B96A /* NPAttendeesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AAC73187B170C00E9B96A /* NPAttendeesCell.m */; };
 		D93AAC76187B171F00E9B96A /* NPAttendeesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC75187B171F00E9B96A /* NPAttendeesCell.xib */; };
+		D93AAC78187B5C6F00E9B96A /* NPDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC77187B5C6F00E9B96A /* NPDateCell.xib */; };
+		D93AAC7B187B5C9900E9B96A /* NPDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AAC7A187B5C9900E9B96A /* NPDateCell.m */; };
+		D93AAC7D187B646700E9B96A /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93AAC7C187B646700E9B96A /* EventKit.framework */; };
+		D93AAC80187B661400E9B96A /* NPTodosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AAC7F187B661400E9B96A /* NPTodosCell.m */; };
+		D93AAC82187B662200E9B96A /* NPTodosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC81187B662200E9B96A /* NPTodosCell.xib */; };
+		D93AAC84187B691600E9B96A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93AAC83187B691600E9B96A /* MapKit.framework */; };
+		D93AAC86187B692800E9B96A /* NPLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC85187B692800E9B96A /* NPLocationCell.xib */; };
+		D93AAC89187B693B00E9B96A /* NPLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AAC88187B693B00E9B96A /* NPLocationCell.m */; };
+		D93AAC8C187B6D5F00E9B96A /* NPDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AAC8B187B6D5F00E9B96A /* NPDetailsCell.m */; };
+		D93AAC8E187B6D7100E9B96A /* NPDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC8D187B6D7100E9B96A /* NPDetailsCell.xib */; };
+		D93AAC93187B704100E9B96A /* NPAttendeesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AAC91187B704100E9B96A /* NPAttendeesViewController.m */; };
+		D93AAC94187B704100E9B96A /* NPAttendeesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC92187B704100E9B96A /* NPAttendeesViewController.xib */; };
+		D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AAC96187B70F800E9B96A /* NPAttendeeCell.m */; };
+		D93AAC99187B710700E9B96A /* NPAttendeeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC98187B710700E9B96A /* NPAttendeeCell.xib */; };
 		D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */; };
 		D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664FA186339360084BBB2 /* UIFont+ApplicationFont.m */; };
 		D94664FE18634DEB0084BBB2 /* NPGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664FD18634DEB0084BBB2 /* NPGradientView.m */; };
@@ -61,6 +75,26 @@
 		D93AAC72187B170C00E9B96A /* NPAttendeesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPAttendeesCell.h; path = "Application Controllers/NPEventViewController/NPAttendeesCell.h"; sourceTree = "<group>"; };
 		D93AAC73187B170C00E9B96A /* NPAttendeesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPAttendeesCell.m; path = "Application Controllers/NPEventViewController/NPAttendeesCell.m"; sourceTree = "<group>"; };
 		D93AAC75187B171F00E9B96A /* NPAttendeesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPAttendeesCell.xib; path = "Application Controllers/NPEventViewController/NPAttendeesCell.xib"; sourceTree = "<group>"; };
+		D93AAC77187B5C6F00E9B96A /* NPDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPDateCell.xib; path = "Application Controllers/NPEventViewController/NPDateCell.xib"; sourceTree = "<group>"; };
+		D93AAC79187B5C9900E9B96A /* NPDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPDateCell.h; path = "Application Controllers/NPEventViewController/NPDateCell.h"; sourceTree = "<group>"; };
+		D93AAC7A187B5C9900E9B96A /* NPDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPDateCell.m; path = "Application Controllers/NPEventViewController/NPDateCell.m"; sourceTree = "<group>"; };
+		D93AAC7C187B646700E9B96A /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		D93AAC7E187B661400E9B96A /* NPTodosCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPTodosCell.h; path = "Application Controllers/NPEventViewController/NPTodosCell.h"; sourceTree = "<group>"; };
+		D93AAC7F187B661400E9B96A /* NPTodosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPTodosCell.m; path = "Application Controllers/NPEventViewController/NPTodosCell.m"; sourceTree = "<group>"; };
+		D93AAC81187B662200E9B96A /* NPTodosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPTodosCell.xib; path = "Application Controllers/NPEventViewController/NPTodosCell.xib"; sourceTree = "<group>"; };
+		D93AAC83187B691600E9B96A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D93AAC85187B692800E9B96A /* NPLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPLocationCell.xib; path = "Application Controllers/NPEventViewController/NPLocationCell.xib"; sourceTree = "<group>"; };
+		D93AAC87187B693B00E9B96A /* NPLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPLocationCell.h; path = "Application Controllers/NPEventViewController/NPLocationCell.h"; sourceTree = "<group>"; };
+		D93AAC88187B693B00E9B96A /* NPLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPLocationCell.m; path = "Application Controllers/NPEventViewController/NPLocationCell.m"; sourceTree = "<group>"; };
+		D93AAC8A187B6D5F00E9B96A /* NPDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPDetailsCell.h; path = "Application Controllers/NPEventViewController/NPDetailsCell.h"; sourceTree = "<group>"; };
+		D93AAC8B187B6D5F00E9B96A /* NPDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPDetailsCell.m; path = "Application Controllers/NPEventViewController/NPDetailsCell.m"; sourceTree = "<group>"; };
+		D93AAC8D187B6D7100E9B96A /* NPDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPDetailsCell.xib; path = "Application Controllers/NPEventViewController/NPDetailsCell.xib"; sourceTree = "<group>"; };
+		D93AAC90187B704100E9B96A /* NPAttendeesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPAttendeesViewController.h; path = "Application Controllers/NPAttendeesViewController/NPAttendeesViewController.h"; sourceTree = "<group>"; };
+		D93AAC91187B704100E9B96A /* NPAttendeesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPAttendeesViewController.m; path = "Application Controllers/NPAttendeesViewController/NPAttendeesViewController.m"; sourceTree = "<group>"; };
+		D93AAC92187B704100E9B96A /* NPAttendeesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPAttendeesViewController.xib; path = "Application Controllers/NPAttendeesViewController/NPAttendeesViewController.xib"; sourceTree = "<group>"; };
+		D93AAC95187B70F800E9B96A /* NPAttendeeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPAttendeeCell.h; path = "Application Controllers/NPAttendeesViewController/NPAttendeeCell.h"; sourceTree = "<group>"; };
+		D93AAC96187B70F800E9B96A /* NPAttendeeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPAttendeeCell.m; path = "Application Controllers/NPAttendeesViewController/NPAttendeeCell.m"; sourceTree = "<group>"; };
+		D93AAC98187B710700E9B96A /* NPAttendeeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPAttendeeCell.xib; path = "Application Controllers/NPAttendeesViewController/NPAttendeeCell.xib"; sourceTree = "<group>"; };
 		D94664F61863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+NPBarButtonItems.h"; path = "Custom Controllers/UIBarButtonItem+NPBarButtonItems.h"; sourceTree = "<group>"; };
 		D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+NPBarButtonItems.m"; path = "Custom Controllers/UIBarButtonItem+NPBarButtonItems.m"; sourceTree = "<group>"; };
 		D94664F9186339360084BBB2 /* UIFont+ApplicationFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+ApplicationFont.h"; path = "Custom Controllers/UIFont+ApplicationFont.h"; sourceTree = "<group>"; };
@@ -103,6 +137,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D93AAC84187B691600E9B96A /* MapKit.framework in Frameworks */,
+				D93AAC7D187B646700E9B96A /* EventKit.framework in Frameworks */,
 				D980954A185CA557008F2B61 /* CoreGraphics.framework in Frameworks */,
 				D980954C185CA557008F2B61 /* UIKit.framework in Frameworks */,
 				D9809548185CA557008F2B61 /* Foundation.framework in Frameworks */,
@@ -136,14 +172,39 @@
 		D93AAC6C187AFDEF00E9B96A /* NPEventViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D93AAC6D187AFE0700E9B96A /* NPEventViewController.h */,
-				D93AAC6E187AFE0700E9B96A /* NPEventViewController.m */,
-				D93AAC6F187AFE0700E9B96A /* NPEventViewController.xib */,
+				D93AAC79187B5C9900E9B96A /* NPDateCell.h */,
+				D93AAC7A187B5C9900E9B96A /* NPDateCell.m */,
+				D93AAC77187B5C6F00E9B96A /* NPDateCell.xib */,
 				D93AAC72187B170C00E9B96A /* NPAttendeesCell.h */,
 				D93AAC73187B170C00E9B96A /* NPAttendeesCell.m */,
 				D93AAC75187B171F00E9B96A /* NPAttendeesCell.xib */,
+				D93AAC7E187B661400E9B96A /* NPTodosCell.h */,
+				D93AAC7F187B661400E9B96A /* NPTodosCell.m */,
+				D93AAC81187B662200E9B96A /* NPTodosCell.xib */,
+				D93AAC87187B693B00E9B96A /* NPLocationCell.h */,
+				D93AAC88187B693B00E9B96A /* NPLocationCell.m */,
+				D93AAC85187B692800E9B96A /* NPLocationCell.xib */,
+				D93AAC8A187B6D5F00E9B96A /* NPDetailsCell.h */,
+				D93AAC8B187B6D5F00E9B96A /* NPDetailsCell.m */,
+				D93AAC8D187B6D7100E9B96A /* NPDetailsCell.xib */,
+				D93AAC6D187AFE0700E9B96A /* NPEventViewController.h */,
+				D93AAC6E187AFE0700E9B96A /* NPEventViewController.m */,
+				D93AAC6F187AFE0700E9B96A /* NPEventViewController.xib */,
 			);
 			name = NPEventViewController;
+			sourceTree = "<group>";
+		};
+		D93AAC8F187B701D00E9B96A /* NPAttendeesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D93AAC95187B70F800E9B96A /* NPAttendeeCell.h */,
+				D93AAC96187B70F800E9B96A /* NPAttendeeCell.m */,
+				D93AAC98187B710700E9B96A /* NPAttendeeCell.xib */,
+				D93AAC90187B704100E9B96A /* NPAttendeesViewController.h */,
+				D93AAC91187B704100E9B96A /* NPAttendeesViewController.m */,
+				D93AAC92187B704100E9B96A /* NPAttendeesViewController.xib */,
+			);
+			name = NPAttendeesViewController;
 			sourceTree = "<group>";
 		};
 		D94664F51863292B0084BBB2 /* Custom Controllers */ = {
@@ -182,6 +243,8 @@
 		D9809546185CA557008F2B61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D93AAC83187B691600E9B96A /* MapKit.framework */,
+				D93AAC7C187B646700E9B96A /* EventKit.framework */,
 				D9809547185CA557008F2B61 /* Foundation.framework */,
 				D9809549185CA557008F2B61 /* CoreGraphics.framework */,
 				D980954B185CA557008F2B61 /* UIKit.framework */,
@@ -240,6 +303,7 @@
 		D9809576185CA709008F2B61 /* Application Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D93AAC8F187B701D00E9B96A /* NPAttendeesViewController */,
 				D93AAC6C187AFDEF00E9B96A /* NPEventViewController */,
 				D93AABEF186EFAAF00E9B96A /* NPProfileViewController */,
 				D9809578185CA71A008F2B61 /* NPEventListViewController */,
@@ -354,7 +418,13 @@
 				D9809552185CA557008F2B61 /* InfoPlist.strings in Resources */,
 				D980955A185CA557008F2B61 /* Images.xcassets in Resources */,
 				D980958A185CD013008F2B61 /* NPEventCell.xib in Resources */,
+				D93AAC82187B662200E9B96A /* NPTodosCell.xib in Resources */,
+				D93AAC94187B704100E9B96A /* NPAttendeesViewController.xib in Resources */,
+				D93AAC8E187B6D7100E9B96A /* NPDetailsCell.xib in Resources */,
 				D93AABF4186EFAD100E9B96A /* NPProfileViewController.xib in Resources */,
+				D93AAC99187B710700E9B96A /* NPAttendeeCell.xib in Resources */,
+				D93AAC86187B692800E9B96A /* NPLocationCell.xib in Resources */,
+				D93AAC78187B5C6F00E9B96A /* NPDateCell.xib in Resources */,
 				D980957D185CA7AC008F2B61 /* NPEventListViewController.xib in Resources */,
 				D93AAC76187B171F00E9B96A /* NPAttendeesCell.xib in Resources */,
 			);
@@ -410,11 +480,17 @@
 			files = (
 				D9809588185CCFFB008F2B61 /* NPEventCell.m in Sources */,
 				D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */,
+				D93AAC89187B693B00E9B96A /* NPLocationCell.m in Sources */,
 				D93AAC74187B170C00E9B96A /* NPAttendeesCell.m in Sources */,
 				D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */,
+				D93AAC80187B661400E9B96A /* NPTodosCell.m in Sources */,
+				D93AAC8C187B6D5F00E9B96A /* NPDetailsCell.m in Sources */,
 				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
+				D93AAC93187B704100E9B96A /* NPAttendeesViewController.m in Sources */,
 				D93AABF3186EFAD100E9B96A /* NPProfileViewController.m in Sources */,
 				D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */,
+				D93AAC7B187B5C9900E9B96A /* NPDateCell.m in Sources */,
+				D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */,
 				D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */,
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
 				D94664FE18634DEB0084BBB2 /* NPGradientView.m in Sources */,
