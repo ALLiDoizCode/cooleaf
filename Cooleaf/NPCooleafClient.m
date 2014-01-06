@@ -84,6 +84,54 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     }];
 }
 
+- (AFHTTPRequestOperation *)fetchEventWithId:(NSNumber *)eventId completion:(void(^)(NSDictionary *eventDetails))completion
+{
+    NSString *path = [NSString stringWithFormat:@"/events/%@.json", eventId];
+    
+    if (_apiPrefix.length > 0)
+        path = [_apiPrefix stringByAppendingString:path];
+    
+    return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (completion)
+            completion(responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (completion)
+            completion(nil);
+    }];
+}
+
+- (AFHTTPRequestOperation *)joinEventWithId:(NSNumber *)eventId completion:(void(^)(NSError *error))completion
+{
+    NSString *path = [NSString stringWithFormat:@"/events/%@/join.json", eventId];
+    
+    if (_apiPrefix.length > 0)
+        path = [_apiPrefix stringByAppendingString:path];
+    
+    return [self POST:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (completion)
+            completion(nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (completion)
+            completion(error);
+    }];
+}
+
+- (AFHTTPRequestOperation *)leaveEventWithId:(NSNumber *)eventId completion:(void(^)(NSError *error))completion
+{
+    NSString *path = [NSString stringWithFormat:@"/events/%@/join.json", eventId];
+    
+    if (_apiPrefix.length > 0)
+        path = [_apiPrefix stringByAppendingString:path];
+    return [self DELETE:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (completion)
+            completion(nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (completion)
+            completion(error);
+    }];
+}
+
+
 - (void)logout
 {
     [SSKeychain deletePasswordForService:@"cooleaf" account:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
@@ -97,7 +145,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     if (_apiPrefix.length > 0)
         path = [_apiPrefix stringByAppendingString:path];
     
-    [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (completion)
             completion(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

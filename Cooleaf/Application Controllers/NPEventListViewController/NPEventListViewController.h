@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NPEventListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface NPEventListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @end

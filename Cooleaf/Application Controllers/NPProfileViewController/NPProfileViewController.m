@@ -30,7 +30,7 @@
     if (self) {
         self.title = @"";
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Sign out", @"Sign out button title")
-                                                                                  style:UIBarButtonItemStylePlain target:self action:@selector(logoutTapped:)];
+                                                                                  style:UIBarButtonItemStyleDone target:self action:@selector(logoutTapped:)];
     }
     return self;
 }
@@ -47,13 +47,16 @@
         avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderMaleBig"];
     
     _avatarView.image = avatarPlaceholder;
-    NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"versions"][@"big"]];
-    [[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
-        if (image && [imagePath isEqual:avatarURL.absoluteString])
-        {
-            _avatarView.image = image;
-        }
-    }];
+    if (uD[@"profile"][@"picture"][@"original"])
+    {
+        NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"versions"][@"big"]];
+        [[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+            if (image && [imagePath isEqual:avatarURL.absoluteString])
+            {
+                _avatarView.image = image;
+            }
+        }];
+    }
     
     _nameLabel.text = uD[@"name"];
     _positionLabel.text = [NSString stringWithFormat:@"%@\n%@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
@@ -76,12 +79,11 @@
        if (image && [imagePath isEqualToString:companyBannerURL.absoluteString])
        {
            _companyView = [[UIImageView alloc] initWithImage:image];
-           _companyView.frame = CGRectMake(0, self.view.bounds.size.height - (image.size.height/2.0), 320, (image.size.height/2.0));
+           _companyView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - (image.size.height/2.0), 320, (image.size.height/2.0));
            _companyView.contentMode = UIViewContentModeCenter;
            [self.view addSubview:_companyView];
        }
     }];
-    NSLog(@"Got data %@", [NPCooleafClient sharedClient].userData);
 }
 
 - (void)didReceiveMemoryWarning

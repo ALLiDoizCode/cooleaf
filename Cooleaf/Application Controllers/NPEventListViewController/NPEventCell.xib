@@ -45,6 +45,10 @@
                         <rect key="frame" x="0.0" y="119" width="320" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" id="wP1-xM-Ink" userLabel="Loading indicator">
+                                <rect key="frame" x="260" y="10" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2On-yd-hnb">
                                 <rect key="frame" x="220" y="0.0" width="100" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -115,9 +119,11 @@
                 <outlet property="eventTags" destination="VsZ-xL-LH1" id="v4s-xR-1Fp"/>
                 <outlet property="eventTitle" destination="NBh-jh-u3x" id="Dk2-HK-xvy"/>
                 <outlet property="joinButton" destination="2On-yd-hnb" id="B99-wA-MyU"/>
+                <outlet property="loadingIndicator" destination="wP1-xM-Ink" id="RbE-Dd-3xz"/>
                 <outlet property="selectionView" destination="L20-a7-G75" id="2fN-HE-7Pe"/>
                 <outlet property="slideBarContent" destination="XPg-be-Muq" id="4i3-Lw-7L0"/>
                 <outlet property="sliderBarView" destination="SFM-EF-sZm" id="IlB-yV-uWZ"/>
+                <outlet property="topSeparator" destination="JwY-vv-QNh" id="Jft-oY-be1"/>
             </connections>
         </tableViewCell>
     </objects>

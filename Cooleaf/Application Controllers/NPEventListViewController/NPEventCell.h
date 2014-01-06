@@ -11,6 +11,8 @@
 @interface NPEventCell : UITableViewCell <UIGestureRecognizerDelegate>
 
 @property (nonatomic, setter = setEvent:) NSDictionary *event;
+@property (nonatomic, setter = setLoading:) BOOL loading;
+@property (nonatomic, copy) BOOL(^actionTapped)(NSNumber *eventId, BOOL join);
 
 + (CGFloat)cellHeightForEvent:(NSDictionary *)event;
 @end

@@ -10,6 +10,10 @@
 		091C2FA9FE63464F90BF2AC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF39234F1654A6DBFF21105 /* libPods.a */; };
 		D93AABF3186EFAD100E9B96A /* NPProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AABF1186EFAD100E9B96A /* NPProfileViewController.m */; };
 		D93AABF4186EFAD100E9B96A /* NPProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AABF2186EFAD100E9B96A /* NPProfileViewController.xib */; };
+		D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AAC6E187AFE0700E9B96A /* NPEventViewController.m */; };
+		D93AAC71187AFE0700E9B96A /* NPEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC6F187AFE0700E9B96A /* NPEventViewController.xib */; };
+		D93AAC74187B170C00E9B96A /* NPAttendeesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AAC73187B170C00E9B96A /* NPAttendeesCell.m */; };
+		D93AAC76187B171F00E9B96A /* NPAttendeesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC75187B171F00E9B96A /* NPAttendeesCell.xib */; };
 		D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */; };
 		D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664FA186339360084BBB2 /* UIFont+ApplicationFont.m */; };
 		D94664FE18634DEB0084BBB2 /* NPGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664FD18634DEB0084BBB2 /* NPGradientView.m */; };
@@ -51,6 +55,12 @@
 		D93AABF0186EFAD100E9B96A /* NPProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPProfileViewController.h; path = "Application Controllers/NPProfileViewController/NPProfileViewController.h"; sourceTree = "<group>"; };
 		D93AABF1186EFAD100E9B96A /* NPProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPProfileViewController.m; path = "Application Controllers/NPProfileViewController/NPProfileViewController.m"; sourceTree = "<group>"; };
 		D93AABF2186EFAD100E9B96A /* NPProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPProfileViewController.xib; path = "Application Controllers/NPProfileViewController/NPProfileViewController.xib"; sourceTree = "<group>"; };
+		D93AAC6D187AFE0700E9B96A /* NPEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPEventViewController.h; path = "Application Controllers/NPEventViewController/NPEventViewController.h"; sourceTree = "<group>"; };
+		D93AAC6E187AFE0700E9B96A /* NPEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPEventViewController.m; path = "Application Controllers/NPEventViewController/NPEventViewController.m"; sourceTree = "<group>"; };
+		D93AAC6F187AFE0700E9B96A /* NPEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPEventViewController.xib; path = "Application Controllers/NPEventViewController/NPEventViewController.xib"; sourceTree = "<group>"; };
+		D93AAC72187B170C00E9B96A /* NPAttendeesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPAttendeesCell.h; path = "Application Controllers/NPEventViewController/NPAttendeesCell.h"; sourceTree = "<group>"; };
+		D93AAC73187B170C00E9B96A /* NPAttendeesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPAttendeesCell.m; path = "Application Controllers/NPEventViewController/NPAttendeesCell.m"; sourceTree = "<group>"; };
+		D93AAC75187B171F00E9B96A /* NPAttendeesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPAttendeesCell.xib; path = "Application Controllers/NPEventViewController/NPAttendeesCell.xib"; sourceTree = "<group>"; };
 		D94664F61863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+NPBarButtonItems.h"; path = "Custom Controllers/UIBarButtonItem+NPBarButtonItems.h"; sourceTree = "<group>"; };
 		D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+NPBarButtonItems.m"; path = "Custom Controllers/UIBarButtonItem+NPBarButtonItems.m"; sourceTree = "<group>"; };
 		D94664F9186339360084BBB2 /* UIFont+ApplicationFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+ApplicationFont.h"; path = "Custom Controllers/UIFont+ApplicationFont.h"; sourceTree = "<group>"; };
@@ -121,6 +131,19 @@
 				D93AABF2186EFAD100E9B96A /* NPProfileViewController.xib */,
 			);
 			name = NPProfileViewController;
+			sourceTree = "<group>";
+		};
+		D93AAC6C187AFDEF00E9B96A /* NPEventViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D93AAC6D187AFE0700E9B96A /* NPEventViewController.h */,
+				D93AAC6E187AFE0700E9B96A /* NPEventViewController.m */,
+				D93AAC6F187AFE0700E9B96A /* NPEventViewController.xib */,
+				D93AAC72187B170C00E9B96A /* NPAttendeesCell.h */,
+				D93AAC73187B170C00E9B96A /* NPAttendeesCell.m */,
+				D93AAC75187B171F00E9B96A /* NPAttendeesCell.xib */,
+			);
+			name = NPEventViewController;
 			sourceTree = "<group>";
 		};
 		D94664F51863292B0084BBB2 /* Custom Controllers */ = {
@@ -217,6 +240,7 @@
 		D9809576185CA709008F2B61 /* Application Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D93AAC6C187AFDEF00E9B96A /* NPEventViewController */,
 				D93AABEF186EFAAF00E9B96A /* NPProfileViewController */,
 				D9809578185CA71A008F2B61 /* NPEventListViewController */,
 				D9809577185CA710008F2B61 /* NPLoginViewController */,
@@ -325,12 +349,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D93AAC71187AFE0700E9B96A /* NPEventViewController.xib in Resources */,
 				D9809582185CA7D2008F2B61 /* NPLoginViewController.xib in Resources */,
 				D9809552185CA557008F2B61 /* InfoPlist.strings in Resources */,
 				D980955A185CA557008F2B61 /* Images.xcassets in Resources */,
 				D980958A185CD013008F2B61 /* NPEventCell.xib in Resources */,
 				D93AABF4186EFAD100E9B96A /* NPProfileViewController.xib in Resources */,
 				D980957D185CA7AC008F2B61 /* NPEventListViewController.xib in Resources */,
+				D93AAC76187B171F00E9B96A /* NPAttendeesCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,9 +410,11 @@
 			files = (
 				D9809588185CCFFB008F2B61 /* NPEventCell.m in Sources */,
 				D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */,
+				D93AAC74187B170C00E9B96A /* NPAttendeesCell.m in Sources */,
 				D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */,
 				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
 				D93AABF3186EFAD100E9B96A /* NPProfileViewController.m in Sources */,
+				D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */,
 				D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */,
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
 				D94664FE18634DEB0084BBB2 /* NPGradientView.m in Sources */,

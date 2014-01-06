@@ -31,6 +31,8 @@ static UITextView *_tV;
 @property (weak, nonatomic) IBOutlet UIView *sliderBarView;
 @property (weak, nonatomic) IBOutlet UIView *selectionView;
 @property (weak, nonatomic) IBOutlet UIButton *joinButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (weak, nonatomic) IBOutlet UIView *topSeparator;
 
 - (IBAction)joinTapped:(id)sender;
 - (void)panned:(UIPanGestureRecognizer *)rec;
@@ -94,6 +96,7 @@ static UITextView *_tV;
 - (void)prepareForReuse
 {
     [self setEvent:nil];
+    [self setLoading:NO];
 }
 
 - (UIView *)avatarForUser:(NSDictionary *)user offset:(CGFloat)offset
@@ -105,18 +108,28 @@ static UITextView *_tV;
     avatar.alpha = 0.6;
     avatar.tag = AVATAR_TAG;
     
-    if ([(NSString *)user[@"profile"][@"gender"] isEqualToString:@"m"])
-        avatar.image = [UIImage imageNamed:@"AvatarPlaceholderMaleSmall"];
-    else
-        avatar.image = [UIImage imageNamed:@"AvatarPlaceholderFemaleSmall"];
-    
-    NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:user[@"profile"][@"picture"][@"versions"][@"small"]];
-    [[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
-        if (image && [imagePath isEqual:avatarURL.absoluteString])
+    if (user)
+    {
+        if ([(NSString *)user[@"profile"][@"gender"] isEqualToString:@"m"])
+            avatar.image = [UIImage imageNamed:@"AvatarPlaceholderMaleSmall"];
+        else
+            avatar.image = [UIImage imageNamed:@"AvatarPlaceholderFemaleSmall"];
+        
+        if (user[@"profile"][@"picture"][@"original"])
         {
-            avatar.image = image;
+            NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:user[@"profile"][@"picture"][@"versions"][@"small"]];
+            [[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+                if (image && [imagePath isEqual:avatarURL.absoluteString])
+                {
+                    avatar.image = image;
+                }
+            }];
         }
-    }];
+    }
+    else
+    {
+        avatar.image = [UIImage imageNamed:@"AvatarMore"];
+    }
     return avatar;
 }
 
@@ -218,17 +231,22 @@ static UITextView *_tV;
             [_sliderBarView addSubview:avatar];
             avatarCount++;
             
-            if (avatarCount > 12)
+            if (avatarCount > 8)
+            {
+                avatar = [self avatarForUser:nil offset:avatarCount];
+                [_slideBarContent addSubview:avatar];
                 break;
+            }
         }
         shift2 = 45;
+        _loadingIndicator.transform = CGAffineTransformMakeTranslation(0, 25);
     }
     else
     {
         _slideBarContent.backgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
         [_joinButton setTitle:NSLocalizedString(@"I'm in!", @"Joining event button title") forState:UIControlStateNormal];                    
         _attendeeIcon.image = [UIImage imageNamed:@"AttendeeActiveIcon"];
-        _attendeeLabel.textColor = [UIColor colorWithRed:0 green:22.0/255.0 blue:1 alpha:1];
+        _attendeeLabel.textColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
         _attendeeLabel.text = NSLocalizedString(@"Be the first", @"No attendees label for event");
 
         f = _slideBarContent.frame;
@@ -241,13 +259,16 @@ static UITextView *_tV;
         f = _joinButton.frame;
         f.size.height = 40;
         _joinButton.frame = f;
-
+        _loadingIndicator.transform = CGAffineTransformIdentity;
         
     }
     
     f = _bottomSeparator.frame;
     f.size.height = 0.5;
     _bottomSeparator.frame = f;
+    f = _topSeparator.frame;
+    f.size.height = 0.5;
+    _topSeparator.frame = f;
     
     _eventTags.text = [hashes uppercaseString];
     _eventTags.transform = CGAffineTransformMakeTranslation(0, shift);
@@ -267,7 +288,13 @@ static UITextView *_tV;
 
 - (IBAction)joinTapped:(id)sender
 {
-    NSLog(@"Join tapped!");
+    if (_actionTapped)
+    {
+        if (_actionTapped(_event[@"id"], ![_event[@"attending"] boolValue]))
+        {
+            self.loading = YES;
+        }
+    }
 }
 
 - (void)panned:(UIPanGestureRecognizer *)rec
@@ -305,6 +332,28 @@ static UITextView *_tV;
         }
     }
     
+}
+
+- (void)setLoading:(BOOL)loading
+{
+    if (_loading == loading)
+        return;
+    
+    _loading = loading;
+    _joinButton.hidden = loading;
+    if (_loading)
+    {
+        if (!_showsActionButton)
+        {
+            _sliderBarView.transform = CGAffineTransformMakeTranslation(-100, 0);
+            _showsActionButton = YES;            
+        }
+        [_loadingIndicator startAnimating];
+    }
+    else
+    {
+        [_loadingIndicator stopAnimating];
+    }
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
