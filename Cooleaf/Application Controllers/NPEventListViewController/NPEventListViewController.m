@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *loadingEvents;
 
 - (void)profileTapped:(id)sender;
+- (void)notificationReceived:(NSNotification *)not;
+
 @end
 
 @implementation NPEventListViewController
@@ -50,6 +52,13 @@
     [super viewDidLoad];
     _joinActions = [NSMutableDictionary new];
     [_tableView registerNib:[UINib nibWithNibName:@"NPEventCell" bundle:nil] forCellReuseIdentifier:@"NPEventCell"];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReceived:) name:kNPCooleafClientRefreshNotification object:nil];
+}
+
+- (void)notificationReceived:(NSNotification *)not
+{
+    [self reloadEvents];
 }
 
 - (void)reloadEvents

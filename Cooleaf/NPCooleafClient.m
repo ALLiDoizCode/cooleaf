@@ -10,10 +10,20 @@
 #import <SSKeychain/SSKeychain.h>
 #import "NSFileManager+ImageCaching.h"
 
+NSString * const kNPCooleafClientRefreshNotification = @"kNPCooleafClientRefreshNotification";
+NSString * const kNPCooleafClientRUDIDHarvestedNotification = @"kNPCooleafClientRUDIDHarvestedNotification";
+
+static NSString * const kNPCooleafClientBaseURLString = @"http://cooleaf-staging.h1.monterail.eu";
+static NSString * const kNPCooleafClientAPIPrefix = @"/api/v1";
+static NSString * const kNPCooleafClientAPIAuthLogin = @"cooleaf";
+static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
+
 @interface NPCooleafClient ()
 {
     NSMutableDictionary *_downloadedImages;
     NSMutableDictionary *_imageRequests;
+    void (^_loginCallbackWaiting)(NSError *error);
+    NSDictionary *_loginCredentialsWaiting;
 }
 
 @property (nonatomic, copy) NSString *apiPrefix;
@@ -23,10 +33,6 @@
 
 @implementation NPCooleafClient
 
-static NSString * const kNPCooleafClientBaseURLString = @"http://cooleaf-staging.h1.monterail.eu";
-static NSString * const kNPCooleafClientAPIPrefix = @"/api/v1";
-static NSString * const kNPCooleafClientAPIAuthLogin = @"cooleaf";
-static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 
 + (NPCooleafClient *)sharedClient
 {
@@ -64,6 +70,12 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     
 }
 
+- (void)setNotificationUDID:(NSString *)notificationUDID
+{
+    _notificationUDID = [notificationUDID copy];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientRUDIDHarvestedNotification object:_notificationUDID];
+}
+
 #pragma mark - Login handling
 
 - (AFHTTPRequestOperation *)loginWithUsername:(NSString *)username password:(NSString *)password  completion:(void(^)(NSError *error))completion
@@ -72,7 +84,15 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     
     if (_apiPrefix.length > 0)
         path = [_apiPrefix stringByAppendingString:path];
-    return [self POST:path parameters:@{@"email": username, @"password": password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    NSDictionary *params = nil;
+    
+    if (_notificationUDID.length > 0)
+        params = @{@"email": username, @"password": password, @"device_id": _notificationUDID};
+    else
+        params = @{@"email": username, @"password": password};
+    
+    return [self POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         _userData = [responseObject copy];
         [self.requestSerializer setValue:_userData[@"role"][@"organization"][@"subdomain"] forHTTPHeaderField:@"X-Organization"];
         [[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];

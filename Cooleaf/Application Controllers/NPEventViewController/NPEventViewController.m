@@ -56,6 +56,7 @@ enum {
 
 - (void)updateJoinButton;
 - (void)updateCells;
+- (void)notificationReceived:(NSNotification *)not;
 
 @end
 
@@ -93,6 +94,12 @@ enum {
     _prevEventButton.enabled = (_eventIdx != 0);
     _nextEventButton.enabled = (_eventIdx < _events.count-1);
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReceived:) name:kNPCooleafClientRefreshNotification object:nil];
+}
+
+- (void)notificationReceived:(NSNotification *)not
+{
+    [self setEvent:_events[_eventIdx]];
 }
 
 - (void)viewWillAppear:(BOOL)animated

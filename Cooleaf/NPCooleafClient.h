@@ -8,9 +8,13 @@
 
 #import "AFHTTPRequestOperationManager.h"
 
+extern NSString * const kNPCooleafClientRefreshNotification;
+extern NSString * const kNPCooleafClientRUDIDHarvestedNotification;
+
 @interface NPCooleafClient : AFHTTPRequestOperationManager
 
 @property (nonatomic, readonly) NSDictionary *userData;
+@property (nonatomic, setter = setNotificationUDID:) NSString *notificationUDID;
 
 + (NPCooleafClient *)sharedClient;
 

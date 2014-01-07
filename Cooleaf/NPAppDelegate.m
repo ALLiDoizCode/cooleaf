@@ -18,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
     
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont mediumApplicationFontOfSize:18], NSFontAttributeName, nil]];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -60,4 +62,22 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma mark - Notification handling
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSString *strDeviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+	strDeviceToken = [strDeviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [NPCooleafClient sharedClient].notificationUDID = strDeviceToken;
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientRefreshNotification object:userInfo];
+    
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //	NSLog(@"Fail to register for remote notifications: %@", error);
+    [NPCooleafClient sharedClient].notificationUDID = @"";
+}
 @end

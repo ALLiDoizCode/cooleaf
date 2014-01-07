@@ -124,6 +124,27 @@ static UITextView *_tV = nil;
                                                                                     attributes:@{NSFontAttributeName: [UIFont applicationFontOfSize:11]}]];
             
             _ownershipLabel.attributedText = ownershipString;
+            
+            UIImage *avatarPlaceholder = nil;
+            NSDictionary *uD = todo[@"user"];
+            if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])
+                avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceholderFemaleSmall"];
+            else
+                avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceholderMaleSmall"];
+            
+            _avatarView.image = avatarPlaceholder;
+            if (uD[@"profile"][@"picture"][@"original"])
+            {
+                NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"versions"][@"small"]];
+                [[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+                    if (image && [imagePath isEqual:avatarURL.absoluteString])
+                    {
+                        _avatarView.image = image;
+                    }
+                }];
+            }
+
+            
             _checkbox.enabled = NO;
             _checkbox.selected = NO;
             

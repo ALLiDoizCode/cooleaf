@@ -47,21 +47,8 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)startLogin
 {
-    [super viewDidLoad];
-    _containerView.hidden = YES;
-    _forgotPasswdBtn.hidden = YES;
-    _containerView.layer.cornerRadius = 4.0;
-    
-    if ([UIScreen mainScreen].bounds.size.height < 500)
-    {
-        _containerView.transform = CGAffineTransformMakeTranslation(0, -100);
-        _forgotPasswdBtn.transform = CGAffineTransformMakeTranslation(0, -170);
-        _logoView.transform = CGAffineTransformMakeTranslation(-2, -48);
-        _globalSpinner.transform = CGAffineTransformMakeTranslation(0, -80);
-    }
-    
     [UIView animateWithDuration:0.3 animations:^{
         _logoView.alpha = 0.0;
     } completion:^(BOOL finished) {
@@ -73,15 +60,15 @@
             [_globalSpinner startAnimating];
             _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:username password:[SSKeychain passwordForService:@"cooleaf" account:username]
                                                                      completion:^(NSError *error) {
-                if (error)
-                {
-                    [self unlockView];
-                }
-                else
-                {
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                }
-            }];
+                                                                         if (error)
+                                                                         {
+                                                                             [self unlockView];
+                                                                         }
+                                                                         else
+                                                                         {
+                                                                             [self dismissViewControllerAnimated:YES completion:nil];
+                                                                         }
+                                                                     }];
         }
         else
         {
@@ -104,9 +91,38 @@
                 
             }];
         }
-
+        
     }];
+}
 
+- (void)notificationUDIDReceived:(NSNotification *)not
+{
+    [self startLogin];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    _containerView.hidden = YES;
+    _forgotPasswdBtn.hidden = YES;
+    _containerView.layer.cornerRadius = 4.0;
+    
+    if ([UIScreen mainScreen].bounds.size.height < 500)
+    {
+        _containerView.transform = CGAffineTransformMakeTranslation(0, -100);
+        _forgotPasswdBtn.transform = CGAffineTransformMakeTranslation(0, -170);
+        _logoView.transform = CGAffineTransformMakeTranslation(-2, -48);
+        _globalSpinner.transform = CGAffineTransformMakeTranslation(0, -80);
+    }
+    
+    if ([NPCooleafClient sharedClient].notificationUDID)
+    {
+        [self startLogin];
+    }
+    else
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationUDIDReceived:) name:kNPCooleafClientRUDIDHarvestedNotification object:nil];
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
