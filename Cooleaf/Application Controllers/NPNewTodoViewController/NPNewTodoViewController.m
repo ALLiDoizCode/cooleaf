@@ -7,8 +7,12 @@
 //
 
 #import "NPNewTodoViewController.h"
+#import "NPCooleafClient.h"
 
 @interface NPNewTodoViewController ()
+{
+    AFHTTPRequestOperation *_operation;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
@@ -56,12 +60,51 @@
 
 - (void)cancelTapped:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if (_operation)
+    {
+        [_operation cancel];
+        _operation = nil;
+    }
+    else
+        [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)saveTapped:(id)sender
 {
+    NSNumber *wId = nil;
+    for (NSDictionary *widget in _event[@"widgets"])
+    {
+        if ([widget[@"type"] isEqualToString:@"todo"])
+        {
+            wId = widget[@"id"];
+            break;
+        }
+    }
+    UIActivityIndicatorView *aV = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aV];
+    [aV startAnimating];
+    [_todoNameView setEditable:NO];
     
+    _operation = [[NPCooleafClient sharedClient] addTodoForWidget:wId name:_todoNameView.text completion:^(NSError *error) {
+        _operation = nil;
+
+        if (error)
+        {
+            [_todoNameView setEditable:YES];            
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", @"Done button title")
+                                                                                      style:UIBarButtonItemStyleDone target:self action:@selector(saveTapped:)];
+            [_todoNameView becomeFirstResponder];
+        }
+        else
+        {
+            _operation = [[NPCooleafClient sharedClient] fetchEventWithId:_event[@"id"] completion:^(NSDictionary *eventDetails) {
+                self.event = eventDetails;
+                _operation = nil;
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+
+        }
+    }];
 }
 
 - (void)textViewDidChange:(UITextView *)textView

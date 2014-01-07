@@ -13,6 +13,7 @@
 @interface NPTodoViewController ()
 {
     NSDictionary *_todosNode;
+    NPNewTodoViewController *_newTodoController;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *emptyPlaceholder;
@@ -69,9 +70,53 @@
 
 - (void)addTodoTapped:(id)sender
 {
+    if (_newTodoController)
+    {
+        [_newTodoController removeObserver:self forKeyPath:@"event"];
+        _newTodoController = nil;
+    }
     NPNewTodoViewController *nT = [NPNewTodoViewController new];
     nT.event = _event;
+    [nT addObserver:self forKeyPath:@"event" options:NSKeyValueObservingOptionNew context:NULL];
+    _newTodoController = nT;
     [self presentViewController:[[UINavigationController alloc] initWithRootViewController:nT] animated:YES completion:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath compare:@"event"] == NSOrderedSame && [object isKindOfClass:[NPNewTodoViewController class]])
+    {
+        self.event = [(NPNewTodoViewController *)object event];
+        for (NSDictionary *widget in _event[@"widgets"])
+        {
+            if ([widget[@"type"] isEqualToString:@"todo"])
+            {
+                _todosNode = widget;
+                break;
+            }
+        }
+        
+        // Now we can do the rest
+        if ([_todosNode[@"propositions"] count] > 0)
+        {
+            _emptyPlaceholder.hidden = YES;
+            _tableView.hidden = NO;
+            [_tableView reloadData];
+        }
+        else
+        {
+            _emptyPlaceholder.hidden = NO;
+            _tableView.hidden = YES;
+        }
+    }
+}
+
+- (void)dealloc
+{
+    if (_newTodoController)
+    {
+        [_newTodoController removeObserver:self forKeyPath:@"event"];
+    }
 }
 
 #pragma mark - UITableView stuff

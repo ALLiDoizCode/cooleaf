@@ -22,6 +22,8 @@
 
 - (AFHTTPRequestOperation *)fetchEventWithId:(NSNumber *)eventId completion:(void(^)(NSDictionary *eventDetails))completion;
 
+- (AFHTTPRequestOperation *)addTodoForWidget:(NSNumber *)widgetId name:(NSString *)name completion:(void(^)(NSError *error))completion;
+
 - (void)logout;
 
 - (void)fetchEventList:(void(^)(NSArray *events))completion;

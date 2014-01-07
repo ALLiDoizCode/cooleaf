@@ -64,6 +64,8 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     
 }
 
+#pragma mark - Login handling
+
 - (AFHTTPRequestOperation *)loginWithUsername:(NSString *)username password:(NSString *)password  completion:(void(^)(NSError *error))completion
 {
     NSString *path = @"/authorize.json";
@@ -83,6 +85,14 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
             completion(error);
     }];
 }
+
+- (void)logout
+{
+    [SSKeychain deletePasswordForService:@"cooleaf" account:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
+    _userData = nil;
+}
+
+#pragma mark - Event handling
 
 - (AFHTTPRequestOperation *)fetchEventWithId:(NSNumber *)eventId completion:(void(^)(NSDictionary *eventDetails))completion
 {
@@ -132,11 +142,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 }
 
 
-- (void)logout
-{
-    [SSKeychain deletePasswordForService:@"cooleaf" account:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
-    _userData = nil;
-}
+
 
 - (void)fetchEventList:(void(^)(NSArray *events))completion
 {
@@ -153,6 +159,8 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
             completion(nil);
     }];
 }
+
+#pragma mark - Image handling
 
 - (void)synchronizeImageIndex
 {
@@ -212,6 +220,23 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
         operation.responseSerializer = [AFHTTPResponseSerializer new];
         [self.operationQueue addOperation:operation];
     }
+}
+
+#pragma mark - Todos handling
+
+- (AFHTTPRequestOperation *)addTodoForWidget:(NSNumber *)widgetId name:(NSString *)name completion:(void(^)(NSError *error))completion
+{
+    NSString *path = [NSString stringWithFormat:@"/widgets/todos/%@.json", widgetId];
+    
+    if (_apiPrefix.length > 0)
+        path = [_apiPrefix stringByAppendingString:path];
+    return [self POST:path parameters:@{@"name": name} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (completion)
+            completion(nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (completion)
+            completion(error);
+    }];
 }
 
 @end

@@ -86,13 +86,18 @@ enum {
     [_tableView registerNib:[UINib nibWithNibName:@"NPTodosCell" bundle:nil] forCellReuseIdentifier:@"NPTodosCell"];
     
     _tableView.tableHeaderView = _tableHeaderView;
-    [self setEvent:_events[_eventIdx]];
+//    [self setEvent:_events[_eventIdx]];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_eventChangeButtons];
     
     _prevEventButton.enabled = (_eventIdx != 0);
     _nextEventButton.enabled = (_eventIdx < _events.count-1);
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self setEvent:_events[_eventIdx]];
 }
 
 - (void)setEvent:(NSDictionary *)event
