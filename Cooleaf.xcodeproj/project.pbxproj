@@ -28,6 +28,12 @@
 		D93AAC94187B704100E9B96A /* NPAttendeesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC92187B704100E9B96A /* NPAttendeesViewController.xib */; };
 		D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AAC96187B70F800E9B96A /* NPAttendeeCell.m */; };
 		D93AAC99187B710700E9B96A /* NPAttendeeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC98187B710700E9B96A /* NPAttendeeCell.xib */; };
+		D93AAC9E187C29F000E9B96A /* NPTodoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AAC9C187C29F000E9B96A /* NPTodoViewController.m */; };
+		D93AAC9F187C29F000E9B96A /* NPTodoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AAC9D187C29F000E9B96A /* NPTodoViewController.xib */; };
+		D93AACA2187C300E00E9B96A /* NPTodoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AACA1187C300E00E9B96A /* NPTodoCell.m */; };
+		D93AACA4187C301C00E9B96A /* NPTodoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AACA3187C301C00E9B96A /* NPTodoCell.xib */; };
+		D93AACA9187C351500E9B96A /* NPNewTodoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AACA7187C351500E9B96A /* NPNewTodoViewController.m */; };
+		D93AACAA187C351500E9B96A /* NPNewTodoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AACA8187C351500E9B96A /* NPNewTodoViewController.xib */; };
 		D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */; };
 		D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664FA186339360084BBB2 /* UIFont+ApplicationFont.m */; };
 		D94664FE18634DEB0084BBB2 /* NPGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664FD18634DEB0084BBB2 /* NPGradientView.m */; };
@@ -95,6 +101,15 @@
 		D93AAC95187B70F800E9B96A /* NPAttendeeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPAttendeeCell.h; path = "Application Controllers/NPAttendeesViewController/NPAttendeeCell.h"; sourceTree = "<group>"; };
 		D93AAC96187B70F800E9B96A /* NPAttendeeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPAttendeeCell.m; path = "Application Controllers/NPAttendeesViewController/NPAttendeeCell.m"; sourceTree = "<group>"; };
 		D93AAC98187B710700E9B96A /* NPAttendeeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPAttendeeCell.xib; path = "Application Controllers/NPAttendeesViewController/NPAttendeeCell.xib"; sourceTree = "<group>"; };
+		D93AAC9B187C29F000E9B96A /* NPTodoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPTodoViewController.h; path = "Application Controllers/NPTodoViewController/NPTodoViewController.h"; sourceTree = "<group>"; };
+		D93AAC9C187C29F000E9B96A /* NPTodoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPTodoViewController.m; path = "Application Controllers/NPTodoViewController/NPTodoViewController.m"; sourceTree = "<group>"; };
+		D93AAC9D187C29F000E9B96A /* NPTodoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPTodoViewController.xib; path = "Application Controllers/NPTodoViewController/NPTodoViewController.xib"; sourceTree = "<group>"; };
+		D93AACA0187C300E00E9B96A /* NPTodoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPTodoCell.h; path = "Application Controllers/NPTodoViewController/NPTodoCell.h"; sourceTree = "<group>"; };
+		D93AACA1187C300E00E9B96A /* NPTodoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPTodoCell.m; path = "Application Controllers/NPTodoViewController/NPTodoCell.m"; sourceTree = "<group>"; };
+		D93AACA3187C301C00E9B96A /* NPTodoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPTodoCell.xib; path = "Application Controllers/NPTodoViewController/NPTodoCell.xib"; sourceTree = "<group>"; };
+		D93AACA6187C351500E9B96A /* NPNewTodoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPNewTodoViewController.h; path = "Application Controllers/NPNewTodoViewController/NPNewTodoViewController.h"; sourceTree = "<group>"; };
+		D93AACA7187C351500E9B96A /* NPNewTodoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPNewTodoViewController.m; path = "Application Controllers/NPNewTodoViewController/NPNewTodoViewController.m"; sourceTree = "<group>"; };
+		D93AACA8187C351500E9B96A /* NPNewTodoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPNewTodoViewController.xib; path = "Application Controllers/NPNewTodoViewController/NPNewTodoViewController.xib"; sourceTree = "<group>"; };
 		D94664F61863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+NPBarButtonItems.h"; path = "Custom Controllers/UIBarButtonItem+NPBarButtonItems.h"; sourceTree = "<group>"; };
 		D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+NPBarButtonItems.m"; path = "Custom Controllers/UIBarButtonItem+NPBarButtonItems.m"; sourceTree = "<group>"; };
 		D94664F9186339360084BBB2 /* UIFont+ApplicationFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+ApplicationFont.h"; path = "Custom Controllers/UIFont+ApplicationFont.h"; sourceTree = "<group>"; };
@@ -207,6 +222,29 @@
 			name = NPAttendeesViewController;
 			sourceTree = "<group>";
 		};
+		D93AAC9A187C29D300E9B96A /* NPTodoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D93AACA0187C300E00E9B96A /* NPTodoCell.h */,
+				D93AACA1187C300E00E9B96A /* NPTodoCell.m */,
+				D93AACA3187C301C00E9B96A /* NPTodoCell.xib */,
+				D93AAC9B187C29F000E9B96A /* NPTodoViewController.h */,
+				D93AAC9C187C29F000E9B96A /* NPTodoViewController.m */,
+				D93AAC9D187C29F000E9B96A /* NPTodoViewController.xib */,
+			);
+			name = NPTodoViewController;
+			sourceTree = "<group>";
+		};
+		D93AACA5187C34F200E9B96A /* NPNewTodoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D93AACA6187C351500E9B96A /* NPNewTodoViewController.h */,
+				D93AACA7187C351500E9B96A /* NPNewTodoViewController.m */,
+				D93AACA8187C351500E9B96A /* NPNewTodoViewController.xib */,
+			);
+			name = NPNewTodoViewController;
+			sourceTree = "<group>";
+		};
 		D94664F51863292B0084BBB2 /* Custom Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +341,8 @@
 		D9809576185CA709008F2B61 /* Application Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D93AACA5187C34F200E9B96A /* NPNewTodoViewController */,
+				D93AAC9A187C29D300E9B96A /* NPTodoViewController */,
 				D93AAC8F187B701D00E9B96A /* NPAttendeesViewController */,
 				D93AAC6C187AFDEF00E9B96A /* NPEventViewController */,
 				D93AABEF186EFAAF00E9B96A /* NPProfileViewController */,
@@ -414,7 +454,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D93AAC71187AFE0700E9B96A /* NPEventViewController.xib in Resources */,
+				D93AAC9F187C29F000E9B96A /* NPTodoViewController.xib in Resources */,
 				D9809582185CA7D2008F2B61 /* NPLoginViewController.xib in Resources */,
+				D93AACA4187C301C00E9B96A /* NPTodoCell.xib in Resources */,
 				D9809552185CA557008F2B61 /* InfoPlist.strings in Resources */,
 				D980955A185CA557008F2B61 /* Images.xcassets in Resources */,
 				D980958A185CD013008F2B61 /* NPEventCell.xib in Resources */,
@@ -424,6 +466,7 @@
 				D93AABF4186EFAD100E9B96A /* NPProfileViewController.xib in Resources */,
 				D93AAC99187B710700E9B96A /* NPAttendeeCell.xib in Resources */,
 				D93AAC86187B692800E9B96A /* NPLocationCell.xib in Resources */,
+				D93AACAA187C351500E9B96A /* NPNewTodoViewController.xib in Resources */,
 				D93AAC78187B5C6F00E9B96A /* NPDateCell.xib in Resources */,
 				D980957D185CA7AC008F2B61 /* NPEventListViewController.xib in Resources */,
 				D93AAC76187B171F00E9B96A /* NPAttendeesCell.xib in Resources */,
@@ -478,10 +521,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D93AAC9E187C29F000E9B96A /* NPTodoViewController.m in Sources */,
 				D9809588185CCFFB008F2B61 /* NPEventCell.m in Sources */,
 				D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */,
 				D93AAC89187B693B00E9B96A /* NPLocationCell.m in Sources */,
 				D93AAC74187B170C00E9B96A /* NPAttendeesCell.m in Sources */,
+				D93AACA2187C300E00E9B96A /* NPTodoCell.m in Sources */,
 				D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */,
 				D93AAC80187B661400E9B96A /* NPTodosCell.m in Sources */,
 				D93AAC8C187B6D5F00E9B96A /* NPDetailsCell.m in Sources */,
@@ -495,6 +540,7 @@
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
 				D94664FE18634DEB0084BBB2 /* NPGradientView.m in Sources */,
 				D9809558185CA557008F2B61 /* NPAppDelegate.m in Sources */,
+				D93AACA9187C351500E9B96A /* NPNewTodoViewController.m in Sources */,
 				D9809554185CA557008F2B61 /* main.m in Sources */,
 				D980958D185F2C5D008F2B61 /* NSFileManager+ImageCaching.m in Sources */,
 			);
@@ -620,7 +666,7 @@
 				GCC_PREFIX_HEADER = "Cooleaf/Cooleaf-Prefix.pch";
 				INFOPLIST_FILE = "Cooleaf/Cooleaf-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "22CC4656-2858-40C5-8C6E-B40A47B6E752";
+				PROVISIONING_PROFILE = "085C11F1-B494-4508-BAEE-D21263F882CF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -636,7 +682,7 @@
 				GCC_PREFIX_HEADER = "Cooleaf/Cooleaf-Prefix.pch";
 				INFOPLIST_FILE = "Cooleaf/Cooleaf-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "22CC4656-2858-40C5-8C6E-B40A47B6E752";
+				PROVISIONING_PROFILE = "085C11F1-B494-4508-BAEE-D21263F882CF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

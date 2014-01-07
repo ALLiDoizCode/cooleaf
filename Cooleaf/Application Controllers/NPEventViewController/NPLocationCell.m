@@ -36,6 +36,7 @@
 - (void)setAddress:(NSDictionary *)address
 {
     _address = address;
+    _locationLabel.text = [NSString stringWithFormat:@"%@\n%@", address[@"address1"], address[@"address2"]];
 }
 
 - (IBAction)openMapsTapped:(id)sender {

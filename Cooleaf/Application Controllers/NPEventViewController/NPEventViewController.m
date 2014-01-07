@@ -9,6 +9,7 @@
 #import "NPEventViewController.h"
 #import "NPCooleafClient.h"
 #import "NPAttendeesViewController.h"
+#import "NPTodoViewController.h"
 
 // Cells
 #import "NPAttendeesCell.h"
@@ -64,7 +65,11 @@ enum {
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
+                                                 initWithTitle:NSLocalizedString(@"Event", nil)
+                                                 style:UIBarButtonItemStylePlain
+                                                 target:nil
+                                                 action:nil];
     }
     return self;
 }
@@ -395,7 +400,9 @@ enum {
     switch (indexPath.row) {
         case NPEventCell_Todos:
         {
-            NSLog(@"Show me todo list");
+            NPTodoViewController *tC = [NPTodoViewController new];
+            tC.event = _currentEvent;
+            [self.navigationController pushViewController:tC animated:YES];
         }
             break;
         case NPEventCell_Attendees:

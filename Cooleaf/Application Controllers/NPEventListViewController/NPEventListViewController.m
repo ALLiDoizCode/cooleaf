@@ -35,6 +35,12 @@
     if (self) {
         self.title = NSLocalizedString(@"Upcoming Events", @"Event list view title");
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Profile"] style:UIBarButtonItemStylePlain target:self action:@selector(profileTapped:)];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
+                                                 initWithTitle:NSLocalizedString(@"Upcoming Events", @"Event list view title")
+                                                 style:UIBarButtonItemStylePlain
+                                                 target:nil
+                                                 action:nil];
+        
     }
     return self;
 }
