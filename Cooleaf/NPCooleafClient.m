@@ -110,6 +110,11 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 {
     [SSKeychain deletePasswordForService:@"cooleaf" account:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
     _userData = nil;
+    NSString *path = @"/deauthorize.json";
+    
+    if (_apiPrefix.length > 0)
+        path = [_apiPrefix stringByAppendingString:path];
+    [self POST:path parameters:nil success:nil failure:nil];
 }
 
 #pragma mark - Event handling
