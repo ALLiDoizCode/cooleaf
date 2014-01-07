@@ -210,28 +210,17 @@ enum {
     _rewardLabel.hidden = YES;
     [_loadingIndicator startAnimating];
     _fetchingOperation = [[NPCooleafClient sharedClient] joinEventWithId:_currentEvent[@"id"] completion:^(NSError *error) {
-        if (!error)
-        {
-            _fetchingOperation = [[NPCooleafClient sharedClient] fetchEventWithId:_currentEvent[@"id"] completion:^(NSDictionary *eventDetails) {
-                [_loadingIndicator stopAnimating];
-                _fetchingOperation = nil;
-                _currentEvent = eventDetails;
-                // Update button
-                [self updateJoinButton];
-                
-                // And build cells
-                [self updateCells];
-                
-            }];
-        }
-        else
-        {
-            _fetchingOperation = nil;
+        _fetchingOperation = [[NPCooleafClient sharedClient] fetchEventWithId:_currentEvent[@"id"] completion:^(NSDictionary *eventDetails) {
             [_loadingIndicator stopAnimating];
-            
+            _fetchingOperation = nil;
+            _currentEvent = eventDetails;
             // Update button
             [self updateJoinButton];
-        }
+            
+            // And build cells
+            [self updateCells];
+            
+        }];
     }];
 }
 
@@ -269,35 +258,24 @@ enum {
         _resignButton.hidden = YES;
         [_loadingIndicator startAnimating];
         _fetchingOperation = [[NPCooleafClient sharedClient] leaveEventWithId:_currentEvent[@"id"] completion:^(NSError *error) {
-            if (!error)
-            {
-                _fetchingOperation = [[NPCooleafClient sharedClient] fetchEventWithId:_currentEvent[@"id"] completion:^(NSDictionary *eventDetails) {
-                    [_loadingIndicator stopAnimating];
-                    _fetchingOperation = nil;
-                    _currentEvent = eventDetails;
-                    // Update button
-                    [self updateJoinButton];
-                    
-                    // And build cells
-                    [self updateCells];
-                    
-                }];
-            }
-            else
-            {
-                _fetchingOperation = nil;
+            _fetchingOperation = [[NPCooleafClient sharedClient] fetchEventWithId:_currentEvent[@"id"] completion:^(NSDictionary *eventDetails) {
                 [_loadingIndicator stopAnimating];
-                
+                _fetchingOperation = nil;
+                _currentEvent = eventDetails;
                 // Update button
                 [self updateJoinButton];
-            }
+                
+                // And build cells
+                [self updateCells];
+                
+            }];
         }];
     }
 }
 
 #pragma mark - UITableView stuff
 
-- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return (_currentEvent) ? NPEventCell_Count : 0;
 }

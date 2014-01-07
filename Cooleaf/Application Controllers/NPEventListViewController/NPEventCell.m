@@ -188,7 +188,7 @@ static UITextView *_tV;
     {
         _attendeeIcon.image = [UIImage imageNamed:@"AttendeeIcon"];
         _attendeeLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1];
-        _attendeeLabel.text = [NSString stringWithFormat:@"%d", [_event[@"participants"] count]];
+        _attendeeLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_event[@"participants"] count]];
         
         f = _slideBarContent.frame;
         f.size.height = 95;
@@ -234,7 +234,7 @@ static UITextView *_tV;
             if (avatarCount > 8)
             {
                 avatar = [self avatarForUser:nil offset:avatarCount];
-                [_slideBarContent addSubview:avatar];
+                [_sliderBarView addSubview:avatar];
                 break;
             }
         }

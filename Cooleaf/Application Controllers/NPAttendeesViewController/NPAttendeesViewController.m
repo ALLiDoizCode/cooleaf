@@ -38,9 +38,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _attendees.count;
+    return (NSInteger)_attendees.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

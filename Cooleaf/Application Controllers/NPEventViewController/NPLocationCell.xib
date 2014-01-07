@@ -40,6 +40,15 @@
                         <rect key="frame" x="0.0" y="40" width="320" height="123"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </mapView>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gfw-lp-PWV" userLabel="Bottom separator">
+                        <rect key="frame" x="0.0" y="162" width="320" height="1"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.74117647060000003" green="0.73725490199999999" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LocationMapMask" translatesAutoresizingMaskIntoConstraints="NO" id="H33-XE-d8h">
+                        <rect key="frame" x="0.0" y="40" width="320" height="125"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="305" translatesAutoresizingMaskIntoConstraints="NO" id="cI0-B6-MBs">
                         <rect key="frame" x="15" y="32" width="305" height="39"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -48,11 +57,6 @@ Liner</string>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gfw-lp-PWV" userLabel="Bottom separator">
-                        <rect key="frame" x="0.0" y="162" width="320" height="1"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.74117647060000003" green="0.73725490199999999" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -61,4 +65,7 @@ Liner</string>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="LocationMapMask" width="320" height="125"/>
+    </resources>
 </document>

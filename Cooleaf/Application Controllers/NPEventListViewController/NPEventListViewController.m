@@ -87,7 +87,7 @@
     [self.navigationController pushViewController:[NPProfileViewController new] animated:YES];
 }
 
-- (int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return _events.count;
 }
@@ -151,8 +151,11 @@
             [self reloadEvents];
         }];
     }
-    [self reloadEvents];
-    _eventToLeave = nil;
+    else
+    {
+        [self reloadEvents];
+        _eventToLeave = nil;
+    }
 }
 
 @end

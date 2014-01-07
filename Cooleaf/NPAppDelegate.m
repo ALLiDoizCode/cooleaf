@@ -12,6 +12,7 @@
 #import "NPCooleafClient.h"
 #import "NPEventListViewController.h"
 #import "NPLoginViewController.h"
+#import "UIFont+ApplicationFont.h"
 
 @implementation NPAppDelegate
 
@@ -46,6 +47,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
