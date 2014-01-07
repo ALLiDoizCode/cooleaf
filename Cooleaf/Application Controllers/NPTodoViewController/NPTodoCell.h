@@ -11,6 +11,8 @@
 @interface NPTodoCell : UITableViewCell
 
 @property (nonatomic, setter = setTodo:) NSDictionary *todo;
+@property (nonatomic, setter = setProgress:) BOOL progress;
+@property (nonatomic, copy) void(^careActionBlock)(NSDictionary *event, BOOL takeCare);
 
 + (CGFloat)cellHeightForTodo:(NSDictionary *)todo;
 

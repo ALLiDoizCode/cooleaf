@@ -239,4 +239,19 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     }];
 }
 
+- (AFHTTPRequestOperation *)markTodo:(NSNumber *)todoId asDone:(BOOL)done completion:(void(^)(NSError *error))completion
+{
+    NSString *path = [NSString stringWithFormat:@"/widgets/todos/%@.json", todoId];
+    
+    if (_apiPrefix.length > 0)
+        path = [_apiPrefix stringByAppendingString:path];
+    return [self PUT:path parameters:@{@"done": @(done)} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (completion)
+            completion(nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (completion)
+            completion(error);
+    }];
+}
+
 @end

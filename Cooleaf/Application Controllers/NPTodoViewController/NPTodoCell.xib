@@ -13,17 +13,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CheckboxUnchecked" id="x1C-jb-w7u">
-                        <rect key="frame" x="15" y="30" width="26" height="33"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </imageView>
                     <view contentMode="scaleToFill" id="aCa-uZ-Zxl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.96470588239999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Make a thank you note for the chef" id="uaN-Ph-O6J">
-                        <rect key="frame" x="47" y="28" width="270" height="31"/>
+                        <rect key="frame" x="47" y="26" width="270" height="31"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -35,21 +31,76 @@
                         <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <view contentMode="scaleToFill" id="Dnu-Pp-onl" userLabel="Bottom separator">
-                        <rect key="frame" x="0.0" y="101" width="320" height="1"/>
+                        <rect key="frame" x="0.0" y="100" width="320" height="1"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AvatarPlaceholderMaleSmall" id="TqW-7f-Ovb" userLabel="Avatar View">
+                        <rect key="frame" x="54" y="66" width="26" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="05Y-tC-kTl">
+                        <rect key="frame" x="88" y="65" width="229" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <string key="text">Jina Norton
+is taking care of this</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="Gbv-GQ-xd7">
+                        <rect key="frame" x="57" y="69" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </activityIndicatorView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="510-mu-rD1" userLabel="Checkbox">
+                        <rect key="frame" x="16" y="33" width="25" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="CheckboxUnchecked">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="disabled" image="CheckboxCheckedDisabled"/>
+                        <state key="selected" image="CheckboxChecked"/>
+                        <state key="highlighted" image="CheckboxCheckedProgress"/>
+                        <connections>
+                            <action selector="checkboxTapped:" destination="uRK-wH-YOo" eventType="touchUpInside" id="km7-iK-aDO"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LoH-BS-snW">
+                        <rect key="frame" x="57" y="66" width="121" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                        <state key="normal" title="Take care of this">
+                            <color key="titleColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="takeCareTapped:" destination="uRK-wH-YOo" eventType="touchUpInside" id="3tG-dt-ey9"/>
+                        </connections>
+                    </button>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CheckboxCheckedProgress" id="Xcy-Pc-68L">
+                        <rect key="frame" x="16" y="33" width="25" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="activityIndicator" destination="Gbv-GQ-xd7" id="brY-yo-aaQ"/>
+                <outlet property="avatarView" destination="TqW-7f-Ovb" id="Ymc-ht-c2e"/>
                 <outlet property="bottomSeparator" destination="Dnu-Pp-onl" id="sSU-SZ-oP4"/>
-                <outlet property="checkbox" destination="x1C-jb-w7u" id="sn5-6I-nRc"/>
+                <outlet property="checkbox" destination="510-mu-rD1" id="FD9-Ab-nf8"/>
+                <outlet property="checkboxProgress" destination="Xcy-Pc-68L" id="cvj-pU-KzI"/>
+                <outlet property="ownershipLabel" destination="05Y-tC-kTl" id="YVn-2v-1XK"/>
+                <outlet property="takeCareButton" destination="LoH-BS-snW" id="npQ-LO-LuF"/>
                 <outlet property="titleView" destination="uaN-Ph-O6J" id="5Ve-RJ-Zlk"/>
                 <outlet property="topSeparator" destination="Hg6-MH-95m" id="nho-dF-a7m"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="AvatarPlaceholderMaleSmall" width="26" height="26"/>
+        <image name="CheckboxChecked" width="25" height="25"/>
+        <image name="CheckboxCheckedDisabled" width="25" height="25"/>
+        <image name="CheckboxCheckedProgress" width="25" height="25"/>
         <image name="CheckboxUnchecked" width="25" height="25"/>
     </resources>
 </document>
