@@ -16,7 +16,6 @@
 {
     NSArray *_events;
     NSMutableDictionary *_joinActions;
-    NSNumber *_eventToLeave;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -127,16 +126,24 @@
                 {
                     _joinActions[eventId] = [[NPCooleafClient sharedClient] joinEventWithId:eventId completion:^(NSError *error) {
                         [_joinActions removeObjectForKey:eventId];
+                        NPEventCell *c = (NPEventCell *)[tableView cellForRowAtIndexPath:indexPath];
+                        if (c)
+                            [c closeDrawer];
+                        
+                        
                         [self reloadEvents];
                     }];
                 }
                 else
                 {
-                    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Do you really want to resign?", nil)
-                                                                    delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                                      destructiveButtonTitle:NSLocalizedString(@"Yes, I want to resign", nil) otherButtonTitles:nil];
-                    _eventToLeave = eventId;
-                    [as showInView:self.view];
+                    _joinActions[eventId] = [[NPCooleafClient sharedClient] leaveEventWithId:eventId completion:^(NSError *error) {
+                        [_joinActions removeObjectForKey:eventId];
+                        NPEventCell *c = (NPEventCell *)[tableView cellForRowAtIndexPath:indexPath];
+                        if (c)
+                            [c closeDrawer];
+                        
+                        [self reloadEvents];
+                    }];
                 }
                 return YES;
             }
@@ -162,20 +169,6 @@
     [self.navigationController pushViewController:eC animated:YES];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0)
-    {
-        _joinActions[_eventToLeave] = [[NPCooleafClient sharedClient] leaveEventWithId:_eventToLeave completion:^(NSError *error) {
-            [_joinActions removeObjectForKey:_eventToLeave];
-            [self reloadEvents];
-        }];
-    }
-    else
-    {
-        [self reloadEvents];
-        _eventToLeave = nil;
-    }
-}
+
 
 @end

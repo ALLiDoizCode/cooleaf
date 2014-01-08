@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NPEventCell : UITableViewCell <UIGestureRecognizerDelegate>
+@interface NPEventCell : UITableViewCell <UIGestureRecognizerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, setter = setEvent:) NSDictionary *event;
 @property (nonatomic, setter = setLoading:) BOOL loading;
 @property (nonatomic, copy) BOOL(^actionTapped)(NSNumber *eventId, BOOL join);
 
+- (void)closeDrawer;
 + (CGFloat)cellHeightForEvent:(NSDictionary *)event;
 @end

@@ -212,12 +212,12 @@ static UITextView *_tV;
             [_sliderBarView addSubview:avatar];
             avatarCount = 1;
             _slideBarContent.backgroundColor = [UIColor colorWithRed:1 green:56.0/255.0 blue:36.0/255.0 alpha:1];
-            [_joinButton setTitle:NSLocalizedString(@"I'm out", @"Leaving event button title") forState:UIControlStateNormal];
+            [_joinButton setTitle:NSLocalizedString(@"I’m out", @"Leaving event button title") forState:UIControlStateNormal];
         }
         else
         {
             _slideBarContent.backgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
-            [_joinButton setTitle:NSLocalizedString(@"I'm in!", @"Joining event button title") forState:UIControlStateNormal];
+            [_joinButton setTitle:NSLocalizedString(@"I’m in!", @"Joining event button title") forState:UIControlStateNormal];
         }
         
         // Now all the rest
@@ -244,7 +244,7 @@ static UITextView *_tV;
     else
     {
         _slideBarContent.backgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
-        [_joinButton setTitle:NSLocalizedString(@"I'm in!", @"Joining event button title") forState:UIControlStateNormal];                    
+        [_joinButton setTitle:NSLocalizedString(@"I’m in!", @"Joining event button title") forState:UIControlStateNormal];
         _attendeeIcon.image = [UIImage imageNamed:@"AttendeeActiveIcon"];
         _attendeeLabel.textColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
         _attendeeLabel.text = NSLocalizedString(@"Be the first", @"No attendees label for event");
@@ -290,7 +290,14 @@ static UITextView *_tV;
 {
     if (_actionTapped)
     {
-        if (_actionTapped(_event[@"id"], ![_event[@"attending"] boolValue]))
+        if ([_event[@"attending"] boolValue])
+        {
+            UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Do you really want to resign?", nil)
+                                                            delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                              destructiveButtonTitle:NSLocalizedString(@"Yes, I want to resign", nil) otherButtonTitles:nil];
+            [as showInView:[UIApplication sharedApplication].keyWindow];
+        }
+        else if (_actionTapped(_event[@"id"], ![_event[@"attending"] boolValue]))
         {
             self.loading = YES;
         }
@@ -373,6 +380,31 @@ static UITextView *_tV;
     }
     
     return YES;
+}
+
+- (void)closeDrawer
+{
+    self.contentView.userInteractionEnabled = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        _sliderBarView.transform = CGAffineTransformIdentity;
+        _showsActionButton = NO;
+    } completion:^(BOOL finished) {
+        _startingPoint = CGPointZero;
+        self.contentView.userInteractionEnabled = YES;
+    }];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        self.loading = YES;
+        _actionTapped(_event[@"id"], NO);
+    }
+    else
+    {
+        [self closeDrawer];
+    }
 }
 
 + (CGFloat)cellHeightForEvent:(NSDictionary *)event

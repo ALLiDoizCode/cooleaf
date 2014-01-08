@@ -33,6 +33,6 @@
 - (void)setTodosCount:(NSUInteger)todosCount
 {
     _todosCount = todosCount;
-    _todosLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%ld todo's", nil), todosCount];
+    _todosLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%ld todo’s", nil), todosCount];
 }
 @end

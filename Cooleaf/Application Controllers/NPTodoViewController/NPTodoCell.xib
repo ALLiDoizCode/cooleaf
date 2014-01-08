@@ -66,7 +66,7 @@ is taking care of this</string>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LoH-BS-snW">
-                        <rect key="frame" x="57" y="66" width="121" height="26"/>
+                        <rect key="frame" x="54" y="66" width="121" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                         <state key="normal" title="Take care of this">
