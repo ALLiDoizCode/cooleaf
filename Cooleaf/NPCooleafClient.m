@@ -114,7 +114,11 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     
     if (_apiPrefix.length > 0)
         path = [_apiPrefix stringByAppendingString:path];
-    [self POST:path parameters:nil success:nil failure:nil];
+    
+    NSDictionary *params = nil;
+    if (_notificationUDID.length > 0)
+        params = @{@"device_id": _notificationUDID};
+    [self POST:path parameters:params success:nil failure:nil];
 }
 
 #pragma mark - Event handling
