@@ -57,7 +57,7 @@ static UITextView *_tV = nil;
     _tV.text = detailsText;
     [_tV sizeToFit];
     
-    return 50 + _tV.frame.size.height;
+    return 40 + _tV.frame.size.height;
 }
 
 @end

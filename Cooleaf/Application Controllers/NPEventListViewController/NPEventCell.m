@@ -125,10 +125,15 @@ static UITextView *_tV;
                 }
             }];
         }
+        else
+        {
+            avatar.alpha = 1.0;
+        }
     }
     else
     {
         avatar.image = [UIImage imageNamed:@"AvatarMore"];
+        avatar.alpha = 1.0;
     }
     return avatar;
 }
@@ -156,7 +161,7 @@ static UITextView *_tV;
     f = _eventTitle.frame;
     [_eventTitle sizeToFit];
     _eventTitle.frame = CGRectMake(f.origin.x, f.origin.y, f.size.width, _eventTitle.frame.size.height);
-    shift = _eventTitle.frame.size.height - 39.0;
+    shift = _eventTitle.frame.size.height - 47.0;
     
     if (!_dateFormatter)
     {

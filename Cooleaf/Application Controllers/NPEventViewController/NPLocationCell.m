@@ -28,6 +28,7 @@
 }
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet MKMapView *locationMap;
+@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
 
 @end
 
@@ -41,6 +42,12 @@
     }
     return self;
 }
+
+- (void)awakeFromNib
+{
+    self.separatorInset = UIEdgeInsetsZero;
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
@@ -67,7 +74,7 @@
         
         region.span.latitudeDelta = 0.01;
         region.span.longitudeDelta = 0.01;
-        region.center.latitude = _location.coordinate.latitude;
+        region.center.latitude = _location.coordinate.latitude + 0.003;
         region.center.longitude = _location.coordinate.longitude;
         [_locationMap setRegion:region animated:NO];
         [_locationMap addAnnotation:_pin];

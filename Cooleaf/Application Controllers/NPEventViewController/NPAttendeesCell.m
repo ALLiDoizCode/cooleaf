@@ -53,7 +53,7 @@
 
 - (UIView *)avatarForUser:(NSDictionary *)user offset:(CGFloat)offset
 {
-    UIImageView *avatar = [[UIImageView alloc] initWithFrame:CGRectMake(15 + 30*offset, 40, 26, 26)];
+    UIImageView *avatar = [[UIImageView alloc] initWithFrame:CGRectMake(15 + 30*offset, 41, 26, 26)];
     avatar.contentMode = UIViewContentModeScaleAspectFill;
     avatar.layer.cornerRadius = 13.0;
     avatar.clipsToBounds = YES;
@@ -77,10 +77,13 @@
                 }
             }];
         }
+        else
+            avatar.alpha = 1.0;
     }
     else
     {
         avatar.image = [UIImage imageNamed:@"AvatarMore"];
+        avatar.alpha = 1.0;
     }
     return avatar;
 }

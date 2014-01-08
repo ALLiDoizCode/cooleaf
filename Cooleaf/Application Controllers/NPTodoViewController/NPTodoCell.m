@@ -88,7 +88,7 @@ static UITextView *_tV = nil;
         {
             _checkbox.enabled = YES;
             _checkbox.selected = YES;
-            ownershipString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"You're taking care of this.", nil)
+            ownershipString = [[NSMutableAttributedString alloc] initWithString:NSLocalizedString(@"You’re taking care of this.", nil)
                                                                      attributes:@{NSFontAttributeName: [UIFont mediumApplicationFontOfSize:11]}];
             _ownershipLabel.attributedText = ownershipString;
             UIImage *avatarPlaceholder = nil;

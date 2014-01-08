@@ -66,7 +66,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 November 2014" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cSc-xf-qjl">
-                                        <rect key="frame" x="160" y="11" width="144" height="21"/>
+                                        <rect key="frame" x="147" y="11" width="144" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -78,15 +78,15 @@
                                         <color key="backgroundColor" red="0.74117647058823533" green="0.73725490196078436" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="AccessoryArrow" id="71r-bn-5yk">
-                                        <rect key="frame" x="307" y="16" width="8" height="12"/>
+                                        <rect key="frame" x="298" y="16" width="8" height="12"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="AttendeeIcon" id="Ygg-cC-gcG">
-                                        <rect key="frame" x="12" y="13" width="16" height="15"/>
+                                        <rect key="frame" x="12" y="14" width="16" height="15"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uxt-aU-Zhh">
-                                        <rect key="frame" x="29" y="10" width="145" height="21"/>
+                                        <rect key="frame" x="29" y="11" width="145" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,10 +103,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.74117647060000003" green="0.73725490199999999" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <view hidden="YES" contentMode="scaleToFill" id="L20-a7-G75" userLabel="Selection View">
+                    <view hidden="YES" contentMode="scaleToFill" id="yWO-PL-5cA" userLabel="Selection View">
                         <rect key="frame" x="0.0" y="15" width="320" height="145"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.7035975302419355" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.70359753020000004" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                     </view>
                 </subviews>
             </tableViewCellContentView>
@@ -120,7 +120,7 @@
                 <outlet property="eventTitle" destination="NBh-jh-u3x" id="Dk2-HK-xvy"/>
                 <outlet property="joinButton" destination="2On-yd-hnb" id="B99-wA-MyU"/>
                 <outlet property="loadingIndicator" destination="wP1-xM-Ink" id="RbE-Dd-3xz"/>
-                <outlet property="selectionView" destination="L20-a7-G75" id="2fN-HE-7Pe"/>
+                <outlet property="selectionView" destination="yWO-PL-5cA" id="FM8-h0-627"/>
                 <outlet property="slideBarContent" destination="XPg-be-Muq" id="4i3-Lw-7L0"/>
                 <outlet property="sliderBarView" destination="SFM-EF-sZm" id="IlB-yV-uWZ"/>
                 <outlet property="topSeparator" destination="JwY-vv-QNh" id="Jft-oY-be1"/>

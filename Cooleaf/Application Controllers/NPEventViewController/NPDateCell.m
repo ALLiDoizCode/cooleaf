@@ -14,7 +14,7 @@ static UITextView *_tV;
 {
     NSDate *_eventTime;
 }
-@property (weak, nonatomic) IBOutlet UITextView *dateTextView;
+@property (weak, nonatomic) IBOutlet UILabel *dateTextView;
 
 @end
 

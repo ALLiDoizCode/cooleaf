@@ -32,6 +32,7 @@ enum {
 {
     AFHTTPRequestOperation *_fetchingOperation;
     NSDictionary *_currentEvent;
+    CGFloat _shift;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *eventChangeButtons;
@@ -47,6 +48,7 @@ enum {
 @property (weak, nonatomic) IBOutlet UITextView *categoriesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rewardLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
+@property (weak, nonatomic) IBOutlet UIView *topSeparator;
 
 - (void)setEvent:(NSDictionary *)event;
 - (IBAction)joinTapped:(id)sender;
@@ -89,6 +91,10 @@ enum {
     _tableView.tableHeaderView = _tableHeaderView;
 //    [self setEvent:_events[_eventIdx]];
     
+    CGRect f = _topSeparator.frame;
+    f.size.height = 0.5;
+    f.origin.y += 0.5;
+    _topSeparator.frame = f;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_eventChangeButtons];
     
     _prevEventButton.enabled = (_eventIdx != 0);
@@ -119,6 +125,8 @@ enum {
         _fetchingOperation = nil;
     }
     _currentEvent = nil;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _topSeparator.hidden = YES;
     [_tableView reloadData];
     
     
@@ -141,7 +149,7 @@ enum {
     f = _titleLabel.frame;
     [_titleLabel sizeToFit];
     _titleLabel.frame = CGRectMake(f.origin.x, f.origin.y, f.size.width, _titleLabel.frame.size.height);
-    shift = _titleLabel.frame.size.height;
+    shift = _titleLabel.frame.size.height - 10;
     
     // Calculate size for hashes
     NSMutableString *hashes = [NSMutableString string];
@@ -164,9 +172,10 @@ enum {
     _rewardLabel.transform = CGAffineTransformMakeTranslation(0, shift);
     _loadingIndicator.transform = CGAffineTransformMakeTranslation(0, shift);
     _resignButton.transform = CGAffineTransformMakeTranslation(0, shift);
-    
+    _topSeparator.transform = CGAffineTransformMakeTranslation(0, shift);
+    _shift = shift;
     // Assign global information
-    _rewardLabel.text = [NSString stringWithFormat:NSLocalizedString(@"+ %@ reward points", @"reward points string on event details page"), event[@"reward_points"]];
+    _rewardLabel.text = [NSString stringWithFormat:NSLocalizedString(@"You’ll receive %@ reward points.", @"reward points string on event details page"), event[@"reward_points"]];
     
     // Resize header
     f = _tableHeaderView.frame;
@@ -184,6 +193,7 @@ enum {
     _fetchingOperation = [[NPCooleafClient sharedClient] fetchEventWithId:event[@"id"] completion:^(NSDictionary *eventDetails) {
         [_loadingIndicator stopAnimating];
         _fetchingOperation = nil;
+        
         if (eventDetails)
         {
             _currentEvent = event;
@@ -213,10 +223,22 @@ enum {
     _rewardLabel.hidden = [_currentEvent[@"attending"] boolValue];
     _resignButton.hidden = !_rewardLabel.hidden;
     _joinButton.hidden = NO;
+    
+    if ([_currentEvent[@"attending"] boolValue])
+    {
+        _joinButton.frame = CGRectMake(91, 90 + _shift, 139, 25);
+    }
+    else
+    {
+        _joinButton.frame = CGRectMake(100, 90 + _shift, 121, 25);
+    }
+//    _joinButton.transform = CGAffineTransformMakeTranslation(0, _shift);
 }
 
 - (void)updateCells
 {
+    _topSeparator.hidden = NO;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [_tableView reloadData];
 }
 
@@ -361,7 +383,7 @@ enum {
     switch (indexPath.row) {
         case NPEventCell_Attendees:
             if ([_currentEvent[@"participants"] count] > 0)
-                return 79.0;
+                return 85.0;
             else
                 return 44.0;
             break;
@@ -371,7 +393,7 @@ enum {
             break;
 
         case NPEventCell_Location:
-            return 163.0;
+            return 176;
             break;
             
         case NPEventCell_Todos:
