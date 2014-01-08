@@ -36,9 +36,14 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = NSLocalizedString(@"Upcoming Events", @"Event list view title");
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Profile"] style:UIBarButtonItemStylePlain target:self action:@selector(profileTapped:)];
+//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Profile"] style:UIBarButtonItemStylePlain target:self action:@selector(profileTapped:)];
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setImage:[UIImage imageNamed:@"Profile"] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(profileTapped:) forControlEvents:UIControlEventTouchUpInside];
+        btn.frame = CGRectMake(0, 0, 30, 30);
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
-                                                 initWithTitle:NSLocalizedString(@"Upcoming Events", @"Event list view title")
+                                                 initWithTitle:NSLocalizedString(@"Upcoming", @"Event list view title")
                                                  style:UIBarButtonItemStylePlain
                                                  target:nil
                                                  action:nil];

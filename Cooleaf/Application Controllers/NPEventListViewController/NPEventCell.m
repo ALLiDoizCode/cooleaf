@@ -198,7 +198,7 @@ static UITextView *_tV;
         _sliderBarView.frame = f;
         
         f = _joinButton.frame;
-        f.size.height = 95;
+        f.size.height = 90;
         _joinButton.frame = f;
         
         // Now we can add participants
@@ -239,7 +239,7 @@ static UITextView *_tV;
             }
         }
         shift2 = 45;
-        _loadingIndicator.transform = CGAffineTransformMakeTranslation(0, 25);
+        _loadingIndicator.transform = CGAffineTransformMakeTranslation(0, 23);
     }
     else
     {
