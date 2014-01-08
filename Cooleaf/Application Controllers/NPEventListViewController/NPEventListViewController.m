@@ -25,6 +25,7 @@
 
 - (void)profileTapped:(id)sender;
 - (void)notificationReceived:(NSNotification *)not;
+- (void)signedOut:(NSNotification *)not;
 
 @end
 
@@ -47,6 +48,8 @@
                                                  target:nil
                                                  action:nil];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(signedOut:) name:kNPCooleafClientSignOut object:nil];
+        
     }
     return self;
 }
@@ -55,6 +58,10 @@
 {
     [super viewDidLoad];
     _joinActions = [NSMutableDictionary new];
+    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 15)];
+    footer.backgroundColor = self.view.backgroundColor;
+    _tableView.tableFooterView = footer;
+    
     [_tableView registerNib:[UINib nibWithNibName:@"NPEventCell" bundle:nil] forCellReuseIdentifier:@"NPEventCell"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReceived:) name:kNPCooleafClientRefreshNotification object:nil];
@@ -63,6 +70,15 @@
 - (void)notificationReceived:(NSNotification *)not
 {
     [self reloadEvents];
+}
+
+- (void)signedOut:(NSNotification *)not
+{
+    _events = nil;
+    [_tableView setHidden:YES];
+    [_activityIndicator startAnimating];
+    _loadingEvents.hidden = NO;
+    _noEventsLabel.hidden = YES;
 }
 
 - (void)reloadEvents

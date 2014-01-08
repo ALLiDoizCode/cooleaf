@@ -10,6 +10,7 @@
 
 extern NSString * const kNPCooleafClientRefreshNotification;
 extern NSString * const kNPCooleafClientRUDIDHarvestedNotification;
+extern NSString * const kNPCooleafClientSignOut;
 
 @interface NPCooleafClient : AFHTTPRequestOperationManager
 

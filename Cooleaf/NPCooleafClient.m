@@ -12,6 +12,7 @@
 
 NSString * const kNPCooleafClientRefreshNotification = @"kNPCooleafClientRefreshNotification";
 NSString * const kNPCooleafClientRUDIDHarvestedNotification = @"kNPCooleafClientRUDIDHarvestedNotification";
+NSString * const kNPCooleafClientSignOut = @"kNPCooleafClientSignOut";
 
 static NSString * const kNPCooleafClientBaseURLString = @"http://cooleaf-staging.h1.monterail.eu";
 static NSString * const kNPCooleafClientAPIPrefix = @"/api/v1";
@@ -119,6 +120,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     if (_notificationUDID.length > 0)
         params = @{@"device_id": _notificationUDID};
     [self POST:path parameters:params success:nil failure:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientSignOut object:nil];
 }
 
 #pragma mark - Event handling

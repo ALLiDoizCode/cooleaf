@@ -79,8 +79,9 @@
        if (image && [imagePath isEqualToString:companyBannerURL.absoluteString])
        {
            _companyView = [[UIImageView alloc] initWithImage:image];
-           _companyView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - (image.size.height/2.0), 320, (image.size.height/2.0));
-           _companyView.contentMode = UIViewContentModeCenter;
+           _companyView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - (image.size.height/2.0) - 30.0, 320, (image.size.height/2.0));
+           _companyView.contentMode = UIViewContentModeScaleAspectFit;
+           _companyView.backgroundColor = [UIColor clearColor];
            [self.view addSubview:_companyView];
        }
     }];
@@ -94,10 +95,23 @@
 
 - (void)logoutTapped:(id)sender
 {
-    [[NPCooleafClient sharedClient] logout];
-    [self.view.window.rootViewController presentViewController:[NPLoginViewController new] animated:YES completion:^{
-        [self.navigationController popToRootViewControllerAnimated:NO];
-    }];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil
+                                                 message:NSLocalizedString(@"Do you really want to sign out of\u00A0Cooleaf?", nil)
+                                                delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                       otherButtonTitles:NSLocalizedString(@"Sign out", nil), nil];
+    
+    [av show];
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [[NPCooleafClient sharedClient] logout];
+        [self.view.window.rootViewController presentViewController:[NPLoginViewController new] animated:YES completion:^{
+            [self.navigationController popToRootViewControllerAnimated:NO];
+        }];
+        
+    }
+}
 @end

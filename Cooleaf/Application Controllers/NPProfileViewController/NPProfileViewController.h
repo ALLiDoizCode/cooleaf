@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NPProfileViewController : UIViewController
+@interface NPProfileViewController : UIViewController <UIAlertViewDelegate>
 
 @end

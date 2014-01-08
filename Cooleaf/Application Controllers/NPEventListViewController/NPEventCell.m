@@ -270,6 +270,7 @@ static UITextView *_tV;
     
     f = _bottomSeparator.frame;
     f.size.height = 0.5;
+    f.origin.y = 167.0+shift+shift2+0.5;
     _bottomSeparator.frame = f;
     f = _topSeparator.frame;
     f.size.height = 0.5;
@@ -277,7 +278,7 @@ static UITextView *_tV;
     
     _eventTags.text = [hashes uppercaseString];
     _eventTags.transform = CGAffineTransformMakeTranslation(0, shift);
-    _bottomSeparator.transform = CGAffineTransformMakeTranslation(0, shift+shift2+0.5);
+//    _bottomSeparator.transform = CGAffineTransformMakeTranslation(0, shift+shift2+0.5);
     _slideBarContent.transform = CGAffineTransformMakeTranslation(0, shift);
     _selectionView.frame = CGRectMake(0, 15, 320, 145+shift+shift2);
     
