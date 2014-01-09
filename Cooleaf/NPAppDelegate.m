@@ -14,13 +14,22 @@
 #import "NPLoginViewController.h"
 #import "UIFont+ApplicationFont.h"
 
+@interface NPAppDelegate ()
+{
+    NSTimer *_udidWaitTimeout;
+}
+
+- (void)udidWaitTimedOut:(NSTimer *)timer;
+
+@end
+
 @implementation NPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-    
+    _udidWaitTimeout = [NSTimer scheduledTimerWithTimeInterval:15.0 target:self selector:@selector(udidWaitTimedOut:) userInfo:nil repeats:NO];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont mediumApplicationFontOfSize:18], NSFontAttributeName, nil]];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
@@ -66,6 +75,8 @@
 #pragma mark - Notification handling
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [_udidWaitTimeout invalidate];
+    _udidWaitTimeout = nil;
     NSString *strDeviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
 	strDeviceToken = [strDeviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
     [NPCooleafClient sharedClient].notificationUDID = strDeviceToken;
@@ -78,7 +89,17 @@
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    //	NSLog(@"Fail to register for remote notifications: %@", error);
+    [_udidWaitTimeout invalidate];
+    _udidWaitTimeout = nil;
     [NPCooleafClient sharedClient].notificationUDID = @"";
+}
+
+- (void)udidWaitTimedOut:(NSTimer *)timer
+{
+    _udidWaitTimeout = nil;
+    if (![NPCooleafClient sharedClient].notificationUDID)
+    {
+        [NPCooleafClient sharedClient].notificationUDID = @"";        
+    }
 }
 @end
