@@ -23,6 +23,11 @@
     return self;
 }
 
+- (void)awakeFromNib
+{
+    self.separatorInset = UIEdgeInsetsMake(0, 320, 0, 0);
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

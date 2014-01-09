@@ -248,7 +248,8 @@ static UITextView *_tV;
     }
     else
     {
-        shift2 -= 9;
+        shift2 -= 6;
+        
         _slideBarContent.backgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
         [_joinButton setTitle:NSLocalizedString(@"I’m in!", @"Joining event button title") forState:UIControlStateNormal];
         _attendeeIcon.image = [UIImage imageNamed:@"AttendeeActiveIcon"];
@@ -256,10 +257,10 @@ static UITextView *_tV;
         _attendeeLabel.text = NSLocalizedString(@"Be the first", @"No attendees label for event");
 
         f = _slideBarContent.frame;
-        f.size.height = 40;
+        f.size.height = 42;
         _slideBarContent.frame = f;
         f = _sliderBarView.frame;
-        f.size.height = 40;
+        f.size.height = 42;
         _sliderBarView.frame = f;
         
         f = _joinButton.frame;
@@ -269,10 +270,6 @@ static UITextView *_tV;
         
     }
     
-    f = _bottomSeparator.frame;
-    f.size.height = 0.5;
-    f.origin.y = 167.0+shift+shift2+0.5;
-    _bottomSeparator.frame = f;
     f = _topSeparator.frame;
     f.size.height = 0.5;
     _topSeparator.frame = f;
@@ -281,7 +278,7 @@ static UITextView *_tV;
     _eventTags.transform = CGAffineTransformMakeTranslation(0, shift);
 //    _bottomSeparator.transform = CGAffineTransformMakeTranslation(0, shift+shift2+0.5);
     _slideBarContent.transform = CGAffineTransformMakeTranslation(0, shift);
-    _selectionView.frame = CGRectMake(0, 15, 320, 145+shift+shift2);
+    _selectionView.frame = self.contentView.bounds;//CGRectMake(0, 15, 320, 145+shift+shift2);
     
     NSString *imageUrlString = [@"http:" stringByAppendingString:[_event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x150"]];
     // Download image for event
@@ -426,9 +423,9 @@ static UITextView *_tV;
     [_tV sizeToFit];
     
     CGFloat titleHeight = _tV.frame.size.height;
-    CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : -9;
+    CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : 0;
     
-    return 160 + (titleHeight-39) + shift;
+    return 154 + (titleHeight-39) + shift;
 }
 
 @end

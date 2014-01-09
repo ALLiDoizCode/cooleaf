@@ -46,7 +46,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" id="wP1-xM-Ink" userLabel="Loading indicator">
-                                <rect key="frame" x="260" y="10" width="20" height="20"/>
+                                <rect key="frame" x="260" y="11" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2On-yd-hnb">
@@ -98,11 +98,6 @@
                         </subviews>
                         <color key="backgroundColor" red="0.082352941176470587" green="0.53725490196078429" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <view contentMode="scaleToFill" id="e0k-76-LVD" userLabel="Bottom separator">
-                        <rect key="frame" x="0.0" y="159" width="320" height="1"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.74117647060000003" green="0.73725490199999999" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
                     <view hidden="YES" contentMode="scaleToFill" id="yWO-PL-5cA" userLabel="Selection View">
                         <rect key="frame" x="0.0" y="15" width="320" height="145"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,7 +108,6 @@
             <connections>
                 <outlet property="attendeeIcon" destination="Ygg-cC-gcG" id="pbh-mS-TWm"/>
                 <outlet property="attendeeLabel" destination="uxt-aU-Zhh" id="7aq-uq-o5v"/>
-                <outlet property="bottomSeparator" destination="e0k-76-LVD" id="Fal-Nc-EkV"/>
                 <outlet property="eventDate" destination="cSc-xf-qjl" id="odq-oX-fXC"/>
                 <outlet property="eventImage" destination="chQ-Hi-SSQ" id="eKW-fb-gVn"/>
                 <outlet property="eventTags" destination="VsZ-xL-LH1" id="v4s-xR-1Fp"/>
