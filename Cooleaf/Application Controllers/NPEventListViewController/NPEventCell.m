@@ -263,7 +263,7 @@ static UITextView *_tV;
         _sliderBarView.frame = f;
         
         f = _joinButton.frame;
-        f.size.height = 40;
+        f.size.height = 45;
         _joinButton.frame = f;
         _loadingIndicator.transform = CGAffineTransformIdentity;
         
