@@ -89,7 +89,11 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     NSDictionary *params = nil;
     
     if (_notificationUDID.length > 0)
-        params = @{@"email": username, @"password": password, @"device_id": _notificationUDID};
+#ifdef DEBUG
+        params = @{@"email": username, @"password": password, @"device_id": _notificationUDID, @"sandbox": @YES};
+#else
+        params = @{@"email": username, @"password": password, @"device_id": _notificationUDID, @"sandbox": @NO};
+#endif //DEBUG
     else
         params = @{@"email": username, @"password": password};
     
@@ -118,7 +122,11 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     
     NSDictionary *params = nil;
     if (_notificationUDID.length > 0)
-        params = @{@"device_id": _notificationUDID};
+#ifdef DEBUG
+        params = @{@"device_id": _notificationUDID, @"sandbox": @YES};
+#else
+        params = @{@"device_id": _notificationUDID, @"sandbox": @NO};
+#endif //DEBUG
     [self POST:path parameters:params success:nil failure:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientSignOut object:nil];
 }
