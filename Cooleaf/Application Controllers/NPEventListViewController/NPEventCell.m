@@ -244,10 +244,11 @@ static UITextView *_tV;
             }
         }
         shift2 = 45;
-        _loadingIndicator.transform = CGAffineTransformMakeTranslation(0, 23);
+        _loadingIndicator.transform = CGAffineTransformMakeTranslation(0, 25);
     }
     else
     {
+        shift2 -= 9;
         _slideBarContent.backgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
         [_joinButton setTitle:NSLocalizedString(@"I’m in!", @"Joining event button title") forState:UIControlStateNormal];
         _attendeeIcon.image = [UIImage imageNamed:@"AttendeeActiveIcon"];
@@ -425,7 +426,7 @@ static UITextView *_tV;
     [_tV sizeToFit];
     
     CGFloat titleHeight = _tV.frame.size.height;
-    CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : 0;
+    CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : -9;
     
     return 160 + (titleHeight-39) + shift;
 }
