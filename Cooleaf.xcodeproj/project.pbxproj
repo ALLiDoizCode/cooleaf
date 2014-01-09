@@ -37,6 +37,8 @@
 		D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */; };
 		D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664FA186339360084BBB2 /* UIFont+ApplicationFont.m */; };
 		D94664FE18634DEB0084BBB2 /* NPGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = D94664FD18634DEB0084BBB2 /* NPGradientView.m */; };
+		D9507ADA187EE22C0020498A /* NPOtherEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9507AD8187EE22C0020498A /* NPOtherEventCell.m */; };
+		D9507ADB187EE22C0020498A /* NPOtherEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9507AD9187EE22C0020498A /* NPOtherEventCell.xib */; };
 		D9809548185CA557008F2B61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9809547185CA557008F2B61 /* Foundation.framework */; };
 		D980954A185CA557008F2B61 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9809549185CA557008F2B61 /* CoreGraphics.framework */; };
 		D980954C185CA557008F2B61 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D980954B185CA557008F2B61 /* UIKit.framework */; };
@@ -116,6 +118,9 @@
 		D94664FA186339360084BBB2 /* UIFont+ApplicationFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+ApplicationFont.m"; path = "Custom Controllers/UIFont+ApplicationFont.m"; sourceTree = "<group>"; };
 		D94664FC18634DEB0084BBB2 /* NPGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPGradientView.h; path = "Custom Controllers/NPGradientView.h"; sourceTree = "<group>"; };
 		D94664FD18634DEB0084BBB2 /* NPGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPGradientView.m; path = "Custom Controllers/NPGradientView.m"; sourceTree = "<group>"; };
+		D9507AD7187EE22C0020498A /* NPOtherEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPOtherEventCell.h; path = "Application Controllers/NPEventListViewController/NPOtherEventCell.h"; sourceTree = "<group>"; };
+		D9507AD8187EE22C0020498A /* NPOtherEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPOtherEventCell.m; path = "Application Controllers/NPEventListViewController/NPOtherEventCell.m"; sourceTree = "<group>"; };
+		D9507AD9187EE22C0020498A /* NPOtherEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPOtherEventCell.xib; path = "Application Controllers/NPEventListViewController/NPOtherEventCell.xib"; sourceTree = "<group>"; };
 		D9809544185CA557008F2B61 /* Cooleaf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cooleaf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9809547185CA557008F2B61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9809549185CA557008F2B61 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -365,6 +370,9 @@
 		D9809578185CA71A008F2B61 /* NPEventListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D9507AD7187EE22C0020498A /* NPOtherEventCell.h */,
+				D9507AD8187EE22C0020498A /* NPOtherEventCell.m */,
+				D9507AD9187EE22C0020498A /* NPOtherEventCell.xib */,
 				D9809586185CCFFB008F2B61 /* NPEventCell.h */,
 				D9809587185CCFFB008F2B61 /* NPEventCell.m */,
 				D9809589185CD013008F2B61 /* NPEventCell.xib */,
@@ -456,6 +464,7 @@
 				D93AAC71187AFE0700E9B96A /* NPEventViewController.xib in Resources */,
 				D93AAC9F187C29F000E9B96A /* NPTodoViewController.xib in Resources */,
 				D9809582185CA7D2008F2B61 /* NPLoginViewController.xib in Resources */,
+				D9507ADB187EE22C0020498A /* NPOtherEventCell.xib in Resources */,
 				D93AACA4187C301C00E9B96A /* NPTodoCell.xib in Resources */,
 				D9809552185CA557008F2B61 /* InfoPlist.strings in Resources */,
 				D980955A185CA557008F2B61 /* Images.xcassets in Resources */,
@@ -527,6 +536,7 @@
 				D93AAC89187B693B00E9B96A /* NPLocationCell.m in Sources */,
 				D93AAC74187B170C00E9B96A /* NPAttendeesCell.m in Sources */,
 				D93AACA2187C300E00E9B96A /* NPTodoCell.m in Sources */,
+				D9507ADA187EE22C0020498A /* NPOtherEventCell.m in Sources */,
 				D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */,
 				D93AAC80187B661400E9B96A /* NPTodosCell.m in Sources */,
 				D93AAC8C187B6D5F00E9B96A /* NPDetailsCell.m in Sources */,

@@ -6,23 +6,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NPEventCell" rowHeight="159" id="XHk-cI-uvz" customClass="NPEventCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NPOtherEventCell" rowHeight="122" id="XHk-cI-uvz" customClass="NPOtherEventCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XHk-cI-uvz" id="SYY-xc-c5L">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="159"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="122"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoverPhotoPlaceholder" id="chQ-Hi-SSQ">
-                        <rect key="frame" x="0.0" y="15" width="320" height="55"/>
+                    <view contentMode="scaleToFill" id="wef-NI-uZq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoverPhotoMask" id="oBu-jQ-Ctn">
-                        <rect key="frame" x="0.0" y="15" width="320" height="55"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.96470588239999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="#HASHTAG1 #HASHTAG2" id="VsZ-xL-LH1">
-                        <rect key="frame" x="10" y="87" width="300" height="24"/>
+                        <rect key="frame" x="10" y="49" width="300" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="textColor" red="0.078431372549019607" green="0.76470588235294112" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
@@ -30,19 +27,14 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Some title" id="NBh-jh-u3x">
-                        <rect key="frame" x="10" y="53" width="300" height="39"/>
+                        <rect key="frame" x="10" y="15" width="300" height="39"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <view contentMode="scaleToFill" id="wef-NI-uZq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="15"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.97254901959999995" green="0.96470588239999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
                     <view contentMode="scaleToFill" id="XPg-be-Muq" userLabel="Slide bar content">
-                        <rect key="frame" x="0.0" y="119" width="320" height="40"/>
+                        <rect key="frame" x="0.0" y="81" width="320" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" id="wP1-xM-Ink" userLabel="Loading indicator">
@@ -99,7 +91,7 @@
                         <color key="backgroundColor" red="0.082352941176470587" green="0.53725490196078429" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <view hidden="YES" contentMode="scaleToFill" id="yWO-PL-5cA" userLabel="Selection View">
-                        <rect key="frame" x="0.0" y="15" width="320" height="145"/>
+                        <rect key="frame" x="0.0" y="15" width="320" height="107"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.70359753020000004" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                     </view>
@@ -109,7 +101,6 @@
                 <outlet property="attendeeIcon" destination="Ygg-cC-gcG" id="pbh-mS-TWm"/>
                 <outlet property="attendeeLabel" destination="uxt-aU-Zhh" id="7aq-uq-o5v"/>
                 <outlet property="eventDate" destination="cSc-xf-qjl" id="odq-oX-fXC"/>
-                <outlet property="eventImage" destination="chQ-Hi-SSQ" id="eKW-fb-gVn"/>
                 <outlet property="eventTags" destination="VsZ-xL-LH1" id="v4s-xR-1Fp"/>
                 <outlet property="eventTitle" destination="NBh-jh-u3x" id="Dk2-HK-xvy"/>
                 <outlet property="joinButton" destination="2On-yd-hnb" id="B99-wA-MyU"/>
@@ -124,7 +115,5 @@
     <resources>
         <image name="AccessoryArrow" width="8" height="12"/>
         <image name="AttendeeIcon" width="16" height="15"/>
-        <image name="CoverPhotoMask" width="320" height="75"/>
-        <image name="CoverPhotoPlaceholder" width="320" height="75"/>
     </resources>
 </document>

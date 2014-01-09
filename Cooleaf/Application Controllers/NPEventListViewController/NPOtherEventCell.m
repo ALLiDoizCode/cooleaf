@@ -1,19 +1,19 @@
 //
-//  NPEventCell.m
+//  NPOtherEventCell.m
 //  Cooleaf
 //
 //  Created by Bazyli Zygan on 14.12.2013.
 //  Copyright (c) 2013 Nova Project. All rights reserved.
 //
 
-#import "NPEventCell.h"
+#import "NPOtherEventCell.h"
 #import "NPCooleafClient.h"
 
 #define AVATAR_TAG 1001
 
 static UITextView *_tV;
 
-@interface NPEventCell ()
+@interface NPOtherEventCell ()
 {
     NSDateFormatter *_dateFormatter;
     NSDateFormatter *_dateFormatter2;
@@ -38,7 +38,7 @@ static UITextView *_tV;
 - (void)panned:(UIPanGestureRecognizer *)rec;
 @end
 
-@implementation NPEventCell
+@implementation NPOtherEventCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -51,6 +51,9 @@ static UITextView *_tV;
 
 - (void)awakeFromNib
 {
+    UIView *sep = [[UIView alloc] initWithFrame:CGRectMake(0, 15, 320, 0.5)];
+    sep.backgroundColor = _topSeparator.backgroundColor;
+    [self.contentView insertSubview:sep belowSubview:_selectionView];
     UIPanGestureRecognizer *rec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
     rec.cancelsTouchesInView = YES;
     rec.delegate = self;
@@ -144,7 +147,6 @@ static UITextView *_tV;
     
     if (!event)
     {
-        _eventImage.image = [UIImage imageNamed:@"CoverPhotoPlaceholder"];
         // Delete all avatars
         for (UIView *v in _sliderBarView.subviews)
         {
@@ -153,7 +155,6 @@ static UITextView *_tV;
         }
         return;
     }
-    
     CGFloat shift = 0;
     CGFloat shift2 = 0;
     _eventTitle.text = _event[@"name"];
@@ -273,7 +274,6 @@ static UITextView *_tV;
     f = _topSeparator.frame;
     f.size.height = 0.5;
     _topSeparator.frame = f;
-    
     _eventTags.text = [hashes uppercaseString];
     _eventTags.transform = CGAffineTransformMakeTranslation(0, shift);
 //    _bottomSeparator.transform = CGAffineTransformMakeTranslation(0, shift+shift2+0.5);
@@ -418,14 +418,14 @@ static UITextView *_tV;
     else
         _tV.frame = CGRectMake(0, 0, 320, 20);
     
-    _tV.font = [UIFont boldSystemFontOfSize:22.0];
+    _tV.font = [UIFont boldSystemFontOfSize:18.0];
     _tV.text = event[@"name"];
     [_tV sizeToFit];
     
     CGFloat titleHeight = _tV.frame.size.height;
     CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : 0;
     
-    return 154 + (titleHeight-39) + shift;
+    return 115 + (titleHeight-39) + shift;
 }
 
 @end

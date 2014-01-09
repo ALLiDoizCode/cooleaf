@@ -393,7 +393,10 @@ enum {
             break;
 
         case NPEventCell_Location:
-            return 176;
+            if (_currentEvent[@"address"][@"lat"])
+                return 176;
+            else
+                return 94.0;
             break;
             
         case NPEventCell_Todos:

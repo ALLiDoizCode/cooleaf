@@ -57,6 +57,8 @@ Linyy</string>
             <connections>
                 <outlet property="locationLabel" destination="cI0-B6-MBs" id="fSP-me-f73"/>
                 <outlet property="locationMap" destination="6ir-9M-nUI" id="dyv-Ei-dAH"/>
+                <outlet property="mapMask" destination="H33-XE-d8h" id="DkY-qZ-A2W"/>
+                <outlet property="mapsButton" destination="z4c-LP-iWC" id="hx7-xL-1zI"/>
             </connections>
         </tableViewCell>
     </objects>

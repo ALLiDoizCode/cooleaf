@@ -9,6 +9,7 @@
                 <outlet property="activityIndicator" destination="HWM-cw-70A" id="xGs-fS-LUs"/>
                 <outlet property="loadingEvents" destination="rq9-0x-9Nc" id="T9Y-dJ-nY4"/>
                 <outlet property="noEventsLabel" destination="1Fs-je-atT" id="ro1-IM-iR5"/>
+                <outlet property="otherBranchesHeader" destination="EIK-vd-VHf" id="KsK-DP-fOy"/>
                 <outlet property="tableView" destination="nJd-lo-gG1" id="JIG-M0-paV"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -54,6 +55,21 @@ The HR team is working hard to bring more fun. Be back soon!</string>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+        <view contentMode="scaleToFill" id="EIK-vd-VHf" userLabel="Other branches section header">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EVENTS AT OTHER BRANCHES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gxp-ba-V3x">
+                    <rect key="frame" x="15" y="48" width="291" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.97254901959999995" green="0.96470588239999999" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
 </document>

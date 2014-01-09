@@ -28,7 +28,8 @@
 }
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet MKMapView *locationMap;
-@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
+@property (weak, nonatomic) IBOutlet UIButton *mapsButton;
+@property (weak, nonatomic) IBOutlet UIImageView *mapMask;
 
 @end
 
@@ -59,9 +60,13 @@
 - (void)setAddress:(NSDictionary *)address
 {
     _address = address;
-    _locationLabel.text = [NSString stringWithFormat:@"%@\n%@", address[@"address1"], address[@"address2"]];
+    _locationLabel.text = [NSString stringWithFormat:@"%@\n%@", (address[@"address1"]) ? address[@"address1"] : @"", (address[@"address2"]) ? address[@"address2"] : @""];
     if (_address[@"lat"])
     {
+        self.separatorInset = UIEdgeInsetsZero;
+        _mapMask.hidden = NO;
+        _locationMap.hidden = NO;
+        _mapsButton.hidden = NO;
         _location = [[CLLocation alloc] initWithLatitude:[_address[@"lat"] doubleValue] longitude:[_address[@"lng"] doubleValue]];
         _locationMap.centerCoordinate = _location.coordinate;
         if (_pin)
@@ -78,6 +83,13 @@
         region.center.longitude = _location.coordinate.longitude;
         [_locationMap setRegion:region animated:NO];
         [_locationMap addAnnotation:_pin];
+    }
+    else
+    {
+        self.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
+        _mapMask.hidden = YES;
+        _locationMap.hidden = YES;
+        _mapsButton.hidden = YES;
     }
 }
 
