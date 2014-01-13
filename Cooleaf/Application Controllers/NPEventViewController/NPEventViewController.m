@@ -196,7 +196,7 @@ enum {
         
         if (eventDetails)
         {
-            _currentEvent = event;
+            _currentEvent = eventDetails;
         }
         
         // Update button

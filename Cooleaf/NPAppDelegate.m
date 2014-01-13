@@ -13,6 +13,15 @@
 #import "NPEventListViewController.h"
 #import "NPLoginViewController.h"
 #import "UIFont+ApplicationFont.h"
+#import "NPEventViewController.h"
+
+@interface NPAppDelegate ()
+{
+    NSArray *_lastEvents;
+    NSNumber *_searchedId;
+}
+
+@end
 
 @implementation NPAppDelegate
 
@@ -21,6 +30,10 @@
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
     
+    if ([[UIApplication sharedApplication] enabledRemoteNotificationTypes] == 0)
+    {
+        [NPCooleafClient sharedClient].notificationUDID = @"";
+    }
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont mediumApplicationFontOfSize:18], NSFontAttributeName, nil]];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
@@ -30,7 +43,6 @@
     
     [self.window makeKeyAndVisible];    
     [self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
-
     return YES;
 }
 
@@ -74,7 +86,40 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientRefreshNotification object:userInfo];
+    if (userInfo[@"custom_data"])
+    {
+        [[NPCooleafClient sharedClient] fetchEventList:^(NSArray *events) {
+            _lastEvents = events;
+            _searchedId = userInfo[@"custom_data"][@"event_id"];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil message:userInfo[@"aps"][@"alert"]
+                                                        delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                               otherButtonTitles:NSLocalizedString(@"Open", nil), nil];
+            [av show];
+            
+        }];
+    }
     
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        NSUInteger idx = 0;
+        for (NSDictionary *e in _lastEvents)
+        {
+            if ([e[@"id"] compare:_searchedId] == NSOrderedSame)
+            {
+                break;
+            }
+            idx++;
+        }
+        
+        NPEventViewController *eC = [NPEventViewController new];
+        eC.events = _lastEvents;
+        eC.eventIdx = idx;
+        [(UINavigationController *)self.window.rootViewController pushViewController:eC animated:YES];
+    }
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
