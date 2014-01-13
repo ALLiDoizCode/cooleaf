@@ -123,7 +123,7 @@
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    //	NSLog(@"Fail to register for remote notifications: %@", error);
     [NPCooleafClient sharedClient].notificationUDID = @"";
 }
+
 @end
