@@ -36,4 +36,5 @@ extern NSString * const kNPCooleafClientSignOut;
 - (void)fetchEventList:(void(^)(NSArray *events))completion;
 
 - (void)fetchImage:(NSString *)imagePath completion:(void(^)(NSString *imagePath, UIImage *image))completion;
+
 @end
