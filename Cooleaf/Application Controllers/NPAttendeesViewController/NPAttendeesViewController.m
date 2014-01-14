@@ -34,7 +34,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = [NSString stringWithFormat:NSLocalizedString(@"%ld Attendees", nil), _attendeesCount];
+    if (_attendeesCount > 1)
+        self.title = [NSString stringWithFormat:NSLocalizedString(@"%ld Attendees", nil), _attendeesCount];
+    else
+        self.title = [NSString stringWithFormat:NSLocalizedString(@"%ld Attendee", nil), _attendeesCount];
     [_tableView registerNib:[UINib nibWithNibName:@"NPAttendeeCell" bundle:nil] forCellReuseIdentifier:@"NPAttendeeCell"];
 
     [_activityIndicator startAnimating];

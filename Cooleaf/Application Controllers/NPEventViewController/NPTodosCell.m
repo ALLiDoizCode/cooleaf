@@ -38,6 +38,11 @@
 - (void)setTodosCount:(NSUInteger)todosCount
 {
     _todosCount = todosCount;
-    _todosLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%ld todo’s", nil), todosCount];
+    if (_todosCount > 1)
+        _todosLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%ld todo’s", nil), todosCount];
+    else if (_todosCount == 0)
+        _todosLabel.text = NSLocalizedString(@"No todo’s", nil);
+    else
+        _todosLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%ld todo", nil), todosCount];
 }
 @end

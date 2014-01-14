@@ -126,7 +126,10 @@
     // Change the rest
     if ([_attendees count] > 0)
     {
-        _attendeesLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%ld attendees", nil), _attendees.count];
+        if (_attendees.count > 1)
+            _attendeesLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%ld attendees", nil), _attendees.count];
+        else
+            _attendeesLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%ld attendee", nil), _attendees.count];
         _attendeesLabel.hidden = NO;
         _arrowView.hidden = NO;
         _noAttendeesLabel.hidden = YES;
