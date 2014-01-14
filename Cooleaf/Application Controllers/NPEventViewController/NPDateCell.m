@@ -66,29 +66,31 @@ static UITextView *_tV;
     [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
         if (granted)
         {
-            EKEvent *event  = [EKEvent eventWithEventStore:eventStore];
-            event.title     = _title;
-            
-            event.startDate = _eventTime;
-            event.endDate = [_eventTime dateByAddingTimeInterval:3600];
-            
-            EKCalendar *cal = [eventStore defaultCalendarForNewEvents];
-            
-            [event setCalendar:cal];
-            
-            NSError *err;
-            BOOL save = [eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
-            
-            UIAlertView *aV = nil;
-            if (!err && save)
-                aV = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Event added", nil)
-                                                message:NSLocalizedString(@"Event has been added to your calendar", nil)
-                                               delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
-            else
-                aV = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error adding event", nil)
-                                                message:NSLocalizedString(@"You have no calendars created. Please create one and try again.", nil)
-                                               delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
-            [aV show];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                EKEvent *event  = [EKEvent eventWithEventStore:eventStore];
+                event.title     = _title;
+                
+                event.startDate = _eventTime;
+                event.endDate = [_eventTime dateByAddingTimeInterval:3600];
+                
+                EKCalendar *cal = [eventStore defaultCalendarForNewEvents];
+                
+                [event setCalendar:cal];
+                
+                NSError *err;
+                BOOL save = [eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
+                
+                UIAlertView *aV = nil;
+                if (!err && save)
+                    aV = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Event added", nil)
+                                                    message:NSLocalizedString(@"Event has been added to your calendar", nil)
+                                                   delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+                else
+                    aV = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error adding event", nil)
+                                                    message:NSLocalizedString(@"You have no calendars created. Please create one and try again.", nil)
+                                                   delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+                [aV show];                
+            });
         }
     }];
 
