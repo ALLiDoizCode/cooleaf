@@ -12,5 +12,5 @@
 
 @property (nonatomic, setter = setAttendees:) NSArray *attendees;
 @property (nonatomic, assign) BOOL selfAttended;
-
+@property (nonatomic, assign) NSUInteger attendeesCount;
 @end

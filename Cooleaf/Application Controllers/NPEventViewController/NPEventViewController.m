@@ -326,6 +326,7 @@ enum {
         {
             NPAttendeesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPAttendeesCell"];
             cell.selfAttended = [_currentEvent[@"attending"] boolValue];
+            cell.attendeesCount = [_currentEvent[@"participants_count"] unsignedIntegerValue];            
             cell.attendees = _currentEvent[@"participants"];
             return cell;
             
