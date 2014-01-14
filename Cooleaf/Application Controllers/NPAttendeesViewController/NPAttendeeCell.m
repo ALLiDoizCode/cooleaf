@@ -31,6 +31,7 @@
 - (void)awakeFromNib
 {
     _avatarView.layer.cornerRadius = 22.0;
+    _avatarView.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -59,7 +60,13 @@
         _avatarView.image = [UIImage imageNamed:@"AvatarPlaceholderMaleMedium"];
     }
     
-    _positionLabel.text = [NSString stringWithFormat:@"%@\n%@", attendee[@"role"][@"department"][@"name"], attendee[@"role"][@"organization"][@"name"]];
+    if ([[NPCooleafClient sharedClient].userData[@"role"][@"branch"][@"id"] compare:attendee[@"role"][@"branch"][@"id"]] == NSOrderedSame)
+    {
+        _positionLabel.text = [NSString stringWithFormat:@"%@\n\u00A0", attendee[@"role"][@"department"][@"name"]];
+    }
+    else
+        _positionLabel.text = [NSString stringWithFormat:@"%@\n%@", attendee[@"role"][@"department"][@"name"], attendee[@"role"][@"branch"][@"name"]];
+    
     if (attendee[@"profile"][@"picture"][@"original"])
     {
         NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:attendee[@"profile"][@"picture"][@"versions"][@"medium"]];

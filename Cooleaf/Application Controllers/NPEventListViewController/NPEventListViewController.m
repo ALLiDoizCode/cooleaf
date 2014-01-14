@@ -101,14 +101,20 @@
         for (NSDictionary *e in events)
         {
             BOOL my = NO;
-            for (NSDictionary *branch in e[@"branches"])
+            if ([e[@"branches"] count] == 0)
+                my = YES;
+            else
             {
-                if ([branch[@"id"] isEqualToNumber:myBranch])
+                for (NSDictionary *branch in e[@"branches"])
                 {
-                    my = YES;
-                    break;
+                    if ([branch[@"id"] isEqualToNumber:myBranch])
+                    {
+                        my = YES;
+                        break;
+                    }
                 }
             }
+            
             if (my)
                 [myEvents addObject:e];
             else

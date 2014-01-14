@@ -218,6 +218,11 @@
 {
     if (_loginOperation)
         [self cancelLogin:sender];
+    else
+    {
+        NSURL *forgotPwdURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:@"/users/password/new"];
+        [[UIApplication sharedApplication] openURL:forgotPwdURL];
+    }
 }
 
 
