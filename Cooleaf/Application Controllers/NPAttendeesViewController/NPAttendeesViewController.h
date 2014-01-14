@@ -10,6 +10,6 @@
 
 @interface NPAttendeesViewController : UIViewController <UITableViewDataSource>
 
-@property (nonatomic, retain) NSArray *attendees;
-
+@property (nonatomic, retain) NSNumber *eventId;
+@property (nonatomic, assign) NSUInteger attendeesCount;
 @end

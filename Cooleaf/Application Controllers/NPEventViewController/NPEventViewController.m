@@ -445,7 +445,8 @@ enum {
         case NPEventCell_Attendees:
         {
             NPAttendeesViewController *aV = [NPAttendeesViewController new];
-            aV.attendees = _currentEvent[@"participants"];
+            aV.eventId = _currentEvent[@"id"];
+            aV.attendeesCount = [_currentEvent[@"participants"] count];
             [self.navigationController pushViewController:aV animated:YES];
         }
         default:
