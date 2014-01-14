@@ -382,7 +382,7 @@ enum {
 {
     switch (indexPath.row) {
         case NPEventCell_Attendees:
-            if ([_currentEvent[@"participants"] count] > 0)
+            if ([_currentEvent[@"participants_count"] integerValue] > 0)
                 return 85.0;
             else
                 return 44.0;
@@ -417,7 +417,7 @@ enum {
 {
     switch (indexPath.row) {
         case NPEventCell_Attendees:
-            if ([_currentEvent[@"participants"] count] > 0)
+            if ([_currentEvent[@"participants_count"] integerValue] > 0)
                 return YES;
             break;
         case NPEventCell_Todos:
@@ -446,7 +446,7 @@ enum {
         {
             NPAttendeesViewController *aV = [NPAttendeesViewController new];
             aV.eventId = _currentEvent[@"id"];
-            aV.attendeesCount = [_currentEvent[@"participants"] count];
+            aV.attendeesCount = [_currentEvent[@"participants_count"] integerValue];
             [self.navigationController pushViewController:aV animated:YES];
         }
         default:
