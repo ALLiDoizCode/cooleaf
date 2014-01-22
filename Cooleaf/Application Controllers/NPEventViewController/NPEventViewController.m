@@ -281,9 +281,9 @@ enum {
 
 - (IBAction)resignTapped:(id)sender
 {
-    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Do you really want to resign?", nil)
+    UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Do you really want to unregister?", nil)
                                                     delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                      destructiveButtonTitle:NSLocalizedString(@"Yes, I want to resign", nil) otherButtonTitles:nil];
+                                      destructiveButtonTitle:NSLocalizedString(@"Yes, I want to unregister", nil) otherButtonTitles:nil];
     
     [as showInView:self.view];
 }
