@@ -46,9 +46,9 @@ enum {
 @property (weak, nonatomic) IBOutlet UIImageView *coverPhotoView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextView *categoriesLabel;
-@property (weak, nonatomic) IBOutlet UILabel *rewardLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) IBOutlet UIView *topSeparator;
+@property (weak, nonatomic) IBOutlet UILabel *rewardLabel;
 
 - (void)setEvent:(NSDictionary *)event;
 - (IBAction)joinTapped:(id)sender;
@@ -175,11 +175,11 @@ enum {
     _topSeparator.transform = CGAffineTransformMakeTranslation(0, shift);
     _shift = shift;
     // Assign global information
-    _rewardLabel.text = [NSString stringWithFormat:NSLocalizedString(@"You’ll receive %@ reward points.", @"reward points string on event details page"), event[@"reward_points"]];
+    _rewardLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", @"reward points string on event details page"), event[@"reward_points"]];
     
     // Resize header
     f = _tableHeaderView.frame;
-    f.size.height = 155 + shift;
+    f.size.height = 185 + shift;
     _tableHeaderView.frame = f;
     
     // Reassign header again
@@ -187,7 +187,6 @@ enum {
     
     // Time to hide buttons and download details
     _joinButton.hidden = YES;
-    _rewardLabel.hidden = YES;
     _resignButton.hidden = YES;
     [_loadingIndicator startAnimating];
     _fetchingOperation = [[NPCooleafClient sharedClient] fetchEventWithId:event[@"id"] completion:^(NSDictionary *eventDetails) {
@@ -220,17 +219,16 @@ enum {
 {
     _joinButton.layer.borderColor = [[_joinButton titleColorForState:(([_currentEvent[@"attending"] boolValue]) ? UIControlStateDisabled : UIControlStateNormal)] CGColor];
     _joinButton.enabled = ![_currentEvent[@"attending"] boolValue];
-    _rewardLabel.hidden = [_currentEvent[@"attending"] boolValue];
-    _resignButton.hidden = !_rewardLabel.hidden;
+    _resignButton.hidden = ![_currentEvent[@"attending"] boolValue];
     _joinButton.hidden = NO;
     
     if ([_currentEvent[@"attending"] boolValue])
     {
-        _joinButton.frame = CGRectMake(91, 90 + _shift, 139, 25);
+        _joinButton.frame = CGRectMake(91, 120 + _shift, 139, 25);
     }
     else
     {
-        _joinButton.frame = CGRectMake(100, 90 + _shift, 121, 25);
+        _joinButton.frame = CGRectMake(100, 120 + _shift, 121, 25);
     }
 //    _joinButton.transform = CGAffineTransformMakeTranslation(0, _shift);
 }
@@ -246,7 +244,6 @@ enum {
 {
     _joinButton.hidden = YES;
     _resignButton.hidden = YES;
-    _rewardLabel.hidden = YES;
     [_loadingIndicator startAnimating];
     _fetchingOperation = [[NPCooleafClient sharedClient] joinEventWithId:_currentEvent[@"id"] completion:^(NSError *error) {
         _fetchingOperation = [[NPCooleafClient sharedClient] fetchEventWithId:_currentEvent[@"id"] completion:^(NSDictionary *eventDetails) {

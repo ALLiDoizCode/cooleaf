@@ -131,6 +131,20 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     [[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientSignOut object:nil];
 }
 
+#pragma mark - User handling
+
+- (AFHTTPRequestOperation *)updateUserData
+{
+    NSString *path = @"/users/me.json";
+    
+    if (_apiPrefix.length > 0)
+        path = [_apiPrefix stringByAppendingString:path];
+    
+    return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        _userData = [responseObject copy];
+    } failure:nil];
+}
+
 #pragma mark - Event handling
 
 - (AFHTTPRequestOperation *)fetchEventWithId:(NSNumber *)eventId completion:(void(^)(NSDictionary *eventDetails))completion
@@ -173,9 +187,11 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
         path = [_apiPrefix stringByAppendingString:path];
     
     return [self POST:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self updateUserData];
         if (completion)
             completion(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self updateUserData];
         if (completion)
             completion(error);
     }];
@@ -188,9 +204,11 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     if (_apiPrefix.length > 0)
         path = [_apiPrefix stringByAppendingString:path];
     return [self DELETE:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self updateUserData];        
         if (completion)
             completion(nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self updateUserData];
         if (completion)
             completion(error);
     }];

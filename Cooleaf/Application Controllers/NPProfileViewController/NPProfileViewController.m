@@ -12,6 +12,7 @@
 
 @interface NPProfileViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *rewardPoints;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *positionLabel;
@@ -60,6 +61,7 @@
     
     _nameLabel.text = uD[@"name"];
     _positionLabel.text = [NSString stringWithFormat:@"%@\n%@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
+    _rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
     
     int c = 3;
     NSMutableString *cats = [NSMutableString new];

@@ -296,9 +296,9 @@ static UITextView *_tV;
     {
         if ([_event[@"attending"] boolValue])
         {
-            UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Do you really want to resign?", nil)
+            UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Do you really want to unregister?", nil)
                                                             delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-                                              destructiveButtonTitle:NSLocalizedString(@"Yes, I want to resign", nil) otherButtonTitles:nil];
+                                              destructiveButtonTitle:NSLocalizedString(@"Yes, I want to unregister", nil) otherButtonTitles:nil];
             [as showInView:[UIApplication sharedApplication].keyWindow];
         }
         else if (_actionTapped(_event[@"id"], ![_event[@"attending"] boolValue]))
@@ -414,9 +414,9 @@ static UITextView *_tV;
 + (CGFloat)cellHeightForEvent:(NSDictionary *)event
 {
     if (!_tV)
-        _tV =[[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+        _tV =[[UITextView alloc] initWithFrame:CGRectMake(0, 0, 300, 20)];
     else
-        _tV.frame = CGRectMake(0, 0, 320, 20);
+        _tV.frame = CGRectMake(0, 0, 300, 20);
     
     _tV.font = [UIFont boldSystemFontOfSize:22.0];
     _tV.text = event[@"name"];

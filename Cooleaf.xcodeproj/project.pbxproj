@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		091C2FA9FE63464F90BF2AC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF39234F1654A6DBFF21105 /* libPods.a */; };
+		D931450D18925456002325CB /* NPCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D931450C18925456002325CB /* NPCompanyCell.m */; };
+		D931450F18925467002325CB /* NPCompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D931450E18925467002325CB /* NPCompanyCell.xib */; };
 		D93AABF3186EFAD100E9B96A /* NPProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AABF1186EFAD100E9B96A /* NPProfileViewController.m */; };
 		D93AABF4186EFAD100E9B96A /* NPProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93AABF2186EFAD100E9B96A /* NPProfileViewController.xib */; };
 		D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AAC6E187AFE0700E9B96A /* NPEventViewController.m */; };
@@ -74,6 +76,9 @@
 /* Begin PBXFileReference section */
 		7B891F2FE48245189AE30E1A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		BFF39234F1654A6DBFF21105 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D931450B18925456002325CB /* NPCompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPCompanyCell.h; path = "Application Controllers/NPEventListViewController/NPCompanyCell.h"; sourceTree = "<group>"; };
+		D931450C18925456002325CB /* NPCompanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPCompanyCell.m; path = "Application Controllers/NPEventListViewController/NPCompanyCell.m"; sourceTree = "<group>"; };
+		D931450E18925467002325CB /* NPCompanyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPCompanyCell.xib; path = "Application Controllers/NPEventListViewController/NPCompanyCell.xib"; sourceTree = "<group>"; };
 		D93AABF0186EFAD100E9B96A /* NPProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPProfileViewController.h; path = "Application Controllers/NPProfileViewController/NPProfileViewController.h"; sourceTree = "<group>"; };
 		D93AABF1186EFAD100E9B96A /* NPProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPProfileViewController.m; path = "Application Controllers/NPProfileViewController/NPProfileViewController.m"; sourceTree = "<group>"; };
 		D93AABF2186EFAD100E9B96A /* NPProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPProfileViewController.xib; path = "Application Controllers/NPProfileViewController/NPProfileViewController.xib"; sourceTree = "<group>"; };
@@ -379,6 +384,9 @@
 				D9809579185CA7AC008F2B61 /* NPEventListViewController.h */,
 				D980957A185CA7AC008F2B61 /* NPEventListViewController.m */,
 				D980957B185CA7AC008F2B61 /* NPEventListViewController.xib */,
+				D931450B18925456002325CB /* NPCompanyCell.h */,
+				D931450C18925456002325CB /* NPCompanyCell.m */,
+				D931450E18925467002325CB /* NPCompanyCell.xib */,
 			);
 			name = NPEventListViewController;
 			sourceTree = "<group>";
@@ -478,6 +486,7 @@
 				D93AABF4186EFAD100E9B96A /* NPProfileViewController.xib in Resources */,
 				D93AAC99187B710700E9B96A /* NPAttendeeCell.xib in Resources */,
 				D93AAC86187B692800E9B96A /* NPLocationCell.xib in Resources */,
+				D931450F18925467002325CB /* NPCompanyCell.xib in Resources */,
 				D93AACAA187C351500E9B96A /* NPNewTodoViewController.xib in Resources */,
 				D93AAC78187B5C6F00E9B96A /* NPDateCell.xib in Resources */,
 				D980957D185CA7AC008F2B61 /* NPEventListViewController.xib in Resources */,
@@ -556,6 +565,7 @@
 				D93AACA9187C351500E9B96A /* NPNewTodoViewController.m in Sources */,
 				D9809554185CA557008F2B61 /* main.m in Sources */,
 				D980958D185F2C5D008F2B61 /* NSFileManager+ImageCaching.m in Sources */,
+				D931450D18925456002325CB /* NPCompanyCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
