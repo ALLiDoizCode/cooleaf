@@ -10,14 +10,23 @@
 #import <SSKeychain/SSKeychain.h>
 #import "NSFileManager+ImageCaching.h"
 
+static NPCooleafClient *_sharedClient = nil;
+NSString *f_notificationUDID = nil;
+
 NSString * const kNPCooleafClientRefreshNotification = @"kNPCooleafClientRefreshNotification";
 NSString * const kNPCooleafClientRUDIDHarvestedNotification = @"kNPCooleafClientRUDIDHarvestedNotification";
 NSString * const kNPCooleafClientSignOut = @"kNPCooleafClientSignOut";
 
-static NSString * const kNPCooleafClientBaseURLString = @"http://cooleaf-staging.h1.monterail.eu";
+static NSString * const kNPStagingClientBaseURLString = @"http://cooleaf-staging.h1.monterail.eu";
+static NSString * const kNPStagingClientAPIPrefix = @"/api/v1";
+static NSString * const kNPStagingClientAPIAuthLogin = @"cooleaf";
+static NSString * const kNPStagingClientAPIAuthPassword = @"letmein";
+
+
+static NSString * const kNPCooleafClientBaseURLString = @"http://sandbox.cooleaf.com";
 static NSString * const kNPCooleafClientAPIPrefix = @"/api/v1";
-static NSString * const kNPCooleafClientAPIAuthLogin = @"cooleaf";
-static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
+static NSString * const kNPCooleafClientAPIAuthLogin = @"";
+static NSString * const kNPCooleafClientAPIAuthPassword = @"";
 
 @interface NPCooleafClient ()
 {
@@ -37,13 +46,14 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 
 + (NPCooleafClient *)sharedClient
 {
-    static NPCooleafClient *_sharedClient = nil;
-    static dispatch_once_t oncePredicate;
+
     if (!_sharedClient)
-        dispatch_once(&oncePredicate, ^{
+    {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"staging_environment"])
+            _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kNPStagingClientBaseURLString]];
+        else
             _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kNPCooleafClientBaseURLString]];
-        });
-    
+    }
     return _sharedClient;
 }
 
@@ -52,11 +62,21 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     self = [super initWithBaseURL:url];
     if (self)
     {
-        _apiPrefix = kNPCooleafClientAPIPrefix;
         AFHTTPRequestSerializer *reqSerializer = [AFHTTPRequestSerializer serializer];
-        if (kNPCooleafClientAPIAuthLogin.length > 0)
-            [reqSerializer setAuthorizationHeaderFieldWithUsername:kNPCooleafClientAPIAuthLogin password:kNPCooleafClientAPIAuthPassword];
-//        [reqSerializer setValue:@"coca-cola" forHTTPHeaderField:@"X-Organization"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"staging_environment"])
+        {
+            _apiPrefix = kNPStagingClientAPIPrefix;
+            if (kNPStagingClientAPIAuthLogin.length > 0)
+                [reqSerializer setAuthorizationHeaderFieldWithUsername:kNPStagingClientAPIAuthLogin password:kNPStagingClientAPIAuthPassword];
+        }
+        else
+        {
+            _apiPrefix = kNPCooleafClientAPIPrefix;
+            if (kNPCooleafClientAPIAuthLogin.length > 0)
+                [reqSerializer setAuthorizationHeaderFieldWithUsername:kNPCooleafClientAPIAuthLogin password:kNPCooleafClientAPIAuthPassword];
+            
+        }
+
         self.requestSerializer = reqSerializer;
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         NSMutableDictionary *imageIndex = [[NSKeyedUnarchiver unarchiveObjectWithFile:[[[[NSFileManager defaultManager] cacheDirectory] URLByAppendingPathComponent:@"index.dat"] path]] mutableCopy];
@@ -65,15 +85,34 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
         _downloadedImages = imageIndex;
         _imageRequests = [NSMutableDictionary new];
         
+        if (f_notificationUDID)
+            self.notificationUDID = f_notificationUDID;
     }
     
     return self;
     
 }
 
+- (void)checkEndpoints
+{
+    // Check if endpoint has changed
+    NSString *urlString = ([[NSUserDefaults standardUserDefaults] boolForKey:@"staging_environment"]) ? kNPStagingClientBaseURLString : kNPCooleafClientBaseURLString;
+    
+    if ([urlString isEqualToString:self.baseURL.absoluteString])
+        return;
+    
+    // Well - we need to change the endpoint
+    _sharedClient = nil;
+    [SSKeychain deletePasswordForService:@"cooleaf" account:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientSignOut object:nil];
+//    });
+}
+
 - (void)setNotificationUDID:(NSString *)notificationUDID
 {
     _notificationUDID = [notificationUDID copy];
+    f_notificationUDID = [notificationUDID copy];
     [[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientRUDIDHarvestedNotification object:_notificationUDID];
 }
 

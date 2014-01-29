@@ -39,4 +39,5 @@ extern NSString * const kNPCooleafClientSignOut;
 
 - (void)fetchImage:(NSString *)imagePath completion:(void(^)(NSString *imagePath, UIImage *image))completion;
 
+- (void)checkEndpoints;
 @end

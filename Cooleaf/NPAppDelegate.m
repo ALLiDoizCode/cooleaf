@@ -60,6 +60,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    [[NPCooleafClient sharedClient] checkEndpoints];
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
