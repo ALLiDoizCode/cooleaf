@@ -11,7 +11,8 @@
 
 @interface NPCompanyCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *peopleCountLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *logoView;
 @end
 
@@ -42,7 +43,26 @@
             _logoView.frame = CGRectMake(320 - 16 - imgSize.width, 15, imgSize.width, imgSize.height);
         }
     }];
-    _peopleCountLabel.text = [NSString stringWithFormat:NSLocalizedString(@"You and %@ others", nil), uD[@"role"][@"organization"][@"users_count"]];
+    _nameLabel.text = uD[@"name"];
+
+    UIImage *avatarPlaceholder = nil;
+    _avatarView.layer.cornerRadius = 20.0;
+    if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])
+        avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderFemaleMedium"];
+    else
+        avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderMaleMedium"];
+    
+    _avatarView.image = avatarPlaceholder;
+    if (uD[@"profile"][@"picture"][@"original"])
+    {
+        NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"versions"][@"medium"]];
+        [[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+            if (image && [imagePath isEqual:avatarURL.absoluteString])
+            {
+                _avatarView.image = image;
+            }
+        }];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

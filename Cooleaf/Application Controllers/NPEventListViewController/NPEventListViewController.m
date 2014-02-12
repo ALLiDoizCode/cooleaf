@@ -281,7 +281,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0)
-        return 63;
+        return 57;
     else if (indexPath.row -1 < _myEvents.count)
         return [NPEventCell cellHeightForEvent:_myEvents[indexPath.row - 1]];
     else if (indexPath.row-1 == _myEvents.count)

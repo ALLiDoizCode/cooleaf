@@ -39,7 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _avatarView.layer.cornerRadius = 36.0;
+    _avatarView.layer.cornerRadius = 59.0;
     UIImage *avatarPlaceholder = nil;
     NSDictionary *uD = [NPCooleafClient sharedClient].userData;
     if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])
