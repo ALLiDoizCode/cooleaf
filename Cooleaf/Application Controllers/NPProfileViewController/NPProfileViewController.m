@@ -81,7 +81,7 @@
        if (image && [imagePath isEqualToString:companyBannerURL.absoluteString])
        {
            _companyView = [[UIImageView alloc] initWithImage:image];
-           _companyView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - (image.size.height/2.0) - 30.0, 320, (image.size.height/2.0));
+           _companyView.frame = CGRectMake(0, 385 /*[UIScreen mainScreen].bounds.size.height - (image.size.height/2.0) - 30.0 */, 320, (image.size.height/2.0));
            _companyView.contentMode = UIViewContentModeScaleAspectFit;
            _companyView.backgroundColor = [UIColor clearColor];
            [self.view addSubview:_companyView];
