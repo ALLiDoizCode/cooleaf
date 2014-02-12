@@ -60,7 +60,7 @@
 - (void)setAddress:(NSDictionary *)address
 {
     _address = address;
-    _locationLabel.text = [NSString stringWithFormat:@"%@\n%@", (address[@"name"]) ? address[@"name"] : @"", (address[@"address1"]) ? address[@"address1"] : @""];
+    _locationLabel.text = [NSString stringWithFormat:@"%@\n%@", (address[@"name"]) ? address[@"name"] : @"", (address[@"address1"]) ? address[@"address1"] : @"\u00A0"];
     if (_address[@"lat"])
     {
         self.separatorInset = UIEdgeInsetsZero;
