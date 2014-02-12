@@ -445,7 +445,7 @@
 				ORGANIZATIONNAME = "Nova Project";
 				TargetAttributes = {
 					D9809543185CA557008F2B61 = {
-						DevelopmentTeam = 5N7NU8WC7B;
+						DevelopmentTeam = D9C3ZVBVFT;
 					};
 					D980955E185CA557008F2B61 = {
 						TestTargetID = D9809543185CA557008F2B61;
@@ -689,13 +689,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bazyli Zygan (5N7NU8WC7B)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cooleaf/Cooleaf-Prefix.pch";
 				INFOPLIST_FILE = "Cooleaf/Cooleaf-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C1DBBAA7-9E34-4445-ABCE-687E6FE22E9E";
+				PROVISIONING_PROFILE = "1C3B1B63-C95A-4400-948A-B0E267BB390D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -706,13 +706,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Bazyli Zygan (5N7NU8WC7B)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Bazyli Zygan (5N7NU8WC7B)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cooleaf, Inc. (D9C3ZVBVFT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cooleaf, Inc. (D9C3ZVBVFT)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cooleaf/Cooleaf-Prefix.pch";
 				INFOPLIST_FILE = "Cooleaf/Cooleaf-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C1DBBAA7-9E34-4445-ABCE-687E6FE22E9E";
+				PROVISIONING_PROFILE = "1C3B1B63-C95A-4400-948A-B0E267BB390D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
