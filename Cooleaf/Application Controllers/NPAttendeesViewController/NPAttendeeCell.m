@@ -60,9 +60,9 @@
         _avatarView.image = [UIImage imageNamed:@"AvatarPlaceholderMaleMedium"];
     }
     
-    if ([[NPCooleafClient sharedClient].userData[@"role"][@"branch"][@"id"] compare:attendee[@"role"][@"branch"][@"id"]] == NSOrderedSame)
+    if ([attendee[@"role"][@"department"][@"default"] boolValue])
     {
-        _positionLabel.text = [NSString stringWithFormat:@"%@\n\u00A0", attendee[@"role"][@"department"][@"name"]];
+        _positionLabel.text = [NSString stringWithFormat:@"%@\n\u00A0", attendee[@"role"][@"branch"][@"name"]];
     }
     else
         _positionLabel.text = [NSString stringWithFormat:@"%@\n%@", attendee[@"role"][@"department"][@"name"], attendee[@"role"][@"branch"][@"name"]];

@@ -60,7 +60,10 @@
     }
     
     _nameLabel.text = uD[@"name"];
-    _positionLabel.text = [NSString stringWithFormat:@"%@\n%@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
+    if ([uD[@"role"][@"department"][@"default"] boolValue])
+        _positionLabel.text = [NSString stringWithFormat:@"%@\n\u00A0", uD[@"role"][@"organization"][@"name"]];
+    else
+        _positionLabel.text = [NSString stringWithFormat:@"%@\n%@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
     _rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
     
     int c = 3;
