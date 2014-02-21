@@ -166,6 +166,7 @@ static UITextView *_tV;
     if (!_dateFormatter)
     {
         _dateFormatter = [NSDateFormatter new];
+        _dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
         _dateFormatter.dateFormat = @"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'z";
     }
     NSDate *eventTime = [_dateFormatter dateFromString:_event[@"start_time"]];
