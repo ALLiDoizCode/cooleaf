@@ -62,10 +62,21 @@
     
     if ([attendee[@"role"][@"department"][@"default"] boolValue])
     {
-        _positionLabel.text = [NSString stringWithFormat:@"%@\n\u00A0", attendee[@"role"][@"branch"][@"name"]];
+        if ([attendee[@"role"][@"branch"][@"default"] boolValue])
+            _positionLabel.text = @"";
+        else
+            _positionLabel.text = [NSString stringWithFormat:@"%@\n\u00A0", attendee[@"role"][@"branch"][@"name"]];
     }
     else
-        _positionLabel.text = [NSString stringWithFormat:@"%@\n%@", attendee[@"role"][@"department"][@"name"], attendee[@"role"][@"branch"][@"name"]];
+    {
+        if ([attendee[@"role"][@"branch"][@"default"] boolValue])
+            _positionLabel.text = [NSString stringWithFormat:@"%@\n\u00A0", attendee[@"role"][@"department"][@"name"]];
+        else
+            _positionLabel.text = [NSString stringWithFormat:@"%@\n%@", attendee[@"role"][@"department"][@"name"], attendee[@"role"][@"branch"][@"name"]];
+    }
+    
+    // Now - if no positionLabel content is there - we need to shift name
+    _nameLabel.transform = (_positionLabel.text.length > 0) ? CGAffineTransformIdentity : CGAffineTransformMakeTranslation(0, 35);
     
     if (attendee[@"profile"][@"picture"][@"original"])
     {

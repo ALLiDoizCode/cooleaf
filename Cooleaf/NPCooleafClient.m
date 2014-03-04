@@ -17,13 +17,13 @@ NSString * const kNPCooleafClientRefreshNotification = @"kNPCooleafClientRefresh
 NSString * const kNPCooleafClientRUDIDHarvestedNotification = @"kNPCooleafClientRUDIDHarvestedNotification";
 NSString * const kNPCooleafClientSignOut = @"kNPCooleafClientSignOut";
 
-static NSString * const kNPStagingClientBaseURLString = @"http://cooleaf-staging.h1.monterail.eu";
-static NSString * const kNPStagingClientAPIPrefix = @"/api/v1";
-static NSString * const kNPStagingClientAPIAuthLogin = @"cooleaf";
-static NSString * const kNPStagingClientAPIAuthPassword = @"letmein";
+//static NSString * const kNPStagingClientBaseURLString = @"http://cooleaf-staging.h1.monterail.eu";
+//static NSString * const kNPStagingClientAPIPrefix = @"/api/v1";
+//static NSString * const kNPStagingClientAPIAuthLogin = @"cooleaf";
+//static NSString * const kNPStagingClientAPIAuthPassword = @"letmein";
 
 
-static NSString * const kNPCooleafClientBaseURLString = @"http://sandbox.cooleaf.com";
+static NSString * const kNPCooleafClientBaseURLString = @"http://cooleaf.com";
 static NSString * const kNPCooleafClientAPIPrefix = @"/api/v1";
 static NSString * const kNPCooleafClientAPIAuthLogin = @"";
 static NSString * const kNPCooleafClientAPIAuthPassword = @"";
@@ -49,9 +49,9 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"";
 
     if (!_sharedClient)
     {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"staging_environment"])
-            _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kNPStagingClientBaseURLString]];
-        else
+//        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"staging_environment"])
+//            _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kNPStagingClientBaseURLString]];
+//        else
             _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:kNPCooleafClientBaseURLString]];
     }
     return _sharedClient;
@@ -63,19 +63,19 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"";
     if (self)
     {
         AFHTTPRequestSerializer *reqSerializer = [AFHTTPRequestSerializer serializer];
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"staging_environment"])
-        {
-            _apiPrefix = kNPStagingClientAPIPrefix;
-            if (kNPStagingClientAPIAuthLogin.length > 0)
-                [reqSerializer setAuthorizationHeaderFieldWithUsername:kNPStagingClientAPIAuthLogin password:kNPStagingClientAPIAuthPassword];
-        }
-        else
-        {
+//        if ([[NSUserDefaults standardUserDefaults] boolForKey:@"staging_environment"])
+//        {
+//            _apiPrefix = kNPStagingClientAPIPrefix;
+//            if (kNPStagingClientAPIAuthLogin.length > 0)
+//                [reqSerializer setAuthorizationHeaderFieldWithUsername:kNPStagingClientAPIAuthLogin password:kNPStagingClientAPIAuthPassword];
+//        }
+//        else
+//        {
             _apiPrefix = kNPCooleafClientAPIPrefix;
             if (kNPCooleafClientAPIAuthLogin.length > 0)
                 [reqSerializer setAuthorizationHeaderFieldWithUsername:kNPCooleafClientAPIAuthLogin password:kNPCooleafClientAPIAuthPassword];
             
-        }
+//        }
 
         self.requestSerializer = reqSerializer;
         self.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -95,15 +95,15 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"";
 
 - (void)checkEndpoints
 {
-    // Check if endpoint has changed
-    NSString *urlString = ([[NSUserDefaults standardUserDefaults] boolForKey:@"staging_environment"]) ? kNPStagingClientBaseURLString : kNPCooleafClientBaseURLString;
-    
-    if ([urlString isEqualToString:self.baseURL.absoluteString])
-        return;
-    
-    // Well - we need to change the endpoint
-    _sharedClient = nil;
-    [SSKeychain deletePasswordForService:@"cooleaf" account:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
+//    // Check if endpoint has changed
+//    NSString *urlString = ([[NSUserDefaults standardUserDefaults] boolForKey:@"staging_environment"]) ? kNPStagingClientBaseURLString : kNPCooleafClientBaseURLString;
+//    
+//    if ([urlString isEqualToString:self.baseURL.absoluteString])
+//        return;
+//    
+//    // Well - we need to change the endpoint
+//    _sharedClient = nil;
+//    [SSKeychain deletePasswordForService:@"cooleaf" account:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
 //    dispatch_async(dispatch_get_main_queue(), ^{
 //        [[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientSignOut object:nil];
 //    });
