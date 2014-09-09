@@ -15,6 +15,9 @@
 #import "UIFont+ApplicationFont.h"
 #import "NPEventViewController.h"
 
+#define kAppleLookupURLTemplate     @"http://itunes.apple.com/lookup?id=%@"
+#define kAppStoreURLTemplate        @"https://itunes.apple.com/app/id"
+
 @interface NPAppDelegate ()
 {
     NSArray *_lastEvents;
@@ -25,8 +28,38 @@
 
 @implementation NPAppDelegate
 
+- (void)checkNewVersionWithpdateBlock:(void(^)(NSString *newVersion))update
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *url = [NSString stringWithFormat:kAppleLookupURLTemplate, @"834329581"];
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+        if (data && [data length]>0) {
+            id obj = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            if (obj && [obj isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *dict = (NSDictionary *)obj;
+                NSArray *array = dict[@"results"];
+                if (array && [array count]>0) {
+                    NSDictionary *app = array[0];
+                    NSString *newVersion = app[@"version"];
+                    [[NSUserDefaults standardUserDefaults] setObject:newVersion
+                                                              forKey:@"kAppNewVersion"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    NSString *curVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+                    if (newVersion && curVersion && ![newVersion isEqualToString:curVersion]) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            if (update)
+                                update(newVersion);
+                        });
+                    }
+                }
+            }
+        }
+    });
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
     
@@ -43,6 +76,13 @@
     
     [self.window makeKeyAndVisible];    
     [self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
+    [self checkNewVersionWithpdateBlock:^(NSString *newVersion) {
+       UIAlertView *updateAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"New version available", nil)
+                                                             message:[NSString stringWithFormat:NSLocalizedString(@"New version (%@) of Cooleaf is available. Please update application.", nil), newVersion]
+                                                            delegate:self cancelButtonTitle:NSLocalizedString(@"Update", nil) otherButtonTitles:nil];
+        updateAlert.tag = 1001;
+        [updateAlert show];
+    }];
     return YES;
 }
 
@@ -104,22 +144,29 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 1)
+    if (alertView.tag == 1001)
     {
-        NSUInteger idx = 0;
-        for (NSDictionary *e in _lastEvents)
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[kAppStoreURLTemplate stringByAppendingString:@"834329581"]]];
+    }
+    else
+    {
+        if (buttonIndex == 1)
         {
-            if ([e[@"id"] compare:_searchedId] == NSOrderedSame)
+            NSUInteger idx = 0;
+            for (NSDictionary *e in _lastEvents)
             {
-                break;
+                if ([e[@"id"] compare:_searchedId] == NSOrderedSame)
+                {
+                    break;
+                }
+                idx++;
             }
-            idx++;
+            
+            NPEventViewController *eC = [NPEventViewController new];
+            eC.events = _lastEvents;
+            eC.eventIdx = idx;
+            [(UINavigationController *)self.window.rootViewController pushViewController:eC animated:YES];
         }
-        
-        NPEventViewController *eC = [NPEventViewController new];
-        eC.events = _lastEvents;
-        eC.eventIdx = idx;
-        [(UINavigationController *)self.window.rootViewController pushViewController:eC animated:YES];
     }
 }
 

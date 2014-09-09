@@ -23,7 +23,7 @@ static NSString * const kNPStagingClientAPIAuthLogin = @"cooleaf";
 static NSString * const kNPStagingClientAPIAuthPassword = @"letmein";
 
 
-static NSString * const kNPCooleafClientBaseURLString = @"http://sandbox.cooleaf.com";
+static NSString * const kNPCooleafClientBaseURLString = @"http://api.cooleaf.com";
 static NSString * const kNPCooleafClientAPIPrefix = @"/api/v1";
 static NSString * const kNPCooleafClientAPIAuthLogin = @"";
 static NSString * const kNPCooleafClientAPIAuthPassword = @"";
