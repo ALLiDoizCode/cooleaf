@@ -44,6 +44,7 @@ static UITextView *_tV;
     NSDateFormatter *df2 = [NSDateFormatter new];
     NSDateFormatter *df3 = [NSDateFormatter new];
     df1.dateFormat = @"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'z";
+    df1.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
     df2.dateStyle = NSDateFormatterFullStyle;
     df2.timeStyle = NSDateFormatterNoStyle;
     df3.dateStyle = NSDateFormatterNoStyle;

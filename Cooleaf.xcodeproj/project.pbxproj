@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		091C2FA9FE63464F90BF2AC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF39234F1654A6DBFF21105 /* libPods.a */; };
-		D900FDB81898FF01006E3CBC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D900FDB71898FF01006E3CBC /* Settings.bundle */; };
 		D931450D18925456002325CB /* NPCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D931450C18925456002325CB /* NPCompanyCell.m */; };
 		D931450F18925467002325CB /* NPCompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D931450E18925467002325CB /* NPCompanyCell.xib */; };
 		D93AABF3186EFAD100E9B96A /* NPProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93AABF1186EFAD100E9B96A /* NPProfileViewController.m */; };
@@ -77,7 +76,6 @@
 /* Begin PBXFileReference section */
 		7B891F2FE48245189AE30E1A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		BFF39234F1654A6DBFF21105 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D900FDB71898FF01006E3CBC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D931450B18925456002325CB /* NPCompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPCompanyCell.h; path = "Application Controllers/NPEventListViewController/NPCompanyCell.h"; sourceTree = "<group>"; };
 		D931450C18925456002325CB /* NPCompanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPCompanyCell.m; path = "Application Controllers/NPEventListViewController/NPCompanyCell.m"; sourceTree = "<group>"; };
 		D931450E18925467002325CB /* NPCompanyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPCompanyCell.xib; path = "Application Controllers/NPEventListViewController/NPCompanyCell.xib"; sourceTree = "<group>"; };
@@ -328,7 +326,6 @@
 				D9809550185CA557008F2B61 /* InfoPlist.strings */,
 				D9809553185CA557008F2B61 /* main.m */,
 				D9809555185CA557008F2B61 /* Cooleaf-Prefix.pch */,
-				D900FDB71898FF01006E3CBC /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -487,7 +484,6 @@
 				D93AAC94187B704100E9B96A /* NPAttendeesViewController.xib in Resources */,
 				D93AAC8E187B6D7100E9B96A /* NPDetailsCell.xib in Resources */,
 				D93AABF4186EFAD100E9B96A /* NPProfileViewController.xib in Resources */,
-				D900FDB81898FF01006E3CBC /* Settings.bundle in Resources */,
 				D93AAC99187B710700E9B96A /* NPAttendeeCell.xib in Resources */,
 				D93AAC86187B692800E9B96A /* NPLocationCell.xib in Resources */,
 				D931450F18925467002325CB /* NPCompanyCell.xib in Resources */,
@@ -695,7 +691,7 @@
 				GCC_PREFIX_HEADER = "Cooleaf/Cooleaf-Prefix.pch";
 				INFOPLIST_FILE = "Cooleaf/Cooleaf-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1C3B1B63-C95A-4400-948A-B0E267BB390D";
+				PROVISIONING_PROFILE = "C88171AF-BE99-488D-8F36-5EF93F7ED8AE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -712,7 +708,7 @@
 				GCC_PREFIX_HEADER = "Cooleaf/Cooleaf-Prefix.pch";
 				INFOPLIST_FILE = "Cooleaf/Cooleaf-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1C3B1B63-C95A-4400-948A-B0E267BB390D";
+				PROVISIONING_PROFILE = "C88171AF-BE99-488D-8F36-5EF93F7ED8AE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
