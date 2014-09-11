@@ -78,7 +78,7 @@
     [self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
 //    [self checkNewVersionWithpdateBlock:^(NSString *newVersion) {
 //       UIAlertView *updateAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"New version available", nil)
-//                                                             message:[NSString stringWithFormat:NSLocalizedString(@"New version (%@) of Cooleaf is available. Please update application.", nil), newVersion]
+//                                                             message:NSLocalizedString(@"New version of Cooleaf is available. Please update to continue using the application.", nil)
 //                                                            delegate:self cancelButtonTitle:NSLocalizedString(@"Update", nil) otherButtonTitles:nil];
 //        updateAlert.tag = 1001;
 //        [updateAlert show];
