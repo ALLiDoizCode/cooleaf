@@ -17,14 +17,14 @@ NSString * const kNPCooleafClientRefreshNotification = @"kNPCooleafClientRefresh
 NSString * const kNPCooleafClientRUDIDHarvestedNotification = @"kNPCooleafClientRUDIDHarvestedNotification";
 NSString * const kNPCooleafClientSignOut = @"kNPCooleafClientSignOut";
 
-//static NSString * const kNPStagingClientBaseURLString = @"http://cooleaf-staging.h1.monterail.eu";
-//static NSString * const kNPStagingClientAPIPrefix = @"/api/v1";
+//static NSString * const kNPStagingClientBaseURLString = @"http://api.staging.do.cooleaf.monterail.eu";
+//static NSString * const kNPStagingClientAPIPrefix = @"/v1";
 //static NSString * const kNPStagingClientAPIAuthLogin = @"cooleaf";
 //static NSString * const kNPStagingClientAPIAuthPassword = @"letmein";
 
 
 static NSString * const kNPCooleafClientBaseURLString = @"http://api.cooleaf.com";
-static NSString * const kNPCooleafClientAPIPrefix = @"/api/v1";
+static NSString * const kNPCooleafClientAPIPrefix = @"/v1";
 static NSString * const kNPCooleafClientAPIAuthLogin = @"";
 static NSString * const kNPCooleafClientAPIAuthPassword = @"";
 
