@@ -136,14 +136,16 @@ enum {
     _joinButton.layer.cornerRadius = 2.0;
     
     // Set cover image
-    NSString *imageUrlString = [@"http:" stringByAppendingString:[event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x150"]];
-    // Download image for event
-    [[NPCooleafClient sharedClient] fetchImage:imageUrlString completion:^(NSString *imagePath, UIImage *image) {
-        if ([imagePath compare:imageUrlString] == NSOrderedSame)
-        {
-            _coverPhotoView.image = image;
-        }
-    }];
+    if (event[@"image"][@"url"] != nil) {
+        NSString *imageUrlString = [@"http:" stringByAppendingString:[event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x150"]];
+        // Download image for event
+        [[NPCooleafClient sharedClient] fetchImage:imageUrlString completion:^(NSString *imagePath, UIImage *image) {
+            if ([imagePath compare:imageUrlString] == NSOrderedSame)
+            {
+                _coverPhotoView.image = image;
+            }
+        }];
+    }
     // Calculate size for title
     _titleLabel.text = event[@"name"];
     f = _titleLabel.frame;
