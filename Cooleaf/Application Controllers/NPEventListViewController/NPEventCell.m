@@ -281,14 +281,16 @@ static UITextView *_tV;
     _slideBarContent.transform = CGAffineTransformMakeTranslation(0, shift);
 //    _selectionView.frame = CGRectMake(0, 15, 320, self.contentView.bounds.size.height-15);
     
-    NSString *imageUrlString = [@"http:" stringByAppendingString:[_event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x150"]];
-    // Download image for event
-    [[NPCooleafClient sharedClient] fetchImage:imageUrlString completion:^(NSString *imagePath, UIImage *image) {
-       if ([imagePath compare:imageUrlString] == NSOrderedSame)
-       {
-           _eventImage.image = image;
-       }
-    }];
+    if (_event[@"image"][@"url"] != nil) {
+        NSString *imageUrlString = [@"http:" stringByAppendingString:[_event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x150"]];
+        // Download image for event
+        [[NPCooleafClient sharedClient] fetchImage:imageUrlString completion:^(NSString *imagePath, UIImage *image) {
+           if ([imagePath compare:imageUrlString] == NSOrderedSame)
+           {
+               _eventImage.image = image;
+           }
+        }];
+    }
 }
 
 - (IBAction)joinTapped:(id)sender

@@ -60,13 +60,31 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-    
-    if ([[UIApplication sharedApplication] enabledRemoteNotificationTypes] == 0)
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)])
     {
-        [NPCooleafClient sharedClient].notificationUDID = @"";
+        UIUserNotificationSettings *settings =
+        [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert |
+         UIUserNotificationTypeBadge |
+         UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        if (![UIApplication sharedApplication].isRegisteredForRemoteNotifications)
+        {
+            [NPCooleafClient sharedClient].notificationUDID = @"";
+        }
     }
+    else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
+        
+        if ([[UIApplication sharedApplication] enabledRemoteNotificationTypes] == 0)
+        {
+            [NPCooleafClient sharedClient].notificationUDID = @"";
+        }
+    }
+
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont mediumApplicationFontOfSize:18], NSFontAttributeName, nil]];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
