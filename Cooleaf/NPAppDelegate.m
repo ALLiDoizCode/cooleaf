@@ -7,6 +7,7 @@
 //
 
 #import <SSKeychain/SSKeychain.h>
+#import <Crashlytics/Crashlytics.h>
 
 #import "NPAppDelegate.h"
 #import "NPCooleafClient.h"
@@ -59,6 +60,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [Crashlytics startWithAPIKey:@"7dcedf5a21b0ddf4342ff0b3104aa0242456847d"];
     
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)])
     {
