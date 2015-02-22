@@ -52,7 +52,11 @@
                                                  action:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(signedOut:) name:kNPCooleafClientSignOut object:nil];
-        
+		[[UINavigationBar appearance] setBarTintColor:[UIColor blueColor]];
+		[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+		[[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor], NSForegroundColorAttributeName, nil]];
+
+		
     }
     return self;
 }
@@ -148,6 +152,7 @@
     }
     [self reloadEvents];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
