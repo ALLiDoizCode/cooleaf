@@ -25,14 +25,14 @@ static UITextView *_tV;
 @property (weak, nonatomic) IBOutlet UILabel *eventDate;
 @property (weak, nonatomic) IBOutlet UITextView *eventTags;
 @property (weak, nonatomic) IBOutlet UIView *slideBarContent;
-@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
+//@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
 @property (weak, nonatomic) IBOutlet UIImageView *attendeeIcon;
 @property (weak, nonatomic) IBOutlet UILabel *attendeeLabel;
 @property (weak, nonatomic) IBOutlet UIView *sliderBarView;
 @property (weak, nonatomic) IBOutlet UIView *selectionView;
 @property (weak, nonatomic) IBOutlet UIButton *joinButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
-@property (weak, nonatomic) IBOutlet UIView *topSeparator;
+//@property (weak, nonatomic) IBOutlet UIView *topSeparator;
 
 - (IBAction)joinTapped:(id)sender;
 - (void)panned:(UIPanGestureRecognizer *)rec;
@@ -193,8 +193,8 @@ static UITextView *_tV;
     if ([_event[@"participants_count"] integerValue] > 0)
     {
         _attendeeIcon.image = [UIImage imageNamed:@"AttendeeIcon"];
-        _attendeeLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1];
-        _attendeeLabel.text = [NSString stringWithFormat:@"%@", _event[@"participants_count"]];
+        _attendeeLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1];
+        _attendeeLabel.text = [NSString stringWithFormat:@"%@ Participants", _event[@"participants_count"]];
         
         f = _slideBarContent.frame;
         f.size.height = 95;
@@ -271,10 +271,10 @@ static UITextView *_tV;
         
     }
     
-    f = _topSeparator.frame;
-    f.size.height = 0.5;
-    _topSeparator.frame = f;
-    
+//    f = _topSeparator.frame;
+//    f.size.height = 0.5;
+//    _topSeparator.frame = f;
+	
     _eventTags.text = [hashes uppercaseString];
     _eventTags.transform = CGAffineTransformMakeTranslation(0, shift);
 //    _bottomSeparator.transform = CGAffineTransformMakeTranslation(0, shift+shift2+0.5);

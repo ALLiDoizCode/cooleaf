@@ -26,7 +26,7 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *globalSpinner;
 @property (weak, nonatomic) IBOutlet UIImageView *logoView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
+//@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 
 - (IBAction)signInTapped:(id)sender;
 - (IBAction)forgotPasswdTapped:(id)sender;
