@@ -14,6 +14,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *logoView;
+@property (weak, nonatomic) IBOutlet UILabel *rewardPoints;
+@property (weak, nonatomic) IBOutlet UILabel *positionLabel;
+
+
 @end
 
 @implementation NPCompanyCell
@@ -41,12 +45,17 @@
             imgSize.width = imgSize.width * 28 / imgSize.height;
             imgSize.height = 28;
             _logoView.frame = CGRectMake(320 - 16 - imgSize.width, 15, imgSize.width, imgSize.height);
+			_logoView.hidden = YES;
         }
     }];
     _nameLabel.text = uD[@"name"];
-
+	if ([uD[@"role"][@"department"][@"default"] boolValue])
+		_positionLabel.text = [NSString stringWithFormat:@"%@, \u00A0", uD[@"role"][@"organization"][@"name"]];
+	else
+		_positionLabel.text = [NSString stringWithFormat:@"%@, %@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
+	_rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
     UIImage *avatarPlaceholder = nil;
-    _avatarView.layer.cornerRadius = 20.0;
+    _avatarView.layer.cornerRadius = 30.0;
     if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])
         avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderFemaleMedium"];
     else

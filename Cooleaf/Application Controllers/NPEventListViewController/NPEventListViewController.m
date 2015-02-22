@@ -38,7 +38,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Upcoming Events", @"Event list view title");
+        self.title = NSLocalizedString(@"Events", @"Event list view title");
 //        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Profile"] style:UIBarButtonItemStylePlain target:self action:@selector(profileTapped:)];
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setImage:[UIImage imageNamed:@"Profile"] forState:UIControlStateNormal];
@@ -46,7 +46,7 @@
         btn.frame = CGRectMake(0, 0, 30, 30);
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
-                                                 initWithTitle:NSLocalizedString(@"Upcoming", @"Event list view title")
+                                                 initWithTitle:NSLocalizedString(@"Events", @"Event list view title")
                                                  style:UIBarButtonItemStylePlain
                                                  target:nil
                                                  action:nil];
@@ -281,7 +281,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0)
-        return 57;
+        return 140;
     else if (indexPath.row -1 < _myEvents.count)
         return [NPEventCell cellHeightForEvent:_myEvents[indexPath.row - 1]];
     else if (indexPath.row-1 == _myEvents.count)
