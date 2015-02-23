@@ -53,7 +53,7 @@
 
 - (UIView *)avatarForUser:(NSDictionary *)user offset:(CGFloat)offset
 {
-    UIImageView *avatar = [[UIImageView alloc] initWithFrame:CGRectMake(15 + 30*offset, 41, 26, 26)];
+    UIImageView *avatar = [[UIImageView alloc] initWithFrame:CGRectMake(15 + 30*offset, 11, 26, 26)];
     avatar.contentMode = UIViewContentModeScaleAspectFill;
     avatar.layer.cornerRadius = 13.0;
     avatar.clipsToBounds = YES;
@@ -115,7 +115,7 @@
         [self.contentView addSubview:avatar];
         avatarCount++;
         
-        if (avatarCount > 8)
+        if (avatarCount > 6)
         {
             avatar = [self avatarForUser:nil offset:avatarCount];
             [self.contentView addSubview:avatar];

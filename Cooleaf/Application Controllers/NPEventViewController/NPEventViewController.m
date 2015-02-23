@@ -383,7 +383,7 @@ enum {
     switch (indexPath.row) {
         case NPEventCell_Attendees:
             if ([_currentEvent[@"participants_count"] integerValue] > 0)
-                return 85.0;
+                return 50.0;
             else
                 return 44.0;
             break;
