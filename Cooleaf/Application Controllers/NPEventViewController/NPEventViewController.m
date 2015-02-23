@@ -48,6 +48,7 @@ enum {
 @property (weak, nonatomic) IBOutlet UITextView *categoriesLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) IBOutlet UIView *topSeparator;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UILabel *rewardLabel;
 
 - (void)setEvent:(NSDictionary *)event;
@@ -130,11 +131,11 @@ enum {
     [_tableView reloadData];
     
     
-    // Button border
-    _joinButton.layer.borderWidth = 1;
-    _joinButton.layer.borderColor = _joinButton.titleLabel.textColor.CGColor;
-    _joinButton.layer.cornerRadius = 2.0;
-    
+//    // Button border
+//    _joinButton.layer.borderWidth = 1;
+//    _joinButton.layer.borderColor = _joinButton.titleLabel.textColor.CGColor;
+//    _joinButton.layer.cornerRadius = 2.0;
+//    
     // Set cover image
     if (event[@"image"][@"url"] != nil) {
         NSString *imageUrlString = [@"http:" stringByAppendingString:[event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x150"]];
@@ -171,7 +172,7 @@ enum {
     
     // Move necessary elements down
     _joinButton.transform = CGAffineTransformMakeTranslation(0, shift);
-    _rewardLabel.transform = CGAffineTransformMakeTranslation(0, shift);
+//    _rewardLabel.transform = CGAffineTransformMakeTranslation(0, shift);
     _loadingIndicator.transform = CGAffineTransformMakeTranslation(0, shift);
     _resignButton.transform = CGAffineTransformMakeTranslation(0, shift);
     _topSeparator.transform = CGAffineTransformMakeTranslation(0, shift);
@@ -181,8 +182,11 @@ enum {
     
     // Resize header
     f = _tableHeaderView.frame;
-    f.size.height = 185 + shift;
+    f.size.height = 185;
     _tableHeaderView.frame = f;
+	f = _backgroundView.frame;
+	f.size.height = 185;
+	_backgroundView.frame = f;
     
     // Reassign header again
     _tableView.tableHeaderView = _tableHeaderView;
@@ -219,26 +223,29 @@ enum {
 
 - (void)updateJoinButton
 {
-    _joinButton.layer.borderColor = [[_joinButton titleColorForState:(([_currentEvent[@"attending"] boolValue]) ? UIControlStateDisabled : UIControlStateNormal)] CGColor];
+//	_joinButton.layer.borderColor = [[_joinButton titleColorForState:(([_currentEvent[@"attending"] boolValue]) ? UIControlStateDisabled : UIControlStateNormal)] CGColor];
+//	_resignButton.layer.borderColor = [[_resignButton titleColorForState:((![_currentEvent[@"attending"] boolValue]) ? UIControlStateDisabled : UIControlStateNormal)] CGColor];
     _joinButton.enabled = ![_currentEvent[@"attending"] boolValue];
     _resignButton.hidden = ![_currentEvent[@"attending"] boolValue];
-    _joinButton.hidden = NO;
+    _joinButton.hidden = [_currentEvent[@"attending"] boolValue];
     
     if ([_currentEvent[@"attending"] boolValue])
     {
-        _joinButton.frame = CGRectMake(91, 120 + _shift, 139, 25);
+		_joinButton.frame = CGRectMake(260, 60 + _shift, 60, 25);
+		_resignButton.frame = CGRectMake(260, 60 + _shift, 60, 25);
     }
     else
     {
-        _joinButton.frame = CGRectMake(100, 120 + _shift, 121, 25);
+		_joinButton.frame = CGRectMake(260, 60 + _shift, 60, 25);
+		_resignButton.frame = CGRectMake(260, 60 + _shift, 60, 25);
     }
 //    _joinButton.transform = CGAffineTransformMakeTranslation(0, _shift);
 }
 
 - (void)updateCells
 {
-    _topSeparator.hidden = NO;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    _topSeparator.hidden = YES;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_tableView reloadData];
 }
 

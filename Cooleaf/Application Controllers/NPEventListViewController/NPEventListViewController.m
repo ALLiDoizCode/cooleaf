@@ -75,7 +75,8 @@
     [_tableView registerNib:[UINib nibWithNibName:@"NPEventCell" bundle:nil] forCellReuseIdentifier:@"NPEventCell"];
     [_tableView registerNib:[UINib nibWithNibName:@"NPOtherEventCell" bundle:nil] forCellReuseIdentifier:@"NPOtherEventCell"];
     [_tableView registerNib:[UINib nibWithNibName:@"NPCompanyCell" bundle:nil] forCellReuseIdentifier:@"NPCompanyCell"];
-    
+	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReceived:) name:kNPCooleafClientRefreshNotification object:nil];
 }
 

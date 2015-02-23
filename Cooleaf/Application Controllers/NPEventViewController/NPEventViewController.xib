@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NPEventViewController">
             <connections>
+                <outlet property="backgroundView" destination="dSW-KT-w38" id="GYb-xR-mG0"/>
                 <outlet property="categoriesLabel" destination="o3h-9B-0cT" id="nc5-zz-4FN"/>
                 <outlet property="coverPhotoView" destination="2R6-wy-Wxd" id="leY-OX-duP"/>
                 <outlet property="eventChangeButtons" destination="wcX-t3-ZhK" id="9Jd-Nr-07z"/>
@@ -19,7 +20,6 @@
                 <outlet property="tableHeaderView" destination="Ftt-dP-KEn" id="U3B-Vw-VKo"/>
                 <outlet property="tableView" destination="LtW-Vk-q5m" id="Vw7-PD-76d"/>
                 <outlet property="titleLabel" destination="Tsj-Ju-8xZ" id="WQk-J8-eNY"/>
-                <outlet property="topSeparator" destination="GXU-bQ-SrX" id="DVl-7D-ZQ9"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -45,30 +45,38 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" id="dSW-KT-w38">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Chef Cooking Demo and Wine Tasting" id="Tsj-Ju-8xZ" userLabel="Title label">
+                            <rect key="frame" x="13" y="129" width="240" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="CoverPhotoPlaceholder" id="2R6-wy-Wxd">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="#CUISINE #LIFESTYLE" textAlignment="center" id="o3h-9B-0cT" userLabel="Categories label">
-                    <rect key="frame" x="40" y="75" width="240" height="5"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="#CUISINE #LIFESTYLE" id="o3h-9B-0cT" userLabel="Categories label">
+                    <rect key="frame" x="10" y="160" width="300" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="textColor" red="0.078431372549019607" green="0.76470588235294112" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Chef Cooking Demo and Wine Tasting" textAlignment="center" id="Tsj-Ju-8xZ" userLabel="Title label">
-                    <rect key="frame" x="9" y="75" width="303" height="5"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FJ3-Qp-ptb">
-                    <rect key="frame" x="91" y="120" width="139" height="25"/>
+                    <rect key="frame" x="220" y="107" width="60" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="JOIN THIS EVENT">
+                    <state key="normal" title="JOIN">
+                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="disabled" title="JOINED THIS EVENT">
@@ -83,30 +91,23 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </activityIndicatorView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4fU-yu-eaZ">
-                    <rect key="frame" x="115" y="137" width="90" height="30"/>
+                    <rect key="frame" x="220" y="118" width="60" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                    <state key="normal" title="Unregister">
+                    <state key="normal" title="Leave">
+                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="resignTapped:" destination="-1" eventType="touchUpInside" id="DyR-bv-hdb"/>
                     </connections>
                 </button>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="CoverPhotoMask" id="4tx-zF-zez">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
-                <view contentMode="scaleToFill" id="GXU-bQ-SrX" userLabel="Top separator">
-                    <rect key="frame" x="15" y="184" width="305" height="1"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.74117647060000003" green="0.73725490199999999" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="reward" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mEG-lx-cG8" userLabel="Reward label">
-                    <rect key="frame" x="20" y="77" width="280" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="reward" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mEG-lx-cG8" userLabel="Reward label">
+                    <rect key="frame" x="12" y="164" width="300" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                    <color key="textColor" red="0.83529411760000005" green="0.68627450980000004" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -151,7 +152,6 @@
         <image name="ArrowDownDisabled" width="21" height="11"/>
         <image name="ArrowUp" width="21" height="11"/>
         <image name="ArrowUpDisabled" width="21" height="11"/>
-        <image name="CoverPhotoMask" width="320" height="75"/>
         <image name="CoverPhotoPlaceholder" width="320" height="75"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
