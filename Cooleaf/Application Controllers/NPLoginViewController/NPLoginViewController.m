@@ -21,8 +21,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswdBtn;
 @property (weak, nonatomic) IBOutlet UIButton *signInBtn;
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (weak, nonatomic) IBOutlet UIView *loginHighlight;
+@property (weak, nonatomic) IBOutlet UIButton *loginTabButton;
+@property (weak, nonatomic) IBOutlet UIButton *signupTabButton;
+@property (weak, nonatomic) IBOutlet UIView *signupHighlight;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *globalSpinner;
 @property (weak, nonatomic) IBOutlet UIImageView *logoView;
@@ -31,6 +36,10 @@
 - (IBAction)signInTapped:(id)sender;
 - (IBAction)forgotPasswdTapped:(id)sender;
 - (void)cancelLogin:(id)sender;
+- (IBAction)loginTabTapped:(id)sender;
+- (IBAction)signupTabTapped:(id)sender;
+- (IBAction)signupButtonTapped:(id)sender;
+
 
 @end
 
@@ -50,10 +59,10 @@
 - (void)startLogin
 {
     [UIView animateWithDuration:0.3 animations:^{
-        _logoView.alpha = 0.0;
+//        _logoView.alpha = 0.0;
     } completion:^(BOOL finished) {
-        _logoView.hidden = YES;
-        
+//        _logoView.hidden = YES;
+		
         NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
         if (username && [SSKeychain passwordForService:@"cooleaf" account:username])
         {
@@ -106,7 +115,11 @@
     _containerView.hidden = YES;
     _forgotPasswdBtn.hidden = YES;
     _containerView.layer.cornerRadius = 4.0;
-    
+	_loginHighlight.alpha = 1.0;
+	_signupHighlight.alpha = 0.0;
+	_signUpButton.alpha = 0.0;
+	_signUpButton.hidden = YES;
+	
     if ([UIScreen mainScreen].bounds.size.height < 500)
     {
         _containerView.transform = CGAffineTransformMakeTranslation(0, -100);
@@ -208,10 +221,44 @@
     
 }
 
+- (IBAction)signupButtonTapped:(id)sender
+{
+	NSLog(@"Sign Up Pressed");
+}
+
 - (void)cancelLogin:(id)sender
 {
     [_loginOperation cancel];
     [self unlockView];
+}
+
+- (IBAction)loginTabTapped:(id)sender
+{
+	[UIView animateWithDuration:0.5 animations:^{
+		_loginHighlight.alpha = 1.0;
+		_signupHighlight.alpha = 0.0;
+		_signUpButton.hidden = YES;
+		_signUpButton.alpha = 0.0;
+		_signInBtn.hidden = NO;
+		_signInBtn.alpha = 1.0;
+		[self.view bringSubviewToFront:_signInBtn];
+	} completion:^(BOOL finished) {
+	}];
+
+}
+
+- (IBAction)signupTabTapped:(id)sender
+{
+	[UIView animateWithDuration:0.5 animations:^{
+		_loginHighlight.alpha = 0.0;
+		_signupHighlight.alpha = 1.0;
+		_signUpButton.hidden = NO;
+		_signUpButton.alpha = 1.0;
+		_signInBtn.hidden = YES;
+		_signInBtn.alpha = 0.0;
+		[self.view bringSubviewToFront:_signUpButton];
+	} completion:^(BOOL finished) {
+	}];
 }
 
 - (IBAction)forgotPasswdTapped:(id)sender
