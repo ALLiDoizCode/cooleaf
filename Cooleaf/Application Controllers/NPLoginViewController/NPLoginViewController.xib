@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NPLoginViewController">
@@ -19,6 +19,7 @@
                 <outlet property="signupHighlight" destination="SEz-XS-06j" id="9cq-qy-4HL"/>
                 <outlet property="signupTabButton" destination="vXA-oz-kaP" id="VhF-EV-wxP"/>
                 <outlet property="spinner" destination="OT1-7P-z3w" id="y1g-Ua-yP5"/>
+                <outlet property="termsButton" destination="Y2V-Tz-pyp" id="2QQ-Zb-XXl"/>
                 <outlet property="usernameField" destination="oe6-gj-IEC" id="qSa-h4-8nX"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -32,7 +33,7 @@
                     <rect key="frame" x="151" y="279" width="20" height="20"/>
                 </activityIndicatorView>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uo0-it-iqr">
-                    <rect key="frame" x="30" y="400" width="259" height="30"/>
+                    <rect key="frame" x="30" y="400" width="260" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="Forgot password?">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -143,6 +144,17 @@
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="V5V-Bw-vuq">
                     <rect key="frame" x="40" y="118" width="240" height="52"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2V-Tz-pyp">
+                    <rect key="frame" x="20" y="370" width="280" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                    <state key="normal" title="By signing up you agree to the Terms of Service and Privacy Policy">
+                        <color key="titleColor" red="0.30588235289999999" green="0.80392156859999997" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="termsButtonTapped:" destination="-1" eventType="touchUpInside" id="J4s-qP-14F"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>

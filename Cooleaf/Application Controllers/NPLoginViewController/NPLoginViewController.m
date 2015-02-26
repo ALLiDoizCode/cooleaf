@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginTabButton;
 @property (weak, nonatomic) IBOutlet UIButton *signupTabButton;
 @property (weak, nonatomic) IBOutlet UIView *signupHighlight;
+@property (weak, nonatomic) IBOutlet UIButton *termsButton;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *globalSpinner;
 @property (weak, nonatomic) IBOutlet UIImageView *logoView;
@@ -39,6 +40,7 @@
 - (IBAction)loginTabTapped:(id)sender;
 - (IBAction)signupTabTapped:(id)sender;
 - (IBAction)signupButtonTapped:(id)sender;
+- (IBAction)termsButtonTapped:(id)sender;
 
 
 @end
@@ -119,6 +121,7 @@
 	_signupHighlight.alpha = 0.0;
 	_signUpButton.alpha = 0.0;
 	_signUpButton.hidden = YES;
+	_termsButton.alpha = 0.0;
 	
     if ([UIScreen mainScreen].bounds.size.height < 500)
     {
@@ -226,6 +229,12 @@
 	NSLog(@"Sign Up Pressed");
 }
 
+- (IBAction)termsButtonTapped:(id)sender
+{
+	NSURL *termsURL = [NSURL URLWithString:@"http://www.cooleaf.com/pages/tos/"];
+	[[UIApplication sharedApplication] openURL:termsURL];
+}
+
 - (void)cancelLogin:(id)sender
 {
     [_loginOperation cancel];
@@ -241,6 +250,7 @@
 		_signUpButton.alpha = 0.0;
 		_signInBtn.hidden = NO;
 		_signInBtn.alpha = 1.0;
+		_termsButton.alpha = 0.0;
 		[self.view bringSubviewToFront:_signInBtn];
 	} completion:^(BOOL finished) {
 	}];
@@ -256,6 +266,7 @@
 		_signUpButton.alpha = 1.0;
 		_signInBtn.hidden = YES;
 		_signInBtn.alpha = 0.0;
+		_termsButton.alpha = 1.0;
 		[self.view bringSubviewToFront:_signUpButton];
 	} completion:^(BOOL finished) {
 	}];
