@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *positionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
 @property (strong, nonatomic) UIImageView *companyView;
+@property (weak, nonatomic) IBOutlet UIImageView *blurImage;
+@property (weak, nonatomic) IBOutlet UIView *clearView;
+@property (weak, nonatomic) IBOutlet UIView *imageCoverView;
 
 - (void)logoutTapped:(id)sender;
 
@@ -39,6 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	_tagsLabel.hidden = YES;
     _avatarView.layer.cornerRadius = 59.0;
     UIImage *avatarPlaceholder = nil;
     NSDictionary *uD = [NPCooleafClient sharedClient].userData;
@@ -55,41 +59,46 @@
             if (image && [imagePath isEqual:avatarURL.absoluteString])
             {
                 _avatarView.image = image;
+				_blurImage.image = image;
+				UIToolbar* bgToolbar = [[UIToolbar alloc] initWithFrame:_clearView.frame];
+				bgToolbar.barStyle = UIBarStyleBlackOpaque;
+				[_clearView.superview insertSubview:bgToolbar belowSubview:_clearView];
             }
         }];
     }
     
     _nameLabel.text = uD[@"name"];
     if ([uD[@"role"][@"department"][@"default"] boolValue])
-        _positionLabel.text = [NSString stringWithFormat:@"%@\n\u00A0", uD[@"role"][@"organization"][@"name"]];
+        _positionLabel.text = [NSString stringWithFormat:@"%@\u00A0", uD[@"role"][@"organization"][@"name"]];
     else
-        _positionLabel.text = [NSString stringWithFormat:@"%@\n%@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
+        _positionLabel.text = [NSString stringWithFormat:@"%@%@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
     _rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
-    
-    int c = 3;
-    NSMutableString *cats = [NSMutableString new];
-    for (NSDictionary *cat in uD[@"categories"])
-    {
-        c--;
-        [cats appendFormat:@"#%@", [cat[@"name"] uppercaseString]];
-        if (c > 0)
-            [cats appendString:@"\n"];
-        
-        if (c <= 0)
-            break;
-    }
-    _tagsLabel.text = cats;
-    NSURL *companyBannerURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"role"][@"organization"][@"logo"][@"versions"][@"thumb"]];
-    [[NPCooleafClient sharedClient] fetchImage:companyBannerURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
-       if (image && [imagePath isEqualToString:companyBannerURL.absoluteString])
-       {
-           _companyView = [[UIImageView alloc] initWithImage:image];
-           _companyView.frame = CGRectMake(0, 385 /*[UIScreen mainScreen].bounds.size.height - (image.size.height/2.0) - 30.0 */, 320, (image.size.height/2.0));
-           _companyView.contentMode = UIViewContentModeScaleAspectFit;
-           _companyView.backgroundColor = [UIColor clearColor];
-           [self.view addSubview:_companyView];
-       }
-    }];
+//
+//    int c = 3;
+//    NSMutableString *cats = [NSMutableString new];
+//    for (NSDictionary *cat in uD[@"categories"])
+//    {
+//        c--;
+//        [cats appendFormat:@"#%@", [cat[@"name"] uppercaseString]];
+//        if (c > 0)
+//            [cats appendString:@"\n"];
+//        
+//        if (c <= 0)
+//            break;
+//    }
+//    _tagsLabel.text = cats;
+//    NSURL *companyBannerURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"role"][@"organization"][@"logo"][@"versions"][@"thumb"]];
+//    [[NPCooleafClient sharedClient] fetchImage:companyBannerURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+//       if (image && [imagePath isEqualToString:companyBannerURL.absoluteString])
+//       {
+//           _companyView = [[UIImageView alloc] initWithImage:image];
+//           _companyView.frame = CGRectMake(0, 385 /*[UIScreen mainScreen].bounds.size.height - (image.size.height/2.0) - 30.0 */, 320, (image.size.height/2.0));
+//           _companyView.contentMode = UIViewContentModeScaleAspectFit;
+//           _companyView.backgroundColor = [UIColor clearColor];
+//           [self.view addSubview:_companyView];
+//       }
+//
+//    }];
 }
 
 - (void)didReceiveMemoryWarning
