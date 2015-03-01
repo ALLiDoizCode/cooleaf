@@ -32,7 +32,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"";
+        self.title = @"Profile";
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Sign out", @"Sign out button title")
                                                                                   style:UIBarButtonItemStyleDone target:self action:@selector(logoutTapped:)];
     }
@@ -46,6 +46,7 @@
     _avatarView.layer.cornerRadius = 59.0;
     UIImage *avatarPlaceholder = nil;
     NSDictionary *uD = [NPCooleafClient sharedClient].userData;
+	NSLog(@"%@",uD);
     if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])
         avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderFemaleBig"];
     else
@@ -100,6 +101,44 @@
 //
 //    }];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	_tagsLabel.hidden = YES;
+	_avatarView.layer.cornerRadius = 59.0;
+	UIImage *avatarPlaceholder = nil;
+	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
+	NSLog(@"%@",uD);
+	if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])
+		avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderFemaleBig"];
+	else
+		avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderMaleBig"];
+	
+	_avatarView.image = avatarPlaceholder;
+	if (uD[@"profile"][@"picture"][@"original"])
+	{
+		NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"versions"][@"big"]];
+		[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+			if (image && [imagePath isEqual:avatarURL.absoluteString])
+			{
+				_avatarView.image = image;
+				_blurImage.image = image;
+				UIToolbar* bgToolbar = [[UIToolbar alloc] initWithFrame:_clearView.frame];
+				bgToolbar.barStyle = UIBarStyleBlackOpaque;
+				[_clearView.superview insertSubview:bgToolbar belowSubview:_clearView];
+			}
+		}];
+	}
+	
+	_nameLabel.text = uD[@"name"];
+	if ([uD[@"role"][@"department"][@"default"] boolValue])
+		_positionLabel.text = [NSString stringWithFormat:@"%@\u00A0", uD[@"role"][@"organization"][@"name"]];
+	else
+		_positionLabel.text = [NSString stringWithFormat:@"%@, %@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
+	_rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
+	
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -43,23 +43,23 @@
 	
 	
 	UINavigationController *homeNavController = [[UINavigationController alloc] initWithRootViewController:_homeViewController];
-	homeNavController.navigationBarHidden = TRUE;
+	homeNavController.navigationBarHidden = FALSE;
 	homeNavController.toolbarHidden = TRUE;
 	
 	UINavigationController *eventsNavController = [[UINavigationController alloc] initWithRootViewController:_eventListViewController];
-	eventsNavController.navigationBarHidden = TRUE;
+	eventsNavController.navigationBarHidden = FALSE;
 	eventsNavController.toolbarHidden = TRUE;
 	
 	UINavigationController *challengesNavController = [[UINavigationController alloc] initWithRootViewController:_challengesViewController];
-	challengesNavController.navigationBarHidden = TRUE;
+	challengesNavController.navigationBarHidden = FALSE;
 	challengesNavController.toolbarHidden = TRUE;
 	
 	UINavigationController *interestsNavController = [[UINavigationController alloc] initWithRootViewController:_interestsViewController];
-	interestsNavController.navigationBarHidden = TRUE;
+	interestsNavController.navigationBarHidden = FALSE;
 	interestsNavController.toolbarHidden = TRUE;
 	
 	UINavigationController *profileNavController = [[UINavigationController alloc] initWithRootViewController:_profileViewController];
-	profileNavController.navigationBarHidden = TRUE;
+	profileNavController.navigationBarHidden = FALSE;
 	profileNavController.toolbarHidden = TRUE;
 
 	
