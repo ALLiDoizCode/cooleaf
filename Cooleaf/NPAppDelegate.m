@@ -15,6 +15,7 @@
 #import "NPLoginViewController.h"
 #import "UIFont+ApplicationFont.h"
 #import "NPEventViewController.h"
+#import "MainViewController.h"
 
 #define kAppleLookupURLTemplate     @"http://itunes.apple.com/lookup?id=%@"
 #define kAppStoreURLTemplate        @"https://itunes.apple.com/app/id"
@@ -23,6 +24,7 @@
 {
     NSArray *_lastEvents;
     NSNumber *_searchedId;
+	MainViewController *_mainViewController;
 }
 
 @end
@@ -93,8 +95,10 @@
 
     self.window.backgroundColor = [UIColor whiteColor];
     
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[NPEventListViewController new]];
-    
+//    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[NPEventListViewController new]];
+	
+	self.window.rootViewController = (_mainViewController = [[MainViewController alloc]init]);
+	
     [self.window makeKeyAndVisible];    
     [self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
 //    [self checkNewVersionWithpdateBlock:^(NSString *newVersion) {

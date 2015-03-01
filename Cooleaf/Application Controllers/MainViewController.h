@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class NPHomeViewController;
+@class NPEventListViewController;
+@class NPChallengesViewController;
+@class NPInterestsViewController;
+@class NPProfileViewController;
+
 @interface MainViewController : UITabBarController
+
+@property (readonly, nonatomic) NPHomeViewController *homeViewController;
+@property (readonly, nonatomic) NPEventListViewController *eventListViewController;
+@property (readonly, nonatomic) NPChallengesViewController *challengesViewController;
+@property (readonly, nonatomic) NPInterestsViewController *interestsViewController;
+@property (readonly, nonatomic) NPProfileViewController *profileViewController;
+
 
 @end
