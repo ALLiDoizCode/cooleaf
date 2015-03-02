@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NPHomeViewController : UIViewController
+@interface NPHomeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @end
