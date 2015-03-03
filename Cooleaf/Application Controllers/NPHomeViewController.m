@@ -74,7 +74,7 @@
 	
 	[_tableView registerNib:[UINib nibWithNibName:@"NPHomeCell" bundle:nil] forCellReuseIdentifier:@"NPHomeCell"];
 	[_tableView registerNib:[UINib nibWithNibName:@"NPOtherHomeCell" bundle:nil] forCellReuseIdentifier:@"NPOtherHomeCell"];
-	[_tableView registerNib:[UINib nibWithNibName:@"NPHomeTopCell" bundle:nil] forCellReuseIdentifier:@"NPHomeCell"];
+	[_tableView registerNib:[UINib nibWithNibName:@"NPHomeTopCell" bundle:nil] forCellReuseIdentifier:@"NPHomeTopCell"];
 	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReceived:) name:kNPCooleafClientRefreshNotification object:nil];
@@ -102,7 +102,7 @@
 		_loadingEvents.hidden = YES;
 		NSMutableArray *myEvents = [NSMutableArray new];
 		NSMutableArray *otherEvents = [NSMutableArray new];
-		
+		NSLog(@"%@",events);
 		NSNumber *myBranch = [NPCooleafClient sharedClient].userData[@"role"][@"branch"][@"id"];
 		for (NSDictionary *e in events)
 		{
@@ -221,7 +221,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForOtherEventAtIndex:(NSInteger)row
 {
-	NPHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPOtherHomeCell"];
+	NPOtherHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPOtherHomeCell"];
 	
 	cell.event = _otherEvents[row];
 	cell.loading = (_joinActions[cell.event[@"id"]] != nil);
