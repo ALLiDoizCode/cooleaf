@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	self.title = @"Challenges";
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -23,6 +24,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (UITabBarItem *)tabBarItem
+{
+	return [[UITabBarItem alloc] initWithTitle:self.title
+										 image:[[UIImage imageNamed:@"Challenges"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+								 selectedImage:[UIImage imageNamed:@"Challenges"]];
+}
+
 
 /*
 #pragma mark - Navigation

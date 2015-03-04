@@ -161,6 +161,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (UITabBarItem *)tabBarItem
+{
+	return [[UITabBarItem alloc] initWithTitle:self.title
+										 image:[[UIImage imageNamed:@"Events"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+								 selectedImage:[UIImage imageNamed:@"Events"]];
+}
+
+
 - (void)profileTapped:(id)sender
 {
     [self.navigationController pushViewController:[NPProfileViewController new] animated:YES];

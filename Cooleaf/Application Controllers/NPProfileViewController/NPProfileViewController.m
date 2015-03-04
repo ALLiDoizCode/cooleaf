@@ -146,6 +146,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (UITabBarItem *)tabBarItem
+{
+	return [[UITabBarItem alloc] initWithTitle:self.title
+										 image:[[UIImage imageNamed:@"ProfileTab"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+								 selectedImage:[UIImage imageNamed:@"ProfileTab"]];
+}
+
+
+
 - (void)logoutTapped:(id)sender
 {
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil

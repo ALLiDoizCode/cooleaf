@@ -167,6 +167,14 @@
 //}
 
 
+- (UITabBarItem *)tabBarItem
+{
+	return [[UITabBarItem alloc] initWithTitle:self.title
+										 image:[[UIImage imageNamed:@"Home"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+								 selectedImage:[UIImage imageNamed:@"Home"]];
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (_otherEvents.count > 0)
