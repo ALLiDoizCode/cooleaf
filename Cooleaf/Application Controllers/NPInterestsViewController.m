@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.title = @"Interests";
+	self.title = @"Groups";
     // Do any additional setup after loading the view from its nib.
 }
 

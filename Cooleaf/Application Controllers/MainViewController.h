@@ -10,7 +10,7 @@
 
 @class NPHomeViewController;
 @class NPEventListViewController;
-@class NPChallengesViewController;
+//@class NPChallengesViewController;
 @class NPInterestsViewController;
 @class NPProfileViewController;
 
@@ -18,7 +18,7 @@
 
 @property (readonly, nonatomic) NPHomeViewController *homeViewController;
 @property (readonly, nonatomic) NPEventListViewController *eventListViewController;
-@property (readonly, nonatomic) NPChallengesViewController *challengesViewController;
+//@property (readonly, nonatomic) NPChallengesViewController *challengesViewController;
 @property (readonly, nonatomic) NPInterestsViewController *interestsViewController;
 @property (readonly, nonatomic) NPProfileViewController *profileViewController;
 

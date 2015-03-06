@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 #import "NPHomeViewController.h"
 #import "NPEventListViewController.h"
-#import "NPChallengesViewController.h"
+//#import "NPChallengesViewController.h"
 #import "NPInterestsViewController.h"
 #import "NPProfileViewController.h"
 
@@ -31,13 +31,13 @@
 
 	_homeViewController = [[NPHomeViewController alloc] init];
 	_eventListViewController = [[NPEventListViewController alloc] init];
-	_challengesViewController = [[NPChallengesViewController alloc] init];
+//	_challengesViewController = [[NPChallengesViewController alloc] init];
 	_interestsViewController = [[NPInterestsViewController alloc] init];
 	_profileViewController = [[NPProfileViewController alloc] init];
 	
 	(void)_homeViewController.view;
 	(void)_eventListViewController.view;
-	(void)_challengesViewController.view;
+//	(void)_challengesViewController.view;
 	(void)_interestsViewController.view;
 	(void)_profileViewController.view;
 	
@@ -50,9 +50,9 @@
 	eventsNavController.navigationBarHidden = FALSE;
 	eventsNavController.toolbarHidden = TRUE;
 	
-	UINavigationController *challengesNavController = [[UINavigationController alloc] initWithRootViewController:_challengesViewController];
-	challengesNavController.navigationBarHidden = FALSE;
-	challengesNavController.toolbarHidden = TRUE;
+//	UINavigationController *challengesNavController = [[UINavigationController alloc] initWithRootViewController:_challengesViewController];
+//	challengesNavController.navigationBarHidden = FALSE;
+//	challengesNavController.toolbarHidden = TRUE;
 	
 	UINavigationController *interestsNavController = [[UINavigationController alloc] initWithRootViewController:_interestsViewController];
 	interestsNavController.navigationBarHidden = FALSE;
@@ -63,7 +63,7 @@
 	profileNavController.toolbarHidden = TRUE;
 
 	
-	[self setViewControllers:@[homeNavController, eventsNavController, challengesNavController, interestsNavController, profileNavController]];
+	[self setViewControllers:@[homeNavController, eventsNavController, interestsNavController, profileNavController]];
 	
 	
 	
