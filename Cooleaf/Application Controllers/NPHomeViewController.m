@@ -102,7 +102,7 @@
 		_loadingEvents.hidden = YES;
 		NSMutableArray *myEvents = [NSMutableArray new];
 		NSMutableArray *otherEvents = [NSMutableArray new];
-		NSLog(@"%@",events);
+//		NSLog(@"%@",events);
 		NSNumber *myBranch = [NPCooleafClient sharedClient].userData[@"role"][@"branch"][@"id"];
 		for (NSDictionary *e in events)
 		{
