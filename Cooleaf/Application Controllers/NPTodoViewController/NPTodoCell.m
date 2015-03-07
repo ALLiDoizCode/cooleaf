@@ -133,7 +133,7 @@ static UITextView *_tV = nil;
                 avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceholderMaleSmall"];
             
             _avatarView.image = avatarPlaceholder;
-            if (uD[@"profile"][@"picture"][@"original"])
+            if (uD[@"profile"][@"picture"][@"versions"][@"medium"])
             {
                 NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"versions"][@"small"]];
                 [[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {

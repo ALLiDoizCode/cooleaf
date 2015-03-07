@@ -67,7 +67,7 @@
         else
             avatar.image = [UIImage imageNamed:@"AvatarPlaceholderFemaleSmall"];
         
-        if (user[@"profile"][@"picture"][@"original"])
+        if (user[@"profile"][@"picture"][@"versions"][@"medium"])
         {
             NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:user[@"profile"][@"picture"][@"versions"][@"small"]];
             [[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {

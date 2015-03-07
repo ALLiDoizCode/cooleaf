@@ -62,7 +62,7 @@
 		avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderMaleMedium"];
 	
 	_avatarView.image = avatarPlaceholder;
-	if (uD[@"profile"][@"picture"][@"original"])
+	if (uD[@"profile"][@"versions"][@"medium"])
 	{
 		NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"versions"][@"medium"]];
 		[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
