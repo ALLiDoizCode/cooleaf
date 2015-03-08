@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NPInterestsViewController : UIViewController
+@interface NPInterestsViewController : UIViewController<UIActionSheetDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end

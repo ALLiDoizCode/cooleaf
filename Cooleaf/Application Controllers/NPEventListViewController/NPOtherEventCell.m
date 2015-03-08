@@ -25,7 +25,7 @@ static UITextView *_tV;
 @property (weak, nonatomic) IBOutlet UILabel *eventDate;
 @property (weak, nonatomic) IBOutlet UITextView *eventTags;
 @property (weak, nonatomic) IBOutlet UIView *slideBarContent;
-@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
+//@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
 @property (weak, nonatomic) IBOutlet UIImageView *attendeeIcon;
 @property (weak, nonatomic) IBOutlet UILabel *attendeeLabel;
 @property (weak, nonatomic) IBOutlet UIView *sliderBarView;
