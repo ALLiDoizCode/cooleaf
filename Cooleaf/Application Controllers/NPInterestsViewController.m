@@ -39,11 +39,11 @@
 	if (self) {
 		self.title = NSLocalizedString(@"Groups", @"Groups list view title");
 		//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Profile"] style:UIBarButtonItemStylePlain target:self action:@selector(profileTapped:)];
-		UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-		[btn setImage:[UIImage imageNamed:@"Profile"] forState:UIControlStateNormal];
-		[btn addTarget:self action:@selector(profileTapped:) forControlEvents:UIControlEventTouchUpInside];
-		btn.frame = CGRectMake(0, 0, 30, 30);
-		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+//		UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//		[btn setImage:[UIImage imageNamed:@"Profile"] forState:UIControlStateNormal];
+//		[btn addTarget:self action:@selector(profileTapped:) forControlEvents:UIControlEventTouchUpInside];
+//		btn.frame = CGRectMake(0, 0, 30, 30);
+//		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
 		self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
 												 initWithTitle:NSLocalizedString(@"Groups", @"Groups list view title")
 												 style:UIBarButtonItemStylePlain
@@ -172,10 +172,10 @@
 
 
 
-- (void)profileTapped:(id)sender
-{
-	[self.navigationController pushViewController:[NPProfileViewController new] animated:YES];
-}
+//- (void)profileTapped:(id)sender
+//{
+//	[self.navigationController pushViewController:[NPProfileViewController new] animated:YES];
+//}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

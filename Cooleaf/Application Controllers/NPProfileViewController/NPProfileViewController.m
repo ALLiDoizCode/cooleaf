@@ -33,8 +33,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Profile";
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Sign out", @"Sign out button title")
-                                                                                  style:UIBarButtonItemStyleDone target:self action:@selector(logoutTapped:)];
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Sign out", @"Sign out button title") style:UIBarButtonItemStyleDone target:self action:@selector(logoutTapped:)];
+		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", @"Edit Profile button title") style:UIBarButtonItemStyleDone target:self action:@selector(editTapped:)];
     }
     return self;
 }
@@ -154,7 +154,10 @@
 								 selectedImage:[UIImage imageNamed:@"ProfileTab"]];
 }
 
-
+- (void)editTapped:(id)sender
+{
+	NSLog(@"Edit Tapped, fill in with edit stuff later");
+}
 
 - (void)logoutTapped:(id)sender
 {
