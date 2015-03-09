@@ -76,6 +76,9 @@
 		D9809588185CCFFB008F2B61 /* NPEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9809587185CCFFB008F2B61 /* NPEventCell.m */; };
 		D980958A185CD013008F2B61 /* NPEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9809589185CD013008F2B61 /* NPEventCell.xib */; };
 		D980958D185F2C5D008F2B61 /* NSFileManager+ImageCaching.m in Sources */ = {isa = PBXBuildFile; fileRef = D980958C185F2C5D008F2B61 /* NSFileManager+ImageCaching.m */; };
+		F9B37B941AAB9802003F3FB8 /* NPRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B37B931AAB9802003F3FB8 /* NPRegistrationViewController.m */; };
+		F9B37B981AAE0CA5003F3FB8 /* NPTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B37B971AAE0CA5003F3FB8 /* NPTagGroup.m */; };
+		F9B37B9B1AAE0F7A003F3FB8 /* NPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B37B9A1AAE0F7A003F3FB8 /* NPTag.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +196,12 @@
 		D9809589185CD013008F2B61 /* NPEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPEventCell.xib; path = "Application Controllers/NPEventListViewController/NPEventCell.xib"; sourceTree = "<group>"; };
 		D980958B185F2C5D008F2B61 /* NSFileManager+ImageCaching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+ImageCaching.h"; sourceTree = "<group>"; };
 		D980958C185F2C5D008F2B61 /* NSFileManager+ImageCaching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ImageCaching.m"; sourceTree = "<group>"; };
+		F9B37B921AAB9802003F3FB8 /* NPRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPRegistrationViewController.h; path = "Application Controllers/NPRegistrationViewController/NPRegistrationViewController.h"; sourceTree = "<group>"; };
+		F9B37B931AAB9802003F3FB8 /* NPRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPRegistrationViewController.m; path = "Application Controllers/NPRegistrationViewController/NPRegistrationViewController.m"; sourceTree = "<group>"; };
+		F9B37B961AAE0CA5003F3FB8 /* NPTagGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPTagGroup.h; path = Model/NPTagGroup.h; sourceTree = "<group>"; };
+		F9B37B971AAE0CA5003F3FB8 /* NPTagGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPTagGroup.m; path = Model/NPTagGroup.m; sourceTree = "<group>"; };
+		F9B37B991AAE0F7A003F3FB8 /* NPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPTag.h; path = Model/NPTag.h; sourceTree = "<group>"; };
+		F9B37B9A1AAE0F7A003F3FB8 /* NPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPTag.m; path = Model/NPTag.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -435,6 +444,7 @@
 		D980954D185CA557008F2B61 /* Cooleaf */ = {
 			isa = PBXGroup;
 			children = (
+				F9B37B951AAE0C59003F3FB8 /* Model */,
 				D94664F51863292B0084BBB2 /* Custom Controllers */,
 				D9809576185CA709008F2B61 /* Application Controllers */,
 				D9809556185CA557008F2B61 /* NPAppDelegate.h */,
@@ -484,6 +494,7 @@
 			children = (
 				523096BC1AA28E7500649FB7 /* TabBar */,
 				D9809577185CA710008F2B61 /* NPLoginViewController */,
+				F9B37B911AAB94C2003F3FB8 /* NPRegistrationViewController */,
 			);
 			name = "Application Controllers";
 			sourceTree = "<group>";
@@ -515,6 +526,26 @@
 				D931450E18925467002325CB /* NPCompanyCell.xib */,
 			);
 			name = NPEventListViewController;
+			sourceTree = "<group>";
+		};
+		F9B37B911AAB94C2003F3FB8 /* NPRegistrationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F9B37B921AAB9802003F3FB8 /* NPRegistrationViewController.h */,
+				F9B37B931AAB9802003F3FB8 /* NPRegistrationViewController.m */,
+			);
+			name = NPRegistrationViewController;
+			sourceTree = "<group>";
+		};
+		F9B37B951AAE0C59003F3FB8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F9B37B991AAE0F7A003F3FB8 /* NPTag.h */,
+				F9B37B9A1AAE0F7A003F3FB8 /* NPTag.m */,
+				F9B37B961AAE0CA5003F3FB8 /* NPTagGroup.h */,
+				F9B37B971AAE0CA5003F3FB8 /* NPTagGroup.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -691,6 +722,7 @@
 			files = (
 				D93AAC9E187C29F000E9B96A /* NPTodoViewController.m in Sources */,
 				523096C01AA28F5D00649FB7 /* NPInterestsViewController.m in Sources */,
+				F9B37B9B1AAE0F7A003F3FB8 /* NPTag.m in Sources */,
 				D9809588185CCFFB008F2B61 /* NPEventCell.m in Sources */,
 				D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */,
 				D93AAC89187B693B00E9B96A /* NPLocationCell.m in Sources */,
@@ -700,12 +732,14 @@
 				D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */,
 				523096DC1AA3E1A600649FB7 /* NPOtherHomeCell.m in Sources */,
 				D93AAC80187B661400E9B96A /* NPTodosCell.m in Sources */,
+				F9B37B981AAE0CA5003F3FB8 /* NPTagGroup.m in Sources */,
 				D93AAC8C187B6D5F00E9B96A /* NPDetailsCell.m in Sources */,
 				523096CE1AA295F500649FB7 /* MainViewController.m in Sources */,
 				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
 				D93AAC93187B704100E9B96A /* NPAttendeesViewController.m in Sources */,
 				D93AABF3186EFAD100E9B96A /* NPProfileViewController.m in Sources */,
 				D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */,
+				F9B37B941AAB9802003F3FB8 /* NPRegistrationViewController.m in Sources */,
 				D93AAC7B187B5C9900E9B96A /* NPDateCell.m in Sources */,
 				D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */,
 				D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */,

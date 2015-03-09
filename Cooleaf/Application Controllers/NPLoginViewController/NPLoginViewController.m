@@ -8,6 +8,7 @@
 
 #import <SSKeychain/SSKeychain.h>
 #import "NPLoginViewController.h"
+#import "NPRegistrationViewController.h"
 #import "NPCooleafClient.h"
 #import "UIBarButtonItem+NPBarButtonItems.h"
 
@@ -226,7 +227,20 @@
 
 - (IBAction)signupButtonTapped:(id)sender
 {
-	NSLog(@"Sign Up Pressed");
+	[_usernameField resignFirstResponder];
+	[_passwordField resignFirstResponder];
+	
+	if (_usernameField.text.length < 5 || _passwordField.text.length == 0) {
+		[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Registration failed", @"Registration failure alert title")
+																message:NSLocalizedString(@"Given username or password is too short.", @"Invalid credentials given. Too little data")
+															 delegate:nil
+											cancelButtonTitle:NSLocalizedString(@"OK", nil)
+											otherButtonTitles: nil] show];
+		return;
+	}
+	
+	NPRegistrationViewController *controller = [[NPRegistrationViewController alloc] initWithUsername:_usernameField.text andPassword:_passwordField.text];
+	[self presentViewController:controller animated:TRUE completion:nil];
 }
 
 - (IBAction)termsButtonTapped:(id)sender

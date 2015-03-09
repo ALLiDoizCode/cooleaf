@@ -22,11 +22,15 @@ NSString * const kNPCooleafClientSignOut = @"kNPCooleafClientSignOut";
 //static NSString * const kNPStagingClientAPIAuthLogin = @"cooleaf";
 //static NSString * const kNPStagingClientAPIAuthPassword = @"letmein";
 
-
-static NSString * const kNPCooleafClientBaseURLString = @"http://api.cooleaf.com";
+static NSString * const kNPCooleafClientBaseURLString = @"http://api.staging.do.cooleaf.monterail.eu";
 static NSString * const kNPCooleafClientAPIPrefix = @"/v1";
-static NSString * const kNPCooleafClientAPIAuthLogin = @"";
-static NSString * const kNPCooleafClientAPIAuthPassword = @"";
+static NSString * const kNPCooleafClientAPIAuthLogin = @"cooleaf";
+static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
+
+//static NSString * const kNPCooleafClientBaseURLString = @"http://api.cooleaf.com";
+//static NSString * const kNPCooleafClientAPIPrefix = @"/v1";
+//static NSString * const kNPCooleafClientAPIAuthLogin = @"";
+//static NSString * const kNPCooleafClientAPIAuthPassword = @"";
 
 @interface NPCooleafClient ()
 {
@@ -364,6 +368,43 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"";
         if (completion)
             completion(error);
     }];
+}
+
+#pragma mark - Registration Handling
+
+- (AFHTTPRequestOperation *)registerWithUsername:(NSString *)username  completion:(void(^)(NSDictionary *object))completion
+{
+	NSString *path = @"/registrations/check.json";
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	NSDictionary *params = nil;
+	
+	if (_notificationUDID.length > 0)
+#ifdef DEBUG
+		params = @{@"email": username, @"device_id": _notificationUDID, @"sandbox": @YES};
+#else
+		params = @{@"email": username, @"device_id": _notificationUDID, @"sandbox": @NO};
+#endif //DEBUG
+	else
+		params = @{@"email": username};
+	
+	DLog(@"baseUrl = %@", self.baseURL);
+	DLog(@"path    = %@", path);
+	DLog(@"params  = %@", params);
+	
+	return [self POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		_userData = [responseObject copy];
+		[self.requestSerializer setValue:_userData[@"role"][@"organization"][@"subdomain"] forHTTPHeaderField:@"X-Organization"];
+		[[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		DLog(@"Operation failed because, %@", error.localizedDescription);
+		if (completion)
+			completion(nil);
+	}];
 }
 
 @end
