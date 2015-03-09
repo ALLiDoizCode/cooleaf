@@ -100,6 +100,7 @@
     [[NPCooleafClient sharedClient] fetchEventList:^(NSArray *events) {
         [_activityIndicator stopAnimating];
         _loadingEvents.hidden = YES;
+		NSLog(@"%@",events);
         NSMutableArray *myEvents = [NSMutableArray new];
         NSMutableArray *otherEvents = [NSMutableArray new];
         

@@ -190,11 +190,11 @@ static UITextView *_tV;
 	}
 	
 	// Now - let's set proper colors for attendees
-	if ([_event[@"participants_count"] integerValue] > 0)
+	if ([_event[@"users_count"] integerValue] > 0)
 	{
 		_attendeeIcon.image = [UIImage imageNamed:@"AttendeeIcon"];
 		_attendeeLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1];
-		_attendeeLabel.text = [NSString stringWithFormat:@"%@ Participants", _event[@"participants_count"]];
+		_attendeeLabel.text = [NSString stringWithFormat:@"%@ Members", _event[@"users_count"]];
 		
 		f = _slideBarContent.frame;
 		f.size.height = 95;
@@ -428,7 +428,7 @@ static UITextView *_tV;
 	CGFloat titleHeight = _tV.frame.size.height;
 	CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : 0;
 	
-	return 154 + (titleHeight-39) + shift;
+	return 204 + (titleHeight-39) + shift;
 }
 
 @end
