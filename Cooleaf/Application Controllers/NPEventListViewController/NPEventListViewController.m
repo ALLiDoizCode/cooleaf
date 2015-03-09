@@ -97,7 +97,9 @@
 
 - (void)reloadEvents
 {
-    [[NPCooleafClient sharedClient] fetchEventList:^(NSArray *events) {
+	NSNumber *myID = [NPCooleafClient sharedClient].userData[@"id"];
+    [[NPCooleafClient sharedClient] fetchMyEventsList:myID completion:^(NSArray *events)
+	{
         [_activityIndicator stopAnimating];
         _loadingEvents.hidden = YES;
 		NSLog(@"%@",events);
