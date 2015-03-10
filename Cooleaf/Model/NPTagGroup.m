@@ -12,6 +12,7 @@
 @interface NPTagGroup ()
 {
 	NSMutableArray *_tags;
+	NSMutableDictionary *_tagsByName;
 }
 @end
 
@@ -26,10 +27,14 @@
 		_name = dictionary[@"name"];
 		_isPrimary = ((NSNumber *)dictionary[@"primary"]).boolValue;
 		_isRequired = ((NSNumber *)dictionary[@"required"]).boolValue;
+		
 		_tags = [[NSMutableArray alloc] init];
+		_tagsByName = [[NSMutableDictionary alloc] init];
 		
 		[(NSArray *)dictionary[@"tags"] enumerateObjectsUsingBlock:^ (NSDictionary *tag, NSUInteger index, BOOL *stop) {
-			[_tags addObject:[[NPTag alloc] initWithDictionary:tag]];
+			NPTag *nptag = [[NPTag alloc] initWithDictionary:tag];
+			[_tags addObject:nptag];
+			_tagsByName[nptag.name] = nptag;
 		}];
 	}
 	

@@ -14,8 +14,15 @@
 
 @interface NPRegistrationViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
+	/**
+	 * Data
+	 */
 	NSString *_username;
 	NSString *_password;
+	NSString *_token;
+	NSMutableDictionary *_tagGroups;         // keyed on tag group name
+	NPTagGroup *_locationTagGroup;
+	NPTagGroup *_departmentTagGroup;
 	
 	/**
 	 * Main
@@ -61,13 +68,6 @@
 	 */
 	UIView *_modalView;
 	UIActivityIndicatorView *_modalSpinner;
-	
-	/**
-	 * Data
-	 */
-	NSMutableDictionary *_tagGroups;         // keyed on tag group name
-	NPTagGroup *_locationTagGroup;
-	NPTagGroup *_departmentTagGroup;
 }
 @end
 
@@ -82,7 +82,7 @@
 	if (self) {
 		_username = username;
 		_password = password;
-		_tagGroups = [[NSMutableDictionary alloc] init];
+		//_tagGroups = [[NSMutableDictionary alloc] init];
 	}
 	
 	return self;
@@ -171,6 +171,8 @@
 		// view
 		_nextBtn = [[UIView alloc] init];
 		_nextBtn.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_nextBtn.userInteractionEnabled = TRUE;
+		[_nextBtn addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionNext:)]];
 		[_topBarView addSubview:_nextBtn];
 		[_topBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(100)]|" options:0 metrics:nil views:@{@"view": _nextBtn}]];
 		[_topBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view]|" options:0 metrics:nil views:@{@"view": _nextBtn}]];
@@ -444,11 +446,9 @@
 	
 	[self modalShow];
 	
-	[[NPCooleafClient sharedClient] registerWithUsername:_username completion:^ (NSDictionary *object) {
-		[(NSArray *)object[@"all_structure_tags"] enumerateObjectsUsingBlock:^ (NSDictionary *structure, NSUInteger index, BOOL *stop) {
-			NPTagGroup *tagGroup = [[NPTagGroup alloc] initWithDictionary:structure];
-			_tagGroups[tagGroup.name] = tagGroup;
-		}];
+	[[NPCooleafClient sharedClient] registerWithUsername:_username completion:^ (NSString *token, NSDictionary *tagGroups) {
+		_token = token;
+		_tagGroups = [NSMutableDictionary dictionaryWithDictionary:tagGroups];
 		_locationTagGroup = _tagGroups[@"Location"];
 		_departmentTagGroup = _tagGroups[@"Department"];
 		[self modalHide];
@@ -501,6 +501,17 @@
 {
 	DLog(@"");
 	
+	NSMutableArray *tags = [[NSMutableArray alloc] init];
+	
+	NPTag *locationTag = _locationTagGroup.tagsByName[_locationLbl.text];
+	NPTag *departmentTag = _departmentTagGroup.tagsByName[_departmentLbl.text];
+	
+	if (locationTag != nil) [tags addObject:@(locationTag.objectId).stringValue];
+	if (departmentTag != nil) [tags addObject:@(departmentTag.objectId).stringValue];
+	
+	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:_genderLbl.text password:_password tags:tags completion:^ {
+		DLog(@"Done!");
+	}];
 }
 
 - (void)doActionPicture:(id)sender

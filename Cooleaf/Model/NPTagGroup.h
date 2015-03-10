@@ -15,6 +15,7 @@
 @property (readonly, assign, nonatomic) BOOL isPrimary;
 @property (readonly, assign, nonatomic) BOOL isRequired;
 @property (readonly, retain, nonatomic) NSArray *tags;
+@property (readonly, retain, nonatomic) NSDictionary *tagsByName;
 
 /**
  * {

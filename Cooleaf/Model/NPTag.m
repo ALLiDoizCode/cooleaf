@@ -19,7 +19,6 @@
 		_name = dictionary[@"name"];
 		_isActive = ((NSNumber *)dictionary[@"active"]).boolValue;
 		_isDefault = ((NSNumber *)dictionary[@"default"]).boolValue;
-		_name = dictionary[@"name"];
 		_parentId = ((NSNumber *)dictionary[@"parent_id"]).integerValue;
 		_parentType = dictionary[@"parent_type"];
 		_type = dictionary[@"type"];
@@ -30,9 +29,9 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%@<%p>::{ objectId=%d, name=%@, isActive=%@, isDefault=%@, name=%@, parentId=%d, parentType=%@, type=%@ }",
+	return [NSString stringWithFormat:@"%@<%p>::{ objectId=%d, name=%@, isActive=%@, isDefault=%@, parentId=%d, parentType=%@, type=%@ }",
 					NSStringFromClass(self.class), self,
-					(int)_objectId, _name, NSStringFromBool(_isActive), NSStringFromBool(_isDefault), _name, (int)_parentId, _parentType, _type];
+					(int)_objectId, _name, NSStringFromBool(_isActive), NSStringFromBool(_isDefault), (int)_parentId, _parentType, _type];
 }
 
 @end
