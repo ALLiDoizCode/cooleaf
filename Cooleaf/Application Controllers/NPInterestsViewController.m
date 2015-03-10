@@ -299,14 +299,15 @@
 {
 	if (indexPath.row == 0)
 		return 140;
-	else if (indexPath.row -1 < _myEvents.count)
-		return [NPEventCell cellHeightForEvent:_myEvents[indexPath.row - 1]];
-	else if (indexPath.row-1 == _myEvents.count)
-	{
-		return _otherBranchesHeader.frame.size.height;
-	}
-	else
-		return [NPOtherEventCell cellHeightForEvent:_otherEvents[indexPath.row - _myEvents.count - 2]];
+//	else if (indexPath.row -1 < _myEvents.count)
+//		return 245;
+//	else if (indexPath.row-1 == _myEvents.count)
+//	{
+//		return _otherBranchesHeader.frame.size.height;
+//	}
+//	else
+//		return [NPOtherEventCell cellHeightForEvent:_otherEvents[indexPath.row - _myEvents.count - 2]];
+	else return 245;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

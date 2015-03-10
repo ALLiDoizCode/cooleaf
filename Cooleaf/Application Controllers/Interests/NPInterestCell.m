@@ -197,10 +197,10 @@ static UITextView *_tV;
 		_attendeeLabel.text = [NSString stringWithFormat:@"%@ Members", _event[@"users_count"]];
 		
 		f = _slideBarContent.frame;
-		f.size.height = 95;
+		f.size.height = 90;
 		_slideBarContent.frame = f;
 		f = _sliderBarView.frame;
-		f.size.height = 95;
+		f.size.height = 90;
 		_sliderBarView.frame = f;
 		
 		f = _joinButton.frame;
@@ -428,7 +428,8 @@ static UITextView *_tV;
 	CGFloat titleHeight = _tV.frame.size.height;
 	CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : 0;
 	
-	return 204 + (titleHeight-39) + shift;
+//	return 204 + (titleHeight-39) + shift;
+	return 245;
 }
 
 @end
