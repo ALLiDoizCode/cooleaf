@@ -12,7 +12,7 @@
 #import "NPTagGroup.h"
 #import "UIFont+ApplicationFont.h"
 
-@interface NPRegistrationViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface NPRegistrationViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
 	NSString *_username;
 	NSString *_password;
@@ -40,6 +40,7 @@
 	UILabel *_basicInfoLbl;
 	UIImageView *_avatarImg;
 	UILabel *_avatarLbl;
+	UIImagePickerController *_avatarController;
 	
 	/**
 	 * Options
@@ -201,9 +202,13 @@
 		_avatarImg = [[UIImageView alloc] init];
 		_avatarImg.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_avatarImg.image = [UIImage imageNamed:@"AvatarPlaceHolderMaleBig"];
+		_avatarImg.layer.masksToBounds = TRUE;
+		_avatarImg.layer.cornerRadius = 50;
+		_avatarImg.userInteractionEnabled = TRUE;
+		[_avatarImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionPicture:)]];
 		[_mainView addSubview:_avatarImg];
-		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(105)]"       options:0 metrics:nil views:@{@"view": _avatarImg}]];
-		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-155-[view(105)]" options:0 metrics:nil views:@{@"view": _avatarImg}]];
+		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(100)]"       options:0 metrics:nil views:@{@"view": _avatarImg}]];
+		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-155-[view(100)]" options:0 metrics:nil views:@{@"view": _avatarImg}]];
 		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_avatarImg attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
 		
 		// avatar label
@@ -212,6 +217,8 @@
 		_avatarLbl.font = [UIFont mediumApplicationFontOfSize:9];
 		_avatarLbl.textColor = RGB(0x99, 0x99, 0x99);
 		_avatarLbl.text = @"Upload profile picture";
+		_avatarLbl.userInteractionEnabled = TRUE;
+		[_avatarLbl addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionPicture:)]];
 		[_mainView addSubview:_avatarLbl];
 		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_avatarLbl attribute:NSLayoutAttributeTop     relatedBy:NSLayoutRelationEqual toItem:_avatarImg attribute:NSLayoutAttributeBottom  multiplier:1 constant:10]];
 		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_avatarLbl attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_avatarImg attribute:NSLayoutAttributeCenterX multiplier:1 constant: 0]];
@@ -496,6 +503,13 @@
 	
 }
 
+- (void)doActionPicture:(id)sender
+{
+	_avatarController = [[UIImagePickerController alloc] init];
+	_avatarController.delegate = self;
+	[self presentViewController:_avatarController animated:TRUE completion:nil];
+}
+
 - (void)doActionPickerDone:(UITapGestureRecognizer *)gr
 {
 	DLog(@"");
@@ -589,6 +603,26 @@
 		_mainViewTopConstraint.constant = 0;
 		[self.view layoutIfNeeded];
 	}];
+}
+
+
+
+
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+	DLog(@"%@", info);
+	_avatarImg.image = info[UIImagePickerControllerOriginalImage];
+	[_avatarController dismissViewControllerAnimated:TRUE completion:nil];
+	_avatarController = nil;
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+	[_avatarController dismissViewControllerAnimated:TRUE completion:nil];
+	_avatarController = nil;
 }
 
 
