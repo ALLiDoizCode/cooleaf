@@ -507,7 +507,22 @@
 {
 	_avatarController = [[UIImagePickerController alloc] init];
 	_avatarController.delegate = self;
+	_avatarController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 	[self presentViewController:_avatarController animated:TRUE completion:nil];
+}
+
+- (void)doActionPictureCamera:(id)sender
+{
+	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Library" style:UIBarButtonItemStylePlain target:self action:@selector(doActionPictureLibrary:)];
+	_avatarController.navigationBar.topItem.leftBarButtonItem = button;
+	_avatarController.sourceType = UIImagePickerControllerSourceTypeCamera;
+}
+
+- (void)doActionPictureLibrary:(id)sender
+{
+	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonItemStylePlain target:self action:@selector(doActionPictureCamera:)];
+	_avatarController.navigationBar.topItem.leftBarButtonItem = button;
+	_avatarController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 }
 
 - (void)doActionPickerDone:(UITapGestureRecognizer *)gr
@@ -609,6 +624,20 @@
 
 
 
+#pragma mark - UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+		UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonItemStylePlain target:self action:@selector(doActionPictureCamera:)];
+		navigationController.navigationBar.topItem.leftBarButtonItem = button;
+	}
+}
+
+
+
+
+
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -621,8 +650,13 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-	[_avatarController dismissViewControllerAnimated:TRUE completion:nil];
-	_avatarController = nil;
+	if (_avatarController.sourceType == UIImagePickerControllerSourceTypeCamera) {
+		[self doActionPictureLibrary:picker];
+	}
+	else {
+		[_avatarController dismissViewControllerAnimated:TRUE completion:nil];
+		_avatarController = nil;
+	}
 }
 
 

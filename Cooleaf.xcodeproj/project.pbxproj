@@ -600,9 +600,10 @@
 				ORGANIZATIONNAME = "Nova Project";
 				TargetAttributes = {
 					D9809543185CA557008F2B61 = {
-						DevelopmentTeam = 599T2Z83B4;
+						DevelopmentTeam = 4W85FZB5TV;
 					};
 					D980955E185CA557008F2B61 = {
+						DevelopmentTeam = 4W85FZB5TV;
 						TestTargetID = D9809543185CA557008F2B61;
 					};
 				};
