@@ -696,7 +696,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 7dcedf5a21b0ddf4342ff0b3104aa0242456847d 8a1c83610971784659659cbe86e25fb0759be1324f3f61f2c6188ba8f6839ea1";
+			shellScript = "#./Crashlytics.framework/run 7dcedf5a21b0ddf4342ff0b3104aa0242456847d 8a1c83610971784659659cbe86e25fb0759be1324f3f61f2c6188ba8f6839ea1";
 		};
 		FA520D10F0204430A4C3A1ED /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
