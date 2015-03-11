@@ -8,8 +8,8 @@
 
 #import "NPInterestsViewController.h"
 #import "NPCooleafClient.h"
-#import "NPEventCell.h"
-#import "NPOtherEventCell.h"
+#import "NPInterestCell.h"
+#import "NPOtherInterestCell.h"
 #import "NPProfileViewController.h"
 #import "NPEventViewController.h"
 
@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *loadingEvents;
 @property (strong, nonatomic) IBOutlet UIView *otherBranchesHeader;
 
-- (void)profileTapped:(id)sender;
+//- (void)profileTapped:(id)sender;
 - (void)notificationReceived:(NSNotification *)not;
 - (void)signedOut:(NSNotification *)not;
 
@@ -99,10 +99,9 @@
 	[[NPCooleafClient sharedClient] fetchInterestList:^(NSArray *events) {
 		[_activityIndicator stopAnimating];
 		_loadingEvents.hidden = YES;
-		NSLog(@"%@",events);
 		NSMutableArray *myEvents = [NSMutableArray new];
 		NSMutableArray *otherEvents = [NSMutableArray new];
-		
+
 		NSNumber *myBranch = [NPCooleafClient sharedClient].userData[@"role"][@"branch"][@"id"];
 		for (NSDictionary *e in events)
 		{
@@ -129,7 +128,8 @@
 		
 		_myEvents = myEvents;
 		_otherEvents = otherEvents;
-		
+		NSLog(@"%@",otherEvents);
+
 		if (events.count > 0)
 		{
 			[_tableView setHidden:NO];
@@ -190,7 +190,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForMyEventAtIndex:(NSInteger)row
 {
-	NPEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPInterestCell"];
+	NPInterestCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPInterestCell"];
 	
 	cell.event = _myEvents[row];
 	cell.loading = (_joinActions[cell.event[@"id"]] != nil);
@@ -203,7 +203,7 @@
 				{
 					_joinActions[eventId] = [[NPCooleafClient sharedClient] joinEventWithId:eventId completion:^(NSError *error) {
 						[_joinActions removeObjectForKey:eventId];
-						NPEventCell *c = (NPEventCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row+1 inSection:0]];
+						NPInterestCell *c = (NPInterestCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row+1 inSection:0]];
 						if (c)
 							[c closeDrawer];
 						
@@ -215,7 +215,7 @@
 				{
 					_joinActions[eventId] = [[NPCooleafClient sharedClient] leaveEventWithId:eventId completion:^(NSError *error) {
 						[_joinActions removeObjectForKey:eventId];
-						NPEventCell *c = (NPEventCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row+1 inSection:0]];
+						NPInterestCell *c = (NPInterestCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row+1 inSection:0]];
 						if (c)
 							[c closeDrawer];
 						
@@ -232,7 +232,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForOtherEventAtIndex:(NSInteger)row
 {
-	NPEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPOtherInterestCell"];
+	NPInterestCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPOtherInterestCell"];
 	
 	cell.event = _otherEvents[row];
 	cell.loading = (_joinActions[cell.event[@"id"]] != nil);
@@ -245,7 +245,7 @@
 				{
 					_joinActions[eventId] = [[NPCooleafClient sharedClient] joinEventWithId:eventId completion:^(NSError *error) {
 						[_joinActions removeObjectForKey:eventId];
-						NPEventCell *c = (NPEventCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_myEvents.count + 2 + row inSection:0]];
+						NPInterestCell *c = (NPInterestCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_myEvents.count + 2 + row inSection:0]];
 						if (c)
 							[c closeDrawer];
 						
@@ -257,7 +257,7 @@
 				{
 					_joinActions[eventId] = [[NPCooleafClient sharedClient] leaveEventWithId:eventId completion:^(NSError *error) {
 						[_joinActions removeObjectForKey:eventId];
-						NPEventCell *c = (NPEventCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_myEvents.count + 2 + row inSection:0]];
+						NPInterestCell *c = (NPInterestCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:_myEvents.count + 2 + row inSection:0]];
 						if (c)
 							[c closeDrawer];
 						
@@ -300,13 +300,13 @@
 	if (indexPath.row == 0)
 		return 140;
 	else if (indexPath.row -1 < _myEvents.count)
-		return [NPEventCell cellHeightForEvent:_myEvents[indexPath.row - 1]];
+		return [NPInterestCell cellHeightForEvent:_myEvents[indexPath.row - 1]];
 	else if (indexPath.row-1 == _myEvents.count)
 	{
 		return _otherBranchesHeader.frame.size.height;
 	}
 	else
-		return [NPOtherEventCell cellHeightForEvent:_otherEvents[indexPath.row - _myEvents.count - 2]];
+		return [NPOtherInterestCell cellHeightForEvent:_otherEvents[indexPath.row - _myEvents.count - 2]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

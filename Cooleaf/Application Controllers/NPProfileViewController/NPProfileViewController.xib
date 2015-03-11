@@ -70,7 +70,7 @@
         </view>
     </objects>
     <resources>
-        <image name="AvatarPlaceHolderMaleBig" width="110" height="110"/>
+        <image name="AvatarPlaceHolderMaleBig" width="320" height="75"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
