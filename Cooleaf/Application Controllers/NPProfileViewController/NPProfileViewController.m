@@ -10,7 +10,10 @@
 #import "NPCooleafClient.h"
 #import "NPLoginViewController.h"
 
-@interface NPProfileViewController ()
+@interface NPProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+{
+	UIImagePickerController *_avatarController;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *rewardPoints;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
@@ -53,6 +56,9 @@
         avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderMaleBig"];
     
     _avatarView.image = avatarPlaceholder;
+		_avatarView.userInteractionEnabled = TRUE;
+		[_avatarView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionPicture:)]];
+	
     if (uD[@"profile"][@"picture"][@"original"])
     {
         NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"versions"][@"big"]];
@@ -109,6 +115,7 @@
 	UIImage *avatarPlaceholder = nil;
 	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
 	NSLog(@"%@",uD);
+	NSLog(@"%@", [[NSString alloc] initWithUTF8String:[NSJSONSerialization dataWithJSONObject:uD options:0 error:nil].bytes]);
 	if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])
 		avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderFemaleBig"];
 	else
@@ -177,4 +184,97 @@
         
     }
 }
+
+
+
+
+
+#pragma mark - Actions
+
+- (void)doActionPicture:(id)sender
+{
+	_avatarController = [[UIImagePickerController alloc] init];
+	_avatarController.delegate = self;
+	_avatarController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+	[self presentViewController:_avatarController animated:TRUE completion:nil];
+}
+
+- (void)doActionPictureCamera:(id)sender
+{
+	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Library" style:UIBarButtonItemStylePlain target:self action:@selector(doActionPictureLibrary:)];
+	_avatarController.navigationBar.topItem.leftBarButtonItem = button;
+	_avatarController.sourceType = UIImagePickerControllerSourceTypeCamera;
+}
+
+- (void)doActionPictureLibrary:(id)sender
+{
+	UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonItemStylePlain target:self action:@selector(doActionPictureCamera:)];
+	_avatarController.navigationBar.topItem.leftBarButtonItem = button;
+	_avatarController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+}
+
+
+
+
+
+#pragma mark - UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+		UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Camera" style:UIBarButtonItemStylePlain target:self action:@selector(doActionPictureCamera:)];
+		navigationController.navigationBar.topItem.leftBarButtonItem = button;
+	}
+}
+
+
+
+
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+	DLog(@"%@", info);
+	
+	_avatarView.image = info[UIImagePickerControllerOriginalImage];
+	[_avatarController dismissViewControllerAnimated:TRUE completion:nil];
+	_avatarController = nil;
+	
+//UIImage *image = [UIImage imageNamed:@"AttendeeActiveIcon"];
+//NSData *imageData = UIImageJPEGRepresentation(image, 1);
+//NSData *imageData = UIImagePNGRepresentation(_avatarView.image);
+	
+//if (imageData != nil ) {
+		[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarView.image completion:^ (NSDictionary *unused) {
+			DLog(@"Done!");
+//		DLog(@"%@", respnoseObject);
+//		[self viewWillAppear:FALSE];
+			NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
+			DLog(@"avatarUrl = %@", avatarURL);
+			[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+				if (image && [imagePath isEqual:avatarURL.absoluteString])
+				{
+					_avatarView.image = image;
+					_blurImage.image = image;
+					UIToolbar* bgToolbar = [[UIToolbar alloc] initWithFrame:_clearView.frame];
+					bgToolbar.barStyle = UIBarStyleBlackOpaque;
+					[_clearView.superview insertSubview:bgToolbar belowSubview:_clearView];
+				}
+			}];
+		}];
+//}
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+	if (_avatarController.sourceType == UIImagePickerControllerSourceTypeCamera) {
+		[self doActionPictureLibrary:picker];
+	}
+	else {
+		[_avatarController dismissViewControllerAnimated:TRUE completion:nil];
+		_avatarController = nil;
+	}
+}
+
 @end

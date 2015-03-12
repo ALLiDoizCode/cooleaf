@@ -501,6 +501,7 @@
 {
 	DLog(@"");
 	
+//NSData *imageData = nil;
 	NSMutableArray *tags = [[NSMutableArray alloc] init];
 	
 	NPTag *locationTag = _locationTagGroup.tagsByName[_locationLbl.text];
@@ -509,8 +510,17 @@
 	if (locationTag != nil) [tags addObject:@(locationTag.objectId).stringValue];
 	if (departmentTag != nil) [tags addObject:@(departmentTag.objectId).stringValue];
 	
+//if (_avatarImg.image != nil)
+//	imageData = UIImagePNGRepresentation(_avatarImg.image);
+	
 	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:_genderLbl.text password:_password tags:tags completion:^ {
 		DLog(@"Done!");
+		
+//	if (imageData != nil ) {
+			[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarImg.image completion:^ (NSDictionary *unused) {
+				DLog(@"Done!");
+			}];
+//	}
 	}];
 }
 

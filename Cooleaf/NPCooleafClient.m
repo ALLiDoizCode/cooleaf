@@ -452,11 +452,37 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 //				tagGroups[tagGroup.name] = tagGroup;
 //			}];
 //			completion(responseObject[@"token"], tagGroups);
+			completion();
 		}
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		DLog(@"Operation failed because, %@", error.localizedDescription);
 		if (completion)
 			completion();
+	}];
+}
+
+- (AFHTTPRequestOperation *)updatePictureWithImage:(UIImage *)image completion:(void(^)(NSDictionary *))completion
+{
+	NSString *path = @"/file_previews.json";
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	DLog(@"baseUrl = %@", self.baseURL);
+	DLog(@"path    = %@", path);
+	
+	NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
+	
+	return [self POST:path parameters:nil constructingBodyWithBlock:^ (id<AFMultipartFormData> formData) {
+		DLog(@"appending file data");
+		[formData appendPartWithFormData:[NSData dataWithBytes:"profile_picture" length:15] name:@"uploader"];
+		[formData appendPartWithFileData:imageData name:@"file" fileName:@"file.jpg" mimeType:@"image/jpeg"];
+	} success:^ (AFHTTPRequestOperation *operation, id responseObject) {
+		DLog(@"responseObject = %@", responseObject);
+		completion(responseObject);
+	} failure:^ (AFHTTPRequestOperation *operation, NSError *error) {
+		DLog(@"failed to upload profile pictures because, %@", error.localizedDescription);
+		completion(nil);
 	}];
 }
 
