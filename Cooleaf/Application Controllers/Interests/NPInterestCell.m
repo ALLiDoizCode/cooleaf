@@ -1,19 +1,19 @@
 //
-//  NPOtherHomeCell.m
+//  NPInterestCell.m
 //  Cooleaf
 //
-//  Created by Dirk R on 3/1/15.
+//  Created by Dirk R on 3/8/15.
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "NPOtherHomeCell.h"
+#import "NPInterestCell.h"
 #import "NPCooleafClient.h"
 
 #define AVATAR_TAG 1001
 
 static UITextView *_tV;
 
-@interface NPOtherHomeCell ()
+@interface NPInterestCell ()
 {
 	NSDateFormatter *_dateFormatter;
 	NSDateFormatter *_dateFormatter2;
@@ -25,20 +25,20 @@ static UITextView *_tV;
 @property (weak, nonatomic) IBOutlet UILabel *eventDate;
 @property (weak, nonatomic) IBOutlet UITextView *eventTags;
 @property (weak, nonatomic) IBOutlet UIView *slideBarContent;
-@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
+//@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
 @property (weak, nonatomic) IBOutlet UIImageView *attendeeIcon;
 @property (weak, nonatomic) IBOutlet UILabel *attendeeLabel;
 @property (weak, nonatomic) IBOutlet UIView *sliderBarView;
 @property (weak, nonatomic) IBOutlet UIView *selectionView;
 @property (weak, nonatomic) IBOutlet UIButton *joinButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
-@property (weak, nonatomic) IBOutlet UIView *topSeparator;
+//@property (weak, nonatomic) IBOutlet UIView *topSeparator;
 
 - (IBAction)joinTapped:(id)sender;
 - (void)panned:(UIPanGestureRecognizer *)rec;
 @end
 
-@implementation NPOtherHomeCell
+@implementation NPInterestCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -51,9 +51,6 @@ static UITextView *_tV;
 
 - (void)awakeFromNib
 {
-	UIView *sep = [[UIView alloc] initWithFrame:CGRectMake(0, 15, 320, 0.5)];
-	sep.backgroundColor = _topSeparator.backgroundColor;
-	[self.contentView insertSubview:sep belowSubview:_selectionView];
 	UIPanGestureRecognizer *rec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
 	rec.cancelsTouchesInView = YES;
 	rec.delegate = self;
@@ -147,6 +144,7 @@ static UITextView *_tV;
 	
 	if (!event)
 	{
+		_eventImage.image = [UIImage imageNamed:@"CoverPhotoPlaceholder"];
 		// Delete all avatars
 		for (UIView *v in _sliderBarView.subviews)
 		{
@@ -155,6 +153,7 @@ static UITextView *_tV;
 		}
 		return;
 	}
+	
 	CGFloat shift = 0;
 	CGFloat shift2 = 0;
 	_eventTitle.text = _event[@"name"];
@@ -167,6 +166,7 @@ static UITextView *_tV;
 	if (!_dateFormatter)
 	{
 		_dateFormatter = [NSDateFormatter new];
+		_dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
 		_dateFormatter.dateFormat = @"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'z";
 	}
 	NSDate *eventTime = [_dateFormatter dateFromString:_event[@"start_time"]];
@@ -190,17 +190,17 @@ static UITextView *_tV;
 	}
 	
 	// Now - let's set proper colors for attendees
-	if ([_event[@"participants"] count] > 0)
+	if ([_event[@"users_count"] integerValue] > 0)
 	{
 		_attendeeIcon.image = [UIImage imageNamed:@"AttendeeIcon"];
-		_attendeeLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1];
-		_attendeeLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_event[@"participants"] count]];
+		_attendeeLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1];
+		_attendeeLabel.text = [NSString stringWithFormat:@"%@ Members", _event[@"users_count"]];
 		
 		f = _slideBarContent.frame;
-		f.size.height = 95;
+		f.size.height = 90;
 		_slideBarContent.frame = f;
 		f = _sliderBarView.frame;
-		f.size.height = 95;
+		f.size.height = 90;
 		_sliderBarView.frame = f;
 		
 		f = _joinButton.frame;
@@ -271,23 +271,26 @@ static UITextView *_tV;
 		
 	}
 	
-	f = _topSeparator.frame;
-	f.size.height = 0.5;
-	_topSeparator.frame = f;
+	//    f = _topSeparator.frame;
+	//    f.size.height = 0.5;
+	//    _topSeparator.frame = f;
+	
 	_eventTags.text = [hashes uppercaseString];
 	_eventTags.transform = CGAffineTransformMakeTranslation(0, shift);
 	//    _bottomSeparator.transform = CGAffineTransformMakeTranslation(0, shift+shift2+0.5);
 	_slideBarContent.transform = CGAffineTransformMakeTranslation(0, shift);
 	//    _selectionView.frame = CGRectMake(0, 15, 320, self.contentView.bounds.size.height-15);
 	
-	NSString *imageUrlString = [@"http:" stringByAppendingString:[_event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x150"]];
-	// Download image for event
-	[[NPCooleafClient sharedClient] fetchImage:imageUrlString completion:^(NSString *imagePath, UIImage *image) {
-		if ([imagePath compare:imageUrlString] == NSOrderedSame)
-		{
-			_eventImage.image = image;
-		}
-	}];
+	if (_event[@"image"][@"url"] != nil) {
+		NSString *imageUrlString = [@"http:" stringByAppendingString:[_event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x150"]];
+		// Download image for event
+		[[NPCooleafClient sharedClient] fetchImage:imageUrlString completion:^(NSString *imagePath, UIImage *image) {
+			if ([imagePath compare:imageUrlString] == NSOrderedSame)
+			{
+				_eventImage.image = image;
+			}
+		}];
+	}
 }
 
 - (IBAction)joinTapped:(id)sender
@@ -296,9 +299,9 @@ static UITextView *_tV;
 	{
 		if ([_event[@"attending"] boolValue])
 		{
-			UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Do you really want to resign?", nil)
+			UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Do you really want to unregister?", nil)
 															delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-											  destructiveButtonTitle:NSLocalizedString(@"Yes, I want to resign", nil) otherButtonTitles:nil];
+											  destructiveButtonTitle:NSLocalizedString(@"Yes, I want to unregister", nil) otherButtonTitles:nil];
 			[as showInView:[UIApplication sharedApplication].keyWindow];
 		}
 		else if (_actionTapped(_event[@"id"], ![_event[@"attending"] boolValue]))
@@ -414,19 +417,19 @@ static UITextView *_tV;
 + (CGFloat)cellHeightForEvent:(NSDictionary *)event
 {
 	if (!_tV)
-		_tV =[[UITextView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+		_tV =[[UITextView alloc] initWithFrame:CGRectMake(0, 0, 300, 20)];
 	else
-		_tV.frame = CGRectMake(0, 0, 320, 20);
+		_tV.frame = CGRectMake(0, 0, 300, 20);
 	
-	_tV.font = [UIFont boldSystemFontOfSize:18.0];
+	_tV.font = [UIFont boldSystemFontOfSize:22.0];
 	_tV.text = event[@"name"];
 	[_tV sizeToFit];
 	
 	CGFloat titleHeight = _tV.frame.size.height;
 	CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : 0;
 	
-	return 115 + (titleHeight-39) + shift;
+//	return 204 + (titleHeight-39) + shift;
+	return 245;
 }
 
 @end
-

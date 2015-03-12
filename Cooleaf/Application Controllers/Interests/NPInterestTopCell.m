@@ -1,15 +1,15 @@
 //
-//  NPHomeTopCell.m
+//  NPInterestTopCell.m
 //  Cooleaf
 //
-//  Created by Dirk R on 3/1/15.
+//  Created by Dirk R on 3/8/15.
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "NPHomeTopCell.h"
+#import "NPInterestTopCell.h"
 #import "NPCooleafClient.h"
 
-@interface NPHomeTopCell ()
+@interface NPInterestTopCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -20,8 +20,9 @@
 
 @end
 
+@implementation NPInterestTopCell
 
-@implementation NPHomeTopCell
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
 	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

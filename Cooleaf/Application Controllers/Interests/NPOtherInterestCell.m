@@ -1,19 +1,19 @@
 //
-//  NPOtherHomeCell.m
+//  NPOtherInterestCell.m
 //  Cooleaf
 //
-//  Created by Dirk R on 3/1/15.
+//  Created by Dirk R on 3/8/15.
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "NPOtherHomeCell.h"
+#import "NPOtherInterestCell.h"
 #import "NPCooleafClient.h"
 
 #define AVATAR_TAG 1001
 
 static UITextView *_tV;
 
-@interface NPOtherHomeCell ()
+@interface NPOtherInterestCell ()
 {
 	NSDateFormatter *_dateFormatter;
 	NSDateFormatter *_dateFormatter2;
@@ -25,7 +25,7 @@ static UITextView *_tV;
 @property (weak, nonatomic) IBOutlet UILabel *eventDate;
 @property (weak, nonatomic) IBOutlet UITextView *eventTags;
 @property (weak, nonatomic) IBOutlet UIView *slideBarContent;
-@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
+//@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
 @property (weak, nonatomic) IBOutlet UIImageView *attendeeIcon;
 @property (weak, nonatomic) IBOutlet UILabel *attendeeLabel;
 @property (weak, nonatomic) IBOutlet UIView *sliderBarView;
@@ -38,7 +38,7 @@ static UITextView *_tV;
 - (void)panned:(UIPanGestureRecognizer *)rec;
 @end
 
-@implementation NPOtherHomeCell
+@implementation NPOtherInterestCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -429,4 +429,3 @@ static UITextView *_tV;
 }
 
 @end
-

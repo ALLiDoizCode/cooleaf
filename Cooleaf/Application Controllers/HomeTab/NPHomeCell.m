@@ -115,7 +115,7 @@ static UITextView *_tV;
 		else
 			avatar.image = [UIImage imageNamed:@"AvatarPlaceholderFemaleSmall"];
 		
-		if (user[@"profile"][@"picture"][@"original"])
+		if (user[@"profile"][@"picture"][@"versions"][@"medium"])
 		{
 			NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:user[@"profile"][@"picture"][@"versions"][@"small"]];
 			[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
@@ -197,10 +197,10 @@ static UITextView *_tV;
 		_attendeeLabel.text = [NSString stringWithFormat:@"%@ Participants", _event[@"participants_count"]];
 		
 		f = _slideBarContent.frame;
-		f.size.height = 95;
+		f.size.height = 90;
 		_slideBarContent.frame = f;
 		f = _sliderBarView.frame;
-		f.size.height = 95;
+		f.size.height = 99;
 		_sliderBarView.frame = f;
 		
 		f = _joinButton.frame;
@@ -249,7 +249,7 @@ static UITextView *_tV;
 	}
 	else
 	{
-		shift2 -= 6;
+		shift2 -= 0;
 		
 		_slideBarContent.backgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
 		[_joinButton setTitle:NSLocalizedString(@"I’m in!", @"Joining event button title") forState:UIControlStateNormal];
@@ -258,14 +258,14 @@ static UITextView *_tV;
 		_attendeeLabel.text = NSLocalizedString(@"Be the first", @"No attendees label for event");
 		
 		f = _slideBarContent.frame;
-		f.size.height = 42;
+		f.size.height = 90;
 		_slideBarContent.frame = f;
 		f = _sliderBarView.frame;
-		f.size.height = 42;
+		f.size.height = 90;
 		_sliderBarView.frame = f;
 		
 		f = _joinButton.frame;
-		f.size.height = 45;
+		f.size.height = 90;
 		_joinButton.frame = f;
 		_loadingIndicator.transform = CGAffineTransformIdentity;
 		
@@ -427,8 +427,9 @@ static UITextView *_tV;
 	
 	CGFloat titleHeight = _tV.frame.size.height;
 	CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : 0;
-	
-	return 154 + (titleHeight-39) + shift;
+	CGFloat rowHeight = 174 + (titleHeight-39) + shift;
+	NSLog(@"%f", rowHeight);
+	return 245;
 }
 
 @end

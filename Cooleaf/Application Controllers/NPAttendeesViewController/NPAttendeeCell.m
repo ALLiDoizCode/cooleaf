@@ -78,7 +78,7 @@
     // Now - if no positionLabel content is there - we need to shift name
     _nameLabel.transform = (_positionLabel.text.length > 0) ? CGAffineTransformIdentity : CGAffineTransformMakeTranslation(0, 35);
     
-    if (attendee[@"profile"][@"picture"][@"original"])
+    if (attendee[@"profile"][@"picture"][@"versions"][@"medium"])
     {
         NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:attendee[@"profile"][@"picture"][@"versions"][@"medium"]];
         [[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {

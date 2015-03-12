@@ -18,11 +18,6 @@ NSString * const kNPCooleafClientRefreshNotification = @"kNPCooleafClientRefresh
 NSString * const kNPCooleafClientRUDIDHarvestedNotification = @"kNPCooleafClientRUDIDHarvestedNotification";
 NSString * const kNPCooleafClientSignOut = @"kNPCooleafClientSignOut";
 
-//static NSString * const kNPStagingClientBaseURLString = @"http://api.staging.do.cooleaf.monterail.eu";
-//static NSString * const kNPStagingClientAPIPrefix = @"/v1";
-//static NSString * const kNPStagingClientAPIAuthLogin = @"cooleaf";
-//static NSString * const kNPStagingClientAPIAuthPassword = @"letmein";
-
 static NSString * const kNPCooleafClientBaseURLString = @"http://api.staging.do.cooleaf.monterail.eu";
 static NSString * const kNPCooleafClientAPIPrefix = @"/v1";
 static NSString * const kNPCooleafClientAPIAuthLogin = @"cooleaf";
@@ -263,18 +258,51 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 
 - (void)fetchEventList:(void(^)(NSArray *events))completion
 {
-    NSString *path = @"/events.json";
-    
-    if (_apiPrefix.length > 0)
-        path = [_apiPrefix stringByAppendingString:path];
-    
-    [self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (completion)
-            completion(responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (completion)
-            completion(nil);
-    }];
+	NSString *path = @"/events.json";
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	[self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		if (completion)
+			completion(nil);
+	}];
+}
+
+- (AFHTTPRequestOperation *)fetchMyEventsList:(NSNumber *)myID completion:(void (^)(NSArray *))completion
+{
+	NSString *path = [NSString stringWithFormat:@"/events/user/%@.json", myID];
+//	NSLog(@"path %@, myID %@", path, myID);
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	return [self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		if (completion)
+			completion(nil);
+	}];
+}
+
+
+- (void)fetchInterestList:(void(^)(NSArray *events))completion
+{
+	NSString *path = @"/interests.json";
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	[self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		if (completion)
+			completion(nil);
+	}];
 }
 
 #pragma mark - Image handling

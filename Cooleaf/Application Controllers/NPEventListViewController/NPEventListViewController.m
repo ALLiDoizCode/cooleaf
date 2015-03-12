@@ -40,11 +40,11 @@
     if (self) {
         self.title = NSLocalizedString(@"Events", @"Event list view title");
 //        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Profile"] style:UIBarButtonItemStylePlain target:self action:@selector(profileTapped:)];
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setImage:[UIImage imageNamed:@"Profile"] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(profileTapped:) forControlEvents:UIControlEventTouchUpInside];
-        btn.frame = CGRectMake(0, 0, 30, 30);
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+//        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [btn setImage:[UIImage imageNamed:@"Profile"] forState:UIControlStateNormal];
+//        [btn addTarget:self action:@selector(profileTapped:) forControlEvents:UIControlEventTouchUpInside];
+//        btn.frame = CGRectMake(0, 0, 30, 30);
+//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
                                                  initWithTitle:NSLocalizedString(@"Events", @"Event list view title")
                                                  style:UIBarButtonItemStylePlain
@@ -65,13 +65,13 @@
 {
     [super viewDidLoad];
     _joinActions = [NSMutableDictionary new];
-    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 15)];
-    UIView *footerSep = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.5)];
-    footer.backgroundColor = self.view.backgroundColor;
-    footerSep.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:208.0/255.0 blue:213.0/255.0 alpha:1];
-    [footer addSubview:footerSep];
-    _tableView.tableFooterView = footer;
-    
+//    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 15)];
+//    UIView *footerSep = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.5)];
+//    footer.backgroundColor = self.view.backgroundColor;
+//    footerSep.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:208.0/255.0 blue:213.0/255.0 alpha:1];
+//    [footer addSubview:footerSep];
+//    _tableView.tableFooterView = footer;
+	
     [_tableView registerNib:[UINib nibWithNibName:@"NPEventCell" bundle:nil] forCellReuseIdentifier:@"NPEventCell"];
     [_tableView registerNib:[UINib nibWithNibName:@"NPOtherEventCell" bundle:nil] forCellReuseIdentifier:@"NPOtherEventCell"];
     [_tableView registerNib:[UINib nibWithNibName:@"NPCompanyCell" bundle:nil] forCellReuseIdentifier:@"NPCompanyCell"];
@@ -97,9 +97,12 @@
 
 - (void)reloadEvents
 {
-    [[NPCooleafClient sharedClient] fetchEventList:^(NSArray *events) {
+	NSNumber *myID = [NPCooleafClient sharedClient].userData[@"id"];
+    [[NPCooleafClient sharedClient] fetchMyEventsList:myID completion:^(NSArray *events)
+	{
         [_activityIndicator stopAnimating];
         _loadingEvents.hidden = YES;
+		NSLog(@"%@",events);
         NSMutableArray *myEvents = [NSMutableArray new];
         NSMutableArray *otherEvents = [NSMutableArray new];
         
@@ -170,10 +173,10 @@
 }
 
 
-- (void)profileTapped:(id)sender
-{
-    [self.navigationController pushViewController:[NPProfileViewController new] animated:YES];
-}
+//- (void)profileTapped:(id)sender
+//{
+//    [self.navigationController pushViewController:[NPProfileViewController new] animated:YES];
+//}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

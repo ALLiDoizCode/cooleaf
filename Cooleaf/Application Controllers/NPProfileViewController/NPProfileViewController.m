@@ -36,8 +36,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Profile";
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Sign out", @"Sign out button title")
-                                                                                  style:UIBarButtonItemStyleDone target:self action:@selector(logoutTapped:)];
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Sign out", @"Sign out button title") style:UIBarButtonItemStyleDone target:self action:@selector(logoutTapped:)];
+		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", @"Edit Profile button title") style:UIBarButtonItemStyleDone target:self action:@selector(editTapped:)];
     }
     return self;
 }
@@ -59,7 +59,7 @@
 		_avatarView.userInteractionEnabled = TRUE;
 		[_avatarView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionPicture:)]];
 	
-    if (uD[@"profile"][@"picture"][@"original"])
+	if (uD[@"profile"][@"picture"][@"versions"][@"large"])
     {
         NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"versions"][@"big"]];
         [[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
@@ -78,7 +78,7 @@
     if ([uD[@"role"][@"department"][@"default"] boolValue])
         _positionLabel.text = [NSString stringWithFormat:@"%@\u00A0", uD[@"role"][@"organization"][@"name"]];
     else
-        _positionLabel.text = [NSString stringWithFormat:@"%@%@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
+        _positionLabel.text = [NSString stringWithFormat:@"%@, %@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
     _rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
 //
 //    int c = 3;
@@ -122,7 +122,7 @@
 		avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderMaleBig"];
 	
 	_avatarView.image = avatarPlaceholder;
-	if (uD[@"profile"][@"picture"][@"original"])
+	if (uD[@"profile"][@"picture"][@"versions"][@"large"])
 	{
 		NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"versions"][@"big"]];
 		[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
@@ -161,7 +161,10 @@
 								 selectedImage:[UIImage imageNamed:@"ProfileTab"]];
 }
 
-
+- (void)editTapped:(id)sender
+{
+	NSLog(@"Edit Tapped, fill in with edit stuff later");
+}
 
 - (void)logoutTapped:(id)sender
 {

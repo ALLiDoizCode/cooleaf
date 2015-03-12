@@ -25,7 +25,7 @@ static UITextView *_tV;
 @property (weak, nonatomic) IBOutlet UILabel *eventDate;
 @property (weak, nonatomic) IBOutlet UITextView *eventTags;
 @property (weak, nonatomic) IBOutlet UIView *slideBarContent;
-@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
+//@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
 @property (weak, nonatomic) IBOutlet UIImageView *attendeeIcon;
 @property (weak, nonatomic) IBOutlet UILabel *attendeeLabel;
 @property (weak, nonatomic) IBOutlet UIView *sliderBarView;
@@ -118,7 +118,7 @@ static UITextView *_tV;
         else
             avatar.image = [UIImage imageNamed:@"AvatarPlaceholderFemaleSmall"];
         
-        if (user[@"profile"][@"picture"][@"original"])
+        if (user[@"profile"][@"picture"][@"versions"][@"medium"])
         {
             NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:user[@"profile"][@"picture"][@"versions"][@"small"]];
             [[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
