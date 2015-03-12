@@ -65,13 +65,13 @@
 {
     [super viewDidLoad];
     _joinActions = [NSMutableDictionary new];
-    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 15)];
-    UIView *footerSep = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.5)];
-    footer.backgroundColor = self.view.backgroundColor;
-    footerSep.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:208.0/255.0 blue:213.0/255.0 alpha:1];
-    [footer addSubview:footerSep];
-    _tableView.tableFooterView = footer;
-    
+//    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 15)];
+//    UIView *footerSep = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0.5)];
+//    footer.backgroundColor = self.view.backgroundColor;
+//    footerSep.backgroundColor = [UIColor colorWithRed:209.0/255.0 green:208.0/255.0 blue:213.0/255.0 alpha:1];
+//    [footer addSubview:footerSep];
+//    _tableView.tableFooterView = footer;
+	
     [_tableView registerNib:[UINib nibWithNibName:@"NPEventCell" bundle:nil] forCellReuseIdentifier:@"NPEventCell"];
     [_tableView registerNib:[UINib nibWithNibName:@"NPOtherEventCell" bundle:nil] forCellReuseIdentifier:@"NPOtherEventCell"];
     [_tableView registerNib:[UINib nibWithNibName:@"NPCompanyCell" bundle:nil] forCellReuseIdentifier:@"NPCompanyCell"];
