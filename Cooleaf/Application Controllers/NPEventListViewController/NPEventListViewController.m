@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *loadingEvents;
 @property (strong, nonatomic) IBOutlet UIView *otherBranchesHeader;
 
-- (void)profileTapped:(id)sender;
+//- (void)profileTapped:(id)sender;
 - (void)notificationReceived:(NSNotification *)not;
 - (void)signedOut:(NSNotification *)not;
 

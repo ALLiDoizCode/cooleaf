@@ -425,8 +425,8 @@ static UITextView *_tV;
 	_tV.text = event[@"name"];
 	[_tV sizeToFit];
 	
-	CGFloat titleHeight = _tV.frame.size.height;
-	CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : 0;
+//	CGFloat titleHeight = _tV.frame.size.height;
+//	CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : 0;
 	
 //	return 204 + (titleHeight-39) + shift;
 	return 245;
