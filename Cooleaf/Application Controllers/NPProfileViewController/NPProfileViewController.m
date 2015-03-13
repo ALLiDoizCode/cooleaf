@@ -9,10 +9,12 @@
 #import "NPProfileViewController.h"
 #import "NPCooleafClient.h"
 #import "NPLoginViewController.h"
+#import "NPInterestsViewController2.h"
 
 @interface NPProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
 	UIImagePickerController *_avatarController;
+	NPInterestsViewController2 *_interestsController;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *rewardPoints;
@@ -106,6 +108,13 @@
 //       }
 //
 //    }];
+	
+	_interestsController = [[NPInterestsViewController2 alloc] init];
+	_interestsController.collectionView.translatesAutoresizingMaskIntoConstraints = FALSE;
+	[self.view addSubview:_interestsController.collectionView];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView][view]|" options:0 metrics:nil views:@{@"view": _interestsController.collectionView, @"topView": _imageCoverView}]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": _interestsController.collectionView}]];
+	[self.view layoutIfNeeded];
 }
 
 - (void)viewWillAppear:(BOOL)animated

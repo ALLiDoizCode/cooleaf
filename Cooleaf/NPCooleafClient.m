@@ -297,9 +297,11 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 		path = [_apiPrefix stringByAppendingString:path];
 	
 	[self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		DLog(@"responseObject = %@", responseObject);
 		if (completion)
 			completion(responseObject);
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		DLog(@"error = %@", error.localizedDescription);
 		if (completion)
 			completion(nil);
 	}];
