@@ -234,9 +234,9 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	
 	DLog(@"baseUrl = %@", self.baseURL);
 	DLog(@"path    = %@", path);
-	DLog(@"params  = %@", params);
-	NSLog(@"%@", [[NSString alloc] initWithUTF8String:[NSJSONSerialization dataWithJSONObject:params options:0 error:nil].bytes]);
-	return [self POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//	DLog(@"params  = %@", params);
+//	NSLog(@"%@", [[NSString alloc] initWithUTF8String:[NSJSONSerialization dataWithJSONObject:params options:0 error:nil].bytes]);
+	return [self PUT:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		_userData = [responseObject copy];
 		[self.requestSerializer setValue:_userData[@"role"][@"organization"][@"subdomain"] forHTTPHeaderField:@"X-Organization"];
 		if (completion) {
