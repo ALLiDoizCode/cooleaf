@@ -185,6 +185,71 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
     } failure:nil];
 }
 
+- (AFHTTPRequestOperation *)updateProfileDataAllFields:(NSString *)name email:(NSString *)email password:(NSString *)password tags:(NSArray *)tags removed_picture:(BOOL)removed_picture file_cache:(NSString *)file_cache role_structure_required:(NSArray *)role_structure_required profileDailyDigest:(BOOL)profileDailyDigest profileWeeklyDigest:(BOOL)profileWeeklyDigest profile:(NSArray *)profile completion:(void(^)())completion
+{
+	NSString *path = @"/users/edit.json";
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+	if (name !=nil) {
+		[params setValue:name forKey:@"name"];
+	}
+	if (email != nil) {
+		[params setValue:email forKey:@"email"];
+	}
+	if (password != nil) {
+		[params setValue:password forKey:@"password"];
+	}
+	if (tags != nil) {
+		[params setValue:tags forKey:@"catagory_ids"];
+	}
+	if (removed_picture) {
+		[params setValue:@(TRUE) forKey:@"removed_picture"];
+	}
+	if (file_cache != nil) {
+		[params setValue:file_cache forKey:@"file_cache"];
+	}
+	if (role_structure_required != nil) {
+		[params setValue:role_structure_required forKey:@"role"];
+	}
+	if (profileDailyDigest) {
+		[params setValue:@(TRUE) forKey:@"profile[settings][send_daily_digest]"];
+	}
+	if (profileWeeklyDigest) {
+		[params setValue:@(TRUE) forKey:@"profile[settings][send_weekly_digest]"];
+	}
+	if (profile != nil) {
+		[params setValue:profile forKey:@"profile"];
+	}
+
+	
+	if (_notificationUDID.length > 0)
+#ifdef DEBUG
+		[params setValue:@(TRUE) forKey:@"sandbox"];
+#else
+	[params setValue:@(FALSE) forKey:@"sandbox"];
+#endif //DEBUG
+	
+	DLog(@"baseUrl = %@", self.baseURL);
+	DLog(@"path    = %@", path);
+	DLog(@"params  = %@", params);
+	NSLog(@"%@", [[NSString alloc] initWithUTF8String:[NSJSONSerialization dataWithJSONObject:params options:0 error:nil].bytes]);
+	return [self POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		_userData = [responseObject copy];
+		[self.requestSerializer setValue:_userData[@"role"][@"organization"][@"subdomain"] forHTTPHeaderField:@"X-Organization"];
+		if (completion) {
+			DLog("response = %@", responseObject);
+			completion();
+		}
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		DLog(@"Operation failed because, %@", error.localizedDescription);
+		if (completion)
+			completion();
+	}];
+}
+
 #pragma mark - Event handling
 
 - (AFHTTPRequestOperation *)fetchEventWithId:(NSNumber *)eventId completion:(void(^)(NSDictionary *eventDetails))completion
