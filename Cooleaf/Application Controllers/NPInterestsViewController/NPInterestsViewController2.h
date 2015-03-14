@@ -10,4 +10,6 @@
 
 @interface NPInterestsViewController2 : UICollectionViewController
 
+@property (readwrite, assign, nonatomic) BOOL editModeOn;
+
 @end

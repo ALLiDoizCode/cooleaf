@@ -592,9 +592,9 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 
 #pragma mark - Interests
 
-- (void)getInterests:(void(^)(NSArray *npinterests))completion
+- (void)getInterests:(BOOL)userEnabled completion:(void(^)(NSArray *npinterests))completion
 {
-	NSString *path = @"/interests.json";
+	NSString *path = userEnabled ? @"/interests/profile.json" : @"/interests.json";
 	
 	if (_apiPrefix.length > 0)
 		path = [_apiPrefix stringByAppendingString:path];
@@ -611,6 +611,16 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 		if (completion)
 			completion(nil);
 	}];
+}
+
+- (void)getAllInterests:(void(^)(NSArray *npinterests))completion
+{
+	return [self getInterests:FALSE completion:completion];
+}
+
+- (void)getUserInterests:(void(^)(NSArray *npinterests))completion
+{
+	return [self getInterests:TRUE completion:completion];
 }
 
 @end

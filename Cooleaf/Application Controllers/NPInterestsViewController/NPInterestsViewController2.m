@@ -9,6 +9,7 @@
 #import "NPInterestsViewController2.h"
 #import "NPInterestViewCell.h"
 #import "NPCooleafClient.h"
+#import "NPInterest.h"
 
 #define CellHeight 140 + 38 + 10
 
@@ -59,14 +60,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	DLog(@"");
-	
-	[[NPCooleafClient sharedClient] getInterests:^ (NSArray *npinterests) {
-		DLog(@"interests = %@", npinterests);
-		_npinterests = npinterests;
-		_heightConstraint.constant = ceilf((float)npinterests.count / 2.0) * CellHeight;
-		[self reload];
-	}];
+	[self reload];
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,7 +76,23 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)reload
 {
-	[self.collectionView reloadData];
+	void (^handler)(NSArray*) = ^ (NSArray *npinterests) {
+		DLog(@"interests = %@", npinterests);
+		_npinterests = npinterests;
+		_heightConstraint.constant = ceilf((float)npinterests.count / 2.0) * CellHeight;
+		[self.collectionView reloadData];
+	};
+	
+	if (_editModeOn == TRUE)
+		[[NPCooleafClient sharedClient] getAllInterests:handler];
+	else
+		[[NPCooleafClient sharedClient] getUserInterests:handler];
+}
+
+- (void)setEditModeOn:(BOOL)editModeOn
+{
+	_editModeOn = editModeOn;
+	[self reload];
 }
 
 
@@ -106,6 +116,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
 	NPInterestViewCell *cell = (NPInterestViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 	
+	cell.editModeOn = _editModeOn;
 	cell.interest = _npinterests[indexPath.row];
 	
 	return cell;

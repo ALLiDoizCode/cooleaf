@@ -15,6 +15,7 @@
 
 @interface NPProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
+	BOOL _editModeOn;
 	UIImagePickerController *_avatarController;
 	NPInterestsViewController2 *_interestsController;
 }
@@ -182,7 +183,8 @@
 
 - (void)editTapped:(id)sender
 {
-	NSLog(@"Edit Tapped, fill in with edit stuff later");
+	_editModeOn = !_editModeOn;
+	_interestsController.editModeOn = _editModeOn;
 }
 
 - (void)logoutTapped:(id)sender

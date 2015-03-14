@@ -12,6 +12,7 @@
 
 @interface NPInterestViewCell : UICollectionViewCell
 
+@property (readwrite, assign, nonatomic) BOOL editModeOn;
 @property (readwrite, strong, nonatomic) NPInterest *interest;
 
 @end

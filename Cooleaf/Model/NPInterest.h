@@ -10,19 +10,19 @@
 
 @interface NPInterest : NSObject
 
-@property (readonly, nonatomic, assign) NSInteger objectId;
-@property (readonly, nonatomic, assign) NSInteger parentId;
-@property (readonly, nonatomic, retain) NSString *parentType;
-@property (readonly, nonatomic, retain) NSString *name;
-@property (readonly, nonatomic, assign) BOOL isActive;
-@property (readonly, nonatomic, assign) BOOL isDefault;
-@property (readonly, nonatomic, retain) NSString *imagePath;
-@property (readonly, nonatomic, retain) NSString *imageUrl;
-@property (readonly, nonatomic, retain) NSString *thumbnailPath;
-@property (readonly, nonatomic, retain) NSString *thumbnailUrl;
-@property (readonly, nonatomic, retain) NSString *slug;
-@property (readonly, nonatomic, retain) NSString *type;
-@property (readonly, nonatomic, assign) NSInteger userCount;
+@property (readonly,  nonatomic, assign) NSInteger objectId;
+@property (readonly,  nonatomic, assign) NSInteger parentId;
+@property (readonly,  nonatomic, retain) NSString *parentType;
+@property (readonly,  nonatomic, retain) NSString *name;
+@property (readwrite, nonatomic, assign) BOOL isActive;
+@property (readonly,  nonatomic, assign) BOOL isDefault;
+@property (readonly,  nonatomic, retain) NSString *imagePath;
+@property (readonly,  nonatomic, retain) NSString *imageUrl;
+@property (readonly,  nonatomic, retain) NSString *thumbnailPath;
+@property (readonly,  nonatomic, retain) NSString *thumbnailUrl;
+@property (readonly,  nonatomic, retain) NSString *slug;
+@property (readonly,  nonatomic, retain) NSString *type;
+@property (readonly,  nonatomic, assign) NSInteger userCount;
 
 /**
  *
