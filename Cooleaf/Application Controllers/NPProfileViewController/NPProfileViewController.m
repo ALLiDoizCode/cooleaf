@@ -184,6 +184,7 @@
 - (void)editTapped:(id)sender
 {
 	_editModeOn = !_editModeOn;
+	self.navigationItem.leftBarButtonItem.title = _editModeOn ? @"Done" : @"Edit";
 	_interestsController.editModeOn = _editModeOn;
 }
 

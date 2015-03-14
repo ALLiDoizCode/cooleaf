@@ -98,8 +98,9 @@ static NSString * const reuseIdentifier = @"Cell";
 {
 	_editModeOn = editModeOn;
 	
-	if (_editModeOn == TRUE)
+	if (_editModeOn == TRUE) {
 		[self reload];
+	}
 	else {
 		NSArray *activeInterests = [_npinterests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isActive; }]];
 		[[NPCooleafClient sharedClient] setUserInterests:activeInterests completion:^ (BOOL success) { [self reload]; }];
