@@ -501,7 +501,6 @@
 {
 	DLog(@"");
 	
-//NSData *imageData = nil;
 	NSMutableArray *tags = [[NSMutableArray alloc] init];
 	
 	NPTag *locationTag = _locationTagGroup.tagsByName[_locationLbl.text];
@@ -509,18 +508,30 @@
 	
 	if (locationTag != nil) [tags addObject:@(locationTag.objectId).stringValue];
 	if (departmentTag != nil) [tags addObject:@(departmentTag.objectId).stringValue];
-	
-//if (_avatarImg.image != nil)
-//	imageData = UIImagePNGRepresentation(_avatarImg.image);
-	
+		
 	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:_genderLbl.text password:_password tags:tags completion:^ {
 		DLog(@"Done!");
 		
-//	if (imageData != nil ) {
-			[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarImg.image completion:^ (NSDictionary *unused) {
-				DLog(@"Done!");
+		
+		[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarImg.image completion:^ (NSDictionary *unused) {
+			DLog(@"Done!");
+			
+			
+			NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
+			DLog(@"avatarUrl = %@", avatarURL);
+			[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+				if (image && [imagePath isEqual:avatarURL.absoluteString])
+				{
+					_avatarImg.image = image;
+				}
+				
 			}];
-//	}
+			NSDictionary *uD = [NPCooleafClient sharedClient].userData;
+			[[NPCooleafClient sharedClient] updateProfileDataAllFields:nil email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:TRUE profileWeeklyDigest:TRUE profile:uD[@"profile"] completion:^{
+				NSLog(@"Success");
+			}];
+		}];
+
 	}];
 }
 
