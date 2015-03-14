@@ -11,7 +11,7 @@
 #import "NPCooleafClient.h"
 #import "NPInterest.h"
 
-#define CellHeight 140 + 38 + 10
+#define CellHeight 145 + 38 + 10 + 2
 
 static NSString * const reuseIdentifier = @"Cell";
 
@@ -79,7 +79,7 @@ static NSString * const reuseIdentifier = @"Cell";
 	void (^handler)(NSArray*) = ^ (NSArray *npinterests) {
 		DLog(@"interests = %@", npinterests);
 		_npinterests = npinterests;
-		_heightConstraint.constant = ceilf((float)npinterests.count / 2.0) * CellHeight;
+		_heightConstraint.constant = ceilf((float)npinterests.count / 2.0) * (CellHeight);
 		[self.collectionView reloadData];
 	};
 	
@@ -191,7 +191,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	return CGSizeMake(145, 140 + 38);
+	return CGSizeMake(145, 145 + 38);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
