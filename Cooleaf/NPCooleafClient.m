@@ -658,7 +658,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	
 	[[NPCooleafClient sharedClient] getUserData:^ (NSDictionary *profile) {
 		[self updateProfileDataAllFields:nil email:nil password:nil tags:interestIds removed_picture:FALSE file_cache:nil role_structure_required:profile[@"role"] profileDailyDigest:TRUE profileWeeklyDigest:TRUE profile:profile[@"profile"] completion:^{
-			NSLog(@"Success");
+			completion(TRUE);
 		}];
 	}];
 }
