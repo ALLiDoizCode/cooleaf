@@ -15,6 +15,7 @@ static NSString * const reuseIdentifier = @"Cell";
 @interface NPInterestsViewController2 ()
 {
 	NSArray *_npinterests;
+	NSLayoutConstraint *_heightConstraint;
 }
 @end
 
@@ -46,15 +47,23 @@ static NSString * const reuseIdentifier = @"Cell";
 	self.collectionView.backgroundColor = UIColor.greenColor;
 	self.collectionView.delegate = self;
 	self.collectionView.dataSource = self;
+	self.collectionView.scrollEnabled = FALSE;
 	
-	// Uncomment the following line to preserve selection between presentations
-	// self.clearsSelectionOnViewWillAppear = NO;
-	
-	// Register cell classes
 	[self.collectionView registerClass:[NPInterestViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
 	
-	[[NPCooleafClient sharedClient] fetchInterestList:^ (NSArray *npinterests) {
+	_heightConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:0];
+	[self.collectionView addConstraint:_heightConstraint];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	DLog(@"");
+	
+	[[NPCooleafClient sharedClient] getInterests:^ (NSArray *npinterests) {
 		DLog(@"interests = %@", npinterests);
+		_npinterests = npinterests;
+		_heightConstraint.constant = ceilf((float)npinterests.count / 2.0) * 150.0;
+		[self reload];
 	}];
 }
 
@@ -93,9 +102,9 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+	NPInterestViewCell *cell = (NPInterestViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 	
-	// Configure the cell
+	cell.interest = _npinterests[indexPath.row];
 	
 	return cell;
 }

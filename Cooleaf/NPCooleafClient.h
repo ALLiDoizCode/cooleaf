@@ -37,6 +37,8 @@ extern NSString * const kNPCooleafClientSignOut;
 - (AFHTTPRequestOperation *)updateRegistrationWithToken:(NSString *)token name:(NSString *)name gender:(NSString *)gender password:(NSString *)password tags:(NSArray *)tags completion:(void(^)())completion;
 - (AFHTTPRequestOperation *)updatePictureWithImage:(UIImage *)image completion:(void(^)(NSDictionary *))completion;
 
+- (void)getInterests:(void(^)(NSArray *npinterests))completion;
+
 - (void)logout;
 
 - (void)fetchEventList:(void(^)(NSArray *events))completion;

@@ -84,6 +84,7 @@
 		D980958D185F2C5D008F2B61 /* NSFileManager+ImageCaching.m in Sources */ = {isa = PBXBuildFile; fileRef = D980958C185F2C5D008F2B61 /* NSFileManager+ImageCaching.m */; };
 		F998F6891AB211E100213240 /* NPInterestsViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = F998F6881AB211E100213240 /* NPInterestsViewController2.m */; };
 		F998F68C1AB218AF00213240 /* NPInterestViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F998F68B1AB218AF00213240 /* NPInterestViewCell.m */; };
+		F998F68F1AB3312500213240 /* NPInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = F998F68E1AB3312500213240 /* NPInterest.m */; };
 		F9B37B941AAB9802003F3FB8 /* NPRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B37B931AAB9802003F3FB8 /* NPRegistrationViewController.m */; };
 		F9B37B981AAE0CA5003F3FB8 /* NPTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B37B971AAE0CA5003F3FB8 /* NPTagGroup.m */; };
 		F9B37B9B1AAE0F7A003F3FB8 /* NPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B37B9A1AAE0F7A003F3FB8 /* NPTag.m */; };
@@ -217,6 +218,8 @@
 		F998F6881AB211E100213240 /* NPInterestsViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestsViewController2.m; path = "Application Controllers/NPInterestsViewController/NPInterestsViewController2.m"; sourceTree = "<group>"; };
 		F998F68A1AB218AF00213240 /* NPInterestViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestViewCell.h; path = "Application Controllers/NPInterestsViewController/NPInterestViewCell.h"; sourceTree = "<group>"; };
 		F998F68B1AB218AF00213240 /* NPInterestViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestViewCell.m; path = "Application Controllers/NPInterestsViewController/NPInterestViewCell.m"; sourceTree = "<group>"; };
+		F998F68D1AB3312500213240 /* NPInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterest.h; path = Model/NPInterest.h; sourceTree = "<group>"; };
+		F998F68E1AB3312500213240 /* NPInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterest.m; path = Model/NPInterest.m; sourceTree = "<group>"; };
 		F9B37B921AAB9802003F3FB8 /* NPRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPRegistrationViewController.h; path = "Application Controllers/NPRegistrationViewController/NPRegistrationViewController.h"; sourceTree = "<group>"; };
 		F9B37B931AAB9802003F3FB8 /* NPRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPRegistrationViewController.m; path = "Application Controllers/NPRegistrationViewController/NPRegistrationViewController.m"; sourceTree = "<group>"; };
 		F9B37B961AAE0CA5003F3FB8 /* NPTagGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPTagGroup.h; path = Model/NPTagGroup.h; sourceTree = "<group>"; };
@@ -586,6 +589,8 @@
 				F9B37B9A1AAE0F7A003F3FB8 /* NPTag.m */,
 				F9B37B961AAE0CA5003F3FB8 /* NPTagGroup.h */,
 				F9B37B971AAE0CA5003F3FB8 /* NPTagGroup.m */,
+				F998F68D1AB3312500213240 /* NPInterest.h */,
+				F998F68E1AB3312500213240 /* NPInterest.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -793,6 +798,7 @@
 				F9B37B941AAB9802003F3FB8 /* NPRegistrationViewController.m in Sources */,
 				D93AAC7B187B5C9900E9B96A /* NPDateCell.m in Sources */,
 				D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */,
+				F998F68F1AB3312500213240 /* NPInterest.m in Sources */,
 				D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */,
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
 				523096E11AA3E24800649FB7 /* NPHomeTopCell.m in Sources */,

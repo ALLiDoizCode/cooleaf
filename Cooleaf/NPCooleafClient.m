@@ -8,6 +8,7 @@
 
 #import "NPCooleafClient.h"
 #import "NPTagGroup.h"
+#import "NPInterest.h"
 #import <SSKeychain/SSKeychain.h>
 #import "NSFileManager+ImageCaching.h"
 
@@ -297,7 +298,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 		path = [_apiPrefix stringByAppendingString:path];
 	
 	[self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		DLog(@"responseObject = %@", responseObject);
+		//DLog(@"responseObject = %@", responseObject);
 		if (completion)
 			completion(responseObject);
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -400,6 +401,10 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
             completion(error);
     }];
 }
+
+
+
+
 
 #pragma mark - Registration Handling
 
@@ -513,6 +518,33 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	} failure:^ (AFHTTPRequestOperation *operation, NSError *error) {
 		DLog(@"failed to upload profile pictures because, %@", error.localizedDescription);
 		completion(nil);
+	}];
+}
+
+
+
+
+
+#pragma mark - Interests
+
+- (void)getInterests:(void(^)(NSArray *npinterests))completion
+{
+	NSString *path = @"/interests.json";
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	[self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		NSMutableArray *npinterests = [[NSMutableArray alloc] init];
+		[(NSArray *)responseObject enumerateObjectsUsingBlock:^ (NSDictionary *interest, NSUInteger index, BOOL *stop) {
+			[npinterests addObject:[[NPInterest alloc] initWithDictionary:interest]];
+		}];
+		if (completion)
+			completion(npinterests);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		DLog(@"error = %@", error.localizedDescription);
+		if (completion)
+			completion(nil);
 	}];
 }
 

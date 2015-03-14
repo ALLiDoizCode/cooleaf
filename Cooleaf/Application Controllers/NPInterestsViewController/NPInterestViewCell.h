@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class NPInterest;
+
 @interface NPInterestViewCell : UICollectionViewCell
+
+@property (readwrite, strong, nonatomic) NPInterest *interest;
 
 @end
