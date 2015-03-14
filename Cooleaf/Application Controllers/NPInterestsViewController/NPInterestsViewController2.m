@@ -10,6 +10,8 @@
 #import "NPInterestViewCell.h"
 #import "NPCooleafClient.h"
 
+#define CellHeight 140 + 38 + 10
+
 static NSString * const reuseIdentifier = @"Cell";
 
 @interface NPInterestsViewController2 ()
@@ -44,7 +46,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
 	[super viewDidLoad];
 	
-	self.collectionView.backgroundColor = UIColor.greenColor;
+	self.collectionView.backgroundColor = UIColor.whiteColor;
 	self.collectionView.delegate = self;
 	self.collectionView.dataSource = self;
 	self.collectionView.scrollEnabled = FALSE;
@@ -62,7 +64,7 @@ static NSString * const reuseIdentifier = @"Cell";
 	[[NPCooleafClient sharedClient] getInterests:^ (NSArray *npinterests) {
 		DLog(@"interests = %@", npinterests);
 		_npinterests = npinterests;
-		_heightConstraint.constant = ceilf((float)npinterests.count / 2.0) * 150.0;
+		_heightConstraint.constant = ceilf((float)npinterests.count / 2.0) * CellHeight;
 		[self reload];
 	}];
 }
@@ -167,7 +169,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	return CGSizeMake(145, 140);
+	return CGSizeMake(145, 140 + 38);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
