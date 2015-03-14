@@ -37,9 +37,11 @@ extern NSString * const kNPCooleafClientSignOut;
 - (AFHTTPRequestOperation *)updateRegistrationWithToken:(NSString *)token name:(NSString *)name gender:(NSString *)gender password:(NSString *)password tags:(NSArray *)tags completion:(void(^)())completion;
 - (AFHTTPRequestOperation *)updatePictureWithImage:(UIImage *)image completion:(void(^)(NSDictionary *))completion;
 - (AFHTTPRequestOperation *)updateProfileDataAllFields:(NSString *)EditName email:(NSString *)email password:(NSString *)password tags:(NSArray *)tags removed_picture:(BOOL)removed_picture file_cache:(NSString *)file_cache role_structure_required:(NSArray *)role_structure_required profileDailyDigest:(BOOL)profileDailyDigest profileWeeklyDigest:(BOOL)profileWeeklyDigest profile:(NSArray *)profile completion:(void(^)())completion;
+- (void)getUserData:(void(^)(NSDictionary *profile))completion;
 
 - (void)getAllInterests:(void(^)(NSArray *npinterests))completion;
 - (void)getUserInterests:(void(^)(NSArray *npinterests))completion;
+- (void)setUserInterests:(NSArray *)npinterests completion:(void (^)(BOOL))completion;
 
 - (void)logout;
 

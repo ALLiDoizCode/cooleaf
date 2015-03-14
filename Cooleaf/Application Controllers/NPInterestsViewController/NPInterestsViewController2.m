@@ -89,10 +89,21 @@ static NSString * const reuseIdentifier = @"Cell";
 		[[NPCooleafClient sharedClient] getUserInterests:handler];
 }
 
+/**
+ * Sets the edit more for the interests. If we're enabling edit mode, we'll reload the view with
+ * the complete set of interests. If we're disabling edit mode, then we need to take the current
+ * interests, filter it to the enabled set, and update the user's profile; and then reload.
+ */
 - (void)setEditModeOn:(BOOL)editModeOn
 {
 	_editModeOn = editModeOn;
-	[self reload];
+	
+	if (_editModeOn == TRUE)
+		[self reload];
+	else {
+		NSArray *activeInterests = [_npinterests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isActive; }]];
+		[[NPCooleafClient sharedClient] setUserInterests:activeInterests completion:^ (BOOL success) { [self reload]; }];
+	}
 }
 
 

@@ -229,7 +229,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 #ifdef DEBUG
 		[params setValue:@(TRUE) forKey:@"sandbox"];
 #else
-	[params setValue:@(FALSE) forKey:@"sandbox"];
+		[params setValue:@(FALSE) forKey:@"sandbox"];
 #endif //DEBUG
 	
 	DLog(@"baseUrl = %@", self.baseURL);
@@ -249,6 +249,27 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 			completion();
 	}];
 }
+
+- (void)getUserData:(void(^)(NSDictionary *profile))completion
+{
+	NSString *path = @"/users/me.json";
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	[self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		DLog(@"error = %@", error.localizedDescription);
+		if (completion)
+			completion(nil);
+	}];
+}
+
+
+
+
 
 #pragma mark - Event handling
 
@@ -621,6 +642,25 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 - (void)getUserInterests:(void(^)(NSArray *npinterests))completion
 {
 	return [self getInterests:TRUE completion:completion];
+}
+
+/**
+ * To edit just the interests for a user, we must first fetch the entire user profile, and then
+ * return some of it, along with our new set of interests.
+ */
+- (void)setUserInterests:(NSArray *)npinterests completion:(void (^)(BOOL))completion
+{
+	NSMutableArray *interestIds = [[NSMutableArray alloc] init];
+	
+	[npinterests enumerateObjectsUsingBlock:^ (NPInterest *npinterest, NSUInteger index, BOOL *stop) {
+		[interestIds addObject:@(npinterest.objectId)];
+	}];
+	
+	[[NPCooleafClient sharedClient] getUserData:^ (NSDictionary *profile) {
+		[self updateProfileDataAllFields:nil email:nil password:nil tags:interestIds removed_picture:FALSE file_cache:nil role_structure_required:profile[@"role"] profileDailyDigest:TRUE profileWeeklyDigest:TRUE profile:profile[@"profile"] completion:^{
+			NSLog(@"Success");
+		}];
+	}];
 }
 
 @end
