@@ -10,6 +10,8 @@
 #import "NPCooleafClient.h"
 #import "NPLoginViewController.h"
 #import "NPInterestsViewController2.h"
+#import <SSKeychain/SSKeychain.h>
+
 
 @interface NPProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
@@ -225,8 +227,17 @@
 	_avatarController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 }
 
-
-
+//- (void)doActionSaveProfileChanges:(id)sender
+//{
+//	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
+////	NSString *name = uD[@"name"];
+////	NSString *email = uD[@"email"];
+////	NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+////	NSString *password = [SSKeychain passwordForService:@"Cooleaf" account:username];
+//	
+//	[[NPCooleafClient sharedClient] updateProfileDataAllFields:name email:email password:password tags:<#(NSArray *)#> removed_picture:@"False" file_cache:<#(NSString *)#> role_structure:<#(NSArray *)#> completion:<#^(void)completion#>]
+//}
+//
 
 
 #pragma mark - UINavigationControllerDelegate
@@ -273,6 +284,12 @@
 					bgToolbar.barStyle = UIBarStyleBlackOpaque;
 					[_clearView.superview insertSubview:bgToolbar belowSubview:_clearView];
 				}
+				
+				
+			}];
+			NSDictionary *uD = [NPCooleafClient sharedClient].userData;
+			[[NPCooleafClient sharedClient] updateProfileDataAllFields:nil email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:TRUE profileWeeklyDigest:TRUE profile:uD[@"profile"] completion:^{
+				NSLog(@"Success");
 			}];
 		}];
 //}
