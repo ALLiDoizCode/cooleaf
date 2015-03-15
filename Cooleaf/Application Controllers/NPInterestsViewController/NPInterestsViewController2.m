@@ -11,7 +11,7 @@
 #import "NPCooleafClient.h"
 #import "NPInterest.h"
 
-#define CellHeight 145 + 38 + 10 + 2
+#define CellHeight 145 + 30 + 10 + 2
 
 static NSString * const reuseIdentifier = @"Cell";
 
@@ -192,7 +192,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	return CGSizeMake(145, 145 + 38);
+	return CGSizeMake(145, 145 + 30);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
