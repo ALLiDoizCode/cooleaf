@@ -512,27 +512,31 @@
 	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:_genderLbl.text password:_password tags:tags completion:^ {
 		DLog(@"Done!");
 		
-		
-		[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarImg.image completion:^ (NSDictionary *unused) {
-			DLog(@"Done!");
+		[[NPCooleafClient sharedClient] loginWithUsername:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"] password:_password completion:^(NSError *error) {
 			
-			
-			NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
-			DLog(@"avatarUrl = %@", avatarURL);
-			[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
-				if (image && [imagePath isEqual:avatarURL.absoluteString])
-				{
-					_avatarImg.image = image;
-				}
+			[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarImg.image completion:^ (NSDictionary *unused) {
+				DLog(@"Done!");
 				
-			}];
-			NSDictionary *uD = [NPCooleafClient sharedClient].userData;
-			[[NPCooleafClient sharedClient] updateProfileDataAllFields:nil email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:TRUE profileWeeklyDigest:TRUE profile:uD[@"profile"] completion:^{
-				NSLog(@"Success");
+				
+				NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
+				DLog(@"avatarUrl = %@", avatarURL);
+				[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+					if (image && [imagePath isEqual:avatarURL.absoluteString])
+					{
+						_avatarImg.image = image;
+					}
+					
+				}];
+				NSDictionary *uD = [NPCooleafClient sharedClient].userData;
+				[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:TRUE profileWeeklyDigest:TRUE profile:uD[@"profile"] completion:^{
+					NSLog(@"Success");
+				}];
 			}];
 		}];
 
+
 	}];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doActionPicture:(id)sender
