@@ -152,8 +152,8 @@ enum {
     f = _titleLabel.frame;
     [_titleLabel sizeToFit];
     _titleLabel.frame = CGRectMake(f.origin.x, f.origin.y, f.size.width, _titleLabel.frame.size.height);
-    shift = _titleLabel.frame.size.height - 10;
-    
+//    shift = _titleLabel.frame.size.height - 10;
+	
     // Calculate size for hashes
     NSMutableString *hashes = [NSMutableString string];
     for (NSString *hash in event[@"categories_names"])
@@ -168,8 +168,8 @@ enum {
     f = _categoriesLabel.frame;
     [_categoriesLabel sizeToFit];
     _categoriesLabel.frame = CGRectMake(f.origin.x, 75 + shift, f.size.width, _categoriesLabel.frame.size.height);
-    shift += _categoriesLabel.frame.size.height;
-    
+//    shift += _categoriesLabel.frame.size.height;
+	
     // Move necessary elements down
     _joinButton.transform = CGAffineTransformMakeTranslation(0, shift);
 //    _rewardLabel.transform = CGAffineTransformMakeTranslation(0, shift);
@@ -231,13 +231,13 @@ enum {
     
     if ([_currentEvent[@"attending"] boolValue])
     {
-		_joinButton.frame = CGRectMake(260, 60 + _shift, 60, 25);
-		_resignButton.frame = CGRectMake(260, 60 + _shift, 60, 25);
+		_joinButton.frame = CGRectMake(260, 135, 60, 25);
+		_resignButton.frame = CGRectMake(260, 135, 60, 25);
     }
     else
     {
-		_joinButton.frame = CGRectMake(260, 60 + _shift, 60, 25);
-		_resignButton.frame = CGRectMake(260, 60 + _shift, 60, 25);
+		_joinButton.frame = CGRectMake(260, 135, 60, 25);
+		_resignButton.frame = CGRectMake(260, 135, 60, 25);
     }
 //    _joinButton.transform = CGAffineTransformMakeTranslation(0, _shift);
 }
