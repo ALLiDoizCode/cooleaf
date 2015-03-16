@@ -155,13 +155,13 @@ static UITextView *_tV;
 	}
 	
 	CGFloat shift = 0;
-	CGFloat shift2 = 0;
+//	CGFloat shift2 = 0;
 	_eventTitle.text = _event[@"name"];
 	CGRect f;
 	f = _eventTitle.frame;
 	[_eventTitle sizeToFit];
 	_eventTitle.frame = CGRectMake(f.origin.x, f.origin.y, f.size.width, _eventTitle.frame.size.height);
-	shift = _eventTitle.frame.size.height - 47.0;
+//	shift = _eventTitle.frame.size.height - 47.0;
 	
 	if (!_dateFormatter)
 	{
@@ -197,14 +197,14 @@ static UITextView *_tV;
 		_attendeeLabel.text = [NSString stringWithFormat:@"%@ Members", _event[@"users_count"]];
 		
 		f = _slideBarContent.frame;
-		f.size.height = 90;
+		f.size.height = 45;
 		_slideBarContent.frame = f;
 		f = _sliderBarView.frame;
-		f.size.height = 90;
+		f.size.height = 45;
 		_sliderBarView.frame = f;
 		
 		f = _joinButton.frame;
-		f.size.height = 90;
+		f.size.height = 45;
 		_joinButton.frame = f;
 		
 		// Now we can add participants
@@ -244,12 +244,12 @@ static UITextView *_tV;
 				break;
 			}
 		}
-		shift2 = 45;
+//		shift2 = 45;
 		_loadingIndicator.transform = CGAffineTransformMakeTranslation(0, 25);
 	}
 	else
 	{
-		shift2 -= 6;
+//		shift2 -= 6;
 		
 		_slideBarContent.backgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
 		[_joinButton setTitle:NSLocalizedString(@"I’m in!", @"Joining event button title") forState:UIControlStateNormal];
@@ -258,10 +258,10 @@ static UITextView *_tV;
 		_attendeeLabel.text = NSLocalizedString(@"Be the first", @"No attendees label for event");
 		
 		f = _slideBarContent.frame;
-		f.size.height = 42;
+		f.size.height = 45;
 		_slideBarContent.frame = f;
 		f = _sliderBarView.frame;
-		f.size.height = 42;
+		f.size.height = 45;
 		_sliderBarView.frame = f;
 		
 		f = _joinButton.frame;
