@@ -7,6 +7,8 @@
 //
 
 #import "NPInterestsViewController.h"
+//#import "NPInterestTableViewController.h"
+#import "NPInterestViewController.h"
 #import "NPCooleafClient.h"
 #import "NPInterestCell.h"
 #import "NPOtherInterestCell.h"
@@ -317,11 +319,11 @@
 	if (indexPath.row == 0 || indexPath.row == _myEvents.count + 1)
 		return;
 	
-	NPEventViewController *eC = [NPEventViewController new];
-	eC.events = [_myEvents arrayByAddingObjectsFromArray:_otherEvents];
-	eC.eventIdx = (indexPath.row - 1 < _myEvents.count) ? indexPath.row - 1 : indexPath.row - 2;
+	NPInterestViewController *tC = [NPInterestViewController new];
+	tC.events = [_myEvents arrayByAddingObjectsFromArray:_otherEvents];
+	tC.eventIdx = (indexPath.row - 1 < _myEvents.count) ? indexPath.row - 1 : indexPath.row - 2;
 	
-	[self.navigationController pushViewController:eC animated:YES];
+	[self.navigationController pushViewController:tC animated:YES];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

@@ -275,34 +275,66 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 
 - (AFHTTPRequestOperation *)fetchEventWithId:(NSNumber *)eventId completion:(void(^)(NSDictionary *eventDetails))completion
 {
-    NSString *path = [NSString stringWithFormat:@"/events/%@.json", eventId];
-    
-    if (_apiPrefix.length > 0)
-        path = [_apiPrefix stringByAppendingString:path];
-    
-    return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (completion)
-            completion(responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (completion)
-            completion(nil);
-    }];
+	NSString *path = [NSString stringWithFormat:@"/events/%@.json", eventId];
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		if (completion)
+			completion(nil);
+	}];
 }
 
 - (AFHTTPRequestOperation *)fetchParticipantsForEventWithId:(NSNumber *)eventId completion:(void(^)(NSArray *participants))completion
 {
-    NSString *path = [NSString stringWithFormat:@"/participations/%@.json", eventId];
-    
-    if (_apiPrefix.length > 0)
-        path = [_apiPrefix stringByAppendingString:path];
-    
-    return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if (completion)
-            completion(responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        if (completion)
-            completion(nil);
-    }];
+	NSString *path = [NSString stringWithFormat:@"/participations/%@.json", eventId];
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		if (completion)
+			completion(nil);
+	}];
+}
+
+- (AFHTTPRequestOperation *)fetchGroupWithId:(NSNumber *)groupId completion:(void(^)(NSDictionary *groupDetails))completion
+{
+	NSString *path = [NSString stringWithFormat:@"/interests/%@.json", groupId];
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		if (completion)
+			completion(nil);
+	}];
+}
+
+- (AFHTTPRequestOperation *)fetchMembersForGroupWithId:(NSNumber *)groupId completion:(void(^)(NSDictionary *members))completion
+{
+	NSString *path = [NSString stringWithFormat:@"/interests/%@/users.json", groupId];
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		if (completion)
+			completion(nil);
+	}];
 }
 
 - (AFHTTPRequestOperation *)joinEventWithId:(NSNumber *)eventId completion:(void(^)(NSError *error))completion
