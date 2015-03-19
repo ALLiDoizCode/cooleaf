@@ -116,11 +116,9 @@
 	_interestsController = [[NPInterestsViewController2 alloc] init];
 	_interestsController.collectionView.translatesAutoresizingMaskIntoConstraints = FALSE;
 	[self.scrollView addSubview:_interestsController.collectionView];
-//[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView][view(300)]|" options:0 metrics:nil views:@{@"view": _interestsController.collectionView, @"topView": _imageCoverView}]];
-//[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view(320)]|" options:0 metrics:nil views:@{@"view": _interestsController.collectionView}]];
-	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:_interestsController.collectionView attribute:NSLayoutAttributeTop   relatedBy:NSLayoutRelationEqual toItem:_imageCoverView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:_interestsController.collectionView attribute:NSLayoutAttributeLeft  relatedBy:NSLayoutRelationEqual toItem:self.view       attribute:NSLayoutAttributeLeft   multiplier:1 constant:0]];
-	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:_interestsController.collectionView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view       attribute:NSLayoutAttributeRight  multiplier:1 constant:0]];
+	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:_interestsController.collectionView attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:_imageCoverView attribute:NSLayoutAttributeBottom  multiplier:1 constant:0]];
+	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:_interestsController.collectionView attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:self.view       attribute:NSLayoutAttributeLeft    multiplier:1 constant:0]];
+	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:_interestsController.collectionView attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:self.view       attribute:NSLayoutAttributeRight   multiplier:1 constant:0]];
 	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:_interestsController.collectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeBottom  multiplier:1 constant:0]];
 	[self.view layoutIfNeeded];
 	self.scrollView.contentSize = CGSizeMake(320, 1000);
@@ -203,10 +201,13 @@
     if (buttonIndex == 1)
     {
         [[NPCooleafClient sharedClient] logout];
-        [self.view.window.rootViewController presentViewController:[NPLoginViewController new] animated:YES completion:^{
-            [self.navigationController popToRootViewControllerAnimated:NO];
-        }];
-        
+			[self.view.window.rootViewController presentViewController:[[UINavigationController alloc] initWithRootViewController:[NPLoginViewController new]] animated:NO completion:^{
+				[self.navigationController popToRootViewControllerAnimated:NO];
+			}];
+//        [self.view.window.rootViewController presentViewController:[NPLoginViewController new] animated:YES completion:^{
+//            [self.navigationController popToRootViewControllerAnimated:NO];
+//        }];
+			
     }
 }
 

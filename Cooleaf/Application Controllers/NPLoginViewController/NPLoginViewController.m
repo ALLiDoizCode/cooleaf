@@ -142,6 +142,11 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[self.navigationController setNavigationBarHidden:TRUE];
+}
+
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
@@ -240,7 +245,8 @@
 	}
 	
 	NPRegistrationViewController *controller = [[NPRegistrationViewController alloc] initWithUsername:_usernameField.text andPassword:_passwordField.text];
-	[self presentViewController:controller animated:TRUE completion:nil];
+//[self presentViewController:controller animated:TRUE completion:nil];
+	[self.navigationController pushViewController:controller animated:TRUE];
 }
 
 - (IBAction)termsButtonTapped:(id)sender

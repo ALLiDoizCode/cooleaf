@@ -20,7 +20,7 @@ NSString * const kNPCooleafClientRUDIDHarvestedNotification = @"kNPCooleafClient
 NSString * const kNPCooleafClientSignOut = @"kNPCooleafClientSignOut";
 
 static NSString * const kNPCooleafClientBaseURLString = @"http://api.staging.do.cooleaf.monterail.eu";
-static NSString * const kNPCooleafClientAPIPrefix = @"/v1";
+static NSString * const kNPCooleafClientAPIPrefix = @"/v2";
 static NSString * const kNPCooleafClientAPIAuthLogin = @"cooleaf";
 static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 
@@ -517,12 +517,13 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	DLog(@"params  = %@", params);
 	
 	return [self POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		DLog(@"responseObject = %@", responseObject);
 		_userData = [responseObject copy];
 		[self.requestSerializer setValue:_userData[@"role"][@"organization"][@"subdomain"] forHTTPHeaderField:@"X-Organization"];
 		[[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
 		if (completion) {
 			NSMutableDictionary *tagGroups = [[NSMutableDictionary alloc] init];
-			[(NSArray *)responseObject[@"all_structure_tags"] enumerateObjectsUsingBlock:^ (NSDictionary *structure, NSUInteger index, BOOL *stop) {
+			[(NSArray *)responseObject[@"all_structures"] enumerateObjectsUsingBlock:^ (NSDictionary *structure, NSUInteger index, BOOL *stop) {
 				NPTagGroup *tagGroup = [[NPTagGroup alloc] initWithDictionary:structure];
 				tagGroups[tagGroup.name] = tagGroup;
 			}];
@@ -535,7 +536,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	}];
 }
 
-- (AFHTTPRequestOperation *)updateRegistrationWithToken:(NSString *)token name:(NSString *)name gender:(NSString *)gender password:(NSString *)password tags:(NSArray *)tags completion:(void(^)())completion
+- (AFHTTPRequestOperation *)updateRegistrationWithToken:(NSString *)token name:(NSString *)name gender:(NSString *)gender password:(NSString *)password tags:(NSArray *)tags completion:(void(^)(BOOL, NSString*))completion
 {
 	NSString *path = @"/registrations.json";
 	
@@ -573,12 +574,12 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 //				tagGroups[tagGroup.name] = tagGroup;
 //			}];
 //			completion(responseObject[@"token"], tagGroups);
-			completion();
+			completion(TRUE, nil);
 		}
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		DLog(@"Operation failed because, %@", error.localizedDescription);
 		if (completion)
-			completion();
+			completion(FALSE, error.localizedDescription);
 	}];
 }
 

@@ -8,6 +8,7 @@
 
 #import "NPInterestsViewController2.h"
 #import "NPInterestViewCell.h"
+#import "NPInterestsHeaderViewCell.h"
 #import "NPCooleafClient.h"
 #import "NPInterest.h"
 
@@ -53,6 +54,7 @@ static NSString * const reuseIdentifier = @"Cell";
 	self.collectionView.scrollEnabled = FALSE;
 	
 	[self.collectionView registerClass:[NPInterestViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+	[self.collectionView registerClass:[NPInterestsHeaderViewCell class] forCellWithReuseIdentifier:@"HeaderCell"];
 	
 	_heightConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:0];
 	[self.collectionView addConstraint:_heightConstraint];
@@ -60,6 +62,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewWillAppear:(BOOL)animated
 {
+	[self.navigationController setNavigationBarHidden:TRUE];
 	[self reload];
 }
 
@@ -79,7 +82,10 @@ static NSString * const reuseIdentifier = @"Cell";
 	void (^handler)(NSArray*) = ^ (NSArray *npinterests) {
 		DLog(@"interests = %@", npinterests);
 		_npinterests = npinterests;
-		_heightConstraint.constant = ceilf((float)npinterests.count / 2.0) * (CellHeight);
+		if (_scrollEnabled == TRUE)
+			_heightConstraint.constant = self.view.window.frame.size.height;
+		else
+			_heightConstraint.constant = ceilf((float)npinterests.count / 2.0) * (CellHeight);
 		[self.collectionView reloadData];
 	};
 	
@@ -107,6 +113,31 @@ static NSString * const reuseIdentifier = @"Cell";
 	}
 }
 
+- (void)setTopBarEnabled:(BOOL)topBarEnabled
+{
+	_topBarEnabled = topBarEnabled;
+	[self.collectionView reloadData];
+}
+
+
+
+
+
+#pragma mark - Actions
+
+- (void)doActionBack:(id)sender
+{
+	[self.navigationController popViewControllerAnimated:TRUE];
+}
+
+- (void)doActionNext:(id)sender
+{
+	NSArray *activeInterests = [_npinterests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isActive; }]];
+	[[NPCooleafClient sharedClient] setUserInterests:activeInterests completion:^ (BOOL success) {
+		[self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
+	}];
+}
+
 
 
 
@@ -115,23 +146,32 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-	return 1;
+	return _topBarEnabled ? 2 : 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-	return _npinterests.count;
+	if (_topBarEnabled && section == 0)
+		return 1;
+	else
+		return _npinterests.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	NPInterestViewCell *cell = (NPInterestViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-	
-	cell.editModeOn = _editModeOn;
-	cell.interest = _npinterests[indexPath.row];
-	
-	return cell;
+	if (_topBarEnabled && indexPath.section == 0) {
+		NPInterestsHeaderViewCell *cell = (NPInterestsHeaderViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"HeaderCell" forIndexPath:indexPath];
+		cell.backHandler = ^ { [self doActionBack:nil]; };
+		cell.nextHandler = ^ { [self doActionNext:nil]; };
+		return cell;
+	}
+	else {
+		NPInterestViewCell *cell = (NPInterestViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+		cell.editModeOn = _editModeOn;
+		cell.interest = _npinterests[indexPath.row];
+		return cell;
+	}
 }
 
 
@@ -192,12 +232,18 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	return CGSizeMake(145, 145 + 30);
+	if (_topBarEnabled && indexPath.section == 0)
+		return CGSizeMake(320, 50);
+	else
+		return CGSizeMake(145, 145 + 30);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-	return UIEdgeInsetsMake(10, 10, 10, 10);
+	if (_topBarEnabled && section == 0)
+		return UIEdgeInsetsMake(0, 0, 0, 0);
+	else
+		return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 @end

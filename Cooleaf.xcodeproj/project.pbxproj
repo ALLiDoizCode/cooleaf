@@ -88,6 +88,7 @@
 		F9B37B941AAB9802003F3FB8 /* NPRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B37B931AAB9802003F3FB8 /* NPRegistrationViewController.m */; };
 		F9B37B981AAE0CA5003F3FB8 /* NPTagGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B37B971AAE0CA5003F3FB8 /* NPTagGroup.m */; };
 		F9B37B9B1AAE0F7A003F3FB8 /* NPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B37B9A1AAE0F7A003F3FB8 /* NPTag.m */; };
+		F9F445EA1AB8AED700C655CF /* NPInterestsHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F445E91AB8AED700C655CF /* NPInterestsHeaderViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +227,8 @@
 		F9B37B971AAE0CA5003F3FB8 /* NPTagGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPTagGroup.m; path = Model/NPTagGroup.m; sourceTree = "<group>"; };
 		F9B37B991AAE0F7A003F3FB8 /* NPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPTag.h; path = Model/NPTag.h; sourceTree = "<group>"; };
 		F9B37B9A1AAE0F7A003F3FB8 /* NPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPTag.m; path = Model/NPTag.m; sourceTree = "<group>"; };
+		F9F445E81AB8AED700C655CF /* NPInterestsHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsHeaderViewCell.h; path = "Application Controllers/NPInterestsViewController/NPInterestsHeaderViewCell.h"; sourceTree = "<group>"; };
+		F9F445E91AB8AED700C655CF /* NPInterestsHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestsHeaderViewCell.m; path = "Application Controllers/NPInterestsViewController/NPInterestsHeaderViewCell.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -569,6 +572,8 @@
 				F998F6881AB211E100213240 /* NPInterestsViewController2.m */,
 				F998F68A1AB218AF00213240 /* NPInterestViewCell.h */,
 				F998F68B1AB218AF00213240 /* NPInterestViewCell.m */,
+				F9F445E81AB8AED700C655CF /* NPInterestsHeaderViewCell.h */,
+				F9F445E91AB8AED700C655CF /* NPInterestsHeaderViewCell.m */,
 			);
 			name = NPInterestsViewController;
 			sourceTree = "<group>";
@@ -801,6 +806,7 @@
 				F998F68F1AB3312500213240 /* NPInterest.m in Sources */,
 				D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */,
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
+				F9F445EA1AB8AED700C655CF /* NPInterestsHeaderViewCell.m in Sources */,
 				523096E11AA3E24800649FB7 /* NPHomeTopCell.m in Sources */,
 				D94664FE18634DEB0084BBB2 /* NPGradientView.m in Sources */,
 				D9809558185CA557008F2B61 /* NPAppDelegate.m in Sources */,

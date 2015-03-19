@@ -11,5 +11,7 @@
 @interface NPInterestsViewController2 : UICollectionViewController
 
 @property (readwrite, assign, nonatomic) BOOL editModeOn;
+@property (readwrite, assign, nonatomic) BOOL topBarEnabled;
+@property (readwrite, assign, nonatomic) BOOL scrollEnabled;
 
 @end

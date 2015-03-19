@@ -100,7 +100,8 @@
 	self.window.rootViewController = (_mainViewController = [[MainViewController alloc]init]);
 	
     [self.window makeKeyAndVisible];    
-    [self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
+//	[self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
+		[self.window.rootViewController presentViewController:[[UINavigationController alloc] initWithRootViewController:[NPLoginViewController new]] animated:NO completion:nil];
 //    [self checkNewVersionWithpdateBlock:^(NSString *newVersion) {
 //       UIAlertView *updateAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"New version available", nil)
 //                                                             message:NSLocalizedString(@"New version of Cooleaf is available. Please update to continue using the application.", nil)
@@ -128,7 +129,8 @@
     [[NPCooleafClient sharedClient] checkEndpoints];
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    [self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
+//  [self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
+		[self.window.rootViewController presentViewController:[[UINavigationController alloc] initWithRootViewController:[NPLoginViewController new]] animated:NO completion:nil];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

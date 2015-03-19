@@ -7,6 +7,7 @@
 //
 
 #import "NPRegistrationViewController.h"
+#import "NPInterestsViewController2.h"
 #import "NPCooleafClient.h"
 #import "NPTag.h"
 #import "NPTagGroup.h"
@@ -447,12 +448,26 @@
 	[self modalShow];
 	
 	[[NPCooleafClient sharedClient] registerWithUsername:_username completion:^ (NSString *token, NSDictionary *tagGroups) {
-		_token = token;
-		_tagGroups = [NSMutableDictionary dictionaryWithDictionary:tagGroups];
-		_locationTagGroup = _tagGroups[@"Location"];
-		_departmentTagGroup = _tagGroups[@"Department"];
+		DLog(@"token = %@", token);
+		DLog(@"tags = %@", tagGroups);
 		[self modalHide];
+		
+		if (token != nil && tagGroups != nil) {
+			_token = token;
+			_tagGroups = [NSMutableDictionary dictionaryWithDictionary:tagGroups];
+			_locationTagGroup = _tagGroups[@"Location"];
+			_departmentTagGroup = _tagGroups[@"Department"];
+		}
+		else {
+			[[[UIAlertView alloc] initWithTitle:@"Registration Failed" message:@"Is this username already active?" delegate:nil cancelButtonTitle:@"Sorry" otherButtonTitles:nil] show];
+			[self.navigationController popViewControllerAnimated:TRUE];
+		}
 	}];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[self.navigationController setNavigationBarHidden:TRUE];
 }
 
 - (void)didReceiveMemoryWarning
@@ -494,7 +509,8 @@
 - (void)doActionBack:(id)sender
 {
 	DLog(@"");
-	[self dismissViewControllerAnimated:TRUE completion:nil];
+	[self.navigationController popViewControllerAnimated:TRUE];
+//[self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (void)doActionNext:(id)sender
@@ -509,34 +525,46 @@
 	if (locationTag != nil) [tags addObject:@(locationTag.objectId).stringValue];
 	if (departmentTag != nil) [tags addObject:@(departmentTag.objectId).stringValue];
 		
-	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:_genderLbl.text password:_password tags:tags completion:^ {
-		DLog(@"Done!");
+	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:_genderLbl.text password:_password tags:tags completion:^ (BOOL success, NSString *error) {
+		DLog(@"Done! success = %@", NSStringFromBool(success));
+		
+		if (success == FALSE) {
+			[[[UIAlertView alloc] initWithTitle:@"Registration Failed." message:error delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+			[self dismissViewControllerAnimated:YES completion:nil];
+			return;
+		}
 		
 		[[NPCooleafClient sharedClient] loginWithUsername:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"] password:_password completion:^(NSError *error) {
 			
+			NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
+			interestsController.editModeOn = TRUE;
+			interestsController.topBarEnabled = TRUE;
+			interestsController.scrollEnabled = TRUE;
+			[self.navigationController pushViewController:interestsController animated:TRUE];
+//		[self presentViewController:interestsController animated:FALSE completion:nil];
+			DLog(@"collectionView = %@", interestsController.collectionView);
+			
 			[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarImg.image completion:^ (NSDictionary *unused) {
-				DLog(@"Done!");
+				DLog(@"Done! unused = %@", unused);
 				
-				
-				NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
-				DLog(@"avatarUrl = %@", avatarURL);
-				[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
-					if (image && [imagePath isEqual:avatarURL.absoluteString])
-					{
-						_avatarImg.image = image;
-					}
+				if (unused != nil) {
+					NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
+					DLog(@"avatarUrl = %@", avatarURL);
+					[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion: ^ (NSString *imagePath, UIImage *image) {
+						if (image && [imagePath isEqual:avatarURL.absoluteString])
+							_avatarImg.image = image;
+					}];
 					
-				}];
-				NSDictionary *uD = [NPCooleafClient sharedClient].userData;
-				[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:TRUE profileWeeklyDigest:TRUE profile:uD[@"profile"] completion:^{
-					NSLog(@"Success");
-				}];
+					NSDictionary *uD = [NPCooleafClient sharedClient].userData;
+					[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:TRUE profileWeeklyDigest:TRUE profile:uD[@"profile"] completion:^{
+						NSLog(@"Success");
+					}];
+				}
 			}];
 		}];
-
-
 	}];
-	[self dismissViewControllerAnimated:YES completion:nil];
+	
+	//[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doActionPicture:(id)sender
