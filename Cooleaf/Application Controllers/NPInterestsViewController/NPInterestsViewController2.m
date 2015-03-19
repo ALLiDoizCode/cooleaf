@@ -51,7 +51,6 @@ static NSString * const reuseIdentifier = @"Cell";
 	self.collectionView.backgroundColor = UIColor.whiteColor;
 	self.collectionView.delegate = self;
 	self.collectionView.dataSource = self;
-	self.collectionView.scrollEnabled = FALSE;
 	
 	[self.collectionView registerClass:[NPInterestViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
 	[self.collectionView registerClass:[NPInterestsHeaderViewCell class] forCellWithReuseIdentifier:@"HeaderCell"];
@@ -82,10 +81,14 @@ static NSString * const reuseIdentifier = @"Cell";
 	void (^handler)(NSArray*) = ^ (NSArray *npinterests) {
 		DLog(@"interests = %@", npinterests);
 		_npinterests = npinterests;
-		if (_scrollEnabled == TRUE)
+		if (_scrollEnabled == TRUE) {
+			self.collectionView.scrollEnabled = TRUE;
 			_heightConstraint.constant = self.view.window.frame.size.height;
-		else
+		}
+		else {
+			self.collectionView.scrollEnabled = FALSE;
 			_heightConstraint.constant = ceilf((float)npinterests.count / 2.0) * (CellHeight);
+		}
 		[self.collectionView reloadData];
 	};
 	
