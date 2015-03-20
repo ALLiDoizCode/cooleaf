@@ -79,6 +79,7 @@ enum {
 	
 	// Register cell types
 	[_tableView registerNib:[UINib nibWithNibName:@"NPMembersCell" bundle:nil] forCellReuseIdentifier:@"NPMembersCell"];
+	[_tableView registerNib:[UITableViewCell class] forCellReuseIdentifier:@"NPDefaultCell"];
 //	[_tableView registerNib:[UINib nibWithNibName:@"NPDateCell" bundle:nil] forCellReuseIdentifier:@"NPDateCell"];
 //	[_tableView registerNib:[UINib nibWithNibName:@"NPLocationCell" bundle:nil] forCellReuseIdentifier:@"NPLocationCell"];
 //	[_tableView registerNib:[UINib nibWithNibName:@"NPDetailsCell" bundle:nil] forCellReuseIdentifier:@"NPDetailsCell"];
@@ -146,17 +147,17 @@ enum {
 	_titleLabel.frame = CGRectMake(f.origin.x, f.origin.y, f.size.width, _titleLabel.frame.size.height);
 	//    shift = _titleLabel.frame.size.height - 10;
 	
-	// Calculate size for hashes
-	NSMutableString *hashes = [NSMutableString string];
-	for (NSString *hash in event[@"slug"])
-	{
-		if (hashes.length > 0)
-			[hashes appendFormat:@" #%@", hash];
-		else
-			[hashes appendFormat:@"#%@", hash];
-	}
-	
-	_categoriesLabel.text = [hashes uppercaseString];
+//	// Calculate size for hashes
+//	NSMutableString *hashes = [NSMutableString string];
+//	for (NSString *hash in event[@"slug"])
+//	{
+//		if (hashes.length > 0)
+//			[hashes appendFormat:@" #%@", hash];
+//		else
+//			[hashes appendFormat:@"#%@", hash];
+//	}
+//	
+//	_categoriesLabel.text = [hashes uppercaseString];
 	f = _categoriesLabel.frame;
 	[_categoriesLabel sizeToFit];
 	_categoriesLabel.frame = CGRectMake(f.origin.x, 45 + shift, f.size.width, _categoriesLabel.frame.size.height);
@@ -326,7 +327,7 @@ enum {
 //			cell.attendees = _currentEvent[@"participants"];
 			[[NPCooleafClient sharedClient] fetchMembersForGroupWithId:_currentEvent[@"id"] completion:^(NSDictionary *members) {
 				DLog(@"%@", members);
-				cell.attendees = members;
+				//cell.attendees = members;
 			}];
 			return cell;
 			
@@ -374,8 +375,7 @@ enum {
 			//		}
 			//			break;
 		default:
-			return nil;
-			break;
+			return [tableView dequeueReusableCellWithIdentifier:@"NPDefaultCell"];
 	}
 }
 
