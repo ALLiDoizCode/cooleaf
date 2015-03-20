@@ -79,7 +79,7 @@ enum {
 	
 	// Register cell types
 	[_tableView registerNib:[UINib nibWithNibName:@"NPMembersCell" bundle:nil] forCellReuseIdentifier:@"NPMembersCell"];
-	[_tableView registerNib:[UITableViewCell class] forCellReuseIdentifier:@"NPDefaultCell"];
+	[_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"NPDefaultCell"];
 //	[_tableView registerNib:[UINib nibWithNibName:@"NPDateCell" bundle:nil] forCellReuseIdentifier:@"NPDateCell"];
 //	[_tableView registerNib:[UINib nibWithNibName:@"NPLocationCell" bundle:nil] forCellReuseIdentifier:@"NPLocationCell"];
 //	[_tableView registerNib:[UINib nibWithNibName:@"NPDetailsCell" bundle:nil] forCellReuseIdentifier:@"NPDetailsCell"];
