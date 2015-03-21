@@ -254,7 +254,7 @@ static UITextView *_tV;
         _slideBarContent.backgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
         [_joinButton setTitle:NSLocalizedString(@"I’m in!", @"Joining event button title") forState:UIControlStateNormal];
         _attendeeIcon.image = [UIImage imageNamed:@"AttendeeActiveIcon"];
-        _attendeeLabel.textColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
+        _attendeeLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1];
         _attendeeLabel.text = NSLocalizedString(@"Be the first", @"No attendees label for event");
 
         f = _slideBarContent.frame;
