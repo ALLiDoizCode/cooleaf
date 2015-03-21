@@ -179,7 +179,9 @@ enum {
     _shift = shift;
     // Assign global information
     _rewardLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", @"reward points string on event details page"), event[@"reward_points"]];
-    
+	if ([event[@"reward_points"] intValue] == 0) {
+		_rewardLabel.hidden = TRUE;
+	}
     // Resize header
     f = _tableHeaderView.frame;
     f.size.height = 185;

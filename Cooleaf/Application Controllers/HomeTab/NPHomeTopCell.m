@@ -54,6 +54,8 @@
 	else
 		_positionLabel.text = [NSString stringWithFormat:@"%@, %@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
 	_rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
+	if ([uD[@"reward_points"] intValue] == 0)
+	{_rewardPoints.hidden = TRUE;}
 	UIImage *avatarPlaceholder = nil;
 	_avatarView.layer.cornerRadius = 30.0;
 	if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])

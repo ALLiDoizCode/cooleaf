@@ -86,6 +86,8 @@
     else
         _positionLabel.text = [NSString stringWithFormat:@"%@, %@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
     _rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
+	if ([uD[@"reward_points"] intValue] == 0)
+	{_rewardPoints.hidden = TRUE;}
 
 //    int c = 3;
 //    NSMutableString *cats = [NSMutableString new];
@@ -160,6 +162,8 @@
 	else
 		_positionLabel.text = [NSString stringWithFormat:@"%@, %@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
 	_rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
+	if ([uD[@"reward_points"] intValue] == 0)
+	{_rewardPoints.hidden = TRUE;}
 	
 	[_interestsController viewWillAppear:animated];
 }
