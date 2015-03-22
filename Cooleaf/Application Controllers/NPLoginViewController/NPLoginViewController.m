@@ -86,7 +86,7 @@
         {
             _containerView.alpha = 0.0;
             _containerView.hidden = NO;
-            _forgotPasswdBtn.hidden = NO;
+            _forgotPasswdBtn.hidden = YES;
             [UIView animateWithDuration:0.3 animations:^{
                 _containerView.alpha = 1.0;
                 _forgotPasswdBtn.alpha = 1.0;
@@ -167,7 +167,7 @@
     {
         _containerView.alpha = 0.0;
         _containerView.hidden = NO;
-        _forgotPasswdBtn.hidden = NO;
+        _forgotPasswdBtn.hidden = YES;
         [UIView animateWithDuration:0.3 animations:^{
             _containerView.alpha = 1.0;
             _forgotPasswdBtn.alpha = 1.0;
@@ -188,7 +188,7 @@
     _signInBtn.hidden = NO;
     _usernameField.enabled = YES;
     _passwordField.enabled = YES;
-    _forgotPasswdBtn.enabled = YES;
+    _forgotPasswdBtn.enabled = NO;
 }
 
 - (IBAction)signInTapped:(id)sender
