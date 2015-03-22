@@ -72,7 +72,7 @@
         if ([attendee[@"role"][@"branch"][@"default"] boolValue])
             _positionLabel.text = [NSString stringWithFormat:@"%@\n\u00A0", attendee[@"role"][@"department"][@"name"]];
         else
-            _positionLabel.text = [NSString stringWithFormat:@"%@\n%@", attendee[@"role"][@"department"][@"name"], attendee[@"role"][@"branch"][@"name"]];
+            _positionLabel.text = [NSString stringWithFormat:@"%@", attendee[@"role"][@"department"][@"name"]];
     }
     
     // Now - if no positionLabel content is there - we need to shift name
