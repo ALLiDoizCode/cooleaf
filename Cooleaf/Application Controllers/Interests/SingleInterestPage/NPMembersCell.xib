@@ -32,6 +32,11 @@
                     </label>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="arrowView" destination="2O8-Nb-hHc" id="u5G-pM-6oB"/>
+                <outlet property="attendeesLabel" destination="j0Y-40-zgt" id="TtJ-cU-QHk"/>
+                <outlet property="noAttendeesLabel" destination="Ss7-Os-LTc" id="Cqu-jo-OUm"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

@@ -326,7 +326,7 @@ enum {
 			cell.attendeesCount = [_currentEvent[@"users_count"] unsignedIntegerValue];
 //			cell.attendees = _currentEvent[@"participants"];
 			[[NPCooleafClient sharedClient] fetchMembersForGroupWithId:_currentEvent[@"id"] completion:^(NSDictionary *members) {
-//				DLog(@"%@", members);
+				DLog(@"%@", members);
 				//cell.attendees = members;
 			}];
 			return cell;
