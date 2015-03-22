@@ -305,73 +305,6 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	}];
 }
 
-- (AFHTTPRequestOperation *)fetchGroupWithId:(NSNumber *)groupId completion:(void(^)(NSDictionary *groupDetails))completion
-{
-	NSString *path = [NSString stringWithFormat:@"/interests/%@.json", groupId];
-	
-	if (_apiPrefix.length > 0)
-		path = [_apiPrefix stringByAppendingString:path];
-	
-	return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		if (completion)
-			completion(responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		if (completion)
-			completion(nil);
-	}];
-}
-
-- (AFHTTPRequestOperation *)fetchMembersForGroupWithId:(NSNumber *)groupId completion:(void(^)(NSDictionary *members))completion
-{
-	NSString *path = [NSString stringWithFormat:@"/interests/%@/users.json", groupId];
-	
-	if (_apiPrefix.length > 0)
-		path = [_apiPrefix stringByAppendingString:path];
-	
-	return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		if (completion)
-			completion(responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		if (completion)
-			completion(nil);
-	}];
-}
-
-- (AFHTTPRequestOperation *)joinGroupWithId:(NSNumber *)groupId completion:(void(^)(NSError *error))completion
-{
-	NSString *path = [NSString stringWithFormat:@"/interests/%@/join.json", groupId];
-	
-	if (_apiPrefix.length > 0)
-		path = [_apiPrefix stringByAppendingString:path];
-	
-	return [self POST:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		[self updateUserData];
-		if (completion)
-			completion(nil);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		[self updateUserData];
-		if (completion)
-			completion(error);
-	}];
-}
-
-- (AFHTTPRequestOperation *)leaveGroupWithId:(NSNumber *)groupId completion:(void(^)(NSError *error))completion
-{
-	NSString *path = [NSString stringWithFormat:@"/interests/%@/join.json", groupId];
-	
-	if (_apiPrefix.length > 0)
-		path = [_apiPrefix stringByAppendingString:path];
-	return [self DELETE:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		[self updateUserData];
-		if (completion)
-			completion(nil);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		[self updateUserData];
-		if (completion)
-			completion(error);
-	}];
-}
-
 - (AFHTTPRequestOperation *)joinEventWithId:(NSNumber *)eventId completion:(void(^)(NSError *error))completion
 {
 	NSString *path = [NSString stringWithFormat:@"/events/%@/join.json", eventId];
@@ -443,23 +376,6 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 }
 
 
-- (void)fetchInterestList:(void(^)(NSArray *events))completion
-{
-	NSString *path = @"/interests.json";
-	
-	if (_apiPrefix.length > 0)
-		path = [_apiPrefix stringByAppendingString:path];
-	
-	[self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		//DLog(@"responseObject = %@", responseObject);
-		if (completion)
-			completion(responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		DLog(@"error = %@", error.localizedDescription);
-		if (completion)
-			completion(nil);
-	}];
-}
 
 #pragma mark - Image handling
 
@@ -712,6 +628,94 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	return [self getInterests:TRUE completion:completion];
 }
 
+
+- (AFHTTPRequestOperation *)fetchGroupWithId:(NSNumber *)groupId completion:(void(^)(NSDictionary *groupDetails))completion
+{
+	NSString *path = [NSString stringWithFormat:@"/interests/%@.json", groupId];
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		if (completion)
+			completion(nil);
+	}];
+}
+
+- (AFHTTPRequestOperation *)fetchMembersForGroupWithId:(NSNumber *)groupId completion:(void(^)(NSDictionary *members))completion
+{
+	NSString *path = [NSString stringWithFormat:@"/interests/%@/users.json", groupId];
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		if (completion)
+			completion(nil);
+	}];
+}
+
+- (AFHTTPRequestOperation *)joinGroupWithId:(NSNumber *)groupId completion:(void(^)(NSError *error))completion
+{
+	NSString *path = [NSString stringWithFormat:@"/interests/%@/join.json", groupId];
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	return [self POST:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		[self updateUserData];
+		if (completion)
+			completion(nil);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		[self updateUserData];
+		if (completion)
+			completion(error);
+	}];
+}
+
+- (AFHTTPRequestOperation *)leaveGroupWithId:(NSNumber *)groupId completion:(void(^)(NSError *error))completion
+{
+	NSString *path = [NSString stringWithFormat:@"/interests/%@/join.json", groupId];
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	return [self DELETE:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		[self updateUserData];
+		if (completion)
+			completion(nil);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		[self updateUserData];
+		if (completion)
+			completion(error);
+	}];
+}
+
+
+- (void)fetchInterestList:(void(^)(NSArray *events))completion
+{
+	NSString *path = @"/interests.json";
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	[self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		//DLog(@"responseObject = %@", responseObject);
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		DLog(@"error = %@", error.localizedDescription);
+		if (completion)
+			completion(nil);
+	}];
+}
+
+
 /**
  * To edit just the interests for a user, we must first fetch the entire user profile, and then
  * return some of it, along with our new set of interests.
@@ -725,7 +729,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	}];
 	
 	[[NPCooleafClient sharedClient] getUserData:^ (NSDictionary *profile) {
-		[self updateProfileDataAllFields:nil email:nil password:nil tags:interestIds removed_picture:FALSE file_cache:nil role_structure_required:profile[@"role"] profileDailyDigest:TRUE profileWeeklyDigest:TRUE profile:profile[@"profile"] completion:^{
+		[self updateProfileDataAllFields:nil email:nil password:nil tags:interestIds removed_picture:FALSE file_cache:nil role_structure_required:profile[@"role"] profileDailyDigest:nil profileWeeklyDigest:nil profile:profile[@"profile"] completion:^{
 			completion(TRUE);
 		}];
 	}];
