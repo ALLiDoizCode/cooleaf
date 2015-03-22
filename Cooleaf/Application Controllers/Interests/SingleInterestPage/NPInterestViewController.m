@@ -216,11 +216,11 @@ enum {
 {
 	//	_joinButton.layer.borderColor = [[_joinButton titleColorForState:(([_currentEvent[@"attending"] boolValue]) ? UIControlStateDisabled : UIControlStateNormal)] CGColor];
 	//	_resignButton.layer.borderColor = [[_resignButton titleColorForState:((![_currentEvent[@"attending"] boolValue]) ? UIControlStateDisabled : UIControlStateNormal)] CGColor];
-	_joinButton.enabled = ![_currentEvent[@"attending"] boolValue];
-	_resignButton.hidden = ![_currentEvent[@"attending"] boolValue];
-	_joinButton.hidden = [_currentEvent[@"attending"] boolValue];
+	_joinButton.enabled = ![_currentEvent[@"member"] boolValue];
+	_resignButton.hidden = ![_currentEvent[@"member"] boolValue];
+	_joinButton.hidden = [_currentEvent[@"member"] boolValue];
 	
-	if ([_currentEvent[@"attending"] boolValue])
+	if ([_currentEvent[@"member"] boolValue])
 	{
 		_joinButton.frame = CGRectMake(280, 208, 32, 32);
 		_resignButton.frame = CGRectMake(280, 208, 32, 32);
@@ -244,7 +244,7 @@ enum {
 	_joinButton.hidden = YES;
 	_resignButton.hidden = YES;
 	[_loadingIndicator startAnimating];
-	_fetchingOperation = [[NPCooleafClient sharedClient] joinEventWithId:_currentEvent[@"id"] completion:^(NSError *error) {
+	_fetchingOperation = [[NPCooleafClient sharedClient] joinGroupWithId:_currentEvent[@"id"] completion:^(NSError *error) {
 		_fetchingOperation = [[NPCooleafClient sharedClient] fetchGroupWithId:_currentEvent[@"id"] completion:^(NSDictionary *eventDetails) {
 			[_loadingIndicator stopAnimating];
 			_fetchingOperation = nil;
@@ -292,7 +292,7 @@ enum {
 		_joinButton.hidden = YES;
 		_resignButton.hidden = YES;
 		[_loadingIndicator startAnimating];
-		_fetchingOperation = [[NPCooleafClient sharedClient] leaveEventWithId:_currentEvent[@"id"] completion:^(NSError *error) {
+		_fetchingOperation = [[NPCooleafClient sharedClient] leaveGroupWithId:_currentEvent[@"id"] completion:^(NSError *error) {
 			_fetchingOperation = [[NPCooleafClient sharedClient] fetchGroupWithId:_currentEvent[@"id"] completion:^(NSDictionary *eventDetails) {
 				[_loadingIndicator stopAnimating];
 				_fetchingOperation = nil;
@@ -321,12 +321,12 @@ enum {
 		case NPEventCell_Attendees:
 		{
 			NPAttendeesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPMembersCell"];
-			cell.selfAttended = [_currentEvent[@"attending"] boolValue];
+			cell.selfAttended = [_currentEvent[@"member"] boolValue];
 			
 			cell.attendeesCount = [_currentEvent[@"users_count"] unsignedIntegerValue];
 //			cell.attendees = _currentEvent[@"participants"];
 			[[NPCooleafClient sharedClient] fetchMembersForGroupWithId:_currentEvent[@"id"] completion:^(NSDictionary *members) {
-				DLog(@"%@", members);
+//				DLog(@"%@", members);
 				//cell.attendees = members;
 			}];
 			return cell;

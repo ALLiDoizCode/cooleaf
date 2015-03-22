@@ -337,39 +337,74 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	}];
 }
 
+- (AFHTTPRequestOperation *)joinGroupWithId:(NSNumber *)groupId completion:(void(^)(NSError *error))completion
+{
+	NSString *path = [NSString stringWithFormat:@"/interests/%@/join.json", groupId];
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	return [self POST:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		[self updateUserData];
+		if (completion)
+			completion(nil);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		[self updateUserData];
+		if (completion)
+			completion(error);
+	}];
+}
+
+- (AFHTTPRequestOperation *)leaveGroupWithId:(NSNumber *)groupId completion:(void(^)(NSError *error))completion
+{
+	NSString *path = [NSString stringWithFormat:@"/interests/%@/join.json", groupId];
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	return [self DELETE:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		[self updateUserData];
+		if (completion)
+			completion(nil);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		[self updateUserData];
+		if (completion)
+			completion(error);
+	}];
+}
+
 - (AFHTTPRequestOperation *)joinEventWithId:(NSNumber *)eventId completion:(void(^)(NSError *error))completion
 {
-    NSString *path = [NSString stringWithFormat:@"/events/%@/join.json", eventId];
-    
-    if (_apiPrefix.length > 0)
-        path = [_apiPrefix stringByAppendingString:path];
-    
-    return [self POST:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self updateUserData];
-        if (completion)
-            completion(nil);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self updateUserData];
-        if (completion)
-            completion(error);
-    }];
+	NSString *path = [NSString stringWithFormat:@"/events/%@/join.json", eventId];
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	return [self POST:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		[self updateUserData];
+		if (completion)
+			completion(nil);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		[self updateUserData];
+		if (completion)
+			completion(error);
+	}];
 }
 
 - (AFHTTPRequestOperation *)leaveEventWithId:(NSNumber *)eventId completion:(void(^)(NSError *error))completion
 {
-    NSString *path = [NSString stringWithFormat:@"/events/%@/join.json", eventId];
-    
-    if (_apiPrefix.length > 0)
-        path = [_apiPrefix stringByAppendingString:path];
-    return [self DELETE:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self updateUserData];        
-        if (completion)
-            completion(nil);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [self updateUserData];
-        if (completion)
-            completion(error);
-    }];
+	NSString *path = [NSString stringWithFormat:@"/events/%@/join.json", eventId];
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	return [self DELETE:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		[self updateUserData];
+		if (completion)
+			completion(nil);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		[self updateUserData];
+		if (completion)
+			completion(error);
+	}];
 }
 
 

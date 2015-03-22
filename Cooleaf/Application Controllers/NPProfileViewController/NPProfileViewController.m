@@ -55,7 +55,7 @@
     _avatarView.layer.cornerRadius = 59.0;
     UIImage *avatarPlaceholder = nil;
     NSDictionary *uD = [NPCooleafClient sharedClient].userData;
-	NSLog(@"%@",uD);
+	DLog(@"%@",uD);
     if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])
         avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderFemaleBig"];
     else
@@ -124,7 +124,7 @@
 	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:_interestsController.collectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.scrollView attribute:NSLayoutAttributeBottom  multiplier:1 constant:0]];
 	[self.view layoutIfNeeded];
 	self.scrollView.contentSize = CGSizeMake(320, 1000);
-	DLog(@"collectionView = %@", _interestsController.collectionView);
+//	DLog(@"collectionView = %@", _interestsController.collectionView);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -134,7 +134,7 @@
 	UIImage *avatarPlaceholder = nil;
 	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
 	NSLog(@"%@",uD);
-	NSLog(@"%@", [[NSString alloc] initWithUTF8String:[NSJSONSerialization dataWithJSONObject:uD options:0 error:nil].bytes]);
+//	NSLog(@"%@", [[NSString alloc] initWithUTF8String:[NSJSONSerialization dataWithJSONObject:uD options:0 error:nil].bytes]);
 	if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])
 		avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderFemaleBig"];
 	else
