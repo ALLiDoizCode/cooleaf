@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		091C2FA9FE63464F90BF2AC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF39234F1654A6DBFF21105 /* libPods.a */; };
+		437F3D861ABFEAD9007DE49B /* NPGroupEventsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F3D841ABFEAD9007DE49B /* NPGroupEventsCell.m */; };
+		437F3D871ABFEAD9007DE49B /* NPGroupEventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437F3D851ABFEAD9007DE49B /* NPGroupEventsCell.xib */; };
 		43B062471AB664B0009F96CD /* NPInterestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B062451AB664B0009F96CD /* NPInterestViewController.m */; };
 		43B062481AB664B0009F96CD /* NPInterestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B062461AB664B0009F96CD /* NPInterestViewController.xib */; };
 		43B0624C1AB71A64009F96CD /* NPMembersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B0624A1AB71A64009F96CD /* NPMembersCell.m */; };
@@ -106,6 +108,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		437F3D831ABFEAD9007DE49B /* NPGroupEventsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPGroupEventsCell.h; path = "Application Controllers/Interests/SingleInterestPage/NPGroupEventsCell.h"; sourceTree = "<group>"; };
+		437F3D841ABFEAD9007DE49B /* NPGroupEventsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPGroupEventsCell.m; path = "Application Controllers/Interests/SingleInterestPage/NPGroupEventsCell.m"; sourceTree = "<group>"; };
+		437F3D851ABFEAD9007DE49B /* NPGroupEventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPGroupEventsCell.xib; path = "Application Controllers/Interests/SingleInterestPage/NPGroupEventsCell.xib"; sourceTree = "<group>"; };
 		43B062441AB664B0009F96CD /* NPInterestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestViewController.h; path = "Application Controllers/Interests/SingleInterestPage/NPInterestViewController.h"; sourceTree = "<group>"; };
 		43B062451AB664B0009F96CD /* NPInterestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestViewController.m; path = "Application Controllers/Interests/SingleInterestPage/NPInterestViewController.m"; sourceTree = "<group>"; };
 		43B062461AB664B0009F96CD /* NPInterestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPInterestViewController.xib; path = "Application Controllers/Interests/SingleInterestPage/NPInterestViewController.xib"; sourceTree = "<group>"; };
@@ -278,6 +283,9 @@
 				43B062491AB71A64009F96CD /* NPMembersCell.h */,
 				43B0624A1AB71A64009F96CD /* NPMembersCell.m */,
 				43B0624B1AB71A64009F96CD /* NPMembersCell.xib */,
+				437F3D831ABFEAD9007DE49B /* NPGroupEventsCell.h */,
+				437F3D841ABFEAD9007DE49B /* NPGroupEventsCell.m */,
+				437F3D851ABFEAD9007DE49B /* NPGroupEventsCell.xib */,
 			);
 			name = InterestPage;
 			sourceTree = "<group>";
@@ -713,6 +721,7 @@
 				D93AAC9F187C29F000E9B96A /* NPTodoViewController.xib in Resources */,
 				D9809582185CA7D2008F2B61 /* NPLoginViewController.xib in Resources */,
 				523096E21AA3E24800649FB7 /* NPHomeTopCell.xib in Resources */,
+				437F3D871ABFEAD9007DE49B /* NPGroupEventsCell.xib in Resources */,
 				52A9A1921AACEC8B004E6C13 /* NPInterestTopCell.xib in Resources */,
 				523096C11AA28F5D00649FB7 /* NPInterestsViewController.xib in Resources */,
 				52A9A19C1AACECDA004E6C13 /* NPOtherInterestCell.xib in Resources */,
@@ -804,6 +813,7 @@
 			files = (
 				D93AAC9E187C29F000E9B96A /* NPTodoViewController.m in Sources */,
 				523096C01AA28F5D00649FB7 /* NPInterestsViewController.m in Sources */,
+				437F3D861ABFEAD9007DE49B /* NPGroupEventsCell.m in Sources */,
 				F998F68C1AB218AF00213240 /* NPInterestViewCell.m in Sources */,
 				F9B37B9B1AAE0F7A003F3FB8 /* NPTag.m in Sources */,
 				D9809588185CCFFB008F2B61 /* NPEventCell.m in Sources */,

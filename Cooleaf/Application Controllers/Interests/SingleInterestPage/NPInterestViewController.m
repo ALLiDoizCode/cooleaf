@@ -9,13 +9,16 @@
 #import "NPInterestViewController.h"
 #import "NPCooleafClient.h"
 #import "NPAttendeesViewController.h"
+#import "NPEventListViewController.h"
 
 // Cells
 #import "NPAttendeesCell.h"
 #import "NPMembersCell.h"
+#import "NPGroupEventsCell.h"
 
 enum {
 	NPEventCell_Attendees = 0,
+	NPEventCell_GroupEvents,
 	NPEventCell_Date,
 	NPEventCell_Location,
 	NPEventCell_Details,
@@ -79,6 +82,7 @@ enum {
 	
 	// Register cell types
 	[_tableView registerNib:[UINib nibWithNibName:@"NPMembersCell" bundle:nil] forCellReuseIdentifier:@"NPMembersCell"];
+	[_tableView registerNib:[UINib nibWithNibName:@"NPGroupEventsCell" bundle:nil] forCellReuseIdentifier:@"NPGroupEventsCell"];
 	[_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"NPDefaultCell"];
 //	[_tableView registerNib:[UINib nibWithNibName:@"NPDateCell" bundle:nil] forCellReuseIdentifier:@"NPDateCell"];
 //	[_tableView registerNib:[UINib nibWithNibName:@"NPLocationCell" bundle:nil] forCellReuseIdentifier:@"NPLocationCell"];
@@ -222,13 +226,13 @@ enum {
 	
 	if ([_currentEvent[@"member"] boolValue])
 	{
-		_joinButton.frame = CGRectMake(280, 208, 32, 32);
-		_resignButton.frame = CGRectMake(280, 208, 32, 32);
+		_joinButton.frame = CGRectMake(280, 203, 32, 32);
+		_resignButton.frame = CGRectMake(280, 203, 32, 32);
 	}
 	else
 	{
-		_joinButton.frame = CGRectMake(280, 208, 32, 32);
-		_resignButton.frame = CGRectMake(280, 208, 32, 32);
+		_joinButton.frame = CGRectMake(280, 203, 32, 32);
+		_resignButton.frame = CGRectMake(280, 203, 32, 32);
 	}
 	//    _joinButton.transform = CGAffineTransformMakeTranslation(0, _shift);
 }
@@ -320,7 +324,7 @@ enum {
 	switch (indexPath.row) {
 		case NPEventCell_Attendees:
 		{
-			NPAttendeesCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPMembersCell"];
+			NPMembersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPMembersCell"];
 			cell.selfAttended = [_currentEvent[@"member"] boolValue];
 			
 			cell.attendeesCount = [_currentEvent[@"users_count"] unsignedIntegerValue];
@@ -333,6 +337,12 @@ enum {
 			
 		}
 			break;
+			
+		case NPEventCell_GroupEvents:
+		{
+			NPGroupEventsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPGroupEventsCell"];
+			return cell;
+		}
 			
 			//		case NPEventCell_Date:
 			//		{
@@ -442,7 +452,7 @@ enum {
 			//			tC.event = _currentEvent;
 			//			[self.navigationController pushViewController:tC animated:YES];
 			//		}
-			break;
+//			break;
 		case NPEventCell_Attendees:
 		{
 			NPAttendeesViewController *aV = [NPAttendeesViewController new];
@@ -450,6 +460,15 @@ enum {
 			aV.attendeesCount = [_currentEvent[@"users_count"] integerValue];
 			[self.navigationController pushViewController:aV animated:YES];
 		}
+			break;
+		case NPEventCell_GroupEvents:
+		{
+			NPEventListViewController *groupEventListController = [NPEventListViewController new];
+			groupEventListController.title = @"Group Events";
+			DLog(@"selected the groups row");
+			[self.navigationController pushViewController:groupEventListController animated:YES];
+		}
+			break;
 		default:
 			break;
 	}

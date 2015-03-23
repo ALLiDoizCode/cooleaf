@@ -52,7 +52,7 @@
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCZ-UE-DfT">
-                            <rect key="frame" x="280" y="208" width="32" height="32"/>
+                            <rect key="frame" x="280" y="203" width="32" height="32"/>
                             <state key="normal" image="JoinGroupButton">
                                 <color key="titleColor" red="0.30588235289999999" green="0.80392156859999997" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -65,7 +65,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3au-Rt-fAT">
-                            <rect key="frame" x="280" y="208" width="32" height="32"/>
+                            <rect key="frame" x="280" y="203" width="32" height="32"/>
                             <state key="normal" image="LeaveGroupButton">
                                 <color key="titleColor" red="0.30588235289999999" green="0.80392156859999997" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,7 +78,7 @@
                             <rect key="frame" x="150" y="113" width="20" height="20"/>
                         </activityIndicatorView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Chef Cooking Demo and Wine Tasting" translatesAutoresizingMaskIntoConstraints="NO" id="ZZo-nH-TD7" userLabel="Title label">
-                            <rect key="frame" x="13" y="200" width="240" height="50"/>
+                            <rect key="frame" x="13" y="196" width="240" height="50"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
