@@ -362,7 +362,24 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 - (AFHTTPRequestOperation *)fetchMyEventsList:(NSNumber *)myID completion:(void (^)(NSArray *))completion
 {
 	NSString *path = [NSString stringWithFormat:@"/events/user/%@.json", myID];
-//	NSLog(@"path %@, myID %@", path, myID);
+	//	NSLog(@"path %@, myID %@", path, myID);
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	return [self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		if (completion)
+			completion(nil);
+	}];
+}
+
+
+- (AFHTTPRequestOperation *)fetchGroupEventsList:(NSNumber *)groupID completion:(void (^)(NSArray *))completion
+{
+	NSString *path = [NSString stringWithFormat:@"/interests/%@/events.json", groupID];
+	//	NSLog(@"path %@, myID %@", path, myID);
 	if (_apiPrefix.length > 0)
 		path = [_apiPrefix stringByAppendingString:path];
 	

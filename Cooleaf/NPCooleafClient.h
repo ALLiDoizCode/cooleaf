@@ -61,6 +61,8 @@ extern NSString * const kNPCooleafClientSignOut;
 
 - (AFHTTPRequestOperation *)fetchMyEventsList:(NSNumber *)myID completion:(void(^)(NSArray *events))completion;
 
+- (AFHTTPRequestOperation *)fetchGroupEventsList:(NSNumber *)groupID completion:(void(^)(NSArray *events))completion;
+
 - (void)fetchInterestList:(void(^)(NSArray *events))completion;
 
 - (void)fetchImage:(NSString *)imagePath completion:(void(^)(NSString *imagePath, UIImage *image))completion;
