@@ -398,7 +398,9 @@ enum {
 			else
 				return 44.0;
 			break;
-			
+		case NPEventCell_GroupEvents:
+			return 60;
+			break;
 			//		case NPEventCell_Date:
 			//			return 94.0;
 			//			break;

@@ -203,7 +203,8 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 		[params setValue:password forKey:@"password"];
 	}
 	if (tags != nil) {
-		[params setValue:tags forKey:@"catagory_ids"];
+		[params setValue:tags forKey:@"category_ids"];
+		DLog(@"The tags passed are %@",tags);
 	}
 	if (removed_picture) {
 		[params setValue:@(TRUE) forKey:@"removed_picture"];
@@ -236,6 +237,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	DLog(@"path    = %@", path);
 //	DLog(@"params  = %@", params);
 //	NSLog(@"%@", [[NSString alloc] initWithUTF8String:[NSJSONSerialization dataWithJSONObject:params options:0 error:nil].bytes]);
+	DLog(@"The parameters being pass are %@",params);
 	return [self PUT:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		_userData = [responseObject copy];
 		[self.requestSerializer setValue:_userData[@"role"][@"organization"][@"subdomain"] forHTTPHeaderField:@"X-Organization"];
@@ -664,7 +666,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 
 - (AFHTTPRequestOperation *)fetchMembersForGroupWithId:(NSNumber *)groupId completion:(void(^)(NSDictionary *members))completion
 {
-	NSString *path = [NSString stringWithFormat:@"/interests/%@/users.json", groupId];
+	NSString *path = [NSString stringWithFormat:@"/interests/%@/memberlist.json", groupId];
 	
 	if (_apiPrefix.length > 0)
 		path = [_apiPrefix stringByAppendingString:path];
