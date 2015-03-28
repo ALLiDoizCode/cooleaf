@@ -10,6 +10,7 @@
 #import "NPCooleafClient.h"
 #import "NPLoginViewController.h"
 #import "NPInterestsViewController2.h"
+#import "NPEventListViewController.h"
 #import <SSKeychain/SSKeychain.h>
 
 
@@ -30,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *blurImage;
 @property (weak, nonatomic) IBOutlet UIView *clearView;
 @property (weak, nonatomic) IBOutlet UIView *imageCoverView;
+- (IBAction)pastEventsButton:(UIButton *)sender;
 
 - (void)logoutTapped:(id)sender;
 
@@ -188,6 +190,15 @@
 	_editModeOn = !_editModeOn;
 	self.navigationItem.leftBarButtonItem.title = _editModeOn ? @"Done" : @"Edit";
 	_interestsController.editModeOn = _editModeOn;
+}
+
+- (IBAction)pastEventsButton:(UIButton *)sender
+{
+	NPEventListViewController *pastEventListController = [NPEventListViewController new];
+	pastEventListController.title = @"Past Events";
+	DLog(@"selected the Past Events");
+	[self.navigationController pushViewController:pastEventListController animated:YES];
+
 }
 
 - (void)logoutTapped:(id)sender
