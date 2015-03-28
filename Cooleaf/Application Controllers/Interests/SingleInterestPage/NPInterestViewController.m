@@ -10,11 +10,13 @@
 #import "NPCooleafClient.h"
 #import "NPAttendeesViewController.h"
 #import "NPEventListViewController.h"
+#import "NPMembersViewController.h"
 
 // Cells
 #import "NPAttendeesCell.h"
 #import "NPMembersCell.h"
 #import "NPGroupEventsCell.h"
+
 
 enum {
 	NPEventCell_Attendees = 0,
@@ -457,7 +459,7 @@ enum {
 //			break;
 		case NPEventCell_Attendees:
 		{
-			NPAttendeesViewController *aV = [NPAttendeesViewController new];
+			NPMembersViewController *aV = [NPMembersViewController new];
 			aV.eventId = _currentEvent[@"id"];
 			aV.attendeesCount = [_currentEvent[@"users_count"] integerValue];
 			[self.navigationController pushViewController:aV animated:YES];

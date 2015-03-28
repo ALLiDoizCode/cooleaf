@@ -28,6 +28,10 @@
 		523096E11AA3E24800649FB7 /* NPHomeTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 523096DF1AA3E24800649FB7 /* NPHomeTopCell.m */; };
 		523096E21AA3E24800649FB7 /* NPHomeTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523096E01AA3E24800649FB7 /* NPHomeTopCell.xib */; };
 		52402D5C1A99A93100937798 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52402D5B1A99A93100937798 /* logo@2x.png */; };
+		526DDE131AC756DB0095FC27 /* NPMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 526DDE111AC756DB0095FC27 /* NPMemberCell.m */; };
+		526DDE141AC756DB0095FC27 /* NPMemberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526DDE121AC756DB0095FC27 /* NPMemberCell.xib */; };
+		526DDE181AC757550095FC27 /* NPMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526DDE161AC757550095FC27 /* NPMembersViewController.m */; };
+		526DDE191AC757550095FC27 /* NPMembersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526DDE171AC757550095FC27 /* NPMembersViewController.xib */; };
 		52A9A1911AACEC8B004E6C13 /* NPInterestTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A9A18F1AACEC8B004E6C13 /* NPInterestTopCell.m */; };
 		52A9A1921AACEC8B004E6C13 /* NPInterestTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A9A1901AACEC8B004E6C13 /* NPInterestTopCell.xib */; };
 		52A9A1961AACECC5004E6C13 /* NPInterestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A9A1941AACECC5004E6C13 /* NPInterestCell.m */; };
@@ -138,6 +142,12 @@
 		523096DF1AA3E24800649FB7 /* NPHomeTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPHomeTopCell.m; path = "Application Controllers/HomeTab/NPHomeTopCell.m"; sourceTree = "<group>"; };
 		523096E01AA3E24800649FB7 /* NPHomeTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPHomeTopCell.xib; path = "Application Controllers/HomeTab/NPHomeTopCell.xib"; sourceTree = "<group>"; };
 		52402D5B1A99A93100937798 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		526DDE101AC756DB0095FC27 /* NPMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPMemberCell.h; path = "Application Controllers/Interests/SingleInterestPage/MemberCell/NPMemberCell.h"; sourceTree = "<group>"; };
+		526DDE111AC756DB0095FC27 /* NPMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPMemberCell.m; path = "Application Controllers/Interests/SingleInterestPage/MemberCell/NPMemberCell.m"; sourceTree = "<group>"; };
+		526DDE121AC756DB0095FC27 /* NPMemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPMemberCell.xib; path = "Application Controllers/Interests/SingleInterestPage/MemberCell/NPMemberCell.xib"; sourceTree = "<group>"; };
+		526DDE151AC757550095FC27 /* NPMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPMembersViewController.h; path = "Application Controllers/Interests/SingleInterestPage/MemberCell/NPMembersViewController.h"; sourceTree = "<group>"; };
+		526DDE161AC757550095FC27 /* NPMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPMembersViewController.m; path = "Application Controllers/Interests/SingleInterestPage/MemberCell/NPMembersViewController.m"; sourceTree = "<group>"; };
+		526DDE171AC757550095FC27 /* NPMembersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPMembersViewController.xib; path = "Application Controllers/Interests/SingleInterestPage/MemberCell/NPMembersViewController.xib"; sourceTree = "<group>"; };
 		52A9A18E1AACEC8B004E6C13 /* NPInterestTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestTopCell.h; path = "Application Controllers/Interests/NPInterestTopCell.h"; sourceTree = "<group>"; };
 		52A9A18F1AACEC8B004E6C13 /* NPInterestTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestTopCell.m; path = "Application Controllers/Interests/NPInterestTopCell.m"; sourceTree = "<group>"; };
 		52A9A1901AACEC8B004E6C13 /* NPInterestTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPInterestTopCell.xib; path = "Application Controllers/Interests/NPInterestTopCell.xib"; sourceTree = "<group>"; };
@@ -334,6 +344,7 @@
 		523096BA1AA28D7D00649FB7 /* Interests */ = {
 			isa = PBXGroup;
 			children = (
+				526DDE0F1AC756650095FC27 /* NPMembersViewController */,
 				43B0623E1AB64F7B009F96CD /* InterestPage */,
 				523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */,
 				523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */,
@@ -379,6 +390,19 @@
 				52402D5B1A99A93100937798 /* logo@2x.png */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		526DDE0F1AC756650095FC27 /* NPMembersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				526DDE101AC756DB0095FC27 /* NPMemberCell.h */,
+				526DDE111AC756DB0095FC27 /* NPMemberCell.m */,
+				526DDE121AC756DB0095FC27 /* NPMemberCell.xib */,
+				526DDE151AC757550095FC27 /* NPMembersViewController.h */,
+				526DDE161AC757550095FC27 /* NPMembersViewController.m */,
+				526DDE171AC757550095FC27 /* NPMembersViewController.xib */,
+			);
+			name = NPMembersViewController;
 			sourceTree = "<group>";
 		};
 		CEE3E8F6427AC65C0C247FB1 /* Pods */ = {
@@ -731,6 +755,7 @@
 				52402D5C1A99A93100937798 /* logo@2x.png in Resources */,
 				D9809552185CA557008F2B61 /* InfoPlist.strings in Resources */,
 				D980955A185CA557008F2B61 /* Images.xcassets in Resources */,
+				526DDE191AC757550095FC27 /* NPMembersViewController.xib in Resources */,
 				D980958A185CD013008F2B61 /* NPEventCell.xib in Resources */,
 				D93AAC82187B662200E9B96A /* NPTodosCell.xib in Resources */,
 				52A9A1971AACECC5004E6C13 /* NPInterestCell.xib in Resources */,
@@ -742,6 +767,7 @@
 				D93AAC99187B710700E9B96A /* NPAttendeeCell.xib in Resources */,
 				D93AAC86187B692800E9B96A /* NPLocationCell.xib in Resources */,
 				D931450F18925467002325CB /* NPCompanyCell.xib in Resources */,
+				526DDE141AC756DB0095FC27 /* NPMemberCell.xib in Resources */,
 				D93AACAA187C351500E9B96A /* NPNewTodoViewController.xib in Resources */,
 				D93AAC78187B5C6F00E9B96A /* NPDateCell.xib in Resources */,
 				D980957D185CA7AC008F2B61 /* NPEventListViewController.xib in Resources */,
@@ -830,6 +856,7 @@
 				F9B37B981AAE0CA5003F3FB8 /* NPTagGroup.m in Sources */,
 				52A9A19B1AACECDA004E6C13 /* NPOtherInterestCell.m in Sources */,
 				D93AAC8C187B6D5F00E9B96A /* NPDetailsCell.m in Sources */,
+				526DDE131AC756DB0095FC27 /* NPMemberCell.m in Sources */,
 				F998F6891AB211E100213240 /* NPInterestsViewController2.m in Sources */,
 				523096CE1AA295F500649FB7 /* MainViewController.m in Sources */,
 				52A9A1911AACEC8B004E6C13 /* NPInterestTopCell.m in Sources */,
@@ -854,6 +881,7 @@
 				D980958D185F2C5D008F2B61 /* NSFileManager+ImageCaching.m in Sources */,
 				D931450D18925456002325CB /* NPCompanyCell.m in Sources */,
 				523096CA1AA291B200649FB7 /* NPHomeViewController.m in Sources */,
+				526DDE181AC757550095FC27 /* NPMembersViewController.m in Sources */,
 				523096D71AA3E17400649FB7 /* NPHomeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
