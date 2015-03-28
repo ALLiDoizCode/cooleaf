@@ -664,7 +664,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	}];
 }
 
-- (AFHTTPRequestOperation *)fetchMembersForGroupWithId:(NSNumber *)groupId completion:(void(^)(NSDictionary *members))completion
+- (AFHTTPRequestOperation *)fetchMembersForGroupWithId:(NSNumber *)groupId completion:(void(^)(NSArray *members))completion
 {
 	NSString *path = [NSString stringWithFormat:@"/interests/%@/memberlist.json", groupId];
 	

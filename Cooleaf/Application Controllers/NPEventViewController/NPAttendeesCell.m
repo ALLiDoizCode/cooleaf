@@ -105,7 +105,7 @@
     }
     
     // Now all the rest
-    for (int i = 0; i < [_attendees count]; i++)
+    for (int i = 0; i < ([_attendees count] > 6 ? 6 : [_attendees count]); i++)
     {
         // Skip ourselves
         if ([_attendees[i][@"id"] compare:[NPCooleafClient sharedClient].userData[@"id"]] == NSOrderedSame)

@@ -88,7 +88,7 @@
 	return avatar;
 }
 
-- (void)setAttendees:(NSDictionary *)attendees
+- (void)setAttendees:(NSArray *)attendees
 {
 	DLog(@"attendees = %@", attendees);
 	
@@ -107,23 +107,23 @@
 	}
 	
 	// Now all the rest
-//	for (int i = 0; i < [_attendees count]; i++)
-//	{
-//		// Skip ourselves
-//		if ([_attendees[i][@"id"] compare:[NPCooleafClient sharedClient].userData[@"id"]] == NSOrderedSame)
-//			continue;
-//		
-//		avatar = [self avatarForUser:_attendees[i] offset:avatarCount];
-//		[self.contentView addSubview:avatar];
-//		avatarCount++;
-//		
-//		if (avatarCount > 6)
-//		{
-//			avatar = [self avatarForUser:nil offset:avatarCount];
-//			[self.contentView addSubview:avatar];
-//			break;
-//		}
-//	}
+	for (int i = 0; i < ([_attendees count] > 6 ? 6 : [_attendees count]); i++)
+	{
+		// Skip ourselves
+		if ([_attendees[i][@"id"] compare:[NPCooleafClient sharedClient].userData[@"id"]] == NSOrderedSame)
+			continue;
+		
+		avatar = [self avatarForUser:_attendees[i] offset:avatarCount];
+		[self.contentView addSubview:avatar];
+		avatarCount++;
+		
+		if (avatarCount > 6)
+		{
+			avatar = [self avatarForUser:nil offset:avatarCount];
+			[self.contentView addSubview:avatar];
+			break;
+		}
+	}
 	
 	// Change the rest
 	if ([_attendees count] > 0)

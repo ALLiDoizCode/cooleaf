@@ -329,9 +329,9 @@ enum {
 			
 			cell.attendeesCount = [_currentEvent[@"users_count"] unsignedIntegerValue];
 //			cell.attendees = _currentEvent[@"participants"];
-			[[NPCooleafClient sharedClient] fetchMembersForGroupWithId:_currentEvent[@"id"] completion:^(NSDictionary *members) {
+			[[NPCooleafClient sharedClient] fetchMembersForGroupWithId:_currentEvent[@"id"] completion:^(NSArray *members) {
 				DLog(@"%@", members);
-				//cell.attendees = members;
+				cell.attendees = members;
 			}];
 			return cell;
 			
@@ -394,7 +394,7 @@ enum {
 	switch (indexPath.row) {
 		case NPEventCell_Attendees:
 			if ([_currentEvent[@"users_count"] integerValue] > 0)
-				return 50.0;
+				return 44.0;
 			else
 				return 44.0;
 			break;
