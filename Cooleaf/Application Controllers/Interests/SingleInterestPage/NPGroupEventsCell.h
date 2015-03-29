@@ -10,4 +10,6 @@
 
 @interface NPGroupEventsCell : UITableViewCell
 
+@property (nonatomic, assign) NSNumber* groupID;
+
 @end

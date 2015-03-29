@@ -7,6 +7,17 @@
 //
 
 #import "NPGroupEventsCell.h"
+#import "NPEventListViewController.h"
+
+@interface NPGroupEventsCell ()
+//{
+//	NSNumber *_groupID;
+//}
+
+- (IBAction)groupEventsButtonPressed:(UIButton *)sender;
+
+@end
+
 
 @implementation NPGroupEventsCell
 
@@ -20,4 +31,12 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)groupEventsButtonPressed:(UIButton *)sender 		{
+	NPEventListViewController *groupEventListController = [NPEventListViewController new];
+	groupEventListController.title = @"Group Events";
+	groupEventListController.refID = _groupID;
+	groupEventListController.loadEventType = @"groupEvents";
+	DLog(@"selected the groups row");
+//	[self.navigationController pushViewController:groupEventListController animated:YES];
+}
 @end

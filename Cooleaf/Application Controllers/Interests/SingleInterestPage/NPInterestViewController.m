@@ -343,6 +343,7 @@ enum {
 		case NPEventCell_GroupEvents:
 		{
 			NPGroupEventsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPGroupEventsCell"];
+			cell.groupID = _currentEvent[@"id"];
 			return cell;
 		}
 			
