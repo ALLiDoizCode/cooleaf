@@ -149,13 +149,15 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-	return _topBarEnabled ? 2 : 1;
+	return _topBarEnabled ? 3 : 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
 	if (_topBarEnabled && section == 0)
+		return 1;
+	else if (_topBarEnabled && section == 2)
 		return 1;
 	else
 		return _npinterests.count;
@@ -164,6 +166,12 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (_topBarEnabled && indexPath.section == 0) {
+		NPInterestsHeaderViewCell *cell = (NPInterestsHeaderViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"HeaderCell" forIndexPath:indexPath];
+		cell.backHandler = ^ { [self doActionBack:nil]; };
+		cell.nextHandler = ^ { [self doActionNext:nil]; };
+		return cell;
+	}
+	else if (_topBarEnabled && indexPath.section == 2) {
 		NPInterestsHeaderViewCell *cell = (NPInterestsHeaderViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"HeaderCell" forIndexPath:indexPath];
 		cell.backHandler = ^ { [self doActionBack:nil]; };
 		cell.nextHandler = ^ { [self doActionNext:nil]; };
@@ -237,6 +245,8 @@ static NSString * const reuseIdentifier = @"Cell";
 {
 	if (_topBarEnabled && indexPath.section == 0)
 		return CGSizeMake(320, 50);
+	else if (_topBarEnabled && indexPath.section == 2)
+		return CGSizeMake(320, 50);
 	else
 		return CGSizeMake(145, 145 + 30);
 }
@@ -244,6 +254,8 @@ static NSString * const reuseIdentifier = @"Cell";
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
 	if (_topBarEnabled && section == 0)
+		return UIEdgeInsetsMake(0, 0, 0, 0);
+	else if (_topBarEnabled && section == 2)
 		return UIEdgeInsetsMake(0, 0, 0, 0);
 	else
 		return UIEdgeInsetsMake(10, 10, 10, 10);
