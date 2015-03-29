@@ -196,6 +196,8 @@
 {
 	NPEventListViewController *pastEventListController = [NPEventListViewController new];
 	pastEventListController.title = @"Past Events";
+	pastEventListController.loadEventType = @"pastEvents";
+	
 	DLog(@"selected the Past Events");
 	[self.navigationController pushViewController:pastEventListController animated:YES];
 

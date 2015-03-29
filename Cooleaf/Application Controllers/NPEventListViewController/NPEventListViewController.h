@@ -10,4 +10,7 @@
 
 @interface NPEventListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
+@property (nonatomic, retain) NSNumber *refID;
+@property (nonatomic, retain) NSString *loadEventType;
+
 @end
