@@ -18,6 +18,8 @@
     NSArray *_myEvents;
     NSArray *_otherEvents;
     NSMutableDictionary *_joinActions;
+	NSString *_loadEventType;
+	NSNumber *_refID;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -98,7 +100,9 @@
 - (void)reloadEvents
 {
 	NSNumber *myID = [NPCooleafClient sharedClient].userData[@"id"];
-    [[NPCooleafClient sharedClient] fetchMyEventsList:myID completion:^(NSArray *events)
+	DLog(@"load Event Type = %@ with refID = %@", _loadEventType, _refID);
+	[[NPCooleafClient sharedClient] fetchEventsListOfType:_loadEventType refID:_refID myID:myID completion:^(NSArray *events)
+//    [[NPCooleafClient sharedClient] fetchMyEventsList:myID completion:^(NSArray *events)
 	{
         [_activityIndicator stopAnimating];
         _loadingEvents.hidden = YES;

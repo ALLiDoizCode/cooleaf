@@ -394,6 +394,39 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	}];
 }
 
+- (AFHTTPRequestOperation *)fetchEventsListOfType:(NSString *)eventType refID:(NSNumber *)refID myID:(NSNumber *)myID completion:(void (^)(NSArray *))completion
+{
+	NSString *path = [NSString stringWithFormat:@""];
+	if ([eventType  isEqualToString:@"groupEvents"]) {
+		path = [NSString stringWithFormat:@"/interests/%@/events.json", refID];
+	}
+	
+	else
+	{
+		path = [NSString stringWithFormat:@"/events/user/%@.json", myID];
+	}
+		NSLog(@"path %@, myID %@, refID %@", path, myID, refID);
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+	if ([eventType  isEqualToString:@"pastEvents"]) {
+		[params setValue:@"past" forKey:@"scope"];
+	}
+	else {
+		[params setValue:@"ongoing" forKey:@"scope"];
+	}
+	
+	
+	return [self GET:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		if (completion)
+			completion(responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		if (completion)
+			completion(nil);
+	}];
+}
+
 
 
 #pragma mark - Image handling
