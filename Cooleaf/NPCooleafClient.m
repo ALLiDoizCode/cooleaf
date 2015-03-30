@@ -342,6 +342,27 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	}];
 }
 
+- (AFHTTPRequestOperation *)joinSeriesIDWithEventIdsArray:(NSNumber *)seriesID eventIdsArray:(NSArray *)eventIdsArray completion:(void(^)(NSError *error))completion
+{
+	NSString *path = [NSString stringWithFormat:@"/participations/%@.json", seriesID];
+	
+	NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+	[params setValue:eventIdsArray forKey:@"ids"];
+
+	
+	if (_apiPrefix.length > 0)
+		path = [_apiPrefix stringByAppendingString:path];
+	
+	return [self POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		[self updateUserData];
+		if (completion)
+			completion(nil);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		[self updateUserData];
+		if (completion)
+			completion(error);
+	}];
+}
 
 
 

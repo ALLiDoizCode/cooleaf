@@ -25,6 +25,8 @@ extern NSString * const kNPCooleafClientSignOut;
 
 - (AFHTTPRequestOperation *)leaveEventWithId:(NSNumber *)eventId completion:(void(^)(NSError *error))completion;
 
+- (AFHTTPRequestOperation *)joinSeriesIDWithEventIdsArray:(NSNumber *)seriesID eventIdsArray:(NSArray *)eventIdsArray completion:(void(^)(NSError *error))completion;
+
 - (AFHTTPRequestOperation *)fetchEventWithId:(NSNumber *)eventId completion:(void(^)(NSDictionary *eventDetails))completion;
 
 - (AFHTTPRequestOperation *)fetchParticipantsForEventWithId:(NSNumber *)eventId completion:(void(^)(NSArray *participants))completion;
