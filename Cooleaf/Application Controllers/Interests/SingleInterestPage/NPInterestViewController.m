@@ -222,6 +222,7 @@ enum {
 {
 	//	_joinButton.layer.borderColor = [[_joinButton titleColorForState:(([_currentEvent[@"attending"] boolValue]) ? UIControlStateDisabled : UIControlStateNormal)] CGColor];
 	//	_resignButton.layer.borderColor = [[_resignButton titleColorForState:((![_currentEvent[@"attending"] boolValue]) ? UIControlStateDisabled : UIControlStateNormal)] CGColor];
+	DLog(@" The Current event Value is %@", _currentEvent);
 	_joinButton.enabled = ![_currentEvent[@"member"] boolValue];
 	_resignButton.hidden = ![_currentEvent[@"member"] boolValue];
 	_joinButton.hidden = [_currentEvent[@"member"] boolValue];
@@ -230,11 +231,14 @@ enum {
 	{
 		_joinButton.frame = CGRectMake(280, 203, 32, 32);
 		_resignButton.frame = CGRectMake(280, 203, 32, 32);
+		DLog(@"Joing button should be on");
 	}
 	else
 	{
 		_joinButton.frame = CGRectMake(280, 203, 32, 32);
 		_resignButton.frame = CGRectMake(280, 203, 32, 32);
+		DLog(@"Leave button should be on");
+
 	}
 	//    _joinButton.transform = CGAffineTransformMakeTranslation(0, _shift);
 }
