@@ -400,13 +400,11 @@ enum {
 				return 44.0;
 			else
 				return 44.0;
-			break;
 		case NPEventCell_GroupEvents:
 			return 60;
-			break;
 			//		case NPEventCell_Date:
 			//			return 94.0;
-			//			break;
+
 			//
 			//		case NPEventCell_Location:
 			//			if (_currentEvent[@"address"][@"lat"])
@@ -423,10 +421,8 @@ enum {
 			//			return [NPDetailsCell cellHeightForText:_currentEvent[@"description"]];
 			//			break;
 		default:
-			break;
+			return 44;
 	}
-	
-	return 0;
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
@@ -435,15 +431,11 @@ enum {
 		case NPEventCell_Attendees:
 			if ([_currentEvent[@"users_count"] integerValue] > 0)
 				return YES;
-			break;
-		case NPEventCell_Todos:
-			return YES;
-			break;
+			else
+				return NO;
 		default:
-			break;
+			return YES;
 	}
-	
-	return NO;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

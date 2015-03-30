@@ -11,5 +11,6 @@
 @interface NPGroupEventsCell : UITableViewCell
 
 @property (nonatomic, assign) NSNumber* groupID;
+@property (readwrite, assign, nonatomic) IBOutlet UIButton *button2;
 
 @end

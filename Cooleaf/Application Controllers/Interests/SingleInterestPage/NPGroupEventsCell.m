@@ -23,6 +23,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+	[_button2 addTarget:self action:@selector(doActionButton:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -39,4 +40,10 @@
 	DLog(@"selected the groups row");
 //	[self.navigationController pushViewController:groupEventListController animated:YES];
 }
+
+- (void)doActionButton:(id)sender
+{
+	NSLog(@"");
+}
+
 @end
