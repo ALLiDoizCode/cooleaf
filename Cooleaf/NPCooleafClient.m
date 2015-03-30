@@ -726,7 +726,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 		path = [_apiPrefix stringByAppendingString:path];
 	DLog(@"the group member path is = %@", path);
 	return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		DLog(@"Group Member respone = %@",responseObject);
+//		DLog(@"Group Member respone = %@",responseObject);
 		if (completion)
 			completion(responseObject);
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {

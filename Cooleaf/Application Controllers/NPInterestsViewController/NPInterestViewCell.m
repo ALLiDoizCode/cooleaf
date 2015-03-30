@@ -94,7 +94,7 @@ static UIImage *gCheckboxOff;
 	
 	if (_editModeOn == TRUE) {
 		_checkboxImg.hidden = FALSE;
-		_checkboxImg.image = _npinterest.isActive ? gCheckboxOn : gCheckboxOff;
+		_checkboxImg.image = _npinterest.isMember ? gCheckboxOn : gCheckboxOff;
 		_titleLbl.textAlignment = NSTextAlignmentRight;
 	}
 	else {
@@ -105,8 +105,8 @@ static UIImage *gCheckboxOff;
 
 - (void)doActionToggleActive:(id)sender
 {
-	_npinterest.isActive = !_npinterest.isActive;
-	_checkboxImg.image = _npinterest.isActive ? gCheckboxOn : gCheckboxOff;
+	_npinterest.isMember = !_npinterest.isMember;
+	_checkboxImg.image = _npinterest.isMember ? gCheckboxOn : gCheckboxOff;
 }
 
 @end

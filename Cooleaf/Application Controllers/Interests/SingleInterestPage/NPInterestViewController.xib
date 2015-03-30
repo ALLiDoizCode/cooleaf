@@ -12,6 +12,7 @@
                 <outlet property="coverPhotoView" destination="Moc-IA-ZaT" id="7AO-yb-u8i"/>
                 <outlet property="joinButton" destination="yCZ-UE-DfT" id="biY-Mo-gP4"/>
                 <outlet property="loadingIndicator" destination="Dk4-57-RzQ" id="1M1-2Q-Tzs"/>
+                <outlet property="resignButton" destination="3au-Rt-fAT" id="l3H-8i-kU2"/>
                 <outlet property="tableHeaderView" destination="TEe-Ld-igU" id="9z9-6m-AO0"/>
                 <outlet property="tableView" destination="Vku-bT-P1e" id="3Tw-Iq-8Gl"/>
                 <outlet property="titleLabel" destination="ZZo-nH-TD7" id="St8-wW-sTg"/>
@@ -51,6 +52,16 @@
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3au-Rt-fAT">
+                            <rect key="frame" x="280" y="203" width="32" height="32"/>
+                            <state key="normal" image="LeaveGroupButton">
+                                <color key="titleColor" red="0.30588235289999999" green="0.80392156859999997" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="resignTapped:" destination="-1" eventType="touchUpInside" id="4cO-9z-pC0"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCZ-UE-DfT">
                             <rect key="frame" x="280" y="203" width="32" height="32"/>
                             <state key="normal" image="JoinGroupButton">
@@ -62,16 +73,6 @@
                             </state>
                             <connections>
                                 <action selector="joinTapped:" destination="-1" eventType="touchUpInside" id="bQT-dQ-V65"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3au-Rt-fAT">
-                            <rect key="frame" x="280" y="203" width="32" height="32"/>
-                            <state key="normal" image="LeaveGroupButton">
-                                <color key="titleColor" red="0.30588235289999999" green="0.80392156859999997" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="resignTapped:" destination="-1" eventType="touchUpInside" id="4cO-9z-pC0"/>
                             </connections>
                         </button>
                         <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Dk4-57-RzQ" userLabel="Loading indicator">

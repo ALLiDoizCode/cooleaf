@@ -21,6 +21,7 @@
 		_parentType = dictionary[@"parent_type"];
 		_name = dictionary[@"name"];
 		_isActive = ((NSNumber *)dictionary[@"active"]).boolValue;
+		_isMember = ((NSNumber *)dictionary[@"member"]).boolValue;
 		_isDefault = ((NSNumber *)dictionary[@"default"]).boolValue;
 		_imagePath = dictionary[@"image"][@"path"];
 		_imageUrl = dictionary[@"image"][@"url"];
@@ -36,9 +37,9 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%@<%p>::{ objectId=%d, parentId=%d, parentType=%@, name=%@, isActive=%@, isDefault=%@, imagePath=%@, imageUrl=%@, thumbPath=%@, thumbUrl=%@, slug=%@, type=%@, userCount=%d }",
+	return [NSString stringWithFormat:@"%@<%p>::{ objectId=%d, parentId=%d, parentType=%@, name=%@, isActive=%@, isMember=%@, isDefault=%@, imagePath=%@, imageUrl=%@, thumbPath=%@, thumbUrl=%@, slug=%@, type=%@, userCount=%d }",
 					NSStringFromClass(self.class), self,
-					(int)_objectId, (int)_parentId, _parentType, _name, NSStringFromBool(_isActive), NSStringFromBool(_isDefault),
+					(int)_objectId, (int)_parentId, _parentType, _name, NSStringFromBool(_isActive), NSStringFromBool(_isMember), NSStringFromBool(_isDefault),
 					_imagePath, _imageUrl, _thumbnailPath, _thumbnailUrl, _slug, _type, (int)_userCount];
 }
 

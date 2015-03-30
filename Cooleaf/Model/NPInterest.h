@@ -15,6 +15,7 @@
 @property (readonly,  nonatomic, retain) NSString *parentType;
 @property (readonly,  nonatomic, retain) NSString *name;
 @property (readwrite, nonatomic, assign) BOOL isActive;
+@property (readwrite, nonatomic, assign) BOOL isMember;
 @property (readonly,  nonatomic, assign) BOOL isDefault;
 @property (readonly,  nonatomic, retain) NSString *imagePath;
 @property (readonly,  nonatomic, retain) NSString *imageUrl;
@@ -44,6 +45,7 @@
  *   slug = adventure;
  *   type = interest;
  *   "users_count" = 14;
+ *   "member": false
  * }
  *
  */

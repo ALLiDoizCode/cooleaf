@@ -111,7 +111,7 @@ static NSString * const reuseIdentifier = @"Cell";
 		[self reload];
 	}
 	else {
-		NSArray *activeInterests = [_npinterests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isActive; }]];
+		NSArray *activeInterests = [_npinterests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isMember; }]];
 		[[NPCooleafClient sharedClient] setUserInterests:activeInterests completion:^ (BOOL success) { [self reload]; }];
 	}
 }
@@ -135,7 +135,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)doActionNext:(id)sender
 {
-	NSArray *activeInterests = [_npinterests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isActive; }]];
+	NSArray *activeInterests = [_npinterests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isMember; }]];
 	[[NPCooleafClient sharedClient] setUserInterests:activeInterests completion:^ (BOOL success) {
 		[self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
 	}];
