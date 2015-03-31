@@ -13,7 +13,112 @@
 #import "NPTagGroup.h"
 #import "UIFont+ApplicationFont.h"
 
-@interface NPRegistrationViewController () <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@class NPRegistrationPicker;
+
+@interface NPRegistrationViewController (PrivateMethods)
+- (void)showPicker:(NPRegistrationPicker *)picker;
+@end
+
+
+
+
+
+@interface NPRegistrationPicker : NSObject <UIPickerViewDelegate, UIPickerViewDataSource>
+{
+@public
+	__unsafe_unretained NPRegistrationViewController *_parent;
+	NSString *_title;
+	NSArray *_options;
+	UILabel *_label;
+	UIPickerView *_picker;
+	NSInteger _index;
+}
+@end
+
+@implementation NPRegistrationPicker
+
+#pragma mark - Structors
+
+- (id)init
+{
+	self = [super init];
+	
+	if (self) {
+		_index = -1;
+	}
+	
+	return self;
+}
+
+#pragma mark - Accessors
+
+- (NSString *)selectedValue
+{
+	if (_index < 0 || _index >= _options.count)
+		return nil;
+	else {
+		NSObject *object = _options[_index];
+		if ([object isKindOfClass:NPTag.class])
+			return @(((NPTag *)object).objectId).stringValue;
+		else if ([object isKindOfClass:NSString.class])
+			return (NSString *)object;
+		else
+			return nil;
+	}
+}
+
+#pragma mark - Actions
+
+- (void)doActionShowPicker:(id)sender
+{
+	if (_options.count != 0) {
+		_index = 0;
+		_label.text = [self pickerView:_picker titleForRow:_index forComponent:0];
+		[_picker selectRow:_index inComponent:0 animated:FALSE];
+	}
+	
+	[_parent showPicker:self];
+}
+
+#pragma mark - UIPickerViewDelegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+	NSObject *object = _options[row];
+	
+	if ([object isKindOfClass:NPTag.class])
+		return ((NPTag *)object).name;
+	else if ([object isKindOfClass:NSString.class])
+		return (NSString *)object;
+	else
+		return @"";
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+	_index = row;
+	_label.text = [self pickerView:pickerView titleForRow:row forComponent:component];
+}
+
+#pragma mark - UIPickerViewDataSource
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+	return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+	return _options.count;
+}
+
+@end
+
+
+
+
+
+@interface NPRegistrationViewController () <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
 	/**
 	 * Data
@@ -21,9 +126,6 @@
 	NSString *_username;
 	NSString *_password;
 	NSString *_token;
-	NSMutableDictionary *_tagGroups;         // keyed on tag group name
-	NPTagGroup *_locationTagGroup;
-	NPTagGroup *_departmentTagGroup;
 	
 	/**
 	 * Main
@@ -56,13 +158,8 @@
 	UIView *_pickerView;
 	UIView *_pickerBtn;
 	UITextField *_nameTxt;
-	UILabel *_locationLbl;
-	UIPickerView *_locationPicker;
-	UILabel *_departmentLbl;
-	UIPickerView *_departmentPicker;
-	UILabel *_genderLbl;
-	UIPickerView *_genderPicker;
-	UIPickerView *_currentPicker;
+	NPRegistrationPicker *_currentPicker;
+	NSMutableArray *_pickers;
 	
 	/**
 	 * Modal
@@ -84,6 +181,7 @@
 		_username = username;
 		_password = password;
 		//_tagGroups = [[NSMutableDictionary alloc] init];
+		_pickers = [[NSMutableArray alloc] init];
 	}
 	
 	return self;
@@ -278,150 +376,6 @@
 		[_pickerBtn addConstraint:[NSLayoutConstraint constraintWithItem:doneLbl attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_pickerBtn attribute:NSLayoutAttributeCenterY multiplier:1 constant:  0]];
 	}
 	
-	// location pop-up
-	{
-		// label
-		_locationLbl = [[UILabel alloc] init];
-		_locationLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
-		_locationLbl.font = [UIFont applicationFontOfSize:16];
-		_locationLbl.textColor = RGB(0x99, 0x99, 0x99);
-		_locationLbl.text = @"Location";
-		_locationLbl.userInteractionEnabled = TRUE;
-		[_locationLbl addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionLocation:)]];
-		[_mainView addSubview:_locationLbl];
-		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[view]-20-|" options:0 metrics:nil views:@{@"view": _locationLbl}]];
-		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-10-[view(30)]" options:0 metrics:nil views:@{@"view": _locationLbl, @"topView": _nameTxt}]];
-		
-		// arrow
-		UIImageView *arrowImg = [[UIImageView alloc] init];
-		arrowImg.translatesAutoresizingMaskIntoConstraints = FALSE;
-		arrowImg.image = [[UIImage imageNamed:@"AccessoryArrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-		arrowImg.tintColor = RGB(0x99, 0x99, 0x99);
-		arrowImg.transform = CGAffineTransformMakeRotation(M_PI_2);
-		[_mainView addSubview:arrowImg];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_locationLbl attribute:NSLayoutAttributeRight          multiplier:1 constant:-7]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_locationLbl attribute:NSLayoutAttributeCenterY        multiplier:1 constant: 0]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeWidth   relatedBy:NSLayoutRelationEqual toItem:nil          attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 8]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeHeight  relatedBy:NSLayoutRelationEqual toItem:nil          attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:17]];
-		
-		// horizontal rule
-		UIView *hrule = [[UIView alloc] init];
-		hrule.translatesAutoresizingMaskIntoConstraints = FALSE;
-		hrule.backgroundColor = RGB(0xD4, 0xD4, 0xD4);
-		[_mainView addSubview:hrule];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:_locationLbl attribute:NSLayoutAttributeLeft           multiplier:1 constant:-2]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:_locationLbl attribute:NSLayoutAttributeRight          multiplier:1 constant: 2]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:_locationLbl attribute:NSLayoutAttributeBottom         multiplier:1 constant: 0]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil          attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 1]];
-		
-		// picker view
-		_locationPicker = [[UIPickerView alloc] init];
-		_locationPicker.translatesAutoresizingMaskIntoConstraints = FALSE;
-		_locationPicker.delegate = self;
-		_locationPicker.dataSource = self;
-		_locationPicker.hidden = TRUE;
-		[_pickerView addSubview:_locationPicker];
-		[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:_locationPicker attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeLeft    multiplier:1 constant:0]];
-		[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:_locationPicker attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeRight   multiplier:1 constant:0]];
-		[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:_locationPicker attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-	}
-	
-	// department pop-up
-	{
-		// label
-		_departmentLbl = [[UILabel alloc] init];
-		_departmentLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
-		_departmentLbl.font = [UIFont applicationFontOfSize:16];
-		_departmentLbl.textColor = RGB(0x99, 0x99, 0x99);
-		_departmentLbl.text = @"Department";
-		_departmentLbl.userInteractionEnabled = TRUE;
-		[_departmentLbl addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionDepartment:)]];
-		[_mainView addSubview:_departmentLbl];
-		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[view]-20-|" options:0 metrics:nil views:@{@"view": _departmentLbl}]];
-		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-10-[view(30)]" options:0 metrics:nil views:@{@"view": _departmentLbl, @"topView": _locationLbl}]];
-		
-		// arrow
-		UIImageView *arrowImg = [[UIImageView alloc] init];
-		arrowImg.translatesAutoresizingMaskIntoConstraints = FALSE;
-		arrowImg.image = [[UIImage imageNamed:@"AccessoryArrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-		arrowImg.tintColor = RGB(0x99, 0x99, 0x99);
-		arrowImg.transform = CGAffineTransformMakeRotation(M_PI_2);
-		[_mainView addSubview:arrowImg];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_departmentLbl attribute:NSLayoutAttributeRight          multiplier:1 constant:-7]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_departmentLbl attribute:NSLayoutAttributeCenterY        multiplier:1 constant: 0]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeWidth   relatedBy:NSLayoutRelationEqual toItem:nil            attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 8]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeHeight  relatedBy:NSLayoutRelationEqual toItem:nil            attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:17]];
-		
-		// horizontal rule
-		UIView *hrule = [[UIView alloc] init];
-		hrule.translatesAutoresizingMaskIntoConstraints = FALSE;
-		hrule.backgroundColor = RGB(0xD4, 0xD4, 0xD4);
-		[_mainView addSubview:hrule];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:_departmentLbl attribute:NSLayoutAttributeLeft           multiplier:1 constant:-2]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:_departmentLbl attribute:NSLayoutAttributeRight          multiplier:1 constant: 2]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:_departmentLbl attribute:NSLayoutAttributeBottom         multiplier:1 constant: 0]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil            attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 1]];
-		
-		// picker view
-		_departmentPicker = [[UIPickerView alloc] init];
-		_departmentPicker.translatesAutoresizingMaskIntoConstraints = FALSE;
-		_departmentPicker.delegate = self;
-		_departmentPicker.dataSource = self;
-		_departmentPicker.hidden = TRUE;
-		[_pickerView addSubview:_departmentPicker];
-		[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentPicker attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeLeft    multiplier:1 constant:0]];
-		[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentPicker attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeRight   multiplier:1 constant:0]];
-		[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentPicker attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-	}
-	
-	// gender pop-up
-	{
-		// label
-		_genderLbl = [[UILabel alloc] init];
-		_genderLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
-		_genderLbl.font = [UIFont applicationFontOfSize:16];
-		_genderLbl.textColor = RGB(0x99, 0x99, 0x99);
-		_genderLbl.text = @"Gender";
-		_genderLbl.userInteractionEnabled = TRUE;
-		[_genderLbl addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionGender:)]];
-		[_mainView addSubview:_genderLbl];
-		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[view]-20-|" options:0 metrics:nil views:@{@"view": _genderLbl}]];
-		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-10-[view(30)]" options:0 metrics:nil views:@{@"view": _genderLbl, @"topView": _departmentLbl}]];
-		
-		// arrow
-		UIImageView *arrowImg = [[UIImageView alloc] init];
-		arrowImg.translatesAutoresizingMaskIntoConstraints = FALSE;
-		arrowImg.image = [[UIImage imageNamed:@"AccessoryArrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-		arrowImg.tintColor = RGB(0x99, 0x99, 0x99);
-		arrowImg.transform = CGAffineTransformMakeRotation(M_PI_2);
-		[_mainView addSubview:arrowImg];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_genderLbl attribute:NSLayoutAttributeRight          multiplier:1 constant:-7]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_genderLbl attribute:NSLayoutAttributeCenterY        multiplier:1 constant: 0]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeWidth   relatedBy:NSLayoutRelationEqual toItem:nil        attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 8]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeHeight  relatedBy:NSLayoutRelationEqual toItem:nil        attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:17]];
-		
-		// horizontal rule
-		UIView *hrule = [[UIView alloc] init];
-		hrule.translatesAutoresizingMaskIntoConstraints = FALSE;
-		hrule.backgroundColor = RGB(0xD4, 0xD4, 0xD4);
-		[_mainView addSubview:hrule];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:_genderLbl attribute:NSLayoutAttributeLeft           multiplier:1 constant:-2]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:_genderLbl attribute:NSLayoutAttributeRight          multiplier:1 constant: 2]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:_genderLbl attribute:NSLayoutAttributeBottom         multiplier:1 constant: 0]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil        attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 1]];
-		
-		// picker view
-		_genderPicker = [[UIPickerView alloc] init];
-		_genderPicker.translatesAutoresizingMaskIntoConstraints = FALSE;
-		_genderPicker.delegate = self;
-		_genderPicker.dataSource = self;
-		_genderPicker.hidden = TRUE;
-		[_pickerView addSubview:_genderPicker];
-		[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:_genderPicker attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeLeft    multiplier:1 constant:0]];
-		[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:_genderPicker attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeRight   multiplier:1 constant:0]];
-		[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:_genderPicker attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-	}
-	
 	// modal view - full screen
 	_modalView = [[UIView alloc] init];
 	_modalView.translatesAutoresizingMaskIntoConstraints = FALSE;
@@ -454,9 +408,12 @@
 		
 		if (token != nil && tagGroups != nil) {
 			_token = token;
-			_tagGroups = [NSMutableDictionary dictionaryWithDictionary:tagGroups];
-			_locationTagGroup = _tagGroups[@"Location"];
-			_departmentTagGroup = _tagGroups[@"Department"];
+			NPTagGroup *locationTagGroup = tagGroups[@"Location"];
+			NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
+			
+			[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags];
+			[self addPickerWithTitle:@"Department" tags:departmentTagGroup.tags];
+			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"]];
 		}
 		else {
 			[[[UIAlertView alloc] initWithTitle:@"Registration Failed" message:@"Is this username already active?" delegate:nil cancelButtonTitle:@"Sorry" otherButtonTitles:nil] show];
@@ -473,6 +430,93 @@
 - (void)didReceiveMemoryWarning
 {
 	[super didReceiveMemoryWarning];
+}
+
+- (void)addPickerWithTitle:(NSString *)title tags:(NSArray *)tags
+{
+	NPRegistrationPicker *picker = [[NPRegistrationPicker alloc] init];
+	picker->_parent = self;
+	picker->_title = title;
+	picker->_options = tags;
+	
+	UIView *topView = _pickers.count != 0 ? ((NPRegistrationPicker *)_pickers.lastObject)->_label : _nameTxt;
+	
+	// label
+	picker->_label = [[UILabel alloc] init];
+	picker->_label.translatesAutoresizingMaskIntoConstraints = FALSE;
+	picker->_label.font = [UIFont applicationFontOfSize:16];
+	picker->_label.textColor = RGB(0x99, 0x99, 0x99);
+	picker->_label.text = title;
+	picker->_label.userInteractionEnabled = TRUE;
+	[picker->_label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:picker action:@selector(doActionShowPicker:)]];
+	[_mainView addSubview:picker->_label];
+	[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[view]-20-|" options:0 metrics:nil views:@{@"view": picker->_label}]];
+	[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-10-[view(30)]" options:0 metrics:nil views:@{@"view": picker->_label, @"topView": topView}]];
+	
+	// arrow
+	UIImageView *arrowImg = [[UIImageView alloc] init];
+	arrowImg.translatesAutoresizingMaskIntoConstraints = FALSE;
+	arrowImg.image = [[UIImage imageNamed:@"AccessoryArrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+	arrowImg.tintColor = RGB(0x99, 0x99, 0x99);
+	arrowImg.transform = CGAffineTransformMakeRotation(M_PI_2);
+	[_mainView addSubview:arrowImg];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeRight          multiplier:1 constant:-7]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeCenterY        multiplier:1 constant: 0]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeWidth   relatedBy:NSLayoutRelationEqual toItem:nil            attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 8]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeHeight  relatedBy:NSLayoutRelationEqual toItem:nil            attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:17]];
+	
+	// horizontal rule
+	UIView *hrule = [[UIView alloc] init];
+	hrule.translatesAutoresizingMaskIntoConstraints = FALSE;
+	hrule.backgroundColor = RGB(0xD4, 0xD4, 0xD4);
+	[_mainView addSubview:hrule];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeLeft           multiplier:1 constant:-2]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeRight          multiplier:1 constant: 2]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeBottom         multiplier:1 constant: 0]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil            attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 1]];
+	
+	// picker view
+	picker->_picker = [[UIPickerView alloc] init];
+	picker->_picker.translatesAutoresizingMaskIntoConstraints = FALSE;
+	picker->_picker.delegate = picker;
+	picker->_picker.dataSource = picker;
+	picker->_picker.hidden = TRUE;
+	[_pickerView addSubview:picker->_picker];
+	[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_picker attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeLeft    multiplier:1 constant:0]];
+	[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_picker attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeRight   multiplier:1 constant:0]];
+	[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_picker attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+	
+	// add to the array of picker objects
+	[_pickers addObject:picker];
+}
+
+- (NSString *)valueForPickerWithTitle:(NSString *)title
+{
+	__block NSString *value = nil;
+	
+	[_pickers enumerateObjectsUsingBlock:^ (NPRegistrationPicker *picker, NSUInteger index, BOOL *stop) {
+		if ([picker->_title isEqualToString:title]) {
+			value = [picker selectedValue];
+			*stop = TRUE;
+		}
+	}];
+	
+	return value;
+}
+
+- (NSArray *)valuesForPickersWithTitle:(NSString *)title
+{
+	NSMutableArray *values = [[NSMutableArray alloc] init];
+	
+	[_pickers enumerateObjectsUsingBlock:^ (NPRegistrationPicker *picker, NSUInteger index, BOOL *stop) {
+		if ([picker->_title isEqualToString:title]) {
+			NSString *value = [picker selectedValue];
+			if (value != nil)
+				[values addObject:value];
+		}
+	}];
+	
+	return values;
 }
 
 
@@ -519,13 +563,12 @@
 	
 	NSMutableArray *tags = [[NSMutableArray alloc] init];
 	
-	NPTag *locationTag = _locationTagGroup.tagsByName[_locationLbl.text];
-	NPTag *departmentTag = _departmentTagGroup.tagsByName[_departmentLbl.text];
+	[tags addObjectsFromArray:[self valuesForPickersWithTitle:@"Location"]];
+	[tags addObjectsFromArray:[self valuesForPickersWithTitle:@"Department"]];
 	
-	if (locationTag != nil) [tags addObject:@(locationTag.objectId).stringValue];
-	if (departmentTag != nil) [tags addObject:@(departmentTag.objectId).stringValue];
-		
-	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:_genderLbl.text password:_password tags:tags completion:^ (BOOL success, NSString *error) {
+	NSString *gender = [self valueForPickerWithTitle:@"Gender"];
+	
+	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:gender password:_password tags:tags completion:^ (BOOL success, NSString *error) {
 		DLog(@"Done! success = %@", NSStringFromBool(success));
 		
 		if (success == FALSE) {
@@ -541,7 +584,6 @@
 			interestsController.topBarEnabled = TRUE;
 			interestsController.scrollEnabled = TRUE;
 			[self.navigationController pushViewController:interestsController animated:TRUE];
-//		[self presentViewController:interestsController animated:FALSE completion:nil];
 			DLog(@"collectionView = %@", interestsController.collectionView);
 			
 			[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarImg.image completion:^ (NSDictionary *unused) {
@@ -563,8 +605,6 @@
 			}];
 		}];
 	}];
-	
-	//[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doActionPicture:(id)sender
@@ -598,43 +638,17 @@
 	_backBtn.hidden = FALSE;
 	_nextBtn.hidden = FALSE;
 	
-	if (_currentPicker == _locationPicker) {
-		_locationPicker.hidden = TRUE;
-		_locationLbl.text = ((NPTag *)_locationTagGroup.tags[[_locationPicker selectedRowInComponent:0]]).name;
-	}
-	else if (_currentPicker == _departmentPicker) {
-		_departmentPicker.hidden = TRUE;
-		_departmentLbl.text = ((NPTag *)_departmentTagGroup.tags[[_departmentPicker selectedRowInComponent:0]]).name;
-	}
-	else if (_currentPicker == _genderPicker) {
-		_genderPicker.hidden = TRUE;
-		_genderLbl.text = [self pickerView:_genderPicker titleForRow:[_genderPicker selectedRowInComponent:0] forComponent:0];
-	}
+	_currentPicker->_picker.hidden = TRUE;
 }
 
-- (void)doActionLocation:(UITapGestureRecognizer *)gr
+- (void)showPicker:(NPRegistrationPicker *)picker
 {
-	[self showPicker:_locationPicker];
-}
-
-- (void)doActionDepartment:(UITapGestureRecognizer *)gr
-{
-	[self showPicker:_departmentPicker];
-}
-
-- (void)doActionGender:(UITapGestureRecognizer *)gr
-{
-	[self showPicker:_genderPicker];
-}
-
-- (void)showPicker:(UIPickerView *)pickerView
-{
-	_currentPicker = pickerView;
-	[_currentPicker reloadAllComponents];
+	_currentPicker = picker;
+	[_currentPicker->_picker reloadAllComponents];
 	_pickerView.hidden = FALSE;
 	_pickerView.alpha = 0;
 	_pickerBtn.hidden = FALSE;
-	_currentPicker.hidden = FALSE;
+	_currentPicker->_picker.hidden = FALSE;
 	_backBtn.hidden = TRUE;
 	_nextBtn.hidden = TRUE;
 	_pickerBtn.hidden = FALSE;
@@ -721,51 +735,6 @@
 		[_avatarController dismissViewControllerAnimated:TRUE completion:nil];
 		_avatarController = nil;
 	}
-}
-
-
-
-
-
-#pragma mark - UIPickerViewDelegate
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-	if (pickerView == _locationPicker)
-		return ((NPTag *)_locationTagGroup.tags[row]).name;
-	else if (pickerView == _departmentPicker)
-		return ((NPTag *)_departmentTagGroup.tags[row]).name;
-	else if (pickerView == _genderPicker) {
-		if (row == 0)
-			return @"Male";
-		else
-			return @"Female";
-	}
-	else
-		return @"";
-}
-
-
-
-
-
-#pragma mark - UIPickerViewDataSource
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-	return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-	if (pickerView == _locationPicker)
-		return _locationTagGroup.tags.count;
-	else if (pickerView == _departmentPicker)
-		return _departmentTagGroup.tags.count;
-	else if (pickerView == _genderPicker)
-		return 2;
-	else
-		return 0;
 }
 
 
