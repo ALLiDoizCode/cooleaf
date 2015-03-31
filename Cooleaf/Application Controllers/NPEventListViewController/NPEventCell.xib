@@ -47,8 +47,8 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="0.30588235289999999" green="0.80392156859999997" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="AttendeeIcon" id="Ygg-cC-gcG">
-                                        <rect key="frame" x="296" y="15" width="16" height="15"/>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="WhiteEvents" id="Ygg-cC-gcG">
+                                        <rect key="frame" x="285" y="12" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Some title" id="NBh-jh-u3x">
@@ -87,7 +87,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view hidden="YES" contentMode="scaleToFill" id="yWO-PL-5cA" userLabel="Selection View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="585"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="670"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                 </subviews>
@@ -110,8 +110,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="AttendeeIcon" width="16" height="15"/>
         <image name="CoverPhotoPlaceholder" width="320" height="75"/>
+        <image name="WhiteEvents" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

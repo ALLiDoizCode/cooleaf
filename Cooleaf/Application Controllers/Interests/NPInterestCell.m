@@ -156,7 +156,8 @@ static UITextView *_tV;
 	
 	CGFloat shift = 0;
 //	CGFloat shift2 = 0;
-	_eventTitle.text = _event[@"name"];
+	NSString *hashtagTitle = [NSString stringWithFormat:@"#%@",_event[@"name"]];
+	_eventTitle.text = hashtagTitle;
 	CGRect f;
 	f = _eventTitle.frame;
 	[_eventTitle sizeToFit];
@@ -192,7 +193,7 @@ static UITextView *_tV;
 	// Now - let's set proper colors for attendees
 	if ([_event[@"users_count"] integerValue] > 0)
 	{
-		_attendeeIcon.image = [UIImage imageNamed:@"AttendeeIcon"];
+		_attendeeIcon.image = [UIImage imageNamed:@"WhiteGroups"];
 		_attendeeLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1];
 		_attendeeLabel.text = [NSString stringWithFormat:@"%@ Members", _event[@"users_count"]];
 		
@@ -253,7 +254,7 @@ static UITextView *_tV;
 		
 		_slideBarContent.backgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
 		[_joinButton setTitle:NSLocalizedString(@"I’m in!", @"Joining event button title") forState:UIControlStateNormal];
-		_attendeeIcon.image = [UIImage imageNamed:@"AttendeeActiveIcon"];
+		_attendeeIcon.image = [UIImage imageNamed:@"WhiteGroups"];
 		_attendeeLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1];
 		_attendeeLabel.text = NSLocalizedString(@"Be the first", @"No attendees label for event");
 		

@@ -137,7 +137,7 @@ enum {
 	// Set cover image
 	DLog(@"%@", event);
 	if (event[@"image"][@"url"] != nil) {
-		NSString *imageUrlString = [@"http:" stringByAppendingString:[event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x150"]];
+		NSString *imageUrlString = [@"http:" stringByAppendingString:[event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"1600x400"]];
 		// Download image for event
 		[[NPCooleafClient sharedClient] fetchImage:imageUrlString completion:^(NSString *imagePath, UIImage *image) {
 			if ([imagePath compare:imageUrlString] == NSOrderedSame)
@@ -147,7 +147,8 @@ enum {
 		}];
 	}
 	// Calculate size for title
-	_titleLabel.text = event[@"name"];
+	NSString *hashtagTitle = [NSString stringWithFormat:@"#%@",event[@"name"]];
+	_titleLabel.text = hashtagTitle;
 	f = _titleLabel.frame;
 	[_titleLabel sizeToFit];
 	_titleLabel.frame = CGRectMake(f.origin.x, f.origin.y, f.size.width, _titleLabel.frame.size.height);
