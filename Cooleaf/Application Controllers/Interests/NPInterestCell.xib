@@ -41,8 +41,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
                                         <color key="backgroundColor" red="0.30588235289999999" green="0.80392156859999997" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="AttendeeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="i37-qO-9gZ">
-                                        <rect key="frame" x="296" y="15" width="16" height="15"/>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" image="WhiteGroups" translatesAutoresizingMaskIntoConstraints="NO" id="i37-qO-9gZ">
+                                        <rect key="frame" x="288" y="11" width="24" height="24"/>
                                     </imageView>
                                     <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Some title" translatesAutoresizingMaskIntoConstraints="NO" id="fXQ-nN-ucY">
                                         <rect key="frame" x="0.0" y="5" width="300" height="26"/>
@@ -97,7 +97,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="AttendeeIcon" width="16" height="15"/>
         <image name="CoverPhotoPlaceholder" width="320" height="75"/>
+        <image name="WhiteGroups" width="32" height="32"/>
     </resources>
 </document>

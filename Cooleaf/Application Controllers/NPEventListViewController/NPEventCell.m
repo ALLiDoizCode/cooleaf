@@ -192,7 +192,7 @@ static UITextView *_tV;
     // Now - let's set proper colors for attendees
     if ([_event[@"participants_count"] integerValue] > 0)
     {
-        _attendeeIcon.image = [UIImage imageNamed:@"AttendeeIcon"];
+        _attendeeIcon.image = [UIImage imageNamed:@"WhiteEvents"];
         _attendeeLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1];
         _attendeeLabel.text = [NSString stringWithFormat:@"%@ Participants", _event[@"participants_count"]];
         
@@ -253,7 +253,7 @@ static UITextView *_tV;
         
         _slideBarContent.backgroundColor = [UIColor colorWithRed:0 green:122.0/255.0 blue:1 alpha:1];
         [_joinButton setTitle:NSLocalizedString(@"I’m in!", @"Joining event button title") forState:UIControlStateNormal];
-        _attendeeIcon.image = [UIImage imageNamed:@"AttendeeActiveIcon"];
+        _attendeeIcon.image = [UIImage imageNamed:@"WhiteEvents"];
         _attendeeLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1];
         _attendeeLabel.text = NSLocalizedString(@"Be the first", @"No attendees label for event");
 
@@ -282,7 +282,7 @@ static UITextView *_tV;
 //    _selectionView.frame = CGRectMake(0, 15, 320, self.contentView.bounds.size.height-15);
     
     if (_event[@"image"][@"url"] != nil) {
-        NSString *imageUrlString = [@"http:" stringByAppendingString:[_event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x150"]];
+        NSString *imageUrlString = [@"http:" stringByAppendingString:[_event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"1600x400"]];
         // Download image for event
         [[NPCooleafClient sharedClient] fetchImage:imageUrlString completion:^(NSString *imagePath, UIImage *image) {
            if ([imagePath compare:imageUrlString] == NSOrderedSame)
