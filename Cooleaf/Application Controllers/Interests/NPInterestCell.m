@@ -156,7 +156,8 @@ static UITextView *_tV;
 	
 	CGFloat shift = 0;
 //	CGFloat shift2 = 0;
-	_eventTitle.text = _event[@"name"];
+	NSString *hashtagTitle = [NSString stringWithFormat:@"#%@",_event[@"name"]];
+	_eventTitle.text = hashtagTitle;
 	CGRect f;
 	f = _eventTitle.frame;
 	[_eventTitle sizeToFit];

@@ -147,7 +147,8 @@ enum {
 		}];
 	}
 	// Calculate size for title
-	_titleLabel.text = event[@"name"];
+	NSString *hashtagTitle = [NSString stringWithFormat:@"#%@",event[@"name"]];
+	_titleLabel.text = hashtagTitle;
 	f = _titleLabel.frame;
 	[_titleLabel sizeToFit];
 	_titleLabel.frame = CGRectMake(f.origin.x, f.origin.y, f.size.width, _titleLabel.frame.size.height);
