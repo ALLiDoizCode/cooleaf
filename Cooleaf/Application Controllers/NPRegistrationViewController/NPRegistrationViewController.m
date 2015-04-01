@@ -132,6 +132,7 @@
 	 * Main
 	 */
 	UIView *_mainView;
+	UIScrollView *_contentView;
 	NSLayoutConstraint *_mainViewTopConstraint;
 	UITextField *_currentTxt;
 	CGRect _keyboardFrame;
@@ -181,7 +182,6 @@
 	if (self) {
 		_username = username;
 		_password = password;
-		//_tagGroups = [[NSMutableDictionary alloc] init];
 		_pickers = [[NSMutableArray alloc] init];
 	}
 	
@@ -212,6 +212,173 @@
 	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:_mainView attribute:NSLayoutAttributeWidth  relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth  multiplier:1 constant:0]];
 	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:_mainView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
 	
+	// top bar
+	[self renderTopBar];
+	
+	// content view
+	_contentView = [[UIScrollView alloc] init];
+	_contentView.translatesAutoresizingMaskIntoConstraints = FALSE;
+	_contentView.backgroundColor = UIColor.whiteColor;
+	[_mainView addSubview:_contentView];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:_topBarView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:_mainView   attribute:NSLayoutAttributeLeft   multiplier:1 constant:0]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:_mainView   attribute:NSLayoutAttributeRight  multiplier:1 constant:0]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_mainView   attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+	
+	// "basic information" label
+	_basicInfoLbl = [[UILabel alloc] init];
+	_basicInfoLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
+	_basicInfoLbl.font = [UIFont mediumApplicationFontOfSize:15];
+	_basicInfoLbl.textColor = RGB(0x31, 0xCB, 0xC2);
+	_basicInfoLbl.text = @"BASIC INFORMATION";
+	[_contentView addSubview:_basicInfoLbl];
+	[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:_basicInfoLbl attribute:NSLayoutAttributeTop  relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeTop  multiplier:1 constant:20]];
+	[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:_basicInfoLbl attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeLeft multiplier:1 constant:20]];
+	
+	// avatar pic
+	{
+		// image view / button
+		_avatarImg = [[UIImageView alloc] init];
+		_avatarImg.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_avatarImg.image = [UIImage imageNamed:@"AvatarPlaceHolderMaleBig"];
+		_avatarImg.layer.masksToBounds = TRUE;
+		_avatarImg.layer.cornerRadius = 50;
+		_avatarImg.userInteractionEnabled = TRUE;
+		[_avatarImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionPicture:)]];
+		[_contentView addSubview:_avatarImg];
+		[_contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(100)]"       options:0 metrics:nil views:@{@"view": _avatarImg}]];
+		[_contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-85-[view(100)]" options:0 metrics:nil views:@{@"view": _avatarImg}]];
+		[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:_avatarImg attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+		
+		// avatar label
+		_avatarLbl = [[UILabel alloc] init];
+		_avatarLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_avatarLbl.font = [UIFont mediumApplicationFontOfSize:9];
+		_avatarLbl.textColor = RGB(0x99, 0x99, 0x99);
+		_avatarLbl.text = @"Upload profile picture";
+		_avatarLbl.userInteractionEnabled = TRUE;
+		[_avatarLbl addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionPicture:)]];
+		[_contentView addSubview:_avatarLbl];
+		[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:_avatarLbl attribute:NSLayoutAttributeTop     relatedBy:NSLayoutRelationEqual toItem:_avatarImg attribute:NSLayoutAttributeBottom  multiplier:1 constant:10]];
+		[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:_avatarLbl attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_avatarImg attribute:NSLayoutAttributeCenterX multiplier:1 constant: 0]];
+	}
+	
+	// full name
+	{
+		// text field
+		_nameTxt = [[UITextField alloc] init];
+		_nameTxt.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_nameTxt.textColor = RGB(0x99, 0x99, 0x99);
+		_nameTxt.delegate = self;
+		_nameTxt.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full Name" attributes:@{NSForegroundColorAttributeName:RGB(0x99, 0x99, 0x99)}];
+		[_contentView addSubview:_nameTxt];
+		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_nameTxt attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeLeft multiplier:1 constant:20]];
+		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_nameTxt attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeRight multiplier:1 constant:-20]];
+		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-85-[view(30)]" options:0 metrics:nil views:@{@"view": _nameTxt, @"topView": _avatarLbl}]];
+		
+		UIView *hrule = [[UIView alloc] init];
+		hrule.translatesAutoresizingMaskIntoConstraints = FALSE;
+		hrule.backgroundColor = RGB(0xD4, 0xD4, 0xD4);
+		[_contentView addSubview:hrule];
+		[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:_nameTxt attribute:NSLayoutAttributeLeft           multiplier:1 constant:-2]];
+		[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:_nameTxt attribute:NSLayoutAttributeRight          multiplier:1 constant: 2]];
+		[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:_nameTxt attribute:NSLayoutAttributeBottom         multiplier:1 constant: 0]];
+		[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil      attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 1]];
+	}
+	
+	// picker stuff
+	{
+		// the background for all of the pickers
+		_pickerView = [[UIView alloc] init];
+		_pickerView.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_pickerView.backgroundColor = RGBA(255, 255, 255, 0.9);
+		_pickerView.hidden = TRUE;
+		
+		// view
+		_pickerBtn = [[UIView alloc] init];
+		_pickerBtn.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_pickerBtn.userInteractionEnabled = TRUE;
+		_pickerBtn.hidden = TRUE;
+		[_pickerBtn addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionPickerDone:)]];
+		[_topBarView addSubview:_pickerBtn];
+		[_topBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(100)]|" options:0 metrics:nil views:@{@"view": _pickerBtn}]];
+		[_topBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view(50)]|" options:0 metrics:nil views:@{@"view": _pickerBtn}]];
+		
+		// "done" label
+		UILabel *doneLbl = [[UILabel alloc] init];
+		doneLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
+		doneLbl.font = [UIFont mediumApplicationFontOfSize:16];
+		doneLbl.textColor = UIColor.whiteColor;
+		doneLbl.text = @"DONE";
+		[_pickerBtn addSubview:doneLbl];
+		[_pickerBtn addConstraint:[NSLayoutConstraint constraintWithItem:doneLbl attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_pickerBtn attribute:NSLayoutAttributeRight   multiplier:1 constant:-16]];
+		[_pickerBtn addConstraint:[NSLayoutConstraint constraintWithItem:doneLbl attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_pickerBtn attribute:NSLayoutAttributeCenterY multiplier:1 constant:  0]];
+	}
+	
+	// modal view - full screen
+	_modalView = [[UIView alloc] init];
+	_modalView.translatesAutoresizingMaskIntoConstraints = FALSE;
+	_modalView.backgroundColor = RGBA(0., 0., 0., 0.9);
+	_modalView.hidden = TRUE;
+	[_mainView addSubview:_modalView];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_modalView attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeTop    multiplier:1 constant:0]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_modalView attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeLeft   multiplier:1 constant:0]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_modalView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_modalView attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeRight  multiplier:1 constant:0]];
+	
+	// modal spinner - centered in the screen
+	_modalSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+	_modalSpinner.translatesAutoresizingMaskIntoConstraints = FALSE;
+	[_modalView addSubview:_modalSpinner];
+	[_modalView addConstraint:[NSLayoutConstraint constraintWithItem:_modalSpinner attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_modalView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+	[_modalView addConstraint:[NSLayoutConstraint constraintWithItem:_modalSpinner attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_modalView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+	
+	// arrange the picker view here because we want it above everything else
+	[_mainView addSubview:_pickerView];
+	[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": _pickerView}]];
+	[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-[view]|" options:0 metrics:nil views:@{@"view": _pickerView, @"topView": _topBarView}]];
+	
+	[self modalShow];
+	
+	[[NPCooleafClient sharedClient] registerWithUsername:_username completion:^ (NSString *token, NSDictionary *tagGroups) {
+		DLog(@"token = %@", token);
+		DLog(@"tags = %@", tagGroups);
+		[self modalHide];
+		
+		if (token != nil && tagGroups != nil) {
+			_token = token;
+			NPTagGroup *locationTagGroup = tagGroups[@"Location"];
+			NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
+			
+			[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags afterPicker:nil];
+			[self addPickerWithTitle:@"Department" tags:departmentTagGroup.tags afterPicker:nil];
+			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"] afterPicker:nil];
+			
+			[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:((NPRegistrationPicker *)_pickers.lastObject)->_label attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeBottom multiplier:1 constant:-20]];
+		}
+		else {
+			[[[UIAlertView alloc] initWithTitle:@"Registration Failed" message:@"Is this username already active?" delegate:nil cancelButtonTitle:@"Sorry" otherButtonTitles:nil] show];
+			[self.navigationController popViewControllerAnimated:TRUE];
+		}
+	}];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[self.navigationController setNavigationBarHidden:TRUE];
+}
+
+- (void)didReceiveMemoryWarning
+{
+	[super didReceiveMemoryWarning];
+}
+
+/**
+ * This is the top bar of the view, with the "back" and "next" buttons.
+ *
+ */
+- (void)renderTopBar
+{
 	// status bar view
 	_statusBarView = [[UIView alloc] init];
 	_statusBarView.translatesAutoresizingMaskIntoConstraints = FALSE;
@@ -287,150 +454,6 @@
 		[_nextBtn addConstraint:[NSLayoutConstraint constraintWithItem:nextLbl attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_nextBtn attribute:NSLayoutAttributeRight   multiplier:1 constant:-16]];
 		[_nextBtn addConstraint:[NSLayoutConstraint constraintWithItem:nextLbl attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_nextBtn attribute:NSLayoutAttributeCenterY multiplier:1 constant:  0]];
 	}
-	
-	// "basic information" label
-	_basicInfoLbl = [[UILabel alloc] init];
-	_basicInfoLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
-	_basicInfoLbl.font = [UIFont mediumApplicationFontOfSize:15];
-	_basicInfoLbl.textColor = RGB(0x31, 0xCB, 0xC2);
-	_basicInfoLbl.text = @"BASIC INFORMATION";
-	[_mainView addSubview:_basicInfoLbl];
-	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_basicInfoLbl attribute:NSLayoutAttributeTop  relatedBy:NSLayoutRelationEqual toItem:_topBarView attribute:NSLayoutAttributeBottom multiplier:1 constant:20]];
-	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_basicInfoLbl attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_mainView   attribute:NSLayoutAttributeLeft   multiplier:1 constant:20]];
-	
-	// avatar pic
-	{
-		// image view / button
-		_avatarImg = [[UIImageView alloc] init];
-		_avatarImg.translatesAutoresizingMaskIntoConstraints = FALSE;
-		_avatarImg.image = [UIImage imageNamed:@"AvatarPlaceHolderMaleBig"];
-		_avatarImg.layer.masksToBounds = TRUE;
-		_avatarImg.layer.cornerRadius = 50;
-		_avatarImg.userInteractionEnabled = TRUE;
-		[_avatarImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionPicture:)]];
-		[_mainView addSubview:_avatarImg];
-		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(100)]"       options:0 metrics:nil views:@{@"view": _avatarImg}]];
-		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-155-[view(100)]" options:0 metrics:nil views:@{@"view": _avatarImg}]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_avatarImg attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
-		
-		// avatar label
-		_avatarLbl = [[UILabel alloc] init];
-		_avatarLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
-		_avatarLbl.font = [UIFont mediumApplicationFontOfSize:9];
-		_avatarLbl.textColor = RGB(0x99, 0x99, 0x99);
-		_avatarLbl.text = @"Upload profile picture";
-		_avatarLbl.userInteractionEnabled = TRUE;
-		[_avatarLbl addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionPicture:)]];
-		[_mainView addSubview:_avatarLbl];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_avatarLbl attribute:NSLayoutAttributeTop     relatedBy:NSLayoutRelationEqual toItem:_avatarImg attribute:NSLayoutAttributeBottom  multiplier:1 constant:10]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_avatarLbl attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_avatarImg attribute:NSLayoutAttributeCenterX multiplier:1 constant: 0]];
-	}
-	
-	// full name
-	{
-		// text field
-		_nameTxt = [[UITextField alloc] init];
-		_nameTxt.translatesAutoresizingMaskIntoConstraints = FALSE;
-		_nameTxt.textColor = RGB(0x99, 0x99, 0x99);
-		_nameTxt.delegate = self;
-		_nameTxt.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full Name" attributes:@{NSForegroundColorAttributeName:RGB(0x99, 0x99, 0x99)}];
-		[_mainView addSubview:_nameTxt];
-		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[view]-20-|" options:0 metrics:nil views:@{@"view": _nameTxt}]];
-		[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-85-[view(30)]" options:0 metrics:nil views:@{@"view": _nameTxt, @"topView": _avatarLbl}]];
-		
-		UIView *hrule = [[UIView alloc] init];
-		hrule.translatesAutoresizingMaskIntoConstraints = FALSE;
-		hrule.backgroundColor = RGB(0xD4, 0xD4, 0xD4);
-		[_mainView addSubview:hrule];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:_nameTxt attribute:NSLayoutAttributeLeft           multiplier:1 constant:-2]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:_nameTxt attribute:NSLayoutAttributeRight          multiplier:1 constant: 2]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:_nameTxt attribute:NSLayoutAttributeBottom         multiplier:1 constant: 0]];
-		[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil      attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 1]];
-	}
-	
-	// picker stuff
-	{
-		// the background for all of the pickers
-		_pickerView = [[UIView alloc] init];
-		_pickerView.translatesAutoresizingMaskIntoConstraints = FALSE;
-		_pickerView.backgroundColor = RGBA(255, 255, 255, 0.9);
-		_pickerView.hidden = TRUE;
-		
-		// view
-		_pickerBtn = [[UIView alloc] init];
-		_pickerBtn.translatesAutoresizingMaskIntoConstraints = FALSE;
-		_pickerBtn.userInteractionEnabled = TRUE;
-		_pickerBtn.hidden = TRUE;
-		[_pickerBtn addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionPickerDone:)]];
-		[_topBarView addSubview:_pickerBtn];
-		[_topBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(100)]|" options:0 metrics:nil views:@{@"view": _pickerBtn}]];
-		[_topBarView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[view(50)]|" options:0 metrics:nil views:@{@"view": _pickerBtn}]];
-		
-		// "done" label
-		UILabel *doneLbl = [[UILabel alloc] init];
-		doneLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
-		doneLbl.font = [UIFont mediumApplicationFontOfSize:16];
-		doneLbl.textColor = UIColor.whiteColor;
-		doneLbl.text = @"DONE";
-		[_pickerBtn addSubview:doneLbl];
-		[_pickerBtn addConstraint:[NSLayoutConstraint constraintWithItem:doneLbl attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_pickerBtn attribute:NSLayoutAttributeRight   multiplier:1 constant:-16]];
-		[_pickerBtn addConstraint:[NSLayoutConstraint constraintWithItem:doneLbl attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_pickerBtn attribute:NSLayoutAttributeCenterY multiplier:1 constant:  0]];
-	}
-	
-	// modal view - full screen
-	_modalView = [[UIView alloc] init];
-	_modalView.translatesAutoresizingMaskIntoConstraints = FALSE;
-	_modalView.backgroundColor = RGBA(0., 0., 0., 0.9);
-	_modalView.hidden = TRUE;
-	[_mainView addSubview:_modalView];
-	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_modalView attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeTop    multiplier:1 constant:0]];
-	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_modalView attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeLeft   multiplier:1 constant:0]];
-	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_modalView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_modalView attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeRight  multiplier:1 constant:0]];
-	
-	// modal spinner - centered in the screen
-	_modalSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-	_modalSpinner.translatesAutoresizingMaskIntoConstraints = FALSE;
-	[_modalView addSubview:_modalSpinner];
-	[_modalView addConstraint:[NSLayoutConstraint constraintWithItem:_modalSpinner attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:_modalView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
-	[_modalView addConstraint:[NSLayoutConstraint constraintWithItem:_modalSpinner attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_modalView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
-	
-	// arrange the picker view here because we want it above everything else
-	[_mainView addSubview:_pickerView];
-	[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[view]|" options:0 metrics:nil views:@{@"view": _pickerView}]];
-	[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-[view]|" options:0 metrics:nil views:@{@"view": _pickerView, @"topView": _topBarView}]];
-	
-	[self modalShow];
-	
-	[[NPCooleafClient sharedClient] registerWithUsername:_username completion:^ (NSString *token, NSDictionary *tagGroups) {
-		DLog(@"token = %@", token);
-		DLog(@"tags = %@", tagGroups);
-		[self modalHide];
-		
-		if (token != nil && tagGroups != nil) {
-			_token = token;
-			NPTagGroup *locationTagGroup = tagGroups[@"Location"];
-			NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
-			
-			[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags afterPicker:nil];
-			[self addPickerWithTitle:@"Department" tags:departmentTagGroup.tags afterPicker:nil];
-			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"] afterPicker:nil];
-		}
-		else {
-			[[[UIAlertView alloc] initWithTitle:@"Registration Failed" message:@"Is this username already active?" delegate:nil cancelButtonTitle:@"Sorry" otherButtonTitles:nil] show];
-			[self.navigationController popViewControllerAnimated:TRUE];
-		}
-	}];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-	[self.navigationController setNavigationBarHidden:TRUE];
-}
-
-- (void)didReceiveMemoryWarning
-{
-	[super didReceiveMemoryWarning];
 }
 
 /**
@@ -465,9 +488,11 @@
 	picker->_label.userInteractionEnabled = TRUE;
 	[picker->_label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:picker action:@selector(doActionShowPicker:)]];
 	picker->_topConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-10-[view(30)]" options:0 metrics:nil views:@{@"view": picker->_label, @"topView": topView}];
-	[_mainView addSubview:picker->_label];
-	[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[view]-20-|" options:0 metrics:nil views:@{@"view": picker->_label}]];
-	[_mainView addConstraints:picker->_topConstraints];
+	[_contentView addSubview:picker->_label];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_label attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeLeft multiplier:1 constant:20]];
+	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_label attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeRight multiplier:1 constant:-20]];
+//[_contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[view]-20-|" options:0 metrics:nil views:@{@"view": picker->_label}]];
+	[_contentView addConstraints:picker->_topConstraints];
 	
 	// arrow
 	UIImageView *arrowImg = [[UIImageView alloc] init];
@@ -475,7 +500,7 @@
 	arrowImg.image = [[UIImage imageNamed:@"AccessoryArrow"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 	arrowImg.tintColor = RGB(0x99, 0x99, 0x99);
 	arrowImg.transform = CGAffineTransformMakeRotation(M_PI_2);
-	[_mainView addSubview:arrowImg];
+	[_contentView addSubview:arrowImg];
 	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeRight          multiplier:1 constant:-7]];
 	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeCenterY        multiplier:1 constant: 0]];
 	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:arrowImg attribute:NSLayoutAttributeWidth   relatedBy:NSLayoutRelationEqual toItem:nil            attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 8]];
@@ -485,11 +510,11 @@
 	UIView *hrule = [[UIView alloc] init];
 	hrule.translatesAutoresizingMaskIntoConstraints = FALSE;
 	hrule.backgroundColor = RGB(0xD4, 0xD4, 0xD4);
-	[_mainView addSubview:hrule];
-	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeLeft           multiplier:1 constant:-2]];
-	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeRight          multiplier:1 constant: 2]];
-	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeBottom         multiplier:1 constant: 0]];
-	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil            attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 1]];
+	[_contentView addSubview:hrule];
+	[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeLeft           multiplier:1 constant:-2]];
+	[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeRight          multiplier:1 constant: 2]];
+	[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:picker->_label attribute:NSLayoutAttributeBottom         multiplier:1 constant: 0]];
+	[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:hrule attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil            attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant: 1]];
 	
 	// picker view
 	picker->_picker = [[UIPickerView alloc] init];
@@ -520,14 +545,15 @@
 		// them with constraints to our new picker.
 		if (indexOfExistingPicker < _pickers.count - 1) {
 			NPRegistrationPicker *nextPicker = _pickers[indexOfExistingPicker + 1];
-			[_mainView removeConstraints:nextPicker->_topConstraints];
+			[_contentView removeConstraints:nextPicker->_topConstraints];
 			nextPicker->_topConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-10-[view(30)]" options:0 metrics:nil views:@{@"view": nextPicker->_label, @"topView": picker->_label}];
-			[_mainView addConstraints:nextPicker->_topConstraints];
+			[_contentView addConstraints:nextPicker->_topConstraints];
 		}
+		
+		[_pickers insertObject:picker atIndex:indexOfExistingPicker + 1];
 	}
-	
-	// add to the array of picker objects
-	[_pickers addObject:picker];
+	else
+		[_pickers addObject:picker];
 }
 
 - (NSString *)valueForPickerWithTitle:(NSString *)title
@@ -680,8 +706,11 @@
 	
 	_currentPicker->_picker.hidden = TRUE;
 	
-	// TODO: only do this if there isn't already an unused existing picker
-	[self addPickerWithTitle:nil tags:nil afterPicker:_currentPicker];
+	// don't add an additional picker for the "gender" picker
+	if (FALSE == [_currentPicker->_title isEqualToString:@"Gender"]) {
+		// TODO: only do this if there isn't already an unused existing picker
+		[self addPickerWithTitle:nil tags:nil afterPicker:_currentPicker];
+	}
 }
 
 - (void)showPicker:(NPRegistrationPicker *)picker
