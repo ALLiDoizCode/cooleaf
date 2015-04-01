@@ -98,8 +98,10 @@
 - (void)doActionShowPicker:(id)sender
 {
 	if (_options.count != 0) {
-		_index = 0;
-		_label.text = [self pickerView:_picker titleForRow:_index forComponent:0];
+		if (_index == -1) {
+			_index = 0;
+			_label.text = [self pickerView:_picker titleForRow:_index forComponent:0];
+		}
 		[_picker selectRow:_index inComponent:0 animated:FALSE];
 	}
 	
@@ -521,7 +523,6 @@
 	[_contentView addSubview:picker->_label];
 	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_label attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeLeft multiplier:1 constant:20]];
 	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_label attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:_mainView attribute:NSLayoutAttributeRight multiplier:1 constant:-20]];
-//[_contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[view]-20-|" options:0 metrics:nil views:@{@"view": picker->_label}]];
 	[_contentView addConstraints:picker->_topConstraints];
 	
 	// arrow
