@@ -68,6 +68,31 @@
 	}
 }
 
+- (void)setSelectedValue:(NSObject *)value
+{
+	NSInteger valueInt = 0;
+	
+	if (value == nil)
+		return;
+	else if ([value isKindOfClass:NSString.class])
+		valueInt = ((NSString *)value).integerValue;
+	else if ([value isKindOfClass:NSNumber.class])
+		valueInt = ((NSNumber *)value).integerValue;
+	
+	[_options enumerateObjectsUsingBlock:^ (NSObject *object, NSUInteger index, BOOL *stop) {
+		if ([object isKindOfClass:NPTag.class] && ((NPTag *)object).objectId == valueInt) {
+			_index = index;
+			_label.text = ((NPTag *)object).name;
+			*stop = TRUE;
+		}
+		else if ([object isKindOfClass:NSString.class] && [(NSString *)object isEqualToString:(NSString *)value]) {
+			_index = index;
+			_label.text = (NSString *)value;
+			*stop = TRUE;
+		}
+	}];
+}
+
 #pragma mark - Actions
 
 - (void)doActionShowPicker:(id)sender
@@ -340,19 +365,24 @@
 	
 	[self modalShow];
 	
-	[[NPCooleafClient sharedClient] registerWithUsername:_username completion:^ (NSString *token, NSDictionary *tagGroups) {
+	[[NPCooleafClient sharedClient] registerWithUsername:_username completion:^ (NSString *token, NSDictionary *tagGroups, NSDictionary *presets) {
 		DLog(@"token = %@", token);
 		DLog(@"tags = %@", tagGroups);
+		DLog(@"presets = %@", presets);
+		
 		[self modalHide];
 		
 		if (token != nil && tagGroups != nil) {
 			_token = token;
+			
 			NPTagGroup *locationTagGroup = tagGroups[@"Location"];
 			NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
 			
-			[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags afterPicker:nil];
-			[self addPickerWithTitle:@"Department" tags:departmentTagGroup.tags afterPicker:nil];
-			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"] afterPicker:nil];
+			[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags   afterPicker:nil defaultValue:((NSArray *)presets[@(locationTagGroup.objectId).stringValue]).firstObject];
+			[self addPickerWithTitle:@"Department" tags:departmentTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(departmentTagGroup.objectId).stringValue]).firstObject];
+			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"]   afterPicker:nil defaultValue:presets[@"Gender"]];
+			
+			_nameTxt.text = presets[@"Full Name"];
 			
 			[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:((NPRegistrationPicker *)_pickers.lastObject)->_label attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeBottom multiplier:1 constant:-20]];
 		}
@@ -461,7 +491,7 @@
  * copy those values from the existing picker.
  *
  */
-- (void)addPickerWithTitle:(NSString *)title tags:(NSArray *)tags afterPicker:(NPRegistrationPicker *)existingPicker
+- (void)addPickerWithTitle:(NSString *)title tags:(NSArray *)tags afterPicker:(NPRegistrationPicker *)existingPicker defaultValue:(NSString *)defaultValue
 {
 	NPRegistrationPicker *picker = [[NPRegistrationPicker alloc] init];
 	picker->_parent = self;
@@ -526,6 +556,9 @@
 	[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_picker attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeLeft    multiplier:1 constant:0]];
 	[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_picker attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeRight   multiplier:1 constant:0]];
 	[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_picker attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+	
+	// set the default value for the picker
+	[picker setSelectedValue:defaultValue];
 	
 	// if we're adding this new picker as an additional instance of an existing picker, find the index
 	// of the existing picker so that we can remove the layout constraint between it and the next
@@ -709,7 +742,7 @@
 	// don't add an additional picker for the "gender" picker
 	if (FALSE == [_currentPicker->_title isEqualToString:@"Gender"]) {
 		// TODO: only do this if there isn't already an unused existing picker
-		[self addPickerWithTitle:nil tags:nil afterPicker:_currentPicker];
+		[self addPickerWithTitle:nil tags:nil afterPicker:_currentPicker defaultValue:nil];
 	}
 }
 

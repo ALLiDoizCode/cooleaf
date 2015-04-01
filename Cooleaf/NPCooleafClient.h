@@ -43,7 +43,7 @@ extern NSString * const kNPCooleafClientSignOut;
 
 - (AFHTTPRequestOperation *)markTodo:(NSNumber *)todoId asDone:(BOOL)done completion:(void(^)(NSError *error))completion;
 
-- (AFHTTPRequestOperation *)registerWithUsername:(NSString *)username completion:(void(^)(NSString*, NSDictionary*))completion;
+- (AFHTTPRequestOperation *)registerWithUsername:(NSString *)username completion:(void(^)(NSString*, NSDictionary*, NSDictionary*))completion;
 
 - (AFHTTPRequestOperation *)updateRegistrationWithToken:(NSString *)token name:(NSString *)name gender:(NSString *)gender password:(NSString *)password tags:(NSArray *)tags completion:(void(^)(BOOL, NSString*))completion;
 

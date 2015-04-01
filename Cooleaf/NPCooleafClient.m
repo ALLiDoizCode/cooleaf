@@ -550,7 +550,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 
 #pragma mark - Registration Handling
 
-- (AFHTTPRequestOperation *)registerWithUsername:(NSString *)username completion:(void(^)(NSString*, NSDictionary*))completion
+- (AFHTTPRequestOperation *)registerWithUsername:(NSString *)username completion:(void(^)(NSString*, NSDictionary*, NSDictionary*))completion
 {
 	NSString *path = @"/registrations/check.json";
 	
@@ -579,16 +579,29 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 		[[NSUserDefaults standardUserDefaults] setObject:username forKey:@"username"];
 		if (completion) {
 			NSMutableDictionary *tagGroups = [[NSMutableDictionary alloc] init];
+			NSMutableDictionary *presets = [[NSMutableDictionary alloc] initWithDictionary:responseObject[@"chosen_structure_ids"]];
+			
+			NSString *gender = responseObject[@"gender"];
+			if (gender != nil) {
+				if ([gender isEqualToString:@"m"])
+					presets[@"Gender"] = @"Male";
+				else if ([gender isEqualToString:@"f"])
+					presets[@"Gender"] = @"Female";
+			}
+			
+			[presets setValue:responseObject[@"name"] forKey:@"Full Name"];
+			
 			[(NSArray *)responseObject[@"all_structures"] enumerateObjectsUsingBlock:^ (NSDictionary *structure, NSUInteger index, BOOL *stop) {
 				NPTagGroup *tagGroup = [[NPTagGroup alloc] initWithDictionary:structure];
 				tagGroups[tagGroup.name] = tagGroup;
 			}];
-			completion(responseObject[@"token"], tagGroups);
+			
+			completion(responseObject[@"token"], tagGroups, presets);
 		}
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		DLog(@"Operation failed because, %@", error.localizedDescription);
 		if (completion)
-			completion(nil, nil);
+			completion(nil, nil, nil);
 	}];
 }
 
