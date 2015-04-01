@@ -32,6 +32,7 @@
 	UILabel *_label;
 	UIPickerView *_picker;
 	NSInteger _index;
+	NSArray *_topConstraints;
 }
 @end
 
@@ -411,9 +412,9 @@
 			NPTagGroup *locationTagGroup = tagGroups[@"Location"];
 			NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
 			
-			[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags];
-			[self addPickerWithTitle:@"Department" tags:departmentTagGroup.tags];
-			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"]];
+			[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags afterPicker:nil];
+			[self addPickerWithTitle:@"Department" tags:departmentTagGroup.tags afterPicker:nil];
+			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"] afterPicker:nil];
 		}
 		else {
 			[[[UIAlertView alloc] initWithTitle:@"Registration Failed" message:@"Is this username already active?" delegate:nil cancelButtonTitle:@"Sorry" otherButtonTitles:nil] show];
@@ -432,26 +433,41 @@
 	[super didReceiveMemoryWarning];
 }
 
-- (void)addPickerWithTitle:(NSString *)title tags:(NSArray *)tags
+/**
+ * If you're adding an additional instance of an existing picker, leave title and tags nil and we'll
+ * copy those values from the existing picker.
+ *
+ */
+- (void)addPickerWithTitle:(NSString *)title tags:(NSArray *)tags afterPicker:(NPRegistrationPicker *)existingPicker
 {
 	NPRegistrationPicker *picker = [[NPRegistrationPicker alloc] init];
 	picker->_parent = self;
-	picker->_title = title;
-	picker->_options = tags;
+	picker->_title = title != nil ? title : existingPicker->_title;
+	picker->_options = tags != nil ? tags : existingPicker->_options;
 	
-	UIView *topView = _pickers.count != 0 ? ((NPRegistrationPicker *)_pickers.lastObject)->_label : _nameTxt;
+	UIView *topView = nil;
+	
+	// position this new picker below the "existingPicker" (if one is given), or after the last
+	// picker (if any), or if this is the first picker, position it below the "name" label.
+	if (existingPicker != nil)
+		topView = existingPicker->_label;
+	else if (_pickers.count != 0)
+		topView = ((NPRegistrationPicker *)_pickers.lastObject)->_label;
+	else
+		topView = _nameTxt;
 	
 	// label
 	picker->_label = [[UILabel alloc] init];
 	picker->_label.translatesAutoresizingMaskIntoConstraints = FALSE;
 	picker->_label.font = [UIFont applicationFontOfSize:16];
 	picker->_label.textColor = RGB(0x99, 0x99, 0x99);
-	picker->_label.text = title;
+	picker->_label.text = picker->_title;
 	picker->_label.userInteractionEnabled = TRUE;
 	[picker->_label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:picker action:@selector(doActionShowPicker:)]];
+	picker->_topConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-10-[view(30)]" options:0 metrics:nil views:@{@"view": picker->_label, @"topView": topView}];
 	[_mainView addSubview:picker->_label];
 	[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[view]-20-|" options:0 metrics:nil views:@{@"view": picker->_label}]];
-	[_mainView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-10-[view(30)]" options:0 metrics:nil views:@{@"view": picker->_label, @"topView": topView}]];
+	[_mainView addConstraints:picker->_topConstraints];
 	
 	// arrow
 	UIImageView *arrowImg = [[UIImageView alloc] init];
@@ -485,6 +501,30 @@
 	[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_picker attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeLeft    multiplier:1 constant:0]];
 	[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_picker attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeRight   multiplier:1 constant:0]];
 	[_pickerView addConstraint:[NSLayoutConstraint constraintWithItem:picker->_picker attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_pickerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+	
+	// if we're adding this new picker as an additional instance of an existing picker, find the index
+	// of the existing picker so that we can remove the layout constraint between it and the next
+	// picker (if any), and then insert this new picker between them.
+	if (existingPicker != nil) {
+		__block NSInteger indexOfExistingPicker = -1;
+		
+		// find the index of the existing picker
+		[_pickers enumerateObjectsUsingBlock:^ (NPRegistrationPicker *picker, NSUInteger index, BOOL *stop) {
+			if (picker == existingPicker) {
+				indexOfExistingPicker = index;
+				*stop = TRUE;
+			}
+		}];
+		
+		// get the picker following the existing picker (if any) and remove its top constraints. replace
+		// them with constraints to our new picker.
+		if (indexOfExistingPicker < _pickers.count - 1) {
+			NPRegistrationPicker *nextPicker = _pickers[indexOfExistingPicker + 1];
+			[_mainView removeConstraints:nextPicker->_topConstraints];
+			nextPicker->_topConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-10-[view(30)]" options:0 metrics:nil views:@{@"view": nextPicker->_label, @"topView": picker->_label}];
+			[_mainView addConstraints:nextPicker->_topConstraints];
+		}
+	}
 	
 	// add to the array of picker objects
 	[_pickers addObject:picker];
@@ -639,6 +679,9 @@
 	_nextBtn.hidden = FALSE;
 	
 	_currentPicker->_picker.hidden = TRUE;
+	
+	// TODO: only do this if there isn't already an unused existing picker
+	[self addPickerWithTitle:nil tags:nil afterPicker:_currentPicker];
 }
 
 - (void)showPicker:(NPRegistrationPicker *)picker
