@@ -14,6 +14,7 @@
 		43B062481AB664B0009F96CD /* NPInterestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B062461AB664B0009F96CD /* NPInterestViewController.xib */; };
 		43B0624C1AB71A64009F96CD /* NPMembersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B0624A1AB71A64009F96CD /* NPMembersCell.m */; };
 		43B0624D1AB71A64009F96CD /* NPMembersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B0624B1AB71A64009F96CD /* NPMembersCell.xib */; };
+		52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */; };
 		523096C01AA28F5D00649FB7 /* NPInterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */; };
 		523096C11AA28F5D00649FB7 /* NPInterestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */; };
 		523096C51AA2907600649FB7 /* NPChallengesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523096C31AA2907600649FB7 /* NPChallengesViewController.m */; };
@@ -121,6 +122,8 @@
 		43B062491AB71A64009F96CD /* NPMembersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPMembersCell.h; path = "Application Controllers/Interests/SingleInterestPage/NPMembersCell.h"; sourceTree = "<group>"; };
 		43B0624A1AB71A64009F96CD /* NPMembersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPMembersCell.m; path = "Application Controllers/Interests/SingleInterestPage/NPMembersCell.m"; sourceTree = "<group>"; };
 		43B0624B1AB71A64009F96CD /* NPMembersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPMembersCell.xib; path = "Application Controllers/Interests/SingleInterestPage/NPMembersCell.xib"; sourceTree = "<group>"; };
+		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPickYourInterestsLabelCell.h; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.h"; sourceTree = "<group>"; };
+		52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPickYourInterestsLabelCell.m; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.m"; sourceTree = "<group>"; };
 		523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsViewController.h; path = "Application Controllers/NPInterestsViewController.h"; sourceTree = "<group>"; };
 		523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestsViewController.m; path = "Application Controllers/NPInterestsViewController.m"; sourceTree = "<group>"; };
 		523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPInterestsViewController.xib; path = "Application Controllers/NPInterestsViewController.xib"; sourceTree = "<group>"; };
@@ -630,6 +633,8 @@
 				F998F68B1AB218AF00213240 /* NPInterestViewCell.m */,
 				F9F445E81AB8AED700C655CF /* NPInterestsHeaderViewCell.h */,
 				F9F445E91AB8AED700C655CF /* NPInterestsHeaderViewCell.m */,
+				52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */,
+				52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */,
 			);
 			name = NPInterestsViewController;
 			sourceTree = "<group>";
@@ -867,6 +872,7 @@
 				F9B37B941AAB9802003F3FB8 /* NPRegistrationViewController.m in Sources */,
 				D93AAC7B187B5C9900E9B96A /* NPDateCell.m in Sources */,
 				43B062471AB664B0009F96CD /* NPInterestViewController.m in Sources */,
+				52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */,
 				D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */,
 				F998F68F1AB3312500213240 /* NPInterest.m in Sources */,
 				D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */,

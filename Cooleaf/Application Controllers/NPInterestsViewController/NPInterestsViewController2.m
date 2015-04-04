@@ -9,6 +9,7 @@
 #import "NPInterestsViewController2.h"
 #import "NPInterestViewCell.h"
 #import "NPInterestsHeaderViewCell.h"
+#import "NPPickYourInterestsLabelCell.h"
 #import "NPCooleafClient.h"
 #import "NPInterest.h"
 
@@ -54,6 +55,7 @@ static NSString * const reuseIdentifier = @"Cell";
 	
 	[self.collectionView registerClass:[NPInterestViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
 	[self.collectionView registerClass:[NPInterestsHeaderViewCell class] forCellWithReuseIdentifier:@"HeaderCell"];
+	[self.collectionView registerClass:[NPPickYourInterestsLabelCell class] forCellWithReuseIdentifier:@"NPPickYourInterestsLabelCell"];
 	
 	_heightConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:0];
 	[self.collectionView addConstraint:_heightConstraint];
@@ -149,7 +151,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-	return _topBarEnabled ? 3 : 1;
+	return _topBarEnabled ? 4 : 1;
 }
 
 
@@ -157,7 +159,9 @@ static NSString * const reuseIdentifier = @"Cell";
 {
 	if (_topBarEnabled && section == 0)
 		return 1;
-	else if (_topBarEnabled && section == 2)
+	else if (_topBarEnabled && section == 1)
+		return 1;
+	else if (_topBarEnabled && section == 3)
 		return 1;
 	else
 		return _npinterests.count;
@@ -171,7 +175,11 @@ static NSString * const reuseIdentifier = @"Cell";
 		cell.nextHandler = ^ { [self doActionNext:nil]; };
 		return cell;
 	}
-	else if (_topBarEnabled && indexPath.section == 2) {
+	if (_topBarEnabled && indexPath.section == 1) {
+		NPPickYourInterestsLabelCell *cell = (NPPickYourInterestsLabelCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"NPPickYourInterestsLabelCell" forIndexPath:indexPath];
+		return cell;
+	}
+	else if (_topBarEnabled && indexPath.section == 3) {
 		NPInterestsHeaderViewCell *cell = (NPInterestsHeaderViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"HeaderCell" forIndexPath:indexPath];
 		cell.backHandler = ^ { [self doActionBack:nil]; };
 		cell.nextHandler = ^ { [self doActionNext:nil]; };
@@ -245,7 +253,9 @@ static NSString * const reuseIdentifier = @"Cell";
 {
 	if (_topBarEnabled && indexPath.section == 0)
 		return CGSizeMake(320, 50);
-	else if (_topBarEnabled && indexPath.section == 2)
+	else if (_topBarEnabled && indexPath.section == 1)
+		return CGSizeMake(320, 40);
+	else if (_topBarEnabled && indexPath.section == 3)
 		return CGSizeMake(320, 50);
 	else
 		return CGSizeMake(145, 145 + 30);
@@ -255,7 +265,9 @@ static NSString * const reuseIdentifier = @"Cell";
 {
 	if (_topBarEnabled && section == 0)
 		return UIEdgeInsetsMake(0, 0, 0, 0);
-	else if (_topBarEnabled && section == 2)
+	else if (_topBarEnabled && section == 1)
+		return UIEdgeInsetsMake(0, 0, 0, 0);
+	else if (_topBarEnabled && section == 3)
 		return UIEdgeInsetsMake(0, 0, 0, 0);
 	else
 		return UIEdgeInsetsMake(10, 10, 10, 10);
