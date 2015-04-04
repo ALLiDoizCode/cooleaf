@@ -175,7 +175,7 @@ static UITextView *_tV;
 	{
 		_dateFormatter2 = [NSDateFormatter new];
 		_dateFormatter2.dateStyle = NSDateFormatterLongStyle;
-		_dateFormatter2.timeStyle = NSDateFormatterNoStyle;
+		_dateFormatter2.timeStyle = NSDateFormatterShortStyle;
 	}
 	
 	_eventDate.text = [_dateFormatter2 stringFromDate:eventTime];
