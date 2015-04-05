@@ -204,6 +204,7 @@ enum {
         if (eventDetails)
         {
             _currentEvent = eventDetails;
+			DLog(@"Current Event Details Dictionary = %@", eventDetails);
         }
         
         // Update button

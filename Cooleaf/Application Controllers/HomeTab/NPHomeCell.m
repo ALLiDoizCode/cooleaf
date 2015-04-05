@@ -428,7 +428,7 @@ static UITextView *_tV;
 	CGFloat titleHeight = _tV.frame.size.height;
 	CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : 0;
 	CGFloat rowHeight = 174 + (titleHeight-39) + shift;
-	NSLog(@"%f", rowHeight);
+//	NSLog(@"%f", rowHeight);
 	return 245;
 }
 
