@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		091C2FA9FE63464F90BF2AC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF39234F1654A6DBFF21105 /* libPods.a */; };
 		430936441AD1ECA300E568CD /* NPSeriesEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 430936431AD1ECA300E568CD /* NPSeriesEvent.m */; };
+		430936491AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430936471AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m */; };
+		4309364A1AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 430936481AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.xib */; };
+		4309364E1AD1FCCD00E568CD /* NPEventSeriesDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4309364C1AD1FCCD00E568CD /* NPEventSeriesDateCell.m */; };
+		4309364F1AD1FCCD00E568CD /* NPEventSeriesDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4309364D1AD1FCCD00E568CD /* NPEventSeriesDateCell.xib */; };
 		437F3D861ABFEAD9007DE49B /* NPGroupEventsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 437F3D841ABFEAD9007DE49B /* NPGroupEventsCell.m */; };
 		437F3D871ABFEAD9007DE49B /* NPGroupEventsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437F3D851ABFEAD9007DE49B /* NPGroupEventsCell.xib */; };
 		43B062471AB664B0009F96CD /* NPInterestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B062451AB664B0009F96CD /* NPInterestViewController.m */; };
@@ -116,6 +120,12 @@
 /* Begin PBXFileReference section */
 		430936421AD1ECA300E568CD /* NPSeriesEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPSeriesEvent.h; path = Model/NPSeriesEvent.h; sourceTree = "<group>"; };
 		430936431AD1ECA300E568CD /* NPSeriesEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPSeriesEvent.m; path = Model/NPSeriesEvent.m; sourceTree = "<group>"; };
+		430936461AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPSeriesEventSelectionViewController.h; path = "Application Controllers/NPEventViewController/SeriesEventModalController/NPSeriesEventSelectionViewController.h"; sourceTree = "<group>"; };
+		430936471AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPSeriesEventSelectionViewController.m; path = "Application Controllers/NPEventViewController/SeriesEventModalController/NPSeriesEventSelectionViewController.m"; sourceTree = "<group>"; };
+		430936481AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPSeriesEventSelectionViewController.xib; path = "Application Controllers/NPEventViewController/SeriesEventModalController/NPSeriesEventSelectionViewController.xib"; sourceTree = "<group>"; };
+		4309364B1AD1FCCD00E568CD /* NPEventSeriesDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPEventSeriesDateCell.h; path = "Application Controllers/NPEventViewController/SeriesEventModalController/NPEventSeriesDateCell.h"; sourceTree = "<group>"; };
+		4309364C1AD1FCCD00E568CD /* NPEventSeriesDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPEventSeriesDateCell.m; path = "Application Controllers/NPEventViewController/SeriesEventModalController/NPEventSeriesDateCell.m"; sourceTree = "<group>"; };
+		4309364D1AD1FCCD00E568CD /* NPEventSeriesDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPEventSeriesDateCell.xib; path = "Application Controllers/NPEventViewController/SeriesEventModalController/NPEventSeriesDateCell.xib"; sourceTree = "<group>"; };
 		437F3D831ABFEAD9007DE49B /* NPGroupEventsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPGroupEventsCell.h; path = "Application Controllers/Interests/SingleInterestPage/NPGroupEventsCell.h"; sourceTree = "<group>"; };
 		437F3D841ABFEAD9007DE49B /* NPGroupEventsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPGroupEventsCell.m; path = "Application Controllers/Interests/SingleInterestPage/NPGroupEventsCell.m"; sourceTree = "<group>"; };
 		437F3D851ABFEAD9007DE49B /* NPGroupEventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPGroupEventsCell.xib; path = "Application Controllers/Interests/SingleInterestPage/NPGroupEventsCell.xib"; sourceTree = "<group>"; };
@@ -290,6 +300,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		430936451AD1FB4B00E568CD /* NPSeriesEventModal */ = {
+			isa = PBXGroup;
+			children = (
+				430936461AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.h */,
+				430936471AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m */,
+				430936481AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.xib */,
+				4309364B1AD1FCCD00E568CD /* NPEventSeriesDateCell.h */,
+				4309364C1AD1FCCD00E568CD /* NPEventSeriesDateCell.m */,
+				4309364D1AD1FCCD00E568CD /* NPEventSeriesDateCell.xib */,
+			);
+			name = NPSeriesEventModal;
+			sourceTree = "<group>";
+		};
 		43B0623E1AB64F7B009F96CD /* InterestPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +351,7 @@
 		523096B81AA28D1000649FB7 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				430936451AD1FB4B00E568CD /* NPSeriesEventModal */,
 				D93AACA5187C34F200E9B96A /* NPNewTodoViewController */,
 				D93AAC9A187C29D300E9B96A /* NPTodoViewController */,
 				D93AAC8F187B701D00E9B96A /* NPAttendeesViewController */,
@@ -771,6 +795,7 @@
 				52A9A1971AACECC5004E6C13 /* NPInterestCell.xib in Resources */,
 				D93AAC94187B704100E9B96A /* NPAttendeesViewController.xib in Resources */,
 				D93AAC8E187B6D7100E9B96A /* NPDetailsCell.xib in Resources */,
+				4309364A1AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.xib in Resources */,
 				523096CB1AA291B200649FB7 /* NPHomeViewController.xib in Resources */,
 				D93AABF4186EFAD100E9B96A /* NPProfileViewController.xib in Resources */,
 				43B062481AB664B0009F96CD /* NPInterestViewController.xib in Resources */,
@@ -779,6 +804,7 @@
 				D931450F18925467002325CB /* NPCompanyCell.xib in Resources */,
 				526DDE141AC756DB0095FC27 /* NPMemberCell.xib in Resources */,
 				D93AACAA187C351500E9B96A /* NPNewTodoViewController.xib in Resources */,
+				4309364F1AD1FCCD00E568CD /* NPEventSeriesDateCell.xib in Resources */,
 				D93AAC78187B5C6F00E9B96A /* NPDateCell.xib in Resources */,
 				D980957D185CA7AC008F2B61 /* NPEventListViewController.xib in Resources */,
 				523096D81AA3E17400649FB7 /* NPHomeCell.xib in Resources */,
@@ -855,6 +881,7 @@
 				D9809588185CCFFB008F2B61 /* NPEventCell.m in Sources */,
 				D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */,
 				D93AAC89187B693B00E9B96A /* NPLocationCell.m in Sources */,
+				430936491AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m in Sources */,
 				D93AAC74187B170C00E9B96A /* NPAttendeesCell.m in Sources */,
 				D93AACA2187C300E00E9B96A /* NPTodoCell.m in Sources */,
 				43B0624C1AB71A64009F96CD /* NPMembersCell.m in Sources */,
@@ -869,6 +896,7 @@
 				526DDE131AC756DB0095FC27 /* NPMemberCell.m in Sources */,
 				F998F6891AB211E100213240 /* NPInterestsViewController2.m in Sources */,
 				430936441AD1ECA300E568CD /* NPSeriesEvent.m in Sources */,
+				4309364E1AD1FCCD00E568CD /* NPEventSeriesDateCell.m in Sources */,
 				523096CE1AA295F500649FB7 /* MainViewController.m in Sources */,
 				52A9A1911AACEC8B004E6C13 /* NPInterestTopCell.m in Sources */,
 				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
