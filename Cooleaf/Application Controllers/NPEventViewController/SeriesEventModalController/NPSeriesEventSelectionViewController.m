@@ -11,7 +11,7 @@
 #import "NPCooleafClient.h"
 #import "NPSeriesEvent.h"
 
-static NSString * const reuseIdentifier = @"DateCell";
+static NSString * const reuseIdentifier = @"dateCell";
 
 
 @interface NPSeriesEventSelectionViewController ()
@@ -25,7 +25,10 @@ static NSString * const reuseIdentifier = @"DateCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+	
+	[self.tableView registerNib:[UINib nibWithNibName:@"NPEventSeriesDateCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+	
+	[self reload];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -49,6 +52,11 @@ static NSString * const reuseIdentifier = @"DateCell";
 }
 
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[self reload];
+}
+
 
 #pragma mark - Table view data source
 
@@ -67,7 +75,8 @@ static NSString * const reuseIdentifier = @"DateCell";
     NPEventSeriesDateCell *cell = (NPEventSeriesDateCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
 
 	cell.seriesEvent = _npSeriesEvents[indexPath.row];
-	
+	DLog(@"Series Event For Cell = %@",_npSeriesEvents[indexPath.row])
+	DLog(@"Cell.seriesEvent = %@",cell.seriesEvent);
 	return cell;
 }
 

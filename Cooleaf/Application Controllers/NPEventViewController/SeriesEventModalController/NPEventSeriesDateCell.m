@@ -33,7 +33,8 @@ static UIImage *gCheckboxOff;
 }
 
 - (void)awakeFromNib {
-    // Initialization code
+	[self setEventDate:self.seriesEvent];
+	DLog(@"Series Event From Cell %@",self.seriesEvent);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -55,7 +56,7 @@ static UIImage *gCheckboxOff;
 	_dateLabel.text = [_dateFormatter stringFromDate:_npSeriesEvent.startTime];
 	
 	_checkboxImg.image = _npSeriesEvent.isAttending ? gCheckboxOn : gCheckboxOff;
-	[_checkboxImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionToggleActive:)]];
+	[_checkboxImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionToggleAttending:)]];
 
 	
 }

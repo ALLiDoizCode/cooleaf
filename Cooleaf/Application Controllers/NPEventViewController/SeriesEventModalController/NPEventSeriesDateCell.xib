@@ -20,7 +20,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CheckboxUnchecked" translatesAutoresizingMaskIntoConstraints="NO" id="Zjn-7g-mgp">
+                    <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CheckboxUnchecked" translatesAutoresizingMaskIntoConstraints="NO" id="Zjn-7g-mgp">
                         <rect key="frame" x="287" y="9" width="25" height="25"/>
                     </imageView>
                 </subviews>
