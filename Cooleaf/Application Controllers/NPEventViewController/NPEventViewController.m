@@ -10,6 +10,7 @@
 #import "NPCooleafClient.h"
 #import "NPAttendeesViewController.h"
 #import "NPTodoViewController.h"
+#import "NPSeriesEventSelectionViewController.h"
 
 // Cells
 #import "NPAttendeesCell.h"
@@ -254,22 +255,35 @@ enum {
 
 - (IBAction)joinTapped:(id)sender
 {
-    _joinButton.hidden = YES;
-    _resignButton.hidden = YES;
-    [_loadingIndicator startAnimating];
-    _fetchingOperation = [[NPCooleafClient sharedClient] joinEventWithId:_currentEvent[@"id"] completion:^(NSError *error) {
-        _fetchingOperation = [[NPCooleafClient sharedClient] fetchEventWithId:_currentEvent[@"id"] completion:^(NSDictionary *eventDetails) {
-            [_loadingIndicator stopAnimating];
-            _fetchingOperation = nil;
-            _currentEvent = eventDetails;
-            // Update button
-            [self updateJoinButton];
-            
-            // And build cells
-            [self updateCells];
-            
-        }];
-    }];
+	_joinButton.hidden = YES;
+	_resignButton.hidden = YES;
+	[_loadingIndicator startAnimating];
+	
+	if (![_currentEvent[@"is_series"] boolValue]) {
+		
+		_fetchingOperation = [[NPCooleafClient sharedClient] joinEventWithId:_currentEvent[@"id"] completion:^(NSError *error) {
+			_fetchingOperation = [[NPCooleafClient sharedClient] fetchEventWithId:_currentEvent[@"id"] completion:^(NSDictionary *eventDetails) {
+				[_loadingIndicator stopAnimating];
+				_fetchingOperation = nil;
+				_currentEvent = eventDetails;
+				// Update button
+				[self updateJoinButton];
+				
+				// And build cells
+				[self updateCells];
+				
+			}];
+		}];
+	}
+	else
+	{
+		NPSeriesEventSelectionViewController *seriesModal = [NPSeriesEventSelectionViewController new];
+		seriesModal.eventID = _currentEvent[@"id"];
+		
+		[self presentViewController:seriesModal animated:YES completion:^{
+			DLog(@"Modal Completion");
+		}];
+	}
 }
 
 - (IBAction)switchEventTapped:(UIButton *)sender
