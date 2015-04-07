@@ -21,8 +21,8 @@
 		_startTime = ((NSString *)dictionary[@"start_time"]);
 		_rewardPoints = ((NSNumber *)dictionary[@"reward_points"]).integerValue;
 		_participants = ((NSNumber *)dictionary[@"participants_count"]).integerValue;
-		_isAttending = dictionary[@"attending"];
-		_isJoinable = dictionary[@"joinable"];
+		_isAttending = [dictionary[@"attending"] boolValue];
+		_isJoinable = [dictionary[@"joinable"] boolValue];
 	}
 	
 	return self;
