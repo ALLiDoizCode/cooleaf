@@ -9,6 +9,7 @@
 #import "NPCooleafClient.h"
 #import "NPTagGroup.h"
 #import "NPInterest.h"
+#import "NPSeriesEvent.h"
 #import <SSKeychain/SSKeychain.h>
 #import "NSFileManager+ImageCaching.h"
 
@@ -342,16 +343,20 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	}];
 }
 
-- (AFHTTPRequestOperation *)fetchSeriesEventsForEventWithId:(NSNumber *)eventId completion:(void (^)(NSArray *))completion
+- (void)fetchSeriesEventsForEventWithId:(NSNumber *)eventId completion:(void (^)(NSArray *npSeriesEvents))completion
 {
 	NSString *path = [NSString stringWithFormat:@"/events/%@/series.json", eventId];
 	//	NSLog(@"path %@, myID %@", path, myID);
 	if (_apiPrefix.length > 0)
 		path = [_apiPrefix stringByAppendingString:path];
 	
-	return [self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+	[self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		NSMutableArray *npSeriesEvents = [[NSMutableArray alloc] init];
+		[(NSArray *)responseObject enumerateObjectsUsingBlock:^(NSDictionary *event, NSUInteger index, BOOL *stop) {
+			[npSeriesEvents addObject:[[NPSeriesEvent alloc]initWithDictionary:event]];
+		}];
 		if (completion)
-			completion(responseObject);
+			completion(npSeriesEvents);
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		if (completion)
 			completion(nil);

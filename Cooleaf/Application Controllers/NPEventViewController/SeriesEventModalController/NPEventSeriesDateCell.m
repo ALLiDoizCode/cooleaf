@@ -46,16 +46,16 @@ static UIImage *gCheckboxOff;
 -(void)setEvent:(NPSeriesEvent *)event
 {
 	_npSeriesEvent = event;
-	
+	DLog(@"event = %@", event);
+	DLog(@"_npseriesevent = %@",_npSeriesEvent);
 	if (!_dateFormatter0)
 	{
 		_dateFormatter0 = [NSDateFormatter new];
 		_dateFormatter0.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
-		_dateFormatter0.dateFormat = @"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'z";
+		_dateFormatter0.dateFormat = @"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'zzz";
 	}
-	NSString *eventTimeString = _npSeriesEvent.startTime;
-	DLog(@"event Time string = %@",eventTimeString);
-	NSDate *eventTime = [_dateFormatter0 dateFromString:eventTimeString];
+
+	NSDate *eventTime = [_dateFormatter0 dateFromString:_npSeriesEvent.startTime];
 
 	if (!_dateFormatter)
 	{

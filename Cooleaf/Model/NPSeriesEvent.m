@@ -14,7 +14,7 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
-	
+	DLog(@"Series Event Dictionary is = %@",dictionary);
 	if (self) {
 		_objectId = ((NSNumber *)dictionary[@"id"]).integerValue;
 		_name = dictionary[@"name"];
@@ -30,7 +30,7 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%@<%p>::{ id=%d, name=%@, start_time=%@, reward_points=%d, participants_count=%d, joinable=%@, attending=%@ }",
+	return [NSString stringWithFormat:@"%@<%p>::{ id=%d, name=%@, startTime=%@, reward_points=%d, participants_count=%d, joinable=%@, attending=%@ }",
 			NSStringFromClass(self.class), self,
 			(int)_objectId, _name, _startTime, (int)_rewardPoints, (int)_participants, NSStringFromBool(_isJoinable), NSStringFromBool(_isAttending) ];
 }
