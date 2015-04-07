@@ -11,8 +11,8 @@
 @interface NPSeriesEvent : NSObject
 
 @property (readwrite, assign, nonatomic) NSUInteger objectId;
-@property (readwrite, retain, nonatomic) NSString *name;
-@property (readwrite, assign, nonatomic) NSString *startTime;
+@property (readwrite, strong, nonatomic) NSString *name;
+@property (readwrite, strong, nonatomic) NSString *startTime;
 @property (readwrite, assign, nonatomic) NSUInteger rewardPoints;
 @property (readwrite, assign, nonatomic) NSUInteger participants;
 @property (readwrite, assign, nonatomic) BOOL isAttending;
