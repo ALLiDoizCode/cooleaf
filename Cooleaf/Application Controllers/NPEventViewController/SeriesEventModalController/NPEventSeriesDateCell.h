@@ -12,7 +12,7 @@
 
 @interface NPEventSeriesDateCell : UITableViewCell
 
-@property (readwrite, assign, nonatomic) NPSeriesEvent *seriesEvent;
+@property (readwrite, assign, nonatomic) NPSeriesEvent *event;
 @property (readwrite, assign, nonatomic) NSNumber *eventID;
 
 @end

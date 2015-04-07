@@ -18,7 +18,7 @@
 	if (self) {
 		_objectId = ((NSNumber *)dictionary[@"id"]).integerValue;
 		_name = dictionary[@"name"];
-		_startTime = ((NSDate *)dictionary[@"start_time"]);
+		_startTime = ((NSString *)dictionary[@"start_time"]);
 		_rewardPoints = ((NSNumber *)dictionary[@"reward_points"]).integerValue;
 		_participants = ((NSNumber *)dictionary[@"participants_count"]).integerValue;
 		_isAttending = dictionary[@"attending"];

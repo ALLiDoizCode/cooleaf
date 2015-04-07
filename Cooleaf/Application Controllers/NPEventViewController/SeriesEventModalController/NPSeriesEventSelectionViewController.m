@@ -74,9 +74,8 @@ static NSString * const reuseIdentifier = @"dateCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NPEventSeriesDateCell *cell = (NPEventSeriesDateCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
 
-	cell.seriesEvent = _npSeriesEvents[indexPath.row];
-	DLog(@"Series Event For Cell = %@",_npSeriesEvents[indexPath.row])
-	DLog(@"Cell.seriesEvent = %@",cell.seriesEvent);
+	cell.event = _npSeriesEvents[indexPath.row];
+	DLog(@"Cell.seriesEvent = %@",cell.event);
 	return cell;
 }
 

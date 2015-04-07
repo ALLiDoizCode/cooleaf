@@ -18,6 +18,7 @@ static UIImage *gCheckboxOff;
 //	UIImageView *_checkboxImg;
 //	UILabel *_dateLabel;
 	NSDateFormatter *_dateFormatter;
+	NSDateFormatter *_dateFormatter0;
 
 }
 @property (weak, nonatomic) IBOutlet UIImageView *checkboxImg;
@@ -33,8 +34,7 @@ static UIImage *gCheckboxOff;
 }
 
 - (void)awakeFromNib {
-	[self setEventDate:self.seriesEvent];
-	DLog(@"Series Event From Cell %@",self.seriesEvent);
+	DLog(@"Series Event From Cell %@",_event);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -43,17 +43,27 @@ static UIImage *gCheckboxOff;
     // Configure the view for the selected state
 }
 
--(void)setEventDate:(NPSeriesEvent *)npSeriesEvent
+-(void)setEvent:(NPSeriesEvent *)event
 {
-	_npSeriesEvent = npSeriesEvent;
+	_npSeriesEvent = event;
 	
+	if (!_dateFormatter0)
+	{
+		_dateFormatter0 = [NSDateFormatter new];
+		_dateFormatter0.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+		_dateFormatter0.dateFormat = @"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'z";
+	}
+	NSString *eventTimeString = _npSeriesEvent.startTime;
+	DLog(@"event Time string = %@",eventTimeString);
+	NSDate *eventTime = [_dateFormatter0 dateFromString:eventTimeString];
+
 	if (!_dateFormatter)
 	{
 		_dateFormatter = [NSDateFormatter new];
 		_dateFormatter.dateStyle = NSDateFormatterLongStyle;
 		_dateFormatter.timeStyle = NSDateFormatterShortStyle;
 	}
-	_dateLabel.text = [_dateFormatter stringFromDate:_npSeriesEvent.startTime];
+	_dateLabel.text = [_dateFormatter stringFromDate:eventTime];
 	
 	_checkboxImg.image = _npSeriesEvent.isAttending ? gCheckboxOn : gCheckboxOff;
 	[_checkboxImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionToggleAttending:)]];

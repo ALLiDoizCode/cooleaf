@@ -12,7 +12,7 @@
 
 @property (readwrite, assign, nonatomic) NSUInteger objectId;
 @property (readwrite, retain, nonatomic) NSString *name;
-@property (readwrite, assign, nonatomic) NSDate *startTime;
+@property (readwrite, assign, nonatomic) NSString *startTime;
 @property (readwrite, assign, nonatomic) NSUInteger rewardPoints;
 @property (readwrite, assign, nonatomic) NSUInteger participants;
 @property (readwrite, assign, nonatomic) BOOL isAttending;
