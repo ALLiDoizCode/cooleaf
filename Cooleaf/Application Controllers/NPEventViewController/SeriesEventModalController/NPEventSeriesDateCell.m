@@ -52,7 +52,7 @@ static UIImage *gCheckboxOff;
 	{
 		_dateFormatter0 = [NSDateFormatter new];
 		_dateFormatter0.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
-		_dateFormatter0.dateFormat = @"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'zzz";
+		_dateFormatter0.dateFormat = @"yyyy'-'MM'-'dd' 'HH':'mm':'ss' 'z";
 	}
 
 	NSDate *eventTime = [_dateFormatter0 dateFromString:_npSeriesEvent.startTime];
