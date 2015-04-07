@@ -28,6 +28,9 @@ static NSString * const reuseIdentifier = @"dateCell";
 	
 	[self.tableView registerNib:[UINib nibWithNibName:@"NPEventSeriesDateCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
 	
+	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissView:)];
+	self.navigationItem.rightBarButtonItem = rightButton;
+	
 	[self reload];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -57,6 +60,10 @@ static NSString * const reuseIdentifier = @"dateCell";
 	[self reload];
 }
 
+
+- (IBAction)dismissView:(id)sender {
+	DLog(@"Dismiss pressed");
+}
 
 #pragma mark - Table view data source
 

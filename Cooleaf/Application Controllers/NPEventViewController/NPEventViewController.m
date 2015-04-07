@@ -280,9 +280,10 @@ enum {
 		NPSeriesEventSelectionViewController *seriesModal = [NPSeriesEventSelectionViewController new];
 		seriesModal.eventID = _currentEvent[@"id"];
 		
-		[self presentViewController:seriesModal animated:YES completion:^{
-			DLog(@"Modal Completion");
-		}];
+		[self.navigationController pushViewController:seriesModal animated:YES];
+//		[self presentViewController:seriesModal animated:YES completion:^{
+//			DLog(@"Modal Completion");
+//		}];
 	}
 }
 
