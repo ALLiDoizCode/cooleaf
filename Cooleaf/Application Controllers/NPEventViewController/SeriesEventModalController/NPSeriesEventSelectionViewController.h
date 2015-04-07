@@ -11,5 +11,6 @@
 @interface NPSeriesEventSelectionViewController : UITableViewController
 
 @property (nonatomic, readwrite, assign) NSNumber *eventID;
+@property (nonatomic, readwrite, assign) NSNumber *seriesID;
 
 @end

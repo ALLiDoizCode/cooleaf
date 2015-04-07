@@ -63,6 +63,20 @@ static NSString * const reuseIdentifier = @"dateCell";
 
 - (IBAction)dismissView:(id)sender {
 	DLog(@"Dismiss pressed");
+	
+	NSArray *activeEvents = [_npSeriesEvents filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPSeriesEvent *npSeriesEvent, NSDictionary *bindings) { return npSeriesEvent.isAttending; }]];
+	
+	NSMutableArray *eventIds = [[NSMutableArray alloc] init];
+	
+	[activeEvents enumerateObjectsUsingBlock:^(NPSeriesEvent *event, NSUInteger index, BOOL *stop) {
+		[eventIds addObject:@(event.objectId)];
+	}];
+	[[NPCooleafClient sharedClient] joinSeriesIDWithEventIdsArray:_seriesID eventIdsArray:eventIds completion:^(NSError *error) {
+		DLog(@"Error setting events = %@", error);
+				[self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
+	}];
+
+
 }
 
 #pragma mark - Table view data source

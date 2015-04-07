@@ -373,13 +373,14 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 	
 	if (_apiPrefix.length > 0)
 		path = [_apiPrefix stringByAppendingString:path];
-	
+	DLog(@"Set Events Path = %@",path);
+	DLog(@"Set Events Params = %@",params);
 	return [self POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		[self updateUserData];
+//		[self updateUserData];
 		if (completion)
 			completion(nil);
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		[self updateUserData];
+//		[self updateUserData];
 		if (completion)
 			completion(error);
 	}];
