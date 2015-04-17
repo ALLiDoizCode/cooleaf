@@ -195,7 +195,7 @@ static UITextView *_tV;
 	{
 		_attendeeIcon.image = [UIImage imageNamed:@"WhiteGroups"];
 		_attendeeLabel.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1];
-		_attendeeLabel.text = [NSString stringWithFormat:@"%@ Members", _event[@"users_count"]];
+		_attendeeLabel.text = [NSString stringWithFormat:@"%@", _event[@"users_count"]];
 		
 		f = _slideBarContent.frame;
 		f.size.height = 45;
