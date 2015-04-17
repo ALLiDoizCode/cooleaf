@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NPEventViewController">
@@ -71,20 +71,20 @@
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
-                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4fU-yu-eaZ">
-                    <rect key="frame" x="280" y="142" width="32" height="32"/>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4fU-yu-eaZ">
+                    <rect key="frame" x="248" y="148" width="66" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="LeaveEventButton">
+                    <state key="normal" image="leaveClear">
                         <color key="titleColor" red="0.30588235289999999" green="0.80392156859999997" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="resignTapped:" destination="-1" eventType="touchUpInside" id="DyR-bv-hdb"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FJ3-Qp-ptb">
-                    <rect key="frame" x="280" y="142" width="32" height="32"/>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FJ3-Qp-ptb">
+                    <rect key="frame" x="248" y="148" width="66" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="JoinEventButton">
+                    <state key="normal" image="joinClear">
                         <color key="titleColor" red="0.30588235289999999" green="0.80392156859999997" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -153,8 +153,8 @@
         <image name="ArrowUp" width="21" height="11"/>
         <image name="ArrowUpDisabled" width="21" height="11"/>
         <image name="CoverPhotoPlaceholder" width="320" height="75"/>
-        <image name="JoinEventButton" width="32" height="32"/>
-        <image name="LeaveEventButton" width="32" height="32"/>
+        <image name="joinClear" width="206" height="78"/>
+        <image name="leaveClear" width="206" height="78"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

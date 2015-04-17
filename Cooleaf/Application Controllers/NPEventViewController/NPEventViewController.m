@@ -235,13 +235,13 @@ enum {
     
     if ([_currentEvent[@"attending"] boolValue])
     {
-		_joinButton.frame = CGRectMake(280, 142, 32, 32);
-		_resignButton.frame = CGRectMake(280, 142, 32, 32);
+		_joinButton.frame = CGRectMake(248, 148, 66, 25);
+		_resignButton.frame = CGRectMake(248, 148, 66, 25);
     }
     else
     {
-		_joinButton.frame = CGRectMake(280, 142, 32, 32);
-		_resignButton.frame = CGRectMake(280, 142, 32, 32);
+		_joinButton.frame = CGRectMake(248, 148, 66, 25);
+		_resignButton.frame = CGRectMake(248, 148, 66, 25);
     }
 //    _joinButton.transform = CGAffineTransformMakeTranslation(0, _shift);
 }
