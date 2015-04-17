@@ -528,7 +528,7 @@
 	// arrow
 	UIImageView *arrowImg = [[UIImageView alloc] init];
 	arrowImg.translatesAutoresizingMaskIntoConstraints = FALSE;
-	arrowImg.image = [[UIImage imageNamed:@"Add"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+	arrowImg.image = [[UIImage imageNamed:@"editPencil"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 	arrowImg.tintColor = RGB(0x99, 0x99, 0x99);
 //	arrowImg.transform = CGAffineTransformMakeRotation(M_PI_2);
 	[_contentView addSubview:arrowImg];
