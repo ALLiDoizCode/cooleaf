@@ -73,7 +73,7 @@ static NSString * const reuseIdentifier = @"dateCell";
 	}];
 	[[NPCooleafClient sharedClient] joinSeriesIDWithEventIdsArray:_seriesID eventIdsArray:eventIds completion:^(NSError *error) {
 		DLog(@"Error setting events = %@", error);
-				[self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
+				[self.navigationController popViewControllerAnimated:TRUE];
 	}];
 
 
