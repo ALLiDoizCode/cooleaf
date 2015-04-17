@@ -15,6 +15,7 @@ static UITextView *_tV;
     NSDate *_eventTime;
 }
 @property (weak, nonatomic) IBOutlet UILabel *dateTextView;
+@property (weak, nonatomic) IBOutlet UIButton *addToCalendar;
 
 @end
 
@@ -57,6 +58,7 @@ static UITextView *_tV;
     [_dateTextView sizeToFit];
     f.size.height = _dateTextView.frame.size.height;
     _dateTextView.frame = f;
+	_addToCalendar.hidden = _attending;
     
 }
 

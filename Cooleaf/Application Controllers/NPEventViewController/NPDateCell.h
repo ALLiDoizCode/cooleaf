@@ -11,5 +11,6 @@
 @interface NPDateCell : UITableViewCell
 
 @property (nonatomic, setter = setDateString:) NSString *dateString;
+@property (nonatomic, assign) BOOL attending;
 @property (nonatomic, copy) NSString *title;
 @end

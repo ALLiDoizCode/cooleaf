@@ -363,6 +363,8 @@ enum {
             NPDateCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPDateCell"];
             cell.dateString = _currentEvent[@"start_time"];
             cell.title = _currentEvent[@"name"];
+			cell.attending = [_currentEvent[@"attending"] boolValue];
+
             return cell;
         }
         break;
