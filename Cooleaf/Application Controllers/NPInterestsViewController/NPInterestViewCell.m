@@ -69,6 +69,7 @@ static UIImage *gCheckboxOff;
 	_titleLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
 	_titleLbl.textAlignment = NSTextAlignmentLeft;
 	_titleLbl.textColor = UIColor.whiteColor;
+	_titleLbl.font = [UIFont systemFontOfSize:12.0];
 	[_footerView addSubview:_titleLbl];
 	[_footerView addConstraint:[NSLayoutConstraint constraintWithItem:_titleLbl attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_footerView attribute:NSLayoutAttributeLeft    multiplier:1 constant: 10]];
 	[_footerView addConstraint:[NSLayoutConstraint constraintWithItem:_titleLbl attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_footerView attribute:NSLayoutAttributeRight   multiplier:1 constant:-10]];
