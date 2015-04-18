@@ -159,6 +159,15 @@
         _noEventsLabel.hidden = YES;
     }
     [self reloadEvents];
+	if ([_loadEventType isEqualToString:@"pastEvents"]) {
+		_noEventsLabel.text = @"You haven't attended any events yet.";
+	}
+
+	if ([_loadEventType isEqualToString:@"groupEvents"]) {
+		_noEventsLabel.text = @"There are no upcoming events for this group.\n\nThe HR team is working hard to bring more fun. Be back soon!";
+	}
+
+
 }
 
 
