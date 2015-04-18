@@ -288,9 +288,9 @@ enum {
 
 - (IBAction)resignTapped:(id)sender
 {
-	UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Do you really want to unregister?", nil)
+	UIActionSheet *as = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Do you really want to leave this Group?", nil)
 													delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-									  destructiveButtonTitle:NSLocalizedString(@"Yes, I want to unregister", nil) otherButtonTitles:nil];
+									  destructiveButtonTitle:NSLocalizedString(@"Yes, I want to leave", nil) otherButtonTitles:nil];
 	
 	[as showInView:self.view];
 }
@@ -337,7 +337,7 @@ enum {
 			cell.attendeesCount = [_currentEvent[@"users_count"] unsignedIntegerValue];
 //			cell.attendees = _currentEvent[@"participants"];
 			[[NPCooleafClient sharedClient] fetchMembersForGroupWithId:_currentEvent[@"id"] completion:^(NSArray *members) {
-				DLog(@"%@", members);
+//				DLog(@"%@", members);
 				cell.attendees = members;
 			}];
 			return cell;
@@ -467,6 +467,7 @@ enum {
 		{
 			NPEventListViewController *groupEventListController = [NPEventListViewController new];
 			groupEventListController.title = @"Group Events";
+			groupEventListController.loadEventType = @"groupEvents";
 			DLog(@"selected the groups row");
 			[self.navigationController pushViewController:groupEventListController animated:YES];
 		}
