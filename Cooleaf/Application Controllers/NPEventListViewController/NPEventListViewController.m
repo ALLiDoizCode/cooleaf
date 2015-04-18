@@ -40,7 +40,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Events", @"Event list view title");
+        self.title = NSLocalizedString(@"My Events", @"Event list view title");
 //        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Profile"] style:UIBarButtonItemStylePlain target:self action:@selector(profileTapped:)];
 //        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
 //        [btn setImage:[UIImage imageNamed:@"Profile"] forState:UIControlStateNormal];
@@ -48,7 +48,7 @@
 //        btn.frame = CGRectMake(0, 0, 30, 30);
 //        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
-                                                 initWithTitle:NSLocalizedString(@"Events", @"Event list view title")
+                                                 initWithTitle:NSLocalizedString(@"My Events", @"Event list view title")
                                                  style:UIBarButtonItemStylePlain
                                                  target:nil
                                                  action:nil];
