@@ -50,7 +50,7 @@
 		backLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
 		backLbl.font = [UIFont mediumApplicationFontOfSize:15];
 		backLbl.textColor = RGB(76, 205, 196);
-		backLbl.text = @"Pick Some Interests Below";
+		backLbl.text = @"Pick Your Interests";
 		[_topBarView addSubview:backLbl];
 		[_topBarView addConstraint:[NSLayoutConstraint constraintWithItem:backLbl attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_topBarView  attribute:NSLayoutAttributeLeft   multiplier:1 constant:12]];
 		[_topBarView addConstraint:[NSLayoutConstraint constraintWithItem:backLbl attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_topBarView attribute:NSLayoutAttributeCenterY multiplier:1 constant: 0]];
