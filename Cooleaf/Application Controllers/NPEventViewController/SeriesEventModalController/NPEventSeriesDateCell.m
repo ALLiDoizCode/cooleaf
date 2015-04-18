@@ -66,7 +66,10 @@ static UIImage *gCheckboxOff;
 	_dateLabel.text = [_dateFormatter stringFromDate:eventTime];
 	
 	_checkboxImg.image = _npSeriesEvent.isAttending ? gCheckboxOn : gCheckboxOff;
-	[_checkboxImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionToggleAttending:)]];
+	if (_npSeriesEvent.isJoinable) {
+		[_checkboxImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionToggleAttending:)]];
+		_dateLabel.textColor = [UIColor blackColor];
+	}
 
 	
 }

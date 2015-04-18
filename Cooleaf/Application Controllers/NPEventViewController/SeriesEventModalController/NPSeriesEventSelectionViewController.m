@@ -96,6 +96,7 @@ static NSString * const reuseIdentifier = @"dateCell";
     NPEventSeriesDateCell *cell = (NPEventSeriesDateCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
 
 	cell.event = _npSeriesEvents[indexPath.row];
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	DLog(@"Cell.seriesEvent = %@",cell.event);
 	return cell;
 }
