@@ -40,7 +40,7 @@ static UITextView *_tV;
 - (void)setDateString:(NSString *)dateString
 {
     _dateString = dateString;
-    
+	_addToCalendar.hidden = TRUE;
     NSDateFormatter *df1 = [NSDateFormatter new];
     NSDateFormatter *df2 = [NSDateFormatter new];
     NSDateFormatter *df3 = [NSDateFormatter new];

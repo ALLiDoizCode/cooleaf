@@ -105,7 +105,7 @@
     }
     
     // Now all the rest
-    for (int i = 0; i < ([_attendees count] > 5 ? 5 : [_attendees count]); i++)
+    for (int i = 0; i < ([_attendees count] > 4 ? 4 : [_attendees count]); i++)
     {
         // Skip ourselves
         if ([_attendees[i][@"id"] compare:[NPCooleafClient sharedClient].userData[@"id"]] == NSOrderedSame)
@@ -115,7 +115,7 @@
         [self.contentView addSubview:avatar];
         avatarCount++;
         
-        if (avatarCount > 5)
+        if (avatarCount > 4)
         {
             avatar = [self avatarForUser:nil offset:avatarCount];
             [self.contentView addSubview:avatar];
@@ -127,9 +127,9 @@
     if ([_attendees count] > 0)
     {
         if (_attendees.count > 1)
-            _attendeesLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%ld attendees", nil), _attendeesCount];
+            _attendeesLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%ld Attendees", nil), _attendeesCount];
         else
-            _attendeesLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%ld attendee", nil), _attendeesCount];
+            _attendeesLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%ld Attendee", nil), _attendeesCount];
         _attendeesLabel.hidden = NO;
         _arrowView.hidden = NO;
         _noAttendeesLabel.hidden = YES;
