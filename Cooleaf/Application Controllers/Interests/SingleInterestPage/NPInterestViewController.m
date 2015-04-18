@@ -230,14 +230,14 @@ enum {
 	
 	if ([_currentEvent[@"member"] boolValue])
 	{
-		_joinButton.frame = CGRectMake(280, 203, 32, 32);
-		_resignButton.frame = CGRectMake(280, 203, 32, 32);
+		_joinButton.frame = CGRectMake(246, 210, 66, 25);
+		_resignButton.frame = CGRectMake(246, 210, 66, 25);
 		DLog(@"Joing button should be on");
 	}
 	else
 	{
-		_joinButton.frame = CGRectMake(280, 203, 32, 32);
-		_resignButton.frame = CGRectMake(280, 203, 32, 32);
+		_joinButton.frame = CGRectMake(246, 210, 66, 25);
+		_resignButton.frame = CGRectMake(246, 210, 66, 25);
 		DLog(@"Leave button should be on");
 
 	}
