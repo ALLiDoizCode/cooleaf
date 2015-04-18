@@ -349,6 +349,7 @@ enum {
 		{
 			NPGroupEventsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NPGroupEventsCell"];
 			cell.groupID = _currentEvent[@"id"];
+			DLog(@" Cell Group ID %@", cell.groupID);
 			return cell;
 		}
 			
@@ -468,6 +469,7 @@ enum {
 			NPEventListViewController *groupEventListController = [NPEventListViewController new];
 			groupEventListController.title = @"Group Events";
 			groupEventListController.loadEventType = @"groupEvents";
+			groupEventListController.refID = _currentEvent[@"id"];
 			DLog(@"selected the groups row");
 			[self.navigationController pushViewController:groupEventListController animated:YES];
 		}
