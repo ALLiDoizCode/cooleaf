@@ -105,7 +105,7 @@
 	}
 	
 	// Now all the rest
-	for (int i = 0; i < ([_attendees count] > 5 ? 5 : [_attendees count]); i++)
+	for (int i = 0; i < ([_attendees count] > 4 ? 4 : [_attendees count]); i++)
 	{
 		// Skip ourselves
 		if ([_attendees[i][@"id"] compare:[NPCooleafClient sharedClient].userData[@"id"]] == NSOrderedSame)
@@ -115,7 +115,7 @@
 		[self.contentView addSubview:avatar];
 		avatarCount++;
 		
-		if (avatarCount > 5)
+		if (avatarCount > 4)
 		{
 			avatar = [self avatarForUser:nil offset:avatarCount];
 			[self.contentView addSubview:avatar];
