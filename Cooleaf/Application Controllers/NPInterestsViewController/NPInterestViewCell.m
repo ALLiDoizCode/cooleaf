@@ -19,6 +19,7 @@ static UIImage *gCheckboxOff;
 	UIView *_footerView;
 	UILabel *_titleLbl;
 	UIImageView *_checkboxImg;
+	NSLayoutConstraint *_lblConstraint;
 }
 @end
 
@@ -71,7 +72,10 @@ static UIImage *gCheckboxOff;
 	_titleLbl.textColor = UIColor.whiteColor;
 	_titleLbl.font = [UIFont systemFontOfSize:12.0];
 	[_footerView addSubview:_titleLbl];
-	[_footerView addConstraint:[NSLayoutConstraint constraintWithItem:_titleLbl attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_footerView attribute:NSLayoutAttributeLeft    multiplier:1 constant: 10]];
+	_lblConstraint = [[NSLayoutConstraint alloc] init];
+	_lblConstraint = [NSLayoutConstraint constraintWithItem:_titleLbl attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_footerView attribute:NSLayoutAttributeLeft    multiplier:1 constant: 10];
+	[_footerView addConstraint:_lblConstraint];
+//	[_footerView addConstraint:[NSLayoutConstraint constraintWithItem:_titleLbl attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_footerView attribute:NSLayoutAttributeLeft    multiplier:1 constant: 10]];
 	[_footerView addConstraint:[NSLayoutConstraint constraintWithItem:_titleLbl attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_footerView attribute:NSLayoutAttributeRight   multiplier:1 constant:-10]];
 	[_footerView addConstraint:[NSLayoutConstraint constraintWithItem:_titleLbl attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_footerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:  0]];
 	
@@ -96,11 +100,18 @@ static UIImage *gCheckboxOff;
 	if (_editModeOn == TRUE) {
 		_checkboxImg.hidden = FALSE;
 		_checkboxImg.image = _npinterest.isMember ? gCheckboxOn : gCheckboxOff;
-		_titleLbl.textAlignment = NSTextAlignmentRight;
+		_titleLbl.textAlignment = NSTextAlignmentLeft;
+		_lblConstraint.constant = 33;
+		[_footerView layoutIfNeeded];
+		[_titleLbl layoutIfNeeded];
 	}
 	else {
 		_checkboxImg.hidden = TRUE;
 		_titleLbl.textAlignment = NSTextAlignmentLeft;
+		_lblConstraint.constant = 10;
+		[_footerView layoutIfNeeded];
+		[_titleLbl layoutIfNeeded];
+
 	}
 }
 
