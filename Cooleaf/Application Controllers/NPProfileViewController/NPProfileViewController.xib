@@ -11,6 +11,8 @@
                 <outlet property="blurImage" destination="J4H-cq-3Zb" id="AFy-NH-LXW"/>
                 <outlet property="clearView" destination="Fg1-Ql-fYC" id="MdS-Ox-vtp"/>
                 <outlet property="departmentView" destination="w3N-ju-CV2" id="RC5-az-8OI"/>
+                <outlet property="editDepartment" destination="j0w-rw-dPe" id="hbj-d9-klH"/>
+                <outlet property="editLocation" destination="GL5-Fn-cMW" id="TmQ-93-hcY"/>
                 <outlet property="imageCoverView" destination="But-9o-aID" id="sFR-pZ-exJ"/>
                 <outlet property="locationView" destination="JX1-Xs-49U" id="Fa6-1n-Pgs"/>
                 <outlet property="nameLabel" destination="X5U-08-nAu" id="YP4-hM-BVS"/>

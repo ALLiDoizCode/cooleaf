@@ -29,21 +29,25 @@
 	UILabel *_locationLabel3;
 }
 
+@property (strong, nonatomic) UIImageView *companyView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UILabel *rewardPoints;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarView;
+@property (weak, nonatomic) IBOutlet UIImageView *blurImage;
+@property (weak, nonatomic) IBOutlet UIImageView *editDepartment;
+@property (weak, nonatomic) IBOutlet UIImageView *editLocation;
+@property (weak, nonatomic) IBOutlet UILabel *rewardPoints;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *positionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
-@property (strong, nonatomic) UIImageView *companyView;
-@property (weak, nonatomic) IBOutlet UIImageView *blurImage;
 @property (weak, nonatomic) IBOutlet UIView *clearView;
 @property (weak, nonatomic) IBOutlet UIView *imageCoverView;
 @property (weak, nonatomic) IBOutlet UIView *departmentView;
 @property (weak, nonatomic) IBOutlet UIView *locationView;
+
 - (IBAction)pastEventsButton:(UIButton *)sender;
 
 - (void)logoutTapped:(id)sender;
+- (void)editTagsTapped:(id)sender;
 
 @end
 
@@ -101,6 +105,10 @@
 	if ([uD[@"reward_points"] intValue] == 0)
 	{_rewardPoints.hidden = TRUE;}
 
+	[_editDepartment addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editTagsTapped:)]];
+	[_editLocation addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editTagsTapped:)]];
+	
+	
 //    int c = 3;
 //    NSMutableString *cats = [NSMutableString new];
 //    for (NSDictionary *cat in uD[@"categories"])
@@ -324,6 +332,11 @@
 	DLog(@"selected the Past Events");
 	[self.navigationController pushViewController:pastEventListController animated:YES];
 
+}
+
+- (void)editTagsTapped:(id)sender
+{
+	
 }
 
 - (void)logoutTapped:(id)sender
