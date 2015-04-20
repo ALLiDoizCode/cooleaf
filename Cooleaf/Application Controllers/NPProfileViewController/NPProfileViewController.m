@@ -11,6 +11,7 @@
 #import "NPLoginViewController.h"
 #import "NPInterestsViewController2.h"
 #import "NPEventListViewController.h"
+#import "NPTag.h"
 #import <SSKeychain/SSKeychain.h>
 
 
@@ -124,48 +125,7 @@
 //
 //    }];
 	
-	_departmentLabel1 = [[UILabel alloc] init];
-	_departmentLabel1.translatesAutoresizingMaskIntoConstraints = FALSE;
-	_departmentLabel1.font = [UIFont systemFontOfSize:14];
-	_departmentLabel1.textColor = RGB(255.0, 255.0, 255.0);
-	_departmentLabel1.backgroundColor = RGB(78.0, 205.0, 196.0);
-	_departmentLabel1.text = @" Blah blah some text ";
-	[_departmentView addSubview:_departmentLabel1];
-	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
-	
-	_departmentLabel2 = [[UILabel alloc] init];
-	_departmentLabel2.translatesAutoresizingMaskIntoConstraints = FALSE;
-	_departmentLabel2.font = [UIFont systemFontOfSize:14];
-	_departmentLabel2.textColor = RGB(255.0, 255.0, 255.0);
-	_departmentLabel2.backgroundColor = RGB(78.0, 205.0, 196.0);
-	_departmentLabel2.text = @" Blah blah some text ";
-	[_departmentView addSubview:_departmentLabel2];
-	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentLabel1 attribute:NSLayoutAttributeRight multiplier:1 constant:5.0]];
-	
-	
-	_locationLabel1 = [[UILabel alloc] init];
-	_locationLabel1.translatesAutoresizingMaskIntoConstraints = FALSE;
-	_locationLabel1.font = [UIFont systemFontOfSize:14];
-	_locationLabel1.textColor = RGB(255.0, 255.0, 255.0);
-	_locationLabel1.backgroundColor = RGB(78.0, 205.0, 196.0);
-	_locationLabel1.text = @" Blah blah some text ";
-	[_locationView addSubview:_locationLabel1];
-	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
-	
-	_locationLabel2 = [[UILabel alloc] init];
-	_locationLabel2.translatesAutoresizingMaskIntoConstraints = FALSE;
-	_locationLabel2.font = [UIFont systemFontOfSize:14];
-	_locationLabel2.textColor = RGB(255.0, 255.0, 255.0);
-	_locationLabel2.backgroundColor = RGB(78.0, 205.0, 196.0);
-	_locationLabel2.text = @" Blah blah some text ";
-	[_locationView addSubview:_locationLabel2];
-	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationLabel1 attribute:NSLayoutAttributeRight multiplier:1 constant:5.0]];
-	
-	
+
 	
 	
 	
@@ -219,6 +179,82 @@
 	if ([uD[@"reward_points"] intValue] == 0)
 	{_rewardPoints.hidden = TRUE;}
 	
+	
+	NSMutableArray *npStructureTags = [[NSMutableArray alloc] init];
+	[uD[@"role"][@"structure_tags"] enumerateObjectsUsingBlock:^(NSDictionary *structureTag, NSUInteger idx, BOOL *stop) {
+		[npStructureTags addObject:[[NPTag alloc] initWithDictionary:structureTag]];
+	}];
+	DLog(@" Structure Tags are this: %@", npStructureTags);
+	
+	NSArray *locationTags = [npStructureTags filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NPTag *locationTag, NSDictionary *bindings) {
+		return locationTag.parentId == 9;
+	}]];
+	
+	DLog(@" Location Tags are this: %@", locationTags);
+	
+	NSArray *departmentTags = [npStructureTags filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NPTag *departmentTag, NSDictionary *bindings) {
+		return departmentTag.parentId == 10;
+	}]];
+	
+	DLog(@" Department Tags are this: %@", departmentTags);
+	
+	NSMutableArray *locationsArray = [[NSMutableArray alloc] init];
+	
+	[locationTags enumerateObjectsUsingBlock:^(NPTag *location, NSUInteger index, BOOL *stop) {
+		[locationsArray addObject:location.name];
+	}];
+	DLog(@" Locations Array is: %@", locationsArray);
+
+	
+	NSMutableArray *departmentsArray = [[NSMutableArray alloc] init];
+	
+	[departmentTags enumerateObjectsUsingBlock:^(NPTag *department, NSUInteger index, BOOL *stop) {
+		[departmentsArray addObject:department.name];
+	}];
+	DLog(@" Departments Array is: %@", departmentsArray);
+
+	
+	
+	_departmentLabel1 = [[UILabel alloc] init];
+	_departmentLabel1.translatesAutoresizingMaskIntoConstraints = FALSE;
+	_departmentLabel1.font = [UIFont systemFontOfSize:14];
+	_departmentLabel1.textColor = RGB(255.0, 255.0, 255.0);
+	_departmentLabel1.backgroundColor = RGB(78.0, 205.0, 196.0);
+	_departmentLabel1.text = departmentsArray[0];
+	[_departmentView addSubview:_departmentLabel1];
+	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
+	
+	_departmentLabel2 = [[UILabel alloc] init];
+	_departmentLabel2.translatesAutoresizingMaskIntoConstraints = FALSE;
+	_departmentLabel2.font = [UIFont systemFontOfSize:14];
+	_departmentLabel2.textColor = RGB(255.0, 255.0, 255.0);
+	_departmentLabel2.backgroundColor = RGB(78.0, 205.0, 196.0);
+	_departmentLabel2.text = departmentsArray[1];
+	[_departmentView addSubview:_departmentLabel2];
+	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentLabel1 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
+	
+	
+	_locationLabel1 = [[UILabel alloc] init];
+	_locationLabel1.translatesAutoresizingMaskIntoConstraints = FALSE;
+	_locationLabel1.font = [UIFont systemFontOfSize:14];
+	_locationLabel1.textColor = RGB(255.0, 255.0, 255.0);
+	_locationLabel1.backgroundColor = RGB(78.0, 205.0, 196.0);
+	_locationLabel1.text = locationsArray[0];
+	[_locationView addSubview:_locationLabel1];
+	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
+	
+	_locationLabel2 = [[UILabel alloc] init];
+	_locationLabel2.translatesAutoresizingMaskIntoConstraints = FALSE;
+	_locationLabel2.font = [UIFont systemFontOfSize:14];
+	_locationLabel2.textColor = RGB(255.0, 255.0, 255.0);
+	_locationLabel2.backgroundColor = RGB(78.0, 205.0, 196.0);
+	_locationLabel2.text = locationsArray[1];
+	[_locationView addSubview:_locationLabel2];
+	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationLabel1 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
 	
 	
 	
