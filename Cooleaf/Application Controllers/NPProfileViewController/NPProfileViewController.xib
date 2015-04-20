@@ -10,7 +10,9 @@
                 <outlet property="avatarView" destination="R8Z-fZ-DcX" id="eDI-jy-bdF"/>
                 <outlet property="blurImage" destination="J4H-cq-3Zb" id="AFy-NH-LXW"/>
                 <outlet property="clearView" destination="Fg1-Ql-fYC" id="MdS-Ox-vtp"/>
+                <outlet property="departmentView" destination="w3N-ju-CV2" id="RC5-az-8OI"/>
                 <outlet property="imageCoverView" destination="But-9o-aID" id="sFR-pZ-exJ"/>
+                <outlet property="locationView" destination="JX1-Xs-49U" id="Fa6-1n-Pgs"/>
                 <outlet property="nameLabel" destination="X5U-08-nAu" id="YP4-hM-BVS"/>
                 <outlet property="positionLabel" destination="jrp-0I-Xt6" id="NyR-h9-b16"/>
                 <outlet property="rewardPoints" destination="6z7-B9-oeB" id="9l8-Jy-2KA"/>

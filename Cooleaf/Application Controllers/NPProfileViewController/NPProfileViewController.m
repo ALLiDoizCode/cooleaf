@@ -19,6 +19,11 @@
 	BOOL _editModeOn;
 	UIImagePickerController *_avatarController;
 	NPInterestsViewController2 *_interestsController;
+	
+	UILabel *_departmentLabel1;
+	UILabel *_departmentLabel2;
+	UILabel *_locationLabel1;
+	UILabel *_locationLabel2;
 }
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -31,6 +36,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *blurImage;
 @property (weak, nonatomic) IBOutlet UIView *clearView;
 @property (weak, nonatomic) IBOutlet UIView *imageCoverView;
+@property (weak, nonatomic) IBOutlet UIView *departmentView;
+@property (weak, nonatomic) IBOutlet UIView *locationView;
 - (IBAction)pastEventsButton:(UIButton *)sender;
 
 - (void)logoutTapped:(id)sender;
@@ -117,6 +124,51 @@
 //
 //    }];
 	
+	_departmentLabel1 = [[UILabel alloc] init];
+	_departmentLabel1.translatesAutoresizingMaskIntoConstraints = FALSE;
+	_departmentLabel1.font = [UIFont systemFontOfSize:14];
+	_departmentLabel1.textColor = RGB(255.0, 255.0, 255.0);
+	_departmentLabel1.backgroundColor = RGB(78.0, 205.0, 196.0);
+	_departmentLabel1.text = @" Blah blah some text ";
+	[_departmentView addSubview:_departmentLabel1];
+	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
+	
+	_departmentLabel2 = [[UILabel alloc] init];
+	_departmentLabel2.translatesAutoresizingMaskIntoConstraints = FALSE;
+	_departmentLabel2.font = [UIFont systemFontOfSize:14];
+	_departmentLabel2.textColor = RGB(255.0, 255.0, 255.0);
+	_departmentLabel2.backgroundColor = RGB(78.0, 205.0, 196.0);
+	_departmentLabel2.text = @" Blah blah some text ";
+	[_departmentView addSubview:_departmentLabel2];
+	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentLabel1 attribute:NSLayoutAttributeRight multiplier:1 constant:5.0]];
+	
+	
+	_locationLabel1 = [[UILabel alloc] init];
+	_locationLabel1.translatesAutoresizingMaskIntoConstraints = FALSE;
+	_locationLabel1.font = [UIFont systemFontOfSize:14];
+	_locationLabel1.textColor = RGB(255.0, 255.0, 255.0);
+	_locationLabel1.backgroundColor = RGB(78.0, 205.0, 196.0);
+	_locationLabel1.text = @" Blah blah some text ";
+	[_locationView addSubview:_locationLabel1];
+	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
+	
+	_locationLabel2 = [[UILabel alloc] init];
+	_locationLabel2.translatesAutoresizingMaskIntoConstraints = FALSE;
+	_locationLabel2.font = [UIFont systemFontOfSize:14];
+	_locationLabel2.textColor = RGB(255.0, 255.0, 255.0);
+	_locationLabel2.backgroundColor = RGB(78.0, 205.0, 196.0);
+	_locationLabel2.text = @" Blah blah some text ";
+	[_locationView addSubview:_locationLabel2];
+	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationLabel1 attribute:NSLayoutAttributeRight multiplier:1 constant:5.0]];
+	
+	
+	
+	
+	
 	_interestsController = [[NPInterestsViewController2 alloc] init];
 	_interestsController.collectionView.translatesAutoresizingMaskIntoConstraints = FALSE;
 	[self.scrollView addSubview:_interestsController.collectionView];
@@ -166,6 +218,9 @@
 	_rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
 	if ([uD[@"reward_points"] intValue] == 0)
 	{_rewardPoints.hidden = TRUE;}
+	
+	
+	
 	
 	[_interestsController viewWillAppear:animated];
 }
