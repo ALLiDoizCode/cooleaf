@@ -160,7 +160,7 @@
 	_avatarView.layer.cornerRadius = 59.0;
 	UIImage *avatarPlaceholder = nil;
 	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
-	NSLog(@"%@",uD);
+//	NSLog(@"%@",uD);
 //	NSLog(@"%@", [[NSString alloc] initWithUTF8String:[NSJSONSerialization dataWithJSONObject:uD options:0 error:nil].bytes]);
 	if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])
 		avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderFemaleBig"];
@@ -458,7 +458,7 @@
 				
 			}];
 			NSDictionary *uD = [NPCooleafClient sharedClient].userData;
-			[[NPCooleafClient sharedClient] updateProfileDataAllFields:nil email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:TRUE profileWeeklyDigest:TRUE profile:uD[@"profile"] completion:^{
+			[[NPCooleafClient sharedClient] updateProfileDataAllFields:nil email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:nil profileWeeklyDigest:nil profile:uD[@"profile"] completion:^{
 				NSLog(@"Success");
 			}];
 		}];

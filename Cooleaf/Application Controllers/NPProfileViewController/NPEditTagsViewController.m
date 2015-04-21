@@ -179,6 +179,7 @@
 	UIImageView *_avatarImg;
 	UILabel *_avatarLbl;
 	UIImagePickerController *_avatarController;
+	BOOL _avatarChanged;
 	
 	/**
 	 * Options
@@ -234,7 +235,8 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	
+	NSDictionary *userDataEditing = [NPCooleafClient sharedClient].userData;
+
 	// keyboard notifications
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doNotificationKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doNotificationKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -280,6 +282,17 @@
 		_avatarImg.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_avatarImg.image = [UIImage imageNamed:@"AvatarPlaceHolderMaleBig"];
 		_avatarImg.layer.masksToBounds = TRUE;
+		if (userDataEditing[@"profile"][@"picture"][@"versions"][@"medium"])
+		{
+			NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:userDataEditing[@"profile"][@"picture"][@"versions"][@"medium"]];
+			[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+				if (image && [imagePath isEqual:avatarURL.absoluteString])
+				{
+					_avatarImg.image = image;
+				}
+			}];
+		}
+		_avatarChanged = FALSE;
 		_avatarImg.layer.cornerRadius = 50;
 		_avatarImg.userInteractionEnabled = TRUE;
 		[_avatarImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionPicture:)]];
@@ -378,7 +391,6 @@
 	
 	[self modalShow];
 	
-	NSDictionary *userDataEditing = [NPCooleafClient sharedClient].userData;
 	NSMutableDictionary *tagGroups = [[NSMutableDictionary alloc] init];
 	NSMutableDictionary *presets = [[NSMutableDictionary alloc] initWithDictionary:userDataEditing[@"role"][@"structures"]];
 	
@@ -699,48 +711,50 @@
 	[tags addObjectsFromArray:[self valuesForPickersWithTitle:@"Department"]];
 	
 	NSString *gender = [self valueForPickerWithTitle:@"Gender"];
+	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
 	
-	[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:tags removed_picture:nil file_cache:nil role_structure_required:[NPCooleafClient sharedClient].userData[@"role"] profileDailyDigest:nil profileWeeklyDigest:nil profile:[NPCooleafClient sharedClient].userData[@"profile"] completion:^{
-		[self dismissViewControllerAnimated:YES completion:nil];
+	[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:nil removed_picture:nil file_cache:nil role_structure_required:uD[@"role"] profileDailyDigest:nil profileWeeklyDigest:nil profile:uD[@"profile"] completion:^{
 	}];
 	
-	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:gender password:_password tags:tags completion:^ (BOOL success, NSString *error) {
-		DLog(@"Done! success = %@", NSStringFromBool(success));
-		
-		if (success == FALSE) {
-			[[[UIAlertView alloc] initWithTitle:@"Registration Failed." message:error delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
-			[self dismissViewControllerAnimated:YES completion:nil];
-			return;
-		}
-		
-//		[[NPCooleafClient sharedClient] loginWithUsername:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"] password:_password completion:^(NSError *error) {
-//			
-//			NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
-//			interestsController.editModeOn = TRUE;
-//			interestsController.topBarEnabled = TRUE;
-//			interestsController.scrollEnabled = TRUE;
-//			[self.navigationController pushViewController:interestsController animated:TRUE];
-//			DLog(@"collectionView = %@", interestsController.collectionView);
-//			
-			[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarImg.image completion:^ (NSDictionary *unused) {
-				DLog(@"Done! unused = %@", unused);
+	//	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:gender password:_password tags:tags completion:^ (BOOL success, NSString *error) {
+	//		DLog(@"Done! success = %@", NSStringFromBool(success));
+	//
+	//		if (success == FALSE) {
+	//			[[[UIAlertView alloc] initWithTitle:@"Registration Failed." message:error delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+	//			[self dismissViewControllerAnimated:YES completion:nil];
+	//			return;
+	//		}
+	
+	//		[[NPCooleafClient sharedClient] loginWithUsername:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"] password:_password completion:^(NSError *error) {
+	//
+	//			NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
+	//			interestsController.editModeOn = TRUE;
+	//			interestsController.topBarEnabled = TRUE;
+	//			interestsController.scrollEnabled = TRUE;
+	//			[self.navigationController pushViewController:interestsController animated:TRUE];
+	//			DLog(@"collectionView = %@", interestsController.collectionView);
+	//
+	
+	if (_avatarChanged) {
+		[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarImg.image completion:^ (NSDictionary *unused) {
+			DLog(@"Done! unused = %@", unused);
+			
+			if (unused != nil) {
+				NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
+				DLog(@"avatarUrl = %@", avatarURL);
+				[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion: ^ (NSString *imagePath, UIImage *image) {
+					if (image && [imagePath isEqual:avatarURL.absoluteString])
+						_avatarImg.image = image;
+				}];
 				
-				if (unused != nil) {
-					NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
-					DLog(@"avatarUrl = %@", avatarURL);
-					[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion: ^ (NSString *imagePath, UIImage *image) {
-						if (image && [imagePath isEqual:avatarURL.absoluteString])
-							_avatarImg.image = image;
-					}];
-					
-					NSDictionary *uD = [NPCooleafClient sharedClient].userData;
-					[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:TRUE profileWeeklyDigest:TRUE profile:uD[@"profile"] completion:^{
-						NSLog(@"Success");
-					}];
-				}
-			}];
+				[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:nil profileWeeklyDigest:nil profile:uD[@"profile"] completion:^{
+					NSLog(@"Success");
+				}];
+			}
 		}];
-//	}];
+	}
+	[self.navigationController popViewControllerAnimated:YES];
+
 }
 
 - (void)doActionPicture:(id)sender
@@ -866,6 +880,7 @@
 	_avatarImg.image = info[UIImagePickerControllerOriginalImage];
 	[_avatarController dismissViewControllerAnimated:TRUE completion:nil];
 	_avatarController = nil;
+	_avatarChanged = TRUE;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
