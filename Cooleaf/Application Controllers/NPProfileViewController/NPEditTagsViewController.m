@@ -203,14 +203,24 @@
 
 #pragma mark - UIViewController
 
-- (id)initWithUsername:(NSString *)username andPassword:(NSString *)password
+- (id)init
 {
 	self = [super init];
 	
 	if (self) {
+		_pickers = [[NSMutableArray alloc] init];
+	}
+	
+	return self;
+}
+
+- (id)initWithUsername:(NSString *)username andPassword:(NSString *)password
+{
+	self = [self init];
+	
+	if (self) {
 		_username = username;
 		_password = password;
-		_pickers = [[NSMutableArray alloc] init];
 	}
 	
 	return self;
