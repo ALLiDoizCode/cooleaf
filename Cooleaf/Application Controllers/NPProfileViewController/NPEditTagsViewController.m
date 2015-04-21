@@ -370,7 +370,7 @@
 	
 	NSDictionary *userDataEditing = [NPCooleafClient sharedClient].userData;
 	NSMutableDictionary *tagGroups = [[NSMutableDictionary alloc] init];
-	NSMutableDictionary *presets = [[NSMutableDictionary alloc] initWithDictionary:userDataEditing[@"structure_tags"]];
+	NSMutableDictionary *presets = [[NSMutableDictionary alloc] initWithDictionary:userDataEditing[@"role"][@"structures"]];
 	
 	NSString *gender = userDataEditing[@"gender"];
 	if (gender != nil) {
@@ -386,35 +386,35 @@
 		NPTagGroup *tagGroup = [[NPTagGroup alloc] initWithDictionary:structure];
 		tagGroups[tagGroup.name] = tagGroup;
 	}];
-
 	
-//	[[NPCooleafClient sharedClient] registerWithUsername:_username completion:^ (NSString *token, NSDictionary *tagGroups, NSDictionary *presets) {
+	
+	//	[[NPCooleafClient sharedClient] registerWithUsername:_username completion:^ (NSString *token, NSDictionary *tagGroups, NSDictionary *presets) {
 	NSString *token = [NSString stringWithFormat:@"ThisISNotARealToken"];
-		DLog(@"token = %@", token);
-		DLog(@"tags = %@", tagGroups);
-		DLog(@"presets = %@", presets);
+	DLog(@"token = %@", token);
+	DLog(@"tags = %@", tagGroups);
+	DLog(@"presets = %@", presets);
+	
+	[self modalHide];
+	
+	if (token != nil && tagGroups != nil) {
+		_token = token;
 		
-		[self modalHide];
+		NPTagGroup *locationTagGroup = tagGroups[@"Location"];
+		NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
 		
-		if (token != nil && tagGroups != nil) {
-			_token = token;
-			
-			NPTagGroup *locationTagGroup = tagGroups[@"Location"];
-			NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
-			
-			[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags   afterPicker:nil defaultValue:((NSArray *)presets[@(locationTagGroup.objectId).stringValue]).firstObject];
-			[self addPickerWithTitle:@"Department" tags:departmentTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(departmentTagGroup.objectId).stringValue]).firstObject];
-			//			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"]   afterPicker:nil defaultValue:presets[@"Gender"]];
-			
-			_nameTxt.text = presets[@"Full Name"];
-			
-//			[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:((NPRegistrationPicker2 *)_pickers.lastObject)->_label attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeBottom multiplier:1 constant:-20]];
-		}
-//		else {
-//			[[[UIAlertView alloc] initWithTitle:@"Registration Failed" message:@"E-mail address not found.  Please make sure to use your corporate email" delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:nil] show];
-//			[self.navigationController popViewControllerAnimated:TRUE];
-//		}
-//	}];
+		[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags   afterPicker:nil defaultValue:((NSArray *)presets[@(locationTagGroup.objectId).stringValue]).firstObject];
+		[self addPickerWithTitle:@"Department" tags:departmentTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(departmentTagGroup.objectId).stringValue]).firstObject];
+		//			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"]   afterPicker:nil defaultValue:presets[@"Gender"]];
+		
+		_nameTxt.text = presets[@"Full Name"];
+		
+		[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:((NPRegistrationPicker2 *)_pickers.lastObject)->_label attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeBottom multiplier:1 constant:-20]];
+	}
+	//		else {
+	//			[[[UIAlertView alloc] initWithTitle:@"Registration Failed" message:@"E-mail address not found.  Please make sure to use your corporate email" delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:nil] show];
+	//			[self.navigationController popViewControllerAnimated:TRUE];
+	//		}
+	//	}];
 }
 
 - (void)viewWillAppear:(BOOL)animated
