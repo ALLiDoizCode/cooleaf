@@ -12,6 +12,7 @@
 #import "NPInterestsViewController2.h"
 #import "NPEventListViewController.h"
 #import "NPTag.h"
+#import "NPEditTagsViewController.h"
 #import <SSKeychain/SSKeychain.h>
 
 
@@ -336,7 +337,9 @@
 
 - (void)editTagsTapped:(id)sender
 {
-	
+	DLog(@"Tags Tags Everywhere");
+	NPEditTagsViewController *editTagsViewController = [NPEditTagsViewController new];
+	[self.navigationController pushViewController:editTagsViewController animated:YES];
 }
 
 - (void)logoutTapped:(id)sender
