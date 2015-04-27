@@ -283,7 +283,7 @@ static UITextView *_tV;
 	//    _selectionView.frame = CGRectMake(0, 15, 320, self.contentView.bounds.size.height-15);
 	
 	if (_event[@"image"][@"url"] != nil) {
-		NSString *imageUrlString = [@"http:" stringByAppendingString:[_event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"640x150"]];
+		NSString *imageUrlString = [@"http:" stringByAppendingString:[_event[@"image"][@"url"] stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"1600x400"]];
 		// Download image for event
 		[[NPCooleafClient sharedClient] fetchImage:imageUrlString completion:^(NSString *imagePath, UIImage *image) {
 			if ([imagePath compare:imageUrlString] == NSOrderedSame)
@@ -430,7 +430,7 @@ static UITextView *_tV;
 //	CGFloat shift = ([event[@"participants"] count] > 0) ? 45 : 0;
 	
 //	return 204 + (titleHeight-39) + shift;
-	return 245;
+	return 320;
 }
 
 @end
