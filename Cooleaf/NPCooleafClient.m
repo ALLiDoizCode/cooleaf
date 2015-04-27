@@ -20,15 +20,15 @@ NSString * const kNPCooleafClientRefreshNotification = @"kNPCooleafClientRefresh
 NSString * const kNPCooleafClientRUDIDHarvestedNotification = @"kNPCooleafClientRUDIDHarvestedNotification";
 NSString * const kNPCooleafClientSignOut = @"kNPCooleafClientSignOut";
 
-static NSString * const kNPCooleafClientBaseURLString = @"http://api.staging.do.cooleaf.monterail.eu";
-static NSString * const kNPCooleafClientAPIPrefix = @"/v2";
-static NSString * const kNPCooleafClientAPIAuthLogin = @"cooleaf";
-static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
+//static NSString * const kNPCooleafClientBaseURLString = @"http://api.staging.do.cooleaf.monterail.eu";
+//static NSString * const kNPCooleafClientAPIPrefix = @"/v2";
+//static NSString * const kNPCooleafClientAPIAuthLogin = @"cooleaf";
+//static NSString * const kNPCooleafClientAPIAuthPassword = @"letmein";
 
-//static NSString * const kNPCooleafClientBaseURLString = @"http://api.cooleaf.com";
-//static NSString * const kNPCooleafClientAPIPrefix = @"/v1";
-//static NSString * const kNPCooleafClientAPIAuthLogin = @"";
-//static NSString * const kNPCooleafClientAPIAuthPassword = @"";
+static NSString * const kNPCooleafClientBaseURLString = @"http://api.cooleaf.com";
+static NSString * const kNPCooleafClientAPIPrefix = @"/v2";
+static NSString * const kNPCooleafClientAPIAuthLogin = @"";
+static NSString * const kNPCooleafClientAPIAuthPassword = @"";
 
 @interface NPCooleafClient ()
 {
