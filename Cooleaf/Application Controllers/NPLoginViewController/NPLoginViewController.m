@@ -271,6 +271,7 @@
 		_signInBtn.hidden = NO;
 		_signInBtn.alpha = 1.0;
 		_termsButton.alpha = 0.0;
+		_passwordField.placeholder = @"Password";
 		[self.view bringSubviewToFront:_signInBtn];
 	} completion:^(BOOL finished) {
 	}];
@@ -287,6 +288,7 @@
 		_signInBtn.hidden = YES;
 		_signInBtn.alpha = 0.0;
 		_termsButton.alpha = 1.0;
+		_passwordField.placeholder = @"Create Password";
 		[self.view bringSubviewToFront:_signUpButton];
 	} completion:^(BOOL finished) {
 	}];
