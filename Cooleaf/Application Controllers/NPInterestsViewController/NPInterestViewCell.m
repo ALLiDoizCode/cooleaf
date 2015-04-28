@@ -49,6 +49,8 @@ static UIImage *gCheckboxOff;
 	// interest image
 	_imageView = [[UIImageView alloc] init];
 	_imageView.translatesAutoresizingMaskIntoConstraints = FALSE;
+	_imageView.userInteractionEnabled = TRUE;
+	[_imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionToggleActive:)]];
 	[self.contentView addSubview:_imageView];
 	[self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop   multiplier:1 constant:0]];
 	[self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeft  multiplier:1 constant:0]];
