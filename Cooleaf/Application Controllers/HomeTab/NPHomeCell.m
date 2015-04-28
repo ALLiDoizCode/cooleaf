@@ -21,7 +21,7 @@ static UITextView *_tV;
 	BOOL _showsActionButton;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *eventImage;
-@property (weak, nonatomic) IBOutlet UITextView *eventTitle;
+@property (weak, nonatomic) IBOutlet UILabel *eventTitle;
 @property (weak, nonatomic) IBOutlet UILabel *eventDate;
 @property (weak, nonatomic) IBOutlet UITextView *eventTags;
 @property (weak, nonatomic) IBOutlet UIView *slideBarContent;
@@ -158,11 +158,11 @@ static UITextView *_tV;
 	CGFloat shift2 = 0;
 	_eventTitle.text = _event[@"name"];
 	CGRect f;
-	f = _eventTitle.frame;
-	[_eventTitle sizeToFit];
-	_eventTitle.frame = CGRectMake(f.origin.x, f.origin.y, f.size.width, _eventTitle.frame.size.height);
-	shift = _eventTitle.frame.size.height - 47.0;
-	
+//	f = _eventTitle.frame;
+//	[_eventTitle sizeToFit];
+//	_eventTitle.frame = CGRectMake(f.origin.x, f.origin.y, f.size.width, _eventTitle.frame.size.height);
+//	shift = _eventTitle.frame.size.height - 47.0;
+//	
 	if (!_dateFormatter)
 	{
 		_dateFormatter = [NSDateFormatter new];

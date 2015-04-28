@@ -51,14 +51,13 @@
                                         <rect key="frame" x="285" y="12" width="24" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Some title" id="NBh-jh-u3x">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="26"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Bj-Su-O4b">
+                                        <rect key="frame" x="8" y="5" width="270" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 November 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cSc-xf-qjl">
                                         <rect key="frame" x="5" y="22" width="220" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -101,7 +100,7 @@
                 <outlet property="eventDate" destination="cSc-xf-qjl" id="odq-oX-fXC"/>
                 <outlet property="eventImage" destination="chQ-Hi-SSQ" id="eKW-fb-gVn"/>
                 <outlet property="eventTags" destination="VsZ-xL-LH1" id="v4s-xR-1Fp"/>
-                <outlet property="eventTitle" destination="NBh-jh-u3x" id="Dk2-HK-xvy"/>
+                <outlet property="eventTitle" destination="7Bj-Su-O4b" id="cIv-EJ-3h6"/>
                 <outlet property="joinButton" destination="2On-yd-hnb" id="B99-wA-MyU"/>
                 <outlet property="loadingIndicator" destination="wP1-xM-Ink" id="RbE-Dd-3xz"/>
                 <outlet property="selectionView" destination="yWO-PL-5cA" id="FM8-h0-627"/>
