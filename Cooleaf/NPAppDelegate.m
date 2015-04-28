@@ -95,21 +95,14 @@
 
     self.window.backgroundColor = [UIColor whiteColor];
     
-//    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[NPEventListViewController new]];
 	
 	self.window.rootViewController = (_mainViewController = [[MainViewController alloc]init]);
 	
     [self.window makeKeyAndVisible];    
-//	[self.window.rootViewController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
-		[self.window.rootViewController presentViewController:[[UINavigationController alloc] initWithRootViewController:[NPLoginViewController new]] animated:NO completion:nil];
-//    [self checkNewVersionWithpdateBlock:^(NSString *newVersion) {
-//       UIAlertView *updateAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"New version available", nil)
-//                                                             message:NSLocalizedString(@"New version of Cooleaf is available. Please update to continue using the application.", nil)
-//                                                            delegate:self cancelButtonTitle:NSLocalizedString(@"Update", nil) otherButtonTitles:nil];
-//        updateAlert.tag = 1001;
-//        [updateAlert show];
-//    }];
-    return YES;
+
+	[self.window.rootViewController presentViewController:[[UINavigationController alloc] initWithRootViewController:[NPLoginViewController new]] animated:NO completion:nil];
+
+	return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
