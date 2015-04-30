@@ -310,8 +310,14 @@
 {
     if (_usernameField == textField)
         [_passwordField becomeFirstResponder];
-    else if (_passwordField == textField)
-        [self signInTapped:nil];
+	else if (_passwordField == textField) {
+		if (_signUpButton.hidden == NO) {
+			[self signupButtonTapped:nil];
+		}
+		else
+			[self signInTapped:nil];
+	}
+	
     
     return YES;
 }
