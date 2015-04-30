@@ -503,7 +503,7 @@
 		backLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
 		backLbl.font = [UIFont mediumApplicationFontOfSize:15];
 		backLbl.textColor = UIColor.whiteColor;
-		backLbl.text = @"SIGN UP";
+		backLbl.text = @"BACK";
 		[_backBtn addSubview:backLbl];
 		[_backBtn addConstraint:[NSLayoutConstraint constraintWithItem:backLbl attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:backImg  attribute:NSLayoutAttributeRight   multiplier:1 constant:12]];
 		[_backBtn addConstraint:[NSLayoutConstraint constraintWithItem:backLbl attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_backBtn attribute:NSLayoutAttributeCenterY multiplier:1 constant: 0]];
