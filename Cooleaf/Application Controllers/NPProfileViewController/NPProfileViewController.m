@@ -229,15 +229,18 @@
 
 	//Structure Tag Layout
 	
-	_departmentLabel1 = [[UILabel alloc] init];
-	_departmentLabel1.translatesAutoresizingMaskIntoConstraints = FALSE;
-	_departmentLabel1.font = [UIFont systemFontOfSize:14];
-	_departmentLabel1.textColor = RGB(255.0, 255.0, 255.0);
-	_departmentLabel1.backgroundColor = RGB(78.0, 205.0, 196.0);
-	_departmentLabel1.text = [NSString stringWithFormat:@" %@ ", departmentsArray[0]];
-	[_departmentView addSubview:_departmentLabel1];
-	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-	[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
+	if (departmentsArray.count > 0) {
+		
+		_departmentLabel1 = [[UILabel alloc] init];
+		_departmentLabel1.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_departmentLabel1.font = [UIFont systemFontOfSize:14];
+		_departmentLabel1.textColor = RGB(255.0, 255.0, 255.0);
+		_departmentLabel1.backgroundColor = RGB(78.0, 205.0, 196.0);
+		_departmentLabel1.text = [NSString stringWithFormat:@" %@ ", departmentsArray[0]];
+		[_departmentView addSubview:_departmentLabel1];
+		[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+		[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
+	}
 	
 	if (departmentsArray.count > 1) {
 		_departmentLabel2 = [[UILabel alloc] init];
@@ -264,15 +267,18 @@
 		[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentLabel2 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
 	}
 	
-	_locationLabel1 = [[UILabel alloc] init];
-	_locationLabel1.translatesAutoresizingMaskIntoConstraints = FALSE;
-	_locationLabel1.font = [UIFont systemFontOfSize:14];
-	_locationLabel1.textColor = RGB(255.0, 255.0, 255.0);
-	_locationLabel1.backgroundColor = RGB(78.0, 205.0, 196.0);
-	_locationLabel1.text = [NSString stringWithFormat:@" %@ ", locationsArray[0]];
-	[_locationView addSubview:_locationLabel1];
-	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-	[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
+	if (locationsArray.count > 0) {
+		
+		_locationLabel1 = [[UILabel alloc] init];
+		_locationLabel1.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_locationLabel1.font = [UIFont systemFontOfSize:14];
+		_locationLabel1.textColor = RGB(255.0, 255.0, 255.0);
+		_locationLabel1.backgroundColor = RGB(78.0, 205.0, 196.0);
+		_locationLabel1.text = [NSString stringWithFormat:@" %@ ", locationsArray[0]];
+		[_locationView addSubview:_locationLabel1];
+		[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+		[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
+	}
 	
 	if (locationsArray.count > 1) {
 		
