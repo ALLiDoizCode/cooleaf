@@ -12,6 +12,7 @@
 #import "NPInterestsViewController2.h"
 #import "NPEventListViewController.h"
 #import "NPTag.h"
+#import "NPTagGroup.h"
 #import "NPEditTagsViewController.h"
 #import <SSKeychain/SSKeychain.h>
 
@@ -191,7 +192,19 @@
 	_rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
 	if ([uD[@"reward_points"] intValue] == 0)
 	{_rewardPoints.hidden = TRUE;}
+	DLog(@" The users data is == %@",uD);
 	
+	//Tag Groups Setup
+	NSMutableDictionary *tagGroups = [[NSMutableDictionary alloc] init];
+
+	[(NSArray *)uD[@"role"][@"organization"][@"structures"] enumerateObjectsUsingBlock:^ (NSDictionary *structure, NSUInteger index, BOOL *stop) {
+		NPTagGroup *tagGroup = [[NPTagGroup alloc] initWithDictionary:structure];
+		tagGroups[tagGroup.name] = tagGroup;
+	}];
+	
+	NPTagGroup *locationTagGroup = tagGroups[@"Location"];
+	NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
+
 	//Structure Tag Setup
 	
 	NSMutableArray *npStructureTags = [[NSMutableArray alloc] init];
@@ -201,13 +214,13 @@
 	DLog(@" Structure Tags are this: %@", npStructureTags);
 	
 	NSArray *locationTags = [npStructureTags filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NPTag *locationTag, NSDictionary *bindings) {
-		return locationTag.parentId == 9;
+		return locationTag.parentId == locationTagGroup.objectId;
 	}]];
 	
 	DLog(@" Location Tags are this: %@", locationTags);
 	
 	NSArray *departmentTags = [npStructureTags filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NPTag *departmentTag, NSDictionary *bindings) {
-		return departmentTag.parentId == 10;
+		return departmentTag.parentId == departmentTagGroup.objectId;
 	}]];
 	
 	DLog(@" Department Tags are this: %@", departmentTags);
