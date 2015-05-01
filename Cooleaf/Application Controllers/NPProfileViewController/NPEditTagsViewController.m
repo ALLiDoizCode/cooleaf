@@ -525,7 +525,7 @@
 		nextLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
 		nextLbl.font = [UIFont mediumApplicationFontOfSize:16];
 		nextLbl.textColor = UIColor.whiteColor;
-		nextLbl.text = @"NEXT";
+		nextLbl.text = @"SUBMIT";
 		[_nextBtn addSubview:nextLbl];
 		[_nextBtn addConstraint:[NSLayoutConstraint constraintWithItem:nextLbl attribute:NSLayoutAttributeRight   relatedBy:NSLayoutRelationEqual toItem:_nextBtn attribute:NSLayoutAttributeRight   multiplier:1 constant:-16]];
 		[_nextBtn addConstraint:[NSLayoutConstraint constraintWithItem:nextLbl attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_nextBtn attribute:NSLayoutAttributeCenterY multiplier:1 constant:  0]];

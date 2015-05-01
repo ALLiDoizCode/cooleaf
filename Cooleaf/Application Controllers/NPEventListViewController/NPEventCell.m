@@ -54,7 +54,7 @@ static UITextView *_tV;
     UIPanGestureRecognizer *rec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
     rec.cancelsTouchesInView = YES;
     rec.delegate = self;
-    [_sliderBarView addGestureRecognizer:rec];
+//    [_sliderBarView addGestureRecognizer:rec];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
