@@ -192,7 +192,7 @@
 	_rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
 	if ([uD[@"reward_points"] intValue] == 0)
 	{_rewardPoints.hidden = TRUE;}
-	DLog(@" The users data is == %@",uD);
+//	DLog(@" The users data is == %@",uD);
 	
 	//Tag Groups Setup
 	NSMutableDictionary *tagGroups = [[NSMutableDictionary alloc] init];

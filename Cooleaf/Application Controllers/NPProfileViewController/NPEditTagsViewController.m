@@ -704,16 +704,38 @@
 - (void)doActionNext:(id)sender
 {
 	DLog(@"");
-	
-	NSMutableArray *tags = [[NSMutableArray alloc] init];
-	
-	[tags addObjectsFromArray:[self valuesForPickersWithTitle:@"Location"]];
-	[tags addObjectsFromArray:[self valuesForPickersWithTitle:@"Department"]];
-	
-	NSString *gender = [self valueForPickerWithTitle:@"Gender"];
+	//Tag Groups Setup
 	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
+	NSMutableDictionary *tagGroups = [[NSMutableDictionary alloc] init];
 	
-	[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:nil removed_picture:nil file_cache:nil role_structure_required:uD[@"role"] profileDailyDigest:nil profileWeeklyDigest:nil profile:uD[@"profile"] completion:^{
+	[(NSArray *)uD[@"role"][@"organization"][@"structures"] enumerateObjectsUsingBlock:^ (NSDictionary *structure, NSUInteger index, BOOL *stop) {
+		NPTagGroup *tagGroup = [[NPTagGroup alloc] initWithDictionary:structure];
+		tagGroups[tagGroup.name] = tagGroup;
+	}];
+	
+	NPTagGroup *locationTagGroup = tagGroups[@"Location"];
+	NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
+	
+	NSMutableArray *locationTags = [[NSMutableArray alloc] init];
+	NSMutableArray *departmentTags = [[NSMutableArray alloc] init];
+
+	[locationTags addObjectsFromArray:[self valuesForPickersWithTitle:@"Location"]];
+	[departmentTags addObjectsFromArray:[self valuesForPickersWithTitle:@"Department"]];
+	
+	NSMutableDictionary *structures = [[NSMutableDictionary alloc] init];
+	NSString *locationID = [NSString stringWithFormat:@"%lu",(unsigned long)locationTagGroup.objectId];
+	[structures setObject:locationTags forKey:locationID];
+	NSString *departmentID = [NSString stringWithFormat:@"%lu",(unsigned long)departmentTagGroup.objectId];
+	[structures setObject:departmentTags forKey:departmentID];
+	
+	NSMutableDictionary *role = [[NSMutableDictionary alloc] init];
+	[role setObject:structures forKey:@"structures"];
+	
+	DLog(@" The role to be submitted is == %@", role);
+	
+//	NSString *gender = [self valueForPickerWithTitle:@"Gender"];
+	
+	[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:nil removed_picture:nil file_cache:nil role_structure_required:role profileDailyDigest:nil profileWeeklyDigest:nil profile:uD[@"profile"] completion:^{
 	}];
 	
 	//	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:gender password:_password tags:tags completion:^ (BOOL success, NSString *error) {
