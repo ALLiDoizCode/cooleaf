@@ -201,9 +201,14 @@
 		NPTagGroup *tagGroup = [[NPTagGroup alloc] initWithDictionary:structure];
 		tagGroups[tagGroup.name] = tagGroup;
 	}];
+	DLog(@"The tagGroups are == %@", tagGroups);
+	NSArray *allStructureNames = [tagGroups allKeys];
+	DLog(@" All the Structure names are %@", allStructureNames);
 	
-	NPTagGroup *locationTagGroup = tagGroups[@"Location"];
-	NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
+	
+	NPTagGroup *locationTagGroup = tagGroups[allStructureNames[0]];
+	NPTagGroup *departmentTagGroup = tagGroups[allStructureNames[2]];
+	NPTagGroup *thirdTagGroup = tagGroups[allStructureNames[1]];
 
 	//Structure Tag Setup
 	
@@ -212,6 +217,9 @@
 		[npStructureTags addObject:[[NPTag alloc] initWithDictionary:structureTag]];
 	}];
 	DLog(@" Structure Tags are this: %@", npStructureTags);
+	
+	
+	
 	
 	NSArray *locationTags = [npStructureTags filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NPTag *locationTag, NSDictionary *bindings) {
 		return locationTag.parentId == locationTagGroup.objectId;
@@ -224,6 +232,15 @@
 	}]];
 	
 	DLog(@" Department Tags are this: %@", departmentTags);
+
+	NSArray *thirdTags = [npStructureTags filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NPTag *thirdTag, NSDictionary *bindings) {
+		return thirdTag.parentId == thirdTagGroup.objectId;
+	}]];
+	
+	DLog(@" Third Tags are this: %@", thirdTags);
+
+	
+	
 	
 	NSMutableArray *locationsArray = [[NSMutableArray alloc] init];
 	
@@ -231,7 +248,6 @@
 		[locationsArray addObject:location.name];
 	}];
 	DLog(@" Locations Array is: %@", locationsArray);
-
 	
 	NSMutableArray *departmentsArray = [[NSMutableArray alloc] init];
 	
@@ -239,6 +255,13 @@
 		[departmentsArray addObject:department.name];
 	}];
 	DLog(@" Departments Array is: %@", departmentsArray);
+	
+	NSMutableArray *thirdArray = [[NSMutableArray alloc] init];
+	
+	[thirdTags enumerateObjectsUsingBlock:^(NPTag *third, NSUInteger index, BOOL *stop) {
+		[thirdArray addObject:third.name];
+	}];
+	DLog(@" Third Array is: %@", thirdArray);
 
 	//Structure Tag Layout
 	
