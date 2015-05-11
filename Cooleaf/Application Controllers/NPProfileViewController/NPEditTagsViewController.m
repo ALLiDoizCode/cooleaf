@@ -426,8 +426,8 @@
 	if (token != nil && tagGroups != nil) {
 		_token = token;
 		
-		NPTagGroup *locationTagGroup = tagGroups[@"Location"];
-		[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags   afterPicker:nil defaultValue:((NSArray *)presets[@(locationTagGroup.objectId).stringValue]).firstObject];
+		NPTagGroup *the1stTagGroup = tagGroups[allStructureNames[0]];
+		[self addPickerWithTitle:allStructureNames[0]   tags:the1stTagGroup.tags   afterPicker:nil defaultValue:((NSArray *)presets[@(the1stTagGroup.objectId).stringValue]).firstObject];
 		
 		
 		if (allStructureNames.count > 1)
@@ -785,13 +785,13 @@
 	DLog(@" All the Structure names are %@", allStructureNames);
 	
 	
-	NPTagGroup *locationTagGroup = tagGroups[@"Location"];
-	NSMutableArray *locationTags = [[NSMutableArray alloc] init];
-	[locationTags addObjectsFromArray:[self valuesForPickersWithTitle:@"Location"]];
+	NPTagGroup *the1stTagGroup = tagGroups[allStructureNames[0]];
+	NSMutableArray *the1stTagsArray = [[NSMutableArray alloc] init];
+	[the1stTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[0]]];
 	
 	NSMutableDictionary *structures = [[NSMutableDictionary alloc] init];
-	NSString *locationID = [NSString stringWithFormat:@"%lu",(unsigned long)locationTagGroup.objectId];
-	[structures setObject:locationTags forKey:locationID];
+	NSString *stringFor1stTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the1stTagGroup.objectId];
+	[structures setObject:the1stTagsArray forKey:stringFor1stTagID];
 	
 	if (allStructureNames.count > 1) {
 		NPTagGroup *the2ndTagGroup = tagGroups[allStructureNames[1]];
