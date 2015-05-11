@@ -449,6 +449,50 @@
 			[self addPickerWithTitle:allStructureNames[3] tags:the4thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the4thTagGroup.objectId).stringValue]).firstObject];
 		}
 		
+		
+		if (allStructureNames.count > 4)
+		{
+			NPTagGroup *the5thTagGroup = tagGroups[allStructureNames[4]];
+			[self addPickerWithTitle:allStructureNames[4] tags:the5thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the5thTagGroup.objectId).stringValue]).firstObject];
+		}
+		
+		
+		if (allStructureNames.count > 5)
+		{
+			NPTagGroup *the6thTagGroup = tagGroups[allStructureNames[5]];
+			[self addPickerWithTitle:allStructureNames[5] tags:the6thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the6thTagGroup.objectId).stringValue]).firstObject];
+		}
+		
+		
+		if (allStructureNames.count > 6)
+		{
+			NPTagGroup *the7thTagGroup = tagGroups[allStructureNames[6]];
+			[self addPickerWithTitle:allStructureNames[6] tags:the7thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the7thTagGroup.objectId).stringValue]).firstObject];
+		}
+		
+		
+		if (allStructureNames.count > 7)
+		{
+			NPTagGroup *the8thTagGroup = tagGroups[allStructureNames[7]];
+			[self addPickerWithTitle:allStructureNames[7] tags:the8thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the8thTagGroup.objectId).stringValue]).firstObject];
+		}
+		
+		
+		if (allStructureNames.count > 8)
+		{
+			NPTagGroup *the9thTagGroup = tagGroups[allStructureNames[8]];
+			[self addPickerWithTitle:allStructureNames[8] tags:the9thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the9thTagGroup.objectId).stringValue]).firstObject];
+		}
+		
+		
+		if (allStructureNames.count > 9)
+		{
+			NPTagGroup *the10thTagGroup = tagGroups[allStructureNames[9]];
+			[self addPickerWithTitle:allStructureNames[9] tags:the10thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the10thTagGroup.objectId).stringValue]).firstObject];
+		}
+		
+		
+		
 		//			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"]   afterPicker:nil defaultValue:presets[@"Gender"]];
 		
 		_nameTxt.text = presets[@"Full Name"];
