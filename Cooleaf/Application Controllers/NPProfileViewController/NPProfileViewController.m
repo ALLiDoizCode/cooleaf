@@ -48,6 +48,8 @@
 @property (weak, nonatomic) IBOutlet UIView *tagView1;
 @property (weak, nonatomic) IBOutlet UIView *tagView2;
 @property (weak, nonatomic) IBOutlet UIView *myGroupsView;
+@property (weak, nonatomic) IBOutlet UILabel *tagLabel1;
+@property (weak, nonatomic) IBOutlet UILabel *tagLabel2;
 
 - (IBAction)pastEventsButton:(UIButton *)sender;
 
@@ -212,7 +214,8 @@
 	
 	NSArray *allStructureNames = [tagGroups allKeys];
 	DLog(@" All the Structure names are %@", allStructureNames);
-	
+	_tagLabel1.text = allStructureNames[0];
+	_tagLabel2.text = allStructureNames[1];
 	
 	NPTagGroup *locationTagGroup = tagGroups[allStructureNames[0]];
 	NPTagGroup *departmentTagGroup = tagGroups[allStructureNames[2]];

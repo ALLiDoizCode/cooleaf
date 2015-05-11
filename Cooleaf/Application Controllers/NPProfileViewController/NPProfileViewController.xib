@@ -18,6 +18,8 @@
                 <outlet property="positionLabel" destination="jrp-0I-Xt6" id="NyR-h9-b16"/>
                 <outlet property="rewardPoints" destination="6z7-B9-oeB" id="9l8-Jy-2KA"/>
                 <outlet property="scrollView" destination="Y7z-Ly-XFA" id="GA8-3h-Ikl"/>
+                <outlet property="tagLabel1" destination="a4Q-FP-0Lb" id="w42-Og-s5W"/>
+                <outlet property="tagLabel2" destination="3Fn-vk-pXz" id="HiX-ft-3rw"/>
                 <outlet property="tagView1" destination="w3N-ju-CV2" id="sy7-LY-CM9"/>
                 <outlet property="tagView2" destination="JX1-Xs-49U" id="Xy0-J8-TyG"/>
                 <outlet property="view" destination="1" id="3"/>
