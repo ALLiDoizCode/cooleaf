@@ -427,10 +427,21 @@
 		_token = token;
 		
 		NPTagGroup *locationTagGroup = tagGroups[@"Location"];
-		NPTagGroup *the2ndTagGroup = tagGroups[allStructureNames[1]];
-		
 		[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags   afterPicker:nil defaultValue:((NSArray *)presets[@(locationTagGroup.objectId).stringValue]).firstObject];
-		[self addPickerWithTitle:allStructureNames[1] tags:the2ndTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the2ndTagGroup.objectId).stringValue]).firstObject];
+		
+		
+		if (allStructureNames.count > 1)
+		{
+			NPTagGroup *the2ndTagGroup = tagGroups[allStructureNames[1]];
+			[self addPickerWithTitle:allStructureNames[1] tags:the2ndTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the2ndTagGroup.objectId).stringValue]).firstObject];
+		}
+		
+		if (allStructureNames.count > 2)
+		{
+			NPTagGroup *the3rdTagGroup = tagGroups[allStructureNames[2]];
+			[self addPickerWithTitle:allStructureNames[2] tags:the3rdTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the3rdTagGroup.objectId).stringValue]).firstObject];
+		}
+		
 		//			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"]   afterPicker:nil defaultValue:presets[@"Gender"]];
 		
 		_nameTxt.text = presets[@"Full Name"];
@@ -724,19 +735,31 @@
 	
 	
 	NPTagGroup *locationTagGroup = tagGroups[@"Location"];
-	NPTagGroup *the2ndTagGroup = tagGroups[allStructureNames[1]];
-	
 	NSMutableArray *locationTags = [[NSMutableArray alloc] init];
-	NSMutableArray *the2ndTagsArray = [[NSMutableArray alloc] init];
-
 	[locationTags addObjectsFromArray:[self valuesForPickersWithTitle:@"Location"]];
-	[the2ndTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[1]]];
 	
 	NSMutableDictionary *structures = [[NSMutableDictionary alloc] init];
 	NSString *locationID = [NSString stringWithFormat:@"%lu",(unsigned long)locationTagGroup.objectId];
 	[structures setObject:locationTags forKey:locationID];
-	NSString *stringFor2ndTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the2ndTagGroup.objectId];
-	[structures setObject:the2ndTagsArray forKey:stringFor2ndTagID];
+	
+	if (allStructureNames.count > 1) {
+		NPTagGroup *the2ndTagGroup = tagGroups[allStructureNames[1]];
+		NSMutableArray *the2ndTagsArray = [[NSMutableArray alloc] init];
+		[the2ndTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[1]]];
+		NSString *stringFor2ndTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the2ndTagGroup.objectId];
+		[structures setObject:the2ndTagsArray forKey:stringFor2ndTagID];
+	}
+	
+	
+	if (allStructureNames.count > 2) {
+		NPTagGroup *the3rdTagGroup = tagGroups[allStructureNames[2]];
+		NSMutableArray *the3rdTagsArray = [[NSMutableArray alloc] init];
+		[the3rdTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[2]]];
+		NSString *stringFor3rdTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the3rdTagGroup.objectId];
+		[structures setObject:the3rdTagsArray forKey:stringFor3rdTagID];
+	}
+	
+	
 	
 	NSMutableDictionary *role = [[NSMutableDictionary alloc] init];
 	[role setObject:structures forKey:@"structures"];
