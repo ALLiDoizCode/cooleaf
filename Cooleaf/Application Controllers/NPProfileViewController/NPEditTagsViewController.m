@@ -416,16 +416,21 @@
 	DLog(@"tags = %@", tagGroups);
 	DLog(@"presets = %@", presets);
 	
+	
+	NSArray *allStructureNames = [tagGroups allKeys];
+	DLog(@" All the Structure names are %@", allStructureNames);
+	
+	
 	[self modalHide];
 	
 	if (token != nil && tagGroups != nil) {
 		_token = token;
 		
 		NPTagGroup *locationTagGroup = tagGroups[@"Location"];
-		NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
+		NPTagGroup *the2ndTagGroup = tagGroups[allStructureNames[1]];
 		
 		[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags   afterPicker:nil defaultValue:((NSArray *)presets[@(locationTagGroup.objectId).stringValue]).firstObject];
-		[self addPickerWithTitle:@"Department" tags:departmentTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(departmentTagGroup.objectId).stringValue]).firstObject];
+		[self addPickerWithTitle:allStructureNames[1] tags:the2ndTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the2ndTagGroup.objectId).stringValue]).firstObject];
 		//			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"]   afterPicker:nil defaultValue:presets[@"Gender"]];
 		
 		_nameTxt.text = presets[@"Full Name"];
@@ -713,20 +718,25 @@
 		tagGroups[tagGroup.name] = tagGroup;
 	}];
 	
+	
+	NSArray *allStructureNames = [tagGroups allKeys];
+	DLog(@" All the Structure names are %@", allStructureNames);
+	
+	
 	NPTagGroup *locationTagGroup = tagGroups[@"Location"];
-	NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
+	NPTagGroup *the2ndTagGroup = tagGroups[allStructureNames[1]];
 	
 	NSMutableArray *locationTags = [[NSMutableArray alloc] init];
-	NSMutableArray *departmentTags = [[NSMutableArray alloc] init];
+	NSMutableArray *the2ndTagsArray = [[NSMutableArray alloc] init];
 
 	[locationTags addObjectsFromArray:[self valuesForPickersWithTitle:@"Location"]];
-	[departmentTags addObjectsFromArray:[self valuesForPickersWithTitle:@"Department"]];
+	[the2ndTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[1]]];
 	
 	NSMutableDictionary *structures = [[NSMutableDictionary alloc] init];
 	NSString *locationID = [NSString stringWithFormat:@"%lu",(unsigned long)locationTagGroup.objectId];
 	[structures setObject:locationTags forKey:locationID];
-	NSString *departmentID = [NSString stringWithFormat:@"%lu",(unsigned long)departmentTagGroup.objectId];
-	[structures setObject:departmentTags forKey:departmentID];
+	NSString *stringFor2ndTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the2ndTagGroup.objectId];
+	[structures setObject:the2ndTagsArray forKey:stringFor2ndTagID];
 	
 	NSMutableDictionary *role = [[NSMutableDictionary alloc] init];
 	[role setObject:structures forKey:@"structures"];
