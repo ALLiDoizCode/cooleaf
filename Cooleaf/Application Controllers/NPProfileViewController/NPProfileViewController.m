@@ -45,6 +45,7 @@
 @property (weak, nonatomic) IBOutlet UIView *imageCoverView;
 @property (weak, nonatomic) IBOutlet UIView *tagView1;
 @property (weak, nonatomic) IBOutlet UIView *tagView2;
+@property (weak, nonatomic) IBOutlet UIView *myGroupsView;
 
 - (IBAction)pastEventsButton:(UIButton *)sender;
 
