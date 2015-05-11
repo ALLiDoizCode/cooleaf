@@ -821,6 +821,66 @@
 	
 	
 	
+	if (allStructureNames.count > 4) {
+		NPTagGroup *the5thTagGroup = tagGroups[allStructureNames[4]];
+		NSMutableArray *the5thTagsArray = [[NSMutableArray alloc] init];
+		[the5thTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[4]]];
+		NSString *stringFor5thTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the5thTagGroup.objectId];
+		[structures setObject:the5thTagsArray forKey:stringFor5thTagID];
+	}
+	
+	
+	
+	if (allStructureNames.count > 5) {
+		NPTagGroup *the6thTagGroup = tagGroups[allStructureNames[5]];
+		NSMutableArray *the6thTagsArray = [[NSMutableArray alloc] init];
+		[the6thTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[5]]];
+		NSString *stringFor6thTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the6thTagGroup.objectId];
+		[structures setObject:the6thTagsArray forKey:stringFor6thTagID];
+	}
+	
+	
+	
+	if (allStructureNames.count > 6) {
+		NPTagGroup *the7thTagGroup = tagGroups[allStructureNames[6]];
+		NSMutableArray *the7thTagsArray = [[NSMutableArray alloc] init];
+		[the7thTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[6]]];
+		NSString *stringFor7thTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the7thTagGroup.objectId];
+		[structures setObject:the7thTagsArray forKey:stringFor7thTagID];
+	}
+	
+	
+	
+	if (allStructureNames.count > 7) {
+		NPTagGroup *the8thTagGroup = tagGroups[allStructureNames[7]];
+		NSMutableArray *the8thTagsArray = [[NSMutableArray alloc] init];
+		[the8thTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[7]]];
+		NSString *stringFor8thTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the8thTagGroup.objectId];
+		[structures setObject:the8thTagsArray forKey:stringFor8thTagID];
+	}
+	
+	
+	
+	if (allStructureNames.count > 8) {
+		NPTagGroup *the9thTagGroup = tagGroups[allStructureNames[8]];
+		NSMutableArray *the9thTagsArray = [[NSMutableArray alloc] init];
+		[the9thTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[8]]];
+		NSString *stringFor9thTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the9thTagGroup.objectId];
+		[structures setObject:the9thTagsArray forKey:stringFor9thTagID];
+	}
+	
+	
+	
+	if (allStructureNames.count > 9) {
+		NPTagGroup *the10thTagGroup = tagGroups[allStructureNames[9]];
+		NSMutableArray *the10thTagsArray = [[NSMutableArray alloc] init];
+		[the10thTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[9]]];
+		NSString *stringFor10thTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the10thTagGroup.objectId];
+		[structures setObject:the10thTagsArray forKey:stringFor10thTagID];
+	}
+	
+	
+	
 	NSMutableDictionary *role = [[NSMutableDictionary alloc] init];
 	[role setObject:structures forKey:@"structures"];
 	
