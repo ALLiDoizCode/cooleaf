@@ -154,7 +154,8 @@
 	NSString *_username;
 	NSString *_password;
 	NSString *_token;
-	
+	NSDictionary *_tagGroups;
+
 	/**
 	 * Main
 	 */
@@ -372,16 +373,86 @@
 		DLog(@"tags = %@", tagGroups);
 		DLog(@"presets = %@", presets);
 		
+		_tagGroups = tagGroups;
+		
+		NSArray *allStructureNames = [tagGroups allKeys];
+		DLog(@" All the Structure names are %@", allStructureNames);
+		
+		
 		[self modalHide];
 		
 		if (token != nil && tagGroups != nil) {
 			_token = token;
+
 			
-			NPTagGroup *locationTagGroup = tagGroups[@"Location"];
-			NPTagGroup *departmentTagGroup = tagGroups[@"Department"];
+			NPTagGroup *the1stTagGroup = tagGroups[allStructureNames[0]];
 			
-			[self addPickerWithTitle:@"Location"   tags:locationTagGroup.tags   afterPicker:nil defaultValue:((NSArray *)presets[@(locationTagGroup.objectId).stringValue]).firstObject];
-			[self addPickerWithTitle:@"Department" tags:departmentTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(departmentTagGroup.objectId).stringValue]).firstObject];
+			[self addPickerWithTitle:allStructureNames[0] tags:the1stTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the1stTagGroup.objectId).stringValue]).firstObject];
+			
+			
+			if (allStructureNames.count > 1)
+			{
+				NPTagGroup *the2ndTagGroup = tagGroups[allStructureNames[1]];
+				[self addPickerWithTitle:allStructureNames[1] tags:the2ndTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the2ndTagGroup.objectId).stringValue]).firstObject];
+			}
+			
+			if (allStructureNames.count > 2)
+			{
+				NPTagGroup *the3rdTagGroup = tagGroups[allStructureNames[2]];
+				[self addPickerWithTitle:allStructureNames[2] tags:the3rdTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the3rdTagGroup.objectId).stringValue]).firstObject];
+			}
+			
+			
+			if (allStructureNames.count > 3)
+			{
+				NPTagGroup *the4thTagGroup = tagGroups[allStructureNames[3]];
+				[self addPickerWithTitle:allStructureNames[3] tags:the4thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the4thTagGroup.objectId).stringValue]).firstObject];
+			}
+			
+			
+			if (allStructureNames.count > 4)
+			{
+				NPTagGroup *the5thTagGroup = tagGroups[allStructureNames[4]];
+				[self addPickerWithTitle:allStructureNames[4] tags:the5thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the5thTagGroup.objectId).stringValue]).firstObject];
+			}
+			
+			
+			if (allStructureNames.count > 5)
+			{
+				NPTagGroup *the6thTagGroup = tagGroups[allStructureNames[5]];
+				[self addPickerWithTitle:allStructureNames[5] tags:the6thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the6thTagGroup.objectId).stringValue]).firstObject];
+			}
+			
+			
+			if (allStructureNames.count > 6)
+			{
+				NPTagGroup *the7thTagGroup = tagGroups[allStructureNames[6]];
+				[self addPickerWithTitle:allStructureNames[6] tags:the7thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the7thTagGroup.objectId).stringValue]).firstObject];
+			}
+			
+			
+			if (allStructureNames.count > 7)
+			{
+				NPTagGroup *the8thTagGroup = tagGroups[allStructureNames[7]];
+				[self addPickerWithTitle:allStructureNames[7] tags:the8thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the8thTagGroup.objectId).stringValue]).firstObject];
+			}
+			
+			
+			if (allStructureNames.count > 8)
+			{
+				NPTagGroup *the9thTagGroup = tagGroups[allStructureNames[8]];
+				[self addPickerWithTitle:allStructureNames[8] tags:the9thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the9thTagGroup.objectId).stringValue]).firstObject];
+			}
+			
+			
+			if (allStructureNames.count > 9)
+			{
+				NPTagGroup *the10thTagGroup = tagGroups[allStructureNames[9]];
+				[self addPickerWithTitle:allStructureNames[9] tags:the10thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the10thTagGroup.objectId).stringValue]).firstObject];
+			}
+
+			
+			
 //			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"]   afterPicker:nil defaultValue:presets[@"Gender"]];
 			
 			_nameTxt.text = presets[@"Full Name"];
@@ -661,11 +732,56 @@
 {
 	DLog(@"");
 	
+	//Tag Groups Setup
+//	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
+//	NSMutableDictionary *tagGroups = [[NSMutableDictionary alloc] init];
+//	
+//	[(NSArray *)uD[@"role"][@"organization"][@"structures"] enumerateObjectsUsingBlock:^ (NSDictionary *structure, NSUInteger index, BOOL *stop) {
+//		NPTagGroup *tagGroup = [[NPTagGroup alloc] initWithDictionary:structure];
+//		tagGroups[tagGroup.name] = tagGroup;
+//	}];
+//	
+	
+	NSArray *allStructureNames = [_tagGroups allKeys];
+	DLog(@" All the Structure names are %@", allStructureNames);
+	
+	
+	
+	
+	
 	NSMutableArray *tags = [[NSMutableArray alloc] init];
 	
-	[tags addObjectsFromArray:[self valuesForPickersWithTitle:@"Location"]];
-	[tags addObjectsFromArray:[self valuesForPickersWithTitle:@"Department"]];
+	[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[0]]];
 	
+	if (allStructureNames.count > 1) {
+		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[1]]];
+	}
+	if (allStructureNames.count > 2) {
+		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[2]]];
+	}
+	if (allStructureNames.count > 3) {
+		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[3]]];
+	}
+	if (allStructureNames.count > 4) {
+		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[4]]];
+	}
+	if (allStructureNames.count > 5) {
+		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[5]]];
+	}
+	if (allStructureNames.count > 6) {
+		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[6]]];
+	}
+	if (allStructureNames.count > 7) {
+		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[7]]];
+	}
+	if (allStructureNames.count > 8) {
+		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[8]]];
+	}
+	if (allStructureNames.count > 9) {
+		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[9]]];
+	}
+	
+	DLog(@"the tags we're sending are == %@", tags);
 	NSString *gender = [self valueForPickerWithTitle:@"Gender"];
 	
 	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:gender password:_password tags:tags completion:^ (BOOL success, NSString *error) {

@@ -1068,7 +1068,7 @@
 				GCC_PREFIX_HEADER = "Cooleaf/Cooleaf-Prefix.pch";
 				INFOPLIST_FILE = "Cooleaf/Cooleaf-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ae290beb-863a-4062-bffb-d41edc95ba47";
+				PROVISIONING_PROFILE = "a8ed2028-f29e-4fac-90ef-2e8b80e8a684";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1089,7 +1089,7 @@
 				GCC_PREFIX_HEADER = "Cooleaf/Cooleaf-Prefix.pch";
 				INFOPLIST_FILE = "Cooleaf/Cooleaf-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ae290beb-863a-4062-bffb-d41edc95ba47";
+				PROVISIONING_PROFILE = "a8ed2028-f29e-4fac-90ef-2e8b80e8a684";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
