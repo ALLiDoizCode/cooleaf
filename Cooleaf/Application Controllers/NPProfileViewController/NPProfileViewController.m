@@ -69,7 +69,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	_tagsLabel.hidden = YES;
+//	_tagsLabel.hidden = YES;
     _avatarView.layer.cornerRadius = 59.0;
     UIImage *avatarPlaceholder = nil;
     NSDictionary *uD = [NPCooleafClient sharedClient].userData;
@@ -157,7 +157,7 @@
 {
 	[self.navigationController setNavigationBarHidden:FALSE];
 
-	_tagsLabel.hidden = YES;
+//	_tagsLabel.hidden = YES;
 	_avatarView.layer.cornerRadius = 59.0;
 	UIImage *avatarPlaceholder = nil;
 	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
