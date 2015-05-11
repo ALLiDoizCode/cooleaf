@@ -43,8 +43,8 @@
 //@property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
 @property (weak, nonatomic) IBOutlet UIView *clearView;
 @property (weak, nonatomic) IBOutlet UIView *imageCoverView;
-@property (weak, nonatomic) IBOutlet UIView *departmentView;
-@property (weak, nonatomic) IBOutlet UIView *locationView;
+@property (weak, nonatomic) IBOutlet UIView *tagView1;
+@property (weak, nonatomic) IBOutlet UIView *tagView2;
 
 - (IBAction)pastEventsButton:(UIButton *)sender;
 
@@ -273,9 +273,9 @@
 		_departmentLabel1.textColor = RGB(255.0, 255.0, 255.0);
 		_departmentLabel1.backgroundColor = RGB(78.0, 205.0, 196.0);
 		_departmentLabel1.text = [NSString stringWithFormat:@" %@ ", departmentsArray[0]];
-		[_departmentView addSubview:_departmentLabel1];
-		[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-		[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
+		[_tagView1 addSubview:_departmentLabel1];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView1 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagView1 attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
 	}
 	
 	if (departmentsArray.count > 1) {
@@ -285,9 +285,9 @@
 		_departmentLabel2.textColor = RGB(255.0, 255.0, 255.0);
 		_departmentLabel2.backgroundColor = RGB(78.0, 205.0, 196.0);
 		_departmentLabel2.text = [NSString stringWithFormat:@" %@ ", departmentsArray[1]];
-		[_departmentView addSubview:_departmentLabel2];
-		[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-		[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentLabel1 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
+		[_tagView1 addSubview:_departmentLabel2];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView1 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentLabel1 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
 	}
 	
 	if (departmentsArray.count > 2) {
@@ -298,9 +298,9 @@
 		_departmentLabel3.textColor = RGB(255.0, 255.0, 255.0);
 		_departmentLabel3.backgroundColor = RGB(78.0, 205.0, 196.0);
 		_departmentLabel3.text = [NSString stringWithFormat:@" %@ ", departmentsArray[2]];
-		[_departmentView addSubview:_departmentLabel3];
-		[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_departmentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-		[_departmentView addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentLabel2 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
+		[_tagView1 addSubview:_departmentLabel3];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView1 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_departmentLabel3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_departmentLabel2 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
 	}
 	
 	if (locationsArray.count > 0) {
@@ -311,9 +311,9 @@
 		_locationLabel1.textColor = RGB(255.0, 255.0, 255.0);
 		_locationLabel1.backgroundColor = RGB(78.0, 205.0, 196.0);
 		_locationLabel1.text = [NSString stringWithFormat:@" %@ ", locationsArray[0]];
-		[_locationView addSubview:_locationLabel1];
-		[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-		[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
+		[_tagView2 addSubview:_locationLabel1];
+		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView2 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagView2 attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
 	}
 	
 	if (locationsArray.count > 1) {
@@ -324,9 +324,9 @@
 		_locationLabel2.textColor = RGB(255.0, 255.0, 255.0);
 		_locationLabel2.backgroundColor = RGB(78.0, 205.0, 196.0);
 		_locationLabel2.text = [NSString stringWithFormat:@" %@ ", locationsArray[1]];
-		[_locationView addSubview:_locationLabel2];
-		[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-		[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationLabel1 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
+		[_tagView2 addSubview:_locationLabel2];
+		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView2 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationLabel1 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
 	}
 	
 	if (locationsArray.count > 2) {
@@ -337,9 +337,9 @@
 		_locationLabel3.textColor = RGB(255.0, 255.0, 255.0);
 		_locationLabel3.backgroundColor = RGB(78.0, 205.0, 196.0);
 		_locationLabel3.text = [NSString stringWithFormat:@" %@ ", locationsArray[2]];
-		[_locationView addSubview:_locationLabel3];
-		[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_locationView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-		[_locationView addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationLabel2 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
+		[_tagView2 addSubview:_locationLabel3];
+		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView2 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
+		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationLabel2 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
 	}
 	
 	
