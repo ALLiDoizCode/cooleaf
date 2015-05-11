@@ -29,6 +29,8 @@
 	UILabel *_locationLabel1;
 	UILabel *_locationLabel2;
 	UILabel *_locationLabel3;
+	
+	UIView *_tagView3;
 }
 
 @property (strong, nonatomic) UIImageView *companyView;
@@ -195,6 +197,9 @@
 	{_rewardPoints.hidden = TRUE;}
 	DLog(@" The users data is == %@",uD);
 	
+	
+	
+	
 	//Tag Groups Setup
 	NSMutableDictionary *tagGroups = [[NSMutableDictionary alloc] init];
 
@@ -203,6 +208,8 @@
 		tagGroups[tagGroup.name] = tagGroup;
 	}];
 	DLog(@"The tagGroups are == %@", tagGroups);
+	
+	
 	NSArray *allStructureNames = [tagGroups allKeys];
 	DLog(@" All the Structure names are %@", allStructureNames);
 	
@@ -264,6 +271,9 @@
 	}];
 	DLog(@" Third Array is: %@", thirdArray);
 
+	
+	
+	
 	//Structure Tag Layout
 	
 	if (departmentsArray.count > 0) {
@@ -342,6 +352,22 @@
 		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView2 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
 		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_locationLabel3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_locationLabel2 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
 	}
+	
+	
+	if (allStructureNames.count > 2) {
+		_tagView3 = [[UIView alloc] init];
+		_tagView3.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_tagView3.backgroundColor = UIColor.whiteColor;
+		[_imageCoverView addSubview:_tagView3];
+		[_imageCoverView addConstraint:[NSLayoutConstraint constraintWithItem:_tagView3 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:_tagView2 attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+		[_imageCoverView addConstraint:[NSLayoutConstraint constraintWithItem:_tagView3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:_tagView2 attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
+		[_imageCoverView addConstraint:[NSLayoutConstraint constraintWithItem:_tagView3 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:_tagView2 attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
+	}
+	
+	
+	
+	
+	
 	
 	
 	[_interestsController viewWillAppear:animated];

@@ -20,6 +20,8 @@
 		43B062481AB664B0009F96CD /* NPInterestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B062461AB664B0009F96CD /* NPInterestViewController.xib */; };
 		43B0624C1AB71A64009F96CD /* NPMembersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 43B0624A1AB71A64009F96CD /* NPMembersCell.m */; };
 		43B0624D1AB71A64009F96CD /* NPMembersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B0624B1AB71A64009F96CD /* NPMembersCell.xib */; };
+		43EF2F191B00A8F5002A060A /* NPTagGroupsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */; };
+		43EF2F1A1B00A8F5002A060A /* NPTagGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */; };
 		52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */; };
 		523096C01AA28F5D00649FB7 /* NPInterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */; };
 		523096C11AA28F5D00649FB7 /* NPInterestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */; };
@@ -138,6 +140,9 @@
 		43B062491AB71A64009F96CD /* NPMembersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPMembersCell.h; path = "Application Controllers/Interests/SingleInterestPage/NPMembersCell.h"; sourceTree = "<group>"; };
 		43B0624A1AB71A64009F96CD /* NPMembersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPMembersCell.m; path = "Application Controllers/Interests/SingleInterestPage/NPMembersCell.m"; sourceTree = "<group>"; };
 		43B0624B1AB71A64009F96CD /* NPMembersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPMembersCell.xib; path = "Application Controllers/Interests/SingleInterestPage/NPMembersCell.xib"; sourceTree = "<group>"; };
+		43EF2F161B00A8F5002A060A /* NPTagGroupsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPTagGroupsView.h; sourceTree = "<group>"; };
+		43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPTagGroupsView.m; sourceTree = "<group>"; };
+		43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPTagGroupView.xib; sourceTree = "<group>"; };
 		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPickYourInterestsLabelCell.h; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.h"; sourceTree = "<group>"; };
 		52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPickYourInterestsLabelCell.m; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.m"; sourceTree = "<group>"; };
 		523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsViewController.h; path = "Application Controllers/NPInterestsViewController.h"; sourceTree = "<group>"; };
@@ -450,6 +455,9 @@
 		D93AABEF186EFAAF00E9B96A /* NPProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
+				43EF2F161B00A8F5002A060A /* NPTagGroupsView.h */,
+				43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */,
+				43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */,
 				D93AABF0186EFAD100E9B96A /* NPProfileViewController.h */,
 				D93AABF1186EFAD100E9B96A /* NPProfileViewController.m */,
 				D93AABF2186EFAD100E9B96A /* NPProfileViewController.xib */,
@@ -795,6 +803,7 @@
 				D9809552185CA557008F2B61 /* InfoPlist.strings in Resources */,
 				D980955A185CA557008F2B61 /* Images.xcassets in Resources */,
 				526DDE191AC757550095FC27 /* NPMembersViewController.xib in Resources */,
+				43EF2F1A1B00A8F5002A060A /* NPTagGroupView.xib in Resources */,
 				D980958A185CD013008F2B61 /* NPEventCell.xib in Resources */,
 				D93AAC82187B662200E9B96A /* NPTodosCell.xib in Resources */,
 				52A9A1971AACECC5004E6C13 /* NPInterestCell.xib in Resources */,
@@ -899,6 +908,7 @@
 				52A9A19B1AACECDA004E6C13 /* NPOtherInterestCell.m in Sources */,
 				D93AAC8C187B6D5F00E9B96A /* NPDetailsCell.m in Sources */,
 				526DDE131AC756DB0095FC27 /* NPMemberCell.m in Sources */,
+				43EF2F191B00A8F5002A060A /* NPTagGroupsView.m in Sources */,
 				F998F6891AB211E100213240 /* NPInterestsViewController2.m in Sources */,
 				430936441AD1ECA300E568CD /* NPSeriesEvent.m in Sources */,
 				4309364E1AD1FCCD00E568CD /* NPEventSeriesDateCell.m in Sources */,
