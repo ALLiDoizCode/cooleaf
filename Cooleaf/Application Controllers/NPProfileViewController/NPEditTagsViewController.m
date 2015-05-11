@@ -442,6 +442,13 @@
 			[self addPickerWithTitle:allStructureNames[2] tags:the3rdTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the3rdTagGroup.objectId).stringValue]).firstObject];
 		}
 		
+		
+		if (allStructureNames.count > 3)
+		{
+			NPTagGroup *the4thTagGroup = tagGroups[allStructureNames[3]];
+			[self addPickerWithTitle:allStructureNames[3] tags:the4thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the4thTagGroup.objectId).stringValue]).firstObject];
+		}
+		
 		//			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"]   afterPicker:nil defaultValue:presets[@"Gender"]];
 		
 		_nameTxt.text = presets[@"Full Name"];
@@ -757,6 +764,15 @@
 		[the3rdTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[2]]];
 		NSString *stringFor3rdTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the3rdTagGroup.objectId];
 		[structures setObject:the3rdTagsArray forKey:stringFor3rdTagID];
+	}
+	
+	
+	if (allStructureNames.count > 3) {
+		NPTagGroup *the4thTagGroup = tagGroups[allStructureNames[3]];
+		NSMutableArray *the4thTagsArray = [[NSMutableArray alloc] init];
+		[the4thTagsArray addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[3]]];
+		NSString *stringFor4thTagID = [NSString stringWithFormat:@"%lu",(unsigned long)the4thTagGroup.objectId];
+		[structures setObject:the4thTagsArray forKey:stringFor4thTagID];
 	}
 	
 	
