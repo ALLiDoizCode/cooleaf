@@ -40,7 +40,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *rewardPoints;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *positionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
 @property (weak, nonatomic) IBOutlet UIView *clearView;
 @property (weak, nonatomic) IBOutlet UIView *imageCoverView;
 @property (weak, nonatomic) IBOutlet UIView *departmentView;
@@ -192,7 +192,7 @@
 	_rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
 	if ([uD[@"reward_points"] intValue] == 0)
 	{_rewardPoints.hidden = TRUE;}
-//	DLog(@" The users data is == %@",uD);
+	DLog(@" The users data is == %@",uD);
 	
 	//Tag Groups Setup
 	NSMutableDictionary *tagGroups = [[NSMutableDictionary alloc] init];

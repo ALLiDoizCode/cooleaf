@@ -621,7 +621,6 @@
 			children = (
 				523096BC1AA28E7500649FB7 /* TabBar */,
 				F998F6861AB20E0400213240 /* NPInterestsViewController */,
-				D9809577185CA710008F2B61 /* NPLoginViewController */,
 				F9B37B911AAB94C2003F3FB8 /* NPRegistrationViewController */,
 			);
 			name = "Application Controllers";
@@ -674,6 +673,7 @@
 		F9B37B911AAB94C2003F3FB8 /* NPRegistrationViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D9809577185CA710008F2B61 /* NPLoginViewController */,
 				F9B37B921AAB9802003F3FB8 /* NPRegistrationViewController.h */,
 				F9B37B931AAB9802003F3FB8 /* NPRegistrationViewController.m */,
 			);
