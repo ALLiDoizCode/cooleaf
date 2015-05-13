@@ -50,6 +50,9 @@
 @property (weak, nonatomic) IBOutlet UIView *myGroupsView;
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel1;
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel2;
+@property (weak, nonatomic) IBOutlet UILabel *tagLabel3;
+@property (weak, nonatomic) IBOutlet UILabel *tagLabel4;
+@property (weak, nonatomic) IBOutlet UILabel *tagLabel5;
 
 - (IBAction)pastEventsButton:(UIButton *)sender;
 
@@ -215,11 +218,21 @@
 	NSArray *allStructureNames = [tagGroups allKeys];
 	DLog(@" All the Structure names are %@", allStructureNames);
 	_tagLabel1.text = allStructureNames[0];
-	_tagLabel2.text = allStructureNames[1];
+	_tagLabel2.text = (allStructureNames.count > 1 ? allStructureNames[1] : nil);
+	_tagLabel3.text = (allStructureNames.count > 2 ? allStructureNames[2] : nil);
+	_tagLabel4.text = (allStructureNames.count > 3 ? allStructureNames[3] : nil);
+	_tagLabel5.text = (allStructureNames.count > 4 ? allStructureNames[4] : nil);
+	
+	_tagLabel2.hidden = (allStructureNames.count > 1 ? FALSE : TRUE);
+	_tagLabel3.hidden = (allStructureNames.count > 2 ? FALSE : TRUE);
+	_tagLabel4.hidden = (allStructureNames.count > 3 ? FALSE : TRUE);
+	_tagLabel5.hidden = (allStructureNames.count > 4 ? FALSE : TRUE);
 	
 	NPTagGroup *the1stTagGroup = tagGroups[allStructureNames[0]];
-	NPTagGroup *the2ndTagGroup = tagGroups[allStructureNames[1]];
-	NPTagGroup *the3rdTagGroup = tagGroups[allStructureNames[2]];
+	NPTagGroup *the2ndTagGroup = (allStructureNames.count > 1 ? tagGroups[allStructureNames[1]] : nil);
+	NPTagGroup *the3rdTagGroup = (allStructureNames.count > 2 ? tagGroups[allStructureNames[2]] : nil);
+	NPTagGroup *the4thTagGroup = (allStructureNames.count > 3 ? tagGroups[allStructureNames[3]] : nil);
+	NPTagGroup *the5thTagGroup = (allStructureNames.count > 4 ? tagGroups[allStructureNames[4]] : nil);
 
 	//Structure Tag Setup
 	
@@ -288,8 +301,8 @@
 		_tagSet1Label1.backgroundColor = RGB(78.0, 205.0, 196.0);
 		_tagSet1Label1.text = [NSString stringWithFormat:@" %@ ", the1stStringArray[0]];
 		[_tagView1 addSubview:_tagSet1Label1];
-		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet1Label1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView1 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet1Label1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagView1 attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet1Label1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel1 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet1Label1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagLabel1 attribute:NSLayoutAttributeLeft multiplier:1 constant:10]];
 	}
 	
 	if (the1stStringArray.count > 1) {
@@ -300,8 +313,8 @@
 		_tagSet1Label2.backgroundColor = RGB(78.0, 205.0, 196.0);
 		_tagSet1Label2.text = [NSString stringWithFormat:@" %@ ", the1stStringArray[1]];
 		[_tagView1 addSubview:_tagSet1Label2];
-		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet1Label2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView1 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet1Label2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet1Label1 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet1Label2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel1 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet1Label2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet1Label1 attribute:NSLayoutAttributeRight multiplier:1 constant:10]];
 	}
 	
 	if (the1stStringArray.count > 2) {
@@ -313,8 +326,8 @@
 		_tagSet1Label3.backgroundColor = RGB(78.0, 205.0, 196.0);
 		_tagSet1Label3.text = [NSString stringWithFormat:@" %@ ", the1stStringArray[2]];
 		[_tagView1 addSubview:_tagSet1Label3];
-		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet1Label3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView1 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet1Label3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet1Label2 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet1Label3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel1 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet1Label3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet1Label2 attribute:NSLayoutAttributeRight multiplier:1 constant:10]];
 	}
 	
 	
@@ -326,9 +339,9 @@
 		_tagSet2Label1.textColor = RGB(255.0, 255.0, 255.0);
 		_tagSet2Label1.backgroundColor = RGB(78.0, 205.0, 196.0);
 		_tagSet2Label1.text = [NSString stringWithFormat:@" %@ ", the2ndStringArray[0]];
-		[_tagView2 addSubview:_tagSet2Label1];
-		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView2 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagView2 attribute:NSLayoutAttributeLeft multiplier:1 constant:15.0]];
+		[_tagView1 addSubview:_tagSet2Label1];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel2 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagLabel2 attribute:NSLayoutAttributeLeft multiplier:1 constant:10]];
 	}
 	
 	if (the2ndStringArray.count > 1) {
@@ -339,9 +352,9 @@
 		_tagSet2Label2.textColor = RGB(255.0, 255.0, 255.0);
 		_tagSet2Label2.backgroundColor = RGB(78.0, 205.0, 196.0);
 		_tagSet2Label2.text = [NSString stringWithFormat:@" %@ ", the2ndStringArray[1]];
-		[_tagView2 addSubview:_tagSet2Label2];
-		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView2 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet2Label1 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
+		[_tagView1 addSubview:_tagSet2Label2];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel2 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet2Label1 attribute:NSLayoutAttributeRight multiplier:1 constant:10]];
 	}
 	
 	if (the2ndStringArray.count > 2) {
@@ -352,9 +365,9 @@
 		_tagSet2Label3.textColor = RGB(255.0, 255.0, 255.0);
 		_tagSet2Label3.backgroundColor = RGB(78.0, 205.0, 196.0);
 		_tagSet2Label3.text = [NSString stringWithFormat:@" %@ ", the2ndStringArray[2]];
-		[_tagView2 addSubview:_tagSet2Label3];
-		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagView2 attribute:NSLayoutAttributeCenterY multiplier:1 constant:0.0]];
-		[_tagView2 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet2Label2 attribute:NSLayoutAttributeRight multiplier:1 constant:10.0]];
+		[_tagView1 addSubview:_tagSet2Label3];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel2 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet2Label2 attribute:NSLayoutAttributeRight multiplier:1 constant:10]];
 	}
 	
 
