@@ -29,6 +29,15 @@
 	UILabel *_tagSet2Label1;
 	UILabel *_tagSet2Label2;
 	UILabel *_tagSet2Label3;
+	UILabel *_tagSet3Label1;
+	UILabel *_tagSet3Label2;
+	UILabel *_tagSet3Label3;
+	UILabel *_tagSet4Label1;
+	UILabel *_tagSet4Label2;
+	UILabel *_tagSet4Label3;
+	UILabel *_tagSet5Label1;
+	UILabel *_tagSet5Label2;
+	UILabel *_tagSet5Label3;
 	
 	UIView *_tagView3;
 }
@@ -262,7 +271,19 @@
 	}]];
 	
 	DLog(@" the3rdTagsArray Tags are this: %@", the3rdTagsArray);
-
+	
+	NSArray *the4thTagsArray = [npStructureTags filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NPTag *the4thGroupTag, NSDictionary *bindings) {
+		return the4thGroupTag.parentId == the4thTagGroup.objectId;
+	}]];
+	
+	DLog(@" the4thTagsArray Tags are this: %@", the3rdTagsArray);
+	
+	NSArray *the5thTagsArray = [npStructureTags filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NPTag *the5thGroupTag, NSDictionary *bindings) {
+		return the5thGroupTag.parentId == the5thTagGroup.objectId;
+	}]];
+	
+	DLog(@" the5thTagsArray Tags are this: %@", the3rdTagsArray);
+	
 	
 	
 	
@@ -286,7 +307,23 @@
 		[the3rdStringArray addObject:the3rdTagString.name];
 	}];
 	DLog(@" the3rdStringArray is: %@", the3rdStringArray);
-
+	
+	
+	NSMutableArray *the4thStringArray = [[NSMutableArray alloc] init];
+	
+	[the4thTagsArray enumerateObjectsUsingBlock:^(NPTag *the4thTagString, NSUInteger index, BOOL *stop) {
+		[the4thStringArray addObject:the4thTagString.name];
+	}];
+	DLog(@" the4thStringArray is: %@", the4thStringArray);
+	
+	
+	NSMutableArray *the5thStringArray = [[NSMutableArray alloc] init];
+	
+	[the5thTagsArray enumerateObjectsUsingBlock:^(NPTag *the5thTagString, NSUInteger index, BOOL *stop) {
+		[the5thStringArray addObject:the5thTagString.name];
+	}];
+	DLog(@" the5thStringArray is: %@", the5thStringArray);
+	
 	
 	
 	
@@ -370,7 +407,134 @@
 		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet2Label3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet2Label2 attribute:NSLayoutAttributeRight multiplier:1 constant:10]];
 	}
 	
-
+	
+	
+	
+	if (the3rdStringArray.count > 0) {
+		
+		_tagSet3Label1 = [[UILabel alloc] init];
+		_tagSet3Label1.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_tagSet3Label1.font = [UIFont systemFontOfSize:14];
+		_tagSet3Label1.textColor = RGB(255.0, 255.0, 255.0);
+		_tagSet3Label1.backgroundColor = RGB(78.0, 205.0, 196.0);
+		_tagSet3Label1.text = [NSString stringWithFormat:@" %@ ", the3rdStringArray[0]];
+		[_tagView1 addSubview:_tagSet3Label1];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet3Label1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel3 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet3Label1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagLabel3 attribute:NSLayoutAttributeLeft multiplier:1 constant:10]];
+	}
+	
+	if (the3rdStringArray.count > 1) {
+		
+		_tagSet3Label2 = [[UILabel alloc] init];
+		_tagSet3Label2.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_tagSet3Label2.font = [UIFont systemFontOfSize:14];
+		_tagSet3Label2.textColor = RGB(255.0, 255.0, 255.0);
+		_tagSet3Label2.backgroundColor = RGB(78.0, 205.0, 196.0);
+		_tagSet3Label2.text = [NSString stringWithFormat:@" %@ ", the3rdStringArray[1]];
+		[_tagView1 addSubview:_tagSet3Label2];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet3Label2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel3 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet3Label2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet3Label1 attribute:NSLayoutAttributeRight multiplier:1 constant:10]];
+	}
+	
+	if (the3rdStringArray.count > 2) {
+		
+		_tagSet3Label3 = [[UILabel alloc] init];
+		_tagSet3Label3.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_tagSet3Label3.font = [UIFont systemFontOfSize:14];
+		_tagSet3Label3.textColor = RGB(255.0, 255.0, 255.0);
+		_tagSet3Label3.backgroundColor = RGB(78.0, 205.0, 196.0);
+		_tagSet3Label3.text = [NSString stringWithFormat:@" %@ ", the3rdStringArray[2]];
+		[_tagView1 addSubview:_tagSet3Label3];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet3Label3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel3 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet3Label3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet3Label2 attribute:NSLayoutAttributeRight multiplier:1 constant:10]];
+	}
+	
+	
+	
+	
+	if (the4thStringArray.count > 0) {
+		
+		_tagSet4Label1 = [[UILabel alloc] init];
+		_tagSet4Label1.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_tagSet4Label1.font = [UIFont systemFontOfSize:14];
+		_tagSet4Label1.textColor = RGB(255.0, 255.0, 255.0);
+		_tagSet4Label1.backgroundColor = RGB(78.0, 205.0, 196.0);
+		_tagSet4Label1.text = [NSString stringWithFormat:@" %@ ", the4thStringArray[0]];
+		[_tagView1 addSubview:_tagSet4Label1];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet4Label1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel4 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet4Label1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagLabel4 attribute:NSLayoutAttributeLeft multiplier:1 constant:10]];
+	}
+	
+	if (the4thStringArray.count > 1) {
+		
+		_tagSet4Label2 = [[UILabel alloc] init];
+		_tagSet4Label2.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_tagSet4Label2.font = [UIFont systemFontOfSize:14];
+		_tagSet4Label2.textColor = RGB(255.0, 255.0, 255.0);
+		_tagSet4Label2.backgroundColor = RGB(78.0, 205.0, 196.0);
+		_tagSet4Label2.text = [NSString stringWithFormat:@" %@ ", the4thStringArray[1]];
+		[_tagView1 addSubview:_tagSet4Label2];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet4Label2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel4 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet4Label2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet4Label1 attribute:NSLayoutAttributeRight multiplier:1 constant:10]];
+	}
+	
+	if (the4thStringArray.count > 2) {
+		
+		_tagSet4Label3 = [[UILabel alloc] init];
+		_tagSet4Label3.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_tagSet4Label3.font = [UIFont systemFontOfSize:14];
+		_tagSet4Label3.textColor = RGB(255.0, 255.0, 255.0);
+		_tagSet4Label3.backgroundColor = RGB(78.0, 205.0, 196.0);
+		_tagSet4Label3.text = [NSString stringWithFormat:@" %@ ", the4thStringArray[2]];
+		[_tagView1 addSubview:_tagSet4Label3];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet4Label3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel4 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet4Label3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet4Label2 attribute:NSLayoutAttributeRight multiplier:1 constant:10]];
+	}
+	
+	
+	
+	
+	
+	if (the5thStringArray.count > 0) {
+		
+		_tagSet5Label1 = [[UILabel alloc] init];
+		_tagSet5Label1.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_tagSet5Label1.font = [UIFont systemFontOfSize:14];
+		_tagSet5Label1.textColor = RGB(255.0, 255.0, 255.0);
+		_tagSet5Label1.backgroundColor = RGB(78.0, 205.0, 196.0);
+		_tagSet5Label1.text = [NSString stringWithFormat:@" %@ ", the5thStringArray[0]];
+		[_tagView1 addSubview:_tagSet5Label1];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet5Label1 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel5 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet5Label1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagLabel5 attribute:NSLayoutAttributeLeft multiplier:1 constant:10]];
+	}
+	
+	if (the5thStringArray.count > 1) {
+		
+		_tagSet5Label2 = [[UILabel alloc] init];
+		_tagSet5Label2.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_tagSet5Label2.font = [UIFont systemFontOfSize:14];
+		_tagSet5Label2.textColor = RGB(255.0, 255.0, 255.0);
+		_tagSet5Label2.backgroundColor = RGB(78.0, 205.0, 196.0);
+		_tagSet5Label2.text = [NSString stringWithFormat:@" %@ ", the5thStringArray[1]];
+		[_tagView1 addSubview:_tagSet5Label2];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet5Label2 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel5 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet5Label2 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet5Label1 attribute:NSLayoutAttributeRight multiplier:1 constant:10]];
+	}
+	
+	if (the5thStringArray.count > 2) {
+		
+		_tagSet5Label3 = [[UILabel alloc] init];
+		_tagSet5Label3.translatesAutoresizingMaskIntoConstraints = FALSE;
+		_tagSet5Label3.font = [UIFont systemFontOfSize:14];
+		_tagSet5Label3.textColor = RGB(255.0, 255.0, 255.0);
+		_tagSet5Label3.backgroundColor = RGB(78.0, 205.0, 196.0);
+		_tagSet5Label3.text = [NSString stringWithFormat:@" %@ ", the5thStringArray[2]];
+		[_tagView1 addSubview:_tagSet5Label3];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet5Label3 attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_tagLabel5 attribute:NSLayoutAttributeBottom multiplier:1 constant:10]];
+		[_tagView1 addConstraint:[NSLayoutConstraint constraintWithItem:_tagSet5Label3 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:_tagSet5Label2 attribute:NSLayoutAttributeRight multiplier:1 constant:10]];
+	}
+	
+	
 	
 //	if (allStructureNames.count > 2) {
 //		_tagView3 = [[UIView alloc] init];
