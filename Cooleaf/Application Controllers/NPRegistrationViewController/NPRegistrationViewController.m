@@ -587,7 +587,11 @@
 	picker->_label.translatesAutoresizingMaskIntoConstraints = FALSE;
 	picker->_label.font = [UIFont applicationFontOfSize:16];
 	picker->_label.textColor = RGB(0x99, 0x99, 0x99);
-	picker->_label.text = picker->_title;
+	NSString *newPickerLabel = picker->_title;
+	if (existingPicker != nil) {
+		newPickerLabel = [NSString stringWithFormat:@"Add Another %@?",picker->_title];
+	}
+	picker->_label.text = newPickerLabel;
 	picker->_label.userInteractionEnabled = TRUE;
 	[picker->_label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:picker action:@selector(doActionShowPicker:)]];
 	picker->_topConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[topView]-10-[view(30)]" options:0 metrics:nil views:@{@"view": picker->_label, @"topView": topView}];
