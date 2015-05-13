@@ -215,8 +215,8 @@
         [self unlockView];
         if (error)
         {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sign in failed", @"Sign in failure alert title")
-                                                         message:NSLocalizedString(@"Wrong username or password", @"Wrong credentials given. Server responded with error")
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Log In Failed", @"Sign in failure alert title")
+                                                         message:NSLocalizedString(@"Invalid username/password or account not yet activated. Please ‘Sign Up’ to activate your account or try again with your corporate email.", @"Wrong credentials given. Server responded with error")
                                                         delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
             [av show];
             

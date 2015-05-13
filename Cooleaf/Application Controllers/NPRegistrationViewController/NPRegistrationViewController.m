@@ -460,7 +460,7 @@
 			[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:((NPRegistrationPicker *)_pickers.lastObject)->_label attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeBottom multiplier:1 constant:-20]];
 		}
 		else {
-			[[[UIAlertView alloc] initWithTitle:@"Registration Failed" message:@"E-mail address not found.  Please make sure to use your corporate email" delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:nil] show];
+			[[[UIAlertView alloc] initWithTitle:@"Registration Failed" message:@"Please make sure to use your corporate email or try to ‘Log In’ as you may have already activated your account." delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:nil] show];
 			[self.navigationController popViewControllerAnimated:TRUE];
 		}
 	}];
