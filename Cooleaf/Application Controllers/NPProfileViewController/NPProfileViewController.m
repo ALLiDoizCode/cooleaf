@@ -205,7 +205,7 @@
 	if ([uD[@"role"][@"department"][@"default"] boolValue])
 		_positionLabel.text = [NSString stringWithFormat:@"%@\u00A0", uD[@"role"][@"organization"][@"name"]];
 	else
-		_positionLabel.text = [NSString stringWithFormat:@"%@, %@", uD[@"role"][@"department"][@"name"], uD[@"role"][@"organization"][@"name"]];
+		_positionLabel.text = [NSString stringWithFormat:@"%@", uD[@"role"][@"organization"][@"name"]];
 	_rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
 	if ([uD[@"reward_points"] intValue] == 0)
 	{_rewardPoints.hidden = TRUE;}
