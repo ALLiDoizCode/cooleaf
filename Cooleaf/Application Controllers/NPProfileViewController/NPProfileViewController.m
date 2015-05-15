@@ -83,6 +83,8 @@
     return self;
 }
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -170,11 +172,19 @@
 //	DLog(@"collectionView = %@", _interestsController.collectionView);
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
 	[self.navigationController setNavigationBarHidden:FALSE];
+	[[NPCooleafClient sharedClient] getUserData:^(NSDictionary *profile) {
+		DLog(@"Updating UserData Complete");
 
-//	_tagsLabel.hidden = YES;
+		for (UIView *subview in [_tagView1 subviews]) {
+			if (subview.tag == 7) {
+				[subview removeFromSuperview];
+			}
+		}
+		
+		//	_tagsLabel.hidden = YES;
 	_avatarView.layer.cornerRadius = 59.0;
 	UIImage *avatarPlaceholder = nil;
 	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
@@ -332,6 +342,7 @@
 	if (the1stStringArray.count > 0) {
 		
 		_tagSet1Label1 = [[UILabel alloc] init];
+		_tagSet1Label1.tag = 7;
 		_tagSet1Label1.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet1Label1.font = [UIFont systemFontOfSize:14];
 		_tagSet1Label1.textColor = RGB(255.0, 255.0, 255.0);
@@ -344,6 +355,7 @@
 	
 	if (the1stStringArray.count > 1) {
 		_tagSet1Label2 = [[UILabel alloc] init];
+		_tagSet1Label2.tag = 7;
 		_tagSet1Label2.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet1Label2.font = [UIFont systemFontOfSize:14];
 		_tagSet1Label2.textColor = RGB(255.0, 255.0, 255.0);
@@ -357,6 +369,7 @@
 	if (the1stStringArray.count > 2) {
 		
 		_tagSet1Label3 = [[UILabel alloc] init];
+		_tagSet1Label3.tag = 7;
 		_tagSet1Label3.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet1Label3.font = [UIFont systemFontOfSize:14];
 		_tagSet1Label3.textColor = RGB(255.0, 255.0, 255.0);
@@ -371,6 +384,7 @@
 	if (the2ndStringArray.count > 0) {
 		
 		_tagSet2Label1 = [[UILabel alloc] init];
+		_tagSet2Label1.tag = 7;
 		_tagSet2Label1.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet2Label1.font = [UIFont systemFontOfSize:14];
 		_tagSet2Label1.textColor = RGB(255.0, 255.0, 255.0);
@@ -384,6 +398,7 @@
 	if (the2ndStringArray.count > 1) {
 		
 		_tagSet2Label2 = [[UILabel alloc] init];
+		_tagSet2Label2.tag = 7;
 		_tagSet2Label2.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet2Label2.font = [UIFont systemFontOfSize:14];
 		_tagSet2Label2.textColor = RGB(255.0, 255.0, 255.0);
@@ -397,6 +412,7 @@
 	if (the2ndStringArray.count > 2) {
 		
 		_tagSet2Label3 = [[UILabel alloc] init];
+		_tagSet2Label3.tag = 7;
 		_tagSet2Label3.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet2Label3.font = [UIFont systemFontOfSize:14];
 		_tagSet2Label3.textColor = RGB(255.0, 255.0, 255.0);
@@ -413,6 +429,7 @@
 	if (the3rdStringArray.count > 0) {
 		
 		_tagSet3Label1 = [[UILabel alloc] init];
+		_tagSet3Label1.tag = 7;
 		_tagSet3Label1.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet3Label1.font = [UIFont systemFontOfSize:14];
 		_tagSet3Label1.textColor = RGB(255.0, 255.0, 255.0);
@@ -426,6 +443,7 @@
 	if (the3rdStringArray.count > 1) {
 		
 		_tagSet3Label2 = [[UILabel alloc] init];
+		_tagSet3Label2.tag = 7;
 		_tagSet3Label2.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet3Label2.font = [UIFont systemFontOfSize:14];
 		_tagSet3Label2.textColor = RGB(255.0, 255.0, 255.0);
@@ -439,6 +457,7 @@
 	if (the3rdStringArray.count > 2) {
 		
 		_tagSet3Label3 = [[UILabel alloc] init];
+		_tagSet3Label3.tag = 7;
 		_tagSet3Label3.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet3Label3.font = [UIFont systemFontOfSize:14];
 		_tagSet3Label3.textColor = RGB(255.0, 255.0, 255.0);
@@ -455,6 +474,7 @@
 	if (the4thStringArray.count > 0) {
 		
 		_tagSet4Label1 = [[UILabel alloc] init];
+		_tagSet4Label1.tag = 7;
 		_tagSet4Label1.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet4Label1.font = [UIFont systemFontOfSize:14];
 		_tagSet4Label1.textColor = RGB(255.0, 255.0, 255.0);
@@ -468,6 +488,7 @@
 	if (the4thStringArray.count > 1) {
 		
 		_tagSet4Label2 = [[UILabel alloc] init];
+		_tagSet4Label2.tag = 7;
 		_tagSet4Label2.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet4Label2.font = [UIFont systemFontOfSize:14];
 		_tagSet4Label2.textColor = RGB(255.0, 255.0, 255.0);
@@ -481,6 +502,7 @@
 	if (the4thStringArray.count > 2) {
 		
 		_tagSet4Label3 = [[UILabel alloc] init];
+		_tagSet4Label3.tag = 7;
 		_tagSet4Label3.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet4Label3.font = [UIFont systemFontOfSize:14];
 		_tagSet4Label3.textColor = RGB(255.0, 255.0, 255.0);
@@ -498,6 +520,7 @@
 	if (the5thStringArray.count > 0) {
 		
 		_tagSet5Label1 = [[UILabel alloc] init];
+		_tagSet5Label1.tag = 7;
 		_tagSet5Label1.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet5Label1.font = [UIFont systemFontOfSize:14];
 		_tagSet5Label1.textColor = RGB(255.0, 255.0, 255.0);
@@ -511,6 +534,7 @@
 	if (the5thStringArray.count > 1) {
 		
 		_tagSet5Label2 = [[UILabel alloc] init];
+		_tagSet5Label2.tag = 7;
 		_tagSet5Label2.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet5Label2.font = [UIFont systemFontOfSize:14];
 		_tagSet5Label2.textColor = RGB(255.0, 255.0, 255.0);
@@ -524,6 +548,7 @@
 	if (the5thStringArray.count > 2) {
 		
 		_tagSet5Label3 = [[UILabel alloc] init];
+		_tagSet5Label3.tag = 7;
 		_tagSet5Label3.translatesAutoresizingMaskIntoConstraints = FALSE;
 		_tagSet5Label3.font = [UIFont systemFontOfSize:14];
 		_tagSet5Label3.textColor = RGB(255.0, 255.0, 255.0);
@@ -548,9 +573,11 @@
 //	
 //	
 //	
-	
-	
-	
+	}];
+	[self.view setNeedsLayout];
+	[self.view setNeedsDisplay];
+	[_tagView1 setNeedsDisplay];
+	[_tagView1 setNeedsLayout];
 	
 	[_interestsController viewWillAppear:animated];
 }

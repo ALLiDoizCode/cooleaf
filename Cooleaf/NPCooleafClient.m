@@ -245,6 +245,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"";
 		if (completion) {
 //			DLog("response = %@", responseObject);
 			completion();
+			[self updateUserData];
 		}
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		DLog(@"Operation failed because, %@", error.localizedDescription);
@@ -263,6 +264,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"";
 	[self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		if (completion)
 			completion(responseObject);
+		[self updateUserData];
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		DLog(@"error = %@", error.localizedDescription);
 		if (completion)
