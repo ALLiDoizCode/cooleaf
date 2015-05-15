@@ -42,8 +42,8 @@
         {
             _logoView.image = image;
             CGSize imgSize = image.size;
-            imgSize.width = imgSize.width * 28 / imgSize.height;
-            imgSize.height = 28;
+            imgSize.width = imgSize.width * 15 / imgSize.height;
+            imgSize.height = 15;
             _logoView.frame = CGRectMake(15, 15, imgSize.width, imgSize.height);
 //			_logoView.hidden = YES;
         }

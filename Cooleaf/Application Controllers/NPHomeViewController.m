@@ -74,7 +74,7 @@
 	
 	[_tableView registerNib:[UINib nibWithNibName:@"NPHomeCell" bundle:nil] forCellReuseIdentifier:@"NPHomeCell"];
 	[_tableView registerNib:[UINib nibWithNibName:@"NPOtherHomeCell" bundle:nil] forCellReuseIdentifier:@"NPOtherHomeCell"];
-	[_tableView registerNib:[UINib nibWithNibName:@"NPHomeTopCell" bundle:nil] forCellReuseIdentifier:@"NPHomeTopCell"];
+	[_tableView registerNib:[UINib nibWithNibName:@"NPCompanyCell" bundle:nil] forCellReuseIdentifier:@"NPCompanyCell"];
 	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReceived:) name:kNPCooleafClientRefreshNotification object:nil];
@@ -272,7 +272,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (indexPath.row == 0)
-		return [tableView dequeueReusableCellWithIdentifier:@"NPHomeTopCell"];
+		return [tableView dequeueReusableCellWithIdentifier:@"NPCompanyCell"];
 	else if (indexPath.row - 1 < _myEvents.count)
 		return [self tableView:tableView cellForMyEventAtIndex:indexPath.row - 1];
 	else if (indexPath.row - 1 > _myEvents.count)
