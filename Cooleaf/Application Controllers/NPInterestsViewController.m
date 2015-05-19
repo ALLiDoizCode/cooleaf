@@ -11,6 +11,7 @@
 #import "NPInterestViewController.h"
 #import "NPCooleafClient.h"
 #import "NPInterestCell.h"
+#import "NPCompanyCell.h"
 #import "NPOtherInterestCell.h"
 #import "NPProfileViewController.h"
 #import "NPEventViewController.h"
@@ -75,7 +76,7 @@
 	
 	[_tableView registerNib:[UINib nibWithNibName:@"NPInterestCell" bundle:nil] forCellReuseIdentifier:@"NPInterestCell"];
 	[_tableView registerNib:[UINib nibWithNibName:@"NPOtherInterestCell" bundle:nil] forCellReuseIdentifier:@"NPOtherInterestCell"];
-	[_tableView registerNib:[UINib nibWithNibName:@"NPInterestTopCell" bundle:nil] forCellReuseIdentifier:@"NPInterestTopCell"];
+	[_tableView registerNib:[UINib nibWithNibName:@"NPCompanyCell" bundle:nil] forCellReuseIdentifier:@"NPCompanyCell"];
 	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReceived:) name:kNPCooleafClientRefreshNotification object:nil];
@@ -277,7 +278,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (indexPath.row == 0)
-		return [tableView dequeueReusableCellWithIdentifier:@"NPInterestTopCell"];
+		return [tableView dequeueReusableCellWithIdentifier:@"NPCompanyCell"];
 	else if (indexPath.row - 1 < _myEvents.count)
 		return [self tableView:tableView cellForMyEventAtIndex:indexPath.row - 1];
 	else if (indexPath.row - 1 > _myEvents.count)

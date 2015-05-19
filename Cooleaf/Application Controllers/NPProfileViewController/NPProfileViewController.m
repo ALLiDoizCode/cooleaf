@@ -64,7 +64,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel5;
 
 - (IBAction)pastEventsButton:(UIButton *)sender;
-
+- (void)notificationReceived:(NSNotification *)not;
 - (void)logoutTapped:(id)sender;
 - (void)editTagsTapped:(id)sender;
 
@@ -83,6 +83,10 @@
     return self;
 }
 
+- (void)notificationReceived:(NSNotification *)not
+{
+	[self reloadAvatar];
+}
 
 
 - (void)viewDidLoad
@@ -92,7 +96,7 @@
     _avatarView.layer.cornerRadius = 59.0;
     UIImage *avatarPlaceholder = nil;
     NSDictionary *uD = [NPCooleafClient sharedClient].userData;
-	DLog(@"%@",uD);
+//	DLog(@"%@",uD);
     if ([(NSString *)uD[@"profile"][@"gender"] isEqualToString:@"f"])
         avatarPlaceholder = [UIImage imageNamed:@"AvatarPlaceHolderFemaleBig"];
     else
@@ -156,6 +160,7 @@
 //
 //    }];
 	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationReceived:) name:kNPCooleafClientRefreshNotification object:nil];
 
 	
 	
@@ -219,7 +224,7 @@
 	_rewardPoints.text = [NSString stringWithFormat:NSLocalizedString(@"%@ reward points", nil), uD[@"reward_points"]];
 	if ([uD[@"reward_points"] intValue] == 0)
 	{_rewardPoints.hidden = TRUE;}
-	DLog(@" The users data is == %@",uD);
+//	DLog(@" The users data is == %@",uD);
 	
 	
 	
@@ -604,6 +609,30 @@
 	_interestsController.editModeOn = _editModeOn;
 }
 
+-(void)reloadAvatar
+{
+	DLog(@"Updating Avatar1");
+
+	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
+	if (uD[@"profile"][@"picture"][@"versions"][@"large"])
+	{
+		NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:uD[@"profile"][@"picture"][@"versions"][@"big"]];
+		[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+			if (image && [imagePath isEqual:avatarURL.absoluteString])
+			{
+				_avatarView.image = image;
+				_blurImage.image = image;
+				
+				DLog(@"Updating Avatar2");
+//				UIToolbar* bgToolbar = [[UIToolbar alloc] initWithFrame:_clearView.frame];
+//				bgToolbar.barStyle = UIBarStyleBlackOpaque;
+//				[_clearView.superview insertSubview:bgToolbar belowSubview:_clearView];
+			}
+		}];
+	}
+}
+
+
 - (IBAction)pastEventsButton:(UIButton *)sender
 {
 	NPEventListViewController *pastEventListController = [NPEventListViewController new];
@@ -712,35 +741,37 @@
 	[_avatarController dismissViewControllerAnimated:TRUE completion:nil];
 	_avatarController = nil;
 	
-//UIImage *image = [UIImage imageNamed:@"AttendeeActiveIcon"];
-//NSData *imageData = UIImageJPEGRepresentation(image, 1);
-//NSData *imageData = UIImagePNGRepresentation(_avatarView.image);
+	//UIImage *image = [UIImage imageNamed:@"AttendeeActiveIcon"];
+	//NSData *imageData = UIImageJPEGRepresentation(image, 1);
+	//NSData *imageData = UIImagePNGRepresentation(_avatarView.image);
 	
-//if (imageData != nil ) {
-		[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarView.image completion:^ (NSDictionary *unused) {
-			DLog(@"Done!");
-//		DLog(@"%@", respnoseObject);
-//		[self viewWillAppear:FALSE];
-			NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
-			DLog(@"avatarUrl = %@", avatarURL);
-			[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
-				if (image && [imagePath isEqual:avatarURL.absoluteString])
-				{
-					_avatarView.image = image;
-					_blurImage.image = image;
-					UIToolbar* bgToolbar = [[UIToolbar alloc] initWithFrame:_clearView.frame];
-					bgToolbar.barStyle = UIBarStyleBlackOpaque;
-					[_clearView.superview insertSubview:bgToolbar belowSubview:_clearView];
-				}
-				
-				
-			}];
-			NSDictionary *uD = [NPCooleafClient sharedClient].userData;
-			[[NPCooleafClient sharedClient] updateProfileDataAllFields:nil email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:nil profileWeeklyDigest:nil profile:uD[@"profile"] completion:^{
-				NSLog(@"Success");
-			}];
+	//if (imageData != nil ) {
+	[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarView.image completion:^ (NSDictionary *unused) {
+		DLog(@"Done!");
+		//		DLog(@"%@", respnoseObject);
+		//		[self viewWillAppear:FALSE];
+		NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
+		DLog(@"avatarUrl = %@", avatarURL);
+		[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion:^(NSString *imagePath, UIImage *image) {
+			if (image && [imagePath isEqual:avatarURL.absoluteString])
+			{
+				_avatarView.image = image;
+				_blurImage.image = image;
+				UIToolbar* bgToolbar = [[UIToolbar alloc] initWithFrame:_clearView.frame];
+				bgToolbar.barStyle = UIBarStyleBlackOpaque;
+				[_clearView.superview insertSubview:bgToolbar belowSubview:_clearView];
+			}
+			
+			
 		}];
-//}
+		NSDictionary *uD = [NPCooleafClient sharedClient].userData;
+		[[NPCooleafClient sharedClient] updateProfileDataAllFields:nil email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:nil profileWeeklyDigest:nil profile:uD[@"profile"] completion:^{
+			NSLog(@"Success");
+			[[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientRefreshNotification object:nil];
+
+		}];
+	}];
+	//}
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

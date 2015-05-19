@@ -928,6 +928,8 @@
 				
 				[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:nil profileWeeklyDigest:nil profile:uD[@"profile"] completion:^{
 					NSLog(@"Success");
+					[[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientRefreshNotification object:nil];
+
 				}];
 			}
 		}];

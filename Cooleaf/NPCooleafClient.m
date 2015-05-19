@@ -183,6 +183,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"";
     
     return [self GET:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         _userData = [responseObject copy];
+		[[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientRefreshNotification object:nil];
     } failure:nil];
 }
 
@@ -212,6 +213,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"";
 	}
 	if (file_cache != nil) {
 		[params setValue:file_cache forKey:@"file_cache"];
+		DLog(@"The File Cashe == %@", file_cache);
 	}
 	if (role_structure_required != nil) {
 		[params setValue:role_structure_required forKey:@"role"];
@@ -245,7 +247,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"";
 		if (completion) {
 //			DLog("response = %@", responseObject);
 			completion();
-			[self updateUserData];
+//			[self updateUserData];
 		}
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		DLog(@"Operation failed because, %@", error.localizedDescription);
@@ -264,7 +266,7 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"";
 	[self GET:path parameters:@{@"scope": @"ongoing"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		if (completion)
 			completion(responseObject);
-		[self updateUserData];
+//		[self updateUserData];
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		DLog(@"error = %@", error.localizedDescription);
 		if (completion)
@@ -683,15 +685,16 @@ static NSString * const kNPCooleafClientAPIAuthPassword = @"";
 	if (_apiPrefix.length > 0)
 		path = [_apiPrefix stringByAppendingString:path];
 	
-	DLog(@"baseUrl = %@", self.baseURL);
-	DLog(@"path    = %@", path);
+//	DLog(@"baseUrl = %@", self.baseURL);
+//	DLog(@"path    = %@", path);
 	
 	NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
-	
+	int file = arc4random_uniform(742904857);
+	NSString *fileNameString = [NSString stringWithFormat:@"%d.jpg", file];
 	return [self POST:path parameters:nil constructingBodyWithBlock:^ (id<AFMultipartFormData> formData) {
 		DLog(@"appending file data");
 		[formData appendPartWithFormData:[NSData dataWithBytes:"profile_picture" length:15] name:@"uploader"];
-		[formData appendPartWithFileData:imageData name:@"file" fileName:@"file.jpg" mimeType:@"image/jpeg"];
+		[formData appendPartWithFileData:imageData name:@"file" fileName:fileNameString mimeType:@"image/jpeg"];
 	} success:^ (AFHTTPRequestOperation *operation, id responseObject) {
 		DLog(@"responseObject = %@", responseObject);
 		completion(responseObject);

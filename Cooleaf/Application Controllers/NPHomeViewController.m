@@ -139,11 +139,13 @@
 		{
 			_noEventsLabel.hidden = NO;
 		}
+		[_tableView reloadData];
 	}];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+	[_tableView reloadData];
 	if (_myEvents.count == 0 && _otherEvents.count == 0)
 	{
 		[_tableView setHidden:YES];
@@ -152,6 +154,7 @@
 		_noEventsLabel.hidden = YES;
 	}
 	[self reloadEvents];
+	
 }
 
 
