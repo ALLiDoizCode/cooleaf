@@ -134,6 +134,8 @@
 		{
 			[_tableView setHidden:NO];
 			[_tableView reloadData];
+			_noEventsLabel.hidden = YES;
+
 		}
 		else
 		{
