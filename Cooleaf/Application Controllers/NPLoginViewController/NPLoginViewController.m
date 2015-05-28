@@ -235,9 +235,9 @@
 	[_usernameField resignFirstResponder];
 	[_passwordField resignFirstResponder];
 	
-	if (_usernameField.text.length < 5 || _passwordField.text.length == 0) {
+	if (_usernameField.text.length < 8 || _passwordField.text.length < 8) {
 		[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Registration failed", @"Registration failure alert title")
-																message:NSLocalizedString(@"Given username or password is too short.", @"Invalid credentials given. Too little data")
+																message:NSLocalizedString(@"Given username or password is too short. (minimum is 8 characters)", @"Invalid credentials given. Too little data")
 															 delegate:nil
 											cancelButtonTitle:NSLocalizedString(@"OK", nil)
 											otherButtonTitles: nil] show];
