@@ -10,4 +10,18 @@
 
 @implementation NPRole
 
+# pragma MTLJSONSerialization
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"isActive": @"active",
+             @"rights": @"rights",
+             @"organization": @"organization",
+             @"branch": @"branch",
+             @"department": @"department",
+             @"structureTags": @"structure_tags",
+             @"structures": @"structures"
+             };
+}
+
 @end

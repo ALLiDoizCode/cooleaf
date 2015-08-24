@@ -10,4 +10,14 @@
 
 @implementation NPProfile
 
+# pragma MTLJSONSerialization
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"gender": @"gender",
+             @"picture": @"picture",
+             @"settings": @"settings"
+             };
+}
+
 @end

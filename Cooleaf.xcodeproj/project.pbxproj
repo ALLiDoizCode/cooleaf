@@ -30,7 +30,6 @@
 		4BA4E3021B8BC8360089CB2B /* NPProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3011B8BC8360089CB2B /* NPProfile.m */; };
 		4BA4E3051B8BC8670089CB2B /* NPRole.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3041B8BC8670089CB2B /* NPRole.m */; };
 		4BA4E3081B8BC89E0089CB2B /* NPSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3071B8BC89E0089CB2B /* NPSettings.m */; };
-		4BA4E30B1B8BC8D70089CB2B /* NPTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E30A1B8BC8D70089CB2B /* NPTag.m */; };
 		4BA4E30E1B8BC8F40089CB2B /* NPVersions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E30D1B8BC8F40089CB2B /* NPVersions.m */; };
 		4BA4E3111B8BC9240089CB2B /* NPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3101B8BC9240089CB2B /* NPUser.m */; };
 		52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */; };
@@ -170,8 +169,6 @@
 		4BA4E3041B8BC8670089CB2B /* NPRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRole.m; sourceTree = "<group>"; };
 		4BA4E3061B8BC89E0089CB2B /* NPSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPSettings.h; sourceTree = "<group>"; };
 		4BA4E3071B8BC89E0089CB2B /* NPSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPSettings.m; sourceTree = "<group>"; };
-		4BA4E3091B8BC8D70089CB2B /* NPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPTag.h; sourceTree = "<group>"; };
-		4BA4E30A1B8BC8D70089CB2B /* NPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPTag.m; sourceTree = "<group>"; };
 		4BA4E30C1B8BC8F40089CB2B /* NPVersions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPVersions.h; sourceTree = "<group>"; };
 		4BA4E30D1B8BC8F40089CB2B /* NPVersions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPVersions.m; sourceTree = "<group>"; };
 		4BA4E30F1B8BC9240089CB2B /* NPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPUser.h; sourceTree = "<group>"; };
@@ -397,8 +394,6 @@
 				4BA4E3041B8BC8670089CB2B /* NPRole.m */,
 				4BA4E3061B8BC89E0089CB2B /* NPSettings.h */,
 				4BA4E3071B8BC89E0089CB2B /* NPSettings.m */,
-				4BA4E3091B8BC8D70089CB2B /* NPTag.h */,
-				4BA4E30A1B8BC8D70089CB2B /* NPTag.m */,
 				4BA4E30C1B8BC8F40089CB2B /* NPVersions.h */,
 				4BA4E30D1B8BC8F40089CB2B /* NPVersions.m */,
 				4BA4E30F1B8BC9240089CB2B /* NPUser.h */,
@@ -970,7 +965,6 @@
 				4BA4E2F91B8BC76B0089CB2B /* NPOrganization.m in Sources */,
 				D93AAC89187B693B00E9B96A /* NPLocationCell.m in Sources */,
 				430936491AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m in Sources */,
-				4BA4E30B1B8BC8D70089CB2B /* NPTag.m in Sources */,
 				D93AAC74187B170C00E9B96A /* NPAttendeesCell.m in Sources */,
 				D93AACA2187C300E00E9B96A /* NPTodoCell.m in Sources */,
 				43B0624C1AB71A64009F96CD /* NPMembersCell.m in Sources */,

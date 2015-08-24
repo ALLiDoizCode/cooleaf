@@ -10,4 +10,16 @@
 
 @implementation NPOrganization
 
+# pragma MTLJSONSeriliazation
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"organizationId": @"id",
+             @"organizationName": @"name",
+             @"organizationSubdomain": @"subdomain",
+             @"organizationPicture": @"logo",
+             @"structures": @"structures"
+             };
+}
+
 @end

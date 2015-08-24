@@ -10,4 +10,17 @@
 
 @implementation NPParentTag
 
+# pragma MTLJSONSerialization
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"parentTagId": @"id",
+             @"parentTagName": @"name",
+             @"tags": @"tags",
+             @"isRequired": @"required",
+             @"isPrimary": @"primary"
+             };
+}
+
+
 @end

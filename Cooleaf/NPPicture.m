@@ -10,4 +10,14 @@
 
 @implementation NPPicture
 
+# pragma MTLJSONSerialization
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"originalUrl": @"original",
+             @"versions": @"versions"
+             };
+}
+
+
 @end
