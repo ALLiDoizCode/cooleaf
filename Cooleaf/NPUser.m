@@ -10,4 +10,19 @@
 
 @implementation NPUser
 
+# pragma MTLJSONSerialization
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"userId": @"id",
+             @"userName": @"name",
+             @"userEmail": @"email",
+             @"interests": @"categories",
+             @"role": @"role",
+             @"rewardPoints": @"reward_points",
+             @"profile": @"profile"
+             };
+}
+
+
 @end

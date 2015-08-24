@@ -10,4 +10,19 @@
 
 @implementation NPVersions
 
+# pragma MTLJSONSerialization
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"thumbUrl": @"thumb",
+             @"iconUrl": @"icon",
+             @"smallUrl": @"small",
+             @"mediumUrl": @"medium",
+             @"largeUrl": @"large",
+             @"bigUrl": @"big",
+             @"mainUrl": @"main",
+             @"coverUrl": @"cover"
+             };
+}
+
 @end

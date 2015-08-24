@@ -10,4 +10,13 @@
 
 @implementation NPSettings
 
+# pragma MTLJSONSerialization
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"sendDailyDigest": @"send_daily_digest",
+             @"sendWeeklyDigest": @"send_weekly_digest"
+             };
+}
+
 @end
