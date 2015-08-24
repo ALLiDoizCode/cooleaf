@@ -7,14 +7,14 @@
 //
 
 #import <Mantle.h>
-#import "NPPicture.h"
+#import "CLPicture.h"
 
-@interface NPOrganization : MTLModel <MTLJSONSerializing>
+@interface CLOrganization : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSNumber *organizationId;
 @property (nonatomic, copy) NSString *organizationName;
 @property (nonatomic, copy) NSString *organizationSubdomain;
-@property (nonatomic, copy) NPPicture *organizationPicture;
+@property (nonatomic, copy) CLPicture *organizationPicture;
 @property (nonatomic, copy) NSMutableArray *structures;
 
 @end

@@ -7,11 +7,11 @@
 //
 
 #import <Mantle.h>
-#import "NPVersions.h"
+#import "CLVersions.h"
 
-@interface NPPicture : MTLModel <MTLJSONSerializing>
+@interface CLPicture : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy) NSString *originalUrl;
-@property (nonatomic, copy) NPVersions *versions;
+@property (nonatomic, copy) CLVersions *versions;
 
 @end

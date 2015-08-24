@@ -8,7 +8,7 @@
 
 #import <Mantle.h>
 
-@interface NPSettings : MTLModel <MTLJSONSerializing>
+@interface CLSettings : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic) BOOL *sendDailyDigest;
 @property (nonatomic) BOOL *sendWeeklyDigest;

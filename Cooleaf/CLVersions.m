@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "NPVersions.h"
+#import "CLVersions.h"
 
-@implementation NPVersions
+@implementation CLVersions
 
 # pragma MTLJSONSerialization
 

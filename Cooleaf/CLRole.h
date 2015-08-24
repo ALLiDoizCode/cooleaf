@@ -7,17 +7,17 @@
 //
 
 #import <Mantle.h>
-#import "NPBranch.h"
-#import "NPOrganization.h"
-#import "NPDepartment.h"
+#import "CLBranch.h"
+#import "CLOrganization.h"
+#import "CLDepartment.h"
 
-@interface NPRole : MTLModel <MTLJSONSerializing>
+@interface CLRole : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic) BOOL *isActive;
 @property (nonatomic, copy) NSString *rights;
-@property (nonatomic, copy) NPOrganization *organization;
-@property (nonatomic, copy) NPBranch *branch;
-@property (nonatomic, copy) NPDepartment *department;
+@property (nonatomic, copy) CLOrganization *organization;
+@property (nonatomic, copy) CLBranch *branch;
+@property (nonatomic, copy) CLDepartment *department;
 @property (nonatomic, copy) NSMutableArray *structureTags;
 @property (nonatomic, copy) NSDictionary *structures;
 

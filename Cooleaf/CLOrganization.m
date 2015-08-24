@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "NPOrganization.h"
+#import "CLOrganization.h"
 
-@implementation NPOrganization
+@implementation CLOrganization
 
 # pragma MTLJSONSeriliazation
 

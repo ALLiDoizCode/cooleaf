@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "NPSettings.h"
+#import "CLSettings.h"
 
-@implementation NPSettings
+@implementation CLSettings
 
 # pragma MTLJSONSerialization
 

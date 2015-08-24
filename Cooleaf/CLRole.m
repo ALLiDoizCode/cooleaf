@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "NPRole.h"
+#import "CLRole.h"
 
-@implementation NPRole
+@implementation CLRole
 
 # pragma MTLJSONSerialization
 

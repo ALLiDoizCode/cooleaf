@@ -7,13 +7,13 @@
 //
 
 #import <Mantle.h>
-#import "NPPicture.h"
-#import "NPSettings.h"
+#import "CLPicture.h"
+#import "CLSettings.h"
 
-@interface NPProfile : MTLModel<MTLJSONSerializing>
+@interface CLProfile : MTLModel<MTLJSONSerializing>
 
 @property (nonatomic, copy) NSString *gender;
-@property (nonatomic, copy) NPPicture *picture;
-@property (nonatomic, copy) NPSettings *settings;
+@property (nonatomic, copy) CLPicture *picture;
+@property (nonatomic, copy) CLSettings *settings;
 
 @end

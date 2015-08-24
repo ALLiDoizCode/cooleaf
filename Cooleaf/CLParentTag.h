@@ -8,7 +8,7 @@
 
 #import <Mantle.h>
 
-@interface NPParentTag : MTLModel <MTLJSONSerializing>
+@interface CLParentTag : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSNumber *parentTagId;
 @property (nonatomic, copy) NSString *parentTagName;

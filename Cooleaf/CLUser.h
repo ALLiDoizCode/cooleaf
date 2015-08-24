@@ -7,18 +7,18 @@
 //
 
 #import <Mantle.h>
-#import "NPRole.h"
-#import "NPProfile.h"
-#import "NPPicture.h"
+#import "CLRole.h"
+#import "CLProfile.h"
+#import "CLPicture.h"
 
-@interface NPUser : MTLModel <MTLJSONSerializing>
+@interface CLUser : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSNumber *userId;
 @property (nonatomic, copy) NSString *userName;
 @property (nonatomic, copy) NSString *userEmail;
 @property (nonatomic, copy) NSMutableArray *interests;
-@property (nonatomic, copy) NPRole *role;
+@property (nonatomic, copy) CLRole *role;
 @property (nonatomic, copy) NSNumber *rewardPoints;
-@property (nonatomic, copy) NPProfile *profile;
+@property (nonatomic, copy) CLProfile *profile;
 
 @end

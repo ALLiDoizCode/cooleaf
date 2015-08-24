@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "NPPicture.h"
+#import "CLPicture.h"
 
-@implementation NPPicture
+@implementation CLPicture
 
 # pragma MTLJSONSerialization
 

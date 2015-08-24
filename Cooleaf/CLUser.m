@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "NPUser.h"
+#import "CLUser.h"
 
-@implementation NPUser
+@implementation CLUser
 
 # pragma MTLJSONSerialization
 

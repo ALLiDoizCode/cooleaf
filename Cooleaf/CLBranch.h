@@ -1,5 +1,5 @@
 //
-//  NPDepartment.h
+//  NPBranch.h
 //  Cooleaf
 //
 //  Created by Haider Khan on 8/24/15.
@@ -8,10 +8,9 @@
 
 #import <Mantle.h>
 
-@interface NPDepartment : MTLModel <MTLJSONSerializing>
+@interface CLBranch : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *branchName;
 @property (nonatomic) BOOL *isDefault;
-
 
 @end

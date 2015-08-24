@@ -8,7 +8,7 @@
 
 #import <Mantle.h>
 
-@interface NPVersions : MTLModel <MTLJSONSerializing>
+@interface CLVersions : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy) NSString *thumbUrl;
 @property (nonatomic, copy) NSString *iconUrl;

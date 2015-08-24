@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "NPParentTag.h"
+#import "CLParentTag.h"
 
-@implementation NPParentTag
+@implementation CLParentTag
 
 # pragma MTLJSONSerialization
 
