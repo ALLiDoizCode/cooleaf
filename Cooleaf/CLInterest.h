@@ -11,12 +11,12 @@
 
 @interface CLInterest : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy, readonly) NSNumber *interestId;
-@property (nonatomic, copy) NSString *interestName;
-@property (nonatomic, copy) NSString *interestType;
-@property (nonatomic, assign) BOOL *isActive;
-@property (nonatomic, copy) NSString *parentType;
-@property (nonatomic, copy) CLImage *image;
-@property (nonatomic, copy) NSNumber *userCount;
+@property (nonatomic, readonly) NSNumber *interestId;
+@property (nonatomic) NSString *interestName;
+@property (nonatomic) NSString *interestType;
+@property (nonatomic) BOOL *isActive;
+@property (nonatomic) NSString *parentType;
+@property (nonatomic) CLImage *image;
+@property (nonatomic) NSNumber *userCount;
 
 @end

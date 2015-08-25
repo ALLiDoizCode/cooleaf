@@ -10,11 +10,11 @@
 
 @interface CLTag : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy, readonly) NSNumber *tagId;
-@property (nonatomic, copy) NSString *tagName;
-@property (nonatomic, copy) NSString *tagType;
+@property (nonatomic, readonly) NSNumber *tagId;
+@property (nonatomic) NSString *tagName;
+@property (nonatomic) NSString *tagType;
 @property (nonatomic) BOOL *isActive;
-@property (nonatomic, copy) NSNumber *parentId;
+@property (nonatomic) NSNumber *parentId;
 @property (nonatomic) BOOL *isDefault;
 
 @end

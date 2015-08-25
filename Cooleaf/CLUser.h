@@ -14,12 +14,12 @@
 
 @interface CLUser : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy, readonly) NSNumber *userId;
-@property (nonatomic, copy) NSString *userName;
-@property (nonatomic, copy) NSString *userEmail;
-@property (nonatomic, copy) NSMutableArray *interests;
-@property (nonatomic, copy) CLRole *role;
-@property (nonatomic, copy) NSNumber *rewardPoints;
-@property (nonatomic, copy) CLProfile *profile;
+@property (nonatomic, readonly) NSNumber *userId;
+@property (nonatomic) NSString *userName;
+@property (nonatomic) NSString *userEmail;
+@property (nonatomic) NSMutableArray *interests;
+@property (nonatomic) CLRole *role;
+@property (nonatomic) NSNumber *rewardPoints;
+@property (nonatomic) CLProfile *profile;
 
 @end

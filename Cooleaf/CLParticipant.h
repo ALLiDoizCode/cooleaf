@@ -11,10 +11,10 @@
 
 @interface CLParticipant : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy, readonly) NSNumber *participantId;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) CLProfile *profile;
-@property (nonatomic, copy) NSString *pictureUrl;
-@property (nonatomic, copy) NSMutableArray *primaryTagNames;
+@property (nonatomic, readonly) NSNumber *participantId;
+@property (nonatomic) NSString *name;
+@property (nonatomic) CLProfile *profile;
+@property (nonatomic) NSString *pictureUrl;
+@property (nonatomic) NSMutableArray *primaryTagNames;
 
 @end

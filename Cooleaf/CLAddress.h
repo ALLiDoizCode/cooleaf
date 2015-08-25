@@ -10,11 +10,11 @@
 
 @interface CLAddress : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString *addressLine1;
-@property (nonatomic, copy) NSString *addressLine2;
-@property (nonatomic, copy) NSString *city;
-@property (nonatomic, copy) NSString *state;
-@property (nonatomic, copy) NSString *zipcode;
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic) NSString *addressLine1;
+@property (nonatomic) NSString *addressLine2;
+@property (nonatomic) NSString *city;
+@property (nonatomic) NSString *state;
+@property (nonatomic) NSString *zipcode;
+@property (nonatomic) NSString *name;
 
 @end

@@ -10,6 +10,6 @@
 
 @interface CLImage : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString *imageUrl;
+@property (nonatomic) NSString *imageUrl;
 
 @end

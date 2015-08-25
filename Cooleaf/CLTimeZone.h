@@ -10,9 +10,9 @@
 
 @interface CLTimeZone : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *offset;
-@property (nonatomic, copy) NSString *abbrv;
-@property (nonatomic, copy) NSString *momentName;
+@property (nonatomic) NSString *name;
+@property (nonatomic) NSString *offset;
+@property (nonatomic) NSString *abbrv;
+@property (nonatomic) NSString *momentName;
 
 @end

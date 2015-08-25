@@ -11,7 +11,7 @@
 
 @interface CLPicture : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString *originalUrl;
-@property (nonatomic, copy) CLVersions *versions;
+@property (nonatomic) NSString *originalUrl;
+@property (nonatomic) CLVersions *versions;
 
 @end

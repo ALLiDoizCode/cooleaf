@@ -11,10 +11,10 @@
 
 @interface CLOrganization : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy, readonly) NSNumber *organizationId;
-@property (nonatomic, copy) NSString *organizationName;
-@property (nonatomic, copy) NSString *organizationSubdomain;
-@property (nonatomic, copy) CLPicture *organizationPicture;
+@property (nonatomic, readonly) NSNumber *organizationId;
+@property (nonatomic) NSString *organizationName;
+@property (nonatomic) NSString *organizationSubdomain;
+@property (nonatomic) CLPicture *organizationPicture;
 @property (nonatomic, copy) NSMutableArray *structures;
 
 @end

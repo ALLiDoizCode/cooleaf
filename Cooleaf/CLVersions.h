@@ -10,13 +10,13 @@
 
 @interface CLVersions : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy) NSString *thumbUrl;
-@property (nonatomic, copy) NSString *iconUrl;
-@property (nonatomic, copy) NSString *smallUrl;
-@property (nonatomic, copy) NSString *mediumUrl;
-@property (nonatomic, copy) NSString *largeUrl;
-@property (nonatomic, copy) NSString *bigUrl;
-@property (nonatomic, copy) NSString *mainUrl;
-@property (nonatomic, copy) NSString *coverUrl;
+@property (nonatomic) NSString *thumbUrl;
+@property (nonatomic) NSString *iconUrl;
+@property (nonatomic) NSString *smallUrl;
+@property (nonatomic) NSString *mediumUrl;
+@property (nonatomic) NSString *largeUrl;
+@property (nonatomic) NSString *bigUrl;
+@property (nonatomic) NSString *mainUrl;
+@property (nonatomic) NSString *coverUrl;
 
 @end

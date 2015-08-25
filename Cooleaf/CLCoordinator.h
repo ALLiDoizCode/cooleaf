@@ -11,10 +11,10 @@
 
 @interface CLCoordinator : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy, readonly) NSNumber *coordinatorId;
-@property (nonatomic, assign) BOOL *isForeign;
-@property (nonatomic, copy) NSString *coordinatorName;
-@property (nonatomic, copy) NSString *coordinatorEmail;
-@property (nonatomic, copy) CLProfile *coordinatorProfile;
+@property (nonatomic, readonly) NSNumber *coordinatorId;
+@property (nonatomic) BOOL *isForeign;
+@property (nonatomic) NSString *coordinatorName;
+@property (nonatomic) NSString *coordinatorEmail;
+@property (nonatomic) CLProfile *coordinatorProfile;
 
 @end
