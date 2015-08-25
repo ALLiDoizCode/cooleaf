@@ -43,6 +43,7 @@
 		4BA4E32F1B8BFA0C0089CB2B /* CLSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E32E1B8BFA0C0089CB2B /* CLSeries.m */; };
 		4BA4E3321B8C1B930089CB2B /* CLParticipant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3311B8C1B930089CB2B /* CLParticipant.m */; };
 		4BA4E3351B8C1E280089CB2B /* CLFilePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3341B8C1E280089CB2B /* CLFilePreview.m */; };
+		4BA4E3441B8D11440089CB2B /* CLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3431B8D11440089CB2B /* CLClient.m */; };
 		52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */; };
 		523096C01AA28F5D00649FB7 /* NPInterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */; };
 		523096C11AA28F5D00649FB7 /* NPInterestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */; };
@@ -206,6 +207,8 @@
 		4BA4E3311B8C1B930089CB2B /* CLParticipant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLParticipant.m; sourceTree = "<group>"; };
 		4BA4E3331B8C1E280089CB2B /* CLFilePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFilePreview.h; sourceTree = "<group>"; };
 		4BA4E3341B8C1E280089CB2B /* CLFilePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFilePreview.m; sourceTree = "<group>"; };
+		4BA4E3421B8D11440089CB2B /* CLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLClient.h; sourceTree = "<group>"; };
+		4BA4E3431B8D11440089CB2B /* CLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLClient.m; sourceTree = "<group>"; };
 		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPickYourInterestsLabelCell.h; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.h"; sourceTree = "<group>"; };
 		52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPickYourInterestsLabelCell.m; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.m"; sourceTree = "<group>"; };
 		523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsViewController.h; path = "Application Controllers/NPInterestsViewController.h"; sourceTree = "<group>"; };
@@ -405,6 +408,8 @@
 			children = (
 				4BA4E3361B8D06EA0089CB2B /* responses */,
 				4BA4E2F01B8BC5E60089CB2B /* entities */,
+				4BA4E3421B8D11440089CB2B /* CLClient.h */,
+				4BA4E3431B8D11440089CB2B /* CLClient.m */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -1089,6 +1094,7 @@
 				526DDE181AC757550095FC27 /* NPMembersViewController.m in Sources */,
 				523096D71AA3E17400649FB7 /* NPHomeCell.m in Sources */,
 				4BA4E32F1B8BFA0C0089CB2B /* CLSeries.m in Sources */,
+				4BA4E3441B8D11440089CB2B /* CLClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
