@@ -7,6 +7,7 @@
 //
 
 #import "CLEvent.h"
+#import "CLParticipant.h"
 
 @implementation CLEvent
 
@@ -53,6 +54,13 @@
     } reverseBlock:^(CLImage *image) {
         return [MTLJSONAdapter JSONDictionaryFromModel:image];
     }];
+}
+
+
+# pragma participantsJSONTransformer
+
+- (NSValueTransformer *)participantsJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:CLParticipant.class];
 }
 
 

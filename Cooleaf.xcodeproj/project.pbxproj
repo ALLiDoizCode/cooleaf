@@ -42,6 +42,8 @@
 		4BA4E3291B8BF5E00089CB2B /* CLImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3281B8BF5E00089CB2B /* CLImage.m */; };
 		4BA4E32C1B8BF8E00089CB2B /* CLTimeZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E32B1B8BF8E00089CB2B /* CLTimeZone.m */; };
 		4BA4E32F1B8BFA0C0089CB2B /* CLSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E32E1B8BFA0C0089CB2B /* CLSeries.m */; };
+		4BA4E3321B8C1B930089CB2B /* CLParticipant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3311B8C1B930089CB2B /* CLParticipant.m */; };
+		4BA4E3351B8C1E280089CB2B /* CLFilePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3341B8C1E280089CB2B /* CLFilePreview.m */; };
 		52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */; };
 		523096C01AA28F5D00649FB7 /* NPInterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */; };
 		523096C11AA28F5D00649FB7 /* NPInterestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */; };
@@ -203,6 +205,10 @@
 		4BA4E32B1B8BF8E00089CB2B /* CLTimeZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTimeZone.m; sourceTree = "<group>"; };
 		4BA4E32D1B8BFA0C0089CB2B /* CLSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSeries.h; sourceTree = "<group>"; };
 		4BA4E32E1B8BFA0C0089CB2B /* CLSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSeries.m; sourceTree = "<group>"; };
+		4BA4E3301B8C1B930089CB2B /* CLParticipant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLParticipant.h; sourceTree = "<group>"; };
+		4BA4E3311B8C1B930089CB2B /* CLParticipant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLParticipant.m; sourceTree = "<group>"; };
+		4BA4E3331B8C1E280089CB2B /* CLFilePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFilePreview.h; sourceTree = "<group>"; };
+		4BA4E3341B8C1E280089CB2B /* CLFilePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFilePreview.m; sourceTree = "<group>"; };
 		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPickYourInterestsLabelCell.h; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.h"; sourceTree = "<group>"; };
 		52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPickYourInterestsLabelCell.m; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.m"; sourceTree = "<group>"; };
 		523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsViewController.h; path = "Application Controllers/NPInterestsViewController.h"; sourceTree = "<group>"; };
@@ -448,6 +454,10 @@
 				4BA4E32B1B8BF8E00089CB2B /* CLTimeZone.m */,
 				4BA4E32D1B8BFA0C0089CB2B /* CLSeries.h */,
 				4BA4E32E1B8BFA0C0089CB2B /* CLSeries.m */,
+				4BA4E3301B8C1B930089CB2B /* CLParticipant.h */,
+				4BA4E3311B8C1B930089CB2B /* CLParticipant.m */,
+				4BA4E3331B8C1E280089CB2B /* CLFilePreview.h */,
+				4BA4E3341B8C1E280089CB2B /* CLFilePreview.m */,
 			);
 			name = entities;
 			sourceTree = "<group>";
@@ -1039,6 +1049,7 @@
 				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
 				D93AAC93187B704100E9B96A /* NPAttendeesViewController.m in Sources */,
 				4BA4E3141B8BCCA80089CB2B /* CLClient.m in Sources */,
+				4BA4E3321B8C1B930089CB2B /* CLParticipant.m in Sources */,
 				D93AABF3186EFAD100E9B96A /* NPProfileViewController.m in Sources */,
 				4BA4E3051B8BC8670089CB2B /* CLRole.m in Sources */,
 				D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */,
@@ -1061,6 +1072,7 @@
 				4BA4E3201B8BDDAE0089CB2B /* CLEvent.m in Sources */,
 				D94664FE18634DEB0084BBB2 /* NPGradientView.m in Sources */,
 				D9809558185CA557008F2B61 /* NPAppDelegate.m in Sources */,
+				4BA4E3351B8C1E280089CB2B /* CLFilePreview.m in Sources */,
 				4BA4E2F31B8BC6E70089CB2B /* CLBranch.m in Sources */,
 				D93AACA9187C351500E9B96A /* NPNewTodoViewController.m in Sources */,
 				523096C51AA2907600649FB7 /* NPChallengesViewController.m in Sources */,
