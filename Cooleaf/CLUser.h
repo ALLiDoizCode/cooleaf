@@ -10,6 +10,7 @@
 #import "CLRole.h"
 #import "CLProfile.h"
 #import "CLPicture.h"
+#import "CLInterest.h"
 
 @interface CLUser : MTLModel <MTLJSONSerializing>
 

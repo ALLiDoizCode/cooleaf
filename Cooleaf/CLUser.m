@@ -7,7 +7,6 @@
 //
 
 #import "CLUser.h"
-#import "CLInterest.h"
 
 @implementation CLUser
 

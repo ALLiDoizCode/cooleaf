@@ -32,7 +32,6 @@
 		4BA4E3081B8BC89E0089CB2B /* CLSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3071B8BC89E0089CB2B /* CLSettings.m */; };
 		4BA4E30E1B8BC8F40089CB2B /* CLVersions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E30D1B8BC8F40089CB2B /* CLVersions.m */; };
 		4BA4E3111B8BC9240089CB2B /* CLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3101B8BC9240089CB2B /* CLUser.m */; };
-		4BA4E3141B8BCCA80089CB2B /* CLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3131B8BCCA80089CB2B /* CLClient.m */; };
 		4BA4E3171B8BD9360089CB2B /* CLAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3161B8BD9360089CB2B /* CLAddress.m */; };
 		4BA4E31A1B8BDA940089CB2B /* CLCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3191B8BDA940089CB2B /* CLCoordinator.m */; };
 		4BA4E31D1B8BDC4B0089CB2B /* CLEdit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E31C1B8BDC4B0089CB2B /* CLEdit.m */; };
@@ -185,8 +184,6 @@
 		4BA4E30D1B8BC8F40089CB2B /* CLVersions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLVersions.m; sourceTree = "<group>"; };
 		4BA4E30F1B8BC9240089CB2B /* CLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUser.h; sourceTree = "<group>"; };
 		4BA4E3101B8BC9240089CB2B /* CLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLUser.m; sourceTree = "<group>"; };
-		4BA4E3121B8BCCA80089CB2B /* CLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLClient.h; sourceTree = "<group>"; };
-		4BA4E3131B8BCCA80089CB2B /* CLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLClient.m; sourceTree = "<group>"; };
 		4BA4E3151B8BD9360089CB2B /* CLAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAddress.h; sourceTree = "<group>"; };
 		4BA4E3161B8BD9360089CB2B /* CLAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAddress.m; sourceTree = "<group>"; };
 		4BA4E3181B8BDA940089CB2B /* CLCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCoordinator.h; sourceTree = "<group>"; };
@@ -406,9 +403,8 @@
 		4BA4E2EF1B8BC5CA0089CB2B /* api */ = {
 			isa = PBXGroup;
 			children = (
+				4BA4E3361B8D06EA0089CB2B /* responses */,
 				4BA4E2F01B8BC5E60089CB2B /* entities */,
-				4BA4E3121B8BCCA80089CB2B /* CLClient.h */,
-				4BA4E3131B8BCCA80089CB2B /* CLClient.m */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -460,6 +456,13 @@
 				4BA4E3341B8C1E280089CB2B /* CLFilePreview.m */,
 			);
 			name = entities;
+			sourceTree = "<group>";
+		};
+		4BA4E3361B8D06EA0089CB2B /* responses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = responses;
 			sourceTree = "<group>";
 		};
 		523096B71AA28D0500649FB7 /* Home */ = {
@@ -1048,7 +1051,6 @@
 				4BA4E2FC1B8BC7A80089CB2B /* CLParentTag.m in Sources */,
 				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
 				D93AAC93187B704100E9B96A /* NPAttendeesViewController.m in Sources */,
-				4BA4E3141B8BCCA80089CB2B /* CLClient.m in Sources */,
 				4BA4E3321B8C1B930089CB2B /* CLParticipant.m in Sources */,
 				D93AABF3186EFAD100E9B96A /* NPProfileViewController.m in Sources */,
 				4BA4E3051B8BC8670089CB2B /* CLRole.m in Sources */,

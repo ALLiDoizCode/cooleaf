@@ -7,6 +7,7 @@
 //
 
 #import <Mantle.h>
+#import "CLTag.h"
 
 @interface CLParentTag : MTLModel <MTLJSONSerializing>
 

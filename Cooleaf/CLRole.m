@@ -7,7 +7,6 @@
 //
 
 #import "CLRole.h"
-#import "CLTag.h"
 
 @implementation CLRole
 

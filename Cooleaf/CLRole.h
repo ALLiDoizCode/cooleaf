@@ -11,6 +11,7 @@
 #import "CLOrganization.h"
 #import "CLDepartment.h"
 
+
 @interface CLRole : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, assign) BOOL *isActive;

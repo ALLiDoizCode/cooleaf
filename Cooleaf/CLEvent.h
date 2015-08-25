@@ -12,6 +12,7 @@
 #import "CLTimeZone.h"
 #import "CLSeries.h"
 #import "CLCoordinator.h"
+#import "CLParticipant.h"
 
 @interface CLEvent : MTLModel <MTLJSONSerializing>
 

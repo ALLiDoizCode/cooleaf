@@ -7,7 +7,6 @@
 //
 
 #import "CLEvent.h"
-#import "CLParticipant.h"
 
 @implementation CLEvent
 

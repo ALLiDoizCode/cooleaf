@@ -7,7 +7,6 @@
 //
 
 #import "CLParentTag.h"
-#import "CLTag.h"
 
 @implementation CLParentTag
 
