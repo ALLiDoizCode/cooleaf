@@ -13,7 +13,7 @@
 
 @interface CLRole : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic) BOOL *isActive;
+@property (nonatomic, assign) BOOL *isActive;
 @property (nonatomic, copy) NSString *rights;
 @property (nonatomic, copy) CLOrganization *organization;
 @property (nonatomic, copy) CLBranch *branch;

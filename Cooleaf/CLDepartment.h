@@ -11,7 +11,7 @@
 @interface CLDepartment : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic) BOOL *isDefault;
+@property (nonatomic, assign) BOOL *isDefault;
 
 
 @end

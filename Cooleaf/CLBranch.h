@@ -11,6 +11,6 @@
 @interface CLBranch : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy) NSString *branchName;
-@property (nonatomic) BOOL *isDefault;
+@property (nonatomic, assign) BOOL *isDefault;
 
 @end

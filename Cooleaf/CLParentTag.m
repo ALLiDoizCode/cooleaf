@@ -7,6 +7,7 @@
 //
 
 #import "CLParentTag.h"
+#import "CLTag.h"
 
 @implementation CLParentTag
 
@@ -20,6 +21,12 @@
              @"isRequired": @"required",
              @"isPrimary": @"primary"
              };
+}
+
+# pragma tagsJSONTransformer
+
++ (NSValueTransformer *)tagsJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:CLTag.class];
 }
 
 

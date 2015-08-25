@@ -22,4 +22,22 @@
              };
 }
 
+# pragma pictureJSONTransformer
+
+- (NSValueTransformer *)pictureJSONTransformer {
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSDictionary *pictureDict) {
+        return [MTLJSONAdapter  modelOfClass:CLPicture.class
+                                fromJSONDictionary:pictureDict
+                                error:nil];
+    } reverseBlock:^(CLPicture *picture) {
+        return [MTLJSONAdapter  JSONDictionaryFromModel:picture];
+    }];
+}
+
+# pragma Custom JSONTransformer for parsing structures here
+
+//+ (NSValueTransformer *)structureJSONTransformer {
+//    Need to still write code for custom transformer here
+//}
+
 @end
