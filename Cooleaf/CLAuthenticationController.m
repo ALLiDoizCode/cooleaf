@@ -10,18 +10,28 @@
 
 @implementation CLAuthenticationController
 
-# pragma authenticate the user
+# pragma authenticate
 
-- (CLUser *)authenticate {
+- (void)authenticate:(NSString *)email :(NSString *)password {
     
     // Get the client
     CLClient *client = [CLClient getInstance];
     
-    // Do your network operation
-    // ....
+    NSMutableDictionary *authDict = [NSMutableDictionary dictionary];
+    authDict[@"email"] = email;
+    authDict[@"password"] = password;
     
-    CLUser *user = [[CLUser alloc] init];
-    return user;
+    // Do your network operation
+    [client POST:@"users/authorize.json" parameters:authDict completion:^(id response, NSError *error) {
+        CLUser *user = response;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"authenticationEvent" object:user];
+    }];
+    
 }
+
+
+# pragma deauthenticate
+
+
 
 @end

@@ -1,5 +1,5 @@
 //
-//  CLAuthenticationController.h
+//  CLAuthenticationPresenter.h
 //  Cooleaf
 //
 //  Created by Haider Khan on 8/25/15.
@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <OVCResponse.h>
-#import "CLUser.h"
-#import "CLClient.h"
 
-@interface CLAuthenticationController : NSObject
+@interface CLAuthenticationPresenter : NSObject
 
 - (void)authenticate:(NSString *)email :(NSString *)password;
+- (void)addSelfAsObserver;
+- (void)removeSelfAsObserver;
 
 @end

@@ -48,6 +48,7 @@
 		4BA4E34C1B8D134C0089CB2B /* CLEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E34B1B8D134C0089CB2B /* CLEventController.m */; };
 		4BA4E34F1B8D13580089CB2B /* CLInterestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E34E1B8D13580089CB2B /* CLInterestController.m */; };
 		4BA4E3521B8D13610089CB2B /* CLUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3511B8D13610089CB2B /* CLUserController.m */; };
+		4BA4E35A1B8D1E4C0089CB2B /* CLAuthenticationPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3591B8D1E4C0089CB2B /* CLAuthenticationPresenter.m */; };
 		52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */; };
 		523096C01AA28F5D00649FB7 /* NPInterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */; };
 		523096C11AA28F5D00649FB7 /* NPInterestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */; };
@@ -221,6 +222,8 @@
 		4BA4E34E1B8D13580089CB2B /* CLInterestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInterestController.m; sourceTree = "<group>"; };
 		4BA4E3501B8D13610089CB2B /* CLUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUserController.h; sourceTree = "<group>"; };
 		4BA4E3511B8D13610089CB2B /* CLUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLUserController.m; sourceTree = "<group>"; };
+		4BA4E3581B8D1E4C0089CB2B /* CLAuthenticationPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAuthenticationPresenter.h; sourceTree = "<group>"; };
+		4BA4E3591B8D1E4C0089CB2B /* CLAuthenticationPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAuthenticationPresenter.m; sourceTree = "<group>"; };
 		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPickYourInterestsLabelCell.h; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.h"; sourceTree = "<group>"; };
 		52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPickYourInterestsLabelCell.m; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.m"; sourceTree = "<group>"; };
 		523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsViewController.h; path = "Application Controllers/NPInterestsViewController.h"; sourceTree = "<group>"; };
@@ -486,6 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				4BA4E3461B8D13240089CB2B /* controllers */,
+				4BA4E3531B8D1D820089CB2B /* presenters */,
 			);
 			name = mvp;
 			sourceTree = "<group>";
@@ -503,6 +507,15 @@
 				4BA4E3511B8D13610089CB2B /* CLUserController.m */,
 			);
 			name = controllers;
+			sourceTree = "<group>";
+		};
+		4BA4E3531B8D1D820089CB2B /* presenters */ = {
+			isa = PBXGroup;
+			children = (
+				4BA4E3581B8D1E4C0089CB2B /* CLAuthenticationPresenter.h */,
+				4BA4E3591B8D1E4C0089CB2B /* CLAuthenticationPresenter.m */,
+			);
+			name = presenters;
 			sourceTree = "<group>";
 		};
 		523096B71AA28D0500649FB7 /* Home */ = {
@@ -1113,6 +1126,7 @@
 				4BA4E34C1B8D134C0089CB2B /* CLEventController.m in Sources */,
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
 				4BA4E32C1B8BF8E00089CB2B /* CLTimeZone.m in Sources */,
+				4BA4E35A1B8D1E4C0089CB2B /* CLAuthenticationPresenter.m in Sources */,
 				F9F445EA1AB8AED700C655CF /* NPInterestsHeaderViewCell.m in Sources */,
 				4BA4E3081B8BC89E0089CB2B /* CLSettings.m in Sources */,
 				523096E11AA3E24800649FB7 /* NPHomeTopCell.m in Sources */,
