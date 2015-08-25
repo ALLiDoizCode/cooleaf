@@ -25,4 +25,13 @@
              };
 }
 
+
+# pragma urlSchemeJSONTransformer
+
++ (NSValueTransformer *)urlSchemeJSONTransformer {
+    // use Mantle's built-in "value transformer" to convert strings to NSURL and vice-versa
+    // you can write your own transformers
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
 @end

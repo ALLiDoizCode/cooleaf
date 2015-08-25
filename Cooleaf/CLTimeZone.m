@@ -10,4 +10,13 @@
 
 @implementation CLTimeZone
 
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"name": @"name",
+             @"offset": @"offset",
+             @"abbrv": @"abbreviation",
+             @"momentName": @"moment_name"
+             };
+}
+
 @end

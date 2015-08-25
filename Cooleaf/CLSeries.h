@@ -10,6 +10,7 @@
 
 @interface CLSeries : MTLModel <MTLJSONSerializing>
 
-
+@property (nonatomic, copy, readonly) NSNumber *seriesId;
+@property (nonatomic, copy) NSMutableArray *eventIds;
 
 @end

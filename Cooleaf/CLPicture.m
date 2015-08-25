@@ -20,4 +20,26 @@
 }
 
 
+# pragma urlSchemeJSONTransformer
+
++ (NSValueTransformer *)urlSchemeJSONTransformer {
+    // use Mantle's built-in "value transformer" to convert strings to NSURL and vice-versa
+    // you can write your own transformers
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
+
+# pragma versionsJSONTransformer
+
+- (NSValueTransformer *)versionsJSONTransformer {
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSDictionary *versionsDict) {
+        return [MTLJSONAdapter  modelOfClass:CLVersions.class
+                                fromJSONDictionary:versionsDict
+                                error:nil];
+    } reverseBlock:^(CLVersions *versions) {
+        return [MTLJSONAdapter JSONDictionaryFromModel:versions];
+    }];
+}
+
+
 @end
