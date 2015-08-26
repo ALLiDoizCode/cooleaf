@@ -11,6 +11,7 @@
 @interface CLAuthenticationPresenter : NSObject
 
 - (void)authenticate:(NSString *)email :(NSString *)password;
+- (void)showAuthenticateionError;
 - (void)addSelfAsObserver;
 - (void)removeSelfAsObserver;
 

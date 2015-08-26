@@ -23,8 +23,12 @@
     
     // Do your network operation
     [client POST:@"users/authorize.json" parameters:authDict completion:^(id response, NSError *error) {
-        CLUser *user = response;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"authenticationEvent" object:user];
+        if (!error) {
+            CLUser *user = response;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"authenticationEvent" object:user];
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"errorAuthentication" object:self];
+        }
     }];
     
 }

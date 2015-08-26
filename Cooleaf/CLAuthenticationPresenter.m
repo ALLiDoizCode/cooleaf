@@ -10,15 +10,40 @@
 
 @implementation CLAuthenticationPresenter
 
+
+#pragma authenticate
+
 - (void)authenticate:(NSString *)email :(NSString *)password {
     
 }
 
 
-- (void)addSelfAsObserver {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@"authenticate" name:@"" object:nil];
+# pragma showAuthenticationError
+
+- (void)showAuthenticationError {
+    
 }
 
 
+# pragma addSelfAsObserver
+
+- (void)addSelfAsObserver {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                          selector:@selector(authenticate::)
+                                          name:@"authenticateEvent"
+                                          object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                          selector:@selector(showAuthenticationError)
+                                          name:@"errorAuthentication"
+                                          object:nil];
+}
+
+
+# pragma removeSelfAsObserver
+
+- (void)removeSelfAsObserver {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end
