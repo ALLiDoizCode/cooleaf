@@ -15,7 +15,6 @@ static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.e
 #pragma Initialization
 
 - (id)initWithBaseURL:(NSURL *)url {
-    //NSURL *apiUrl = [NSURL URLWithString:API_URL];
     self = [super initWithBaseURL:[NSURL URLWithString:API_URL]];
     if (!self)
         return nil;

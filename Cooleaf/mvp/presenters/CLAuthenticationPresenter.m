@@ -14,7 +14,10 @@
 #pragma authenticate
 
 - (void)authenticate:(NSString *)email :(NSString *)password {
-    
+    NSDictionary *authorizationDict = [NSDictionary dictionary];
+    authorizationDict[@"email"];
+    authorizationDict[@"password"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"authorizeEvent" object:self userInfo:authorizationDict];
 }
 
 
