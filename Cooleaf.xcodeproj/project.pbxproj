@@ -172,7 +172,7 @@
 		43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPTagGroupsView.m; sourceTree = "<group>"; };
 		43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPTagGroupView.xib; sourceTree = "<group>"; };
 		4BA4E2F11B8BC6E70089CB2B /* CLBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBranch.h; sourceTree = "<group>"; };
-		4BA4E2F21B8BC6E70089CB2B /* CLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBranch.m; sourceTree = "<group>"; };
+		4BA4E2F21B8BC6E70089CB2B /* CLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLBranch.m; path = "/Users/ZkHaider/Documents/iOSProjects/Cooleaf-iOS/CLBranch.m"; sourceTree = "<absolute>"; };
 		4BA4E2F41B8BC7290089CB2B /* CLDepartment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDepartment.h; sourceTree = "<group>"; };
 		4BA4E2F51B8BC7290089CB2B /* CLDepartment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDepartment.m; sourceTree = "<group>"; };
 		4BA4E2F71B8BC76B0089CB2B /* CLOrganization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLOrganization.h; sourceTree = "<group>"; };
