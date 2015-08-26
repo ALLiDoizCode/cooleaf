@@ -10,4 +10,10 @@
 
 @implementation CLEventController
 
+- (void *)loadEvents {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(<#selector#>) name:@"loadEvents" object:nil];
+}
+
+- (NSMutableArray)
+
 @end
