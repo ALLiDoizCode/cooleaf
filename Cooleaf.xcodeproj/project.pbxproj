@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		091C2FA9FE63464F90BF2AC1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF39234F1654A6DBFF21105 /* libPods.a */; };
 		430936441AD1ECA300E568CD /* NPSeriesEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 430936431AD1ECA300E568CD /* NPSeriesEvent.m */; };
 		430936491AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 430936471AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m */; };
 		4309364A1AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 430936481AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.xib */; };
@@ -75,6 +74,10 @@
 		52A9A1971AACECC5004E6C13 /* NPInterestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A9A1951AACECC5004E6C13 /* NPInterestCell.xib */; };
 		52A9A19B1AACECDA004E6C13 /* NPOtherInterestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A9A1991AACECDA004E6C13 /* NPOtherInterestCell.m */; };
 		52A9A19C1AACECDA004E6C13 /* NPOtherInterestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A9A19A1AACECDA004E6C13 /* NPOtherInterestCell.xib */; };
+		68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */; };
+		68CDDC431B8EC279004C2897 /* CLTagGroupPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC421B8EC279004C2897 /* CLTagGroupPresenter.m */; };
+		68CDDC461B8EC3DF004C2897 /* CLTagPresenters.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC451B8EC3DF004C2897 /* CLTagPresenters.m */; };
+		68CDDC4C1B8ED353004C2897 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68CDDC4B1B8ED353004C2897 /* libPods.a */; };
 		D9242F8E1A768070006F7D92 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9242F8D1A768070006F7D92 /* Crashlytics.framework */; };
 		D931450D18925456002325CB /* NPCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D931450C18925456002325CB /* NPCompanyCell.m */; };
 		D931450F18925467002325CB /* NPCompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D931450E18925467002325CB /* NPCompanyCell.xib */; };
@@ -266,6 +269,20 @@
 		52A9A1991AACECDA004E6C13 /* NPOtherInterestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPOtherInterestCell.m; path = "Application Controllers/Interests/NPOtherInterestCell.m"; sourceTree = "<group>"; };
 		52A9A19A1AACECDA004E6C13 /* NPOtherInterestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPOtherInterestCell.xib; path = "Application Controllers/Interests/NPOtherInterestCell.xib"; sourceTree = "<group>"; };
 		5835FE81ECFB8936D5916B56 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		68CDDC081B8E8BB0004C2897 /* CLEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLEvents.h; sourceTree = "<group>"; };
+		68CDDC3B1B8EB7D1004C2897 /* CLInterest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLInterest.h; sourceTree = "<group>"; };
+		68CDDC3C1B8EBB4F004C2897 /* CLTagGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTagGroup.h; sourceTree = "<group>"; };
+		68CDDC3D1B8EBE60004C2897 /* CLTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTag.h; sourceTree = "<group>"; };
+		68CDDC3E1B8EC0F8004C2897 /* CLInterestPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLInterestPresenter.h; path = Cooleaf/mvp/presenters/CLInterestPresenter.h; sourceTree = SOURCE_ROOT; };
+		68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLInterestPresenter.m; path = Cooleaf/mvp/presenters/CLInterestPresenter.m; sourceTree = SOURCE_ROOT; };
+		68CDDC411B8EC279004C2897 /* CLTagGroupPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTagGroupPresenter.h; path = Cooleaf/mvp/presenters/CLTagGroupPresenter.h; sourceTree = SOURCE_ROOT; };
+		68CDDC421B8EC279004C2897 /* CLTagGroupPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTagGroupPresenter.m; path = Cooleaf/mvp/presenters/CLTagGroupPresenter.m; sourceTree = SOURCE_ROOT; };
+		68CDDC441B8EC3DF004C2897 /* CLTagPresenters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTagPresenters.h; path = Cooleaf/mvp/presenters/CLTagPresenters.h; sourceTree = SOURCE_ROOT; };
+		68CDDC451B8EC3DF004C2897 /* CLTagPresenters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTagPresenters.m; path = Cooleaf/mvp/presenters/CLTagPresenters.m; sourceTree = SOURCE_ROOT; };
+		68CDDC471B8ED17D004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		68CDDC491B8ED33F004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		68CDDC4B1B8ED353004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		68D08E181B8E89E9000DEF69 /* CLLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLLogin.h; sourceTree = "<group>"; };
 		BFF39234F1654A6DBFF21105 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7A30D9ADB09ECA1212D0FB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D9242F8D1A768070006F7D92 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -369,12 +386,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68CDDC4C1B8ED353004C2897 /* libPods.a in Frameworks */,
 				D93AAC84187B691600E9B96A /* MapKit.framework in Frameworks */,
 				D93AAC7D187B646700E9B96A /* EventKit.framework in Frameworks */,
 				D980954A185CA557008F2B61 /* CoreGraphics.framework in Frameworks */,
 				D980954C185CA557008F2B61 /* UIKit.framework in Frameworks */,
 				D9809548185CA557008F2B61 /* Foundation.framework in Frameworks */,
-				091C2FA9FE63464F90BF2AC1 /* libPods.a in Frameworks */,
 				D9242F8E1A768070006F7D92 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,6 +511,7 @@
 		4BA4E3451B8D13080089CB2B /* MVP */ = {
 			isa = PBXGroup;
 			children = (
+				68D08E191B8E89EE000DEF69 /* Protocol */,
 				4BA4E3461B8D13240089CB2B /* Controllers */,
 				4BA4E3531B8D1D820089CB2B /* Presenters */,
 			);
@@ -524,6 +542,12 @@
 				4BA4E3591B8D1E4C0089CB2B /* CLAuthenticationPresenter.m */,
 				4BA4E3921B8D4CF60089CB2B /* CLEventPresenter.h */,
 				4BA4E3931B8D4CF60089CB2B /* CLEventPresenter.m */,
+				68CDDC3E1B8EC0F8004C2897 /* CLInterestPresenter.h */,
+				68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */,
+				68CDDC411B8EC279004C2897 /* CLTagGroupPresenter.h */,
+				68CDDC421B8EC279004C2897 /* CLTagGroupPresenter.m */,
+				68CDDC441B8EC3DF004C2897 /* CLTagPresenters.h */,
+				68CDDC451B8EC3DF004C2897 /* CLTagPresenters.m */,
 			);
 			name = Presenters;
 			path = ../MVP/Presenters;
@@ -633,6 +657,18 @@
 				526DDE171AC757550095FC27 /* NPMembersViewController.xib */,
 			);
 			name = NPMembersViewController;
+			sourceTree = "<group>";
+		};
+		68D08E191B8E89EE000DEF69 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				68D08E181B8E89E9000DEF69 /* CLLogin.h */,
+				68CDDC081B8E8BB0004C2897 /* CLEvents.h */,
+				68CDDC3B1B8EB7D1004C2897 /* CLInterest.h */,
+				68CDDC3C1B8EBB4F004C2897 /* CLTagGroup.h */,
+				68CDDC3D1B8EBE60004C2897 /* CLTag.h */,
+			);
+			name = Protocol;
 			sourceTree = "<group>";
 		};
 		CEE3E8F6427AC65C0C247FB1 /* Pods */ = {
@@ -756,6 +792,9 @@
 		D9809546185CA557008F2B61 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				68CDDC4B1B8ED353004C2897 /* libPods.a */,
+				68CDDC491B8ED33F004C2897 /* libPods.a */,
+				68CDDC471B8ED17D004C2897 /* libPods.a */,
 				D9242F8D1A768070006F7D92 /* Crashlytics.framework */,
 				D93AAC83187B691600E9B96A /* MapKit.framework */,
 				D93AAC7C187B646700E9B96A /* EventKit.framework */,
@@ -1123,6 +1162,7 @@
 				D93AABF3186EFAD100E9B96A /* NPProfileViewController.m in Sources */,
 				4BA4E3051B8BC8670089CB2B /* CLRole.m in Sources */,
 				D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */,
+				68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */,
 				F9B37B941AAB9802003F3FB8 /* NPRegistrationViewController.m in Sources */,
 				D93AAC7B187B5C9900E9B96A /* NPDateCell.m in Sources */,
 				4BA4E34F1B8D13580089CB2B /* CLInterestController.m in Sources */,
@@ -1136,6 +1176,7 @@
 				D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */,
 				4BA4E31D1B8BDC4B0089CB2B /* CLEdit.m in Sources */,
 				4BA4E34C1B8D134C0089CB2B /* CLEventController.m in Sources */,
+				68CDDC431B8EC279004C2897 /* CLTagGroupPresenter.m in Sources */,
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
 				4BA4E32C1B8BF8E00089CB2B /* CLTimeZone.m in Sources */,
 				4BA4E35A1B8D1E4C0089CB2B /* CLAuthenticationPresenter.m in Sources */,
@@ -1159,6 +1200,7 @@
 				4BA4E2F61B8BC7290089CB2B /* CLDepartment.m in Sources */,
 				526DDE181AC757550095FC27 /* NPMembersViewController.m in Sources */,
 				523096D71AA3E17400649FB7 /* NPHomeCell.m in Sources */,
+				68CDDC461B8EC3DF004C2897 /* CLTagPresenters.m in Sources */,
 				4BA4E32F1B8BFA0C0089CB2B /* CLSeries.m in Sources */,
 				4BA4E3441B8D11440089CB2B /* CLClient.m in Sources */,
 			);
@@ -1289,6 +1331,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cooleaf/Cooleaf-Prefix.pch";
 				INFOPLIST_FILE = "Cooleaf/Cooleaf-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a8ed2028-f29e-4fac-90ef-2e8b80e8a684";
 				WRAPPER_EXTENSION = app;
@@ -1310,6 +1356,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cooleaf/Cooleaf-Prefix.pch";
 				INFOPLIST_FILE = "Cooleaf/Cooleaf-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a8ed2028-f29e-4fac-90ef-2e8b80e8a684";
 				WRAPPER_EXTENSION = app;

@@ -7,46 +7,42 @@
 //
 
 #import "CLAuthenticationPresenter.h"
+#import "CLLogin.h"
 
-@implementation CLAuthenticationPresenter
+@implementation CLAuthenticationPresenter {
+    
+@private
+    id <AddUserInfo> _userInfo;
+    
+}
 
+@synthesize userInfo = _userInfo;
+
+
+- (CLAuthenticationPresenter *)initWithAddUserInfo:(id <AddUserInfo>)userInfo {
+    
+    if (self = [super init]) {
+        
+        _userInfo = userInfo;
+    }
+    
+    return self;
+}
 
 #pragma authenticate
 
 - (void)authenticate:(NSString *)email :(NSString *)password {
-    NSDictionary *authorizationDict = [NSDictionary dictionary];
-    authorizationDict[@"email"];
-    authorizationDict[@"password"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"authorizeEvent" object:self userInfo:authorizationDict];
-}
-
-
-# pragma showAuthenticationError
-
-- (void)showAuthenticationError {
     
-}
-
-
-# pragma addSelfAsObserver
-
-- (void)addSelfAsObserver {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(authenticate::)
-                                          name:@"authenticateEvent"
-                                          object:nil];
+    NSArray *userInfo = [NSArray arrayWithObjects: email,password,nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(showAuthenticationError)
-                                          name:@"errorAuthentication"
-                                          object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:userInfo];
 }
 
+///Protocols 
+#pragma errorMessage
 
-# pragma removeSelfAsObserver
-
-- (void)removeSelfAsObserver {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+- (void)errorMessage:(NSString *)message {
+    
 }
 
 @end
