@@ -249,14 +249,14 @@
 		4BAE005E1B8EDF0E00779E1F /* CLBaseSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBaseSubscriber.h; sourceTree = "<group>"; };
 		4BAE005F1B8EDF0E00779E1F /* CLBaseSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBaseSubscriber.m; sourceTree = "<group>"; };
 		4BAE00641B8EDF6200779E1F /* CLNotificationSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLNotificationSubscriber.h; sourceTree = "<group>"; };
-		4BAE00661B8EDFD300779E1F /* CLAuthenticationSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAuthenticationSubscriber.h; path = Cooleaf/MVP/CLAuthenticationSubscriber.h; sourceTree = SOURCE_ROOT; };
-		4BAE00671B8EDFD300779E1F /* CLAuthenticationSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAuthenticationSubscriber.m; path = Cooleaf/MVP/CLAuthenticationSubscriber.m; sourceTree = SOURCE_ROOT; };
-		4BAE00691B8EE00D00779E1F /* CLEventSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLEventSubscriber.h; path = Cooleaf/MVP/CLEventSubscriber.h; sourceTree = SOURCE_ROOT; };
-		4BAE006A1B8EE00D00779E1F /* CLEventSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLEventSubscriber.m; path = Cooleaf/MVP/CLEventSubscriber.m; sourceTree = SOURCE_ROOT; };
-		4BAE006C1B8EE03100779E1F /* CLInterestSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLInterestSubscriber.h; path = Cooleaf/MVP/CLInterestSubscriber.h; sourceTree = SOURCE_ROOT; };
-		4BAE006D1B8EE03100779E1F /* CLInterestSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLInterestSubscriber.m; path = Cooleaf/MVP/CLInterestSubscriber.m; sourceTree = SOURCE_ROOT; };
-		4BAE006F1B8EE06900779E1F /* CLUserSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLUserSubscriber.h; path = Cooleaf/MVP/CLUserSubscriber.h; sourceTree = SOURCE_ROOT; };
-		4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLUserSubscriber.m; path = Cooleaf/MVP/CLUserSubscriber.m; sourceTree = SOURCE_ROOT; };
+		4BAE00661B8EDFD300779E1F /* CLAuthenticationSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAuthenticationSubscriber.h; path = Cooleaf/MVP/Subscribers/CLAuthenticationSubscriber.h; sourceTree = SOURCE_ROOT; };
+		4BAE00671B8EDFD300779E1F /* CLAuthenticationSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAuthenticationSubscriber.m; path = Cooleaf/MVP/Subscribers/CLAuthenticationSubscriber.m; sourceTree = SOURCE_ROOT; };
+		4BAE00691B8EE00D00779E1F /* CLEventSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLEventSubscriber.h; path = Cooleaf/MVP/Subscribers/CLEventSubscriber.h; sourceTree = SOURCE_ROOT; };
+		4BAE006A1B8EE00D00779E1F /* CLEventSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLEventSubscriber.m; path = Cooleaf/MVP/Subscribers/CLEventSubscriber.m; sourceTree = SOURCE_ROOT; };
+		4BAE006C1B8EE03100779E1F /* CLInterestSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLInterestSubscriber.h; path = Cooleaf/MVP/Subscribers/CLInterestSubscriber.h; sourceTree = SOURCE_ROOT; };
+		4BAE006D1B8EE03100779E1F /* CLInterestSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLInterestSubscriber.m; path = Cooleaf/MVP/Subscribers/CLInterestSubscriber.m; sourceTree = SOURCE_ROOT; };
+		4BAE006F1B8EE06900779E1F /* CLUserSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLUserSubscriber.h; path = Cooleaf/MVP/Subscribers/CLUserSubscriber.h; sourceTree = SOURCE_ROOT; };
+		4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLUserSubscriber.m; path = Cooleaf/MVP/Subscribers/CLUserSubscriber.m; sourceTree = SOURCE_ROOT; };
 		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPickYourInterestsLabelCell.h; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.h"; sourceTree = "<group>"; };
 		52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPickYourInterestsLabelCell.m; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.m"; sourceTree = "<group>"; };
 		523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsViewController.h; path = "Application Controllers/NPInterestsViewController.h"; sourceTree = "<group>"; };
@@ -626,6 +626,7 @@
 				4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */,
 			);
 			name = Subscribers;
+			path = ../MVP/Subscribers;
 			sourceTree = "<group>";
 		};
 		523096B71AA28D0500649FB7 /* Home */ = {
@@ -744,6 +745,7 @@
 				68CDDC3D1B8EBE60004C2897 /* CLTag.h */,
 			);
 			name = Protocol;
+			path = ../MVP/Protocol;
 			sourceTree = "<group>";
 		};
 		CEE3E8F6427AC65C0C247FB1 /* Pods */ = {
