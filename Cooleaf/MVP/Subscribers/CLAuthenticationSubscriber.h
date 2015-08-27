@@ -9,10 +9,9 @@
 #import "CLBaseSubscriber.h"
 #import "CLAuthenticationController.h"
 #import "CLAuthenticationEvent.h"
+#import "CLAuthenticationSuccessEvent.h"
 
 @interface CLAuthenticationSubscriber : CLBaseSubscriber
-
-@property (nonatomic) CLAuthenticationController *authenticationController;
 
 - (id)init;
 

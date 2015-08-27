@@ -16,18 +16,16 @@
     
 }
 
+
 @synthesize userInfo = _userInfo;
 
 
 - (CLAuthenticationPresenter *)initWithAddUserInfo:(id <AddUserInfo>)userInfo {
-    
-    if (self = [super init]) {
-        
+    if (self = [super init])
         _userInfo = userInfo;
-    }
-    
     return self;
 }
+
 
 #pragma authenticate
 
@@ -38,11 +36,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:userInfo];
 }
 
+
 ///Protocols 
 #pragma errorMessage
 
 - (void)errorMessage:(NSString *)message {
-    
+    [_userInfo errorMessage:message];
 }
 
 @end

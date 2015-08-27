@@ -58,6 +58,7 @@
 		4BAE006B1B8EE00D00779E1F /* CLEventSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE006A1B8EE00D00779E1F /* CLEventSubscriber.m */; };
 		4BAE006E1B8EE03100779E1F /* CLInterestSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE006D1B8EE03100779E1F /* CLInterestSubscriber.m */; };
 		4BAE00711B8EE06900779E1F /* CLUserSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */; };
+		4BAE00741B8F909500779E1F /* CLAuthenticationSuccessEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE00731B8F909500779E1F /* CLAuthenticationSuccessEvent.m */; };
 		52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */; };
 		523096C01AA28F5D00649FB7 /* NPInterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */; };
 		523096C11AA28F5D00649FB7 /* NPInterestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */; };
@@ -257,6 +258,8 @@
 		4BAE006D1B8EE03100779E1F /* CLInterestSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLInterestSubscriber.m; path = Cooleaf/MVP/Subscribers/CLInterestSubscriber.m; sourceTree = SOURCE_ROOT; };
 		4BAE006F1B8EE06900779E1F /* CLUserSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLUserSubscriber.h; path = Cooleaf/MVP/Subscribers/CLUserSubscriber.h; sourceTree = SOURCE_ROOT; };
 		4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLUserSubscriber.m; path = Cooleaf/MVP/Subscribers/CLUserSubscriber.m; sourceTree = SOURCE_ROOT; };
+		4BAE00721B8F909500779E1F /* CLAuthenticationSuccessEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAuthenticationSuccessEvent.h; sourceTree = "<group>"; };
+		4BAE00731B8F909500779E1F /* CLAuthenticationSuccessEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAuthenticationSuccessEvent.m; sourceTree = "<group>"; };
 		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPickYourInterestsLabelCell.h; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.h"; sourceTree = "<group>"; };
 		52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPickYourInterestsLabelCell.m; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.m"; sourceTree = "<group>"; };
 		523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsViewController.h; path = "Application Controllers/NPInterestsViewController.h"; sourceTree = "<group>"; };
@@ -597,6 +600,8 @@
 			children = (
 				4BAE00571B8EDE8600779E1F /* CLAuthenticationEvent.h */,
 				4BAE00581B8EDE8600779E1F /* CLAuthenticationEvent.m */,
+				4BAE00721B8F909500779E1F /* CLAuthenticationSuccessEvent.h */,
+				4BAE00731B8F909500779E1F /* CLAuthenticationSuccessEvent.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1276,6 +1281,7 @@
 				4BAE005D1B8EDEE200779E1F /* CLBaseNotificationRegistry.m in Sources */,
 				D93AACA9187C351500E9B96A /* NPNewTodoViewController.m in Sources */,
 				523096C51AA2907600649FB7 /* NPChallengesViewController.m in Sources */,
+				4BAE00741B8F909500779E1F /* CLAuthenticationSuccessEvent.m in Sources */,
 				D9809554185CA557008F2B61 /* main.m in Sources */,
 				4BAE00601B8EDF0E00779E1F /* CLBaseSubscriber.m in Sources */,
 				D980958D185F2C5D008F2B61 /* NSFileManager+ImageCaching.m in Sources */,
