@@ -21,6 +21,7 @@
 		43B0624D1AB71A64009F96CD /* NPMembersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B0624B1AB71A64009F96CD /* NPMembersCell.xib */; };
 		43EF2F191B00A8F5002A060A /* NPTagGroupsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */; };
 		43EF2F1A1B00A8F5002A060A /* NPTagGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */; };
+		4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */; };
 		4BA4E2F31B8BC6E70089CB2B /*  in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E2F21B8BC6E70089CB2B /*  */; };
 		4BA4E2F61B8BC7290089CB2B /* CLDepartment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E2F51B8BC7290089CB2B /* CLDepartment.m */; };
 		4BA4E2F91B8BC76B0089CB2B /* CLOrganization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E2F81B8BC76B0089CB2B /* CLOrganization.m */; };
@@ -174,6 +175,7 @@
 		43EF2F161B00A8F5002A060A /* NPTagGroupsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPTagGroupsView.h; sourceTree = "<group>"; };
 		43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPTagGroupsView.m; sourceTree = "<group>"; };
 		43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPTagGroupView.xib; sourceTree = "<group>"; };
+		4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBranch.m; sourceTree = "<group>"; };
 		4BA4E2F11B8BC6E70089CB2B /* CLBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBranch.h; sourceTree = "<group>"; };
 		4BA4E2F21B8BC6E70089CB2B /*  */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = ""; sourceTree = "<group>"; };
 		4BA4E2F41B8BC7290089CB2B /* CLDepartment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDepartment.h; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				4BA4E2F11B8BC6E70089CB2B /* CLBranch.h */,
+				4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */,
 				4BA4E2F21B8BC6E70089CB2B /*  */,
 				4BA4E2F41B8BC7290089CB2B /* CLDepartment.h */,
 				4BA4E2F51B8BC7290089CB2B /* CLDepartment.m */,
@@ -1170,6 +1173,7 @@
 				4BA4E3021B8BC8360089CB2B /* CLProfile.m in Sources */,
 				52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */,
 				D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */,
+				4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */,
 				4BA4E3111B8BC9240089CB2B /* CLUser.m in Sources */,
 				432A499E1AE4FA2E001B3740 /* NPEditTagsViewController.m in Sources */,
 				F998F68F1AB3312500213240 /* NPInterest.m in Sources */,
