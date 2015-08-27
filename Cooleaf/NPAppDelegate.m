@@ -63,6 +63,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
+    // Go ahead and startEventProcessing...
+    [self startEventProcessing];
+    
     [Crashlytics startWithAPIKey:@"7dcedf5a21b0ddf4342ff0b3104aa0242456847d"];
     
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)])
@@ -133,8 +136,26 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [self stopEventProcessing];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+# pragma startEventProcessing
+
+- (void)startEventProcessing {
+    _registry = [[CLBaseNotificationRegistry alloc] init];
+    [_registry registerDefaultSubscribers];
+}
+
+
+# pragma stopEventProcessing
+
+- (void)stopEventProcessing {
+    [_registry unregisterDefaultSubscribers];
+    _registry = nil;
+}
+
 
 #pragma mark - Notification handling
 

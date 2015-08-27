@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CLBus.h"
+#import "CLAuthenticationEvent.h"
 
 @interface NPLoginViewController : UIViewController <UITextFieldDelegate>
 
