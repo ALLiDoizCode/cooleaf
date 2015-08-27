@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CLUser.h"
 
 @interface CLAuthenticationSuccessEvent : NSObject
+
+@property (nonatomic) CLUser *user;
 
 @end

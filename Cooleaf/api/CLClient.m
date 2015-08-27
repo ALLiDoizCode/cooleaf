@@ -20,7 +20,6 @@ static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.e
         return nil;
     
     self.requestSerializer = [AFJSONRequestSerializer serializer];
-    
     return self;
 }
 
@@ -56,6 +55,7 @@ static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.e
              
              };
 }
+
 
 @end
 

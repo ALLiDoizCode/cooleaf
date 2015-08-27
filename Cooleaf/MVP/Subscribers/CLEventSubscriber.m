@@ -10,6 +10,16 @@
 
 @implementation CLEventSubscriber
 
+# pragma init
+
+- (id)init {
+    _eventController = [[CLEventController alloc] init];
+    return self;
+}
+
+
+# pragma subscription events
+
 
 
 @end

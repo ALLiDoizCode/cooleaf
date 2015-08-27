@@ -9,10 +9,10 @@
 #import "CLEventPresenter.h"
 
 @implementation CLEventPresenter {
-
+    
 @private
     id <EventInfo> _eventInfo;
-
+    
 }
 
 @synthesize eventInfo = _eventInfo;

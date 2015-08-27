@@ -7,8 +7,11 @@
 //
 
 #import "CLBaseSubscriber.h"
+#import "CLEventController.h"
 
 @interface CLEventSubscriber : CLBaseSubscriber
+
+@property (nonatomic) CLEventController *eventController;
 
 - (id)init;
 

@@ -13,6 +13,8 @@
 
 @interface CLClient : OVCHTTPRequestOperationManager
 
+@property (nonatomic, readonly) NSDictionary *userData;
+
 + (CLClient *)getInstance;
 
 @end

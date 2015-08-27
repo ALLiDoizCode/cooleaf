@@ -10,4 +10,9 @@
 
 @implementation CLUserSubscriber
 
+- (id)init {
+    _userController = [[CLUserController alloc] init];
+    return self;
+}
+
 @end

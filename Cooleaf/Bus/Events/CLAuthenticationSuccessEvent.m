@@ -10,4 +10,9 @@
 
 @implementation CLAuthenticationSuccessEvent
 
+- (id)init:(CLUser *)user {
+    _user = user;
+    return self;
+}
+
 @end

@@ -11,12 +11,11 @@
 @protocol AddUserInfo;
 
 @interface CLAuthenticationPresenter : NSObject
+
 @property(nonatomic, strong) id<AddUserInfo> userInfo;
 
 - (void)authenticate:(NSString *)email :(NSString *)password;
-
 - (CLAuthenticationPresenter *)initWithAddUserInfo:(id <AddUserInfo>)userInfo;
-
 - (void)errorMessage:(NSString *)message;
 
 @end

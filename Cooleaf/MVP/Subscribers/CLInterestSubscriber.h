@@ -7,8 +7,11 @@
 //
 
 #import "CLBaseSubscriber.h"
+#import "CLInterestController.h"
 
 @interface CLInterestSubscriber : CLBaseSubscriber
+
+@property (nonatomic) CLInterestController *interestController;
 
 - (id)init;
 

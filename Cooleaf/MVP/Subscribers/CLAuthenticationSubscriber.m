@@ -8,12 +8,19 @@
 
 #import "CLAuthenticationSubscriber.h"
 
+@interface CLAuthenticationSubscriber() {
+    @private
+    CLAuthenticationController *authenticationController;
+}
+
+@end
+
 @implementation CLAuthenticationSubscriber
 
 # pragma init
 
 - (id)init {
-    _authenticationController = [[CLAuthenticationController alloc] init];
+    authenticationController = [[CLAuthenticationController alloc] init];
     return self;
 }
 
@@ -21,22 +28,14 @@
 # pragma authenticateEvent
 
 SUBSCRIBE(CLAuthenticationEvent) {
+    [authenticationController authenticate:event.email :event.password];
+}
+
+
+# pragma authenticationSuccessfulEvent
+
+SUBSCRIBE(CLAuthenticationSuccessEvent) {
     
-    
-    NSDictionary *authDict = @{
-                               @"email": event.email,
-                               @"password": event.password
-                               };
-    
-    // Do your network operation
-    [[CLClient getInstance] POST:@"v2/authorize.json" parameters:authDict completion:^(id response, NSError *error) {
-        if (!error) {
-            CLUser *user = [response result];
-            NSLog(@"Username: %@", user);
-        } else {
-            NSLog(@"Error: %@", [error userInfo]);
-        }
-    }];
 }
 
 @end

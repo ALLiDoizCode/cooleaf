@@ -62,9 +62,9 @@
 - (void)startLogin
 {
     [UIView animateWithDuration:0.3 animations:^{
-//        _logoView.alpha = 0.0;
+        //_logoView.alpha = 0.0;
     } completion:^(BOOL finished) {
-//        _logoView.hidden = YES;
+        //_logoView.hidden = YES;
 		
         NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
         if (username && [SSKeychain passwordForService:@"cooleaf" account:username])

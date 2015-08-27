@@ -7,8 +7,11 @@
 //
 
 #import "CLBaseSubscriber.h"
+#import "CLUserController.h"
 
 @interface CLUserSubscriber : CLBaseSubscriber
+
+@property (nonatomic) CLUserController *userController;
 
 - (id)init;
 

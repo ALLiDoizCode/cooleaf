@@ -14,20 +14,19 @@
 
 - (void)authenticate:(NSString *)email :(NSString *)password {
     
-    // Get the client
-    CLClient *client = [CLClient getInstance];
-    
-    NSMutableDictionary *authDict = [NSMutableDictionary dictionary];
-    authDict[@"email"] = email;
-    authDict[@"password"] = password;
+    NSDictionary *authDict = @{
+                               @"email": email,
+                               @"password": password
+                               };
     
     // Do your network operation
-    [client POST:@"users/authorize.json" parameters:authDict completion:^(id response, NSError *error) {
+    [[CLClient getInstance] POST:@"v2/authorize.json" parameters:authDict completion:^(id response, NSError *error) {
         if (!error) {
-            CLUser *user = response;
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"authenticationEvent" object:user];
+            NSDictionary *userDictionary = [response result];
+            CLUser *user = [MTLJSONAdapter modelOfClass:[CLUser class] fromJSONDictionary:userDictionary error:nil];
+            NSLog(@"%@", user);
         } else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"errorAuthentication" object:self];
+            NSLog(@"Error: %@", [error userInfo]);
         }
     }];
     
