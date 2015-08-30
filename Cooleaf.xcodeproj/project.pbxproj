@@ -22,6 +22,7 @@
 		43EF2F191B00A8F5002A060A /* NPTagGroupsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */; };
 		43EF2F1A1B00A8F5002A060A /* NPTagGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */; };
 		4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */; };
+		4B6088491B929EA20029E659 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6088481B929EA20029E659 /* UIColor+CustomColors.m */; };
 		4BA4E2F31B8BC6E70089CB2B /*  in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E2F21B8BC6E70089CB2B /*  */; };
 		4BA4E2F61B8BC7290089CB2B /* CLDepartment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E2F51B8BC7290089CB2B /* CLDepartment.m */; };
 		4BA4E2F91B8BC76B0089CB2B /* CLOrganization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E2F81B8BC76B0089CB2B /* CLOrganization.m */; };
@@ -185,6 +186,8 @@
 		43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPTagGroupsView.m; sourceTree = "<group>"; };
 		43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPTagGroupView.xib; sourceTree = "<group>"; };
 		4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBranch.m; sourceTree = "<group>"; };
+		4B6088471B929EA20029E659 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
+		4B6088481B929EA20029E659 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		4BA4E2F11B8BC6E70089CB2B /* CLBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBranch.h; sourceTree = "<group>"; };
 		4BA4E2F21B8BC6E70089CB2B /*  */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = ""; sourceTree = "<group>"; };
 		4BA4E2F41B8BC7290089CB2B /* CLDepartment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDepartment.h; sourceTree = "<group>"; };
@@ -466,6 +469,39 @@
 				437F3D851ABFEAD9007DE49B /* NPGroupEventsCell.xib */,
 			);
 			name = InterestPage;
+			sourceTree = "<group>";
+		};
+		4B6088431B929E4E0029E659 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4B6088461B929E8A0029E659 /* Custom */,
+				4B6088451B929E810029E659 /* Views */,
+				4B6088441B929E620029E659 /* UIViewControllers */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		4B6088441B929E620029E659 /* UIViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIViewControllers;
+			sourceTree = "<group>";
+		};
+		4B6088451B929E810029E659 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4B6088461B929E8A0029E659 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				4B6088471B929EA20029E659 /* UIColor+CustomColors.h */,
+				4B6088481B929EA20029E659 /* UIColor+CustomColors.m */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		4BA4E2EF1B8BC5CA0089CB2B /* Api */ = {
@@ -892,6 +928,7 @@
 		D980954D185CA557008F2B61 /* Cooleaf */ = {
 			isa = PBXGroup;
 			children = (
+				4B6088431B929E4E0029E659 /* UI */,
 				4BAE005A1B8EDEBB00779E1F /* Base */,
 				4BAE00521B8EDE1800779E1F /* Bus */,
 				4BA4E2EF1B8BC5CA0089CB2B /* Api */,
@@ -1228,6 +1265,7 @@
 				4BAE006B1B8EE00D00779E1F /* CLEventSubscriber.m in Sources */,
 				4BA4E31A1B8BDA940089CB2B /* CLCoordinator.m in Sources */,
 				52A9A1961AACECC5004E6C13 /* NPInterestCell.m in Sources */,
+				4B6088491B929EA20029E659 /* UIColor+CustomColors.m in Sources */,
 				D93AAC80187B661400E9B96A /* NPTodosCell.m in Sources */,
 				F9B37B981AAE0CA5003F3FB8 /* NPTagGroup.m in Sources */,
 				52A9A19B1AACECDA004E6C13 /* NPOtherInterestCell.m in Sources */,
