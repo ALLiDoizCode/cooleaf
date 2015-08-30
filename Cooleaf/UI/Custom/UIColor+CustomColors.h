@@ -10,4 +10,10 @@
 
 @interface UIColor (CustomColors)
 
++ (UIColor *)colorPrimary;
++ (UIColor *)colorPrimaryDark;
++ (UIColor *)colorAccent;
++ (UIColor *)navDrawerStart;
++ (UIColor *)navDrawerEnd;
+
 @end
