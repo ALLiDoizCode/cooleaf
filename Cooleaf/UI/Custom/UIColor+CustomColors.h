@@ -15,5 +15,9 @@
 + (UIColor *)colorAccent;
 + (UIColor *)navDrawerStart;
 + (UIColor *)navDrawerEnd;
++ (UIColor *)menuGradientFirstColor;
++ (UIColor *)menuGradientSecondColor;
++ (UIColor *)menuGradientThirdColor;
++ (UIColor *)menuGradientFourthColor;
 
 @end

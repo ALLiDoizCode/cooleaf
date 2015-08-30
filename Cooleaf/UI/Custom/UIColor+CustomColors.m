@@ -44,4 +44,42 @@
     return [UIColor colorWithRed:0.66 green:0.74 blue:0.85 alpha:1];
 }
 
+
+# pragma menuGradientFirstColor
+
++ (UIColor *)menuGradientFirstColor {
+    return [self UIColorFromRGB:0x92A5C5];
+}
+
+
+# pragma menuGradientSecondColor
+
++ (UIColor *)menuGradientSecondColor {
+    return [self UIColorFromRGB:0x92A5C5];
+}
+
+
+# pragma menuGradientThirdColor
+
++ (UIColor *)menuGradientThirdColor {
+    return [self UIColorFromRGB:0xa889AB7];
+}
+
+
+# pragma menuGradientFourthColor
+
++ (UIColor *)menuGradientFourthColor {
+    return [self UIColorFromRGB:0x47546E];
+}
+
+
+# pragma UIColorFromRGB
+
++ (UIColor *)UIColorFromRGB:(int)rgbValue {
+    return [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+                           green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+                            blue:((float)(rgbValue & 0xFF))/255.0
+                           alpha:1.0];
+}
+
 @end
