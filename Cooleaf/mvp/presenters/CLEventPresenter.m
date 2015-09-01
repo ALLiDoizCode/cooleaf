@@ -11,76 +11,46 @@
 @implementation CLEventPresenter {
     
 @private
-    id <EventInfo> _eventInfo;
+    id <IEventInteractor> _eventInfo;
     
 }
 
-@synthesize eventInfo = _eventInfo;
 
+# pragma init
 
-- (CLEventPresenter *)initWithAddUserInfo:(id <EventInfo>)eventInfo {
-    
-    if (self = [super init]) {
-        
-        _eventInfo = eventInfo;
-    }
-    
+- (id)initWithInteractor:(id<IEventInteractor>)interactor {
+    _eventInfo = interactor;
     return self;
 }
 
 
--(void)loadEvents {
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"loadEvents" object:nil userInfo:nil];
+# pragma registerOnBus
+
+- (void)registerOnBus {
+    REGISTER();
 }
 
 
-///Protocols
-#pragma setEventId
+# pragma unregisterOnBus
 
-- (void)setEventId:(NSUInteger *) objectId {
-    
+- (void)unregisterOnBus {
+    UNREGISTER();
 }
 
-#pragma setEventName
 
-- (void)setEventName:(NSString *) name {
-    
+# pragma loadEvents
+
+- (void)loadEvents {
+    CLLoadEvents *loadEvents = [[CLLoadEvents alloc] init];
+    PUBLISH(loadEvents);
 }
 
-#pragma setEventParticipants
 
-- (void)setEventParticipants:(NSDictionary *)eventParticipants {
-    
-    
-}
+# pragma Subscription Methods
 
-#pragma setEventStartTime
-
-- (void)setEventStartTime:(NSString *)eventStartTime {
-    
-    
-}
-
-#pragma setEventRewardPoints
-
-- (void)setEventRewardPoints:(int)eventRewardPoints {
-    
-    
-}
-
-#pragma setIsAttending
-
-- (void)setIsAttending:(BOOL)isAttending {
-    
-    
-}
-
-#pragma setIsJoinable
-
-- (void)setIsJoinable:(BOOL)isJoinable {
-    
-    
+SUBSCRIBE(CLLoadedEvents) {
+    NSMutableArray *events = event.events;
+    [_eventInfo initEvents:events];
 }
 
 @end

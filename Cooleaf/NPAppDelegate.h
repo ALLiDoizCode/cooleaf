@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MMDrawerController.h>
 #import "CLBaseNotificationRegistry.h"
 
 @interface NPAppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
 @property (nonatomic) CLBaseNotificationRegistry *registry;
 @property (strong, nonatomic) UIWindow *window;
+@property (weak, nonatomic) MMDrawerController *drawerController;
 
 @end

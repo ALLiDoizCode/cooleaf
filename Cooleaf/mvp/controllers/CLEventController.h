@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CLClient.h"
 
 @interface CLEventController : NSObject
+
+- (void)getEvents:(NSMutableDictionary *)params success:(void (^)(id JSON))success
+           failure:(void (^)(NSError *error))failure;
 
 @end

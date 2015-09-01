@@ -66,6 +66,9 @@
     // Go ahead and startEventProcessing...
     [self startEventProcessing];
     
+    // Initialize Views
+    [self initViews];
+    
     [Crashlytics startWithAPIKey:@"7dcedf5a21b0ddf4342ff0b3104aa0242456847d"];
     
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerForRemoteNotifications)])
@@ -93,17 +96,11 @@
         }
     }
 
+    // Customizing a view
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont mediumApplicationFontOfSize:18], NSFontAttributeName, nil]];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-    self.window.backgroundColor = [UIColor whiteColor];
     
-	
-	self.window.rootViewController = (_mainViewController = [[MainViewController alloc]init]);
-	
-    [self.window makeKeyAndVisible];    
-
-	[self.window.rootViewController presentViewController:[[UINavigationController alloc] initWithRootViewController:[NPLoginViewController new]] animated:NO completion:nil];
+    // Setting it up
+    
 
 	return YES;
 }
@@ -138,6 +135,26 @@
 {
     [self stopEventProcessing];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+# pragma initViews
+
+- (void)initViews {
+    // Instantiate drawer controller - public property accessed whereever
+    self.drawerController = (MMDrawerController *) self.window.rootViewController;
+    
+    // Instantiate other navigation controllers
+    UIViewController *sideMenuNavController = [self.drawerController.storyboard instantiateViewControllerWithIdentifier:@"sideMenu"];
+    UIViewController *homeNavController = [self.drawerController.storyboard instantiateViewControllerWithIdentifier:@"home"];
+    
+    // Setting controllers to properties of drawer controllers
+    [self.drawerController setCenterViewController:homeNavController];
+    [self.drawerController setLeftDrawerViewController:sideMenuNavController];
+    
+    // Set gestures
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
 }
 
 

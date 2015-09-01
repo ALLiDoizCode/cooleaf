@@ -7,20 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@protocol EventInfo;
+#import "IEventInteractor.h"
+#import "CLBus.h"
+#import "CLLoadEvents.h"
+#import "CLLoadedEvents.h"
+#import "CLClient.h"
 
 @interface CLEventPresenter : NSObject
-@property(nonatomic, strong) id<EventInfo> eventInfo;
 
--(CLEventPresenter *)initWithEventInfo:(id <EventInfo>)eventInfo;
-
-- (void)setEventId:(NSUInteger *) objectId;
-- (void)setEventName:(NSString *) name;
-- (void)setEventParticipants:(NSDictionary *)eventParticipants;
-- (void)setEventStartTime:(NSString *)eventStartTime;
-- (void)setEventRewardPoints:(int)eventRewardPoints;
-- (void)setIsAttending:(BOOL)isAttending;
-- (void)setIsJoinable:(BOOL)isJoinable;
+- (id)initWithInteractor:(id<IEventInteractor>)interactor;
+- (void)loadEvents;
 
 @end

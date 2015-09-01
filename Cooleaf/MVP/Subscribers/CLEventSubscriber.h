@@ -8,6 +8,8 @@
 
 #import "CLBaseSubscriber.h"
 #import "CLEventController.h"
+#import "CLLoadEvents.h"
+#import "CLLoadedEvents.h"
 
 @interface CLEventSubscriber : CLBaseSubscriber
 

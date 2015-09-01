@@ -38,7 +38,6 @@
 # pragma registerDefaultSubscribers
 
 - (void)registerDefaultSubscribers {
-    NSLog(@"initializing subscribers");
     [_defaultNotificationSubscribers removeAllObjects];
     [_defaultNotificationSubscribers addObjectsFromArray:[self createDefaultSubscribers]];
     for (id<CLNotificationSubscriber> subscriber in _defaultNotificationSubscribers) {
@@ -50,7 +49,6 @@
 # pragma unregisterDefaultSubscribers
 
 - (void)unregisterDefaultSubscribers {
-    NSLog(@"unregistering all subscribers");
     for (CLBaseSubscriber *subscriber in _defaultNotificationSubscribers) {
         [subscriber unregisterOnBus:_eventBus];
     }
@@ -61,7 +59,6 @@
 # pragma registerSubscriber
 
 - (void)registerSubscriber:(id<CLNotificationSubscriber>)subscriber {
-    NSLog(@"registering subscriber");
     if ([_notificationSubscribers objectForKey:subscriber]) {
         return;
     }
