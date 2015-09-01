@@ -14,7 +14,7 @@
 @property (nonatomic, readonly) NSNumber *parentTagId;
 @property (nonatomic) NSString *parentTagName;
 @property (nonatomic) NSMutableArray *tags;
-@property (nonatomic) BOOL *isRequired;
-@property (nonatomic) BOOL *isPrimary;
+@property (nonatomic, assign) BOOL isRequired;
+@property (nonatomic, assign) BOOL isPrimary;
 
 @end

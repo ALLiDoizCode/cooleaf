@@ -10,7 +10,7 @@
 
 @implementation CLAuthenticationEvent
 
-- (id)init:(NSString *)email :(NSString *)password {
+- (id)initWithCredentials:(NSString *)email :(NSString *)password {
     _email = email;
     _password = password;
     return self;

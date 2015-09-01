@@ -14,7 +14,7 @@
 @property (nonatomic, readonly) NSNumber *interestId;
 @property (nonatomic) NSString *interestName;
 @property (nonatomic) NSString *interestType;
-@property (nonatomic) BOOL *isActive;
+@property (nonatomic, assign) BOOL isActive;
 @property (nonatomic) NSString *parentType;
 @property (nonatomic) CLImage *image;
 @property (nonatomic) NSNumber *userCount;

@@ -116,12 +116,6 @@
 {
     [super viewDidLoad];
     
-    CLAuthenticationEvent *authenticationEvent = [CLAuthenticationEvent new];
-    authenticationEvent.email = @"kevin.coleman@sparkstart.io";
-    authenticationEvent.password = @"passwordpassword";
-    
-    PUBLISH(authenticationEvent);
-    
     _containerView.hidden = YES;
     _forgotPasswdBtn.hidden = YES;
     _containerView.layer.cornerRadius = 4.0;

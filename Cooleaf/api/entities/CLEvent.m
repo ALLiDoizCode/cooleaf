@@ -16,7 +16,21 @@
              @"eventId": @"id",
              @"address": @"address",
              @"eventDescription": @"description",
-             
+             @"name": @"name",
+             @"eventImage": @"image",
+             @"eventParticipants": @"participants",
+             @"participantsCount": @"participants_count",
+             @"timeZone": @"timezone",
+             @"startTime": @"start_time",
+             @"lastStartTime": @"last_start_time",
+             @"endTime": @"end_time",
+             @"rewardPoints": @"reward_points",
+             @"isPast": @"past",
+             @"isJoinable": @"joinable",
+             @"isAttending": @"attending",
+             @"isPaid": @"paid",
+             @"eventSeries": @"series",
+             @"coordinator": @"coordinator"
              };
 }
 
@@ -45,7 +59,7 @@
 
 # pragma imageJSONTransformer
 
-- (NSValueTransformer *)imageJSONTransformer {
+- (NSValueTransformer *)eventImageJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSDictionary *imageDict) {
         return [MTLJSONAdapter  modelOfClass:CLImage.class
                           fromJSONDictionary:imageDict

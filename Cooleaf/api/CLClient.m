@@ -8,11 +8,13 @@
 
 #import "CLClient.h"
 
-static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api";
+static NSString *const BASE_API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu";
+static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api/v2";
+static NSString *const X_ORGANIZATION = @"X-Organization";
 
 @implementation CLClient
 
-#pragma Initialization
+#pragma mark - Initialization
 
 - (id)initWithBaseURL:(NSURL *)url {
     self = [super initWithBaseURL:[NSURL URLWithString:API_URL]];
@@ -23,8 +25,7 @@ static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.e
     return self;
 }
 
-
-# pragma Singleton
+# pragma mark - Singleton
 
 + (CLClient *)getInstance {
     static CLClient *_sharedInstance = nil;
@@ -36,8 +37,7 @@ static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.e
     return _sharedInstance;
 }
 
-
-# pragma modelClassesByResourcePath
+# pragma mark - modelClassesByResourcePath
 
 + (NSDictionary *)modelClassesByResourcePath {
     return @{
@@ -47,8 +47,7 @@ static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.e
              };
 }
 
-
-# pragma responseClassesByResourcePath
+# pragma mark - responseClassesByResourcePath
 
 + (NSDictionary *)responseClassesByResourcePath {
     return @{
@@ -56,6 +55,19 @@ static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.e
              };
 }
 
+# pragma mark - setOrganizationHeader
+
++ (void)setOrganizationHeader:(NSString *)header {
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setValue:header forHTTPHeaderField:X_ORGANIZATION];
+    [self getInstance].requestSerializer = requestSerializer;
+}
+
+# pragma mark - getBaseApiURL
+
++ (NSString *)getBaseApiURL {
+    return BASE_API_URL;
+}
 
 @end
 

@@ -10,6 +10,7 @@
 
 @implementation CLInterestSubscriber
 
+
 # pragma init
 
 - (id)init {

@@ -21,6 +21,7 @@
 		43B0624D1AB71A64009F96CD /* NPMembersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43B0624B1AB71A64009F96CD /* NPMembersCell.xib */; };
 		43EF2F191B00A8F5002A060A /* NPTagGroupsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */; };
 		43EF2F1A1B00A8F5002A060A /* NPTagGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */; };
+		4B066CBF1B94BB79006A7CF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B066CBE1B94BB79006A7CF1 /* Main.storyboard */; };
 		4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */; };
 		4B6088491B929EA20029E659 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6088481B929EA20029E659 /* UIColor+CustomColors.m */; };
 		4BA4E2F31B8BC6E70089CB2B /*  in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E2F21B8BC6E70089CB2B /*  */; };
@@ -51,6 +52,7 @@
 		4BA4E3521B8D13610089CB2B /* CLUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3511B8D13610089CB2B /* CLUserController.m */; };
 		4BA4E35A1B8D1E4C0089CB2B /* CLAuthenticationPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3591B8D1E4C0089CB2B /* CLAuthenticationPresenter.m */; };
 		4BA4E3941B8D4CF60089CB2B /* CLEventPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3931B8D4CF60089CB2B /* CLEventPresenter.m */; };
+		4BA61B0B1B94CC6800774CC2 /* CLProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA61B0A1B94CC6800774CC2 /* CLProfileHeaderView.m */; };
 		4BAE00551B8EDE2E00779E1F /* CLBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE00541B8EDE2E00779E1F /* CLBus.m */; };
 		4BAE00591B8EDE8600779E1F /* CLAuthenticationEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE00581B8EDE8600779E1F /* CLAuthenticationEvent.m */; };
 		4BAE005D1B8EDEE200779E1F /* CLBaseNotificationRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE005C1B8EDEE200779E1F /* CLBaseNotificationRegistry.m */; };
@@ -60,6 +62,12 @@
 		4BAE006E1B8EE03100779E1F /* CLInterestSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE006D1B8EE03100779E1F /* CLInterestSubscriber.m */; };
 		4BAE00711B8EE06900779E1F /* CLUserSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */; };
 		4BAE00741B8F909500779E1F /* CLAuthenticationSuccessEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE00731B8F909500779E1F /* CLAuthenticationSuccessEvent.m */; };
+		4BE63A491B94E8CE00231222 /* CLHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A481B94E8CE00231222 /* CLHomeTableViewController.m */; };
+		4BE63A4C1B94E9D800231222 /* CLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A4B1B94E9D800231222 /* CLMenuViewController.m */; };
+		4BE63A4F1B9502AD00231222 /* CLDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A4E1B9502AD00231222 /* CLDrawerViewController.m */; };
+		4BE63A551B951FF000231222 /* CLLoadEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A541B951FF000231222 /* CLLoadEvents.m */; };
+		4BE63A581B95205000231222 /* CLLoadedEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A571B95205000231222 /* CLLoadedEvents.m */; };
+		4BE63A5D1B95811400231222 /* CLEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A5C1B95811400231222 /* CLEventCell.m */; };
 		52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */; };
 		523096C01AA28F5D00649FB7 /* NPInterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */; };
 		523096C11AA28F5D00649FB7 /* NPInterestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */; };
@@ -185,6 +193,7 @@
 		43EF2F161B00A8F5002A060A /* NPTagGroupsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPTagGroupsView.h; sourceTree = "<group>"; };
 		43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPTagGroupsView.m; sourceTree = "<group>"; };
 		43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPTagGroupView.xib; sourceTree = "<group>"; };
+		4B066CBE1B94BB79006A7CF1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBranch.m; sourceTree = "<group>"; };
 		4B6088471B929EA20029E659 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
 		4B6088481B929EA20029E659 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
@@ -244,6 +253,8 @@
 		4BA4E3591B8D1E4C0089CB2B /* CLAuthenticationPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAuthenticationPresenter.m; sourceTree = "<group>"; };
 		4BA4E3921B8D4CF60089CB2B /* CLEventPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEventPresenter.h; sourceTree = "<group>"; };
 		4BA4E3931B8D4CF60089CB2B /* CLEventPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEventPresenter.m; sourceTree = "<group>"; };
+		4BA61B091B94CC6800774CC2 /* CLProfileHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProfileHeaderView.h; sourceTree = "<group>"; };
+		4BA61B0A1B94CC6800774CC2 /* CLProfileHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLProfileHeaderView.m; sourceTree = "<group>"; };
 		4BAE00531B8EDE2E00779E1F /* CLBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBus.h; sourceTree = "<group>"; };
 		4BAE00541B8EDE2E00779E1F /* CLBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBus.m; sourceTree = "<group>"; };
 		4BAE00571B8EDE8600779E1F /* CLAuthenticationEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAuthenticationEvent.h; sourceTree = "<group>"; };
@@ -263,6 +274,20 @@
 		4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLUserSubscriber.m; path = Cooleaf/MVP/Subscribers/CLUserSubscriber.m; sourceTree = SOURCE_ROOT; };
 		4BAE00721B8F909500779E1F /* CLAuthenticationSuccessEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAuthenticationSuccessEvent.h; sourceTree = "<group>"; };
 		4BAE00731B8F909500779E1F /* CLAuthenticationSuccessEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAuthenticationSuccessEvent.m; sourceTree = "<group>"; };
+		4BE63A471B94E8CE00231222 /* CLHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLHomeTableViewController.h; sourceTree = "<group>"; };
+		4BE63A481B94E8CE00231222 /* CLHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHomeTableViewController.m; sourceTree = "<group>"; };
+		4BE63A4A1B94E9D800231222 /* CLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMenuViewController.h; sourceTree = "<group>"; };
+		4BE63A4B1B94E9D800231222 /* CLMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMenuViewController.m; sourceTree = "<group>"; };
+		4BE63A4D1B9502AD00231222 /* CLDrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDrawerViewController.h; sourceTree = "<group>"; };
+		4BE63A4E1B9502AD00231222 /* CLDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDrawerViewController.m; sourceTree = "<group>"; };
+		4BE63A521B9507C800231222 /* IEventInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEventInteractor.h; sourceTree = "<group>"; };
+		4BE63A531B951FF000231222 /* CLLoadEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadEvents.h; sourceTree = "<group>"; };
+		4BE63A541B951FF000231222 /* CLLoadEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadEvents.m; sourceTree = "<group>"; };
+		4BE63A561B95205000231222 /* CLLoadedEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedEvents.h; sourceTree = "<group>"; };
+		4BE63A571B95205000231222 /* CLLoadedEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedEvents.m; sourceTree = "<group>"; };
+		4BE63A591B9551C500231222 /* IAuthenticationInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IAuthenticationInteractor.h; sourceTree = "<group>"; };
+		4BE63A5B1B95811400231222 /* CLEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEventCell.h; sourceTree = "<group>"; };
+		4BE63A5C1B95811400231222 /* CLEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEventCell.m; sourceTree = "<group>"; };
 		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPickYourInterestsLabelCell.h; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.h"; sourceTree = "<group>"; };
 		52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPickYourInterestsLabelCell.m; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.m"; sourceTree = "<group>"; };
 		523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsViewController.h; path = "Application Controllers/NPInterestsViewController.h"; sourceTree = "<group>"; };
@@ -474,9 +499,11 @@
 		4B6088431B929E4E0029E659 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4BE63A5A1B9580F200231222 /* Cell */,
 				4B6088461B929E8A0029E659 /* Custom */,
 				4B6088451B929E810029E659 /* Views */,
 				4B6088441B929E620029E659 /* UIViewControllers */,
+				4B066CBE1B94BB79006A7CF1 /* Main.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -484,6 +511,12 @@
 		4B6088441B929E620029E659 /* UIViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4BE63A471B94E8CE00231222 /* CLHomeTableViewController.h */,
+				4BE63A481B94E8CE00231222 /* CLHomeTableViewController.m */,
+				4BE63A4A1B94E9D800231222 /* CLMenuViewController.h */,
+				4BE63A4B1B94E9D800231222 /* CLMenuViewController.m */,
+				4BE63A4D1B9502AD00231222 /* CLDrawerViewController.h */,
+				4BE63A4E1B9502AD00231222 /* CLDrawerViewController.m */,
 			);
 			path = UIViewControllers;
 			sourceTree = "<group>";
@@ -491,6 +524,8 @@
 		4B6088451B929E810029E659 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4BA61B091B94CC6800774CC2 /* CLProfileHeaderView.h */,
+				4BA61B0A1B94CC6800774CC2 /* CLProfileHeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -578,6 +613,7 @@
 		4BA4E3451B8D13080089CB2B /* MVP */ = {
 			isa = PBXGroup;
 			children = (
+				4BE63A501B9506ED00231222 /* Interactors */,
 				4BAE00651B8EDFA300779E1F /* Subscribers */,
 				68D08E191B8E89EE000DEF69 /* Protocol */,
 				4BA4E3461B8D13240089CB2B /* Controllers */,
@@ -638,6 +674,10 @@
 				4BAE00581B8EDE8600779E1F /* CLAuthenticationEvent.m */,
 				4BAE00721B8F909500779E1F /* CLAuthenticationSuccessEvent.h */,
 				4BAE00731B8F909500779E1F /* CLAuthenticationSuccessEvent.m */,
+				4BE63A531B951FF000231222 /* CLLoadEvents.h */,
+				4BE63A541B951FF000231222 /* CLLoadEvents.m */,
+				4BE63A561B95205000231222 /* CLLoadedEvents.h */,
+				4BE63A571B95205000231222 /* CLLoadedEvents.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -668,6 +708,25 @@
 			);
 			name = Subscribers;
 			path = ../MVP/Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE63A501B9506ED00231222 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				4BE63A521B9507C800231222 /* IEventInteractor.h */,
+				4BE63A591B9551C500231222 /* IAuthenticationInteractor.h */,
+			);
+			name = Interactors;
+			path = ../MVP/Interactors;
+			sourceTree = "<group>";
+		};
+		4BE63A5A1B9580F200231222 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4BE63A5B1B95811400231222 /* CLEventCell.h */,
+				4BE63A5C1B95811400231222 /* CLEventCell.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		523096B71AA28D0500649FB7 /* Home */ = {
@@ -1157,6 +1216,7 @@
 				D9809552185CA557008F2B61 /* InfoPlist.strings in Resources */,
 				D980955A185CA557008F2B61 /* Images.xcassets in Resources */,
 				526DDE191AC757550095FC27 /* NPMembersViewController.xib in Resources */,
+				4B066CBF1B94BB79006A7CF1 /* Main.storyboard in Resources */,
 				43EF2F1A1B00A8F5002A060A /* NPTagGroupView.xib in Resources */,
 				D980958A185CD013008F2B61 /* NPEventCell.xib in Resources */,
 				D93AAC82187B662200E9B96A /* NPTodosCell.xib in Resources */,
@@ -1269,6 +1329,7 @@
 				D93AAC80187B661400E9B96A /* NPTodosCell.m in Sources */,
 				F9B37B981AAE0CA5003F3FB8 /* NPTagGroup.m in Sources */,
 				52A9A19B1AACECDA004E6C13 /* NPOtherInterestCell.m in Sources */,
+				4BE63A581B95205000231222 /* CLLoadedEvents.m in Sources */,
 				D93AAC8C187B6D5F00E9B96A /* NPDetailsCell.m in Sources */,
 				4BAE00591B8EDE8600779E1F /* CLAuthenticationEvent.m in Sources */,
 				526DDE131AC756DB0095FC27 /* NPMemberCell.m in Sources */,
@@ -1294,6 +1355,7 @@
 				43B062471AB664B0009F96CD /* NPInterestViewController.m in Sources */,
 				4BA4E3021B8BC8360089CB2B /* CLProfile.m in Sources */,
 				52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */,
+				4BE63A491B94E8CE00231222 /* CLHomeTableViewController.m in Sources */,
 				D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */,
 				4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */,
 				4BA4E3111B8BC9240089CB2B /* CLUser.m in Sources */,
@@ -1306,7 +1368,9 @@
 				68CDDC431B8EC279004C2897 /* CLTagGroupPresenter.m in Sources */,
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
 				4BA4E32C1B8BF8E00089CB2B /* CLTimeZone.m in Sources */,
+				4BE63A4F1B9502AD00231222 /* CLDrawerViewController.m in Sources */,
 				4BA4E35A1B8D1E4C0089CB2B /* CLAuthenticationPresenter.m in Sources */,
+				4BE63A551B951FF000231222 /* CLLoadEvents.m in Sources */,
 				F9F445EA1AB8AED700C655CF /* NPInterestsHeaderViewCell.m in Sources */,
 				4BAE00551B8EDE2E00779E1F /* CLBus.m in Sources */,
 				4BA4E3081B8BC89E0089CB2B /* CLSettings.m in Sources */,
@@ -1320,8 +1384,10 @@
 				D93AACA9187C351500E9B96A /* NPNewTodoViewController.m in Sources */,
 				523096C51AA2907600649FB7 /* NPChallengesViewController.m in Sources */,
 				4BAE00741B8F909500779E1F /* CLAuthenticationSuccessEvent.m in Sources */,
+				4BE63A4C1B94E9D800231222 /* CLMenuViewController.m in Sources */,
 				D9809554185CA557008F2B61 /* main.m in Sources */,
 				4BAE00601B8EDF0E00779E1F /* CLBaseSubscriber.m in Sources */,
+				4BA61B0B1B94CC6800774CC2 /* CLProfileHeaderView.m in Sources */,
 				D980958D185F2C5D008F2B61 /* NSFileManager+ImageCaching.m in Sources */,
 				4BA4E3261B8BF3940089CB2B /* CLInterest.m in Sources */,
 				D931450D18925456002325CB /* NPCompanyCell.m in Sources */,
@@ -1330,6 +1396,7 @@
 				523096CA1AA291B200649FB7 /* NPHomeViewController.m in Sources */,
 				4BA4E2F61B8BC7290089CB2B /* CLDepartment.m in Sources */,
 				526DDE181AC757550095FC27 /* NPMembersViewController.m in Sources */,
+				4BE63A5D1B95811400231222 /* CLEventCell.m in Sources */,
 				523096D71AA3E17400649FB7 /* NPHomeCell.m in Sources */,
 				4BAE00681B8EDFD300779E1F /* CLAuthenticationSubscriber.m in Sources */,
 				68CDDC461B8EC3DF004C2897 /* CLTagPresenters.m in Sources */,

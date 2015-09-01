@@ -10,7 +10,7 @@
 
 @implementation CLBaseNotificationRegistry
 
-# pragma init
+# pragma mark - init
 
 - (id)init {
     _eventBus = [CLBus sharedInstance];
@@ -21,8 +21,7 @@
     return self;
 }
 
-
-# pragma Singleton
+# pragma mark - Singleton
 
 + (CLBaseNotificationRegistry *)getInstance {
     static CLBaseNotificationRegistry *_sharedInstance = nil;
@@ -34,11 +33,9 @@
     return _sharedInstance;
 }
 
-
-# pragma registerDefaultSubscribers
+# pragma mark - registerDefaultSubscribers
 
 - (void)registerDefaultSubscribers {
-    NSLog(@"initializing subscribers");
     [_defaultNotificationSubscribers removeAllObjects];
     [_defaultNotificationSubscribers addObjectsFromArray:[self createDefaultSubscribers]];
     for (id<CLNotificationSubscriber> subscriber in _defaultNotificationSubscribers) {
@@ -46,22 +43,18 @@
     }
 }
 
-
-# pragma unregisterDefaultSubscribers
+# pragma mark - unregisterDefaultSubscribers
 
 - (void)unregisterDefaultSubscribers {
-    NSLog(@"unregistering all subscribers");
     for (CLBaseSubscriber *subscriber in _defaultNotificationSubscribers) {
         [subscriber unregisterOnBus:_eventBus];
     }
     [_notificationSubscribers removeAllObjects];
 }
 
-
-# pragma registerSubscriber
+# pragma mark - registerSubscriber
 
 - (void)registerSubscriber:(id<CLNotificationSubscriber>)subscriber {
-    NSLog(@"registering subscriber");
     if ([_notificationSubscribers objectForKey:subscriber]) {
         return;
     }
@@ -69,8 +62,7 @@
     [_notificationSubscribers setObject:registeredSubscriber forKey:subscriber];
 }
 
-
-# pragma unregisterSubscriber
+# pragma mark - unregisterSubscriber
 
 - (void)unregisterSubscriber:(NSObject *)subscriber {
     if (![_notificationSubscribers objectForKey:subscriber])
@@ -80,8 +72,7 @@
     [_notificationSubscribers removeObjectForKey:subscriber];
 }
 
-
-# pragma createDefaultSubscribers
+# pragma mark - createDefaultSubscribers
 
 - (NSMutableArray *)createDefaultSubscribers {
     NSMutableArray *defaultSubscribers = [NSMutableArray array];

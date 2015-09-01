@@ -13,8 +13,8 @@
 @property (nonatomic, readonly) NSNumber *tagId;
 @property (nonatomic) NSString *tagName;
 @property (nonatomic) NSString *tagType;
-@property (nonatomic) BOOL *isActive;
+@property (nonatomic, assign) BOOL isActive;
 @property (nonatomic) NSNumber *parentId;
-@property (nonatomic) BOOL *isDefault;
+@property (nonatomic, assign) BOOL isDefault;
 
 @end

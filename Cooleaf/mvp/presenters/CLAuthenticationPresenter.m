@@ -7,41 +7,58 @@
 //
 
 #import "CLAuthenticationPresenter.h"
-#import "CLLogin.h"
 
 @implementation CLAuthenticationPresenter {
     
 @private
-    id <AddUserInfo> _userInfo;
-    
+    id <IAuthenticationInteractor> _authInfo;
 }
 
 
-@synthesize userInfo = _userInfo;
+# pragma initWithInteractor
 
-
-- (CLAuthenticationPresenter *)initWithAddUserInfo:(id <AddUserInfo>)userInfo {
-    if (self = [super init])
-        _userInfo = userInfo;
+- (id)initWithInteractor:(id<IAuthenticationInteractor>)interactor {
+    _authInfo = interactor;
     return self;
+}
+
+
+# pragma registerOnBus
+
+- (void)registerOnBus {
+    NSLog(@"AuthPresenter registered");
+    REGISTER();
+}
+
+
+# pragma unregisterOnBus
+
+- (void)unregisterOnBus {
+    NSLog(@"AuthPresenter unregistered");
+    UNREGISTER();
 }
 
 
 #pragma authenticate
 
 - (void)authenticate:(NSString *)email :(NSString *)password {
-    
-    NSArray *userInfo = [NSArray arrayWithObjects: email,password,nil];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:userInfo];
+    CLAuthenticationEvent *authenticationEvent = [[CLAuthenticationEvent alloc] initWithCredentials:email :password];
+    PUBLISH(authenticationEvent);
 }
 
 
-///Protocols 
-#pragma errorMessage
+# pragma onAuthenticationSuccessEvent
 
-- (void)errorMessage:(NSString *)message {
-    [_userInfo errorMessage:message];
+SUBSCRIBE(CLAuthenticationSuccessEvent) {
+    [_authInfo initUser:event.user];
 }
+
+
+# pragma dealloc
+
+- (void)dealloc {
+    [self unregisterOnBus];
+}
+
 
 @end
