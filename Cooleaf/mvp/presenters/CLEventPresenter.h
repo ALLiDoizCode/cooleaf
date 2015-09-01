@@ -16,6 +16,8 @@
 @interface CLEventPresenter : NSObject
 
 - (id)initWithInteractor:(id<IEventInteractor>)interactor;
+- (void)registerOnBus;
+- (void)unregisterOnBus;
 - (void)loadEvents;
 
 @end

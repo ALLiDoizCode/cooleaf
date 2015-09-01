@@ -8,7 +8,7 @@
 
 #import "CLClient.h"
 
-static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api";
+static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api/v2";
 
 @implementation CLClient
 

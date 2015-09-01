@@ -28,14 +28,20 @@
 # pragma authenticateEvent
 
 SUBSCRIBE(CLAuthenticationEvent) {
-    [authenticationController authenticate:event.email :event.password];
+    // Create params
+    NSDictionary *params = @{
+                            @"email": event.email,
+                            @"password": event.password
+                            };
+    // Pass to controller
+    [authenticationController authenticate:params success:^(id response) {
+        CLUser *user = [response result];
+        CLAuthenticationSuccessEvent *authenticationSuccessEvent = [[CLAuthenticationSuccessEvent alloc] initWithUser:user];
+        PUBLISH(authenticationSuccessEvent);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
-
-# pragma authenticationSuccessfulEvent
-
-SUBSCRIBE(CLAuthenticationSuccessEvent) {
-    
-}
 
 @end

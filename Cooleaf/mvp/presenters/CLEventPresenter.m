@@ -41,8 +41,7 @@
 # pragma loadEvents
 
 - (void)loadEvents {
-    CLLoadEvents *loadEvents = [[CLLoadEvents alloc] init];
-    PUBLISH(loadEvents);
+    PUBLISH([[CLLoadEvents alloc] init]);
 }
 
 
@@ -52,5 +51,13 @@ SUBSCRIBE(CLLoadedEvents) {
     NSMutableArray *events = event.events;
     [_eventInfo initEvents:events];
 }
+
+
+# pragma dealloc
+
+- (void)dealloc {
+    [self unregisterOnBus];
+}
+
 
 @end

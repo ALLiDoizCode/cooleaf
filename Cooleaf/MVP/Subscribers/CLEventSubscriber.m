@@ -21,10 +21,11 @@
 # pragma subscription events
 
 SUBSCRIBE(CLLoadEvents) {
-    [_eventController getEvents:nil success:^(id JSON) {
-        NSLog(@"%@", JSON);
+    [_eventController getEvents:nil success:^(id response) {
+        NSMutableArray *events = [response result];
+        NSLog(@"%@", events);
     } failure:^(NSError *error) {
-        NSLog(@"error");
+        NSLog(@"%@", error);
     }];
 }
 

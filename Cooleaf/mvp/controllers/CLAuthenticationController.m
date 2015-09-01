@@ -10,6 +10,21 @@
 
 @implementation CLAuthenticationController
 
+
+# pragma authenticate
+
+- (void)authenticate:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    NSLog(@"CLAuthenticationController");
+    [[CLClient getInstance] POST:@"authorize.json" parameters:params completion:^(id response, NSError *error) {
+        if (!error) {
+            success(response);
+        } else {
+            failure(error);
+        }
+    }];
+}
+
+
 # pragma authenticate
 
 - (void)authenticate:(NSString *)email :(NSString *)password {
@@ -20,7 +35,7 @@
                                };
     
     // Do your network operation
-    [[CLClient getInstance] POST:@"v2/authorize.json" parameters:authDict completion:^(id response, NSError *error) {
+    [[CLClient getInstance] POST:@"authorize.json" parameters:authDict completion:^(id response, NSError *error) {
         if (!error) {
             NSDictionary *userDictionary = [response result];
             CLUser *user = [MTLJSONAdapter modelOfClass:[CLUser class] fromJSONDictionary:userDictionary error:nil];

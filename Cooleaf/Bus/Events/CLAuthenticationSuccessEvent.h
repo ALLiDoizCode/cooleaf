@@ -13,4 +13,6 @@
 
 @property (nonatomic) CLUser *user;
 
+- (id)initWithUser:(CLUser *)user;
+
 @end

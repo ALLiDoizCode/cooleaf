@@ -10,22 +10,55 @@
 
 @interface CLHomeTableViewController () {
     @private
-    id<IEventInteractor> _eventInteractor;
-    NSMutableArray *events;
+    CLEventPresenter *_eventPresenter;
+    NSMutableArray *_events;
 }
 
 @end
 
 @implementation CLHomeTableViewController
 
+
+# pragma UIViewController LifeCycle methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Init presenter
+    [self initPresenter];
+    
+    // Load events
+    [_eventPresenter loadEvents];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+
+
+# pragma IEventInteractor methods
+
+- (void)initEvents:(NSMutableArray *)events {
+    // Events receieved here, set into tableview
+    
+}
+
+
+# pragma Helper Methods
+
+- (void)initPresenter {
+    _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
 }
 
 
@@ -65,13 +98,5 @@
     return YES;
 }
 
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
 
 @end

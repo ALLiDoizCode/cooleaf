@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "IEventInteractor.h"
+#import "CLAuthenticationPresenter.h"
 #import "CLEventPresenter.h"
 
 @interface CLHomeTableViewController : UITableViewController <IEventInteractor, UITableViewDataSource, UITableViewDelegate>
+
 
 @end

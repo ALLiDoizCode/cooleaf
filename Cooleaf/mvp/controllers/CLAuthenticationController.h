@@ -13,6 +13,8 @@
 
 @interface CLAuthenticationController : NSObject
 
+- (void)authenticate:(NSDictionary *)params success:(void (^)(id JSON))success
+          failure:(void (^)(NSError *error))failure;
 - (void)authenticate:(NSString *)email :(NSString *)password;
 
 @end

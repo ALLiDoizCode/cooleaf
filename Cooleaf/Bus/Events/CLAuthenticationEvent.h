@@ -13,5 +13,6 @@
 @property (nonatomic) NSString *email;
 @property (nonatomic) NSString *password;
 
+- (id)initWithCredentials:(NSString *)email :(NSString *)password;
 
 @end

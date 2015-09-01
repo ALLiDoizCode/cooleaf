@@ -7,15 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@protocol AddUserInfo;
+#import "CLBus.h"
+#import "CLAuthenticationEvent.h"
+#import "CLAuthenticationSuccessEvent.h"
+#import "CLUser.h"
+#import "IAuthenticationInteractor.h"
 
 @interface CLAuthenticationPresenter : NSObject
 
-@property(nonatomic, strong) id<AddUserInfo> userInfo;
-
+- (id)initWithInteractor:(id<IAuthenticationInteractor>)interactor;
+- (void)registerOnBus;
+- (void)unregisterOnBus;
 - (void)authenticate:(NSString *)email :(NSString *)password;
-- (CLAuthenticationPresenter *)initWithAddUserInfo:(id <AddUserInfo>)userInfo;
-- (void)errorMessage:(NSString *)message;
 
 @end

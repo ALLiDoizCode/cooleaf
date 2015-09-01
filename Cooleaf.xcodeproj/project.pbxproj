@@ -284,6 +284,7 @@
 		4BE63A541B951FF000231222 /* CLLoadEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadEvents.m; sourceTree = "<group>"; };
 		4BE63A561B95205000231222 /* CLLoadedEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedEvents.h; sourceTree = "<group>"; };
 		4BE63A571B95205000231222 /* CLLoadedEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedEvents.m; sourceTree = "<group>"; };
+		4BE63A591B9551C500231222 /* IAuthenticationInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IAuthenticationInteractor.h; path = ../../../../../IAuthenticationInteractor.h; sourceTree = "<group>"; };
 		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPickYourInterestsLabelCell.h; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.h"; sourceTree = "<group>"; };
 		52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPickYourInterestsLabelCell.m; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.m"; sourceTree = "<group>"; };
 		523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsViewController.h; path = "Application Controllers/NPInterestsViewController.h"; sourceTree = "<group>"; };
@@ -709,6 +710,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE63A521B9507C800231222 /* IEventInteractor.h */,
+				4BE63A591B9551C500231222 /* IAuthenticationInteractor.h */,
 			);
 			name = Interactors;
 			path = ../MVP/Interactors;
