@@ -10,6 +10,7 @@
 
 @interface CLHomeTableViewController () {
     @private
+    CLAuthenticationPresenter *_authPres;
     CLEventPresenter *_eventPresenter;
     NSMutableArray *_events;
 }
@@ -24,11 +25,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Init presenter
-    [self initPresenter];
+    // Init pull to refresh
+    [self initPullToRefresh];
     
-    // Load events
-    [_eventPresenter loadEvents];
+    // Init auth presenter
+    _authPres = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
+    [_authPres registerOnBus];
+    [_authPres authenticate:@"kevin.coleman@sparkstart.io" :@"passwordpassword"];
+    
+    // Init event presenter
+    [self initPresenter];
 }
 
 
@@ -47,11 +53,27 @@
 }
 
 
+# pragma IAuthenticationInteractor methods
+
+- (void)initUser:(CLUser *)user {
+    // Load events
+    [_eventPresenter loadEvents];
+}
+
+
 # pragma IEventInteractor methods
 
 - (void)initEvents:(NSMutableArray *)events {
     // Events receieved here, set into tableview
+    _events = events;
+    [self.tableView numberOfRowsInSection:[_events count]];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     
+    // If refreshing end refreshing
+    if (self.refreshControl) {
+        [self setAttributedTitle];
+        [self.refreshControl endRefreshing];
+    }
 }
 
 
@@ -59,6 +81,7 @@
 
 - (void)initPresenter {
     _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
+    [_eventPresenter registerOnBus];
 }
 
 
@@ -74,14 +97,19 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 3;
+    return [_events count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell" forIndexPath:indexPath];
     
+    NSLog(@"updating cells");
+    // Get the event
+    CLEvent *event = [_events objectAtIndex:[indexPath row]];
     
+    // Get the image url
+    NSString *eventDescription = [event description];
     
     return cell;
 }
@@ -98,5 +126,47 @@
     return YES;
 }
 
+
+# pragma Helper Methods
+
+- (void)initPullToRefresh {
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor colorPrimary];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(reloadEvents)
+                  forControlEvents:UIControlEventValueChanged];
+}
+
+
+- (void)reloadEvents {
+    [_eventPresenter loadEvents];
+}
+
+
+- (void)displayEmptyMessage {
+    UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    
+    messageLabel.text = @"No events currently available. Please pull down to refresh.";
+    messageLabel.textColor = [UIColor blackColor];
+    messageLabel.numberOfLines = 0;
+    messageLabel.textAlignment = NSTextAlignmentCenter;
+    messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:12];
+    [messageLabel sizeToFit];
+    
+    self.tableView.backgroundView = messageLabel;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+
+- (void)setAttributedTitle {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, h:mm a"];
+    NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
+    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+                                                                forKey:NSForegroundColorAttributeName];
+    NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+    self.refreshControl.attributedTitle = attributedTitle;
+}
 
 @end

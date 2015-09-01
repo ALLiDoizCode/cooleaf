@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIColor+CustomColors.h"
+#import "IAuthenticationInteractor.h"
 #import "IEventInteractor.h"
 #import "CLAuthenticationPresenter.h"
 #import "CLEventPresenter.h"
 
-@interface CLHomeTableViewController : UITableViewController <IEventInteractor, UITableViewDataSource, UITableViewDelegate>
-
+@interface CLHomeTableViewController : UITableViewController <IAuthenticationInteractor, IEventInteractor, UITableViewDataSource, UITableViewDelegate>
 
 @end

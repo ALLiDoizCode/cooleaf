@@ -9,6 +9,7 @@
 #import "CLClient.h"
 
 static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api/v2";
+static NSString *const X_ORGANIZATION = @"X-Organization";
 
 @implementation CLClient
 
@@ -54,6 +55,15 @@ static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.e
     return @{
              
              };
+}
+
+
+# pragma setOrganizationHeader
+
++ (void)setOrganizationHeader:(NSString *)header {
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setValue:header forHTTPHeaderField:X_ORGANIZATION];
+    [self getInstance].requestSerializer = requestSerializer;
 }
 
 

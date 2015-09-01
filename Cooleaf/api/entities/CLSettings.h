@@ -10,7 +10,7 @@
 
 @interface CLSettings : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, assign) BOOL *sendDailyDigest;
-@property (nonatomic, assign) BOOL *sendWeeklyDigest;
+@property (nonatomic, assign) BOOL sendDailyDigest;
+@property (nonatomic, assign) BOOL sendWeeklyDigest;
 
 @end

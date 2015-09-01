@@ -18,7 +18,7 @@
 @property (nonatomic, copy) NSNumber *editId;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) CLProfile *profile;
-@property (nonatomic) BOOL *removePicture;
+@property (nonatomic, assign) BOOL removePicture;
 @property (nonatomic, copy) NSNumber *rewardPoints;
 @property (nonatomic, copy) CLRole *role;
 

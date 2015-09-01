@@ -10,7 +10,7 @@
 
 @implementation CLLoadedEvents
 
-- (id)init:(NSMutableArray *)events {
+- (id)initWithEvents:(NSMutableArray *)events {
     _events = events;
     return self;
 }

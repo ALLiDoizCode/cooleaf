@@ -8,6 +8,8 @@
 
 #import "CLAuthenticationSubscriber.h"
 
+static NSString *const kCLOrganizatonHeader = @"X-Organization";
+
 @interface CLAuthenticationSubscriber() {
     @private
     CLAuthenticationController *authenticationController;
@@ -36,6 +38,8 @@ SUBSCRIBE(CLAuthenticationEvent) {
     // Pass to controller
     [authenticationController authenticate:params success:^(id response) {
         CLUser *user = [response result];
+        NSString *organizationHeader = [response result][@"role"][@"organization"][@"subdomain"];
+        [CLClient setOrganizationHeader:organizationHeader];
         CLAuthenticationSuccessEvent *authenticationSuccessEvent = [[CLAuthenticationSuccessEvent alloc] initWithUser:user];
         PUBLISH(authenticationSuccessEvent);
     } failure:^(NSError *error) {

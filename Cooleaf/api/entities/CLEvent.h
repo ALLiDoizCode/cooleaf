@@ -29,10 +29,10 @@
 @property (nonatomic) NSString *lastStartTime;
 @property (nonatomic) NSString *endTime;
 @property (nonatomic) NSNumber *rewardPoints;
-@property (nonatomic) BOOL *isPast;
-@property (nonatomic) BOOL *isJoinable;
-@property (nonatomic) BOOL *isAttending;
-@property (nonatomic) BOOL *isPaid;
+@property (nonatomic, assign) BOOL isPast;
+@property (nonatomic, assign) BOOL isJoinable;
+@property (nonatomic, assign) BOOL isAttending;
+@property (nonatomic, assign) BOOL isPaid;
 @property (nonatomic) CLSeries *eventSeries;
 @property (nonatomic) CLCoordinator *coordinator;
 @property (nonatomic) NSString *coordinatorName;

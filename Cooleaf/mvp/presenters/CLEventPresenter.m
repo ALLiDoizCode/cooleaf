@@ -48,8 +48,8 @@
 # pragma Subscription Methods
 
 SUBSCRIBE(CLLoadedEvents) {
-    NSMutableArray *events = event.events;
-    [_eventInfo initEvents:events];
+    NSLog(@"CLLoadedEvents");
+    [_eventInfo initEvents:event.events];
 }
 
 

@@ -12,4 +12,6 @@
 
 @property (nonatomic) NSMutableArray *events;
 
+- (id)initWithEvents:(NSMutableArray *)events;
+
 @end
