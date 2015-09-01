@@ -119,10 +119,10 @@
     cell.delegate = self;
     
     cell.layer.shadowOpacity = 0.75f;
-    cell.layer.shadowRadius = 3.0;
+    cell.layer.shadowRadius = 1.0;
     cell.layer.shadowOffset = CGSizeMake(0, 0);
     cell.layer.shadowColor = [UIColor blackColor].CGColor;
-    cell.layer.zPosition = 999;
+    cell.layer.zPosition = 777;
     
     // Get the event
     CLEvent *event = [_events objectAtIndex:[indexPath row]];
