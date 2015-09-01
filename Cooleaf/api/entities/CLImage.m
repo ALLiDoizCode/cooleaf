@@ -12,17 +12,25 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-      @"imageUrl": @"url"
+      @"url": @"url",
+      @"path": @"path"
       };
 }
-
-
-# pragma urlSchemeJSONTransformer
-
-+ (NSValueTransformer *)urlSchemeJSONTransformer {
-    // use Mantle's built-in "value transformer" to convert strings to NSURL and vice-versa
-    // you can write your own transformers
-    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
-}
+//
+//# pragma urlSchemeJSONTransformer
+//
+//+ (NSValueTransformer *)urlSchemeJSONTransformer {
+//    // use Mantle's built-in "value transformer" to convert strings to NSURL and vice-versa
+//    // you can write your own transformers
+//    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+//}
+//
+//# pragma pathSchemeJSONTransformer
+//
+//+ (NSValueTransformer *)pathSchemeJSONTransformer {
+//    // use Mantle's built-in "value transformer" to convert strings to NSURL and vice-versa
+//    // you can write your own transformers
+//    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+//}
 
 @end

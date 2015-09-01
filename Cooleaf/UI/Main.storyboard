@@ -128,13 +128,24 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofG-iU-raG" userLabel="EventView">
                                             <rect key="frame" x="8" y="8" width="584" height="292"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qwU-80-eZp" userLabel="EventImage">
+                                                    <rect key="frame" x="0.0" y="0.0" width="584" height="292"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="qwU-80-eZp" secondAttribute="height" multiplier="2:1" id="60a-Tx-myY"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="ofG-iU-raG" secondAttribute="height" multiplier="2:1" id="iEZ-cM-m43"/>
+                                                <constraint firstAttribute="bottom" secondItem="qwU-80-eZp" secondAttribute="bottom" id="A8h-LV-RLv"/>
+                                                <constraint firstItem="qwU-80-eZp" firstAttribute="top" secondItem="ofG-iU-raG" secondAttribute="top" id="Uez-6E-ToW"/>
+                                                <constraint firstAttribute="trailing" secondItem="qwU-80-eZp" secondAttribute="trailing" id="c0O-8S-Lo5"/>
+                                                <constraint firstItem="qwU-80-eZp" firstAttribute="leading" secondItem="ofG-iU-raG" secondAttribute="leading" id="cWo-m9-ziU"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8n-gE-trb">
-                                            <rect key="frame" x="546" y="425" width="30" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8n-gE-trb">
+                                            <rect key="frame" x="546" y="426" width="30" height="30"/>
                                             <state key="normal" title="Join">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -142,8 +153,8 @@
                                                 <action selector="join:" destination="qNy-My-Vsh" eventType="touchUpInside" id="UKo-cu-if9"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ch-on-H0g">
-                                            <rect key="frame" x="470" y="425" width="68" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ch-on-H0g">
+                                            <rect key="frame" x="470" y="426" width="68" height="30"/>
                                             <state key="normal" title="Comment">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -151,8 +162,8 @@
                                                 <action selector="comment:" destination="qNy-My-Vsh" eventType="touchUpInside" id="wEI-PA-LDX"/>
                                             </connections>
                                         </button>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDO-do-2Jp">
-                                            <rect key="frame" x="8" y="308" width="584" height="97.5"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDO-do-2Jp">
+                                            <rect key="frame" x="8" y="308" width="584" height="98"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="YDO-do-2Jp" secondAttribute="height" multiplier="6:1" id="ean-p5-Vep"/>
                                                 <constraint firstAttribute="width" secondItem="YDO-do-2Jp" secondAttribute="height" multiplier="7:1" id="pwa-2R-iyw"/>
@@ -186,6 +197,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="eventDescription" destination="YDO-do-2Jp" id="DJc-Zi-Sej"/>
+                                    <outlet property="eventImage" destination="qwU-80-eZp" id="cX7-c7-OQb"/>
                                     <outlet property="eventView" destination="ofG-iU-raG" id="CTZ-tU-SpO"/>
                                 </connections>
                             </tableViewCell>

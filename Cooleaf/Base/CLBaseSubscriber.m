@@ -10,7 +10,7 @@
 
 @implementation CLBaseSubscriber
 
-# pragma registerOnBus
+# pragma mark - registerOnBus
 
 - (id<NSObject>)registerOnBus:(CLBus *)eventBus {
     _eventBus = eventBus;
@@ -18,16 +18,14 @@
     return self;
 }
 
-
-# pragma unregisterOnBus
+# pragma mark - unregisterOnBus
 
 - (void)unregisterOnBus:(CLBus *)eventBus {
     UNREGISTER();
     _eventBus = nil;
 }
 
-
-# pragma Post notification
+# pragma mark - post
 
 - (void)post:(id<NSObject>)event {
     if (event == nil) {
@@ -35,6 +33,5 @@
     }
     PUBLISH(event);
 }
-
 
 @end

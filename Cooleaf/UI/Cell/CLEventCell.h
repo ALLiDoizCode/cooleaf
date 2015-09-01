@@ -21,6 +21,7 @@
 @property (nonatomic, assign) id<CLEventCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIView *eventView;
 @property (weak, nonatomic) IBOutlet UITextView *eventDescription;
+@property (weak, nonatomic) IBOutlet UIImageView *eventImage;
 
 - (IBAction)join:(UIButton *)sender;
 - (IBAction)comment:(UIButton *)sender;

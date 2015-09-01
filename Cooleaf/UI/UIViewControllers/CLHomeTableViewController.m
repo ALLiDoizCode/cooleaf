@@ -7,6 +7,8 @@
 //
 
 #import "CLHomeTableViewController.h"
+#import "UIColor+CustomColors.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface CLHomeTableViewController () {
     @private
@@ -120,7 +122,14 @@
     CLEvent *event = [_events objectAtIndex:[indexPath row]];
     
     // Get the image url
+    CLImage *eventImage = [event eventImage];
+    NSString *imageUrl = eventImage.url;
+    NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
+    fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"500x200"];
     
+    // Set it into the imageview
+    [cell.eventImage sd_setImageWithURL:[NSURL URLWithString:fullPath]
+                       placeholderImage:[UIImage imageNamed:@"CoverPhotoPlaceholder"]];
     
     // Get the event description
     NSString *eventDescription = [event eventDescription];

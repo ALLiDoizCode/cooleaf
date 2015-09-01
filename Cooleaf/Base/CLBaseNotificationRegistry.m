@@ -10,7 +10,7 @@
 
 @implementation CLBaseNotificationRegistry
 
-# pragma init
+# pragma mark - init
 
 - (id)init {
     _eventBus = [CLBus sharedInstance];
@@ -21,8 +21,7 @@
     return self;
 }
 
-
-# pragma Singleton
+# pragma mark - Singleton
 
 + (CLBaseNotificationRegistry *)getInstance {
     static CLBaseNotificationRegistry *_sharedInstance = nil;
@@ -34,8 +33,7 @@
     return _sharedInstance;
 }
 
-
-# pragma registerDefaultSubscribers
+# pragma mark - registerDefaultSubscribers
 
 - (void)registerDefaultSubscribers {
     [_defaultNotificationSubscribers removeAllObjects];
@@ -45,8 +43,7 @@
     }
 }
 
-
-# pragma unregisterDefaultSubscribers
+# pragma mark - unregisterDefaultSubscribers
 
 - (void)unregisterDefaultSubscribers {
     for (CLBaseSubscriber *subscriber in _defaultNotificationSubscribers) {
@@ -55,8 +52,7 @@
     [_notificationSubscribers removeAllObjects];
 }
 
-
-# pragma registerSubscriber
+# pragma mark - registerSubscriber
 
 - (void)registerSubscriber:(id<CLNotificationSubscriber>)subscriber {
     if ([_notificationSubscribers objectForKey:subscriber]) {
@@ -66,8 +62,7 @@
     [_notificationSubscribers setObject:registeredSubscriber forKey:subscriber];
 }
 
-
-# pragma unregisterSubscriber
+# pragma mark - unregisterSubscriber
 
 - (void)unregisterSubscriber:(NSObject *)subscriber {
     if (![_notificationSubscribers objectForKey:subscriber])
@@ -77,8 +72,7 @@
     [_notificationSubscribers removeObjectForKey:subscriber];
 }
 
-
-# pragma createDefaultSubscribers
+# pragma mark - createDefaultSubscribers
 
 - (NSMutableArray *)createDefaultSubscribers {
     NSMutableArray *defaultSubscribers = [NSMutableArray array];

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIColor+CustomColors.h"
 #import "CLEventCell.h"
 #import "IAuthenticationInteractor.h"
 #import "IEventInteractor.h"

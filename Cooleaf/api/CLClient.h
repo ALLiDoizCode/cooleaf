@@ -15,6 +15,7 @@
 
 + (CLClient *)getInstance;
 + (void)setOrganizationHeader:(NSString *)header;
++ (NSString *)getBaseApiURL;
 
 @end
 

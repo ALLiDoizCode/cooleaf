@@ -26,8 +26,7 @@ static NSString *const kTAG = @"CLDrawerViewController";
     // Dispose of any resources that can be recreated.
 }
 
-
-# pragma checkAuthentication
+# pragma mark checkAuthentication
 
 - (void)checkAuthentication {
     NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
@@ -36,8 +35,7 @@ static NSString *const kTAG = @"CLDrawerViewController";
     } 
 }
 
-
-# pragma goToLogin
+# pragma mark goToLogin
 
 - (void)goToLogin {
     NPLoginViewController *loginViewController = [[NPLoginViewController alloc] init];
