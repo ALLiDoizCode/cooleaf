@@ -102,14 +102,14 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell" forIndexPath:indexPath];
     
-    NSLog(@"updating cells");
     // Get the event
     CLEvent *event = [_events objectAtIndex:[indexPath row]];
     
     // Get the image url
-    NSString *eventDescription = [event description];
+    NSString *eventDescription = [event eventDescription];
     
     return cell;
 }
@@ -131,7 +131,7 @@
 
 - (void)initPullToRefresh {
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.backgroundColor = [UIColor colorPrimary];
+    self.refreshControl.backgroundColor = [UIColor colorAccent];
     self.refreshControl.tintColor = [UIColor whiteColor];
     [self.refreshControl addTarget:self
                             action:@selector(reloadEvents)
@@ -168,5 +168,6 @@
     NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
     self.refreshControl.attributedTitle = attributedTitle;
 }
+
 
 @end

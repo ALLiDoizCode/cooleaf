@@ -196,7 +196,7 @@
                             </variation>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="358" id="qNy-My-Vsh">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="358" id="qNy-My-Vsh" customClass="CLEventCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qNy-My-Vsh" id="ObE-CQ-RT2">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -261,12 +261,18 @@
                                             <state key="normal" title="Join">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="join:" destination="qNy-My-Vsh" eventType="touchUpInside" id="rIa-YN-D9h"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLJ-ak-9Re">
                                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                             <state key="normal" title="Comment">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="comment:" destination="qNy-My-Vsh" eventType="touchUpInside" id="weD-hH-IoL"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -329,6 +335,10 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="eventDescription" destination="yfO-ab-mn7" id="Jlv-SC-xVh"/>
+                                    <outlet property="eventView" destination="ofG-iU-raG" id="CTZ-tU-SpO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

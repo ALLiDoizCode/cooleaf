@@ -67,6 +67,7 @@
 		4BE63A4F1B9502AD00231222 /* CLDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A4E1B9502AD00231222 /* CLDrawerViewController.m */; };
 		4BE63A551B951FF000231222 /* CLLoadEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A541B951FF000231222 /* CLLoadEvents.m */; };
 		4BE63A581B95205000231222 /* CLLoadedEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A571B95205000231222 /* CLLoadedEvents.m */; };
+		4BE63A5D1B95811400231222 /* CLEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A5C1B95811400231222 /* CLEventCell.m */; };
 		52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */; };
 		523096C01AA28F5D00649FB7 /* NPInterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */; };
 		523096C11AA28F5D00649FB7 /* NPInterestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */; };
@@ -285,6 +286,8 @@
 		4BE63A561B95205000231222 /* CLLoadedEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedEvents.h; sourceTree = "<group>"; };
 		4BE63A571B95205000231222 /* CLLoadedEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedEvents.m; sourceTree = "<group>"; };
 		4BE63A591B9551C500231222 /* IAuthenticationInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IAuthenticationInteractor.h; path = ../../../../../IAuthenticationInteractor.h; sourceTree = "<group>"; };
+		4BE63A5B1B95811400231222 /* CLEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEventCell.h; sourceTree = "<group>"; };
+		4BE63A5C1B95811400231222 /* CLEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEventCell.m; sourceTree = "<group>"; };
 		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPickYourInterestsLabelCell.h; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.h"; sourceTree = "<group>"; };
 		52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPickYourInterestsLabelCell.m; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.m"; sourceTree = "<group>"; };
 		523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsViewController.h; path = "Application Controllers/NPInterestsViewController.h"; sourceTree = "<group>"; };
@@ -496,6 +499,7 @@
 		4B6088431B929E4E0029E659 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4BE63A5A1B9580F200231222 /* Cell */,
 				4B6088461B929E8A0029E659 /* Custom */,
 				4B6088451B929E810029E659 /* Views */,
 				4B6088441B929E620029E659 /* UIViewControllers */,
@@ -714,6 +718,15 @@
 			);
 			name = Interactors;
 			path = ../MVP/Interactors;
+			sourceTree = "<group>";
+		};
+		4BE63A5A1B9580F200231222 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4BE63A5B1B95811400231222 /* CLEventCell.h */,
+				4BE63A5C1B95811400231222 /* CLEventCell.m */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		523096B71AA28D0500649FB7 /* Home */ = {
@@ -1383,6 +1396,7 @@
 				523096CA1AA291B200649FB7 /* NPHomeViewController.m in Sources */,
 				4BA4E2F61B8BC7290089CB2B /* CLDepartment.m in Sources */,
 				526DDE181AC757550095FC27 /* NPMembersViewController.m in Sources */,
+				4BE63A5D1B95811400231222 /* CLEventCell.m in Sources */,
 				523096D71AA3E17400649FB7 /* NPHomeCell.m in Sources */,
 				4BAE00681B8EDFD300779E1F /* CLAuthenticationSubscriber.m in Sources */,
 				68CDDC461B8EC3DF004C2897 /* CLTagPresenters.m in Sources */,
