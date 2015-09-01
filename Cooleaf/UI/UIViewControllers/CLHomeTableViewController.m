@@ -118,6 +118,12 @@
     CLEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell" forIndexPath:indexPath];
     cell.delegate = self;
     
+    cell.layer.shadowOpacity = 0.75f;
+    cell.layer.shadowRadius = 3.0;
+    cell.layer.shadowOffset = CGSizeMake(0, 0);
+    cell.layer.shadowColor = [UIColor blackColor].CGColor;
+    cell.layer.zPosition = 999;
+    
     // Get the event
     CLEvent *event = [_events objectAtIndex:[indexPath row]];
     
