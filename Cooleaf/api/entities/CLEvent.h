@@ -20,7 +20,6 @@
 @property (nonatomic) CLAddress *address;
 @property (nonatomic) NSString *eventDescription;
 @property (nonatomic) NSString *name;
-@property (nonatomic) NSString *imageUrl;
 @property (nonatomic) CLImage *eventImage;
 @property (nonatomic) NSMutableArray *eventParticipants;
 @property (nonatomic) NSNumber *participantsCount;
@@ -35,6 +34,5 @@
 @property (nonatomic, assign) BOOL isPaid;
 @property (nonatomic) CLSeries *eventSeries;
 @property (nonatomic) CLCoordinator *coordinator;
-@property (nonatomic) NSString *coordinatorName;
 
 @end

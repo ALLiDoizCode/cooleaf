@@ -19,8 +19,7 @@
 
 @implementation CLHomeTableViewController
 
-
-# pragma UIViewController LifeCycle methods
+# pragma mark - UIViewController LifeCycle methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,14 +34,15 @@
     
     // Init event presenter
     [self initPresenter];
+    
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 600.0;
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 #pragma mark - Navigation
 
@@ -52,16 +52,30 @@
     // Pass the selected object to the new view controller.
 }
 
+# pragma mark - CLEventCellDelegate
 
-# pragma IAuthenticationInteractor methods
+- (void)didPressComment:(CLEventCell *)cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    CLEvent *event = [_events objectAtIndex:[indexPath row]];
+    
+    // Add a comment
+}
+
+- (void)didPressJoin:(CLEventCell *)cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    CLEvent *event = [_events objectAtIndex:[indexPath row]];
+    
+    // Join event
+}
+
+# pragma mark - IAuthenticationInteractor methods
 
 - (void)initUser:(CLUser *)user {
     // Load events
     [_eventPresenter loadEvents];
 }
 
-
-# pragma IEventInteractor methods
+# pragma mark - IEventInteractor methods
 
 - (void)initEvents:(NSMutableArray *)events {
     // Events receieved here, set into tableview
@@ -76,14 +90,12 @@
     }
 }
 
-
-# pragma Helper Methods
+# pragma mark - initPresenter
 
 - (void)initPresenter {
     _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
     [_eventPresenter registerOnBus];
 }
-
 
 #pragma mark - Table view data source
 
@@ -93,32 +105,34 @@
     return 1;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [_events count];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell" forIndexPath:indexPath];
+    CLEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell" forIndexPath:indexPath];
+    cell.delegate = self;
     
     // Get the event
     CLEvent *event = [_events objectAtIndex:[indexPath row]];
     
     // Get the image url
+    
+    
+    // Get the event description
     NSString *eventDescription = [event eventDescription];
+    
+    cell.eventDescription.text = eventDescription;
     
     return cell;
 }
 
-
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
 }
-
 
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -126,8 +140,7 @@
     return YES;
 }
 
-
-# pragma Helper Methods
+# pragma mark - Helper Methods
 
 - (void)initPullToRefresh {
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -138,11 +151,9 @@
                   forControlEvents:UIControlEventValueChanged];
 }
 
-
 - (void)reloadEvents {
     [_eventPresenter loadEvents];
 }
-
 
 - (void)displayEmptyMessage {
     UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
@@ -158,7 +169,6 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
-
 - (void)setAttributedTitle {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM d, h:mm a"];
@@ -168,6 +178,5 @@
     NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
     self.refreshControl.attributedTitle = attributedTitle;
 }
-
 
 @end

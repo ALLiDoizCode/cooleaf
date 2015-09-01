@@ -726,7 +726,7 @@
 				4BE63A5B1B95811400231222 /* CLEventCell.h */,
 				4BE63A5C1B95811400231222 /* CLEventCell.m */,
 			);
-			name = Cell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		523096B71AA28D0500649FB7 /* Home */ = {
