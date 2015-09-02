@@ -37,6 +37,9 @@
     // Init nav bar color
     self.navigationController.navigationBar.barTintColor = [UIColor colorPrimary];
     self.navigationController.navigationBar.tintColor = [UIColor colorPrimaryDark];
+
+    [self initViews];
+    [self initUserImageGestureRecognizer];
     
     // Init pull to refresh
     [self initPullToRefresh];
@@ -48,9 +51,6 @@
     
     // Init event presenter
     [self initPresenter];
-    
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 600.0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -166,6 +166,7 @@
     CLEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell" forIndexPath:indexPath];
     cell.delegate = self;
     
+    // Set cell shadow
     cell.layer.shadowOpacity = 0.75f;
     cell.layer.shadowRadius = 1.0;
     cell.layer.shadowOffset = CGSizeMake(0, 0);
@@ -204,6 +205,28 @@
 }
 
 # pragma mark - Helper Methods
+
+- (void)initViews {
+    // Init nav bar color
+    self.navigationController.navigationBar.barTintColor = [UIColor colorPrimary];
+    self.navigationController.navigationBar.tintColor = [UIColor colorPrimaryDark];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 600.0;
+}
+
+- (void)initUserImageGestureRecognizer {
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap)];
+    tapRecognizer.numberOfTapsRequired = 1;
+    tapRecognizer.numberOfTouchesRequired = 1;
+    tapRecognizer.delegate = self;
+    [_userImage addGestureRecognizer:tapRecognizer];
+    _userImage.userInteractionEnabled = YES;
+}
+
+- (void)onTap {
+    // Go to profile view controller
+    
+}
 
 - (void)initPullToRefresh {
     self.refreshControl = [[UIRefreshControl alloc] init];
