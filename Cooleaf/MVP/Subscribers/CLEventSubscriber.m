@@ -23,7 +23,6 @@
 SUBSCRIBE(CLLoadEvents) {
     [_eventController getEvents:nil success:^(id response) {
         NSMutableArray *events = [response result];
-        NSLog(@"%@", [response result]);
         CLLoadedEvents *loadedEvents = [[CLLoadedEvents alloc] initWithEvents:events];
         PUBLISH(loadedEvents);
     } failure:^(NSError *error) {

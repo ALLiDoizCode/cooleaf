@@ -118,6 +118,7 @@
 
 - (void)initUser:(CLUser *)user {
     // Load events
+    NSLog(@"%@", [user userName]);
     [_eventPresenter loadEvents];
 }
 
