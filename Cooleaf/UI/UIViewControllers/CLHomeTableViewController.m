@@ -14,6 +14,7 @@
     @private
     CLAuthenticationPresenter *_authPres;
     CLEventPresenter *_eventPresenter;
+    CLUser *_user;
     NSMutableArray *_events;
     UIColor *barColor;
 }
@@ -117,8 +118,8 @@
 # pragma mark - IAuthenticationInteractor methods
 
 - (void)initUser:(CLUser *)user {
-    // Load events
-    NSLog(@"%@", [user userName]);
+    _user = user;
+    [self initProfileHeaderWithUser:_user];
     [_eventPresenter loadEvents];
 }
 
@@ -209,6 +210,17 @@
     [self.refreshControl addTarget:self
                             action:@selector(reloadEvents)
                   forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)initProfileHeaderWithUser:(CLUser *)user {
+    _userNameLabel.text = [user userName];
+    _userRewardsLabel.text = [NSString stringWithFormat:@"%@ %@", @"Reward Points:", [[user rewardPoints] stringValue]];
+    
+    NSDictionary *userDict = [user dictionaryValue];
+    NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"original"]];
+    [_userImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+    _userImage.layer.cornerRadius = _userImage.frame.size.width / 2;
+    _userImage.clipsToBounds = YES;
 }
 
 - (void)reloadEvents {
