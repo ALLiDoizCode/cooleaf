@@ -7,8 +7,14 @@
 //
 
 #import "CLMenuViewController.h"
+#import "UIColor+CustomColors.h"
 
-@interface CLMenuViewController ()
+@interface CLMenuViewController () {
+    
+    NSArray *titles;
+    NSArray *titles2;
+    NSArray *icons;
+}
 
 @end
 
@@ -16,6 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    titles = @[@"Home", @"My Events", @"Groups",@"People",@"My Profile"];
+    titles2 = @[@"#Running", @"#Picnicholiday2015", @"#Walking"];
+    
+    icons = @[@"home.png",@"calendar.png",@"Profile.png",@"Profile.png",@"Profile.png"];
+    
     [self initTableView];
 }
 
@@ -69,7 +81,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex {
-    return 3;
+    
+    if (sectionIndex == 0) {
+        
+        return titles.count;
+        
+    }else {
+        
+        return titles2.count;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -82,11 +103,11 @@
     }
     
     if (indexPath.section == 0) {
-        NSArray *titles = @[@"Home", @"Profile", @"Chats"];
+        //NSArray *titles = @[@"Home", @"Profile", @"Chats"];
         cell.textLabel.text = titles[indexPath.row];
     } else {
-        NSArray *titles = @[@"John Appleseed", @"John Doe", @"Test User"];
-        cell.textLabel.text = titles[indexPath.row];
+        //NSArray *titles = @[@"John Appleseed", @"John Doe", @"Test User"];
+        cell.textLabel.text = titles2[indexPath.row];
     }
     
     return cell;
@@ -95,6 +116,9 @@
 # pragma mark - initTableView
 
 - (void)initTableView {
+    
+    UIColor *textColor = [UIColor UIColorFromRGB:0xFDFDFD];
+    
     self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -102,29 +126,61 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.tableHeaderView = ({
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(-5, 20, 70, 70)];
         imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        imageView.image = [UIImage imageNamed:@"avatar.jpg"];
+        imageView.image = [UIImage imageNamed:@"TestImage.png"];
         imageView.layer.masksToBounds = YES;
-        imageView.layer.cornerRadius = 50.0;
-        imageView.layer.borderColor = [UIColor whiteColor].CGColor;
+        imageView.layer.cornerRadius = imageView.frame.size.height/2;
+        imageView.layer.borderColor = [UIColor clearColor].CGColor;
         imageView.layer.borderWidth = 3.0f;
         imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
         imageView.layer.shouldRasterize = YES;
         imageView.clipsToBounds = YES;
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
-        label.text = @"Roman Efimov";
-        label.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
-        label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
-        [label sizeToFit];
-        label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        
+        
+        
+        //Border
+        UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 180, 400, 0.5)];
+        border.backgroundColor = textColor;
+        
+        //Name
+        UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(-7, 100, 0, 0)];
+        labelName.textAlignment = NSTextAlignmentLeft;
+        labelName.text = @"Prem Bhatia";
+        labelName.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        labelName.backgroundColor = [UIColor clearColor];
+        labelName.textColor = textColor;
+        [labelName sizeToFit];
+        labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        
+        //Orginization
+        UILabel *labelOrginization = [[UILabel alloc] initWithFrame:CGRectMake(-3.5, 120, 0, 0)];
+        labelOrginization.textAlignment = NSTextAlignmentLeft;
+        labelOrginization.text = @"Cooleaf";
+        labelOrginization.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        labelOrginization.backgroundColor = [UIColor clearColor];
+        labelOrginization.textColor = textColor;
+        [labelOrginization sizeToFit];
+        labelOrginization.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        
+        //Rewards
+        int myInt = 0;
+        UILabel *labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(-5, 140, 0, 0)];
+        labelRewards.textAlignment = NSTextAlignmentLeft;
+        labelRewards.text = [NSString stringWithFormat:@"Rewards:%d", myInt];
+        labelRewards.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        labelRewards.backgroundColor = [UIColor clearColor];
+        labelRewards.textColor = textColor;
+        [labelRewards sizeToFit];
+        labelRewards.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         
         [view addSubview:imageView];
-        [view addSubview:label];
-        view;
-    });
+        [view addSubview:labelName];
+        [view addSubview:labelOrginization];
+        [view addSubview:labelRewards];
+        [view addSubview:border];
+        view;    });
 }
 
 @end
