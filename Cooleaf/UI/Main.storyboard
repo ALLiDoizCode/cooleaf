@@ -61,48 +61,6 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="pub-6i-gz4">
-                            <rect key="frame" x="0.0" y="64" width="600" height="154"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AvatarPlaceholderMaleMedium" translatesAutoresizingMaskIntoConstraints="NO" id="QMf-0C-uMK">
-                                    <rect key="frame" x="264" y="8" width="72" height="72"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="72" id="AM3-JB-WD2"/>
-                                        <constraint firstAttribute="width" secondItem="QMf-0C-uMK" secondAttribute="height" multiplier="1:1" id="Q2E-ZA-LEb"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Duisberg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbV-04-7VA">
-                                    <rect key="frame" x="250" y="80" width="100" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nurse, Children's Healthcare of Atlanta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Z3-FL-3rI">
-                                    <rect key="frame" x="167" y="98" width="267" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewards: 400" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqA-Q2-Vqe">
-                                    <rect key="frame" x="253" y="116" width="95" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <constraints>
-                                <constraint firstAttribute="centerX" secondItem="4Z3-FL-3rI" secondAttribute="centerX" id="60c-8A-VX0"/>
-                                <constraint firstAttribute="centerX" secondItem="NbV-04-7VA" secondAttribute="centerX" id="6Wz-aB-9uB"/>
-                                <constraint firstAttribute="bottom" secondItem="OqA-Q2-Vqe" secondAttribute="bottom" constant="20" id="6lk-Tj-YHY"/>
-                                <constraint firstItem="OqA-Q2-Vqe" firstAttribute="top" secondItem="4Z3-FL-3rI" secondAttribute="bottom" id="8no-Wg-106"/>
-                                <constraint firstAttribute="centerX" secondItem="OqA-Q2-Vqe" secondAttribute="centerX" id="GLD-3T-Xc2"/>
-                                <constraint firstAttribute="centerX" secondItem="QMf-0C-uMK" secondAttribute="centerX" id="LU5-ii-roX"/>
-                                <constraint firstItem="QMf-0C-uMK" firstAttribute="top" secondItem="pub-6i-gz4" secondAttribute="top" constant="8" id="dui-eQ-l2c"/>
-                                <constraint firstItem="4Z3-FL-3rI" firstAttribute="top" secondItem="NbV-04-7VA" secondAttribute="bottom" id="sx7-nn-Yra"/>
-                                <constraint firstItem="NbV-04-7VA" firstAttribute="top" secondItem="QMf-0C-uMK" secondAttribute="bottom" id="xKA-XY-bTM"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="464" id="qNy-My-Vsh" customClass="CLEventCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -231,6 +189,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JqL-01-SVm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.33333333333333331" green="0.74117647058823533" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -242,7 +204,4 @@
             <point key="canvasLocation" x="4819" y="117"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="AvatarPlaceholderMaleMedium" width="45" height="45"/>
-    </resources>
 </document>

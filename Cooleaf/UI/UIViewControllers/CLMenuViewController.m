@@ -14,7 +14,7 @@
     NSArray *titles;
     NSArray *titles2;
     NSArray *icons;
-    NSArray *icons2;
+     NSArray *icons2;
     UIColor *textColor;
 }
 

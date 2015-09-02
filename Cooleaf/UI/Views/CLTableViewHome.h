@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CLTableViewHome : UITableView
+@interface CLTableViewHome : UITableView <UISearchDisplayDelegate>
+
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UISearchDisplayController *searchController;
+
+-(void)searchDisplay;
+-(void)toggleSearch;
 
 @end
