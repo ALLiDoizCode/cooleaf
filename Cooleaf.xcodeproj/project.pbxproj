@@ -94,6 +94,7 @@
 		52A9A19B1AACECDA004E6C13 /* NPOtherInterestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A9A1991AACECDA004E6C13 /* NPOtherInterestCell.m */; };
 		52A9A19C1AACECDA004E6C13 /* NPOtherInterestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A9A19A1AACECDA004E6C13 /* NPOtherInterestCell.xib */; };
 		68012DCC1B968C3600251544 /* CLTableViewGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 68012DCB1B968C3600251544 /* CLTableViewGradient.m */; };
+		68012DD81B97519D00251544 /* CLTableViewHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 68012DD71B97519D00251544 /* CLTableViewHome.m */; };
 		68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */; };
 		68CDDC431B8EC279004C2897 /* CLTagGroupPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC421B8EC279004C2897 /* CLTagGroupPresenter.m */; };
 		68CDDC461B8EC3DF004C2897 /* CLTagPresenters.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC451B8EC3DF004C2897 /* CLTagPresenters.m */; };
@@ -330,6 +331,8 @@
 		5835FE81ECFB8936D5916B56 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		68012DCA1B968C3600251544 /* CLTableViewGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTableViewGradient.h; sourceTree = "<group>"; };
 		68012DCB1B968C3600251544 /* CLTableViewGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewGradient.m; sourceTree = "<group>"; };
+		68012DD61B97519D00251544 /* CLTableViewHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTableViewHome.h; sourceTree = "<group>"; };
+		68012DD71B97519D00251544 /* CLTableViewHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewHome.m; sourceTree = "<group>"; };
 		68CDDC081B8E8BB0004C2897 /* CLEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLEvents.h; sourceTree = "<group>"; };
 		68CDDC3B1B8EB7D1004C2897 /* CLInterest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLInterest.h; sourceTree = "<group>"; };
 		68CDDC3C1B8EBB4F004C2897 /* CLTagGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTagGroup.h; sourceTree = "<group>"; };
@@ -531,6 +534,8 @@
 				4BA61B0A1B94CC6800774CC2 /* CLProfileHeaderView.m */,
 				68012DCA1B968C3600251544 /* CLTableViewGradient.h */,
 				68012DCB1B968C3600251544 /* CLTableViewGradient.m */,
+				68012DD61B97519D00251544 /* CLTableViewHome.h */,
+				68012DD71B97519D00251544 /* CLTableViewHome.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1373,6 +1378,7 @@
 				68CDDC431B8EC279004C2897 /* CLTagGroupPresenter.m in Sources */,
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
 				4BA4E32C1B8BF8E00089CB2B /* CLTimeZone.m in Sources */,
+				68012DD81B97519D00251544 /* CLTableViewHome.m in Sources */,
 				4BE63A4F1B9502AD00231222 /* CLDrawerViewController.m in Sources */,
 				4BA4E35A1B8D1E4C0089CB2B /* CLAuthenticationPresenter.m in Sources */,
 				4BE63A551B951FF000231222 /* CLLoadEvents.m in Sources */,

@@ -14,6 +14,8 @@
     NSArray *titles;
     NSArray *titles2;
     NSArray *icons;
+    NSArray *icons2;
+    UIColor *textColor;
 }
 
 @end
@@ -23,10 +25,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    textColor = [UIColor UIColorFromRGB:0xFDFDFD];
+    
     titles = @[@"Home", @"My Events", @"Groups",@"People",@"My Profile"];
     titles2 = @[@"#Running", @"#Picnicholiday2015", @"#Walking"];
     
-    icons = @[@"home.png",@"calendar.png",@"Profile.png",@"Profile.png",@"Profile.png"];
+    icons = @[@"home-1",@"calendar",@"Profile",@"Profile",@"Profile"];
+    icons2 = @[@"Profile"];
+
     
     [self initTableView];
 }
@@ -40,7 +48,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
+    cell.textLabel.textColor = textColor;
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
 }
 
@@ -49,13 +57,13 @@
         return nil;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 34)];
-    view.backgroundColor = [UIColor colorWithRed:167/255.0f green:167/255.0f blue:167/255.0f alpha:0.6f];
+    view.backgroundColor = textColor;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 0, 0)];
-    label.text = @"Friends Online";
+    //label.text = @"Friends Online";
     label.font = [UIFont systemFontOfSize:15];
     label.textColor = [UIColor whiteColor];
-    label.backgroundColor = [UIColor clearColor];
+    label.backgroundColor = textColor;
     [label sizeToFit];
     [view addSubview:label];
     
@@ -66,7 +74,7 @@
     if (sectionIndex == 0)
         return 0;
     
-    return 34;
+    return 0.5;
 }
 
 #pragma mark -
@@ -105,6 +113,7 @@
     if (indexPath.section == 0) {
         //NSArray *titles = @[@"Home", @"Profile", @"Chats"];
         cell.textLabel.text = titles[indexPath.row];
+        cell.imageView.image = [UIImage imageNamed:icons[indexPath.row]];
     } else {
         //NSArray *titles = @[@"John Appleseed", @"John Doe", @"Test User"];
         cell.textLabel.text = titles2[indexPath.row];
@@ -117,7 +126,7 @@
 
 - (void)initTableView {
     
-    UIColor *textColor = [UIColor UIColorFromRGB:0xFDFDFD];
+   
     
     self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
     self.tableView.delegate = self;
@@ -128,7 +137,7 @@
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(-5, 20, 70, 70)];
         imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        imageView.image = [UIImage imageNamed:@"TestImage.png"];
+        imageView.image = [UIImage imageNamed:@"TestImage"];
         imageView.layer.masksToBounds = YES;
         imageView.layer.cornerRadius = imageView.frame.size.height/2;
         imageView.layer.borderColor = [UIColor clearColor].CGColor;
