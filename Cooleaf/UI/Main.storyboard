@@ -26,31 +26,14 @@
             </objects>
             <point key="canvasLocation" x="2728" y="117"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="2lP-cW-m1l">
             <objects>
-                <tableViewController id="jEI-6e-JCg" sceneMemberID="viewController">
+                <tableViewController id="jEI-6e-JCg" customClass="CLMenuViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XTO-7G-9Wu">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="6aV-3F-FKg">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="131"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AvatarPlaceHolderMaleBig" translatesAutoresizingMaskIntoConstraints="NO" id="K9l-hF-MhE">
-                                    <rect key="frame" x="154" y="-2" width="292" height="136"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="292" id="uM2-pb-fQ7"/>
-                                    </constraints>
-                                </imageView>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="K9l-hF-MhE" firstAttribute="top" secondItem="6aV-3F-FKg" secondAttribute="top" constant="-2" id="7tx-29-5g7"/>
-                                <constraint firstItem="K9l-hF-MhE" firstAttribute="centerX" secondItem="6aV-3F-FKg" secondAttribute="centerX" id="Gxc-RE-0Ig"/>
-                                <constraint firstAttribute="bottom" secondItem="K9l-hF-MhE" secondAttribute="bottom" constant="-3" id="Mm3-Sa-36C"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YUz-py-eHB">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -260,7 +243,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AvatarPlaceHolderMaleBig" width="110" height="110"/>
         <image name="AvatarPlaceholderMaleMedium" width="45" height="45"/>
     </resources>
 </document>
