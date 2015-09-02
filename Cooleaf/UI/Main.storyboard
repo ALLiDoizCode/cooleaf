@@ -62,29 +62,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="pub-6i-gz4">
-                            <rect key="frame" x="0.0" y="64" width="600" height="154"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="180"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Duisberg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbV-04-7VA">
-                                    <rect key="frame" x="250" y="80" width="99.5" height="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbV-04-7VA">
+                                    <rect key="frame" x="300" y="92" width="0.0" height="50"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nurse, Children's Healthcare of Atlanta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Z3-FL-3rI">
-                                    <rect key="frame" x="167" y="98" width="266.5" height="18"/>
+                                    <rect key="frame" x="167" y="142" width="266.5" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewards: 400" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqA-Q2-Vqe">
-                                    <rect key="frame" x="252.5" y="116" width="94.5" height="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqA-Q2-Vqe">
+                                    <rect key="frame" x="300" y="160" width="0.0" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AvatarPlaceholderMaleMedium" translatesAutoresizingMaskIntoConstraints="NO" id="QMf-0C-uMK">
-                                    <rect key="frame" x="264" y="8" width="72" height="72"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QMf-0C-uMK">
+                                    <rect key="frame" x="264" y="20" width="72" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="72" id="AM3-JB-WD2"/>
                                         <constraint firstAttribute="width" secondItem="QMf-0C-uMK" secondAttribute="height" multiplier="1:1" id="Q2E-ZA-LEb"/>
@@ -98,7 +98,7 @@
                                 <constraint firstItem="OqA-Q2-Vqe" firstAttribute="top" secondItem="4Z3-FL-3rI" secondAttribute="bottom" id="8no-Wg-106"/>
                                 <constraint firstAttribute="centerX" secondItem="OqA-Q2-Vqe" secondAttribute="centerX" id="GLD-3T-Xc2"/>
                                 <constraint firstAttribute="centerX" secondItem="QMf-0C-uMK" secondAttribute="centerX" id="LU5-ii-roX"/>
-                                <constraint firstItem="QMf-0C-uMK" firstAttribute="top" secondItem="pub-6i-gz4" secondAttribute="top" constant="8" id="dui-eQ-l2c"/>
+                                <constraint firstItem="QMf-0C-uMK" firstAttribute="top" secondItem="pub-6i-gz4" secondAttribute="top" constant="20" id="dui-eQ-l2c"/>
                                 <constraint firstItem="4Z3-FL-3rI" firstAttribute="top" secondItem="NbV-04-7VA" secondAttribute="bottom" id="sx7-nn-Yra"/>
                                 <constraint firstItem="NbV-04-7VA" firstAttribute="top" secondItem="QMf-0C-uMK" secondAttribute="bottom" id="xKA-XY-bTM"/>
                             </constraints>

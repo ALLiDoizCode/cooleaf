@@ -28,11 +28,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Searchbar color
+    // Searchbar color
     barColor = [UIColor UIColorFromRGB:0x69C4BB];
     
     // Init SearchDisplay
     [self searchDisplay];
+    
+    // Init nav bar color
+    self.navigationController.navigationBar.barTintColor = [UIColor colorPrimary];
+    self.navigationController.navigationBar.tintColor = [UIColor colorPrimaryDark];
     
     // Init pull to refresh
     [self initPullToRefresh];
@@ -148,13 +152,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [_events count];
 }
