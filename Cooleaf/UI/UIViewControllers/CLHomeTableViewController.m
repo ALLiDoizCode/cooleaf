@@ -15,6 +15,7 @@
     CLAuthenticationPresenter *_authPres;
     CLEventPresenter *_eventPresenter;
     NSMutableArray *_events;
+    UIColor *barColor;
 }
 
 @end
@@ -25,6 +26,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //Searchbar color
+    barColor = [UIColor UIColorFromRGB:0x69C4BB];
+    
+    // Init SearchDisplay
+    [self searchDisplay];
     
     // Init pull to refresh
     [self initPullToRefresh];
@@ -44,6 +51,43 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - searchDisplay
+
+-(void)searchDisplay {
+    
+    // place search bar coordinates where the navbar is position - offset by statusbar
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 20, 320, 44)];
+    
+    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+    //self.searchController.searchResultsDataSource = self;
+    //self.searchController.searchResultsDelegate = self;
+    self.searchController.delegate = self;
+    
+    // Do any additional setup after loading the view.
+    
+    UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleSearch)];
+    
+    
+    UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
+    
+    
+    NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
+    
+    [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
+    
+    searchBtn.tintColor = [UIColor whiteColor];
+    commentBtn.tintColor = [UIColor whiteColor];
+}
+#pragma mark - toggleSearch
+
+- (void)toggleSearch
+{
+    [self.tableView addSubview:self.searchBar];
+    [self.searchController setActive:YES animated:YES];
+    [self.searchBar becomeFirstResponder];
+    self.searchBar.barTintColor = barColor;
 }
 
 #pragma mark - Navigation

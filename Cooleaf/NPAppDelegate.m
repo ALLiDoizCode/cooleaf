@@ -137,7 +137,6 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-
 # pragma initViews
 
 - (void)initViews {
@@ -157,7 +156,6 @@
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
 }
 
-
 # pragma startEventProcessing
 
 - (void)startEventProcessing {
@@ -165,14 +163,12 @@
     [_registry registerDefaultSubscribers];
 }
 
-
 # pragma stopEventProcessing
 
 - (void)stopEventProcessing {
     [_registry unregisterDefaultSubscribers];
     _registry = nil;
 }
-
 
 #pragma mark - Notification handling
 
