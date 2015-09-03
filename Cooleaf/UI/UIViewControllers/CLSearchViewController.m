@@ -7,13 +7,12 @@
 //
 
 #import "CLSearchViewController.h"
-#import "UIColor+CustomColors.h"
 #import "CLHomeTableViewController.h"
 
-@interface CLSearchViewController () {
+@interface CLSearchViewController ()
     
-    UIColor *barColor;
-}
+    
+
 
 @end
 
@@ -22,25 +21,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.searchBar.showsCancelButton = TRUE;
     self.searchBar.delegate = self;
     
-    
-    // Do any additional setup after loading the view.
-    
-    //[self toggleSearch];
-   
-    
-    //Searchbar color
-    barColor = [UIColor UIColorFromRGB:0x69C4BB];
-    
 }
 
-
--(void)viewWillAppear:(BOOL)animated {
-    
-   
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -49,27 +33,17 @@
 
 #pragma mark - toggleSearch
 
-/*- (void)toggleSearch {
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     
-    // place search bar coordinates where the navbar is position - offset by statusbar
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 20, 320, 44)];
-    
-    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
-    //self.searchController.searchResultsDataSource = self;
-    //self.searchController.searchResultsDelegate = self;
-    self.searchController.delegate = self;
-    
-    [self.view addSubview:self.searchBar];
-    self.searchBar.barTintColor = barColor;
-}*/
+    self.searchBar.showsCancelButton = TRUE;
+}
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     
     //dismiss keyboard and reload table
     [self.searchBar resignFirstResponder];
     
-    NSLog(@"stop");
-}
+  }
 
 
 /*
