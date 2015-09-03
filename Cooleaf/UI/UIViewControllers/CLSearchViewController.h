@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CLSearchCell.h"
 
-@interface CLSearchViewController : UIViewController <UISearchBarDelegate>
-
+@interface CLSearchViewController : UIViewController <UISearchBarDelegate,UITableViewDataSource, UISearchDisplayDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic) NSArray *data;
 
+@property (nonatomic) NSArray *filter;
 
 @end
