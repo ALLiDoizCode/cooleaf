@@ -12,7 +12,10 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    _cellImage.layer.cornerRadius = _cellImage.frame.size.height/2;
+    _cellImage.layer.cornerRadius = _cellImage.frame.size.height / 2;
+    _cellImage.clipsToBounds = YES;
+    _cellImage.layer.cornerRadius = _cellImage.layer.frame.size.height/2;
+    _cellImage.layer.masksToBounds = YES;
     _cellImage.clipsToBounds = YES;
 }
 
