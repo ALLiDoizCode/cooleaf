@@ -53,13 +53,13 @@
 
 #pragma mark - SearchBar Delegates
 
--(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+/*-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
     
 }
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     return YES;
-}
+}*/
 
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     self.searchBar.showsCancelButton = TRUE;
