@@ -56,8 +56,8 @@
         <!--Home Table View Controller-->
         <scene sceneID="YqB-Uk-V75">
             <objects>
-                <tableViewController id="V07-5L-Ygt" customClass="CLHomeTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="358" sectionHeaderHeight="22" sectionFooterHeight="22" id="97G-c6-GBl">
+                <tableViewController storyboardIdentifier="Home" id="V07-5L-Ygt" customClass="CLHomeTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="358" sectionHeaderHeight="22" sectionFooterHeight="22" id="97G-c6-GBl" customClass="CLTableViewHome">
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -210,7 +210,41 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8S-Lg-ZQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5631" y="117"/>
+            <point key="canvasLocation" x="6443" y="117"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="VeR-EC-KZg">
+            <objects>
+                <viewController storyboardIdentifier="search" id="idg-Gr-eJb" customClass="CLSearchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BRH-hh-RM4"/>
+                        <viewControllerLayoutGuide type="bottom" id="9vx-lJ-84T"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gxg-eb-v1E">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="r2e-CL-A5C">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="barTintColor" red="0.33333333333333331" green="0.74117647058823533" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="r2e-CL-A5C" firstAttribute="top" secondItem="BRH-hh-RM4" secondAttribute="bottom" id="QOE-im-pZd"/>
+                            <constraint firstItem="r2e-CL-A5C" firstAttribute="leading" secondItem="Gxg-eb-v1E" secondAttribute="leading" id="Tfj-Eb-HOP"/>
+                            <constraint firstAttribute="trailing" secondItem="r2e-CL-A5C" secondAttribute="trailing" id="t2D-uz-K4g"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="zHj-fv-aTG"/>
+                    <connections>
+                        <outlet property="searchBar" destination="r2e-CL-A5C" id="P9G-Uj-VPu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rpx-Bu-Bpt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6443" y="786"/>
         </scene>
         <!--Profile Table View Controller-->
         <scene sceneID="9ko-oj-kcN">
