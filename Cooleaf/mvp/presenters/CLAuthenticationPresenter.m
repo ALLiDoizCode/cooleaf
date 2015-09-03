@@ -26,7 +26,6 @@
 # pragma registerOnBus
 
 - (void)registerOnBus {
-    NSLog(@"AuthPresenter registered");
     REGISTER();
 }
 
@@ -34,7 +33,6 @@
 # pragma unregisterOnBus
 
 - (void)unregisterOnBus {
-    NSLog(@"AuthPresenter unregistered");
     UNREGISTER();
 }
 

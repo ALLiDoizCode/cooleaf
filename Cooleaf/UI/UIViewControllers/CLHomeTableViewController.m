@@ -14,6 +14,7 @@
     @private
     CLAuthenticationPresenter *_authPres;
     CLEventPresenter *_eventPresenter;
+    CLUser *_user;
     NSMutableArray *_events;
     UIColor *barColor;
 }
@@ -27,11 +28,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Searchbar color
+    // Searchbar color
     barColor = [UIColor UIColorFromRGB:0x69C4BB];
     
     // Init SearchDisplay
     [self searchDisplay];
+    
+    // Init nav bar color
+    self.navigationController.navigationBar.barTintColor = [UIColor colorPrimary];
+    self.navigationController.navigationBar.tintColor = [UIColor colorPrimaryDark];
+
+    [self initViews];
+    [self initUserImageGestureRecognizer];
     
     // Init pull to refresh
     [self initPullToRefresh];
@@ -43,9 +51,6 @@
     
     // Init event presenter
     [self initPresenter];
-    
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 600.0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -117,7 +122,8 @@
 # pragma mark - IAuthenticationInteractor methods
 
 - (void)initUser:(CLUser *)user {
-    // Load events
+    _user = user;
+    [self initProfileHeaderWithUser:_user];
     [_eventPresenter loadEvents];
 }
 
@@ -146,13 +152,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [_events count];
 }
@@ -162,6 +166,7 @@
     CLEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell" forIndexPath:indexPath];
     cell.delegate = self;
     
+    // Set cell shadow
     cell.layer.shadowOpacity = 0.75f;
     cell.layer.shadowRadius = 1.0;
     cell.layer.shadowOffset = CGSizeMake(0, 0);
@@ -201,6 +206,28 @@
 
 # pragma mark - Helper Methods
 
+- (void)initViews {
+    // Init nav bar color
+    self.navigationController.navigationBar.barTintColor = [UIColor colorPrimary];
+    self.navigationController.navigationBar.tintColor = [UIColor colorPrimaryDark];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 600.0;
+}
+
+- (void)initUserImageGestureRecognizer {
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap)];
+    tapRecognizer.numberOfTapsRequired = 1;
+    tapRecognizer.numberOfTouchesRequired = 1;
+    tapRecognizer.delegate = self;
+    [_userImage addGestureRecognizer:tapRecognizer];
+    _userImage.userInteractionEnabled = YES;
+}
+
+- (void)onTap {
+    // Go to profile view controller
+    
+}
+
 - (void)initPullToRefresh {
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor colorAccent];
@@ -208,6 +235,17 @@
     [self.refreshControl addTarget:self
                             action:@selector(reloadEvents)
                   forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)initProfileHeaderWithUser:(CLUser *)user {
+    _userNameLabel.text = [user userName];
+    _userRewardsLabel.text = [NSString stringWithFormat:@"%@ %@", @"Reward Points:", [[user rewardPoints] stringValue]];
+    
+    NSDictionary *userDict = [user dictionaryValue];
+    NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"original"]];
+    [_userImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+    _userImage.layer.cornerRadius = _userImage.frame.size.width / 2;
+    _userImage.clipsToBounds = YES;
 }
 
 - (void)reloadEvents {

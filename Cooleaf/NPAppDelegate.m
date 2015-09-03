@@ -62,7 +62,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
     // Go ahead and startEventProcessing...
     [self startEventProcessing];
     
