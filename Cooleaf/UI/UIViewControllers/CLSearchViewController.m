@@ -19,9 +19,8 @@
     [super viewDidLoad];
     
     self.searchBar.delegate = self;
-    
+    self.searchBar.placeholder = @"Search...";
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -31,17 +30,13 @@
 #pragma mark - SearchBar Delegates
 
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    
     self.searchBar.showsCancelButton = TRUE;
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    
     //dismiss keyboard and reload table
     [self.searchBar resignFirstResponder];
-    
-  }
-
+}
 
 /*
 #pragma mark - Navigation
