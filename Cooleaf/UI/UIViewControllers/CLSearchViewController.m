@@ -10,9 +10,6 @@
 #import "CLHomeTableViewController.h"
 
 @interface CLSearchViewController ()
-    
-    
-
 
 @end
 
@@ -31,7 +28,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - toggleSearch
+#pragma mark - SearchBar Delegates
 
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     
