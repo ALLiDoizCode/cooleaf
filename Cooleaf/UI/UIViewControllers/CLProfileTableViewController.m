@@ -98,6 +98,10 @@
     _userNameLabel.text = [user userName];
     _userRewardsLabel.text = [NSString stringWithFormat:@"%@ %@", @"Reward Points:", [[user rewardPoints] stringValue]];
     
+    // Load user image into blurry background image, and blur it
+    
+    
+    // Load user image into avatar imageview
     NSDictionary *userDict = [user dictionaryValue];
     NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"original"]];
     [_userImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
