@@ -85,16 +85,12 @@
     [postView addSubview:postBtn];
     [postView addSubview:cancelBtn];
     [postView addSubview:postTextView];
-    
-   
    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [postTextView endEditing:YES];
 }
-
-
 
 
 /*
