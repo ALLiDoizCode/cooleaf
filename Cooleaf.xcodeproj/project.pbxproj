@@ -23,6 +23,7 @@
 		43EF2F1A1B00A8F5002A060A /* NPTagGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */; };
 		4B066CBF1B94BB79006A7CF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B066CBE1B94BB79006A7CF1 /* Main.storyboard */; };
 		4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */; };
+		4B4AE2631B9A4773006040F0 /* CLInformationTableViewcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4AE2621B9A4773006040F0 /* CLInformationTableViewcell.m */; };
 		4B6088491B929EA20029E659 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6088481B929EA20029E659 /* UIColor+CustomColors.m */; };
 		4B6B56F01B98E0C8008DF039 /* CLProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56EF1B98E0C8008DF039 /* CLProfileTableViewController.m */; };
 		4B6B56F31B98E220008DF039 /* CLGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56F21B98E220008DF039 /* CLGroupTableViewCell.m */; };
@@ -200,6 +201,8 @@
 		43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPTagGroupView.xib; sourceTree = "<group>"; };
 		4B066CBE1B94BB79006A7CF1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBranch.m; sourceTree = "<group>"; };
+		4B4AE2611B9A4773006040F0 /* CLInformationTableViewcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInformationTableViewcell.h; sourceTree = "<group>"; };
+		4B4AE2621B9A4773006040F0 /* CLInformationTableViewcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInformationTableViewcell.m; sourceTree = "<group>"; };
 		4B6088471B929EA20029E659 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
 		4B6088481B929EA20029E659 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		4B6B56EE1B98E0C8008DF039 /* CLProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProfileTableViewController.h; sourceTree = "<group>"; };
@@ -750,6 +753,8 @@
 				4B6B56F21B98E220008DF039 /* CLGroupTableViewCell.m */,
 				4B6B56F41B98E859008DF039 /* CLGroupCollectionViewCell.h */,
 				4B6B56F51B98E859008DF039 /* CLGroupCollectionViewCell.m */,
+				4B4AE2611B9A4773006040F0 /* CLInformationTableViewcell.h */,
+				4B4AE2621B9A4773006040F0 /* CLInformationTableViewcell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1397,6 +1402,7 @@
 				4BA4E32C1B8BF8E00089CB2B /* CLTimeZone.m in Sources */,
 				68012DD81B97519D00251544 /* CLTableViewHome.m in Sources */,
 				4BE63A4F1B9502AD00231222 /* CLDrawerViewController.m in Sources */,
+				4B4AE2631B9A4773006040F0 /* CLInformationTableViewcell.m in Sources */,
 				4BA4E35A1B8D1E4C0089CB2B /* CLAuthenticationPresenter.m in Sources */,
 				4BE63A551B951FF000231222 /* CLLoadEvents.m in Sources */,
 				F9F445EA1AB8AED700C655CF /* NPInterestsHeaderViewCell.m in Sources */,
