@@ -7,8 +7,15 @@
 //
 
 #import "CLGroupViewController.h"
+#import "UIColor+CustomColors.h"
 
-@interface CLGroupViewController ()
+@interface CLGroupViewController () {
+    
+    NSArray *images;
+    NSArray *names;
+    UIColor *barColor;
+
+}
 
 @end
 
@@ -16,6 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self searchDisplay];
+    
+    images = @[@"heavenly.jpg",@"nature.jpg",@"Running.jpg",@"garden.jpg",@"wine.jpg"];
+    names = @[@"heavenly",@"nature",@"Running",@"garden",@"wine"];
     
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //self.rowHeight = UITableViewAutomaticDimension;
@@ -30,17 +42,59 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 5;
+    return images.count;
 }
+
+
+#pragma mark - searchDisplay
+
+-(void)searchDisplay {
+    
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    
+    barColor = [UIColor UIColorFromRGB:0x52B6AC];
+    
+    self.navigationController.navigationBar.barTintColor = barColor;
+    
+    UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:nil];
+    
+    
+    UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
+    
+    
+    NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
+    
+    [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
+    
+    searchBtn.tintColor = [UIColor whiteColor];
+    commentBtn.tintColor = [UIColor whiteColor];
+}
+
+/*#pragma mark - Search
+
+- (void)SearchViewController {
+    
+    CLSearchViewController *search = [self.storyboard instantiateViewControllerWithIdentifier:@"search"];
+    
+    //searchomtroller
+    [[self navigationController] pushViewController:search animated:YES];
+}*/
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupCell"];
+    CLGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupCell"];
+    
+    cell.groupImageView.image = [UIImage imageNamed:images[indexPath.row]];
+    cell.labelName.text = names[indexPath.row];
     
     return cell;
     
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*

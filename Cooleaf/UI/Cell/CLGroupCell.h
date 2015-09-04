@@ -10,9 +10,8 @@
 
 @interface CLGroupCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIView *cellView;
-
 @property (nonatomic) UIImageView *groupImageView;
 @property (nonatomic) UILabel *labelName;
+@property (nonatomic) UILabel *labelCount;
 
 @end

@@ -612,10 +612,10 @@
             </objects>
             <point key="canvasLocation" x="6304" y="117"/>
         </scene>
-        <!--Group View Controller-->
+        <!--Groups-->
         <scene sceneID="gKQ-hY-hbT">
             <objects>
-                <viewController storyboardIdentifier="group" id="dYZ-SN-EYH" customClass="CLGroupViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="group" title="Groups" id="dYZ-SN-EYH" customClass="CLGroupViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="spA-vq-dOc"/>
                         <viewControllerLayoutGuide type="bottom" id="gqj-ip-e3M"/>
