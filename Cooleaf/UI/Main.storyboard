@@ -612,6 +612,28 @@
             </objects>
             <point key="canvasLocation" x="6304" y="117"/>
         </scene>
+        <!--Group Detail View Controller-->
+        <scene sceneID="Lfs-mM-N7X">
+            <objects>
+                <viewController id="eaP-m3-17O" customClass="CLGroupDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tQp-Rg-5Tl"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Fy-bH-8PU"/>
+                    </layoutGuides>
+                    <view key="view" tag="1" contentMode="scaleToFill" id="rDY-Av-Ztz" customClass="CLDetailView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ikg-RU-UgL"/>
+                    <connections>
+                        <outlet property="detailView" destination="rDY-Av-Ztz" id="e2L-TJ-71q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zi3-87-hLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4819" y="1555"/>
+        </scene>
         <!--Groups-->
         <scene sceneID="gKQ-hY-hbT">
             <objects>
@@ -628,12 +650,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupCell" id="vsa-gx-09m" customClass="CLGroupCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="groupCell" id="vsa-gx-09m" customClass="CLGroupCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vsa-gx-09m" id="Ajl-wI-ifP">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="eaP-m3-17O" kind="push" identifier="toDetail" id="cuJ-Gh-yHM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -656,7 +681,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="70V-c9-glH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5428" y="809"/>
+            <point key="canvasLocation" x="4819" y="829"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Myy-4t-13I">

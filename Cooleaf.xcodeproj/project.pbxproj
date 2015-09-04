@@ -107,6 +107,8 @@
 		6877AFBD1B99423600113B86 /* CLGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFBC1B99423600113B86 /* CLGroupViewController.m */; };
 		6877AFC01B994C7100113B86 /* CLNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFBF1B994C7100113B86 /* CLNavigation.m */; };
 		6877AFC61B9959C400113B86 /* CLGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFC51B9959C400113B86 /* CLGroupCell.m */; };
+		6877AFC91B997BCE00113B86 /* CLGroupDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFC81B997BCE00113B86 /* CLGroupDetailViewController.m */; };
+		6877AFCC1B997D3F00113B86 /* CLDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFCB1B997D3F00113B86 /* CLDetailView.m */; };
 		68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */; };
 		68CDDC431B8EC279004C2897 /* CLTagGroupPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC421B8EC279004C2897 /* CLTagGroupPresenter.m */; };
 		68CDDC461B8EC3DF004C2897 /* CLTagPresenters.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC451B8EC3DF004C2897 /* CLTagPresenters.m */; };
@@ -369,6 +371,10 @@
 		6877AFBF1B994C7100113B86 /* CLNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLNavigation.m; sourceTree = "<group>"; };
 		6877AFC41B9959C400113B86 /* CLGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupCell.h; sourceTree = "<group>"; };
 		6877AFC51B9959C400113B86 /* CLGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupCell.m; sourceTree = "<group>"; };
+		6877AFC71B997BCE00113B86 /* CLGroupDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupDetailViewController.h; sourceTree = "<group>"; };
+		6877AFC81B997BCE00113B86 /* CLGroupDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupDetailViewController.m; sourceTree = "<group>"; };
+		6877AFCA1B997D3F00113B86 /* CLDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDetailView.h; sourceTree = "<group>"; };
+		6877AFCB1B997D3F00113B86 /* CLDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDetailView.m; sourceTree = "<group>"; };
 		68CDDC081B8E8BB0004C2897 /* CLEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLEvents.h; sourceTree = "<group>"; };
 		68CDDC3B1B8EB7D1004C2897 /* CLInterest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLInterest.h; sourceTree = "<group>"; };
 		68CDDC3C1B8EBB4F004C2897 /* CLTagGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTagGroup.h; sourceTree = "<group>"; };
@@ -569,6 +575,8 @@
 				6877AFB01B9905DF00113B86 /* CLPostViewController.m */,
 				6877AFBB1B99423600113B86 /* CLGroupViewController.h */,
 				6877AFBC1B99423600113B86 /* CLGroupViewController.m */,
+				6877AFC71B997BCE00113B86 /* CLGroupDetailViewController.h */,
+				6877AFC81B997BCE00113B86 /* CLGroupDetailViewController.m */,
 			);
 			path = UIViewControllers;
 			sourceTree = "<group>";
@@ -582,6 +590,8 @@
 				68012DCB1B968C3600251544 /* CLTableViewGradient.m */,
 				68012DD61B97519D00251544 /* CLTableViewHome.h */,
 				68012DD71B97519D00251544 /* CLTableViewHome.m */,
+				6877AFCA1B997D3F00113B86 /* CLDetailView.h */,
+				6877AFCB1B997D3F00113B86 /* CLDetailView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1434,6 +1444,7 @@
 				52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */,
 				4B27746A1B9AC63F004BFCF4 /* CLLoadUserEvents.m in Sources */,
 				4BE63A491B94E8CE00231222 /* CLHomeTableViewController.m in Sources */,
+				6877AFC91B997BCE00113B86 /* CLGroupDetailViewController.m in Sources */,
 				D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */,
 				4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */,
 				4BA4E3111B8BC9240089CB2B /* CLUser.m in Sources */,
@@ -1480,6 +1491,7 @@
 				4BA4E2F61B8BC7290089CB2B /* CLDepartment.m in Sources */,
 				526DDE181AC757550095FC27 /* NPMembersViewController.m in Sources */,
 				4BE63A5D1B95811400231222 /* CLEventCell.m in Sources */,
+				6877AFCC1B997D3F00113B86 /* CLDetailView.m in Sources */,
 				523096D71AA3E17400649FB7 /* NPHomeCell.m in Sources */,
 				4BAE00681B8EDFD300779E1F /* CLAuthenticationSubscriber.m in Sources */,
 				6877AFAE1B98EF9300113B86 /* CLSearchCell.m in Sources */,

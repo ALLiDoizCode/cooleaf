@@ -37,6 +37,16 @@
     _groupImageView.layer.shouldRasterize = YES;
     _groupImageView.clipsToBounds = YES;
     
+    //Icon Image
+   UIImageView *IconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(545, 118, 20, 20)];
+   IconImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    IconImageView.image = [UIImage imageNamed:@"Particapant.png"];
+    IconImageView.contentMode = UIViewContentModeScaleAspectFill;
+    IconImageView.layer.masksToBounds = YES;
+    IconImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    IconImageView.layer.shouldRasterize = YES;
+    IconImageView.clipsToBounds = YES;
+    
     //Name
     _labelName = [[UILabel alloc] initWithFrame:CGRectMake(70, 120, 0, 0)];
     _labelName.textAlignment = NSTextAlignmentLeft;
@@ -62,7 +72,9 @@
     [self.contentView addSubview:blur];
     [self.contentView addSubview:_labelName];
     [self.contentView addSubview:_labelCount];
+    [self.contentView addSubview:IconImageView];
     [bgview addSubview:_groupImageView];
+    
     
 }
 

@@ -8,6 +8,7 @@
 
 #import "CLGroupViewController.h"
 #import "UIColor+CustomColors.h"
+#import "CLGroupDetailViewController.h"
 
 @interface CLGroupViewController () {
     
@@ -27,7 +28,7 @@
     [self searchDisplay];
     
     images = @[@"heavenly.jpg",@"nature.jpg",@"Running.jpg",@"garden.jpg",@"wine.jpg"];
-    names = @[@"heavenly",@"nature",@"Running",@"garden",@"wine"];
+    names = @[@"Heavenly",@"Nature",@"Running",@"Garden",@"Wine"];
     
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //self.rowHeight = UITableViewAutomaticDimension;
@@ -87,7 +88,7 @@
     CLGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupCell"];
     
     cell.groupImageView.image = [UIImage imageNamed:images[indexPath.row]];
-    cell.labelName.text = names[indexPath.row];
+    cell.labelName.text = [NSString stringWithFormat: @"#%@", names[indexPath.row]];
     
     return cell;
     
@@ -97,14 +98,24 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+   
+    if ([[segue identifier] isEqualToString:@"toDetail"]) {
+        
+        CLGroupDetailViewController *DetailView = (CLGroupDetailViewController *)[segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        
+        NSString *currentImage = [images objectAtIndex:indexPath.row];
+        NSString *currentName = [names objectAtIndex:indexPath.row];
+        
+        DetailView.currentImage = currentImage;
+        DetailView.currentName = currentName;
+    }
 }
-*/
+
 
 @end
