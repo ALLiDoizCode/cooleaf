@@ -55,6 +55,27 @@
     IconImageView.layer.shouldRasterize = YES;
     IconImageView.clipsToBounds = YES;*/
     
+    //Event label
+    _labelEvent = [[UILabel alloc] initWithFrame:CGRectMake(120, 408, 0, 0)];
+    _labelEvent.textAlignment = NSTextAlignmentLeft;
+    _labelEvent.text = @"Events";
+    _labelEvent.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
+    _labelEvent.backgroundColor = [UIColor clearColor];
+    _labelEvent.textColor = [UIColor lightGrayColor];
+    [_labelEvent sizeToFit];
+    _labelEvent.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    
+    //Event Sublabel
+    _labelEventSub = [[UILabel alloc] initWithFrame:CGRectMake(138, 425, 0, 0)];
+    _labelEventSub.textAlignment = NSTextAlignmentLeft;
+    _labelEventSub.text = @"23 past evets, 2 upcoming evets";
+    _labelEventSub.font = [UIFont fontWithName:@"HelveticaNeue" size:8];
+    _labelEventSub.backgroundColor = [UIColor clearColor];
+    _labelEventSub.textColor = [UIColor lightGrayColor];
+    [_labelEventSub sizeToFit];
+    _labelEventSub.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+
+    
     //Name
     _labelName = [[UILabel alloc] initWithFrame:CGRectMake(60, 255, 0, 0)];
     _labelName.textAlignment = NSTextAlignmentLeft;
@@ -64,6 +85,49 @@
     _labelName.textColor = offWhite;
     [_labelName sizeToFit];
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    
+    //Name
+    _labelPostName = [[UILabel alloc] initWithFrame:CGRectMake(120, 460, 0, 0)];
+    _labelPostName.textAlignment = NSTextAlignmentLeft;
+    _labelPostName.text = @"Prem Bhatia";
+    _labelPostName.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    _labelPostName.backgroundColor = [UIColor clearColor];
+    _labelPostName.textColor = [UIColor darkGrayColor];
+    [_labelPostName sizeToFit];
+    _labelPostName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    
+    
+    //Name
+    _labelPostName2 = [[UILabel alloc] initWithFrame:CGRectMake(120, 480, 0, 0)];
+    _labelPostName2.textAlignment = NSTextAlignmentLeft;
+    _labelPostName2.text = @"Position";
+    _labelPostName2.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    _labelPostName2.backgroundColor = [UIColor clearColor];
+    _labelPostName2.textColor = [UIColor lightGrayColor];
+    [_labelPostName2 sizeToFit];
+    _labelPostName2.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    
+    //Post Label
+    _labelPost = [[UILabel alloc] initWithFrame:CGRectMake(120, 505, 300, 0)];
+    _labelPost.numberOfLines = 0;
+    _labelPost.textAlignment = NSTextAlignmentLeft;
+    _labelPost.text = @"We should eventually read classic books, like the one about the boy and his dog.";
+    _labelPost.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    _labelPost.backgroundColor = [UIColor clearColor];
+    _labelPost.textColor = [UIColor darkGrayColor];
+    [_labelPost sizeToFit];
+    _labelPost.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    
+    //Post Label
+    _labelComment = [[UILabel alloc] initWithFrame:CGRectMake(25, 545, 300, 0)];
+    _labelComment.numberOfLines = 0;
+    _labelComment.textAlignment = NSTextAlignmentLeft;
+    _labelComment.text = @"6 comments.";
+    _labelComment.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    _labelComment.backgroundColor = [UIColor clearColor];
+    _labelComment.textColor = [UIColor lightGrayColor];
+    [_labelComment sizeToFit];
+    _labelComment.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Post
     UIButton *postBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
@@ -82,6 +146,31 @@
     joinBtn.layer.cornerRadius = 2;
     joinBtn.layer.masksToBounds = YES;
      //[joinBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+  
+    /// member Icon
+    UIImageView *memberImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 355, 35, 35)];
+    memberImage.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    memberImage.image = [UIImage imageNamed:@"TestImage"];
+    memberImage.layer.masksToBounds = YES;
+    memberImage.layer.cornerRadius = memberImage.frame.size.height/2;
+    memberImage.layer.borderColor = [UIColor clearColor].CGColor;
+    memberImage.layer.borderWidth = 3.0f;
+    memberImage.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    memberImage.layer.shouldRasterize = YES;
+    
+    /// post Icon
+    UIImageView *postImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 455, 40, 40)];
+    postImage.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    postImage.image = [UIImage imageNamed:@"TestImage"];
+    postImage.layer.masksToBounds = YES;
+    postImage.layer.cornerRadius = postImage.frame.size.height/2;
+    postImage.layer.borderColor = [UIColor clearColor].CGColor;
+    postImage.layer.borderWidth = 3.0f;
+    postImage.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    postImage.layer.shouldRasterize = YES;
+    
+    
+    
     
     //Border
     UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 400, bgview.frame.size.width, 0.5)];
@@ -96,10 +185,18 @@
     [self addSubview:bgview];
     [self addSubview:blur];
     [self addSubview:_labelName];
+    [self addSubview:_labelPostName];
+    [self addSubview:_labelPostName2];
+    [self addSubview:_labelPost];
+    [self addSubview:_labelComment];
+    [self addSubview:_labelEvent];
+    [self addSubview:_labelEventSub];
     [self addSubview:postBtn];
     [self addSubview:joinBtn];
     [self addSubview:border];
     [self addSubview:border2];
+    [self addSubview:memberImage];
+    [self addSubview:postImage];
     [bgview addSubview:_mainImageView];
     
     

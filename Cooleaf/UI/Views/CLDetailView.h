@@ -12,5 +12,11 @@
 
 @property (nonatomic) UIImageView *mainImageView;
 @property (nonatomic) UILabel *labelName;
+@property (nonatomic) UILabel *labelPostName;
+@property (nonatomic) UILabel *labelPostName2;
+@property (nonatomic) UILabel *labelPost;
+@property (nonatomic) UILabel *labelComment;
+@property (nonatomic) UILabel *labelEvent;
+@property (nonatomic) UILabel *labelEventSub;
 
 @end
