@@ -14,7 +14,7 @@
     NSArray *titles;
     NSArray *titles2;
     NSArray *icons;
-     NSArray *icons2;
+    NSArray *icons2;
     UIColor *textColor;
 }
 
@@ -34,7 +34,6 @@
     
     icons = @[@"home-1",@"calendar",@"Profile",@"Profile",@"Profile"];
     icons2 = @[@"Profile"];
-
     
     [self initTableView];
 }

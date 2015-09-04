@@ -8,6 +8,7 @@
 
 #import "CLHomeTableViewController.h"
 #import "UIColor+CustomColors.h"
+#import "CLProfileTableViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface CLHomeTableViewController () {
@@ -85,6 +86,7 @@
     searchBtn.tintColor = [UIColor whiteColor];
     commentBtn.tintColor = [UIColor whiteColor];
 }
+
 #pragma mark - toggleSearch
 
 - (void)toggleSearch
@@ -97,10 +99,10 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"Profile Segue"]) {
+        ((CLProfileTableViewController *) segue.destinationViewController).user = _user;
+    }
 }
 
 # pragma mark - CLEventCellDelegate
@@ -225,7 +227,11 @@
 
 - (void)onTap {
     // Go to profile view controller
-    
+    [self goToProfileView];
+}
+
+- (void)goToProfileView {
+    [self performSegueWithIdentifier:@"Profile Segue" sender:self];
 }
 
 - (void)initPullToRefresh {
