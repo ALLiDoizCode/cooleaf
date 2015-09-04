@@ -18,5 +18,6 @@
 @property (nonatomic) UILabel *labelComment;
 @property (nonatomic) UILabel *labelEvent;
 @property (nonatomic) UILabel *labelEventSub;
+@property (nonatomic) UILabel *labelMemberAmount;
 
 @end

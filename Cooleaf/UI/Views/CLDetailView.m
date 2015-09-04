@@ -66,6 +66,17 @@
     [_labelEvent sizeToFit];
     _labelEvent.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
+    
+    //Member Amount
+    _labelMemberAmount = [[UILabel alloc] initWithFrame:CGRectMake(500, 375, 0, 0)];
+    _labelMemberAmount.textAlignment = NSTextAlignmentLeft;
+    _labelMemberAmount.text = @"5 Members>";
+    _labelMemberAmount.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    _labelMemberAmount.backgroundColor = [UIColor clearColor];
+    _labelMemberAmount.textColor = [UIColor lightGrayColor];
+    [_labelMemberAmount sizeToFit];
+    _labelMemberAmount.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    
     //Event Sublabel
     _labelEventSub = [[UILabel alloc] initWithFrame:CGRectMake(138, 425, 0, 0)];
     _labelEventSub.textAlignment = NSTextAlignmentLeft;
@@ -133,8 +144,9 @@
     //Post
     UIButton *postBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     postBtn.frame = CGRectMake(150, 315, 75, 30);
-    [postBtn setTitle:@"Post" forState:UIControlStateNormal];
-    postBtn.backgroundColor = [UIColor lightGrayColor];
+    [postBtn setTitle:@"POST" forState:UIControlStateNormal];
+    postBtn.backgroundColor = [UIColor UIColorFromRGB:0xE0E1E4];
+    postBtn.tintColor = [UIColor darkGrayColor];
     postBtn.layer.cornerRadius = 2;
     postBtn.layer.masksToBounds = YES;
     //[postBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
@@ -142,8 +154,9 @@
     //Join
     UIButton *joinBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     joinBtn.frame = CGRectMake(230, 315, 75, 30);
-    [joinBtn setTitle:@"Join" forState:UIControlStateNormal];
-    joinBtn.backgroundColor = [UIColor redColor];
+    [joinBtn setTitle:@"JOIN" forState:UIControlStateNormal];
+    joinBtn.backgroundColor = [UIColor UIColorFromRGB:0xF07073];
+    joinBtn.tintColor = offWhite;
     joinBtn.layer.cornerRadius = 2;
     joinBtn.layer.masksToBounds = YES;
      //[joinBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
@@ -192,6 +205,7 @@
     [self addSubview:_labelComment];
     [self addSubview:_labelEvent];
     [self addSubview:_labelEventSub];
+    [self addSubview:_labelMemberAmount];
     [self addSubview:postBtn];
     [self addSubview:joinBtn];
     [self addSubview:border];
