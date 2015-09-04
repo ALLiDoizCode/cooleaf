@@ -29,17 +29,14 @@ static NSString *const kTAG = @"CLDrawerViewController";
 # pragma mark checkAuthentication
 
 - (void)checkAuthentication {
-    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-    if (!username && [SSKeychain passwordForService:@"cooleaf" account:username]) {
-        [self goToLogin];
-    } 
+    [self goToLogin];
 }
 
 # pragma mark goToLogin
 
 - (void)goToLogin {
     NPLoginViewController *loginViewController = [[NPLoginViewController alloc] init];
-    [self.navigationController pushViewController:loginViewController animated:YES];
+    [self.navigationController presentViewController:loginViewController animated:YES completion:nil];
 }
 
 /*

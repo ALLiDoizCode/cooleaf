@@ -72,7 +72,6 @@
     switch (self.segmentedBar.selectedSegmentIndex) {
         case 0:;
             // Declare information tableviewcell here
-            CLInformationTableViewcell *informationCell = [self.tableView dequeueReusableCellWithIdentifier:@"informationCell" forIndexPath:indexPath];
             return nil;
         case 1:;
             // Declare history tableviewcell here
