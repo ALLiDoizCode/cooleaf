@@ -75,7 +75,7 @@
     _labelPost.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
    //Post Label
-    _labelComment = [[UILabel alloc] initWithFrame:CGRectMake(10, 320, 0, 0)];
+    _labelComment = [[UILabel alloc] initWithFrame:CGRectMake(10, 320, 60, 0)];
     _labelComment.numberOfLines = 0;
     _labelComment.textAlignment = NSTextAlignmentLeft;
     _labelComment.text = @"6 comments";

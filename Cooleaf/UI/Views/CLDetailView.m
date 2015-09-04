@@ -162,7 +162,7 @@
      //[joinBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
   
     /// member Icon
-    UIImageView *memberImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 355, 35, 35)];
+    UIImageView *memberImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 355, 40, 40)];
     memberImage.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     memberImage.image = [UIImage imageNamed:@"TestImage"];
     memberImage.layer.masksToBounds = YES;
