@@ -45,15 +45,16 @@
     _mainImageView.layer.shouldRasterize = YES;
     _mainImageView.clipsToBounds = YES;
     
-    /*//Icon Image
-    UIImageView *IconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(525, 118, 20, 20)];
-    IconImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    IconImageView.image = [UIImage imageNamed:@"Particapant.png"];
-    IconImageView.contentMode = UIViewContentModeScaleAspectFill;
-    IconImageView.layer.masksToBounds = YES;
-    IconImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    IconImageView.layer.shouldRasterize = YES;
-    IconImageView.clipsToBounds = YES;*/
+    //send Icon
+    
+    UIImageView *sendIcon = [[UIImageView alloc] initWithFrame:CGRectMake(20, 410, 25, 25)];
+    sendIcon.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    sendIcon.image = [UIImage imageNamed:@"send.png"];
+    sendIcon.contentMode = UIViewContentModeScaleAspectFill;
+    sendIcon.layer.masksToBounds = YES;
+    sendIcon.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    sendIcon.layer.shouldRasterize = YES;
+    sendIcon.clipsToBounds = YES;
     
     //Event label
     _labelEvent = [[UILabel alloc] initWithFrame:CGRectMake(120, 408, 0, 0)];
@@ -122,7 +123,7 @@
     _labelComment = [[UILabel alloc] initWithFrame:CGRectMake(25, 545, 300, 0)];
     _labelComment.numberOfLines = 0;
     _labelComment.textAlignment = NSTextAlignmentLeft;
-    _labelComment.text = @"6 comments.";
+    _labelComment.text = @"6 comments";
     _labelComment.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
     _labelComment.backgroundColor = [UIColor clearColor];
     _labelComment.textColor = [UIColor lightGrayColor];
@@ -197,6 +198,7 @@
     [self addSubview:border2];
     [self addSubview:memberImage];
     [self addSubview:postImage];
+    [self addSubview:sendIcon];
     [bgview addSubview:_mainImageView];
     
     
