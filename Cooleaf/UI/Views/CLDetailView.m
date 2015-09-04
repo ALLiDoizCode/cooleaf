@@ -65,11 +65,41 @@
     [_labelName sizeToFit];
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
+    //Post
+    UIButton *postBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    postBtn.frame = CGRectMake(150, 315, 75, 30);
+    [postBtn setTitle:@"Post" forState:UIControlStateNormal];
+    postBtn.backgroundColor = [UIColor lightGrayColor];
+    postBtn.layer.cornerRadius = 2;
+    postBtn.layer.masksToBounds = YES;
+    //[postBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //Join
+    UIButton *joinBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    joinBtn.frame = CGRectMake(230, 315, 75, 30);
+    [joinBtn setTitle:@"Join" forState:UIControlStateNormal];
+    joinBtn.backgroundColor = [UIColor redColor];
+    joinBtn.layer.cornerRadius = 2;
+    joinBtn.layer.masksToBounds = YES;
+     //[joinBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //Border
+    UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 400, bgview.frame.size.width, 0.5)];
+    border.backgroundColor = [UIColor lightGrayColor];
+    
+    //Border2
+    UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 440, bgview.frame.size.width, 0.5)];
+    border2.backgroundColor = [UIColor lightGrayColor];
+    
     
     
     [self addSubview:bgview];
     [self addSubview:blur];
     [self addSubview:_labelName];
+    [self addSubview:postBtn];
+    [self addSubview:joinBtn];
+    [self addSubview:border];
+    [self addSubview:border2];
     [bgview addSubview:_mainImageView];
     
     

@@ -24,16 +24,13 @@
     
     [self searchDisplay];
     
-    /*[self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                                  forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.view.backgroundColor = [UIColor clearColor];
-    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];*/
+    _detailView.mainImageView.image = [UIImage imageNamed:_currentImage];
+    _detailView.labelName.text =[NSString stringWithFormat: @"#%@", _currentName];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
     
     self.navigationController.navigationBar.alpha = 0.7;
-    
-    _detailView.mainImageView.image = [UIImage imageNamed:_currentImage];
 }
 
 - (void)didReceiveMemoryWarning {
