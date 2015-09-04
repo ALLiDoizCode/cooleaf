@@ -19,5 +19,7 @@
 @property (nonatomic) UILabel *labelEvent;
 @property (nonatomic) UILabel *labelEventSub;
 @property (nonatomic) UILabel *labelMemberAmount;
+@property (nonatomic) UIButton *postBtn;
+@property (nonatomic) UIButton *joinBtn;
 
 @end

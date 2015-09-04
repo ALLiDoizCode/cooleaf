@@ -1,47 +1,32 @@
 //
-//  CLGroupDetailViewController.m
+//  CLGroupPostViewcontroller.m
 //  Cooleaf
 //
 //  Created by Jonathan Green on 9/4/15.
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "CLGroupDetailViewController.h"
+#import "CLGroupPostViewcontroller.h"
 #import "UIColor+CustomColors.h"
 
-
-@interface CLGroupDetailViewController ()  {
-    
-    UIColor *barColor;
-}
+@interface CLGroupPostViewcontroller ()
 
 @end
 
-@implementation CLGroupDetailViewController
+@implementation CLGroupPostViewcontroller
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self searchDisplay];
     
-    _detailView.mainImageView.image = [UIImage imageNamed:_currentImage];
-    _detailView.labelName.text =[NSString stringWithFormat: @"#%@", _currentName];
-    [_detailView.postBtn addTarget:self action:@selector(groupPostViewController) forControlEvents:UIControlEventTouchUpInside];
-    
-    
+     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    // Do any additional setup after loading the view.
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     
-    self.navigationController.navigationBar.alpha = 0.7;
-    
-    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
-    
-    barColor = [UIColor UIColorFromRGB:0xF07073];
-    
-    self.navigationController.navigationBar.barTintColor = barColor;
-    
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.alpha = 1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,15 +34,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - searchDisplay
-
 -(void)searchDisplay {
     
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
     
-    barColor = [UIColor UIColorFromRGB:0x52B6AC];
-    
-    self.navigationController.navigationBar.barTintColor = barColor;
+    self.title = @"Post";
     
     UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:nil];
     
@@ -73,12 +54,22 @@
     commentBtn.tintColor = [UIColor whiteColor];
 }
 
-- (void)groupPostViewController {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    CLGroupPostViewcontroller *search = [self.storyboard instantiateViewControllerWithIdentifier:@"groupPostViewController"];
+    return 5;
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //searchomtroller
-    [[self navigationController] pushViewController:search animated:YES];
+    CLGroupPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupPostCell"];
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*

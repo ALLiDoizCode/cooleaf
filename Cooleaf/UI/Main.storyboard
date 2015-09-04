@@ -612,6 +612,53 @@
             </objects>
             <point key="canvasLocation" x="6304" y="117"/>
         </scene>
+        <!--Group Post Viewcontroller-->
+        <scene sceneID="i9c-3W-VOM">
+            <objects>
+                <viewController storyboardIdentifier="groupPostViewController" id="Xg8-Jj-0NM" customClass="CLGroupPostViewcontroller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OhR-7w-a2l"/>
+                        <viewControllerLayoutGuide type="bottom" id="WAQ-R4-74J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UD0-lg-FZu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0uW-bB-cTc">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupPostCell" id="1Rs-HF-6U2" customClass="CLGroupPostCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Rs-HF-6U2" id="XgQ-XW-LbU">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.88383838383838387" green="0.88383838383838387" blue="0.88383838383838387" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Xg8-Jj-0NM" id="twG-fz-zWh"/>
+                                    <outlet property="delegate" destination="Xg8-Jj-0NM" id="6b9-Yr-D0q"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0uW-bB-cTc" secondAttribute="trailing" id="AdD-kM-2ED"/>
+                            <constraint firstItem="0uW-bB-cTc" firstAttribute="bottom" secondItem="WAQ-R4-74J" secondAttribute="top" id="Q7c-LG-UCM"/>
+                            <constraint firstItem="0uW-bB-cTc" firstAttribute="top" secondItem="UD0-lg-FZu" secondAttribute="top" id="gJ2-y0-W4a"/>
+                            <constraint firstItem="0uW-bB-cTc" firstAttribute="leading" secondItem="UD0-lg-FZu" secondAttribute="leading" id="xoS-Dg-JNm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="0uW-bB-cTc" id="NEv-zQ-bWV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VEd-nB-efZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4159" y="1555"/>
+        </scene>
         <!--Group Detail View Controller-->
         <scene sceneID="Lfs-mM-N7X">
             <objects>

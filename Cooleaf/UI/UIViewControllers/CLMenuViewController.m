@@ -37,7 +37,6 @@
     
     icons = @[@"Profile",@"Profile",@"Profile",@"Profile",@"Profile"];
     icons2 = @[@"Profile"];
-
 }
 
 - (void)didReceiveMemoryWarning {

@@ -142,23 +142,23 @@
     _labelComment.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Post
-    UIButton *postBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    postBtn.frame = CGRectMake(150, 315, 75, 30);
-    [postBtn setTitle:@"POST" forState:UIControlStateNormal];
-    postBtn.backgroundColor = [UIColor UIColorFromRGB:0xE0E1E4];
-    postBtn.tintColor = [UIColor darkGrayColor];
-    postBtn.layer.cornerRadius = 2;
-    postBtn.layer.masksToBounds = YES;
-    //[postBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    _postBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    _postBtn.frame = CGRectMake(150, 315, 75, 30);
+    [_postBtn setTitle:@"POST" forState:UIControlStateNormal];
+    _postBtn.backgroundColor = [UIColor UIColorFromRGB:0xE0E1E4];
+    _postBtn.tintColor = [UIColor darkGrayColor];
+    _postBtn.layer.cornerRadius = 2;
+    _postBtn.layer.masksToBounds = YES;
+    //[_postBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
     //Join
-    UIButton *joinBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    joinBtn.frame = CGRectMake(230, 315, 75, 30);
-    [joinBtn setTitle:@"JOIN" forState:UIControlStateNormal];
-    joinBtn.backgroundColor = [UIColor UIColorFromRGB:0xF07073];
-    joinBtn.tintColor = offWhite;
-    joinBtn.layer.cornerRadius = 2;
-    joinBtn.layer.masksToBounds = YES;
+    _joinBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    _joinBtn.frame = CGRectMake(230, 315, 75, 30);
+    [_joinBtn setTitle:@"JOIN" forState:UIControlStateNormal];
+    _joinBtn.backgroundColor = [UIColor UIColorFromRGB:0xF07073];
+    _joinBtn.tintColor = offWhite;
+    _joinBtn.layer.cornerRadius = 2;
+    _joinBtn.layer.masksToBounds = YES;
      //[joinBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
   
     /// member Icon
@@ -206,8 +206,8 @@
     [self addSubview:_labelEvent];
     [self addSubview:_labelEventSub];
     [self addSubview:_labelMemberAmount];
-    [self addSubview:postBtn];
-    [self addSubview:joinBtn];
+    [self addSubview:_postBtn];
+    [self addSubview:_joinBtn];
     [self addSubview:border];
     [self addSubview:border2];
     [self addSubview:memberImage];

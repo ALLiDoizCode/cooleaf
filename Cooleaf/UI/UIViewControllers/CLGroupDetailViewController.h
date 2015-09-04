@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CLDetailView.h"
+#import "CLGroupPostViewcontroller.h"
 
 @interface CLGroupDetailViewController : UIViewController
 
