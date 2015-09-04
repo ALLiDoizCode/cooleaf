@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CLPostViewController : UIViewController
+@interface CLPostViewController : UIViewController <UITextViewDelegate>
 
 @end

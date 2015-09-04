@@ -13,6 +13,7 @@
     @private 
     UIColor *offWhite;
     UIColor *offBlack;
+    UITextView *postTextView;
 }
 
 @end
@@ -21,6 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+   
+    
+    postTextView.delegate = self;
+     postTextView.editable = YES;
 
     offWhite = [UIColor UIColorFromRGB:0xFDFDFD];
     offBlack = [UIColor UIColorFromRGB:0x252525];
@@ -46,8 +52,9 @@
     border.backgroundColor = [UIColor lightGrayColor];
     
     //TextView
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 51, postView.bounds.size.width, postView.bounds.size.height - 50)];
-    textView.backgroundColor = [UIColor clearColor];
+    postTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 51, postView.bounds.size.width, postView.bounds.size.height - 50)];
+    postTextView.backgroundColor = [UIColor clearColor];
+    postTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
     
     //Title
     UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(105, 20, 0, 0)];
@@ -77,11 +84,18 @@
     [postView addSubview:labelTitle];
     [postView addSubview:postBtn];
     [postView addSubview:cancelBtn];
-    [postView addSubview:textView];
+    [postView addSubview:postTextView];
     
    
    
 }
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [postTextView endEditing:YES];
+}
+
+
+
 
 /*
 #pragma mark - Navigation

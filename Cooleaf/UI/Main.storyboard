@@ -652,10 +652,10 @@
             </objects>
             <point key="canvasLocation" x="4819" y="117"/>
         </scene>
-        <!--Post View Controller-->
+        <!--Post-->
         <scene sceneID="irJ-zc-3Yi">
             <objects>
-                <viewController storyboardIdentifier="Post" id="Y1d-8n-tmI" customClass="CLPostViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Post" title="Post" id="Y1d-8n-tmI" customClass="CLPostViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8s1-Wj-ZwO"/>
                         <viewControllerLayoutGuide type="bottom" id="sLU-Bd-k1I"/>
