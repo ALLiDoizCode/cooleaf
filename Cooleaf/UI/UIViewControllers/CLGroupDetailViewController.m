@@ -31,6 +31,14 @@
 -(void)viewWillAppear:(BOOL)animated {
     
     self.navigationController.navigationBar.alpha = 0.7;
+    
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    
+    barColor = [UIColor UIColorFromRGB:0xF07073];
+    
+    self.navigationController.navigationBar.barTintColor = barColor;
+    
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {

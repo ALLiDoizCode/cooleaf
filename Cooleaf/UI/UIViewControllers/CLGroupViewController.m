@@ -39,6 +39,12 @@
 -(void)viewWillAppear:(BOOL)animated {
     
     self.navigationController.navigationBar.alpha = 1;
+    
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    
+    barColor = [UIColor UIColorFromRGB:0xF07073];
+    
+    self.navigationController.navigationBar.barTintColor = barColor;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,11 +62,6 @@
 
 -(void)searchDisplay {
     
-    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
-    
-    barColor = [UIColor UIColorFromRGB:0x52B6AC];
-    
-    self.navigationController.navigationBar.barTintColor = barColor;
     
     UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:nil];
     
