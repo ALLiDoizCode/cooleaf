@@ -8,8 +8,12 @@
 
 #import "CLGroupTableViewCell.h"
 #import "CLGroupCollectionViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
-@implementation CLGroupTableViewCell
+@implementation CLGroupTableViewCell {
+    @private
+    NSMutableArray *_interests;
+}
 
 - (void)setGroupCollectionView:(UICollectionView *)groupCollectionView {
     if (groupCollectionView != nil) {
@@ -23,6 +27,7 @@
 
 - (void)setUser:(CLUser *)user {
     _user = user;
+    _interests = [_user interests];
     [_groupCollectionView reloadData];
 }
 
@@ -34,8 +39,24 @@
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // Define cell
     CLGroupCollectionViewCell *groupCollectionViewCell = [_groupCollectionView dequeueReusableCellWithReuseIdentifier:@"groupCollectionViewCell" forIndexPath:indexPath];
     groupCollectionViewCell.backgroundColor = [UIColor whiteColor];
+
+    // Get image url
+    NSString *imageUrl = [[[_interests objectAtIndex:[indexPath row]] objectForKey:@"image"] objectForKey:@"url"];
+    NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
+    fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"500x200"];
+
+    // Set it into the imageview
+    [groupCollectionViewCell.groupImage sd_setImageWithURL:[NSURL URLWithString:fullPath]
+                       placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+
+    // Get interest name - load into label
+    NSString *interestName = [[_interests objectAtIndex:[indexPath row]] objectForKey:@"name"];
+    groupCollectionViewCell.groupName.text = interestName;
+    
     return groupCollectionViewCell;
 }
 

@@ -8,11 +8,17 @@
 
 #import "CLProfileTableViewController.h"
 #import "CLGroupTableViewCell.h"
+#import "CLClient.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation CLProfileTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Go ahead and init the profile header with the user
+    [self initProfileHeaderWithUser:_user];
+    
     self.tableView.rowHeight = [self height];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.segmentedBar addTarget:self action:@selector(segmentChanged) forControlEvents:UIControlEventValueChanged];
@@ -63,10 +69,10 @@
     // Note that Obj C compiler won't work in switch statement without ';' in from of case label
     switch (self.segmentedBar.selectedSegmentIndex) {
         case 0:;
-            // Decalre information tableviewcell here
+            // Declare information tableviewcell here
             return nil;
         case 1:;
-            // Decalre history tableviewcell here
+            // Declare history tableviewcell here
             return nil;
         case 2:;
             CLGroupTableViewCell *groupCell = [self.tableView dequeueReusableCellWithIdentifier:@"groupCell" forIndexPath:indexPath];
@@ -86,6 +92,17 @@
         default:
             return UITableViewAutomaticDimension;
     }
+}
+
+- (void)initProfileHeaderWithUser:(CLUser *)user {
+    _userNameLabel.text = [user userName];
+    _userRewardsLabel.text = [NSString stringWithFormat:@"%@ %@", @"Reward Points:", [[user rewardPoints] stringValue]];
+    
+    NSDictionary *userDict = [user dictionaryValue];
+    NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"original"]];
+    [_userImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+    _userImage.layer.cornerRadius = _userImage.frame.size.width / 2;
+    _userImage.clipsToBounds = YES;
 }
 
 @end

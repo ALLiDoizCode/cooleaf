@@ -12,6 +12,10 @@
 @interface CLProfileTableViewController : UITableViewController
 
 @property (nonatomic) CLUser *user;
+@property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userCredentialsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userRewardsLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedBar;
 
 @end

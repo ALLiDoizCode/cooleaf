@@ -10,4 +10,7 @@
 
 @interface CLGroupCollectionViewCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *groupImage;
+@property (weak, nonatomic) IBOutlet UILabel *groupName;
+
 @end

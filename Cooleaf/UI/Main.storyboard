@@ -292,14 +292,14 @@
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="groupCollectionViewCell" id="hIF-XW-gHd">
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="groupCollectionViewCell" id="hIF-XW-gHd" customClass="CLGroupCollectionViewCell">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AvatarPlaceholderMaleMedium" translatesAutoresizingMaskIntoConstraints="NO" id="k5b-BP-hln">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k5b-BP-hln">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                             </imageView>
                                                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7c-13-HnL">
@@ -355,6 +355,10 @@
                                                             <exclude reference="uzs-tH-zji"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <outlet property="groupImage" destination="k5b-BP-hln" id="aZN-0E-0WL"/>
+                                                        <outlet property="groupName" destination="GYA-GM-1bg" id="Sov-p7-9r1"/>
+                                                    </connections>
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
@@ -378,6 +382,10 @@
                     </tableView>
                     <connections>
                         <outlet property="segmentedBar" destination="lkL-Th-AgX" id="qIG-PC-9Gz"/>
+                        <outlet property="userCredentialsLabel" destination="Qiu-vj-hgd" id="HnX-7R-lT8"/>
+                        <outlet property="userImage" destination="yiu-hD-GTi" id="4p5-2q-bIL"/>
+                        <outlet property="userNameLabel" destination="cyc-pf-Ovx" id="SPM-J2-Tbf"/>
+                        <outlet property="userRewardsLabel" destination="JYp-U7-hgT" id="VID-w0-8O8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FeV-jS-6Xi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -425,7 +433,4 @@
             <point key="canvasLocation" x="4819" y="117"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="AvatarPlaceholderMaleMedium" width="45" height="45"/>
-    </resources>
 </document>
