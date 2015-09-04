@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CLNavigation.h"
 
 @interface CLMenuViewController : UITableViewController
 
