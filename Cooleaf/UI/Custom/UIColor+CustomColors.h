@@ -20,4 +20,5 @@
 + (UIColor *)menuGradientThirdColor;
 + (UIColor *)menuGradientFourthColor;
 + (UIColor *)UIColorFromRGB:(int)rgbValue;
+
 @end

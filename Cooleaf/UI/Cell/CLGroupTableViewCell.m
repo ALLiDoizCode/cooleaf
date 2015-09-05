@@ -86,8 +86,8 @@
 + (CGFloat)getWidth {
     // Total white spacing that is not a cell in a row
     // Example - 10 pt padding left, (20 pt in between) X # of cells, 10 pt right
-    CGFloat padding = 40; // TODO - Convert to constants
-    int numOfCellsPerRow = 3;
+    CGFloat padding = 30; // TODO - Convert to constants
+    int numOfCellsPerRow = 2;
     CGFloat width = [UIScreen mainScreen].bounds.size.width - padding;
     width = width / numOfCellsPerRow;
     return width;
@@ -97,7 +97,7 @@
     // Get number of interests
     int count = (int)[[user interests] count];
     // Get number of rows, round up
-    int noOfRows = ceil(count / 3.0);
+    int noOfRows = ceil(count / 2.0);
     // Get top padding and bottom padding
     CGFloat padding = 10 * (noOfRows + 1);
     // Amount of rows plus padding,

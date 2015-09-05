@@ -433,8 +433,8 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="fZY-Hg-Cco"/>
                                                     <exclude reference="DTO-rO-qy3"/>
+                                                    <exclude reference="fZY-Hg-Cco"/>
                                                 </mask>
                                             </variation>
                                         </textView>
