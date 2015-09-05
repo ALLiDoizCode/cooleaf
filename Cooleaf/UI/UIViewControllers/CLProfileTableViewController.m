@@ -149,7 +149,7 @@ static NSString *const kScope = @"past";
         
         // Set it into the imageview
         [eventCell.eventImage sd_setImageWithURL:[NSURL URLWithString:fullPath]
-                           placeholderImage:[UIImage imageNamed:@"CoverPhotoPlaceholder"]];
+                           placeholderImage:[UIImage imageNamed:nil]];
         
         // Get the event description
         NSString *eventDescription = [_pastEvents objectAtIndex:[indexPath row]][@"name"];

@@ -112,7 +112,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofG-iU-raG" userLabel="EventView">
                                             <rect key="frame" x="8" y="8" width="584" height="292"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qwU-80-eZp" userLabel="EventImage">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qwU-80-eZp" userLabel="EventImage">
                                                     <rect key="frame" x="0.0" y="0.0" width="584" height="292"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="qwU-80-eZp" secondAttribute="height" multiplier="2:1" id="60a-Tx-myY"/>
@@ -389,7 +389,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aVk-Ro-7Gj" userLabel="EventView">
                                             <rect key="frame" x="8" y="8" width="584" height="292"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TYg-Ga-ZXJ" userLabel="EventImage">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TYg-Ga-ZXJ" userLabel="EventImage">
                                                     <rect key="frame" x="0.0" y="0.0" width="584" height="292"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="TYg-Ga-ZXJ" secondAttribute="height" multiplier="2:1" id="z5W-9X-EnC"/>
