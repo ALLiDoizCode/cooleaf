@@ -11,7 +11,7 @@
 
 @interface CLInformationTableViewcell : UITableViewCell
 
-@property (nonatomic, assign) CLUser *user;
+@property (nonatomic, assign) NSMutableArray *tags;
 @property (weak, nonatomic) IBOutlet UILabel *tagLabel;
 
 @end

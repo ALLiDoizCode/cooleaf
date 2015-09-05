@@ -51,7 +51,7 @@
 
     // Set it into the imageview
     [groupCollectionViewCell.groupImage sd_setImageWithURL:[NSURL URLWithString:fullPath]
-                       placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+                       placeholderImage:[UIImage imageNamed:nil]];
 
     // Get interest name - load into label
     NSString *interestName = [[_interests objectAtIndex:[indexPath row]] objectForKey:@"name"];

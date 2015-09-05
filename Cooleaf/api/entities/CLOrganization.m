@@ -7,10 +7,11 @@
 //
 
 #import "CLOrganization.h"
+#import "CLParentTag.h"
 
 @implementation CLOrganization
 
-# pragma MTLJSONSeriliazation
+# pragma mark - MTLJSONSeriliazation
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
@@ -22,9 +23,9 @@
              };
 }
 
-# pragma pictureJSONTransformer
+# pragma mark - pictureJSONTransformer
 
-- (NSValueTransformer *)pictureJSONTransformer {
+- (NSValueTransformer *)organizationPictureJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSDictionary *pictureDict) {
         return [MTLJSONAdapter  modelOfClass:CLPicture.class
                                 fromJSONDictionary:pictureDict
@@ -34,10 +35,10 @@
     }];
 }
 
-# pragma Custom JSONTransformer for parsing structures here
+# pragma mark - structuresJSONTransformer
 
-//+ (NSValueTransformer *)structureJSONTransformer {
-//    Need to still write code for custom transformer here
-//}
++ (NSValueTransformer *)structuresJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:CLParentTag.class];
+}
 
 @end

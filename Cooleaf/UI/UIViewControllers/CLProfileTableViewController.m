@@ -12,6 +12,7 @@
 #import "CLGroupTableViewCell.h"
 #import "CLClient.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "CLParentTag.h"
 
 @implementation CLProfileTableViewController
 
@@ -53,9 +54,11 @@
     // Switch statement based on TableView or CollectionView - number of rows
     // Note that Obj C compiler won't work in switch statement without ';' in from of case label
     switch (self.segmentedBar.selectedSegmentIndex) {
-        case 0:;
-            // Number of rows in information
-            return 0;
+        case 0: {
+            NSDictionary *userDict = [self getUserDictionary];
+            NSMutableArray *structures = userDict[@"role"][@"organization"][@"structures"];
+            return [structures count];
+        }
         case 1:;
             // Number of rows in History
             return 0;
@@ -68,27 +71,62 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Note that Obj C compiler won't work in switch statement without ';' in from of case label
     switch (self.segmentedBar.selectedSegmentIndex) {
-        case 0:;
-            // Declare information tableviewcell here
-            return nil;
-        case 1:;
+        case 0: {
+            CLInformationTableViewcell *informationCell = [self.tableView dequeueReusableCellWithIdentifier:@"informationCell" forIndexPath:indexPath];
+            [self initInformationCell:informationCell indexPath:indexPath];
+            return informationCell;
+        }
+        case 1: {
             // Declare history tableviewcell here
             return nil;
-        case 2:;
+        }
+        case 2: {
             CLGroupTableViewCell *groupCell = [self.tableView dequeueReusableCellWithIdentifier:@"groupCell" forIndexPath:indexPath];
-            groupCell.user = _user;
+            [self initGroupCell:groupCell];
             return groupCell;
+        }
+        default:
+            return nil;
     }
-    return nil;
+}
+
+# pragma mark - Cell Initialization Methods
+
+/**
+ *  Initialize the custom information cell with a parent tag
+ *
+ *  @param infoCell
+ *  @param parentTag
+ */
+- (void)initInformationCell:(CLInformationTableViewcell *)infoCell indexPath:(NSIndexPath *)indexPath {
+    NSDictionary *userDict = [self getUserDictionary];
+    NSString *structureName = [userDict[@"role"][@"organization"][@"structures"] objectAtIndex:[indexPath row]][@"name"];
+    infoCell.tagLabel.text = structureName;
+}
+
+/**
+ *  Initialize the custom group tableViewCell with the user
+ *
+ *  @param groupCell <#groupCell description#>
+ */
+- (void)initGroupCell:(CLGroupTableViewCell *)groupCell {
+    groupCell.user = _user;
 }
 
 # pragma mark - Helper Methods
 
+/**
+ *  Switch state for different height variances based on segmented index
+ *
+ *  @return CGFloat - Height value
+ */
 - (CGFloat)height {
-    // Switch statement here on different segments for height
     switch (self.segmentedBar.selectedSegmentIndex) {
+        case 0:
+            return self.tableView.rowHeight;
+        case 1:
+            return UITableViewAutomaticDimension;
         case 2:;
             return [CLGroupTableViewCell getHeightForUser:_user];
         default:
@@ -96,6 +134,20 @@
     }
 }
 
+/**
+ *  Get the dictionary value for the CLUser object
+ *
+ *  @return NSDictionary
+ */
+- (NSDictionary *)getUserDictionary {
+    return [_user dictionaryValue];
+}
+
+/**
+ *  Init the user in the Header View
+ *
+ *  @param user
+ */
 - (void)initProfileHeaderWithUser:(CLUser *)user {
     _userNameLabel.text = [user userName];
     _userRewardsLabel.text = [NSString stringWithFormat:@"%@ %@", @"Reward Points:", [[user rewardPoints] stringValue]];
@@ -104,7 +156,7 @@
     
     
     // Load user image into avatar imageview
-    NSDictionary *userDict = [user dictionaryValue];
+    NSDictionary *userDict = [self getUserDictionary];
     NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"original"]];
     [_userImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     _userImage.layer.cornerRadius = _userImage.frame.size.width / 2;
