@@ -13,5 +13,7 @@
 
 - (void)getEvents:(NSMutableDictionary *)params success:(void (^)(id JSON))success
            failure:(void (^)(NSError *error))failure;
+- (void)getUserEventsWithScope:(NSString *)userId params:(NSDictionary *)params success:(void (^)(id JSON))success
+                   failure:(void (^)(NSError *))failure;
 
 @end

@@ -6,10 +6,14 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "CLHomeTableViewController.h"
 #import "UIColor+CustomColors.h"
 #import "CLProfileTableViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "CLAuthenticationPresenter.h"
+#import "CLEventPresenter.h"
+#import "CLEvent.h"
+#import "CLClient.h"
 
 @interface CLHomeTableViewController () {
     @private
@@ -46,9 +50,7 @@
     [self initPullToRefresh];
     
     // Init auth presenter
-    _authPres = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
-    [_authPres registerOnBus];
-    [_authPres authenticate:@"kevin.coleman@sparkstart.io" :@"passwordpassword"];
+    [self initAuthPresenter];
     
     // Init event presenter
     [self initPresenter];
@@ -89,8 +91,7 @@
 
 #pragma mark - toggleSearch
 
-- (void)toggleSearch
-{
+- (void)toggleSearch {
     [self.tableView addSubview:self.searchBar];
     [self.searchController setActive:YES animated:YES];
     [self.searchBar becomeFirstResponder];
@@ -144,11 +145,18 @@
     }
 }
 
-# pragma mark - initPresenter
+# pragma mark - Init Presenters
 
 - (void)initPresenter {
     _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
     [_eventPresenter registerOnBus];
+}
+
+- (void)initAuthPresenter {
+    // Init auth presenter
+    _authPres = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
+    [_authPres registerOnBus];
+    [_authPres authenticate:@"kevin.coleman@sparkstart.io" :@"passwordpassword"];
 }
 
 #pragma mark - Table view data source
@@ -231,10 +239,12 @@
 }
 
 - (void)goToProfileView {
+    _eventPresenter = nil;
     [self performSegueWithIdentifier:@"Profile Segue" sender:self];
 }
 
 - (void)initPullToRefresh {
+    NSLog(@"init pull to ref.");
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor colorAccent];
     self.refreshControl.tintColor = [UIColor whiteColor];
@@ -255,6 +265,7 @@
 }
 
 - (void)reloadEvents {
+    NSLog(@"reload events");
     [_eventPresenter loadEvents];
 }
 

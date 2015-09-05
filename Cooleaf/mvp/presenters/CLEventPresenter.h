@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "IEventInteractor.h"
-#import "CLBus.h"
-#import "CLLoadEvents.h"
-#import "CLLoadedEvents.h"
-#import "CLClient.h"
 
 @interface CLEventPresenter : NSObject
 
@@ -19,5 +15,6 @@
 - (void)registerOnBus;
 - (void)unregisterOnBus;
 - (void)loadEvents;
+- (void)loadUserEvents:(NSString *)scope userIdString:(NSString *)userIdString;
 
 @end

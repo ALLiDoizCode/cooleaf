@@ -6,18 +6,30 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "CLHomeTableViewController.h"
 #import "CLProfileTableViewController.h"
 #import "CLInformationTableViewcell.h"
-#import "CLEventCell.h"
 #import "CLGroupTableViewCell.h"
 #import "CLClient.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "CLParentTag.h"
+#import "CLEventPresenter.h"
 
-@implementation CLProfileTableViewController
+static NSString *const kScope = @"past";
+
+@implementation CLProfileTableViewController {
+    @private
+    CLEventPresenter *_eventPresenter;
+    NSMutableArray *_pastEvents;
+}
+
+# pragma mark - LifeCycle Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Init event presenter
+    [self initEventPresenter];
     
     // Go ahead and init the profile header with the user
     [self initProfileHeaderWithUser:_user];
@@ -27,26 +39,39 @@
     [self.segmentedBar addTarget:self action:@selector(segmentChanged) forControlEvents:UIControlEventValueChanged];
 }
 
-- (void)segmentChanged {
-    self.tableView.rowHeight = [self height];
-    [self.tableView reloadData];
-}
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    if (![parent isEqual:self.parentViewController]) {
+        _eventPresenter = nil;
+        [((CLHomeTableViewController *) parent) initPresenter];
+    }
+}
+
+# pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+}
+
+# pragma mark - Initialization Methods
+
+- (void)initEventPresenter {
+    _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
+    [_eventPresenter registerOnBus];
+    NSString *userIdString = [[_user userId] stringValue];
+    [_eventPresenter loadUserEvents:kScope userIdString:userIdString];
+}
+
+# pragma mark - IEventInteractor Methods
+
+- (void)initEvents:(NSMutableArray *)events {
+    _pastEvents = events;
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+}
 
 # pragma mark - TableView DataSource
 
@@ -59,10 +84,10 @@
             NSMutableArray *structures = userDict[@"role"][@"organization"][@"structures"];
             return [structures count];
         }
-        case 1:;
-            // Number of rows in History
-            return 0;
-        case 2:;
+        case 1: {
+            return [_pastEvents count];
+        }
+        case 2:
             // 1 row for collectionview inside cell
             return 1;
         default:
@@ -74,16 +99,18 @@
     switch (self.segmentedBar.selectedSegmentIndex) {
         case 0: {
             CLInformationTableViewcell *informationCell = [self.tableView dequeueReusableCellWithIdentifier:@"informationCell" forIndexPath:indexPath];
-            [self initInformationCell:informationCell indexPath:indexPath];
+            informationCell = [self configureInfoCell:informationCell indexPath:indexPath];
             return informationCell;
         }
         case 1: {
-            // Declare history tableviewcell here
-            return nil;
+            CLEventCell *eventCell = [self.tableView dequeueReusableCellWithIdentifier:@"historyEventCell" forIndexPath:indexPath];
+            eventCell.delegate = self;
+            eventCell = [self configureEventCell:eventCell indexPath:indexPath];
+            return eventCell;
         }
         case 2: {
             CLGroupTableViewCell *groupCell = [self.tableView dequeueReusableCellWithIdentifier:@"groupCell" forIndexPath:indexPath];
-            [self initGroupCell:groupCell];
+            groupCell = [self configureGroupCell:groupCell];
             return groupCell;
         }
         default:
@@ -91,7 +118,7 @@
     }
 }
 
-# pragma mark - Cell Initialization Methods
+# pragma mark - Cell Initialization / Mutator Methods
 
 /**
  *  Initialize the custom information cell with a parent tag
@@ -99,22 +126,56 @@
  *  @param infoCell
  *  @param parentTag
  */
-- (void)initInformationCell:(CLInformationTableViewcell *)infoCell indexPath:(NSIndexPath *)indexPath {
+- (CLInformationTableViewcell *)configureInfoCell:(CLInformationTableViewcell *)infoCell indexPath:(NSIndexPath *)indexPath {
     NSDictionary *userDict = [self getUserDictionary];
     NSString *structureName = [userDict[@"role"][@"organization"][@"structures"] objectAtIndex:[indexPath row]][@"name"];
     infoCell.tagLabel.text = structureName;
+    return infoCell;
+}
+
+- (CLEventCell *)configureEventCell:(CLEventCell *)eventCell indexPath:(NSIndexPath *)indexPath {
+    if (_pastEvents != nil) {
+        // Set cell shadow
+        eventCell.layer.shadowOpacity = 0.75f;
+        eventCell.layer.shadowRadius = 1.0;
+        eventCell.layer.shadowOffset = CGSizeMake(0, 0);
+        eventCell.layer.shadowColor = [UIColor blackColor].CGColor;
+        eventCell.layer.zPosition = 777;
+        
+        // Get the image url
+        NSString *imageUrl = [_pastEvents objectAtIndex:[indexPath row]][@"image"][@"url"];
+        NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
+        fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"500x200"];
+        
+        // Set it into the imageview
+        [eventCell.eventImage sd_setImageWithURL:[NSURL URLWithString:fullPath]
+                           placeholderImage:[UIImage imageNamed:@"CoverPhotoPlaceholder"]];
+        
+        // Get the event description
+        NSString *eventDescription = [_pastEvents objectAtIndex:[indexPath row]][@"name"];
+        eventCell.eventDescription.text = eventDescription;
+        
+        return eventCell;
+    }
+    return eventCell;
 }
 
 /**
  *  Initialize the custom group tableViewCell with the user
  *
- *  @param groupCell <#groupCell description#>
+ *  @param groupCell
  */
-- (void)initGroupCell:(CLGroupTableViewCell *)groupCell {
+- (CLGroupTableViewCell *)configureGroupCell:(CLGroupTableViewCell *)groupCell {
     groupCell.user = _user;
+    return groupCell;
 }
 
 # pragma mark - Helper Methods
+
+- (void)segmentChanged {
+    self.tableView.rowHeight = [self height];
+    [self.tableView reloadData];
+}
 
 /**
  *  Switch state for different height variances based on segmented index
@@ -126,7 +187,7 @@
         case 0:
             return self.tableView.rowHeight;
         case 1:
-            return UITableViewAutomaticDimension;
+            return self.tableView.rowHeight;
         case 2:;
             return [CLGroupTableViewCell getHeightForUser:_user];
         default:

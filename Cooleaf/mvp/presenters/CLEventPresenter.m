@@ -7,57 +7,67 @@
 //
 
 #import "CLEventPresenter.h"
+#import "CLBus.h"
+#import "CLLoadEvents.h"
+#import "CLLoadedEvents.h"
+#import "CLLoadUserEvents.h"
+#import "CLLoadedUserEvents.h"
+
+static NSInteger const PAGE = 1;
+static NSInteger const PER_PAGE = 25;
 
 @implementation CLEventPresenter {
     
 @private
     id <IEventInteractor> _eventInfo;
-    
 }
 
+# pragma mark - Init
 
-# pragma init
-
+// TODO - Check initialization of protocols when switching between profile and home
 - (id)initWithInteractor:(id<IEventInteractor>)interactor {
+    NSLog(@"initWithInteractor");
     _eventInfo = interactor;
     return self;
 }
 
-
-# pragma registerOnBus
+# pragma mark - Bus Methods
 
 - (void)registerOnBus {
     REGISTER();
 }
 
-
-# pragma unregisterOnBus
-
 - (void)unregisterOnBus {
     UNREGISTER();
 }
 
+# pragma mark - loadEvents
 
-# pragma loadEvents
-
+/**
+ *  Load events, with no scope
+ */
 - (void)loadEvents {
     PUBLISH([[CLLoadEvents alloc] init]);
 }
 
+- (void)loadUserEvents:(NSString *)scope userIdString:(NSString *)userIdString {
+    PUBLISH([[CLLoadUserEvents alloc] initWithUserId:userIdString page:PAGE perPage:PER_PAGE scope:scope]);
+}
 
-# pragma Subscription Methods
+# pragma mark - Subscription Methods
 
 SUBSCRIBE(CLLoadedEvents) {
-    NSLog(@"CLLoadedEvents");
     [_eventInfo initEvents:event.events];
 }
 
+SUBSCRIBE(CLLoadedUserEvents) {
+    [_eventInfo initEvents:event.events];
+}
 
-# pragma dealloc
+# pragma mark - dealloc
 
 - (void)dealloc {
     [self unregisterOnBus];
 }
-
 
 @end

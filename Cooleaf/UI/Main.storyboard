@@ -381,7 +381,7 @@
                                     <outlet property="groupCollectionView" destination="pRg-LI-J53" id="ybu-No-H6P"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="502" id="x0a-ud-4q7" customClass="CLEventCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="historyEventCell" rowHeight="502" id="x0a-ud-4q7" customClass="CLEventCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x0a-ud-4q7" id="kXl-eY-A5V">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -410,7 +410,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="join:" destination="x0a-ud-4q7" eventType="touchUpInside" id="ErB-hu-OHF"/>
+                                                <action selector="join:" destination="x0a-ud-4q7" eventType="touchUpInside" id="Xsa-nK-Itg"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOS-2g-nm5">
@@ -419,7 +419,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="comment:" destination="x0a-ud-4q7" eventType="touchUpInside" id="Fmz-GH-t8P"/>
+                                                <action selector="comment:" destination="x0a-ud-4q7" eventType="touchUpInside" id="4VX-9o-25U"/>
                                             </connections>
                                         </button>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t45-oD-CuA">
@@ -456,9 +456,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="eventDescription" destination="t45-oD-CuA" id="oRh-oZ-U5m"/>
-                                    <outlet property="eventImage" destination="TYg-Ga-ZXJ" id="Ovd-eg-Crv"/>
-                                    <outlet property="eventView" destination="aVk-Ro-7Gj" id="LLB-Jq-EKV"/>
+                                    <outlet property="eventDescription" destination="t45-oD-CuA" id="yNX-kp-Sjf"/>
+                                    <outlet property="eventImage" destination="TYg-Ga-ZXJ" id="b4a-39-7nP"/>
+                                    <outlet property="eventView" destination="aVk-Ro-7Gj" id="4vv-HO-9ch"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="informationCell" rowHeight="213" id="ggr-LB-Iak" customClass="CLInformationTableViewcell">
