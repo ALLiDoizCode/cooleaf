@@ -11,9 +11,11 @@
 
 @interface CLPostViewController () {
     @private
+    UIView *postView;
     UIColor *offWhite;
     UIColor *offBlack;
     UITextView *postTextView;
+    UIImageView *imageView;
 }
 
 @end
@@ -27,6 +29,10 @@
     postTextView.editable = YES;
 
     [self buildView];
+    [self buildTextView];
+    [self buildLabel];
+    [self buildButtons];
+    [self buildImage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,11 +41,9 @@
 }
 
 -(void)buildView {
-    
-    UIView *postView = [[UIView alloc] initWithFrame:CGRectMake(10, 75, 300, 285)];
-    
+    postView = [[UIView alloc] initWithFrame:CGRectMake(10, 35, 300, 285)];
     postView.backgroundColor = [UIColor offWhite];
-    postView.layer.cornerRadius = 2;
+    postView.layer.cornerRadius = 3;
     
     //Border
     UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, postView.frame.size.height - 235, 300, 0.5)];
@@ -49,13 +53,39 @@
     UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, postView.frame.size.height - 55, 300, 0.5)];
     border2.backgroundColor = [UIColor lightGrayColor];
     
+    [self.view addSubview:postView];
+    [postView addSubview:border];
+    [postView addSubview:border2];
+}
+
+-(void)buildTextView {
+    
     //TextView
-    postTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 51, postView.bounds.size.width, 180)];
+    postTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 51, postView.bounds.size.width/1.5, 180)];
     postTextView.backgroundColor = [UIColor clearColor];
     postTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
-   CGPoint scrollPoint = postTextView.contentOffset;
+    CGPoint scrollPoint = postTextView.contentOffset;
     scrollPoint.y= scrollPoint.y+40;
     [postTextView setContentOffset:scrollPoint animated:YES];
+    [postView addSubview:postTextView];
+}
+
+-(void)buildLabel {
+    
+    //Title
+    UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(105, 20, 0, 0)];
+    labelTitle.textAlignment = NSTextAlignmentLeft;
+    labelTitle.text = @"Create a Post";
+    labelTitle.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
+    labelTitle.backgroundColor = [UIColor clearColor];
+    labelTitle.textColor = [UIColor offBlack];
+    [labelTitle sizeToFit];
+    labelTitle.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [postView addSubview:labelTitle];
+
+}
+
+-(void)buildButtons {
     
     //cameraBtn
     UIButton *cameraBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
@@ -69,27 +99,7 @@
     addImageBtn.frame = CGRectMake(250, postView.frame.size.height - 50, 40, 40);
     [addImageBtn setTitle:@"Image" forState:UIControlStateNormal];
     [addImageBtn setImage:[UIImage imageNamed:@"photo"] forState:UIControlStateNormal];
-    //[postBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
-    
-    /*UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 355, 40, 40)];
-    imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    imageView.image = [UIImage imageNamed:@"Camera"];
-    imageView.layer.masksToBounds = YES;
-    imageView.layer.borderColor = [UIColor clearColor].CGColor;
-    imageView.layer.borderWidth = 3.0f;
-    imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    imageView.layer.shouldRasterize = YES;
-    imageView.clipsToBounds = YES;*/
-    
-    //Title
-    UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(105, 20, 0, 0)];
-    labelTitle.textAlignment = NSTextAlignmentLeft;
-    labelTitle.text = @"Create a Post";
-    labelTitle.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
-    labelTitle.backgroundColor = [UIColor clearColor];
-    labelTitle.textColor = [UIColor offBlack];
-    [labelTitle sizeToFit];
-    labelTitle.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [addImageBtn addTarget:self action:@selector(addImage) forControlEvents:UIControlEventTouchUpInside];
     
     //Post
     UIButton *postBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
@@ -102,28 +112,39 @@
     cancelBtn.frame = CGRectMake(0, 20, 100, 18);
     [cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
     [cancelBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
-
-    [self.view addSubview:postView];
-    [postView addSubview:border];
-    [postView addSubview:border2];
-    [postView addSubview:labelTitle];
+    
     [postView addSubview:postBtn];
     [postView addSubview:cancelBtn];
-    [postView addSubview:postTextView];
     [postView addSubview:cameraBtn];
     [postView addSubview:addImageBtn];
-   
 }
 
-- (void)close {
+-(void)buildImage {
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(200, 60, 95, 95)];
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    imageView.image = [UIImage imageNamed:@"TestImage"];
+    imageView.layer.masksToBounds = YES;
+    imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    imageView.layer.shouldRasterize = YES;
+    imageView.clipsToBounds = YES;
+    imageView.hidden = true;
     
+    [postView addSubview:imageView];
+}
+
+////This function is here to demostrate closing the postview controller but needs to be added to the navigation class once the group branch is merged with master
+- (void)close {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//This function demostrates adding a image to teh users post but needs to be placed in a seprate class the handles adding an image from the devices gallery.
+-(void)addImage {
+    imageView.hidden = false;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [postTextView endEditing:YES];
 }
-
 
 /*
 #pragma mark - Navigation

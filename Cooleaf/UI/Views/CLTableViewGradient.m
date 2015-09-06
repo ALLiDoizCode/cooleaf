@@ -21,9 +21,9 @@
     CGColorSpaceRef colorspace;
     CGFloat locations[4] = { 0.9,0.8,0.7,0.3};
     
-    UIColor *myColor1 = [UIColor gradientColor1];
-    UIColor *myColor2 = [UIColor gradientColor2];
-    UIColor *myColor3 = [UIColor gradientColor3];
+    UIColor *myColor1 = [UIColor menuGradientFirstColor];
+    UIColor *myColor2 = [UIColor menuGradientSecondColor];
+    UIColor *myColor3 = [UIColor menuGradientThirdColor];
     
     NSArray *colors = @[(id)myColor1.CGColor,
                         (id)myColor1.CGColor,
