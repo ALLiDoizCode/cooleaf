@@ -36,17 +36,17 @@
 
 -(void)buildView {
     
-    UIView *postView = [[UIView alloc] initWithFrame:CGRectMake(10, 75, 300, 280)];
+    UIView *postView = [[UIView alloc] initWithFrame:CGRectMake(10, 75, 300, 285)];
     
     postView.backgroundColor = [UIColor offWhite];
     postView.layer.cornerRadius = 2;
     
     //Border
-    UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 50, 300, 0.5)];
+    UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, postView.frame.size.height - 235, 300, 0.5)];
     border.backgroundColor = [UIColor lightGrayColor];
     
     //Border2
-    UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, 300, 0.5)];
+    UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, postView.frame.size.height - 55, 300, 0.5)];
     border2.backgroundColor = [UIColor lightGrayColor];
     
     //TextView
@@ -57,11 +57,18 @@
     scrollPoint.y= scrollPoint.y+40;
     [postTextView setContentOffset:scrollPoint animated:YES];
     
-    //Post
-    UIButton *CameraBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    CameraBtn.frame = CGRectMake(10, 235, 40, 40);
-    [CameraBtn setTitle:@"Image" forState:UIControlStateNormal];
-    [CameraBtn setImage:[UIImage imageNamed:@"Camera"] forState:UIControlStateNormal];
+    //cameraBtn
+    UIButton *cameraBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    cameraBtn.frame = CGRectMake(10, postView.frame.size.height - 50, 40, 40);
+    [cameraBtn setTitle:@"Image" forState:UIControlStateNormal];
+    [cameraBtn setImage:[UIImage imageNamed:@"Camera"] forState:UIControlStateNormal];
+    //[postBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //addImage
+    UIButton *addImageBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    addImageBtn.frame = CGRectMake(250, postView.frame.size.height - 50, 40, 40);
+    [addImageBtn setTitle:@"Image" forState:UIControlStateNormal];
+    [addImageBtn setImage:[UIImage imageNamed:@"photo"] forState:UIControlStateNormal];
     //[postBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
     /*UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 355, 40, 40)];
@@ -94,7 +101,7 @@
     UIButton *cancelBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     cancelBtn.frame = CGRectMake(0, 20, 100, 18);
     [cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
-    //[cancelBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    [cancelBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
 
     [self.view addSubview:postView];
     [postView addSubview:border];
@@ -103,8 +110,14 @@
     [postView addSubview:postBtn];
     [postView addSubview:cancelBtn];
     [postView addSubview:postTextView];
-    [postView addSubview:CameraBtn];
+    [postView addSubview:cameraBtn];
+    [postView addSubview:addImageBtn];
    
+}
+
+- (void)close {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

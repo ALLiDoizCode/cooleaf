@@ -100,7 +100,7 @@
 
 - (void)postViewController {
     CLPostViewController *post = [self.storyboard instantiateViewControllerWithIdentifier:@"Post"];
-    [[self navigationController] pushViewController:post animated:YES];
+    [[self navigationController] presentViewController:post animated:YES completion:nil];
 }
 
 #pragma mark - toggleSearch
