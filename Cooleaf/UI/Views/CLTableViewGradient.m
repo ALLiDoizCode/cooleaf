@@ -21,12 +21,11 @@
     CGColorSpaceRef colorspace;
     CGFloat locations[4] = { 0.9,0.8,0.7,0.3};
     
-    UIColor *myColor = [UIColor UIColorFromRGB:0x92A5C5];
-    UIColor *myColor1 = [UIColor UIColorFromRGB:0x92A5C5];
-    UIColor *myColor2 = [UIColor UIColorFromRGB:0xa889AB7];
-    UIColor *myColor3 = [UIColor UIColorFromRGB:0x47546E];
+    UIColor *myColor1 = [UIColor gradientColor1];
+    UIColor *myColor2 = [UIColor gradientColor2];
+    UIColor *myColor3 = [UIColor gradientColor3];
     
-    NSArray *colors = @[(id)myColor.CGColor,
+    NSArray *colors = @[(id)myColor1.CGColor,
                         (id)myColor1.CGColor,
                         (id)myColor2.CGColor,
                         (id)myColor3.CGColor];

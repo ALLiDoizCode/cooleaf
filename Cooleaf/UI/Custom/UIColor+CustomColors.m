@@ -68,6 +68,46 @@
     return [self UIColorFromRGB:0xFDFDFD];
 }
 
+# pragma offWhite
+
++ (UIColor *)offWhite {
+    
+    return  [self UIColorFromRGB:0xFDFDFD];
+}
+
+
+# pragma offBlack
+
++ (UIColor *)offBlack {
+    
+    return  [self UIColorFromRGB:0x252525];
+}
+
+
+# pragma gradientColor1
+
++ (UIColor *)gradientColor1 {
+    
+    return  [self UIColorFromRGB:0x92A5C5];
+}
+
+
+# pragma gradientColor2
+
++ (UIColor *)gradientColor2 {
+    
+    return  [self UIColorFromRGB:0xa889AB7];
+}
+
+
+# pragma gradientColor3
+
++ (UIColor *)gradientColor3 {
+    
+    return  [self UIColorFromRGB:0x47546E];
+}
+
+
 # pragma UIColorFromRGB
 
 + (UIColor *)UIColorFromRGB:(int)rgbValue {

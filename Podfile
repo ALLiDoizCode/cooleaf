@@ -2,9 +2,9 @@ platform :ios, '7.0'
 
 pod 'AFNetworking'
 pod 'SSKeychain'
-pod 'Mantle'
 pod 'Overcoat'
 pod 'Overcoat/ReactiveCocoa'
 pod 'MMDrawerController'
 pod 'SDWebImage'
-pod 'FXBlurView', '~> 1.6.3'
+pod 'Mantle', '~> 1.5.4’
+

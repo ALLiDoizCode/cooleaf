@@ -24,9 +24,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     [self setupTableViewUIData];
     [self setupTableView];
+    
+    self.navigationController.navigationBarHidden = YES;
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    titles = @[@"Home", @"My Events", @"Groups",@"People",@"My Profile"];
+    titles2 = @[@"#Running", @"#Picnicholiday2015", @"#Walking"];
+    
+    icons = @[@"home-1",@"calendar",@"Profile",@"Profile",@"Profile"];
+    icons2 = @[@"Profile"];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +49,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = textColor;
+    cell.textLabel.textColor = [UIColor offWhite];
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
 }
 
@@ -47,13 +58,13 @@
         return nil;
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 34)];
-    view.backgroundColor = textColor;
+    view.backgroundColor = [UIColor offWhite];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 0, 0)];
     //label.text = @"Friends Online";
     label.font = [UIFont systemFontOfSize:15];
-    label.textColor = [UIColor whiteColor];
-    label.backgroundColor = textColor;
+    label.textColor = [UIColor offWhite];
+    label.backgroundColor = [UIColor offWhite];
     [label sizeToFit];
     [view addSubview:label];
     

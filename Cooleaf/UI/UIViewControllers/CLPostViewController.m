@@ -10,7 +10,7 @@
 #import "UIColor+CustomColors.h"
 
 @interface CLPostViewController () {
-    @private 
+    @private
     UIColor *offWhite;
     UIColor *offBlack;
     UITextView *postTextView;
@@ -23,14 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   
-    
     postTextView.delegate = self;
-     postTextView.editable = YES;
+    postTextView.editable = YES;
 
-    offWhite = [UIColor UIColorFromRGB:0xFDFDFD];
-    offBlack = [UIColor UIColorFromRGB:0x252525];
-    
     [self buildView];
 }
 
@@ -41,20 +36,43 @@
 
 -(void)buildView {
     
+    UIView *postView = [[UIView alloc] initWithFrame:CGRectMake(10, 75, 300, 280)];
     
-    UIView *postView = [[UIView alloc] initWithFrame:CGRectMake(10, 75, 300, 300)];
-    
-    postView.backgroundColor = offWhite;
+    postView.backgroundColor = [UIColor offWhite];
     postView.layer.cornerRadius = 2;
     
     //Border
     UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 50, 300, 0.5)];
     border.backgroundColor = [UIColor lightGrayColor];
     
+    //Border2
+    UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, 300, 0.5)];
+    border2.backgroundColor = [UIColor lightGrayColor];
+    
     //TextView
-    postTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 51, postView.bounds.size.width, postView.bounds.size.height - 50)];
+    postTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 51, postView.bounds.size.width, 180)];
     postTextView.backgroundColor = [UIColor clearColor];
     postTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
+   CGPoint scrollPoint = postTextView.contentOffset;
+    scrollPoint.y= scrollPoint.y+40;
+    [postTextView setContentOffset:scrollPoint animated:YES];
+    
+    //Post
+    UIButton *CameraBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    CameraBtn.frame = CGRectMake(10, 235, 40, 40);
+    [CameraBtn setTitle:@"Image" forState:UIControlStateNormal];
+    [CameraBtn setImage:[UIImage imageNamed:@"Camera"] forState:UIControlStateNormal];
+    //[postBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    
+    /*UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 355, 40, 40)];
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    imageView.image = [UIImage imageNamed:@"Camera"];
+    imageView.layer.masksToBounds = YES;
+    imageView.layer.borderColor = [UIColor clearColor].CGColor;
+    imageView.layer.borderWidth = 3.0f;
+    imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    imageView.layer.shouldRasterize = YES;
+    imageView.clipsToBounds = YES;*/
     
     //Title
     UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(105, 20, 0, 0)];
@@ -62,7 +80,7 @@
     labelTitle.text = @"Create a Post";
     labelTitle.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
     labelTitle.backgroundColor = [UIColor clearColor];
-    labelTitle.textColor = offBlack;
+    labelTitle.textColor = [UIColor offBlack];
     [labelTitle sizeToFit];
     labelTitle.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
@@ -78,13 +96,14 @@
     [cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
     //[cancelBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
 
-    
     [self.view addSubview:postView];
     [postView addSubview:border];
+    [postView addSubview:border2];
     [postView addSubview:labelTitle];
     [postView addSubview:postBtn];
     [postView addSubview:cancelBtn];
     [postView addSubview:postTextView];
+    [postView addSubview:CameraBtn];
    
 }
 
