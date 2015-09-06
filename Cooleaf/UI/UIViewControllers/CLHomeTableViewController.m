@@ -163,7 +163,6 @@
 # pragma mark - Init Presenters
 
 - (void)initPresenter {
-    NSLog(@"InitPresenter");
     _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
     [_eventPresenter registerOnBus];
 }
@@ -260,10 +259,9 @@
 }
 
 - (void)initPullToRefresh {
-    NSLog(@"init pull to ref.");
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.backgroundColor = [UIColor colorAccent];
-    self.refreshControl.tintColor = [UIColor whiteColor];
+    self.refreshControl.backgroundColor = [UIColor clearColor];
+    self.refreshControl.tintColor = [UIColor colorAccent];
     [self.refreshControl addTarget:self
                             action:@selector(reloadEvents)
                   forControlEvents:UIControlEventValueChanged];
@@ -281,7 +279,6 @@
 }
 
 - (void)reloadEvents {
-    NSLog(@"reload events");
     [_eventPresenter loadEvents];
 }
 
@@ -303,7 +300,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM d, h:mm a"];
     NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
-    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor colorAccent]
                                                                 forKey:NSForegroundColorAttributeName];
     NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
     self.refreshControl.attributedTitle = attributedTitle;
