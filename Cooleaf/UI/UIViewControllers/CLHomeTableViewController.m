@@ -51,9 +51,24 @@
     
     // Init auth presenter
     [self initAuthPresenter];
-    
-    // Init event presenter
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self initPresenter];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    _eventPresenter = nil;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -148,6 +163,7 @@
 # pragma mark - Init Presenters
 
 - (void)initPresenter {
+    NSLog(@"InitPresenter");
     _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
     [_eventPresenter registerOnBus];
 }

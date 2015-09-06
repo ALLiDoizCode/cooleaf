@@ -47,6 +47,7 @@ static NSInteger const PER_PAGE = 25;
  *  Load events, with no scope
  */
 - (void)loadEvents {
+    NSLog(@"LoadEvents");
     PUBLISH([[CLLoadEvents alloc] init]);
 }
 

@@ -28,9 +28,6 @@ static NSString *const kScope = @"past";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Init event presenter
-    [self initEventPresenter];
-    
     // Go ahead and init the profile header with the user
     [self initProfileHeaderWithUser:_user];
     
@@ -44,11 +41,22 @@ static NSString *const kScope = @"past";
     // Dispose of any resources that can be recreated.
 }
 
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-    if (![parent isEqual:self.parentViewController]) {
-        _eventPresenter = nil;
-        [((CLHomeTableViewController *) parent) initPresenter];
-    }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self initEventPresenter];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    _eventPresenter = nil;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 # pragma mark - Navigation
