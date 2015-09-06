@@ -22,8 +22,14 @@
 		43EF2F191B00A8F5002A060A /* NPTagGroupsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */; };
 		43EF2F1A1B00A8F5002A060A /* NPTagGroupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */; };
 		4B066CBF1B94BB79006A7CF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B066CBE1B94BB79006A7CF1 /* Main.storyboard */; };
+		4B27746A1B9AC63F004BFCF4 /* CLLoadUserEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2774691B9AC63F004BFCF4 /* CLLoadUserEvents.m */; };
+		4B27746D1B9AE147004BFCF4 /* CLLoadedUserEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27746C1B9AE147004BFCF4 /* CLLoadedUserEvents.m */; };
 		4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */; };
+		4B4AE2631B9A4773006040F0 /* CLInformationTableViewcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4AE2621B9A4773006040F0 /* CLInformationTableViewcell.m */; };
 		4B6088491B929EA20029E659 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6088481B929EA20029E659 /* UIColor+CustomColors.m */; };
+		4B6B56F01B98E0C8008DF039 /* CLProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56EF1B98E0C8008DF039 /* CLProfileTableViewController.m */; };
+		4B6B56F31B98E220008DF039 /* CLGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56F21B98E220008DF039 /* CLGroupTableViewCell.m */; };
+		4B6B56F61B98E859008DF039 /* CLGroupCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56F51B98E859008DF039 /* CLGroupCollectionViewCell.m */; };
 		4BA4E2F31B8BC6E70089CB2B /*  in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E2F21B8BC6E70089CB2B /*  */; };
 		4BA4E2F61B8BC7290089CB2B /* CLDepartment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E2F51B8BC7290089CB2B /* CLDepartment.m */; };
 		4BA4E2F91B8BC76B0089CB2B /* CLOrganization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E2F81B8BC76B0089CB2B /* CLOrganization.m */; };
@@ -196,9 +202,21 @@
 		43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPTagGroupsView.m; sourceTree = "<group>"; };
 		43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPTagGroupView.xib; sourceTree = "<group>"; };
 		4B066CBE1B94BB79006A7CF1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4B2774681B9AC63F004BFCF4 /* CLLoadUserEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadUserEvents.h; sourceTree = "<group>"; };
+		4B2774691B9AC63F004BFCF4 /* CLLoadUserEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadUserEvents.m; sourceTree = "<group>"; };
+		4B27746B1B9AE147004BFCF4 /* CLLoadedUserEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedUserEvents.h; sourceTree = "<group>"; };
+		4B27746C1B9AE147004BFCF4 /* CLLoadedUserEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedUserEvents.m; sourceTree = "<group>"; };
 		4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBranch.m; sourceTree = "<group>"; };
+		4B4AE2611B9A4773006040F0 /* CLInformationTableViewcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInformationTableViewcell.h; sourceTree = "<group>"; };
+		4B4AE2621B9A4773006040F0 /* CLInformationTableViewcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInformationTableViewcell.m; sourceTree = "<group>"; };
 		4B6088471B929EA20029E659 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
 		4B6088481B929EA20029E659 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
+		4B6B56EE1B98E0C8008DF039 /* CLProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProfileTableViewController.h; sourceTree = "<group>"; };
+		4B6B56EF1B98E0C8008DF039 /* CLProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLProfileTableViewController.m; sourceTree = "<group>"; };
+		4B6B56F11B98E220008DF039 /* CLGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupTableViewCell.h; sourceTree = "<group>"; };
+		4B6B56F21B98E220008DF039 /* CLGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupTableViewCell.m; sourceTree = "<group>"; };
+		4B6B56F41B98E859008DF039 /* CLGroupCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupCollectionViewCell.h; sourceTree = "<group>"; };
+		4B6B56F51B98E859008DF039 /* CLGroupCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupCollectionViewCell.m; sourceTree = "<group>"; };
 		4BA4E2F11B8BC6E70089CB2B /* CLBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBranch.h; sourceTree = "<group>"; };
 		4BA4E2F21B8BC6E70089CB2B /*  */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = ""; sourceTree = "<group>"; };
 		4BA4E2F41B8BC7290089CB2B /* CLDepartment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDepartment.h; sourceTree = "<group>"; };
@@ -523,6 +541,8 @@
 				4BE63A4B1B94E9D800231222 /* CLMenuViewController.m */,
 				4BE63A4D1B9502AD00231222 /* CLDrawerViewController.h */,
 				4BE63A4E1B9502AD00231222 /* CLDrawerViewController.m */,
+				4B6B56EE1B98E0C8008DF039 /* CLProfileTableViewController.h */,
+				4B6B56EF1B98E0C8008DF039 /* CLProfileTableViewController.m */,
 			);
 			path = UIViewControllers;
 			sourceTree = "<group>";
@@ -688,6 +708,10 @@
 				4BE63A541B951FF000231222 /* CLLoadEvents.m */,
 				4BE63A561B95205000231222 /* CLLoadedEvents.h */,
 				4BE63A571B95205000231222 /* CLLoadedEvents.m */,
+				4B2774681B9AC63F004BFCF4 /* CLLoadUserEvents.h */,
+				4B2774691B9AC63F004BFCF4 /* CLLoadUserEvents.m */,
+				4B27746B1B9AE147004BFCF4 /* CLLoadedUserEvents.h */,
+				4B27746C1B9AE147004BFCF4 /* CLLoadedUserEvents.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -735,6 +759,12 @@
 			children = (
 				4BE63A5B1B95811400231222 /* CLEventCell.h */,
 				4BE63A5C1B95811400231222 /* CLEventCell.m */,
+				4B6B56F11B98E220008DF039 /* CLGroupTableViewCell.h */,
+				4B6B56F21B98E220008DF039 /* CLGroupTableViewCell.m */,
+				4B6B56F41B98E859008DF039 /* CLGroupCollectionViewCell.h */,
+				4B6B56F51B98E859008DF039 /* CLGroupCollectionViewCell.m */,
+				4B4AE2611B9A4773006040F0 /* CLInformationTableViewcell.h */,
+				4B4AE2621B9A4773006040F0 /* CLInformationTableViewcell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1178,10 +1208,10 @@
 				ORGANIZATIONNAME = "Nova Project";
 				TargetAttributes = {
 					D9809543185CA557008F2B61 = {
-						DevelopmentTeam = D9C3ZVBVFT;
+						DevelopmentTeam = EVL2DEPTTR;
 					};
 					D980955E185CA557008F2B61 = {
-						DevelopmentTeam = 4W85FZB5TV;
+						DevelopmentTeam = EVL2DEPTTR;
 						TestTargetID = D9809543185CA557008F2B61;
 					};
 				};
@@ -1318,6 +1348,7 @@
 				F998F68C1AB218AF00213240 /* NPInterestViewCell.m in Sources */,
 				F9B37B9B1AAE0F7A003F3FB8 /* NPTag.m in Sources */,
 				4BA4E3941B8D4CF60089CB2B /* CLEventPresenter.m in Sources */,
+				4B6B56F31B98E220008DF039 /* CLGroupTableViewCell.m in Sources */,
 				4BA4E2FF1B8BC7D70089CB2B /* CLPicture.m in Sources */,
 				D9809588185CCFFB008F2B61 /* NPEventCell.m in Sources */,
 				D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */,
@@ -1327,6 +1358,7 @@
 				D93AAC74187B170C00E9B96A /* NPAttendeesCell.m in Sources */,
 				4BA4E3491B8D133F0089CB2B /* CLAuthenticationController.m in Sources */,
 				D93AACA2187C300E00E9B96A /* NPTodoCell.m in Sources */,
+				4B6B56F61B98E859008DF039 /* CLGroupCollectionViewCell.m in Sources */,
 				4BA4E3521B8D13610089CB2B /* CLUserController.m in Sources */,
 				43B0624C1AB71A64009F96CD /* NPMembersCell.m in Sources */,
 				D9507ADA187EE22C0020498A /* NPOtherEventCell.m in Sources */,
@@ -1356,6 +1388,7 @@
 				D93AAC93187B704100E9B96A /* NPAttendeesViewController.m in Sources */,
 				4BA4E3321B8C1B930089CB2B /* CLParticipant.m in Sources */,
 				D93AABF3186EFAD100E9B96A /* NPProfileViewController.m in Sources */,
+				4B27746D1B9AE147004BFCF4 /* CLLoadedUserEvents.m in Sources */,
 				4BA4E3051B8BC8670089CB2B /* CLRole.m in Sources */,
 				D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */,
 				68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */,
@@ -1365,6 +1398,7 @@
 				43B062471AB664B0009F96CD /* NPInterestViewController.m in Sources */,
 				4BA4E3021B8BC8360089CB2B /* CLProfile.m in Sources */,
 				52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */,
+				4B27746A1B9AC63F004BFCF4 /* CLLoadUserEvents.m in Sources */,
 				4BE63A491B94E8CE00231222 /* CLHomeTableViewController.m in Sources */,
 				D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */,
 				4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */,
@@ -1380,6 +1414,7 @@
 				4BA4E32C1B8BF8E00089CB2B /* CLTimeZone.m in Sources */,
 				68012DD81B97519D00251544 /* CLTableViewHome.m in Sources */,
 				4BE63A4F1B9502AD00231222 /* CLDrawerViewController.m in Sources */,
+				4B4AE2631B9A4773006040F0 /* CLInformationTableViewcell.m in Sources */,
 				4BA4E35A1B8D1E4C0089CB2B /* CLAuthenticationPresenter.m in Sources */,
 				4BE63A551B951FF000231222 /* CLLoadEvents.m in Sources */,
 				F9F445EA1AB8AED700C655CF /* NPInterestsHeaderViewCell.m in Sources */,
@@ -1399,6 +1434,7 @@
 				4BE63A4C1B94E9D800231222 /* CLMenuViewController.m in Sources */,
 				D9809554185CA557008F2B61 /* main.m in Sources */,
 				4BAE00601B8EDF0E00779E1F /* CLBaseSubscriber.m in Sources */,
+				4B6B56F01B98E0C8008DF039 /* CLProfileTableViewController.m in Sources */,
 				4BA61B0B1B94CC6800774CC2 /* CLProfileHeaderView.m in Sources */,
 				D980958D185F2C5D008F2B61 /* NSFileManager+ImageCaching.m in Sources */,
 				4BA4E3261B8BF3940089CB2B /* CLInterest.m in Sources */,
@@ -1533,8 +1569,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sarwar Bhuiyan (GY237B5U7U)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sarwar Bhuiyan (GY237B5U7U)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1547,7 +1583,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a8ed2028-f29e-4fac-90ef-2e8b80e8a684";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1558,8 +1594,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sarwar Bhuiyan (GY237B5U7U)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sarwar Bhuiyan (GY237B5U7U)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1572,7 +1608,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a8ed2028-f29e-4fac-90ef-2e8b80e8a684";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1581,6 +1617,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Cooleaf.app/Cooleaf";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1594,6 +1632,7 @@
 				);
 				INFOPLIST_FILE = "CooleafTests/CooleafTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1603,6 +1642,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Cooleaf.app/Cooleaf";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1612,6 +1653,7 @@
 				GCC_PREFIX_HEADER = "Cooleaf/Cooleaf-Prefix.pch";
 				INFOPLIST_FILE = "CooleafTests/CooleafTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

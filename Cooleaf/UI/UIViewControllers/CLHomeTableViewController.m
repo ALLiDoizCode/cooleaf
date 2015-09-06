@@ -6,9 +6,14 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "CLHomeTableViewController.h"
 #import "UIColor+CustomColors.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import "CLProfileTableViewController.h"
+#import "CLAuthenticationPresenter.h"
+#import "CLEventPresenter.h"
+#import "CLEvent.h"
+#import "CLClient.h"
 
 @interface CLHomeTableViewController () {
     @private
@@ -45,12 +50,25 @@
     [self initPullToRefresh];
     
     // Init auth presenter
-    _authPres = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
-    [_authPres registerOnBus];
-    [_authPres authenticate:@"kevin.coleman@sparkstart.io" :@"passwordpassword"];
-    
-    // Init event presenter
+    [self initAuthPresenter];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self initPresenter];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    _eventPresenter = nil;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,10 +103,10 @@
     searchBtn.tintColor = [UIColor whiteColor];
     commentBtn.tintColor = [UIColor whiteColor];
 }
+
 #pragma mark - toggleSearch
 
-- (void)toggleSearch
-{
+- (void)toggleSearch {
     [self.tableView addSubview:self.searchBar];
     [self.searchController setActive:YES animated:YES];
     [self.searchBar becomeFirstResponder];
@@ -97,10 +115,10 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"Profile Segue"]) {
+        ((CLProfileTableViewController *) segue.destinationViewController).user = _user;
+    }
 }
 
 # pragma mark - CLEventCellDelegate
@@ -142,11 +160,18 @@
     }
 }
 
-# pragma mark - initPresenter
+# pragma mark - Init Presenters
 
 - (void)initPresenter {
     _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
     [_eventPresenter registerOnBus];
+}
+
+- (void)initAuthPresenter {
+    // Init auth presenter
+    _authPres = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
+    [_authPres registerOnBus];
+    [_authPres authenticate:@"kevin.coleman@sparkstart.io" :@"passwordpassword"];
 }
 
 #pragma mark - Table view data source
@@ -225,13 +250,18 @@
 
 - (void)onTap {
     // Go to profile view controller
-    
+    [self goToProfileView];
+}
+
+- (void)goToProfileView {
+    _eventPresenter = nil;
+    [self performSegueWithIdentifier:@"Profile Segue" sender:self];
 }
 
 - (void)initPullToRefresh {
     self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.backgroundColor = [UIColor colorAccent];
-    self.refreshControl.tintColor = [UIColor whiteColor];
+    self.refreshControl.backgroundColor = [UIColor clearColor];
+    self.refreshControl.tintColor = [UIColor colorAccent];
     [self.refreshControl addTarget:self
                             action:@selector(reloadEvents)
                   forControlEvents:UIControlEventValueChanged];
@@ -270,7 +300,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM d, h:mm a"];
     NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
-    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor colorAccent]
                                                                 forKey:NSForegroundColorAttributeName];
     NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
     self.refreshControl.attributedTitle = attributedTitle;

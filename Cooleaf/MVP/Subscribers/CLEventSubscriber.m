@@ -7,6 +7,10 @@
 //
 
 #import "CLEventSubscriber.h"
+#import "CLLoadUserEvents.h"
+#import "CLLoadedEvents.h"
+#import "CLLoadEvents.h"
+#import "CLLoadedUserEvents.h"
 
 @implementation CLEventSubscriber
 
@@ -28,6 +32,24 @@ SUBSCRIBE(CLLoadEvents) {
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];
+}
+
+SUBSCRIBE(CLLoadUserEvents) {
+    NSDictionary *params = @{
+                            @"page": [NSString stringWithFormat:@"%lu", (long) event.page],
+                            @"per_page": [NSString stringWithFormat:@"%lu", (long) event.perPage],
+                            @"scope": event.scope
+                            };
+    
+    [_eventController getUserEventsWithScope:event.userIdString
+                                      params:params
+                                     success:^(id JSON) {
+                                         NSMutableArray *events = [JSON result];
+                                         CLLoadedUserEvents *loadedEvents = [[CLLoadedUserEvents alloc] initWithUserEvents:events];
+                                         PUBLISH(loadedEvents);
+                                     } failure:^(NSError *error) {
+                                         NSLog(@"%@", error);
+                                     }];
 }
 
 @end

@@ -10,8 +10,6 @@
 #import "CLEventCell.h"
 #import "IAuthenticationInteractor.h"
 #import "IEventInteractor.h"
-#import "CLAuthenticationPresenter.h"
-#import "CLEventPresenter.h"
 
 @interface CLHomeTableViewController : UITableViewController <CLEventCellDelegate, IAuthenticationInteractor, IEventInteractor,
                                                         UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate,UISearchDisplayDelegate>
@@ -23,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *userCredentialsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userRewardsLabel;
 
--(void)searchDisplay;
+- (void)initAuthPresenter;
+- (void)initPresenter;
+- (void)searchDisplay;
 
 @end

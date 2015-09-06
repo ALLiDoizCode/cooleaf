@@ -18,8 +18,8 @@
 @property (nonatomic) NSString *userName;
 @property (nonatomic) NSString *userEmail;
 @property (nonatomic) NSMutableArray *interests;
-@property (nonatomic) CLRole *role;
+@property (nonatomic, copy) CLRole *role;
 @property (nonatomic) NSNumber *rewardPoints;
-@property (nonatomic) CLProfile *profile;
+@property (nonatomic, copy) CLProfile *profile;
 
 @end

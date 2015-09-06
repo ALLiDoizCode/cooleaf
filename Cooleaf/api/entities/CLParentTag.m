@@ -28,5 +28,4 @@
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:CLTag.class];
 }
 
-
 @end

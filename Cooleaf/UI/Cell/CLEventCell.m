@@ -10,19 +10,16 @@
 
 @implementation CLEventCell
 
-
 - (IBAction)join:(UIButton *)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(didPressJoin:)]) {
         [self.delegate didPressJoin:self];
     }
 }
 
-
 - (IBAction)comment:(UIButton *)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(didPressComment:)]) {
         [self.delegate didPressComment:self];
     }
 }
-
 
 @end
