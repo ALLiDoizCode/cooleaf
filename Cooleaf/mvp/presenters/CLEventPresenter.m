@@ -26,7 +26,6 @@ static NSInteger const PER_PAGE = 25;
 
 // TODO - Check initialization of protocols when switching between profile and home
 - (id)initWithInteractor:(id<IEventInteractor>)interactor {
-    NSLog(@"initWithInteractor");
     _eventInfo = interactor;
     return self;
 }
@@ -47,7 +46,6 @@ static NSInteger const PER_PAGE = 25;
  *  Load events, with no scope
  */
 - (void)loadEvents {
-    NSLog(@"LoadEvents");
     PUBLISH([[CLLoadEvents alloc] init]);
 }
 

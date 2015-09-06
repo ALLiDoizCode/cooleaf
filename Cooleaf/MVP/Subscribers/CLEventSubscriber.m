@@ -35,7 +35,6 @@ SUBSCRIBE(CLLoadEvents) {
 }
 
 SUBSCRIBE(CLLoadUserEvents) {
-    NSLog(@"loadUserEvents");
     NSDictionary *params = @{
                             @"page": [NSString stringWithFormat:@"%lu", (long) event.page],
                             @"per_page": [NSString stringWithFormat:@"%lu", (long) event.perPage],
