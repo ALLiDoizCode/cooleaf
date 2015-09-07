@@ -74,6 +74,13 @@
     return  [self UIColorFromRGB:0xFDFDFD];
 }
 
+# pragma barWhite
+
++ (UIColor *)barWhite {
+    
+    return [self UIColorFromRGB:0xF0F0F0];
+}
+
 # pragma offBlack
 
 + (UIColor *)offBlack {
