@@ -14,7 +14,7 @@
 @property (nonatomic) UILabel *labelPostName;
 @property (nonatomic) UILabel *labelPostName2;
 @property (nonatomic) UILabel *labelPost;
-@property (nonatomic) UILabel *labelComment;
+@property (nonatomic) UILabel *commentLabel;
 
 
 @end

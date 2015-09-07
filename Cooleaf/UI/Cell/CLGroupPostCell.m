@@ -13,6 +13,7 @@
 
 - (void)awakeFromNib {
     
+    self.contentView.backgroundColor = [UIColor UIColorFromRGB:0xDDDFDF];
     
     UIColor *offWhite = [UIColor UIColorFromRGB:0xFDFDFD];
     
@@ -74,16 +75,15 @@
     [_labelPost sizeToFit];
     _labelPost.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
-   //Post Label
-    _labelComment = [[UILabel alloc] initWithFrame:CGRectMake(10, 320, 60, 0)];
-    _labelComment.numberOfLines = 0;
-    _labelComment.textAlignment = NSTextAlignmentLeft;
-    _labelComment.text = @"6 comments";
-    _labelComment.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
-    _labelComment.backgroundColor = [UIColor clearColor];
-    _labelComment.textColor = [UIColor lightGrayColor];
-    [_labelComment sizeToFit];
-    _labelComment.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    //postion
+    _commentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 130, 35, 35)];
+    _commentLabel.textAlignment = NSTextAlignmentLeft;
+    _commentLabel.text = @"6 comments";
+    _commentLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    _commentLabel.backgroundColor = [UIColor clearColor];
+    _commentLabel.textColor = [UIColor lightGrayColor];
+    [_commentLabel sizeToFit];
+    _commentLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     
     [self.contentView addSubview:bgview];
@@ -92,7 +92,7 @@
     [bgview addSubview:_labelPostName];
     [bgview addSubview:_labelPostName2];
     [bgview addSubview:_labelPost];
-    [bgview addSubview:_labelComment];
+    [bgview addSubview:_commentLabel];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
