@@ -19,6 +19,7 @@
 + (UIColor *)menuGradientSecondColor;
 + (UIColor *)menuGradientThirdColor;
 + (UIColor *)menuGradientFourthColor;
++ (UIColor *)menuTextColor;
 + (UIColor *)UIColorFromRGB:(int)rgbValue;
 
 @end

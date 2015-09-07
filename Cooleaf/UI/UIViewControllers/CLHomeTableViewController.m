@@ -14,6 +14,7 @@
 #import "CLEventPresenter.h"
 #import "CLEvent.h"
 #import "CLClient.h"
+#import "CLSearchViewController.h"
 
 @interface CLHomeTableViewController () {
     @private
@@ -33,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
     // Searchbar color
     barColor = [UIColor UIColorFromRGB:0x69C4BB];
     
@@ -64,6 +66,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [_eventPresenter unregisterOnBus];
     _eventPresenter = nil;
 }
 
@@ -79,23 +82,10 @@
 #pragma mark - searchDisplay
 
 -(void)searchDisplay {
-    
-    // place search bar coordinates where the navbar is position - offset by statusbar
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 20, 320, 44)];
-    
-    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
-    //self.searchController.searchResultsDataSource = self;
-    //self.searchController.searchResultsDelegate = self;
-    self.searchController.delegate = self;
-    
     // Do any additional setup after loading the view.
-    
-    UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(toggleSearch)];
-    
+    UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchViewController)];
     
     UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
-    
-    
     NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
     
     [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
@@ -111,6 +101,11 @@
     [self.searchController setActive:YES animated:YES];
     [self.searchBar becomeFirstResponder];
     self.searchBar.barTintColor = barColor;
+}
+
+- (void)searchViewController {
+    CLSearchViewController *search = [self.storyboard instantiateViewControllerWithIdentifier:@"search"];
+    [[self navigationController] pushViewController:search animated:YES];
 }
 
 #pragma mark - Navigation

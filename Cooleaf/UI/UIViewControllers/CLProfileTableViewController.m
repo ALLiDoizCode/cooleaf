@@ -52,6 +52,7 @@ static NSString *const kScope = @"past";
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [_eventPresenter unregisterOnBus];
     _eventPresenter = nil;
 }
 
