@@ -17,16 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.searchBar.delegate = self;
-    self.searchBar.placeholder = @"Search...";
-    
-    _data = @[@"New York, NY", @"Los Angeles, CA", @"Chicago, IL", @"Houston, TX",
-              @"Philadelphia, PA", @"Phoenix, AZ", @"San Diego, CA", @"San Antonio, TX",
-              @"Dallas, TX", @"Detroit, MI", @"San Jose, CA", @"Indianapolis, IN",
-              @"Jacksonville, FL", @"San Francisco, CA", @"Columbus, OH", @"Austin, TX",
-              @"Memphis, TN", @"Baltimore, MD", @"Charlotte, ND", @"Fort Worth, TX"];
-    
+    [self setupSearch];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,31 +26,41 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-        return [_data count];
+    // TODO - add data
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CLSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell"];
-        
-    cell.mainLablel.text = [_data objectAtIndex:indexPath.row];
-    cell.subLabel.text = [_data objectAtIndex:indexPath.row];
-    cell.countLabel.text = @"10";
-    
-    cell.cellImage.image = [UIImage imageNamed:@"TestImage"];
-   
+    cell = [self configureSearchCell:cell];
     return cell;
 }
 
-#pragma mark - SearchBar Delegates
+# pragma setupSearch
 
-/*-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
-    
+- (void)setupSearch {
+    self.searchBar.delegate = self;
+    self.searchBar.placeholder = @"Search...";
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+# pragma mark - configureSearchCell
+
+- (CLSearchCell *)configureSearchCell:(CLSearchCell *)searchCell {
+    searchCell.countLabel.text = @"10";
+    searchCell.cellImage.image = [UIImage imageNamed:@"TestImage"];
+    return searchCell;
+}
+
+# pragma mark - SearchBar Delegates
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     return YES;
-}*/
+}
 
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     self.searchBar.showsCancelButton = TRUE;
