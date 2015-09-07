@@ -35,7 +35,7 @@
     titles = @[@"Home", @"My Events", @"Groups",@"People",@"My Profile"];
     titles2 = @[@"#Running", @"#Picnicholiday2015", @"#Walking"];
     
-    icons = @[@"home-1",@"calendar",@"Profile",@"Profile",@"Profile"];
+    icons = @[@"Profile",@"Profile",@"Profile",@"Profile",@"Profile"];
     icons2 = @[@"Profile"];
 
 }
@@ -161,6 +161,7 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(-5, 20, 70, 70)];
     imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     imageView.image = [UIImage imageNamed:@"TestImage"];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.layer.masksToBounds = YES;
     imageView.layer.cornerRadius = imageView.frame.size.height/2;
     imageView.layer.borderColor = [UIColor clearColor].CGColor;

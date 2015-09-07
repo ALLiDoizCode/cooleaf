@@ -26,7 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     postTextView.delegate = self;
     postTextView.editable = YES;
 
@@ -69,7 +68,7 @@
 -(void)buildTextView {
     
     //TextView
-    postTextView = [[UITextView alloc] initWithFrame:CGRectMake(10, 105, postView.bounds.size.width/1.5, 200)];
+    postTextView = [[UITextView alloc] initWithFrame:CGRectMake(10, 115, postView.bounds.size.width/1.5, 200)];
     postTextView.backgroundColor = [UIColor clearColor];
     postTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
     CGPoint scrollPoint = postTextView.contentOffset;
@@ -107,7 +106,8 @@
 
 -(void)buildButtons {
     
-    //cameraBtn
+    // A better locaiton for the buttons are needed
+    /*//cameraBtn
     cameraBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     cameraBtn.frame = CGRectMake(10, postView.frame.size.height - 50, 40, 40);
     [cameraBtn setTitle:@"Image" forState:UIControlStateNormal];
@@ -119,7 +119,7 @@
     addImageBtn.frame = CGRectMake(250, postView.frame.size.height - 50, 40, 40);
     [addImageBtn setTitle:@"Image" forState:UIControlStateNormal];
     [addImageBtn setImage:[UIImage imageNamed:@"photo"] forState:UIControlStateNormal];
-    [addImageBtn addTarget:self action:@selector(addImage) forControlEvents:UIControlEventTouchUpInside];
+    [addImageBtn addTarget:self action:@selector(addImage) forControlEvents:UIControlEventTouchUpInside];*/
     
     //Post
     UIButton *postBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
@@ -135,8 +135,9 @@
     
     [postView addSubview:postBtn];
     [postView addSubview:cancelBtn];
-    [postView addSubview:cameraBtn];
-    [postView addSubview:addImageBtn];
+    
+    //[postView addSubview:cameraBtn];
+    //[postView addSubview:addImageBtn];
 }
 
 -(void)buildImage {
@@ -162,7 +163,7 @@
     [postView addSubview:imageIcon];
 }
 
-////This function is here to demostrate closing the postview controller but needs to be added to the navigation class once the group branch is merged with master
+//This function is here to demostrate closing the postview controller but needs to be added to the navigation class once the group branch is merged with master
 - (void)close {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
