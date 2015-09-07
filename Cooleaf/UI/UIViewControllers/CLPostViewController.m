@@ -68,7 +68,7 @@
 -(void)buildTextView {
     
     //TextView
-    postTextView = [[UITextView alloc] initWithFrame:CGRectMake(10, 115, postView.bounds.size.width/1.5, 200)];
+    postTextView = [[UITextView alloc] initWithFrame:CGRectMake(10, 115, postView.bounds.size.width - 10, 200)];
     postTextView.backgroundColor = [UIColor clearColor];
     postTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
     CGPoint scrollPoint = postTextView.contentOffset;
