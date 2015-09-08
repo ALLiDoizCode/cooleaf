@@ -49,13 +49,13 @@
 # pragma menuGradientSecondColor
 
 + (UIColor *)menuGradientSecondColor {
-    return [self UIColorFromRGB:0x92A5C5];
+    return [self UIColorFromRGB:0xa889AB7];
 }
 
 # pragma menuGradientThirdColor
 
 + (UIColor *)menuGradientThirdColor {
-    return [self UIColorFromRGB:0xa889AB7];
+    return [self UIColorFromRGB:0x47546E];
 }
 
 # pragma menuGradientFourthColor
@@ -66,6 +66,25 @@
 
 + (UIColor *)menuTextColor {
     return [self UIColorFromRGB:0xFDFDFD];
+}
+
+# pragma offWhite
+
++ (UIColor *)offWhite {
+    return  [self UIColorFromRGB:0xFDFDFD];
+}
+
+# pragma barWhite
+
++ (UIColor *)barWhite {
+    
+    return [self UIColorFromRGB:0xF0F0F0];
+}
+
+# pragma offBlack
+
++ (UIColor *)offBlack {
+    return  [self UIColorFromRGB:0x252525];
 }
 
 # pragma UIColorFromRGB

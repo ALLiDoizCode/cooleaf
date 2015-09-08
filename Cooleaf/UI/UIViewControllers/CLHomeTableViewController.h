@@ -10,6 +10,8 @@
 #import "CLEventCell.h"
 #import "IAuthenticationInteractor.h"
 #import "IEventInteractor.h"
+#import "CLAuthenticationPresenter.h"
+#import "CLEventPresenter.h"
 
 @interface CLHomeTableViewController : UITableViewController <CLEventCellDelegate, IAuthenticationInteractor, IEventInteractor,
                                                         UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate,UISearchDisplayDelegate>
@@ -23,6 +25,6 @@
 
 - (void)initAuthPresenter;
 - (void)initPresenter;
-- (void)searchDisplay;
+- (void)setupDisplay;
 
 @end

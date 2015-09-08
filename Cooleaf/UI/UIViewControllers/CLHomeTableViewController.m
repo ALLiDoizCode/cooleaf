@@ -10,11 +10,13 @@
 #import "CLHomeTableViewController.h"
 #import "UIColor+CustomColors.h"
 #import "CLProfileTableViewController.h"
+#import "CLPostViewController.h"
 #import "CLAuthenticationPresenter.h"
 #import "CLEventPresenter.h"
 #import "CLEvent.h"
 #import "CLClient.h"
 #import "CLSearchViewController.h"
+
 
 @interface CLHomeTableViewController () {
     @private
@@ -38,8 +40,8 @@
     // Searchbar color
     barColor = [UIColor UIColorFromRGB:0x69C4BB];
     
-    // Init SearchDisplay
-    [self searchDisplay];
+    // Init bar display
+    [self setupDisplay];
     
     // Init nav bar color
     self.navigationController.navigationBar.barTintColor = [UIColor colorPrimary];
@@ -79,19 +81,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - searchDisplay
+#pragma mark - setupDisplay
 
--(void)searchDisplay {
+-(void)setupDisplay {
     // Do any additional setup after loading the view.
     UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchViewController)];
     
-    UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
-    NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
+    UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(postViewController)];
     
+    NSArray *rightButtons = [NSArray arrayWithObjects:searchBtn, commentBtn, nil];
     [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
     
     searchBtn.tintColor = [UIColor whiteColor];
     commentBtn.tintColor = [UIColor whiteColor];
+}
+
+# pragma mark - postViewController
+
+- (void)postViewController {
+    CLPostViewController *post = [self.storyboard instantiateViewControllerWithIdentifier:@"Post"];
+    [[self navigationController] presentViewController:post animated:YES completion:nil];
 }
 
 #pragma mark - toggleSearch
@@ -102,6 +111,8 @@
     [self.searchBar becomeFirstResponder];
     self.searchBar.barTintColor = barColor;
 }
+
+# pragma mark - searchViewController
 
 - (void)searchViewController {
     CLSearchViewController *search = [self.storyboard instantiateViewControllerWithIdentifier:@"search"];

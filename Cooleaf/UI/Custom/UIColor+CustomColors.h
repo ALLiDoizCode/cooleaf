@@ -20,6 +20,12 @@
 + (UIColor *)menuGradientThirdColor;
 + (UIColor *)menuGradientFourthColor;
 + (UIColor *)menuTextColor;
++ (UIColor *)gradientColor1;
++ (UIColor *)gradientColor2;
++ (UIColor *)gradientColor3;
++ (UIColor *)offWhite;
++ (UIColor *)offBlack;
++ (UIColor *)barWhite;
 + (UIColor *)UIColorFromRGB:(int)rgbValue;
 
 @end
