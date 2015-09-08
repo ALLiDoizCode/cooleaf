@@ -144,13 +144,15 @@ static NSString *const kScope = @"past";
 
 - (CLEventCell *)configureEventCell:(CLEventCell *)eventCell indexPath:(NSIndexPath *)indexPath {
     if (_pastEvents != nil) {
-        // Set cell shadow
-        eventCell.layer.shadowOpacity = 0.75f;
-        eventCell.layer.shadowRadius = 1.0;
-        eventCell.layer.shadowOffset = CGSizeMake(0, 0);
-        eventCell.layer.shadowColor = [UIColor blackColor].CGColor;
-        eventCell.layer.zPosition = 777;
-        
+        if (eventCell == nil) {
+            // Set cell shadow
+            eventCell.layer.shadowOpacity = 0.75f;
+            eventCell.layer.shadowRadius = 1.0;
+            eventCell.layer.shadowOffset = CGSizeMake(0, 0);
+            eventCell.layer.shadowColor = [UIColor blackColor].CGColor;
+            eventCell.layer.zPosition = 777;
+        }
+            
         // Get the image url
         NSString *imageUrl = [_pastEvents objectAtIndex:[indexPath row]][@"image"][@"url"];
         NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
@@ -195,8 +197,9 @@ static NSString *const kScope = @"past";
     switch (self.segmentedBar.selectedSegmentIndex) {
         case 0:
             return self.tableView.rowHeight;
-        case 1:
-            return self.tableView.rowHeight;
+        case 1: {
+            return self.tableView.rowHeight = 300;
+        }
         case 2:;
             return [CLGroupTableViewCell getHeightForUser:_user];
         default:
