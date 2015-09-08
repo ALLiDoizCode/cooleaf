@@ -19,6 +19,7 @@
 #import "CLSearchViewController.h"
 #import "CLEventController.h"
 #import "NPAppDelegate.h"
+#import "CLCommentController.h"
 
 @interface CLHomeTableViewController() {
     @private
@@ -138,6 +139,8 @@
     CLEvent *event = [_events objectAtIndex:[indexPath row]];
     
     // Add a comment
+    CLCommentController *commentController = [self.storyboard instantiateViewControllerWithIdentifier:@"commentController"];
+    [[self navigationController] presentViewController:commentController animated:YES completion:nil];
 }
 
 - (void)didPressJoin:(CLEventCell *)cell {
@@ -342,6 +345,5 @@
     [_activityIndicator stopAnimating];
     [_activityIndicator setHidden:YES];
 }
-
 
 @end

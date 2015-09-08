@@ -125,7 +125,7 @@
     UIButton *postBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     postBtn.frame = CGRectMake(220, 30, 100, 18);
     [postBtn setTitle:@"Post" forState:UIControlStateNormal];
-    //[postBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    [postBtn addTarget:self action:@selector(comments) forControlEvents:UIControlEventTouchUpInside];
     
     //Cancel
     UIButton *cancelBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
@@ -167,6 +167,7 @@
 - (void)close {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 //This function demostrates adding a image to teh users post but needs to be placed in a seprate class the handles adding an image from the devices gallery.
 -(void)addImage {

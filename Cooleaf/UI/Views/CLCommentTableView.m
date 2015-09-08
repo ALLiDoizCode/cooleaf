@@ -1,14 +1,15 @@
 //
-//  CLTableViewHome.m
+//  CLCommentTableView.m
 //  Cooleaf
 //
-//  Created by Jonathan Green on 9/2/15.
+//  Created by Jonathan Green on 9/8/15.
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "CLTableViewHome.h"
+#import "CLCommentTableView.h"
+#import "UIColor+CustomColors.h"
 
-@implementation CLTableViewHome
+@implementation CLCommentTableView
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -25,9 +26,13 @@
     //self.estimatedRowHeight = 400.0;
     
     
+    
     self.tableHeaderView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 100.0f)];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, 70, 70)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
+        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 160.0f)];
+        bgView.backgroundColor = [UIColor UIColorFromRGB:0xF1F1F1];
+        view.backgroundColor = [UIColor offWhite];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, 70, 70)];
         imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         imageView.image = [UIImage imageNamed:@"TestImage"];
         imageView.layer.masksToBounds = YES;
@@ -39,7 +44,7 @@
         imageView.clipsToBounds = YES;
         
         //Name
-        UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, 0, 0)];
+        UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, 0, 0)];
         labelName.textAlignment = NSTextAlignmentLeft;
         labelName.text = @"Prem Bhatia";
         labelName.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
@@ -49,7 +54,7 @@
         labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         
         //Orginization
-        UILabel *labelOrginization = [[UILabel alloc] initWithFrame:CGRectMake(0, 120.5, 0, 0)];
+        UILabel *labelOrginization = [[UILabel alloc] initWithFrame:CGRectMake(0, 110.5, 0, 0)];
         labelOrginization.textAlignment = NSTextAlignmentLeft;
         labelOrginization.text = @"Cooleaf";
         labelOrginization.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
@@ -60,7 +65,7 @@
         
         //Rewards
         int myInt = 0;
-        UILabel *labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(0, 140.5, 0, 0)];
+        UILabel *labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(0, 130.5, 0, 0)];
         labelRewards.textAlignment = NSTextAlignmentLeft;
         labelRewards.text = [NSString stringWithFormat:@"Rewards:%d", myInt];
         labelRewards.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
@@ -69,13 +74,14 @@
         [labelRewards sizeToFit];
         labelRewards.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         
+        [view addSubview:bgView];
         [view addSubview:imageView];
         [view addSubview:labelName];
         [view addSubview:labelOrginization];
         [view addSubview:labelRewards];
         view;
     });
-
+    
 }
 
 @end
