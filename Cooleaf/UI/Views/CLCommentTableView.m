@@ -49,36 +49,26 @@
         labelName.text = @"Prem Bhatia";
         labelName.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
         labelName.backgroundColor = [UIColor clearColor];
-        labelName.textColor = [UIColor grayColor];
+        labelName.textColor = [UIColor offBlack];
         [labelName sizeToFit];
         labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         
-        //Orginization
-        UILabel *labelOrginization = [[UILabel alloc] initWithFrame:CGRectMake(0, 110.5, 0, 0)];
-        labelOrginization.textAlignment = NSTextAlignmentLeft;
-        labelOrginization.text = @"Cooleaf";
-        labelOrginization.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
-        labelOrginization.backgroundColor = [UIColor clearColor];
-        labelOrginization.textColor = [UIColor grayColor];
-        [labelOrginization sizeToFit];
-        labelOrginization.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        
-        //Rewards
-        int myInt = 0;
-        UILabel *labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(0, 130.5, 0, 0)];
-        labelRewards.textAlignment = NSTextAlignmentLeft;
-        labelRewards.text = [NSString stringWithFormat:@"Rewards:%d", myInt];
-        labelRewards.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
-        labelRewards.backgroundColor = [UIColor clearColor];
-        labelRewards.textColor = [UIColor grayColor];
-        [labelRewards sizeToFit];
-        labelRewards.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        //Post
+        UILabel *labelPost = [[UILabel alloc] initWithFrame:CGRectMake(00, 110.5, 250, 0)];
+        labelPost.textAlignment = NSTextAlignmentCenter;
+        labelPost.numberOfLines = 0;
+        labelPost.preferredMaxLayoutWidth = 10;
+        labelPost.text = @"What is the next book that we will be reading?";
+        labelPost.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        labelPost.backgroundColor = [UIColor clearColor];
+        labelPost.textColor = [UIColor offBlack];
+        [labelPost sizeToFit];
+        labelPost.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         
         [view addSubview:bgView];
         [view addSubview:imageView];
         [view addSubview:labelName];
-        [view addSubview:labelOrginization];
-        [view addSubview:labelRewards];
+        [view addSubview:labelPost];
         view;
     });
     

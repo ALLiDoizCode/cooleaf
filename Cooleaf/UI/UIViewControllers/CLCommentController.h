@@ -11,11 +11,7 @@
 
 @interface CLCommentController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *bottomView;
-
-
 @property (weak, nonatomic) IBOutlet CLCommentTableView *tableView;
-@property (weak, nonatomic) IBOutlet UIView *topView;
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 

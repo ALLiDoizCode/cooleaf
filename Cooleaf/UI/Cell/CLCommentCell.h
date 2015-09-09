@@ -10,5 +10,8 @@
 
 @interface CLCommentCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *postLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end

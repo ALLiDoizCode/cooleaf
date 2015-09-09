@@ -7,6 +7,7 @@
 //
 
 #import "CLCommentCell.h"
+#import "UIColor+CustomColors.h"
 
 @implementation CLCommentCell
 
@@ -14,6 +15,8 @@
     
     _cellImage.layer.cornerRadius = _cellImage.frame.size.height/2;
     _cellImage.layer.masksToBounds = YES;
+    _nameLabel.textColor = [UIColor darkGrayColor];
+    _postLabel.textColor = [UIColor offBlack];
 
 }
 
