@@ -32,9 +32,22 @@
 
 -(void)configureView {
     
+    
+    //Name
+    UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(250, 10, 100, 18)];
+    labelTitle.textAlignment = NSTextAlignmentLeft;
+    labelTitle.text = @"Comments";
+    labelTitle.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
+    labelTitle.backgroundColor = [UIColor clearColor];
+    labelTitle.textColor = [UIColor offBlack];
+    [labelTitle sizeToFit];
+    labelTitle.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    
     _tableView.backgroundColor = [UIColor offWhite];
     _mainView.backgroundColor = [UIColor offWhite];
     _mainView.layer.cornerRadius = 3;
+    
+    [_mainView addSubview:labelTitle];
 }
 
 -(void)buildTextField {
@@ -94,6 +107,11 @@
     cell.postLabel.text = @"Hopefully something fun";
     cell.timeLabel.text = @"1h";
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Do some stuff when the row is selected
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*
