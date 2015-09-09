@@ -54,8 +54,8 @@
     UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(60, 497, 180, 25)];
     textField.backgroundColor = [UIColor clearColor];
     textField.borderStyle = UITextBorderStyleRoundedRect;
-    textField.textColor = [UIColor lightTextColor];
-    textField.placeholder = @"Leave a comment";
+    textField.textColor = [UIColor darkTextColor];
+    textField.placeholder = @"Leave a comment...";
     
     [_mainView addSubview:textField];
 }
@@ -68,6 +68,13 @@
     [sendBtn setTitle:@"Send" forState:UIControlStateNormal];
     //[sendBtn addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
     
+    //Send
+    UIButton *addImageBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    addImageBtn.frame = CGRectMake(15, 494, 30, 30);
+    [addImageBtn setTitle:@"Send" forState:UIControlStateNormal];
+    [addImageBtn setImage:[UIImage imageNamed:@"Camera"] forState:UIControlStateNormal];
+    //[sendBtn addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
+    
     //Cancel
     UIButton *cancelBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     cancelBtn.frame = CGRectMake(-10, 10, 100, 18);
@@ -76,6 +83,7 @@
     
     [_mainView addSubview:sendBtn];
     [_mainView addSubview:cancelBtn];
+    [_mainView addSubview:addImageBtn];
 }
 
 //This function is here to demostrate closing the postview controller but needs to be added to the navigation class once the group branch is merged with master
