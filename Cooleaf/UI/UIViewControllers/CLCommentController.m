@@ -41,6 +41,13 @@
     [_bottomView addSubview:textField];
 }
 
+
+-(void)buildButtons {
+    
+   
+}
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 5;
 }
