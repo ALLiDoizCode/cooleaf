@@ -569,7 +569,7 @@
                                     <outlet property="eventView" destination="aVk-Ro-7Gj" id="4vv-HO-9ch"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="informationHeader" rowHeight="44" id="ggr-LB-Iak" customClass="CLInformationTableViewcell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="informationHeader" rowHeight="44" id="ggr-LB-Iak" customClass="CLInformationTableViewHeader">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ggr-LB-Iak" id="oB3-en-T4e">
@@ -595,12 +595,49 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="z2i-9g-5WP" firstAttribute="leading" secondItem="oB3-en-T4e" secondAttribute="leading" constant="20" id="40k-Ps-pqB"/>
                                         <constraint firstAttribute="centerY" secondItem="z2i-9g-5WP" secondAttribute="centerY" id="Kz5-jv-Ar3"/>
                                         <constraint firstAttribute="centerY" secondItem="KGt-Sw-Nct" secondAttribute="centerY" id="LD1-I3-XqE"/>
                                         <constraint firstItem="KGt-Sw-Nct" firstAttribute="trailing" secondItem="oB3-en-T4e" secondAttribute="trailingMargin" id="R0f-aO-aEd"/>
                                         <constraint firstItem="KGt-Sw-Nct" firstAttribute="leading" secondItem="z2i-9g-5WP" secondAttribute="trailing" constant="30" id="rPP-wl-sFv"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="informationCell" rowHeight="44" id="1nc-aK-ls9" customClass="CLInformationTableViewcell">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1nc-aK-ls9" id="j5d-NM-8Q4">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="Zih-4M-NiN">
+                                            <rect key="frame" x="20" y="2" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="ZWz-JE-Mbz"/>
+                                                <constraint firstAttribute="height" constant="40" id="j42-HT-ZOo"/>
+                                                <constraint firstAttribute="width" secondItem="Zih-4M-NiN" secondAttribute="height" multiplier="1:1" id="l2J-kw-0tT"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="ZWz-JE-Mbz"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yb-J7-X6c">
+                                            <rect key="frame" x="90" y="11.5" width="502" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.94509803920000002" green="0.76862745099999996" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="Zih-4M-NiN" firstAttribute="leading" secondItem="j5d-NM-8Q4" secondAttribute="leading" constant="20" id="6ab-ny-c2h"/>
+                                        <constraint firstItem="0Yb-J7-X6c" firstAttribute="leading" secondItem="Zih-4M-NiN" secondAttribute="trailing" constant="30" id="IGR-Xp-Ji9"/>
+                                        <constraint firstAttribute="centerY" secondItem="0Yb-J7-X6c" secondAttribute="centerY" id="Q3M-l1-3PM"/>
+                                        <constraint firstItem="0Yb-J7-X6c" firstAttribute="trailing" secondItem="j5d-NM-8Q4" secondAttribute="trailingMargin" id="nxr-lk-tYT"/>
+                                        <constraint firstAttribute="centerY" secondItem="Zih-4M-NiN" secondAttribute="centerY" id="nzs-So-LNM"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>

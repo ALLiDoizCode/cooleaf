@@ -134,7 +134,6 @@
     if (observedObjects.count) {
         
         for (NSString* type in observedObjects) {
-            
             NSMutableArray *observersForType = [self.observers objectForKey:type];
             
             if (!observersForType) {
@@ -158,7 +157,6 @@
 - (void) unsubscribe:(NSObject *)object
 {
     for (NSString *key in self.observers.allKeys) {
-        
         NSMutableArray *subscribers = [self.observers objectForKey:key];
         
         for (Subscriber *subscriber in [NSArray arrayWithArray:subscribers]) {
@@ -173,7 +171,6 @@
     }
     
     for (NSString *key in self.publishers.allKeys) {
-        
         Subscriber *subscriber = (Subscriber *)[self.publishers objectForKey:key];
         
         if (!subscriber.target || subscriber.target == object) {

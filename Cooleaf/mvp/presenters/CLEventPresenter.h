@@ -11,6 +11,8 @@
 
 @interface CLEventPresenter : NSObject
 
+@property (nonatomic, assign) id <IEventInteractor> eventInfo;
+
 - (id)initWithInteractor:(id<IEventInteractor>)interactor;
 - (void)registerOnBus;
 - (void)unregisterOnBus;

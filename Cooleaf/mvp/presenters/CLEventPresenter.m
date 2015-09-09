@@ -16,11 +16,10 @@
 static NSInteger const PAGE = 1;
 static NSInteger const PER_PAGE = 25;
 
-@implementation CLEventPresenter {
-    
-@private
-    id <IEventInteractor> _eventInfo;
-}
+@interface CLEventPresenter()
+@end
+
+@implementation CLEventPresenter
 
 # pragma mark - Init
 
@@ -56,17 +55,14 @@ static NSInteger const PER_PAGE = 25;
 # pragma mark - Subscription Methods
 
 SUBSCRIBE(CLLoadedEvents) {
-    [_eventInfo initEvents:event.events];
+    if (_eventInfo != nil)
+        [_eventInfo initEvents:event.events];
 }
 
 SUBSCRIBE(CLLoadedUserEvents) {
-    [_eventInfo initEvents:event.events];
-}
-
-# pragma mark - dealloc
-
-- (void)dealloc {
-    [self unregisterOnBus];
+    NSLog(@"CLLoadedUserEvents");
+    if (_eventInfo != nil)
+        [_eventInfo initUserEvents:event.events];
 }
 
 @end

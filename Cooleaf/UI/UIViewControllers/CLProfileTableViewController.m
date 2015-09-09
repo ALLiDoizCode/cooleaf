@@ -53,6 +53,7 @@ static NSString *const kScope = @"past";
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [_eventPresenter unregisterOnBus];
+    _eventPresenter.eventInfo = nil;
     _eventPresenter = nil;
 }
 
@@ -78,7 +79,11 @@ static NSString *const kScope = @"past";
 # pragma mark - IEventInteractor Methods
 
 - (void)initEvents:(NSMutableArray *)events {
-    _pastEvents = events;
+    
+}
+
+- (void)initUserEvents:(NSMutableArray *)userEvents {
+    _pastEvents = userEvents;
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
@@ -134,12 +139,16 @@ static NSString *const kScope = @"past";
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 44.0;
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     CLInformationTableViewcell *infoHeader = [self.tableView dequeueReusableCellWithIdentifier:@"informationHeader"];
     if (infoHeader == nil) {
          infoHeader = [[CLInformationTableViewcell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"informationHeader"];
     }
-    return infoHeader;
+    return [infoHeader contentView];
 }
 
 # pragma mark - Cell Initialization / Mutator Methods
