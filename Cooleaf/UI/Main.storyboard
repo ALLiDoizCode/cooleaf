@@ -575,6 +575,12 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ggr-LB-Iak" id="oB3-en-T4e">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGt-Sw-Nct">
+                                            <rect key="frame" x="90" y="11.5" width="502" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="z2i-9g-5WP">
                                             <rect key="frame" x="20" y="2" width="40" height="40"/>
                                             <constraints>
@@ -588,14 +594,7 @@
                                                 </mask>
                                             </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGt-Sw-Nct">
-                                            <rect key="frame" x="90" y="11.5" width="502" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="z2i-9g-5WP" firstAttribute="leading" secondItem="oB3-en-T4e" secondAttribute="leading" constant="20" id="40k-Ps-pqB"/>
                                         <constraint firstAttribute="centerY" secondItem="z2i-9g-5WP" secondAttribute="centerY" id="Kz5-jv-Ar3"/>
@@ -604,6 +603,10 @@
                                         <constraint firstItem="KGt-Sw-Nct" firstAttribute="leading" secondItem="z2i-9g-5WP" secondAttribute="trailing" constant="30" id="rPP-wl-sFv"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="infoImage" destination="z2i-9g-5WP" id="age-A7-dJE"/>
+                                    <outlet property="infoLabel" destination="KGt-Sw-Nct" id="dIy-ib-gbo"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="informationCell" rowHeight="44" id="1nc-aK-ls9" customClass="CLInformationTableViewcell">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>

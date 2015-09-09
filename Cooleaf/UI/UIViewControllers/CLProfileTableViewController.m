@@ -9,6 +9,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "CLHomeTableViewController.h"
 #import "CLProfileTableViewController.h"
+#import "CLInformationTableViewHeader.h"
 #import "CLInformationTableViewcell.h"
 #import "CLGroupTableViewCell.h"
 #import "CLClient.h"
@@ -94,9 +95,7 @@ static NSString *const kScope = @"past";
     // Note that Obj C compiler won't work in switch statement without ';' in from of case label
     switch (self.segmentedBar.selectedSegmentIndex) {
         case 0: {
-            NSDictionary *userDict = [self getUserDictionary];
-            NSMutableArray *structures = userDict[@"role"][@"organization"][@"structures"];
-            return [structures count];
+            return 1;
         }
         case 1: {
             return [_pastEvents count];
@@ -134,21 +133,43 @@ static NSString *const kScope = @"past";
 
 # pragma mark - TableView Datasource Header
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self getNumOfSections];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 44.0;
+    switch (self.segmentedBar.selectedSegmentIndex) {
+        case 0:
+            return 44.0;
+        case 1:
+            return 0;
+        case 2:
+            return 0;
+        default:
+            return 0;
+    }
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    CLInformationTableViewcell *infoHeader = [self.tableView dequeueReusableCellWithIdentifier:@"informationHeader"];
-    if (infoHeader == nil) {
-         infoHeader = [[CLInformationTableViewcell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"informationHeader"];
+    switch (self.segmentedBar.selectedSegmentIndex) {
+        case 0: {
+            CLInformationTableViewHeader *infoHeader = [self.tableView dequeueReusableCellWithIdentifier:@"informationHeader"];
+            if (infoHeader == nil) {
+                infoHeader = [[CLInformationTableViewHeader alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"informationHeader"];
+            }
+            NSDictionary *userDict = [self getUserDictionary];
+            NSString *structureName = [userDict[@"role"][@"organization"][@"structures"] objectAtIndex:section][@"name"];
+            infoHeader.infoLabel.text = structureName;
+            return [infoHeader contentView];
+        }
+        case 1:
+            return nil;
+        case 2:
+            return nil;
+        default:
+            return nil;
     }
-    return [infoHeader contentView];
+    
 }
 
 # pragma mark - Cell Initialization / Mutator Methods
@@ -169,6 +190,8 @@ static NSString *const kScope = @"past";
 - (CLEventCell *)configureEventCell:(CLEventCell *)eventCell indexPath:(NSIndexPath *)indexPath {
     if (_pastEvents != nil) {
         if (eventCell == nil) {
+            eventCell = [[CLEventCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"historyEventCell"];
+            
             // Set cell shadow
             eventCell.layer.shadowOpacity = 0.75f;
             eventCell.layer.shadowRadius = 1.0;
@@ -201,6 +224,9 @@ static NSString *const kScope = @"past";
  *  @param groupCell
  */
 - (CLGroupTableViewCell *)configureGroupCell:(CLGroupTableViewCell *)groupCell {
+    if (groupCell == nil) {
+        groupCell = [[CLGroupTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"groupCell"];
+    }
     groupCell.user = _user;
     return groupCell;
 }
@@ -228,6 +254,26 @@ static NSString *const kScope = @"past";
             return [CLGroupTableViewCell getHeightForUser:_user];
         default:
             return UITableViewAutomaticDimension;
+    }
+}
+
+- (NSInteger)getNumOfSections {
+    switch (self.segmentedBar.selectedSegmentIndex) {
+        case 0: {
+            if (_user != nil) {
+                NSDictionary *userDict = [self getUserDictionary];
+                NSMutableArray *structures = userDict[@"role"][@"organization"][@"structures"];
+                return [structures count];
+            }
+            return 1;
+        }
+        case 1: {
+            return 1;
+        }
+        case 2:;
+            return 1;
+        default:
+            return 1;
     }
 }
 

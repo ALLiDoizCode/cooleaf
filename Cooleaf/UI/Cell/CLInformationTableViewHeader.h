@@ -10,4 +10,7 @@
 
 @interface CLInformationTableViewHeader : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *infoImage;
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+
 @end
