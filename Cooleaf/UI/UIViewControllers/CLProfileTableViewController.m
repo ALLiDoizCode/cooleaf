@@ -127,6 +127,21 @@ static NSString *const kScope = @"past";
     }
 }
 
+# pragma mark - TableView Datasource Header
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    CLInformationTableViewcell *infoHeader = [self.tableView dequeueReusableCellWithIdentifier:@"informationHeader"];
+    if (infoHeader == nil) {
+         infoHeader = [[CLInformationTableViewcell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"informationHeader"];
+    }
+    return infoHeader;
+}
+
 # pragma mark - Cell Initialization / Mutator Methods
 
 /**
