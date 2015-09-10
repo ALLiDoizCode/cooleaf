@@ -9,7 +9,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "CLHomeTableViewController.h"
 #import "CLProfileTableViewController.h"
-#import "CLInformationTableViewHeader.h"
 #import "CLInformationTableViewcell.h"
 #import "CLGroupTableViewCell.h"
 #import "CLClient.h"
@@ -17,6 +16,13 @@
 #import "CLEventPresenter.h"
 
 static NSString *const kScope = @"past";
+
+@interface CLProfileTableViewController() {
+    @private
+    NSMutableSet *_openSections;
+}
+
+@end
 
 @implementation CLProfileTableViewController {
     @private
@@ -28,6 +34,9 @@ static NSString *const kScope = @"past";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Initialize XIB file
+    [self.tableView registerNib:[UINib nibWithNibName:@"CLInformationTableViewHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:@"informationHeader"];
     
     // Go ahead and init the profile header with the user
     [self initProfileHeaderWithUser:_user];
@@ -44,6 +53,7 @@ static NSString *const kScope = @"past";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    _openSections = [NSMutableSet new];
     [self initEventPresenter];
 }
 
@@ -88,6 +98,37 @@ static NSString *const kScope = @"past";
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
 }
 
+# pragma mark - Event Cell Delegate
+
+- (void)didPressJoin:(CLEventCell *)cell {
+    
+}
+
+- (void)didPressComment:(CLEventCell *)cell {
+    
+}
+
+# pragma mark - Information Header Delegate
+
+- (void)didPressExpandCollapseButton:(CLInformationTableViewHeader *)header {
+    [self.tableView beginUpdates];
+    NSUInteger section = header.tag;
+    bool isOpen = [_openSections containsObject:@(section)];
+    if (isOpen) {
+        // Remove it
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [_openSections removeObject:@(section)];
+    }
+    else {
+        // Add it
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [_openSections addObject:@(section)];
+    }
+    [self.tableView endUpdates];
+}
+
 # pragma mark - TableView DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -95,7 +136,7 @@ static NSString *const kScope = @"past";
     // Note that Obj C compiler won't work in switch statement without ';' in from of case label
     switch (self.segmentedBar.selectedSegmentIndex) {
         case 0: {
-            return 1;
+            return [_openSections containsObject:@(section)] ? 1 : 0;
         }
         case 1: {
             return [_pastEvents count];
@@ -153,14 +194,19 @@ static NSString *const kScope = @"past";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     switch (self.segmentedBar.selectedSegmentIndex) {
         case 0: {
-            CLInformationTableViewHeader *infoHeader = [self.tableView dequeueReusableCellWithIdentifier:@"informationHeader"];
-            if (infoHeader == nil) {
-                infoHeader = [[CLInformationTableViewHeader alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"informationHeader"];
-            }
+            CLInformationTableViewHeader *infoHeader = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"informationHeader"];
+            infoHeader.tag = section;
+            
+            infoHeader.delegate = self;
             NSDictionary *userDict = [self getUserDictionary];
             NSString *structureName = [userDict[@"role"][@"organization"][@"structures"] objectAtIndex:section][@"name"];
             infoHeader.infoLabel.text = structureName;
-            return [infoHeader contentView];
+            infoHeader.backgroundView = ({
+                UIView * view = [[UIView alloc] initWithFrame:infoHeader.bounds];
+                view.backgroundColor = [UIColor lightGrayColor];
+                view;
+            });
+            return infoHeader;
         }
         case 1:
             return nil;
@@ -267,9 +313,8 @@ static NSString *const kScope = @"past";
             }
             return 1;
         }
-        case 1: {
+        case 1:
             return 1;
-        }
         case 2:;
             return 1;
         default:

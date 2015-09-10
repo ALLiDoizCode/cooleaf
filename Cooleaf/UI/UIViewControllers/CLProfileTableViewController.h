@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CLUser.h"
+#import "CLInformationTableViewHeader.h"
 #import "CLEventCell.h"
 #import "IEventInteractor.h"
 
-@interface CLProfileTableViewController : UITableViewController <IEventInteractor, CLEventCellDelegate>
+@interface CLProfileTableViewController : UITableViewController <IEventInteractor, CLEventCellDelegate, CLInformationHeaderDelegate>
 
 @property (nonatomic) CLUser *user;
 @property (weak, nonatomic) IBOutlet UIImageView *blurImage;

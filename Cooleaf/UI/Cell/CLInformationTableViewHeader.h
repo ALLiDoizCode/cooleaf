@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CLInformationTableViewHeader : UITableViewCell
+@class CLInformationTableViewHeader;
+@protocol CLInformationHeaderDelegate <NSObject>
 
+- (void)didPressExpandCollapseButton:(CLInformationTableViewHeader *)header;
+
+@end
+
+@interface CLInformationTableViewHeader : UITableViewHeaderFooterView
+
+@property (nonatomic, assign) id<CLInformationHeaderDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIImageView *infoImage;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+
+- (IBAction)expandCollapse:(UIButton *)sender;
 
 @end

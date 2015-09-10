@@ -69,6 +69,7 @@
 		4BAE00711B8EE06900779E1F /* CLUserSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */; };
 		4BAE00741B8F909500779E1F /* CLAuthenticationSuccessEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE00731B8F909500779E1F /* CLAuthenticationSuccessEvent.m */; };
 		4BBF2C2B1B9FDC6B00ECC37F /* CLInformationTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF2C2A1B9FDC6B00ECC37F /* CLInformationTableViewHeader.m */; };
+		4BBF2C2D1BA0F63500ECC37F /* CLInformationTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BBF2C2C1BA0F63500ECC37F /* CLInformationTableViewHeader.xib */; };
 		4BE63A491B94E8CE00231222 /* CLHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A481B94E8CE00231222 /* CLHomeTableViewController.m */; };
 		4BE63A4C1B94E9D800231222 /* CLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A4B1B94E9D800231222 /* CLMenuViewController.m */; };
 		4BE63A4F1B9502AD00231222 /* CLDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A4E1B9502AD00231222 /* CLDrawerViewController.m */; };
@@ -309,6 +310,7 @@
 		4BAE00731B8F909500779E1F /* CLAuthenticationSuccessEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAuthenticationSuccessEvent.m; sourceTree = "<group>"; };
 		4BBF2C291B9FDC6B00ECC37F /* CLInformationTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInformationTableViewHeader.h; sourceTree = "<group>"; };
 		4BBF2C2A1B9FDC6B00ECC37F /* CLInformationTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInformationTableViewHeader.m; sourceTree = "<group>"; };
+		4BBF2C2C1BA0F63500ECC37F /* CLInformationTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLInformationTableViewHeader.xib; sourceTree = "<group>"; };
 		4BE63A471B94E8CE00231222 /* CLHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLHomeTableViewController.h; sourceTree = "<group>"; };
 		4BE63A481B94E8CE00231222 /* CLHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHomeTableViewController.m; sourceTree = "<group>"; };
 		4BE63A4A1B94E9D800231222 /* CLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMenuViewController.h; sourceTree = "<group>"; };
@@ -830,6 +832,7 @@
 				6888B4051B99ABE5008D9CB3 /* CLGroupPostCell.m */,
 				4BBF2C291B9FDC6B00ECC37F /* CLInformationTableViewHeader.h */,
 				4BBF2C2A1B9FDC6B00ECC37F /* CLInformationTableViewHeader.m */,
+				4BBF2C2C1BA0F63500ECC37F /* CLInformationTableViewHeader.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1311,6 +1314,7 @@
 				D9809582185CA7D2008F2B61 /* NPLoginViewController.xib in Resources */,
 				523096E21AA3E24800649FB7 /* NPHomeTopCell.xib in Resources */,
 				437F3D871ABFEAD9007DE49B /* NPGroupEventsCell.xib in Resources */,
+				4BBF2C2D1BA0F63500ECC37F /* CLInformationTableViewHeader.xib in Resources */,
 				52A9A1921AACEC8B004E6C13 /* NPInterestTopCell.xib in Resources */,
 				523096C11AA28F5D00649FB7 /* NPInterestsViewController.xib in Resources */,
 				52A9A19C1AACECDA004E6C13 /* NPOtherInterestCell.xib in Resources */,
