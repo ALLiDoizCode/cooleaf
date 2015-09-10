@@ -96,6 +96,8 @@
     cell.groupImageView.image = [UIImage imageNamed:images[indexPath.row]];
     cell.labelName.text = [NSString stringWithFormat: @"#%@", names[indexPath.row]];
     
+    [cell setAccessoryType:UITableViewCellAccessoryNone];
+    
     return cell;
     
 }

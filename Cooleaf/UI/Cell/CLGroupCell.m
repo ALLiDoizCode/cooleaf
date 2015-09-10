@@ -18,11 +18,11 @@
     UIColor *offWhite = [UIColor UIColorFromRGB:0xFDFDFD];
     
     //Background View
-    UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 285, 125)];
+    UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(18, 20, 285, 125)];
     bgview.backgroundColor = [UIColor clearColor];
     
     //Blur
-    FXBlurView *blur = [[FXBlurView alloc] initWithFrame:CGRectMake(20, 105, 285, 40)];
+    FXBlurView *blur = [[FXBlurView alloc] initWithFrame:CGRectMake(18, 105, 285, 40)];
     blur.backgroundColor = [UIColor clearColor];
     blur.tintColor = [UIColor blackColor];
     blur.alpha = 0.7;
@@ -39,7 +39,7 @@
     _groupImageView.clipsToBounds = YES;
     
     //Icon Image
-   UIImageView *IconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(545, 118, 20, 20)];
+   UIImageView *IconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(505, 118, 20, 20)];
    IconImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     IconImageView.image = [UIImage imageNamed:@"Particapant.png"];
     IconImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -49,7 +49,7 @@
     IconImageView.clipsToBounds = YES;
     
     //Name
-    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(70, 120, 0, 0)];
+    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(68, 120, 0, 0)];
     _labelName.textAlignment = NSTextAlignmentLeft;
     _labelName.text = @"#Prem Bhatia";
     _labelName.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
@@ -59,7 +59,7 @@
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Count Label
-    _labelCount = [[UILabel alloc] initWithFrame:CGRectMake(480, 120, 0, 0)];
+    _labelCount = [[UILabel alloc] initWithFrame:CGRectMake(458, 120, 0, 0)];
     _labelCount.textAlignment = NSTextAlignmentLeft;
     _labelCount.text = @"11";
     _labelCount.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
