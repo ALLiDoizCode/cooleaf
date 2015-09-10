@@ -201,11 +201,6 @@ static NSString *const kScope = @"past";
             NSDictionary *userDict = [self getUserDictionary];
             NSString *structureName = [userDict[@"role"][@"organization"][@"structures"] objectAtIndex:section][@"name"];
             infoHeader.infoLabel.text = structureName;
-            infoHeader.backgroundView = ({
-                UIView * view = [[UIView alloc] initWithFrame:infoHeader.bounds];
-                view.backgroundColor = [UIColor lightGrayColor];
-                view;
-            });
             return infoHeader;
         }
         case 1:
