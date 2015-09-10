@@ -111,6 +111,8 @@
 		6877AFCC1B997D3F00113B86 /* CLDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFCB1B997D3F00113B86 /* CLDetailView.m */; };
 		6888B4031B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888B4021B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m */; };
 		6888B4061B99ABE5008D9CB3 /* CLGroupPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888B4051B99ABE5008D9CB3 /* CLGroupPostCell.m */; };
+		68B07EA91BA1313000FCF806 /* CCColorCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B07EA61BA1313000FCF806 /* CCColorCube.m */; };
+		68B07EAA1BA1313000FCF806 /* CCLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */; };
 		68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */; };
 		68CDDC431B8EC279004C2897 /* CLTagGroupPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC421B8EC279004C2897 /* CLTagGroupPresenter.m */; };
 		68CDDC461B8EC3DF004C2897 /* CLTagPresenters.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC451B8EC3DF004C2897 /* CLTagPresenters.m */; };
@@ -381,6 +383,10 @@
 		6888B4021B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupPostViewcontroller.m; sourceTree = "<group>"; };
 		6888B4041B99ABE5008D9CB3 /* CLGroupPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupPostCell.h; sourceTree = "<group>"; };
 		6888B4051B99ABE5008D9CB3 /* CLGroupPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupPostCell.m; sourceTree = "<group>"; };
+		68B07EA51BA1313000FCF806 /* CCColorCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCColorCube.h; sourceTree = "<group>"; };
+		68B07EA61BA1313000FCF806 /* CCColorCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCColorCube.m; sourceTree = "<group>"; };
+		68B07EA71BA1313000FCF806 /* CCLocalMaximum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocalMaximum.h; sourceTree = "<group>"; };
+		68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLocalMaximum.m; sourceTree = "<group>"; };
 		68CDDC081B8E8BB0004C2897 /* CLEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLEvents.h; sourceTree = "<group>"; };
 		68CDDC3B1B8EB7D1004C2897 /* CLInterest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLInterest.h; sourceTree = "<group>"; };
 		68CDDC3C1B8EBB4F004C2897 /* CLTagGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTagGroup.h; sourceTree = "<group>"; };
@@ -607,6 +613,10 @@
 		4B6088461B929E8A0029E659 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				68B07EA51BA1313000FCF806 /* CCColorCube.h */,
+				68B07EA61BA1313000FCF806 /* CCColorCube.m */,
+				68B07EA71BA1313000FCF806 /* CCLocalMaximum.h */,
+				68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */,
 				4B6088471B929EA20029E659 /* UIColor+CustomColors.h */,
 				4B6088481B929EA20029E659 /* UIColor+CustomColors.m */,
 			);
@@ -1421,6 +1431,7 @@
 				52A9A1961AACECC5004E6C13 /* NPInterestCell.m in Sources */,
 				4B6088491B929EA20029E659 /* UIColor+CustomColors.m in Sources */,
 				D93AAC80187B661400E9B96A /* NPTodosCell.m in Sources */,
+				68B07EAA1BA1313000FCF806 /* CCLocalMaximum.m in Sources */,
 				F9B37B981AAE0CA5003F3FB8 /* NPTagGroup.m in Sources */,
 				52A9A19B1AACECDA004E6C13 /* NPOtherInterestCell.m in Sources */,
 				6877AFC01B994C7100113B86 /* CLNavigation.m in Sources */,
@@ -1428,6 +1439,7 @@
 				4BE63A581B95205000231222 /* CLLoadedEvents.m in Sources */,
 				D93AAC8C187B6D5F00E9B96A /* NPDetailsCell.m in Sources */,
 				4BAE00591B8EDE8600779E1F /* CLAuthenticationEvent.m in Sources */,
+				68B07EA91BA1313000FCF806 /* CCColorCube.m in Sources */,
 				526DDE131AC756DB0095FC27 /* NPMemberCell.m in Sources */,
 				4BAE006E1B8EE03100779E1F /* CLInterestSubscriber.m in Sources */,
 				43EF2F191B00A8F5002A060A /* NPTagGroupsView.m in Sources */,

@@ -8,6 +8,8 @@
 
 #import "CLGroupDetailViewController.h"
 #import "UIColor+CustomColors.h"
+#import "CCColorCube.h"
+
 
 
 @interface CLGroupDetailViewController ()  {
@@ -33,20 +35,27 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     
-    self.navigationController.navigationBar.alpha = 0.7;
-    
-    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
-    
-    barColor = [UIColor UIColorFromRGB:0xF07073];
-    
-    self.navigationController.navigationBar.barTintColor = barColor;
-    
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self grabColor];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)grabColor {
+    
+    // Get four dominant colors from the image, but avoid the background color of our UI
+    CCColorCube *colorCube = [[CCColorCube alloc] init];
+    UIImage *img = [UIImage imageNamed:_currentImage];
+    NSArray *imgColors = [colorCube extractColorsFromImage:img flags:nil];
+    barColor = imgColors[10];
+    
+    self.navigationController.navigationBar.barTintColor = barColor;
+    
+    self.navigationController.navigationBar.alpha = 0.7;
+    
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
 }
 
 #pragma mark - searchDisplay
