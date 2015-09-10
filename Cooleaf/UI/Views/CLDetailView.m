@@ -66,17 +66,6 @@
     [_labelEvent sizeToFit];
     _labelEvent.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
-    
-    //Member Amount
-    _labelMemberAmount = [[UILabel alloc] initWithFrame:CGRectMake(500, 375, 0, 0)];
-    _labelMemberAmount.textAlignment = NSTextAlignmentLeft;
-    _labelMemberAmount.text = @"5 Members>";
-    _labelMemberAmount.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
-    _labelMemberAmount.backgroundColor = [UIColor clearColor];
-    _labelMemberAmount.textColor = [UIColor lightGrayColor];
-    [_labelMemberAmount sizeToFit];
-    _labelMemberAmount.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    
     //Event Sublabel
     _labelEventSub = [[UILabel alloc] initWithFrame:CGRectMake(138, 425, 0, 0)];
     _labelEventSub.textAlignment = NSTextAlignmentLeft;
@@ -160,6 +149,14 @@
     _joinBtn.layer.cornerRadius = 2;
     _joinBtn.layer.masksToBounds = YES;
      //[joinBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //Members
+    _members = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    _members.frame  = CGRectMake(230, 380, 60, 10);
+    [_members setTitle:@"5 Members>" forState:UIControlStateNormal];
+    _members.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    [_members setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    //[members addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
   
     /// member Icon
     UIImageView *memberImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 355, 40, 40)];
@@ -205,7 +202,7 @@
     [self addSubview:_labelComment];
     [self addSubview:_labelEvent];
     [self addSubview:_labelEventSub];
-    [self addSubview:_labelMemberAmount];
+    [self addSubview:_members];
     [self addSubview:_postBtn];
     [self addSubview:_joinBtn];
     [self addSubview:border];
