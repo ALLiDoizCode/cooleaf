@@ -13,7 +13,7 @@
 
 
 @interface CLGroupDetailViewController ()  {
-    
+    @private
     UIColor *barColor;
 }
 
@@ -24,13 +24,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self searchDisplay];
+    [self setupSearch];
     
     _detailView.mainImageView.image = [UIImage imageNamed:_currentImage];
     _detailView.labelName.text =[NSString stringWithFormat: @"#%@", _currentName];
     [_detailView.postBtn addTarget:self action:@selector(groupPostViewController) forControlEvents:UIControlEventTouchUpInside];
-    
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -52,28 +50,24 @@
     barColor = imgColors[10];
     
     self.navigationController.navigationBar.barTintColor = barColor;
-    
     self.navigationController.navigationBar.alpha = 0.7;
-    
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
 }
 
 #pragma mark - searchDisplay
 
--(void)searchDisplay {
-    
+-(void)setupSearch {
+    // Set text on navbar to white
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
     
-    barColor = [UIColor UIColorFromRGB:0x52B6AC];
-    
+    // Set nav bar color
+    barColor = [UIColor searchNavBarColor];
     self.navigationController.navigationBar.barTintColor = barColor;
     
+    // Set buttons
     UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:nil];
-    
-    
     UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
-    
-    
+
     NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
     
     [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
@@ -82,11 +76,8 @@
     commentBtn.tintColor = [UIColor whiteColor];
 }
 
-- (void)groupPostViewController {
-    
+- (void)goToGroupPostViewController {    
     CLGroupPostViewcontroller *search = [self.storyboard instantiateViewControllerWithIdentifier:@"groupPostViewController"];
-    
-    //searchomtroller
     [[self navigationController] pushViewController:search animated:YES];
 }
 

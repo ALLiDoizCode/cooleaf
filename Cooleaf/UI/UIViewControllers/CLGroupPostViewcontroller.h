@@ -10,6 +10,7 @@
 #import "CLGroupPostCell.h"
 
 @interface CLGroupPostViewcontroller : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self searchDisplay];
+    [self setupSearch];
     
      _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // Do any additional setup after loading the view.
@@ -35,18 +35,15 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)searchDisplay {
-    
+-(void)setupSearch {
+    // Set navbar text color
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
-    
     self.title = @"Post";
     
+    // Set navbar buttons
     UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:nil];
-    
-    
     UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
-    
-    
+
     NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
     
     [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
@@ -56,16 +53,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return 5;
 }
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     CLGroupPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupPostCell"];
-    
     return cell;
 }
 

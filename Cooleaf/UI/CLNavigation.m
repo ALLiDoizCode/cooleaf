@@ -8,6 +8,9 @@
 
 #import "CLNavigation.h"
 
+/**
+ *  Classes used for navigation through side menu
+ */
 @implementation CLNavigation
 
 - (void)homeController {
@@ -16,27 +19,15 @@
     NPAppDelegate *appDelegate = (NPAppDelegate *) [UIApplication sharedApplication].delegate;
     [[appDelegate drawerController] setCenterViewController:homeNavController];
     [[appDelegate drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-    //homeController
-    
 }
 
 - (void)groupController {
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    
     CLGroupViewController *group = [storyboard instantiateViewControllerWithIdentifier:@"group"];
-    
     UINavigationController *groupNav = [[UINavigationController alloc] initWithRootViewController:group];
-    
     NPAppDelegate *appDelegate = (NPAppDelegate *) [UIApplication sharedApplication].delegate;
-    
     [[appDelegate drawerController] setCenterViewController:groupNav];
     [[appDelegate drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-    
-    
-    //groupController
-    
 }
-
 
 @end

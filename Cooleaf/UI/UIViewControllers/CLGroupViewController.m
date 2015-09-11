@@ -11,11 +11,10 @@
 #import "CLGroupDetailViewController.h"
 
 @interface CLGroupViewController () {
-    
+    @private
     NSArray *images;
     NSArray *names;
     UIColor *barColor;
-
 }
 
 @end
@@ -25,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self searchDisplay];
+    [self setupSearch];
     
     images = @[@"heavenly.jpg",@"nature.jpg",@"Running.jpg",@"garden.jpg",@"wine.jpg"];
     names = @[@"Heavenly",@"Nature",@"Running",@"Garden",@"Wine"];
@@ -37,14 +36,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    
-    self.navigationController.navigationBar.alpha = 1;
-    
-    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
-    
-    barColor = [UIColor UIColorFromRGB:0xF07073];
-    
-    self.navigationController.navigationBar.barTintColor = barColor;
+    [self setupNavBar];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,15 +52,10 @@
 
 #pragma mark - searchDisplay
 
--(void)searchDisplay {
-    
-    
+-(void)setupSearch {
     UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:nil];
-    
-    
     UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
-    
-    
+
     NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
     
     [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
@@ -88,7 +75,6 @@
 }*/
 
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CLGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupCell"];
@@ -99,13 +85,11 @@
     [cell setAccessoryType:UITableViewCellAccessoryNone];
     
     return cell;
-    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 
 #pragma mark - Navigation
 
@@ -113,17 +97,32 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
    
     if ([[segue identifier] isEqualToString:@"toDetail"]) {
-        
-        CLGroupDetailViewController *DetailView = (CLGroupDetailViewController *)[segue destinationViewController];
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        
-        NSString *currentImage = [images objectAtIndex:indexPath.row];
-        NSString *currentName = [names objectAtIndex:indexPath.row];
-        
-        DetailView.currentImage = currentImage;
-        DetailView.currentName = currentName;
+        [self goToDetailView:segue];
     }
 }
 
+# pragma mark - goToDetailView
+
+- (void)goToDetailView:(UIStoryboardSegue *)segue {
+    CLGroupDetailViewController *detailView = (CLGroupDetailViewController *)[segue destinationViewController];
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    
+    NSString *currentImage = [images objectAtIndex:indexPath.row];
+    NSString *currentName = [names objectAtIndex:indexPath.row];
+    
+    detailView.currentImage = currentImage;
+    detailView.currentName = currentName;
+
+}
+
+# pragma mark - setupNavBar
+
+- (void)setupNavBar {
+    self.navigationController.navigationBar.alpha = 1;
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    barColor = [UIColor groupNavBarColor];
+    self.navigationController.navigationBar.barTintColor = barColor;
+
+}
 
 @end

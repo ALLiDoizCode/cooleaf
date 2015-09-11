@@ -15,6 +15,7 @@
 + (UIColor *)colorAccent;
 + (UIColor *)navDrawerStart;
 + (UIColor *)navDrawerEnd;
++ (UIColor *)searchNavBarColor;
 + (UIColor *)menuGradientFirstColor;
 + (UIColor *)menuGradientSecondColor;
 + (UIColor *)menuGradientThirdColor;
@@ -26,6 +27,7 @@
 + (UIColor *)offWhite;
 + (UIColor *)offBlack;
 + (UIColor *)barWhite;
++ (UIColor *)groupNavBarColor;
 + (UIColor *)UIColorFromRGB:(int)rgbValue;
 
 @end
