@@ -45,19 +45,9 @@
     _mainImageView.layer.shouldRasterize = YES;
     _mainImageView.clipsToBounds = YES;
     
-    //send Icon
-    
-    UIImageView *sendIcon = [[UIImageView alloc] initWithFrame:CGRectMake(20, 410, 25, 25)];
-    sendIcon.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    sendIcon.image = [UIImage imageNamed:@"send.png"];
-    sendIcon.contentMode = UIViewContentModeScaleAspectFill;
-    sendIcon.layer.masksToBounds = YES;
-    sendIcon.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    sendIcon.layer.shouldRasterize = YES;
-    sendIcon.clipsToBounds = YES;
     
     //Event label
-    _labelEvent = [[UILabel alloc] initWithFrame:CGRectMake(120, 408, 0, 0)];
+    _labelEvent = [[UILabel alloc] initWithFrame:CGRectMake(40, 408, 0, 0)];
     _labelEvent.textAlignment = NSTextAlignmentLeft;
     _labelEvent.text = @"Events";
     _labelEvent.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
@@ -66,20 +56,11 @@
     [_labelEvent sizeToFit];
     _labelEvent.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
-    //Event Sublabel
-    _labelEventSub = [[UILabel alloc] initWithFrame:CGRectMake(138, 425, 0, 0)];
-    _labelEventSub.textAlignment = NSTextAlignmentLeft;
-    _labelEventSub.text = @"23 past evets, 2 upcoming evets";
-    _labelEventSub.font = [UIFont fontWithName:@"HelveticaNeue" size:8];
-    _labelEventSub.backgroundColor = [UIColor clearColor];
-    _labelEventSub.textColor = [UIColor lightGrayColor];
-    [_labelEventSub sizeToFit];
-    _labelEventSub.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
-    
-    //Name
-    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(60, 255, 0, 0)];
+    //Title
+    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(60, 255, 300, 0)];
     _labelName.textAlignment = NSTextAlignmentLeft;
+    _labelName.numberOfLines = 0;
     _labelName.text = @"#Prem Bhatia";
     _labelName.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
     _labelName.backgroundColor = [UIColor clearColor];
@@ -87,26 +68,21 @@
     [_labelName sizeToFit];
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
-    //Name
-    _labelPostName = [[UILabel alloc] initWithFrame:CGRectMake(120, 460, 0, 0)];
-    _labelPostName.textAlignment = NSTextAlignmentLeft;
-    _labelPostName.text = @"Prem Bhatia";
-    _labelPostName.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    _labelPostName.backgroundColor = [UIColor clearColor];
-    _labelPostName.textColor = [UIColor darkGrayColor];
-    [_labelPostName sizeToFit];
-    _labelPostName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     
     //Name
-    _labelPostName2 = [[UILabel alloc] initWithFrame:CGRectMake(120, 480, 0, 0)];
-    _labelPostName2.textAlignment = NSTextAlignmentLeft;
-    _labelPostName2.text = @"Position";
-    _labelPostName2.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    _labelPostName2.backgroundColor = [UIColor clearColor];
-    _labelPostName2.textColor = [UIColor lightGrayColor];
-    [_labelPostName2 sizeToFit];
-    _labelPostName2.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    _detailDescription = [[UILabel alloc] initWithFrame:CGRectMake(40, 430, 200, 0)];
+    //_detailDescription.numberOfLines = 0;
+    _detailDescription.textAlignment = NSTextAlignmentLeft;
+    //_detailDescription.text = @"Position";
+    _detailDescription.preferredMaxLayoutWidth = 200;
+    [_detailDescription setPreferredMaxLayoutWidth:YES];
+    _detailDescription.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    _detailDescription.backgroundColor = [UIColor clearColor];
+    _detailDescription.textColor = [UIColor lightGrayColor];
+    [_detailDescription sizeToFit];
+    _detailDescription.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    _detailDescription.clipsToBounds = YES;
     
     //Post Label
     _labelPost = [[UILabel alloc] initWithFrame:CGRectMake(120, 505, 300, 0)];
@@ -154,7 +130,7 @@
     
     //Members
     _members = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    _members.frame  = CGRectMake(230, 380, 60, 10);
+    _members.frame  = CGRectMake(230, 380, 70, 10);
     [_members setTitle:@"5 Participants>" forState:UIControlStateNormal];
     _members.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
     [_members setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
@@ -171,18 +147,6 @@
     memberImage.layer.rasterizationScale = [UIScreen mainScreen].scale;
     memberImage.layer.shouldRasterize = YES;
     
-    /// post Icon
-    UIImageView *postImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 455, 40, 40)];
-    postImage.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    postImage.image = [UIImage imageNamed:@"TestImage"];
-    postImage.layer.masksToBounds = YES;
-    postImage.layer.cornerRadius = postImage.frame.size.height/2;
-    postImage.layer.borderColor = [UIColor clearColor].CGColor;
-    postImage.layer.borderWidth = 3.0f;
-    postImage.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    postImage.layer.shouldRasterize = YES;
-    
-    
     
     
     //Border
@@ -190,7 +154,7 @@
     border.backgroundColor = [UIColor lightGrayColor];
     
     //Border2
-    UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 440, bgview.frame.size.width, 0.5)];
+    UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 500, bgview.frame.size.width, 0.5)];
     border2.backgroundColor = [UIColor lightGrayColor];
     
     
@@ -199,7 +163,7 @@
     [self addSubview:blur];
     [self addSubview:_labelName];
     [self addSubview:_labelPostName];
-    [self addSubview:_labelPostName2];
+    [self addSubview:_detailDescription];
     [self addSubview:_labelPost];
     [self addSubview:_labelComment];
     [self addSubview:_labelEvent];
@@ -210,8 +174,6 @@
     [self addSubview:border];
     [self addSubview:border2];
     [self addSubview:memberImage];
-    [self addSubview:postImage];
-    [self addSubview:sendIcon];
     [bgview addSubview:_mainImageView];
     
     

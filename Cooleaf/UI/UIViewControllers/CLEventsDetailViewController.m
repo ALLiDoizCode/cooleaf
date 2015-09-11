@@ -27,6 +27,13 @@
     
   
     // Get the event description
+    NSString *eventDescription = [_currentEvent eventDescription];
+    
+    //_detailView.detailDescription.text = eventDescription;
+    
+    [_detailView.detailDescription setText:eventDescription];
+    
+    
     NSString *eventName = [_currentEvent name];
     
     _detailView.labelName.text = eventName;
