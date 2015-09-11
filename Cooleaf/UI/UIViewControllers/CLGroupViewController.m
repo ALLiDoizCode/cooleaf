@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
     [self setupSearch];
     [self initPullToRefresh];
     
@@ -150,6 +150,9 @@
     
     // Set name
     cell.labelName.text = name;
+    
+    // Set participant count
+    cell.labelCount.text = [NSString stringWithFormat:@"%@", [interest userCount]];
     
     [cell setAccessoryType:UITableViewCellAccessoryNone];
     return cell;

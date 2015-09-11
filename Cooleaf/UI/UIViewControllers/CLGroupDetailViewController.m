@@ -24,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
     [self setupSearch];
     
     [_detailView.mainImageView sd_setImageWithURL:[NSURL URLWithString:self.currentImagePath]
@@ -48,8 +50,6 @@
     UIImage *img =_detailView.mainImageView.image;
     NSArray *imgColors = [colorCube extractColorsFromImage:img flags:nil];
     barColor = imgColors[1];
-    
-    NSLog(@"%@", barColor);
     
     self.navigationController.navigationBar.barTintColor = barColor;
     self.navigationController.navigationBar.alpha = 0.7;
