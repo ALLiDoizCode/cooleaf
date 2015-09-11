@@ -9,6 +9,7 @@
 #import "CLInterestPresenter.h"
 #import "CLBus.h"
 #import "CLLoadInterests.h"
+#import "CLLoadedInterests.h"
 
 @interface CLInterestPresenter()
 @end
@@ -36,6 +37,12 @@
 
 - (void)loadInterests {
     PUBLISH([[CLLoadInterests alloc] init]);
+}
+
+# pragma mark - Subscription Events
+
+SUBSCRIBE(CLLoadedInterests) {
+    [_interestInfo initInterests:event.interests];
 }
 
 @end

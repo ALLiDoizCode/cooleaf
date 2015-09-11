@@ -8,6 +8,7 @@
 
 #import "CLInterestSubscriber.h"
 #import "CLLoadInterests.h"
+#import "CLLoadedInterests.h"
 
 @implementation CLInterestSubscriber
 
@@ -23,7 +24,8 @@
 SUBSCRIBE(CLLoadInterests) {
     [_interestController getInterests:nil success:^(id JSON) {
         NSMutableArray *interests = [JSON result];
-        NSLog(@"%@", interests);
+        CLLoadedInterests *loadedInterests = [[CLLoadedInterests alloc] initWithInterests:interests];
+        PUBLISH(loadedInterests);
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];
