@@ -31,7 +31,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     CLSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell"];
     cell = [self configureSearchCell:cell];
     return cell;

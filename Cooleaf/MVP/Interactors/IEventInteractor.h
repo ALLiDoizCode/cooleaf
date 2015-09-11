@@ -9,5 +9,6 @@
 @protocol IEventInteractor <NSObject>
 
 - (void)initEvents:(NSMutableArray *)events;
+- (void)initUserEvents:(NSMutableArray *)userEvents;
 
 @end

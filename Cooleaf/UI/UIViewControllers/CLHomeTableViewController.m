@@ -16,6 +16,7 @@
 #import "CLEvent.h"
 #import "CLClient.h"
 #import "CLSearchViewController.h"
+#import "CLEventController.h"
 
 
 @interface CLHomeTableViewController () {
@@ -156,14 +157,17 @@
 - (void)initEvents:(NSMutableArray *)events {
     // Events receieved here, set into tableview
     _events = events;
-    [self.tableView numberOfRowsInSection:[_events count]];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadData];
     
     // If refreshing end refreshing
     if (self.refreshControl) {
         [self setAttributedTitle];
         [self.refreshControl endRefreshing];
     }
+}
+
+- (void)initUserEvents:(NSMutableArray *)userEvents {
+    // Used for handled back navigation from Profile when loading user events.
 }
 
 # pragma mark - Init Presenters
@@ -260,7 +264,6 @@
 }
 
 - (void)goToProfileView {
-    _eventPresenter = nil;
     [self performSegueWithIdentifier:@"Profile Segue" sender:self];
 }
 
