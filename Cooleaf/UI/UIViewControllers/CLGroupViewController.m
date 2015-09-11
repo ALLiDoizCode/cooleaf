@@ -61,11 +61,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return _interests.count;
-}
-
 #pragma mark - searchDisplay
 
 -(void)setupSearch {
@@ -92,6 +87,7 @@
 
 - (void)initInterests:(NSMutableArray *)interests {
     _interests = interests;
+    [self.tableView reloadData];
 }
 
 /*#pragma mark - Search
@@ -104,6 +100,11 @@
     [[self navigationController] pushViewController:search animated:YES];
 }*/
 
+# pragma mark - TableView Methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _interests.count;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CLGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupCell"];
