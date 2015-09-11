@@ -144,7 +144,7 @@
     _joinBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     _joinBtn.frame = CGRectMake(230, 315, 75, 30);
     [_joinBtn setTitle:@"JOIN" forState:UIControlStateNormal];
-    _joinBtn.backgroundColor = [UIColor UIColorFromRGB:0xF07073];
+    _joinBtn.backgroundColor = [UIColor groupNavBarColor];
     _joinBtn.tintColor = offWhite;
     _joinBtn.layer.cornerRadius = 2;
     _joinBtn.layer.masksToBounds = YES;
