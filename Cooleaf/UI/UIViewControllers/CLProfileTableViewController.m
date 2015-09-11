@@ -41,6 +41,7 @@ static NSString *const kScope = @"past";
     // Go ahead and init the profile header with the user
     [self initProfileHeaderWithUser:_user];
     
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.rowHeight = [self height];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.segmentedBar addTarget:self action:@selector(segmentChanged) forControlEvents:UIControlEventValueChanged];
