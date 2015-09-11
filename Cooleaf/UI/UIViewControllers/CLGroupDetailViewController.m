@@ -33,7 +33,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    //[self grabColor];
+    [self grabColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,11 +45,13 @@
     
     // Get four dominant colors from the image, but avoid the background color of our UI
     CCColorCube *colorCube = [[CCColorCube alloc] init];
-    //UIImage *img = [UIImage imageNamed:_currentImage];
-    //NSArray *imgColors = [colorCube extractColorsFromImage:img flags:nil];
-    //barColor = imgColors[10];
+    UIImage *img =_detailView.mainImageView.image;
+    NSArray *imgColors = [colorCube extractColorsFromImage:img flags:nil];
+    barColor = imgColors[1];
     
-    //self.navigationController.navigationBar.barTintColor = barColor;
+    NSLog(@"%@", barColor);
+    
+    self.navigationController.navigationBar.barTintColor = barColor;
     self.navigationController.navigationBar.alpha = 0.7;
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
 }
