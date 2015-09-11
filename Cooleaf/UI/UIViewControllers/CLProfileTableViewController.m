@@ -14,6 +14,7 @@
 #import "CLClient.h"
 #import "CLParentTag.h"
 #import "CLEventPresenter.h"
+#import "UIColor+CustomColors.h"
 
 static NSString *const kScope = @"past";
 
@@ -41,7 +42,7 @@ static NSString *const kScope = @"past";
     // Go ahead and init the profile header with the user
     [self initProfileHeaderWithUser:_user];
     
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = [UIColor offWhite];
     self.tableView.rowHeight = [self height];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.segmentedBar addTarget:self action:@selector(segmentChanged) forControlEvents:UIControlEventValueChanged];
