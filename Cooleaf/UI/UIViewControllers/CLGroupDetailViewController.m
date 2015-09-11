@@ -3,14 +3,14 @@
 //  Cooleaf
 //
 //  Created by Jonathan Green on 9/4/15.
+//  Edited by Haider Khan on 9/10/15
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "CLGroupDetailViewController.h"
 #import "UIColor+CustomColors.h"
 #import "CCColorCube.h"
-
-
 
 @interface CLGroupDetailViewController ()  {
     @private
@@ -26,14 +26,14 @@
     
     [self setupSearch];
     
-    _detailView.mainImageView.image = [UIImage imageNamed:_currentImage];
+    [_detailView.mainImageView sd_setImageWithURL:[NSURL URLWithString:self.currentImagePath]
+                                 placeholderImage:[UIImage imageNamed:nil]];
     _detailView.labelName.text =[NSString stringWithFormat: @"#%@", _currentName];
     [_detailView.postBtn addTarget:self action:@selector(goToGroupPostViewController) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    
-    [self grabColor];
+    //[self grabColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,11 +45,11 @@
     
     // Get four dominant colors from the image, but avoid the background color of our UI
     CCColorCube *colorCube = [[CCColorCube alloc] init];
-    UIImage *img = [UIImage imageNamed:_currentImage];
-    NSArray *imgColors = [colorCube extractColorsFromImage:img flags:nil];
-    barColor = imgColors[10];
+    //UIImage *img = [UIImage imageNamed:_currentImage];
+    //NSArray *imgColors = [colorCube extractColorsFromImage:img flags:nil];
+    //barColor = imgColors[10];
     
-    self.navigationController.navigationBar.barTintColor = barColor;
+    //self.navigationController.navigationBar.barTintColor = barColor;
     self.navigationController.navigationBar.alpha = 0.7;
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
 }

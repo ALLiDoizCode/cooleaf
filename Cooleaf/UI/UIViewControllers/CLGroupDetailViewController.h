@@ -12,7 +12,7 @@
 
 @interface CLGroupDetailViewController : UIViewController
 
-@property (nonatomic) NSString *currentImage;
+@property (nonatomic) NSString *currentImagePath;
 @property (nonatomic) NSString *currentName;
 @property (strong, nonatomic) IBOutlet CLDetailView *detailView;
 

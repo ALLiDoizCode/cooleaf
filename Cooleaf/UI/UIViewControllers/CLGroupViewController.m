@@ -33,13 +33,7 @@
     [self setupSearch];
     [self initPullToRefresh];
     
-//    images = @[@"heavenly.jpg",@"nature.jpg",@"Running.jpg",@"garden.jpg",@"wine.jpg"];
-//    names = @[@"Heavenly",@"Nature",@"Running",@"Garden",@"Wine"];
-    
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    //self.rowHeight = UITableViewAutomaticDimension;
-    //self.estimatedRowHeight = 400.0;
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -137,9 +131,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CLGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupCell"];
-    cell = [self configureGroupCell:cell indexPath:indexPath];
-//    cell.groupImageView.image = [UIImage imageNamed:images[indexPath.row]];
-//    cell.labelName.text = [NSString stringWithFormat: @"#%@", names[indexPath.row]];
+    
+    // Grab interest
+    CLInterest *interest = [_interests objectAtIndex:indexPath.row];
+    
+    // Get name and image
+    NSString *name = [interest name];
+    CLImage *image = [interest image];
+    
+    // Get image path
+    NSString *url = [image url];
+    NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", url];
+    fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"1600x400"];
+    
+    // Set image
+    [cell.groupImageView sd_setImageWithURL:[NSURL URLWithString:fullPath]
+                           placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    
+    // Set name
+    cell.labelName.text = name;
+    
     [cell setAccessoryType:UITableViewCellAccessoryNone];
     return cell;
 }
@@ -179,12 +190,18 @@
     CLGroupDetailViewController *detailView = (CLGroupDetailViewController *)[segue destinationViewController];
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
-//    NSString *currentImage = [images objectAtIndex:indexPath.row];
-//    NSString *currentName = [names objectAtIndex:indexPath.row];
+    CLInterest *interest = [_interests objectAtIndex:[indexPath row]];
+    CLImage *image = [interest image];
     
-//    detailView.currentImage = currentImage;
-//    detailView.currentName = currentName;
+    // Get image path
+    NSString *url = [image url];
+    NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", url];
+    fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"1600x400"];
 
+    NSString *currentName = [interest name];
+    
+    detailView.currentImagePath = fullPath;
+    detailView.currentName = currentName;
 }
 
 - (void)setAttributedTitle {
