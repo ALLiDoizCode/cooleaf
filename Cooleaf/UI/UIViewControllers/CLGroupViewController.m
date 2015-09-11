@@ -162,15 +162,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-# pragma mark - configureGroupCell
-
-- (CLGroupCell *)configureGroupCell:(CLGroupCell *)groupCell indexPath:(NSIndexPath *)indexPath {
-    [groupCell.imageView sd_setImageWithURL:[self getInterestImageURL:[indexPath row]]
-                           placeholderImage:[UIImage imageNamed:nil]];
-    
-    return groupCell;
-}
-
 # pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
