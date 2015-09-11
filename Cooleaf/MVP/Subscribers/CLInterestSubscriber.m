@@ -7,6 +7,7 @@
 //
 
 #import "CLInterestSubscriber.h"
+#import "CLLoadInterests.h"
 
 @implementation CLInterestSubscriber
 
@@ -18,5 +19,14 @@
 }
 
 # pragma subscription events
+
+SUBSCRIBE(CLLoadInterests) {
+    [_interestController getInterests:nil success:^(id JSON) {
+        NSMutableArray *interests = [JSON result];
+        NSLog(@"%@", interests);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
 
 @end

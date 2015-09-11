@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CLGroupCell.h"
+#import "IInterestInteractor.h"
 
-@interface CLGroupViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CLGroupViewController : UIViewController <IInterestInteractor, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

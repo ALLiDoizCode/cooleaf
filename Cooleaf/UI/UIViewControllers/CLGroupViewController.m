@@ -9,17 +9,20 @@
 #import "CLGroupViewController.h"
 #import "UIColor+CustomColors.h"
 #import "CLGroupDetailViewController.h"
+#import "CLInterestPresenter.h"
 
 @interface CLGroupViewController () {
     @private
-    NSArray *images;
-    NSArray *names;
-    UIColor *barColor;
+    CLInterestPresenter *_interestPresenter;
+    NSArray *_interests;
+    UIColor *_barColor;
 }
 
 @end
 
 @implementation CLGroupViewController
+
+# pragma mark - LifeCycle Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,8 +38,22 @@
     // Do any additional setup after loading the view.
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [self setupNavBar];
+    [self initInterestPresenter];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [_interestPresenter unregisterOnBus];
+    _interestPresenter = nil;
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,7 +62,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return images.count;
+    
+    return _interests.count;
 }
 
 #pragma mark - searchDisplay
@@ -62,6 +80,20 @@
     commentBtn.tintColor = [UIColor whiteColor];
 }
 
+# pragma mark - initInterestPresenter
+
+- (void)initInterestPresenter {
+    _interestPresenter = [[CLInterestPresenter alloc] initWithInteractor:self];
+    [_interestPresenter registerOnBus];
+    [_interestPresenter loadInterests];
+}
+
+# pragma mark - IInterestInteractor Methods
+
+- (void)initInterests:(NSMutableArray *)interests {
+    _interests = interests;
+}
+
 /*#pragma mark - Search
 
 - (void)SearchViewController {
@@ -75,8 +107,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CLGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupCell"];
-    cell.groupImageView.image = [UIImage imageNamed:images[indexPath.row]];
-    cell.labelName.text = [NSString stringWithFormat: @"#%@", names[indexPath.row]];
+//    cell.groupImageView.image = [UIImage imageNamed:images[indexPath.row]];
+//    cell.labelName.text = [NSString stringWithFormat: @"#%@", names[indexPath.row]];
     [cell setAccessoryType:UITableViewCellAccessoryNone];
     return cell;
 }
@@ -100,11 +132,11 @@
     CLGroupDetailViewController *detailView = (CLGroupDetailViewController *)[segue destinationViewController];
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     
-    NSString *currentImage = [images objectAtIndex:indexPath.row];
-    NSString *currentName = [names objectAtIndex:indexPath.row];
+//    NSString *currentImage = [images objectAtIndex:indexPath.row];
+//    NSString *currentName = [names objectAtIndex:indexPath.row];
     
-    detailView.currentImage = currentImage;
-    detailView.currentName = currentName;
+//    detailView.currentImage = currentImage;
+//    detailView.currentName = currentName;
 
 }
 
@@ -113,9 +145,8 @@
 - (void)setupNavBar {
     self.navigationController.navigationBar.alpha = 1;
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
-    barColor = [UIColor groupNavBarColor];
-    self.navigationController.navigationBar.barTintColor = barColor;
-
+    _barColor = [UIColor groupNavBarColor];
+    self.navigationController.navigationBar.barTintColor = _barColor;
 }
 
 @end
