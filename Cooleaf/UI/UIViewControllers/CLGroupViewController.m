@@ -152,7 +152,7 @@
 
 - (CLGroupCell *)configureGroupCell:(CLGroupCell *)groupCell indexPath:(NSIndexPath *)indexPath {
     [groupCell.imageView sd_setImageWithURL:[self getInterestImageURL:[indexPath row]]
-                       placeholderImage:[UIImage imageNamed:nil]];
+                           placeholderImage:[UIImage imageNamed:nil]];
     
     return groupCell;
 }
