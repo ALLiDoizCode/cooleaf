@@ -104,6 +104,15 @@
 		68012DE71B978E7200251544 /* CLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68012DE61B978E7200251544 /* CLSearchViewController.m */; };
 		6877AFAE1B98EF9300113B86 /* CLSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFAD1B98EF9300113B86 /* CLSearchCell.m */; };
 		6877AFB11B9905DF00113B86 /* CLPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFB01B9905DF00113B86 /* CLPostViewController.m */; };
+		6877AFBD1B99423600113B86 /* CLGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFBC1B99423600113B86 /* CLGroupViewController.m */; };
+		6877AFC01B994C7100113B86 /* CLNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFBF1B994C7100113B86 /* CLNavigation.m */; };
+		6877AFC61B9959C400113B86 /* CLGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFC51B9959C400113B86 /* CLGroupCell.m */; };
+		6877AFC91B997BCE00113B86 /* CLGroupDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFC81B997BCE00113B86 /* CLGroupDetailViewController.m */; };
+		6877AFCC1B997D3F00113B86 /* CLDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFCB1B997D3F00113B86 /* CLDetailView.m */; };
+		6888B4031B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888B4021B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m */; };
+		6888B4061B99ABE5008D9CB3 /* CLGroupPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888B4051B99ABE5008D9CB3 /* CLGroupPostCell.m */; };
+		68B07EA91BA1313000FCF806 /* CCColorCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B07EA61BA1313000FCF806 /* CCColorCube.m */; };
+		68B07EAA1BA1313000FCF806 /* CCLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */; };
 		68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */; };
 		68CDDC431B8EC279004C2897 /* CLTagGroupPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC421B8EC279004C2897 /* CLTagGroupPresenter.m */; };
 		68CDDC461B8EC3DF004C2897 /* CLTagPresenters.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC451B8EC3DF004C2897 /* CLTagPresenters.m */; };
@@ -360,6 +369,24 @@
 		6877AFAD1B98EF9300113B86 /* CLSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSearchCell.m; sourceTree = "<group>"; };
 		6877AFAF1B9905DF00113B86 /* CLPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPostViewController.h; sourceTree = "<group>"; };
 		6877AFB01B9905DF00113B86 /* CLPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPostViewController.m; sourceTree = "<group>"; };
+		6877AFBB1B99423600113B86 /* CLGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupViewController.h; sourceTree = "<group>"; };
+		6877AFBC1B99423600113B86 /* CLGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupViewController.m; sourceTree = "<group>"; };
+		6877AFBE1B994C7100113B86 /* CLNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLNavigation.h; sourceTree = "<group>"; };
+		6877AFBF1B994C7100113B86 /* CLNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLNavigation.m; sourceTree = "<group>"; };
+		6877AFC41B9959C400113B86 /* CLGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupCell.h; sourceTree = "<group>"; };
+		6877AFC51B9959C400113B86 /* CLGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupCell.m; sourceTree = "<group>"; };
+		6877AFC71B997BCE00113B86 /* CLGroupDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupDetailViewController.h; sourceTree = "<group>"; };
+		6877AFC81B997BCE00113B86 /* CLGroupDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupDetailViewController.m; sourceTree = "<group>"; };
+		6877AFCA1B997D3F00113B86 /* CLDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDetailView.h; sourceTree = "<group>"; };
+		6877AFCB1B997D3F00113B86 /* CLDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDetailView.m; sourceTree = "<group>"; };
+		6888B4011B99AB5B008D9CB3 /* CLGroupPostViewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupPostViewcontroller.h; sourceTree = "<group>"; };
+		6888B4021B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupPostViewcontroller.m; sourceTree = "<group>"; };
+		6888B4041B99ABE5008D9CB3 /* CLGroupPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupPostCell.h; sourceTree = "<group>"; };
+		6888B4051B99ABE5008D9CB3 /* CLGroupPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupPostCell.m; sourceTree = "<group>"; };
+		68B07EA51BA1313000FCF806 /* CCColorCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCColorCube.h; sourceTree = "<group>"; };
+		68B07EA61BA1313000FCF806 /* CCColorCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCColorCube.m; sourceTree = "<group>"; };
+		68B07EA71BA1313000FCF806 /* CCLocalMaximum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocalMaximum.h; sourceTree = "<group>"; };
+		68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLocalMaximum.m; sourceTree = "<group>"; };
 		68CDDC081B8E8BB0004C2897 /* CLEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLEvents.h; sourceTree = "<group>"; };
 		68CDDC3B1B8EB7D1004C2897 /* CLInterest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLInterest.h; sourceTree = "<group>"; };
 		68CDDC3C1B8EBB4F004C2897 /* CLTagGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTagGroup.h; sourceTree = "<group>"; };
@@ -537,6 +564,8 @@
 				4B6088451B929E810029E659 /* Views */,
 				4B6088441B929E620029E659 /* UIViewControllers */,
 				4B066CBE1B94BB79006A7CF1 /* Main.storyboard */,
+				6877AFBE1B994C7100113B86 /* CLNavigation.h */,
+				6877AFBF1B994C7100113B86 /* CLNavigation.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -556,6 +585,12 @@
 				68012DE61B978E7200251544 /* CLSearchViewController.m */,
 				6877AFAF1B9905DF00113B86 /* CLPostViewController.h */,
 				6877AFB01B9905DF00113B86 /* CLPostViewController.m */,
+				6877AFBB1B99423600113B86 /* CLGroupViewController.h */,
+				6877AFBC1B99423600113B86 /* CLGroupViewController.m */,
+				6877AFC71B997BCE00113B86 /* CLGroupDetailViewController.h */,
+				6877AFC81B997BCE00113B86 /* CLGroupDetailViewController.m */,
+				6888B4011B99AB5B008D9CB3 /* CLGroupPostViewcontroller.h */,
+				6888B4021B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m */,
 			);
 			path = UIViewControllers;
 			sourceTree = "<group>";
@@ -569,6 +604,8 @@
 				68012DCB1B968C3600251544 /* CLTableViewGradient.m */,
 				68012DD61B97519D00251544 /* CLTableViewHome.h */,
 				68012DD71B97519D00251544 /* CLTableViewHome.m */,
+				6877AFCA1B997D3F00113B86 /* CLDetailView.h */,
+				6877AFCB1B997D3F00113B86 /* CLDetailView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -576,6 +613,10 @@
 		4B6088461B929E8A0029E659 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				68B07EA51BA1313000FCF806 /* CCColorCube.h */,
+				68B07EA61BA1313000FCF806 /* CCColorCube.m */,
+				68B07EA71BA1313000FCF806 /* CCLocalMaximum.h */,
+				68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */,
 				4B6088471B929EA20029E659 /* UIColor+CustomColors.h */,
 				4B6088481B929EA20029E659 /* UIColor+CustomColors.m */,
 			);
@@ -780,6 +821,10 @@
 				4B4AE2621B9A4773006040F0 /* CLInformationTableViewcell.m */,
 				6877AFAC1B98EF9300113B86 /* CLSearchCell.h */,
 				6877AFAD1B98EF9300113B86 /* CLSearchCell.m */,
+				6877AFC41B9959C400113B86 /* CLGroupCell.h */,
+				6877AFC51B9959C400113B86 /* CLGroupCell.m */,
+				6888B4041B99ABE5008D9CB3 /* CLGroupPostCell.h */,
+				6888B4051B99ABE5008D9CB3 /* CLGroupPostCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1386,11 +1431,15 @@
 				52A9A1961AACECC5004E6C13 /* NPInterestCell.m in Sources */,
 				4B6088491B929EA20029E659 /* UIColor+CustomColors.m in Sources */,
 				D93AAC80187B661400E9B96A /* NPTodosCell.m in Sources */,
+				68B07EAA1BA1313000FCF806 /* CCLocalMaximum.m in Sources */,
 				F9B37B981AAE0CA5003F3FB8 /* NPTagGroup.m in Sources */,
 				52A9A19B1AACECDA004E6C13 /* NPOtherInterestCell.m in Sources */,
+				6877AFC01B994C7100113B86 /* CLNavigation.m in Sources */,
+				6877AFBD1B99423600113B86 /* CLGroupViewController.m in Sources */,
 				4BE63A581B95205000231222 /* CLLoadedEvents.m in Sources */,
 				D93AAC8C187B6D5F00E9B96A /* NPDetailsCell.m in Sources */,
 				4BAE00591B8EDE8600779E1F /* CLAuthenticationEvent.m in Sources */,
+				68B07EA91BA1313000FCF806 /* CCColorCube.m in Sources */,
 				526DDE131AC756DB0095FC27 /* NPMemberCell.m in Sources */,
 				4BAE006E1B8EE03100779E1F /* CLInterestSubscriber.m in Sources */,
 				43EF2F191B00A8F5002A060A /* NPTagGroupsView.m in Sources */,
@@ -1407,6 +1456,7 @@
 				D93AABF3186EFAD100E9B96A /* NPProfileViewController.m in Sources */,
 				4B27746D1B9AE147004BFCF4 /* CLLoadedUserEvents.m in Sources */,
 				4BA4E3051B8BC8670089CB2B /* CLRole.m in Sources */,
+				6888B4061B99ABE5008D9CB3 /* CLGroupPostCell.m in Sources */,
 				D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */,
 				68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */,
 				F9B37B941AAB9802003F3FB8 /* NPRegistrationViewController.m in Sources */,
@@ -1417,6 +1467,7 @@
 				52212E3F1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m in Sources */,
 				4B27746A1B9AC63F004BFCF4 /* CLLoadUserEvents.m in Sources */,
 				4BE63A491B94E8CE00231222 /* CLHomeTableViewController.m in Sources */,
+				6877AFC91B997BCE00113B86 /* CLGroupDetailViewController.m in Sources */,
 				D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */,
 				4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */,
 				4BA4E3111B8BC9240089CB2B /* CLUser.m in Sources */,
@@ -1452,16 +1503,19 @@
 				D9809554185CA557008F2B61 /* main.m in Sources */,
 				4BAE00601B8EDF0E00779E1F /* CLBaseSubscriber.m in Sources */,
 				4B6B56F01B98E0C8008DF039 /* CLProfileTableViewController.m in Sources */,
+				6877AFC61B9959C400113B86 /* CLGroupCell.m in Sources */,
 				4BA61B0B1B94CC6800774CC2 /* CLProfileHeaderView.m in Sources */,
 				D980958D185F2C5D008F2B61 /* NSFileManager+ImageCaching.m in Sources */,
 				4BA4E3261B8BF3940089CB2B /* CLInterest.m in Sources */,
 				D931450D18925456002325CB /* NPCompanyCell.m in Sources */,
 				4BA4E3291B8BF5E00089CB2B /* CLImage.m in Sources */,
 				4BA4E3171B8BD9360089CB2B /* CLAddress.m in Sources */,
+				6888B4031B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m in Sources */,
 				523096CA1AA291B200649FB7 /* NPHomeViewController.m in Sources */,
 				4BA4E2F61B8BC7290089CB2B /* CLDepartment.m in Sources */,
 				526DDE181AC757550095FC27 /* NPMembersViewController.m in Sources */,
 				4BE63A5D1B95811400231222 /* CLEventCell.m in Sources */,
+				6877AFCC1B997D3F00113B86 /* CLDetailView.m in Sources */,
 				523096D71AA3E17400649FB7 /* NPHomeCell.m in Sources */,
 				4BAE00681B8EDFD300779E1F /* CLAuthenticationSubscriber.m in Sources */,
 				6877AFAE1B98EF9300113B86 /* CLSearchCell.m in Sources */,

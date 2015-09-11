@@ -37,7 +37,6 @@
     
     icons = @[@"Profile",@"Profile",@"Profile",@"Profile",@"Profile"];
     icons2 = @[@"Profile"];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,6 +111,35 @@
 }
 
 # pragma mark - setupTableView Methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    CLNavigation *navigateTo = [[CLNavigation alloc] init];
+    
+    switch(indexPath.row) {
+        case 0:
+            [navigateTo homeController] ;
+            break;
+        case 1:
+            NSLog(@"1" );
+            break;
+        case 2:
+            [navigateTo groupController];
+            break;
+        case 3:
+            NSLog(@"3" );
+            break;
+        case 4:
+            NSLog(@"4" );
+            break;
+        default:
+            NSLog(@"default" );
+    }
+}
+
+# pragma mark - initTableView
 
 - (void)setupTableViewUIData {
     textColor = [UIColor menuTextColor];

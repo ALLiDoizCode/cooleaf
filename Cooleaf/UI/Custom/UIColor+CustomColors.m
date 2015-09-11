@@ -40,6 +40,12 @@
     return [UIColor colorWithRed:0.66 green:0.74 blue:0.85 alpha:1];
 }
 
+# pragma mark - searchNavBarColor
+
++ (UIColor *)searchNavBarColor {
+    return [self UIColorFromRGB:0x52B6AC];
+}
+
 # pragma menuGradientFirstColor
 
 + (UIColor *)menuGradientFirstColor {
@@ -85,6 +91,12 @@
 
 + (UIColor *)offBlack {
     return  [self UIColorFromRGB:0x252525];
+}
+
+# pragma mark - Group Nav Bar Color
+
++ (UIColor *)groupNavBarColor {
+    return [self UIColorFromRGB:0xF07073];
 }
 
 # pragma UIColorFromRGB
