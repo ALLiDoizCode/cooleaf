@@ -22,8 +22,6 @@
 
 - (void)awakeFromNib {
     
-    UIColor *offWhite = [UIColor UIColorFromRGB:0xFDFDFD];
-    
     //Background View
     UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 300)];
     bgview.backgroundColor = [UIColor clearColor];
@@ -33,7 +31,6 @@
     blur.backgroundColor = [UIColor clearColor];
     blur.tintColor = [UIColor blackColor];
     blur.alpha = 0.85;
-    
     
     //Image
     _mainImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, bgview.frame.size.width,bgview.frame.size.height)];
@@ -83,7 +80,7 @@
     _labelName.text = @"#Prem Bhatia";
     _labelName.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
     _labelName.backgroundColor = [UIColor clearColor];
-    _labelName.textColor = offWhite;
+    _labelName.textColor = [UIColor offWhite];
     [_labelName sizeToFit];
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
@@ -134,7 +131,7 @@
     _postBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     _postBtn.frame = CGRectMake(150, 315, 75, 30);
     [_postBtn setTitle:@"POST" forState:UIControlStateNormal];
-    _postBtn.backgroundColor = [UIColor UIColorFromRGB:0xE0E1E4];
+    _postBtn.backgroundColor = [UIColor postButtonColor];
     _postBtn.tintColor = [UIColor darkGrayColor];
     _postBtn.layer.cornerRadius = 2;
     _postBtn.layer.masksToBounds = YES;
@@ -145,7 +142,7 @@
     _joinBtn.frame = CGRectMake(230, 315, 75, 30);
     [_joinBtn setTitle:@"JOIN" forState:UIControlStateNormal];
     _joinBtn.backgroundColor = [UIColor groupNavBarColor];
-    _joinBtn.tintColor = offWhite;
+    _joinBtn.tintColor = [UIColor offWhite];
     _joinBtn.layer.cornerRadius = 2;
     _joinBtn.layer.masksToBounds = YES;
      //[joinBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
@@ -180,9 +177,6 @@
     postImage.layer.rasterizationScale = [UIScreen mainScreen].scale;
     postImage.layer.shouldRasterize = YES;
     
-    
-    
-    
     //Border
     UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 400, bgview.frame.size.width, 0.5)];
     border.backgroundColor = [UIColor lightGrayColor];
@@ -190,8 +184,6 @@
     //Border2
     UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 440, bgview.frame.size.width, 0.5)];
     border2.backgroundColor = [UIColor lightGrayColor];
-    
-    
     
     [self addSubview:bgview];
     [self addSubview:blur];
@@ -211,8 +203,6 @@
     [self addSubview:postImage];
     [self addSubview:sendIcon];
     [bgview addSubview:_mainImageView];
-    
-    
 }
 
 @end
