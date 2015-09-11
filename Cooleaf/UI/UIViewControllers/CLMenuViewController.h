@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CLNavigation.h"
+#import "CLUser.h"
 
 @interface CLMenuViewController : UITableViewController
 

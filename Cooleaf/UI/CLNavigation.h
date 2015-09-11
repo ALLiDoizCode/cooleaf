@@ -8,12 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "CLGroupViewController.h"
-#import "NPAppDelegate.h"
 
 @interface CLNavigation : NSObject
 
 - (void)homeController;
 - (void)groupController;
+- (void)peopleController;
 
 @end

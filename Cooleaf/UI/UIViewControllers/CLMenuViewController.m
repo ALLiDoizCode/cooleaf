@@ -10,6 +10,8 @@
 #import "CLMenuViewController.h"
 #import "UIColor+CustomColors.h"
 #import "CLClient.h"
+#import "CLPeopleViewController.h"
+#import "NPAppDelegate.h"
 
 @interface CLMenuViewController () {
     @private
@@ -134,7 +136,7 @@
             [navigateTo groupController];
             break;
         case 3:
-            NSLog(@"3" );
+            [navigateTo peopleController];
             break;
         case 4:
             NSLog(@"4" );

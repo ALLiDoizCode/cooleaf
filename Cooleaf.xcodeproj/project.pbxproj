@@ -114,6 +114,8 @@
 		68012DCC1B968C3600251544 /* CLTableViewGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 68012DCB1B968C3600251544 /* CLTableViewGradient.m */; };
 		68012DD81B97519D00251544 /* CLTableViewHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 68012DD71B97519D00251544 /* CLTableViewHome.m */; };
 		68012DE71B978E7200251544 /* CLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68012DE61B978E7200251544 /* CLSearchViewController.m */; };
+		680A64DA1BA251D4003C4B5E /* CLPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680A64D91BA251D4003C4B5E /* CLPeopleViewController.m */; };
+		680A64DD1BA255CE003C4B5E /* CLPeopleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 680A64DC1BA255CE003C4B5E /* CLPeopleCell.m */; };
 		6877AFAE1B98EF9300113B86 /* CLSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFAD1B98EF9300113B86 /* CLSearchCell.m */; };
 		6877AFB11B9905DF00113B86 /* CLPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFB01B9905DF00113B86 /* CLPostViewController.m */; };
 		6877AFBD1B99423600113B86 /* CLGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFBC1B99423600113B86 /* CLGroupViewController.m */; };
@@ -402,6 +404,10 @@
 		68012DD71B97519D00251544 /* CLTableViewHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewHome.m; sourceTree = "<group>"; };
 		68012DE51B978E7200251544 /* CLSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSearchViewController.h; sourceTree = "<group>"; };
 		68012DE61B978E7200251544 /* CLSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSearchViewController.m; sourceTree = "<group>"; };
+		680A64D81BA251D4003C4B5E /* CLPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPeopleViewController.h; sourceTree = "<group>"; };
+		680A64D91BA251D4003C4B5E /* CLPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPeopleViewController.m; sourceTree = "<group>"; };
+		680A64DB1BA255CE003C4B5E /* CLPeopleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPeopleCell.h; sourceTree = "<group>"; };
+		680A64DC1BA255CE003C4B5E /* CLPeopleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPeopleCell.m; sourceTree = "<group>"; };
 		6877AFAC1B98EF9300113B86 /* CLSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSearchCell.h; sourceTree = "<group>"; };
 		6877AFAD1B98EF9300113B86 /* CLSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSearchCell.m; sourceTree = "<group>"; };
 		6877AFAF1B9905DF00113B86 /* CLPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPostViewController.h; sourceTree = "<group>"; };
@@ -628,6 +634,8 @@
 				6877AFC81B997BCE00113B86 /* CLGroupDetailViewController.m */,
 				6888B4011B99AB5B008D9CB3 /* CLGroupPostViewcontroller.h */,
 				6888B4021B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m */,
+				680A64D81BA251D4003C4B5E /* CLPeopleViewController.h */,
+				680A64D91BA251D4003C4B5E /* CLPeopleViewController.m */,
 			);
 			path = UIViewControllers;
 			sourceTree = "<group>";
@@ -887,6 +895,8 @@
 				4BBF2C2F1BA109A400ECC37F /* CLTagTableViewCell.m */,
 				4BBF2C311BA10A8F00ECC37F /* CLTagCollectionViewCell.h */,
 				4BBF2C321BA10A8F00ECC37F /* CLTagCollectionViewCell.m */,
+				680A64DB1BA255CE003C4B5E /* CLPeopleCell.h */,
+				680A64DC1BA255CE003C4B5E /* CLPeopleCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1550,6 +1560,7 @@
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
 				4BA4E32C1B8BF8E00089CB2B /* CLTimeZone.m in Sources */,
 				4B3F2E6F1BA7884600D4934E /* CLSearchController.m in Sources */,
+				680A64DD1BA255CE003C4B5E /* CLPeopleCell.m in Sources */,
 				68012DD81B97519D00251544 /* CLTableViewHome.m in Sources */,
 				4BE63A4F1B9502AD00231222 /* CLDrawerViewController.m in Sources */,
 				4B3F2E681BA77AE900D4934E /* CLQuery.m in Sources */,
@@ -1574,6 +1585,7 @@
 				4BE63A4C1B94E9D800231222 /* CLMenuViewController.m in Sources */,
 				D9809554185CA557008F2B61 /* main.m in Sources */,
 				4BAE00601B8EDF0E00779E1F /* CLBaseSubscriber.m in Sources */,
+				680A64DA1BA251D4003C4B5E /* CLPeopleViewController.m in Sources */,
 				4B6B56F01B98E0C8008DF039 /* CLProfileTableViewController.m in Sources */,
 				6877AFC61B9959C400113B86 /* CLGroupCell.m in Sources */,
 				4BA61B0B1B94CC6800774CC2 /* CLProfileHeaderView.m in Sources */,
