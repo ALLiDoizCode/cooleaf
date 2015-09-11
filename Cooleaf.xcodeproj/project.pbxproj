@@ -163,6 +163,8 @@
 		68DDFEFA1B9F443C00EDE1CF /* CLCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DDFEF91B9F443C00EDE1CF /* CLCommentViewController.m */; };
 		68DDFF001B9F4AC500EDE1CF /* CLCommentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DDFEFF1B9F4AC500EDE1CF /* CLCommentTableView.m */; };
 		68DDFF031B9F681200EDE1CF /* CLCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DDFF021B9F681200EDE1CF /* CLCommentCell.m */; };
+		68E102901BA2C141009033AD /* CLEventsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E1028F1BA2C141009033AD /* CLEventsDetailViewController.m */; };
+		68E102931BA2C19C009033AD /* CLEventDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 68E102921BA2C19C009033AD /* CLEventDetail.m */; };
 		D9242F8E1A768070006F7D92 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9242F8D1A768070006F7D92 /* Crashlytics.framework */; };
 		D931450D18925456002325CB /* NPCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D931450C18925456002325CB /* NPCompanyCell.m */; };
 		D931450F18925467002325CB /* NPCompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D931450E18925467002325CB /* NPCompanyCell.xib */; };
@@ -541,6 +543,11 @@
 		68DDFEFF1B9F4AC500EDE1CF /* CLCommentTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCommentTableView.m; sourceTree = "<group>"; };
 		68DDFF011B9F681200EDE1CF /* CLCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCommentCell.h; sourceTree = "<group>"; };
 		68DDFF021B9F681200EDE1CF /* CLCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCommentCell.m; sourceTree = "<group>"; };
+		68D08E181B8E89E9000DEF69 /* CLLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLLogin.h; sourceTree = "<group>"; };
+		68E1028E1BA2C141009033AD /* CLEventsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEventsDetailViewController.h; sourceTree = "<group>"; };
+		68E1028F1BA2C141009033AD /* CLEventsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEventsDetailViewController.m; sourceTree = "<group>"; };
+		68E102911BA2C19C009033AD /* CLEventDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEventDetail.h; sourceTree = "<group>"; };
+		68E102921BA2C19C009033AD /* CLEventDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEventDetail.m; sourceTree = "<group>"; };
 		BFF39234F1654A6DBFF21105 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7A30D9ADB09ECA1212D0FB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D9242F8D1A768070006F7D92 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -734,6 +741,8 @@
 				680A64D91BA251D4003C4B5E /* CLPeopleViewController.m */,
 				68DDFEF81B9F443C00EDE1CF /* CLCommentViewController.h */,
 				68DDFEF91B9F443C00EDE1CF /* CLCommentViewController.m */,
+				68E1028E1BA2C141009033AD /* CLEventsDetailViewController.h */,
+				68E1028F1BA2C141009033AD /* CLEventsDetailViewController.m */,
 			);
 			path = UIViewControllers;
 			sourceTree = "<group>";
@@ -751,6 +760,8 @@
 				6877AFCB1B997D3F00113B86 /* CLDetailView.m */,
 				68DDFEFE1B9F4AC500EDE1CF /* CLCommentTableView.h */,
 				68DDFEFF1B9F4AC500EDE1CF /* CLCommentTableView.m */,
+				68E102911BA2C19C009033AD /* CLEventDetail.h */,
+				68E102921BA2C19C009033AD /* CLEventDetail.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1674,6 +1685,7 @@
 				4BAE006B1B8EE00D00779E1F /* CLEventSubscriber.m in Sources */,
 				4BA4E31A1B8BDA940089CB2B /* CLCoordinator.m in Sources */,
 				52A9A1961AACECC5004E6C13 /* NPInterestCell.m in Sources */,
+				68E102931BA2C19C009033AD /* CLEventDetail.m in Sources */,
 				4B6088491B929EA20029E659 /* UIColor+CustomColors.m in Sources */,
 				D93AAC80187B661400E9B96A /* NPTodosCell.m in Sources */,
 				68B07EAA1BA1313000FCF806 /* CCLocalMaximum.m in Sources */,
@@ -1715,6 +1727,7 @@
 				4BE1DF4C1BABD3FA009519CB /* CLLoadInterest.m in Sources */,
 				4BE1DF641BABECF5009519CB /* CLFeedController.m in Sources */,
 				F9B37B941AAB9802003F3FB8 /* NPRegistrationViewController.m in Sources */,
+				68E102901BA2C141009033AD /* CLEventsDetailViewController.m in Sources */,
 				D93AAC7B187B5C9900E9B96A /* NPDateCell.m in Sources */,
 				4BA4E34F1B8D13580089CB2B /* CLInterestController.m in Sources */,
 				43B062471AB664B0009F96CD /* NPInterestViewController.m in Sources */,
