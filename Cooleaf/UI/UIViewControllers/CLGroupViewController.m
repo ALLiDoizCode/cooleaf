@@ -26,8 +26,8 @@
     
     [self setupSearch];
     
-    images = @[@"heavenly.jpg",@"nature.jpg",@"Running.jpg",@"garden.jpg",@"wine.jpg"];
-    names = @[@"Heavenly",@"Nature",@"Running",@"Garden",@"Wine"];
+//    images = @[@"heavenly.jpg",@"nature.jpg",@"Running.jpg",@"garden.jpg",@"wine.jpg"];
+//    names = @[@"Heavenly",@"Nature",@"Running",@"Garden",@"Wine"];
     
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //self.rowHeight = UITableViewAutomaticDimension;
@@ -45,10 +45,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return images.count;
 }
-
 
 #pragma mark - searchDisplay
 
@@ -76,14 +74,10 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     CLGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupCell"];
-    
     cell.groupImageView.image = [UIImage imageNamed:images[indexPath.row]];
     cell.labelName.text = [NSString stringWithFormat: @"#%@", names[indexPath.row]];
-    
     [cell setAccessoryType:UITableViewCellAccessoryNone];
-    
     return cell;
 }
 
@@ -95,7 +89,6 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-   
     if ([[segue identifier] isEqualToString:@"toDetail"]) {
         [self goToDetailView:segue];
     }

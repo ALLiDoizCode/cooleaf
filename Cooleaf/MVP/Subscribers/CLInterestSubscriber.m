@@ -10,14 +10,12 @@
 
 @implementation CLInterestSubscriber
 
-
 # pragma init
 
 - (id)init {
     _interestController = [[CLInterestController alloc] init];
     return self;
 }
-
 
 # pragma subscription events
 
