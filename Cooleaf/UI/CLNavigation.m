@@ -11,17 +11,11 @@
 @implementation CLNavigation
 
 - (void)homeController {
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    
     UINavigationController *homeNavController = [storyboard instantiateViewControllerWithIdentifier:@"home"];
-    
-    NPAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    
+    NPAppDelegate *appDelegate = (NPAppDelegate *) [UIApplication sharedApplication].delegate;
     [[appDelegate drawerController] setCenterViewController:homeNavController];
     [[appDelegate drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-    
-    
     //homeController
     
 }
@@ -34,7 +28,7 @@
     
     UINavigationController *groupNav = [[UINavigationController alloc] initWithRootViewController:group];
     
-    NPAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    NPAppDelegate *appDelegate = (NPAppDelegate *) [UIApplication sharedApplication].delegate;
     
     [[appDelegate drawerController] setCenterViewController:groupNav];
     [[appDelegate drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
