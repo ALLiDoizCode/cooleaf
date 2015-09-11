@@ -161,7 +161,27 @@ static NSString *const kScope = @"past";
         case 1: {
             CLEventCell *eventCell = [self.tableView dequeueReusableCellWithIdentifier:@"historyEventCell" forIndexPath:indexPath];
             eventCell.delegate = self;
-            eventCell = [self configureEventCell:eventCell indexPath:indexPath];
+            
+            // Set cell shadow
+            eventCell.layer.shadowOpacity = 0.75f;
+            eventCell.layer.shadowRadius = 1.0;
+            eventCell.layer.shadowOffset = CGSizeMake(0, 0);
+            eventCell.layer.shadowColor = [UIColor blackColor].CGColor;
+            eventCell.layer.zPosition = 777;
+            
+            // Get the image url
+            NSString *imageUrl = [_pastEvents objectAtIndex:[indexPath row]][@"image"][@"url"];
+            NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
+            fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"500x200"];
+            
+            // Set it into the imageview
+            [eventCell.eventImage sd_setImageWithURL:[NSURL URLWithString:fullPath]
+                                    placeholderImage:[UIImage imageNamed:nil]];
+            
+            // Get the event description
+            NSString *eventDescription = [_pastEvents objectAtIndex:[indexPath row]][@"name"];
+            eventCell.eventDescription.text = eventDescription;
+            
             return eventCell;
         }
         case 2: {
@@ -232,32 +252,7 @@ static NSString *const kScope = @"past";
 
 - (CLEventCell *)configureEventCell:(CLEventCell *)eventCell indexPath:(NSIndexPath *)indexPath {
     if (_pastEvents != nil) {
-        if (eventCell == nil) {
-            eventCell = [[CLEventCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"historyEventCell"];
-            
-            // Set cell shadow
-            eventCell.layer.shadowOpacity = 0.75f;
-            eventCell.layer.shadowRadius = 1.0;
-            eventCell.layer.shadowOffset = CGSizeMake(0, 0);
-            eventCell.layer.shadowColor = [UIColor blackColor].CGColor;
-            eventCell.layer.zPosition = 777;
-        }
-            
-        // Get the image url
-        NSString *imageUrl = [_pastEvents objectAtIndex:[indexPath row]][@"image"][@"url"];
-        NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
-        fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"500x200"];
-        
-        // Set it into the imageview
-        [eventCell.eventImage sd_setImageWithURL:[NSURL URLWithString:fullPath]
-                           placeholderImage:[UIImage imageNamed:nil]];
-        
-        // Get the event description
-        NSString *eventDescription = [_pastEvents objectAtIndex:[indexPath row]][@"name"];
-        eventCell.eventDescription.text = eventDescription;
-        
-        return eventCell;
-    }
+            }
     return eventCell;
 }
 
