@@ -28,7 +28,7 @@
     
     _detailView.mainImageView.image = [UIImage imageNamed:_currentImage];
     _detailView.labelName.text =[NSString stringWithFormat: @"#%@", _currentName];
-    [_detailView.postBtn addTarget:self action:@selector(groupPostViewController) forControlEvents:UIControlEventTouchUpInside];
+    [_detailView.postBtn addTarget:self action:@selector(goToGroupPostViewController) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
