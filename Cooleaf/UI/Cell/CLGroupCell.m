@@ -36,7 +36,7 @@
     _groupImageView.layer.masksToBounds = YES;
     _groupImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
     _groupImageView.layer.shouldRasterize = YES;
-    _groupImageView.clipsToBounds = YES;
+    _groupImageView.clipsToBounds = NO;
     
     //Icon Image
    UIImageView *IconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(505, 118, 20, 20)];

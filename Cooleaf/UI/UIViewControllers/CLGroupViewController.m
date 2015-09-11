@@ -6,15 +6,18 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "CLGroupViewController.h"
 #import "UIColor+CustomColors.h"
 #import "CLGroupDetailViewController.h"
 #import "CLInterestPresenter.h"
+#import "CLInterest.h"
 
 @interface CLGroupViewController () {
     @private
+    UIRefreshControl *_refreshControl;
     CLInterestPresenter *_interestPresenter;
-    NSArray *_interests;
+    NSMutableArray *_interests;
     UIColor *_barColor;
 }
 
@@ -28,6 +31,7 @@
     [super viewDidLoad];
     
     [self setupSearch];
+    [self initPullToRefresh];
     
 //    images = @[@"heavenly.jpg",@"nature.jpg",@"Running.jpg",@"garden.jpg",@"wine.jpg"];
 //    names = @[@"Heavenly",@"Nature",@"Running",@"Garden",@"Wine"];
@@ -75,6 +79,25 @@
     commentBtn.tintColor = [UIColor whiteColor];
 }
 
+# pragma mark - initPullToRefresh
+
+- (void)initPullToRefresh {
+    _refreshControl = [UIRefreshControl new];
+    [_refreshControl addTarget:self action:@selector(reloadInterests) forControlEvents:UIControlEventValueChanged];
+    _refreshControl.tintColor = [UIColor groupNavBarColor];
+    [self.tableView addSubview:_refreshControl];
+    [self.tableView sendSubviewToBack:_refreshControl];
+}
+
+# pragma mark - setupNavBar
+
+- (void)setupNavBar {
+    self.navigationController.navigationBar.alpha = 1;
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    _barColor = [UIColor groupNavBarColor];
+    self.navigationController.navigationBar.barTintColor = _barColor;
+}
+
 # pragma mark - initInterestPresenter
 
 - (void)initInterestPresenter {
@@ -88,6 +111,12 @@
 - (void)initInterests:(NSMutableArray *)interests {
     _interests = interests;
     [self.tableView reloadData];
+    
+    // If refreshing end refreshing
+    if (_refreshControl) {
+        [self setAttributedTitle];
+        [_refreshControl endRefreshing];
+    }
 }
 
 /*#pragma mark - Search
@@ -108,6 +137,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CLGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupCell"];
+    cell = [self configureGroupCell:cell indexPath:indexPath];
 //    cell.groupImageView.image = [UIImage imageNamed:images[indexPath.row]];
 //    cell.labelName.text = [NSString stringWithFormat: @"#%@", names[indexPath.row]];
     [cell setAccessoryType:UITableViewCellAccessoryNone];
@@ -118,13 +148,29 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-#pragma mark - Navigation
+# pragma mark - configureGroupCell
+
+- (CLGroupCell *)configureGroupCell:(CLGroupCell *)groupCell indexPath:(NSIndexPath *)indexPath {
+    [groupCell.imageView sd_setImageWithURL:[self getInterestImageURL:[indexPath row]]
+                       placeholderImage:[UIImage imageNamed:nil]];
+    
+    return groupCell;
+}
+
+# pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"toDetail"]) {
         [self goToDetailView:segue];
     }
+}
+
+# pragma mark - reloadInterests
+
+- (void)reloadInterests {
+    if (_interestPresenter != nil)
+        [_interestPresenter loadInterests];
 }
 
 # pragma mark - goToDetailView
@@ -141,13 +187,24 @@
 
 }
 
-# pragma mark - setupNavBar
+- (void)setAttributedTitle {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, h:mm a"];
+    NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
+    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor groupNavBarColor]
+                                                                forKey:NSForegroundColorAttributeName];
+    NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+    _refreshControl.attributedTitle = attributedTitle;
+}
 
-- (void)setupNavBar {
-    self.navigationController.navigationBar.alpha = 1;
-    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
-    _barColor = [UIColor groupNavBarColor];
-    self.navigationController.navigationBar.barTintColor = _barColor;
+- (NSURL *)getInterestImageURL:(NSUInteger)row {
+    CLInterest *interest = [_interests objectAtIndex:row];
+    CLImage *image = [interest image];
+    NSString *url = [image url];
+    NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", url];
+    fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"164x164"];
+    NSLog(@"%@", fullPath);
+    return [NSURL URLWithString:fullPath];
 }
 
 @end
