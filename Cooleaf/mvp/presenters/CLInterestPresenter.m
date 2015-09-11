@@ -7,112 +7,42 @@
 //
 
 #import "CLInterestPresenter.h"
+#import "CLBus.h"
+#import "CLLoadInterests.h"
+#import "CLLoadedInterests.h"
 
+@interface CLInterestPresenter()
+@end
 
-@implementation CLInterestPresenter {
-    
-@private
-    id <IntrestInfo> _intrestInfo;
-    
-}
+@implementation CLInterestPresenter
 
-@synthesize intrestInfo = _intrestInfo;
+# pragma mark - Init
 
--(CLInterestPresenter *)initWithIntrestInfo:(id <IntrestInfo>)intrestInfo {
-    
-    if (self = [super init]) {
-        
-        _intrestInfo = intrestInfo;
-    }
-    
+- (id)initWithInteractor:(id<IInterestInteractor>)interactor {
+    _interestInfo = interactor;
     return self;
 }
 
-///Protocols
+# pragma mark - Bus Methods
 
-#pragma setIntrestId
-
--(void)setIntrestId:(NSInteger *)intrestId {
-    
+- (void)registerOnBus {
+    REGISTER();
 }
 
-#pragma setParentId
-
--(void)setParentId:(NSInteger *)parentId {
-    
+- (void)unregisterOnBus {
+    UNREGISTER();
 }
 
-#pragma setParentType
+# pragma mark - loadInterests
 
--(void)setParentType:(NSString *)parentType {
-    
+- (void)loadInterests {
+    PUBLISH([[CLLoadInterests alloc] init]);
 }
 
-#pragma setIntrestName
+# pragma mark - Subscription Events
 
--(void)setIntrestName:(NSString *)intrestName {
-    
+SUBSCRIBE(CLLoadedInterests) {
+    [_interestInfo initInterests:event.interests];
 }
-
-#pragma setIsActive
-
--(void)setIsActive:(BOOL)isActive {
-    
-}
-
-#pragma setIsMember
-
--(void)setIsMember:(BOOL)isMember {
-    
-}
-
-#pragma setIsDefault
-
--(void)setIsDefault:(BOOL)isDefault {
-    
-}
-
-#pragma setImagePath
-
--(void)setImagePath:(NSString *)imagePath {
-    
-}
-
-#pragma setImageURL
-
--(void)setImageURL:(NSString *)imageURL {
-    
-}
-
-#pragma setThumbnailPath
-
--(void)setThumbnailPath:(NSString *)thumbnail {
-    
-}
-
-#pragma setThumbnailURL
-
--(void)setThumbnailURL:(NSString *)thumbnailURL {
-    
-}
-
-#pragma setSlug
-
--(void)setSlug:(NSString *)slug {
-    
-}
-
-#pragma setType
-
--(void)setType:(NSString *)intrestType {
-    
-}
-
-#pragma setUserCount
-
--(void)setUserCount:(NSInteger *)userCount {
-    
-}
-
 
 @end

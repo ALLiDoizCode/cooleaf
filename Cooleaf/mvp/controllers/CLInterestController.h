@@ -10,4 +10,7 @@
 
 @interface CLInterestController : NSObject
 
+- (void)getInterests:(NSMutableDictionary *)params success:(void (^)(id JSON))success
+          failure:(void (^)(NSError *error))failure;
+
 @end

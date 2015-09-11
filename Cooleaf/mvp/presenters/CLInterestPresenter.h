@@ -7,27 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@protocol IntrestInfo;
+#import "IInterestInteractor.h"
 
 @interface CLInterestPresenter : NSObject
-@property(nonatomic, strong) id<IntrestInfo> intrestInfo;
 
--(CLInterestPresenter *)initWithIntrestInfo:(id <IntrestInfo>)intrestInfo;
+@property (nonatomic, assign) id<IInterestInteractor> interestInfo;
 
--(void)setIntrestId:(NSInteger *)intrestId;
--(void)setParentId:(NSInteger *)parentId;
--(void)setParentType:(NSString *)parentType;
--(void)setIntrestName:(NSString *)intrestName;
--(void)setIsActive:(BOOL)isActive;
--(void)setIsMember:(BOOL)isMember;
--(void)setIsDefault:(BOOL)isDefault;
--(void)setImagePath:(NSString *)imagePath;
--(void)setImageURL:(NSString *)imageURL;
--(void)setThumbnailPath:(NSString *)thumbnail;
--(void)setThumbnailURL:(NSString *)thumbnailURL;
--(void)setSlug:(NSString *)slug;
--(void)setType:(NSString *)intrestType;
--(void)setUserCount:(NSInteger *)userCount;
+- (id)initWithInteractor:(id<IInterestInteractor>)interactor;
+- (void)registerOnBus;
+- (void)unregisterOnBus;
+- (void)loadInterests;
 
 @end

@@ -7,7 +7,19 @@
 //
 
 #import "CLInterestController.h"
+#import "CLClient.h"
+
+static NSString *const kInterestsPath = @"interests.json";
 
 @implementation CLInterestController
+
+- (void)getInterests:(NSMutableDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    [[CLClient getInstance] GET:kInterestsPath parameters:params completion:^(id response, NSError *error) {
+        if (!error)
+            success(response);
+        else
+            failure(error);
+    }];
+}
 
 @end

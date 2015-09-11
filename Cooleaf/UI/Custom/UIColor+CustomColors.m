@@ -93,10 +93,16 @@
     return  [self UIColorFromRGB:0x252525];
 }
 
-# pragma mark - Group Nav Bar Color
+# pragma mark - groupNavBarColor
 
 + (UIColor *)groupNavBarColor {
-    return [self UIColorFromRGB:0xF07073];
+    return [self UIColorFromRGB:0xF24230];
+}
+
+# pragma mark - postButtonColor
+
++ (UIColor *)postButtonColor {
+    return [self UIColorFromRGB:0xE0E1E4];
 }
 
 # pragma UIColorFromRGB

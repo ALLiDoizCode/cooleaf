@@ -39,11 +39,17 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
 
 # pragma mark - modelClassesByResourcePath
 
+/**
+ *  Look carefully into this method fix Mantle issues
+ *
+ *  @return NSDictionary 
+ */
 + (NSDictionary *)modelClassesByResourcePath {
     return @{
              @"events/*": [CLEvent class],
              @"users/*": [CLUser class],
-             @"interests/*": [CLInterest class]
+             @"interests/*": [CLInterest class],
+             @"interests.json": [CLInterest class]
              };
 }
 

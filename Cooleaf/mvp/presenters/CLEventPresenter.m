@@ -23,7 +23,6 @@ static NSInteger const PER_PAGE = 25;
 
 # pragma mark - Init
 
-// TODO - Check initialization of protocols when switching between profile and home
 - (id)initWithInteractor:(id<IEventInteractor>)interactor {
     _eventInfo = interactor;
     return self;
@@ -60,7 +59,6 @@ SUBSCRIBE(CLLoadedEvents) {
 }
 
 SUBSCRIBE(CLLoadedUserEvents) {
-    NSLog(@"CLLoadedUserEvents");
     if (_eventInfo != nil)
         [_eventInfo initUserEvents:event.events];
 }

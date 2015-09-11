@@ -22,7 +22,7 @@
              };
 }
 
-+ (NSValueTransformer *)imageJSONTransformer {
+- (NSValueTransformer *)imageJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSDictionary *imageDict) {
         return [MTLJSONAdapter  modelOfClass:CLImage.class
                                 fromJSONDictionary:imageDict
