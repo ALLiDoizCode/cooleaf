@@ -39,7 +39,6 @@ SUBSCRIBE(CLAuthenticationEvent) {
         CLUser *user = [response result];
         NSDictionary *userDict = [user dictionaryValue];
         NSString *organizationHeader = userDict[@"role"][@"organization"][@"subdomain"];
-        NSLog(@"Organization Name: %@", organizationHeader);
         [CLClient setOrganizationHeader:organizationHeader];
         CLAuthenticationSuccessEvent *authenticationSuccessEvent = [[CLAuthenticationSuccessEvent alloc] initWithUser:user];
         PUBLISH(authenticationSuccessEvent);
