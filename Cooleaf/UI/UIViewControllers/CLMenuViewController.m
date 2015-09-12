@@ -113,7 +113,6 @@
 # pragma mark - setupTableView Methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     CLNavigation *navigateTo = [[CLNavigation alloc] init];
@@ -123,7 +122,7 @@
             [navigateTo homeController] ;
             break;
         case 1:
-            NSLog(@"1" );
+            NSLog(@"1");
             break;
         case 2:
             [navigateTo groupController];

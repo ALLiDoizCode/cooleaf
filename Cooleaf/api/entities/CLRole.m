@@ -26,7 +26,7 @@
 
 # pragma organizationJSONTransformer
 
-+ (NSValueTransformer *)organizationJSONTransformer {
+- (NSValueTransformer *)organizationJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSDictionary *organizationDict) {
         return [MTLJSONAdapter  modelOfClass:CLOrganization.class
                                 fromJSONDictionary:organizationDict
@@ -38,7 +38,7 @@
 
 # pragma branchJSONTransformer
 
-+ (NSValueTransformer *)branchJSONTransformer {
+- (NSValueTransformer *)branchJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSDictionary *branchDict) {
         return [MTLJSONAdapter  modelOfClass:CLBranch.class
                                 fromJSONDictionary:branchDict
@@ -50,7 +50,7 @@
 
 # pragma departmentJSONTransformer
 
-+ (NSValueTransformer *)departmentJSONTransformer {
+- (NSValueTransformer *)departmentJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSDictionary *deptDict) {
         return [MTLJSONAdapter  modelOfClass:CLDepartment.class
                                 fromJSONDictionary:deptDict

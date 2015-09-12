@@ -36,8 +36,9 @@ SUBSCRIBE(CLAuthenticationEvent) {
                             };
     // Pass to controller
     [authenticationController authenticate:params success:^(id response) {
-        CLUser *user = [MTLJSONAdapter modelOfClass:[CLUser class] fromJSONDictionary:[response result] error:nil];
-        NSString *organizationHeader = [response result][@"role"][@"organization"][@"subdomain"];
+        CLUser *user = [response result];
+        NSDictionary *userDict = [user dictionaryValue];
+        NSString *organizationHeader = userDict[@"role"][@"organization"][@"subdomain"];
         [CLClient setOrganizationHeader:organizationHeader];
         CLAuthenticationSuccessEvent *authenticationSuccessEvent = [[CLAuthenticationSuccessEvent alloc] initWithUser:user];
         PUBLISH(authenticationSuccessEvent);

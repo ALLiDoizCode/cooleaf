@@ -280,7 +280,12 @@
     _userNameLabel.text = [user userName];
     _userRewardsLabel.text = [NSString stringWithFormat:@"%@ %@", @"Reward Points:", [[user rewardPoints] stringValue]];
     
+    // Get user dictionary
     NSDictionary *userDict = [user dictionaryValue];
+    
+    // Get credentuals from dictionary
+    _userCredentialsLabel.text = userDict[@"role"][@"organization"][@"name"];
+    
     NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"original"]];
     [_userImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     _userImage.layer.cornerRadius = _userImage.frame.size.width / 2;
@@ -295,7 +300,7 @@
     UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
     
     messageLabel.text = @"No events currently available. Please pull down to refresh.";
-    messageLabel.textColor = [UIColor blackColor];
+    messageLabel.textColor = [UIColor darkGrayColor];
     messageLabel.numberOfLines = 0;
     messageLabel.textAlignment = NSTextAlignmentCenter;
     messageLabel.font = [UIFont fontWithName:@"Palatino-Italic" size:12];
