@@ -158,7 +158,9 @@
 # pragma mark - setUserInDrawer 
 
 - (void)setUserInDrawer:(CLUser *)user {
-    [((CLMenuViewController *) [self.drawerController leftDrawerViewController]) initUserInHeaderView:user];
+    UINavigationController *controller = (UINavigationController *) [self.drawerController leftDrawerViewController];
+    CLMenuViewController *menuController = (CLMenuViewController *) controller.viewControllers.lastObject;
+    [menuController initUserInHeaderView:user];
 }
 
 # pragma startEventProcessing

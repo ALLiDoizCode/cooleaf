@@ -149,6 +149,7 @@
 - (void)initUser:(CLUser *)user {
     
     // Init user to the navigation drawer
+    [((NPAppDelegate *) [UIApplication sharedApplication].delegate) setUserInDrawer:user];
     
     _user = user;
     [self initProfileHeaderWithUser:_user];
