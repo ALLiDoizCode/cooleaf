@@ -280,7 +280,14 @@
     _userNameLabel.text = [user userName];
     _userRewardsLabel.text = [NSString stringWithFormat:@"%@ %@", @"Reward Points:", [[user rewardPoints] stringValue]];
     
+    // Get user dictionary
     NSDictionary *userDict = [user dictionaryValue];
+    
+    NSLog(@"%@", userDict);
+
+    // Get credentuals from dictionary
+    _userCredentialsLabel.text = userDict[@"role"][@"organization"][@"subdoamin"];
+    
     NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"original"]];
     [_userImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     _userImage.layer.cornerRadius = _userImage.frame.size.width / 2;

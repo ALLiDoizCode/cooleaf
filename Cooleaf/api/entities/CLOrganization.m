@@ -37,7 +37,7 @@
 
 # pragma mark - structuresJSONTransformer
 
-+ (NSValueTransformer *)structuresJSONTransformer {
+- (NSValueTransformer *)structuresJSONTransformer {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:CLParentTag.class];
 }
 
