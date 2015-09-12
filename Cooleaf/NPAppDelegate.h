@@ -15,5 +15,8 @@
 @property (nonatomic) CLBaseNotificationRegistry *registry;
 @property (strong, nonatomic) UIWindow *window;
 @property (weak, nonatomic) MMDrawerController *drawerController;
+@property (nonatomic, assign) CLUser *user;
+
+- (void)setUserInDrawer:(CLUser *)user;
 
 @end

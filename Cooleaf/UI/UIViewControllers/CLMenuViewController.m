@@ -182,6 +182,12 @@
     });
 }
 
+# pragma mark - initUserInHeaderView
+
+- (void)initUserInHeaderView:(CLUser *)user {
+    NSLog(@"%@", user);
+}
+
 # pragma mark - TableView Helper Methods
 
 - (UIImageView *)setupHeaderImage {

@@ -7,6 +7,7 @@
 //
 
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <UIViewController+MMDrawerController.h>
 #import "CLHomeTableViewController.h"
 #import "UIColor+CustomColors.h"
 #import "CLProfileTableViewController.h"
@@ -17,9 +18,9 @@
 #import "CLClient.h"
 #import "CLSearchViewController.h"
 #import "CLEventController.h"
+#import "NPAppDelegate.h"
 
-
-@interface CLHomeTableViewController () {
+@interface CLHomeTableViewController() {
     @private
     CLAuthenticationPresenter *_authPres;
     CLEventPresenter *_eventPresenter;
@@ -37,7 +38,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
     // Searchbar color
     barColor = [UIColor UIColorFromRGB:0x69C4BB];
     
@@ -147,6 +147,9 @@
 # pragma mark - IAuthenticationInteractor methods
 
 - (void)initUser:(CLUser *)user {
+    
+    // Init user to the navigation drawer
+    
     _user = user;
     [self initProfileHeaderWithUser:_user];
     [_eventPresenter loadEvents];

@@ -11,4 +11,6 @@
 
 @interface CLMenuViewController : UITableViewController
 
+- (void)initUserInHeaderView:(CLUser *)user;
+
 @end
