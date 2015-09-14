@@ -8,7 +8,7 @@
 
 #import <SSKeychain/SSKeychain.h>
 #import <Crashlytics/Crashlytics.h>
-
+#import "CLMenuViewController.h"
 #import "NPAppDelegate.h"
 #import "NPCooleafClient.h"
 #import "NPEventListViewController.h"
@@ -153,6 +153,14 @@
     // Set gestures
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+}
+
+# pragma mark - setUserInDrawer 
+
+- (void)setUserInDrawer:(CLUser *)user {
+    UINavigationController *controller = (UINavigationController *) [self.drawerController leftDrawerViewController];
+    CLMenuViewController *menuController = (CLMenuViewController *) controller.viewControllers.lastObject;
+    [menuController initUserInHeaderView:user];
 }
 
 # pragma startEventProcessing

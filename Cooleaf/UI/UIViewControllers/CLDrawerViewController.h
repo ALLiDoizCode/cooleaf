@@ -10,6 +10,7 @@
 #import "NPLoginViewController.h"
 #import "MMDrawerController.h"
 #import "NPCooleafClient.h"
+#import "CLUser.h"
 
 @interface CLDrawerViewController : MMDrawerController
 

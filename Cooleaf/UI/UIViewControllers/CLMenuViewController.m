@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "CLMenuViewController.h"
 #import "UIColor+CustomColors.h"
 
@@ -16,6 +17,10 @@
     NSArray *icons;
     NSArray *icons2;
     UIColor *textColor;
+    UIImageView *userImageView;
+    UILabel *userNameLabel;
+    UILabel *userCredentialsLabel;
+    UILabel *userRewardsLabel;
 }
 
 @end
@@ -149,54 +154,67 @@
 }
 
 - (void)setupTableView {
-    
     self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.opaque = NO;
     self.tableView.backgroundColor = [UIColor clearColor];
+}
+
+# pragma mark - initUserInHeaderView
+
+- (void)initUserInHeaderView:(CLUser *)user {
+    
+    // Get user dictionary
+    NSDictionary *userDict = [user dictionaryValue];
+    
+    // Get info
+    NSString *userName = [user userName];
+    NSString *userCredentials = userDict[@"role"][@"organization"][@"name"];
+    NSString *rewardPoints = [[user rewardPoints] stringValue];
+    NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"original"]];
+
     self.tableView.tableHeaderView = ({
-        
         // Initialize Header Views
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
         // Header ImageView
-        UIImageView *imageView = [self setupHeaderImage];
+        userImageView = [self setupHeaderImage];
+        [userImageView sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
         //Border
         UIView *border = [self setupHeaderBorder];
         //Name
-        UILabel *labelName = [self setupHeaderLabelName];
+        userNameLabel = [self setupHeaderLabelName:userName];
         //Orginization
-        UILabel *labelOrganization = [self setupHeaderOrganizationLabel];
+        userCredentialsLabel = [self setupHeaderOrganizationLabel:userCredentials];
         //Rewards
-        int rewardPoints = 0;
-        UILabel *labelRewards = [self setupHeaderRewardsLabel:rewardPoints];
+        userRewardsLabel = [self setupHeaderRewardsLabel:rewardPoints];
         
         // Add views
-        [view addSubview:imageView];
-        [view addSubview:labelName];
-        [view addSubview:labelOrganization];
-        [view addSubview:labelRewards];
+        [view addSubview:userImageView];
+        [view addSubview:userNameLabel];
+        [view addSubview:userCredentialsLabel];
+        [view addSubview:userRewardsLabel];
         [view addSubview:border];
         view;
-        
+
     });
 }
 
 # pragma mark - TableView Helper Methods
 
 - (UIImageView *)setupHeaderImage {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(-5, 20, 70, 70)];
-    imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    imageView.image = [UIImage imageNamed:@"TestImage"];
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    imageView.layer.masksToBounds = YES;
-    imageView.layer.cornerRadius = imageView.frame.size.height/2;
-    imageView.layer.borderColor = [UIColor clearColor].CGColor;
-    imageView.layer.borderWidth = 3.0f;
-    imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    imageView.layer.shouldRasterize = YES;
-    imageView.clipsToBounds = YES;
-    return imageView;
+    userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(-5, 20, 70, 70)];
+    userImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    userImageView.contentMode = UIViewContentModeScaleAspectFill;
+    userImageView.layer.masksToBounds = YES;
+    userImageView.layer.cornerRadius = userImageView.frame.size.height/2;
+    userImageView.layer.borderColor = [UIColor clearColor].CGColor;
+    userImageView.layer.borderWidth = 3.0f;
+    userImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    userImageView.layer.shouldRasterize = YES;
+    userImageView.clipsToBounds = YES;
+    
+    return userImageView;
 }
 
 - (UIView *)setupHeaderBorder {
@@ -205,40 +223,40 @@
     return border;
 }
 
-- (UILabel *)setupHeaderLabelName {
-    UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(-7, 100, 0, 0)];
-    labelName.textAlignment = NSTextAlignmentLeft;
-    labelName.text = @"Prem Bhatia";
-    labelName.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
-    labelName.backgroundColor = [UIColor clearColor];
-    labelName.textColor = textColor;
-    [labelName sizeToFit];
-    labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    return labelName;
+- (UILabel *)setupHeaderLabelName:(NSString *)userName {
+    userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 100, 0, 0)];
+    userNameLabel.textAlignment = NSTextAlignmentLeft;
+    userNameLabel.text = userName;
+    userNameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    userNameLabel.backgroundColor = [UIColor clearColor];
+    userNameLabel.textColor = textColor;
+    [userNameLabel sizeToFit];
+    userNameLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+    return userNameLabel;
 }
 
-- (UILabel *)setupHeaderOrganizationLabel {
-    UILabel *labelOrganization = [[UILabel alloc] initWithFrame:CGRectMake(-3.5, 120, 0, 0)];
-    labelOrganization.textAlignment = NSTextAlignmentLeft;
-    labelOrganization.text = @"Cooleaf";
-    labelOrganization.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
-    labelOrganization.backgroundColor = [UIColor clearColor];
-    labelOrganization.textColor = textColor;
-    [labelOrganization sizeToFit];
-    labelOrganization.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    return labelOrganization;
+- (UILabel *)setupHeaderOrganizationLabel:(NSString *)userCredentials {
+    userCredentialsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 120, 0, 0)];
+    userCredentialsLabel.textAlignment = NSTextAlignmentLeft;
+    userCredentialsLabel.text = userCredentials;
+    userCredentialsLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    userCredentialsLabel.backgroundColor = [UIColor clearColor];
+    userCredentialsLabel.textColor = textColor;
+    [userCredentialsLabel sizeToFit];
+    userCredentialsLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+    return userCredentialsLabel;
 }
 
-- (UILabel *)setupHeaderRewardsLabel:(int)rewardPoints {
-    UILabel *rewardsLabel = [[UILabel alloc] initWithFrame:CGRectMake(-5, 140, 0, 0)];
-    rewardsLabel.textAlignment = NSTextAlignmentLeft;
-    rewardsLabel.text = [NSString stringWithFormat:@"Rewards:%d", rewardPoints];
-    rewardsLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
-    rewardsLabel.backgroundColor = [UIColor clearColor];
-    rewardsLabel.textColor = textColor;
-    [rewardsLabel sizeToFit];
-    rewardsLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    return rewardsLabel;
+- (UILabel *)setupHeaderRewardsLabel:(NSString *)rewardPoints {
+    userRewardsLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 140, 0, 0)];
+    userRewardsLabel.textAlignment = NSTextAlignmentLeft;
+    userRewardsLabel.text = [NSString stringWithFormat:@"%@ %@", @"Reward Points:", rewardPoints];
+    userRewardsLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    userRewardsLabel.backgroundColor = [UIColor clearColor];
+    userRewardsLabel.textColor = textColor;
+    [userRewardsLabel sizeToFit];
+    userRewardsLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+    return userRewardsLabel;
 }
 
 @end
