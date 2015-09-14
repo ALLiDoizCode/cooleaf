@@ -7,6 +7,12 @@
 //
 
 #import "CLBaseNotificationRegistry.h"
+#import "CLBaseSubscriber.h"
+#import "CLAuthenticationSubscriber.h"
+#import "CLInterestSubscriber.h"
+#import "CLEventSubscriber.h"
+#import "CLUserSubscriber.h"
+#import "CLSearchSubscriber.h"
 
 @implementation CLBaseNotificationRegistry
 
@@ -80,10 +86,12 @@
     CLInterestSubscriber *interestSubscriber = [[CLInterestSubscriber alloc] init];
     CLEventSubscriber *eventSubscriber = [[CLEventSubscriber alloc] init];
     CLUserSubscriber *userSubscriber = [[CLUserSubscriber alloc] init];
+    CLSearchSubscriber *searchSubscriber = [[CLSearchSubscriber alloc] init];
     [defaultSubscribers addObject:authenticationSubcriber];
     [defaultSubscribers addObject:interestSubscriber];
     [defaultSubscribers addObject:eventSubscriber];
     [defaultSubscribers addObject:userSubscriber];
+    [defaultSubscribers addObject:searchSubscriber];
     return defaultSubscribers;
 }
 

@@ -7,9 +7,6 @@
 //
 
 #import "OVCHTTPRequestOperationManager.h"
-#import "CLEvent.h"
-#import "CLUser.h"
-#import "CLInterest.h"
 
 @interface CLClient : OVCHTTPRequestOperationManager
 

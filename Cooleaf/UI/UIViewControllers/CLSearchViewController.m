@@ -8,16 +8,39 @@
 
 #import "CLSearchViewController.h"
 #import "CLHomeTableViewController.h"
+#import "CLSearchPresenter.h"
 
-@interface CLSearchViewController ()
+@interface CLSearchViewController() {
+    @private
+    CLSearchPresenter *_searchPresenter;
+    NSMutableArray *queryResults;
+}
     
 @end
 
 @implementation CLSearchViewController
 
+# pragma mark - LifeCycle Methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupSearch];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,15 +77,19 @@
 # pragma mark - SearchBar Delegates
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
-
+    NSLog(@"%@", searchText);
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     return YES;
 }
 
--(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     self.searchBar.showsCancelButton = TRUE;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"%@", searchBar.text);
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {

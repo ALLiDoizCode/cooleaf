@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MMDrawerController.h>
 #import "CLBaseNotificationRegistry.h"
+#import "CLUser.h"
+
 
 @interface NPAppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
