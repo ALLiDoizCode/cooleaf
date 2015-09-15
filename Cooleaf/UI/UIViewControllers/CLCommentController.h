@@ -14,5 +14,9 @@
 @property (weak, nonatomic) IBOutlet CLCommentTableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UIButton *addImage;
+@property (weak, nonatomic) IBOutlet UIButton *send;
+@property (weak, nonatomic) IBOutlet UIView *bottomBordrer;
 
 @end

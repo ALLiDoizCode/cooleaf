@@ -19,8 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.frame = [UIScreen mainScreen].bounds;
+    
     [self configureView];
-    [self buildTextField];
+   // [self buildTextField];
     [self buildBorders];
     [self buildButtons];
 }
@@ -50,19 +52,30 @@
     [_mainView addSubview:labelTitle];
 }
 
--(void)buildTextField {
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(60, 497, 180, 25)];
+/*-(void)buildTextField {
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(60, 408, 180, 25)];
     textField.backgroundColor = [UIColor clearColor];
     textField.borderStyle = UITextBorderStyleRoundedRect;
     textField.textColor = [UIColor darkTextColor];
     textField.placeholder = @"Leave a comment...";
     
+    
+    
     [_mainView addSubview:textField];
-}
+    [_mainView addConstraint:[NSLayoutConstraint constraintWithItem:textField
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:_mainView
+                                                          attribute:NSLayoutAttributeHeight
+                                                         multiplier:0.5
+                                                           constant:0]];
+    
+    
+}*/
 
 -(void)buildButtons {
     
-    //Send
+  /*  //Send
     UIButton *sendBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     sendBtn.frame = CGRectMake(220, 500, 100, 18);
     [sendBtn setTitle:@"Send" forState:UIControlStateNormal];
@@ -73,7 +86,7 @@
     addImageBtn.frame = CGRectMake(15, 494, 30, 30);
     [addImageBtn setTitle:@"Send" forState:UIControlStateNormal];
     [addImageBtn setImage:[UIImage imageNamed:@"Camera"] forState:UIControlStateNormal];
-    //[sendBtn addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
+    //[sendBtn addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];*/
     
     //Cancel
     UIButton *cancelBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
@@ -81,9 +94,9 @@
     [cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
     [cancelBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     
-    [_mainView addSubview:sendBtn];
+    //[_mainView addSubview:sendBtn];
     [_mainView addSubview:cancelBtn];
-    [_mainView addSubview:addImageBtn];
+    //[_mainView addSubview:addImageBtn];
 }
 
 //This function is here to demostrate closing the postview controller but needs to be added to the navigation class once the group branch is merged with master
@@ -96,11 +109,18 @@
     UIView *topBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 40, 300, 0.5)];
     topBorder.backgroundColor = [UIColor offBlack];
     
-    UIView *bottomBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 488, 300, 0.5)];
-    bottomBorder.backgroundColor = [UIColor offBlack];
+    
+    
     
     [_mainView addSubview:topBorder];
-    [_mainView addSubview:bottomBorder];
+
+}
+
+-(void)viewDidLayoutSubviews {
+    
+    CGRect frm = _bottomBordrer.frame;
+    frm.size.height = 0.5;
+   _bottomBordrer.frame = frm;
 }
 
 
