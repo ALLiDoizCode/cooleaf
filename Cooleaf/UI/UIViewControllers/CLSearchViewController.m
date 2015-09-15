@@ -125,6 +125,7 @@
     scope = ([scope isEqualToString:@"All"]) ? @"" : [scope lowercaseString];
     [_searchPresenter loadQuery:query scope:scope];
     [self showActivityIndicator];
+    [self.view endEditing:YES];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
