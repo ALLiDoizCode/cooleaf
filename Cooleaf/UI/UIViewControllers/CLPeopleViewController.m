@@ -25,12 +25,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+# pragma mark - TableView Data Source Methods
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return 6;
 }
-
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
    
@@ -42,11 +41,12 @@
     return cell;
 }
 
+# pragma mark - TableView Delegate Methods
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 
 /*
 #pragma mark - Navigation
