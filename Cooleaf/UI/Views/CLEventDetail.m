@@ -20,6 +20,16 @@
 }
 */
 
+-(void)layoutSubviews {
+    
+    [self labelWidth:_labelName];
+    
+    _detailDescription.frame = CGRectMake( _detailDescription.frame.origin.x,  _detailDescription.frame.origin.y, 200, 100);
+    
+    _detailDescription.numberOfLines = 0;
+    
+}
+
 
 - (void)awakeFromNib {
     
@@ -64,25 +74,25 @@
     _labelName.text = @"#Prem Bhatia";
     _labelName.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
     _labelName.backgroundColor = [UIColor clearColor];
-    _labelName.textColor = [UIColor redColor];
+    _labelName.textColor = [UIColor offWhite];
     [_labelName sizeToFit];
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     
     
     //Name
-    _detailDescription = [[UILabel alloc] initWithFrame:CGRectMake(40, 430, 200, 0)];
-    //_detailDescription.numberOfLines = 0;
+    _detailDescription = [[UILabel alloc] initWithFrame:CGRectMake(40, 400, 200, 0)];
+    _detailDescription.numberOfLines = 0;
     _detailDescription.textAlignment = NSTextAlignmentLeft;
-    //_detailDescription.text = @"Position";
-    _detailDescription.preferredMaxLayoutWidth = 200;
-    [_detailDescription setPreferredMaxLayoutWidth:YES];
+    _detailDescription.text = @"Position";
+    //_detailDescription.preferredMaxLayoutWidth = 200;
+    //[_detailDescription setPreferredMaxLayoutWidth:YES];
     _detailDescription.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
     _detailDescription.backgroundColor = [UIColor clearColor];
     _detailDescription.textColor = [UIColor lightGrayColor];
     [_detailDescription sizeToFit];
     _detailDescription.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    _detailDescription.clipsToBounds = YES;
+    //_detailDescription.clipsToBounds = YES;
     
     //Post Label
     _labelPost = [[UILabel alloc] initWithFrame:CGRectMake(120, 505, 300, 0)];
@@ -177,6 +187,20 @@
     [bgview addSubview:_mainImageView];
     
     
+}
+
+-(void)labelWidth:(UILabel *)theLabel {
+    
+    //use this for custom font
+    //CGFloat width =  [theLabel.text sizeWithFont:[UIFont fontWithName:@"ChaparralPro-Bold" size:40 ]].width;
+    
+    //use this for system font
+    CGFloat width =  [theLabel.text sizeWithFont:[UIFont systemFontOfSize:40 ]].width;
+    
+    theLabel.frame = CGRectMake(theLabel.frame.origin.x, theLabel.frame.origin.y, width, theLabel.frame.size.height);
+    
+    //point.x, point.y -> origin for label;
+    //height -> your label height;
 }
 
 @end
