@@ -6,7 +6,10 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import "NPAppDelegate.h"
 #import "CLNavigation.h"
+#import "CLGroupViewController.h"
+#import "CLPeopleViewController.h"
 
 /**
  *  Classes used for navigation through side menu
@@ -27,6 +30,15 @@
     UINavigationController *groupNav = [[UINavigationController alloc] initWithRootViewController:group];
     NPAppDelegate *appDelegate = (NPAppDelegate *) [UIApplication sharedApplication].delegate;
     [[appDelegate drawerController] setCenterViewController:groupNav];
+    [[appDelegate drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+- (void)peopleController {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    CLPeopleViewController *people = [storyboard instantiateViewControllerWithIdentifier:@"people"];
+    UINavigationController *peopleNav = [[UINavigationController alloc] initWithRootViewController:people];
+    NPAppDelegate *appDelegate = (NPAppDelegate *) [UIApplication sharedApplication].delegate;
+    [[appDelegate drawerController] setCenterViewController:peopleNav];
     [[appDelegate drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
