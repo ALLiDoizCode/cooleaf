@@ -94,9 +94,8 @@
     
     // Load user image into avatar imageview
     NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"versions"][@"profile_ios"]];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:nil]];
-    cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width / 2;
-    cell.imageView.clipsToBounds = YES;
+    [cell.peopleImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+    
     
     return cell;
 }
