@@ -8,8 +8,8 @@
 
 #import "CLEventController.h"
 
-static NSString *const kOngoingEventsPath = @"events/ongoing.json";
-static NSString *const kUserEventsPath = @"events/user/";
+static NSString *const kOngoingEventsPath = @"v2/events/ongoing.json";
+static NSString *const kUserEventsPath = @"v2/events/user/";
 
 @implementation CLEventController
 

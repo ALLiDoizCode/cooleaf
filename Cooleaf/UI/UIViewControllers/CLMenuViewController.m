@@ -9,6 +9,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "CLMenuViewController.h"
 #import "UIColor+CustomColors.h"
+#import "CLClient.h"
 
 @interface CLMenuViewController () {
     @private

@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CLSearchCell.h"
+#import "ISearchInteractor.h"
 
-@interface CLSearchViewController : UIViewController <UISearchBarDelegate,UITableViewDataSource, UISearchDisplayDelegate>
+@interface CLSearchViewController : UIViewController <ISearchInteractor, UISearchBarDelegate, UITableViewDataSource, UISearchDisplayDelegate>
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic) NSArray *filter;
 
 @end

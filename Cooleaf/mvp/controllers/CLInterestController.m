@@ -9,7 +9,7 @@
 #import "CLInterestController.h"
 #import "CLClient.h"
 
-static NSString *const kInterestsPath = @"interests.json";
+static NSString *const kInterestsPath = @"v2/interests.json";
 
 @implementation CLInterestController
 

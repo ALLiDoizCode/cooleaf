@@ -229,11 +229,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VOp-26-9PL">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <color key="barTintColor" red="0.32156862745098042" green="0.71372549019607845" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="L4d-em-WhG">
                                 <rect key="frame" x="-4" y="64" width="609" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -244,23 +239,13 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yfU-Fa-4tv" id="Sr4-Bt-KW9">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUj-ca-Gly">
-                                                    <rect key="frame" x="88" y="16" width="284" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="7an-ds-zAR"/>
-                                                        <constraint firstAttribute="width" constant="284" id="aQt-tn-Whk"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KET-wi-mFw">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KET-wi-mFw">
                                                     <rect key="frame" x="88" y="37" width="284" height="21"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syZ-OS-cGm">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syZ-OS-cGm">
                                                     <rect key="frame" x="559" y="24" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="42" id="I63-LV-I1X"/>
@@ -272,6 +257,16 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yeq-oc-fpe">
                                                     <rect key="frame" x="8" y="10" width="56" height="50"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUj-ca-Gly">
+                                                    <rect key="frame" x="88" y="16" width="284" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="7an-ds-zAR"/>
+                                                        <constraint firstAttribute="width" constant="284" id="aQt-tn-Whk"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="KET-wi-mFw" firstAttribute="top" secondItem="HUj-ca-Gly" secondAttribute="bottom" id="0NS-mx-tEs"/>
@@ -292,7 +287,7 @@
                                         <connections>
                                             <outlet property="cellImage" destination="yeq-oc-fpe" id="535-ue-Odz"/>
                                             <outlet property="countLabel" destination="syZ-OS-cGm" id="V6k-3U-X0m"/>
-                                            <outlet property="mainLablel" destination="HUj-ca-Gly" id="Mrw-I5-Muy"/>
+                                            <outlet property="mainLabel" destination="HUj-ca-Gly" id="22U-xc-8fh"/>
                                             <outlet property="subLabel" destination="KET-wi-mFw" id="MIg-bi-VbL"/>
                                         </connections>
                                     </tableViewCell>
@@ -302,6 +297,15 @@
                                     <outlet property="delegate" destination="10a-cB-MwS" id="RDP-dt-XMn"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VOp-26-9PL">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.27843137254901962" green="0.80000000000000004" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5Y0-kN-UXF">
+                                <rect key="frame" x="290" y="322" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -310,12 +314,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="L4d-em-WhG" secondAttribute="trailing" constant="-21" id="DE6-JM-2AX"/>
                             <constraint firstItem="VOp-26-9PL" firstAttribute="bottom" secondItem="L4d-em-WhG" secondAttribute="top" id="HUj-WK-kD0"/>
                             <constraint firstItem="VOp-26-9PL" firstAttribute="centerX" secondItem="L4d-em-WhG" secondAttribute="centerX" id="Zvh-FC-EPc"/>
+                            <constraint firstAttribute="centerY" secondItem="5Y0-kN-UXF" secondAttribute="centerY" constant="-32" id="bn3-aJ-5Jq"/>
                             <constraint firstItem="adk-Fq-mYf" firstAttribute="top" secondItem="L4d-em-WhG" secondAttribute="bottom" id="hJI-b5-chd"/>
                             <constraint firstItem="L4d-em-WhG" firstAttribute="leading" secondItem="04R-lF-trY" secondAttribute="leadingMargin" constant="-20" id="k5e-du-5ea"/>
+                            <constraint firstAttribute="centerX" secondItem="5Y0-kN-UXF" secondAttribute="centerX" id="pjw-Y2-elx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nqZ-Kg-8Nd"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="5Y0-kN-UXF" id="zoE-zp-sfv"/>
                         <outlet property="searchBar" destination="VOp-26-9PL" id="UFj-N9-wrX"/>
                         <outlet property="tableView" destination="L4d-em-WhG" id="GPC-9V-7sc"/>
                     </connections>
@@ -810,7 +817,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JqL-01-SVm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.33333333333333331" green="0.74117647058823533" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.27843137254901962" green="0.80000000000000004" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>

@@ -9,11 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "CLBus.h"
 #import "CLNotificationSubscriber.h"
-#import "CLBaseSubscriber.h"
-#import "CLAuthenticationSubscriber.h"
-#import "CLInterestSubscriber.h"
-#import "CLEventSubscriber.h"
-#import "CLUserSubscriber.h"
 
 @interface CLBaseNotificationRegistry : NSObject
 

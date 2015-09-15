@@ -10,7 +10,7 @@
 
 @interface CLSearchCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *mainLablel;
+@property (weak, nonatomic) IBOutlet UILabel *mainLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
