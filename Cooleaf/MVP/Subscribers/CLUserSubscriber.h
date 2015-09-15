@@ -11,8 +11,6 @@
 
 @interface CLUserSubscriber : CLBaseSubscriber
 
-@property (nonatomic) CLUserController *userController;
-
 - (id)init;
 
 @end

@@ -12,7 +12,7 @@ static NSString *const kCLOrganizatonHeader = @"X-Organization";
 
 @interface CLAuthenticationSubscriber() {
     @private
-    CLAuthenticationController *authenticationController;
+    CLAuthenticationController *_authenticationController;
 }
 
 @end
@@ -22,7 +22,7 @@ static NSString *const kCLOrganizatonHeader = @"X-Organization";
 # pragma init
 
 - (id)init {
-    authenticationController = [[CLAuthenticationController alloc] init];
+    _authenticationController = [[CLAuthenticationController alloc] init];
     return self;
 }
 
@@ -35,7 +35,7 @@ SUBSCRIBE(CLAuthenticationEvent) {
                             @"password": event.password
                             };
     // Pass to controller
-    [authenticationController authenticate:params success:^(id response) {
+    [_authenticationController authenticate:params success:^(id response) {
         CLUser *user = [response result];
         NSDictionary *userDict = [user dictionaryValue];
         NSString *organizationHeader = userDict[@"role"][@"organization"][@"subdomain"];

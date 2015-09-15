@@ -10,4 +10,7 @@
 
 @interface CLUserController : NSObject
 
+- (void)getUsers:(NSDictionary *)params success:(void (^)(id JSON))success
+             failure:(void (^)(NSError *error))failure;
+
 @end

@@ -12,6 +12,13 @@
 #import "CLLoadEvents.h"
 #import "CLLoadedUserEvents.h"
 
+@interface CLEventSubscriber() {
+    @private
+    CLEventController *_eventController;
+}
+
+@end
+
 @implementation CLEventSubscriber
 
 # pragma init

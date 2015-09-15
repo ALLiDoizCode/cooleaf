@@ -843,6 +843,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mRT-nY-3JS">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="il9-mL-u2P">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -907,9 +910,14 @@
                             <constraint firstAttribute="trailing" secondItem="il9-mL-u2P" secondAttribute="trailing" id="A9g-E8-gY6"/>
                             <constraint firstItem="il9-mL-u2P" firstAttribute="bottom" secondItem="LNZ-CT-kAk" secondAttribute="top" id="TEs-Dz-ynx"/>
                             <constraint firstItem="il9-mL-u2P" firstAttribute="leading" secondItem="u7v-QX-nRu" secondAttribute="leading" id="ie4-gF-3Qo"/>
+                            <constraint firstAttribute="centerX" secondItem="mRT-nY-3JS" secondAttribute="centerX" id="kjf-Lh-vBn"/>
+                            <constraint firstAttribute="centerY" secondItem="mRT-nY-3JS" secondAttribute="centerY" id="l1A-ie-rGq"/>
                             <constraint firstItem="il9-mL-u2P" firstAttribute="top" secondItem="u7v-QX-nRu" secondAttribute="top" id="mSH-uC-gvi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="mRT-nY-3JS" id="zDl-g7-8bF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psu-6e-y41" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

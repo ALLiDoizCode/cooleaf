@@ -13,7 +13,7 @@ static NSString *const kInterestsPath = @"v2/interests.json";
 
 @implementation CLInterestController
 
-- (void)getInterests:(NSMutableDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+- (void)getInterests:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     [[CLClient getInstance] GET:kInterestsPath parameters:params completion:^(id response, NSError *error) {
         if (!error)
             success(response);

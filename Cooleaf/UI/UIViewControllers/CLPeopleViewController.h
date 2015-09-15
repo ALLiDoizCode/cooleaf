@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IUserInteractor.h"
 
-@interface CLPeopleViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CLPeopleViewController : UIViewController <IUserInteractor, UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end

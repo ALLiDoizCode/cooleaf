@@ -11,8 +11,6 @@
 
 @interface CLEventSubscriber : CLBaseSubscriber
 
-@property (nonatomic) CLEventController *eventController;
-
 - (id)init;
 
 @end
