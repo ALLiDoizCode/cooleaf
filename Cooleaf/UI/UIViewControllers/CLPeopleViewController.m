@@ -11,6 +11,8 @@
 #import "CLPeopleViewController.h"
 #import "CLPeopleCell.h"
 #import "CLUserPresenter.h"
+#import "CLUser.h"
+#import "CLClient.h"
 
 @interface CLPeopleViewController() {
     @private
@@ -68,7 +70,8 @@
 
 - (void)initOrganizationUsers:(NSMutableArray *)organizationUsers {
     [self hideActivityIndicator];
-    
+    _organizationUsers = organizationUsers;
+    [_tableView reloadData];
 }
 
 # pragma mark - TableView Data Source Methods
@@ -78,11 +81,22 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CLPeopleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"peopleCell"];
+    CLPeopleCell * cell = [_tableView dequeueReusableCellWithIdentifier:@"peopleCell"];
     
-    cell.peopleLabel.text = @"Prem Bhatia";
-    cell.peopleImage.image = [UIImage imageNamed:@"TestImage"];
-    cell.positionLabel.text =@"Position";
+    // Get the user object
+    CLUser *user = [_organizationUsers objectAtIndex:[indexPath row]];
+    
+    // Get the user dictionary
+    NSDictionary *userDict = [user dictionaryValue];
+    
+    cell.peopleLabel.text = [user userName];
+    cell.positionLabel.text = userDict[@"role"][@"department"][@"name"];
+    
+    // Load user image into avatar imageview
+    NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"versions"][@"profile_ios"]];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:nil]];
+    cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width / 2;
+    cell.imageView.clipsToBounds = YES;
     
     return cell;
 }
@@ -90,7 +104,7 @@
 # pragma mark - TableView Delegate Methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 # pragma mark - showActivityIndicator

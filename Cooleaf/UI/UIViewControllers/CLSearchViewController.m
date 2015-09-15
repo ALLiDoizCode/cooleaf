@@ -63,6 +63,14 @@
     [_searchPresenter registerOnBus];
 }
 
+# pragma mark - ISearchInteractor Methods
+
+- (void)initWithQueryResults:(NSMutableArray *)results {
+    [self hideActivityIndicator];
+    _queryResults = results;
+    [self.tableView reloadData];
+}
+
 # pragma mark - TableView Data Source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -95,14 +103,6 @@
     self.searchBar.showsScopeBar = YES;
     self.searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"All", @"People", @"Events", @"Groups", @"Posts", nil];
     _currentScope = 0;
-}
-
-# pragma mark - ISearchInteractor Methods
-
-- (void)initWithQueryResults:(NSMutableArray *)results {
-    [self hideActivityIndicator];
-    _queryResults = results;
-    [self.tableView reloadData];
 }
 
 # pragma mark - SearchBar Delegates

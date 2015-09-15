@@ -12,5 +12,6 @@
 @interface CLPeopleViewController : UIViewController <IUserInteractor, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

@@ -8,7 +8,7 @@
 
 #import "CLUserSubscriber.h"
 #import "CLLoadUsersEvent.h"
-#import "CLLoadedUserEvents.h"
+#import "CLLoadedUsersEvent.h"
 
 @interface CLUserSubscriber() {
     @private
@@ -37,7 +37,7 @@ SUBSCRIBE(CLLoadUsersEvent) {
     
     [_userController getUsers:params success:^(id JSON) {
         NSMutableArray *users = [JSON result];
-        CLLoadedUserEvents *loadedUsersEvent = [[CLLoadedUserEvents alloc] initWithUserEvents:users];
+        CLLoadedUsersEvent *loadedUsersEvent = [[CLLoadedUsersEvent alloc] initWithUsers:users];
         PUBLISH(loadedUsersEvent);
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
