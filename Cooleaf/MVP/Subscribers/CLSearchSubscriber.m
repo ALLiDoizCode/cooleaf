@@ -37,8 +37,9 @@ SUBSCRIBE(CLLoadQueryEvent) {
     
     [_searchController executeQuery:params success:^(id JSON) {
         NSMutableArray *results = [JSON result];
-        CLLoadedQueryEvent *loadedQuery = [[CLLoadedQueryEvent alloc] initWithResults:results];
-        PUBLISH(loadedQuery);
+        NSLog(@"%@", results);
+//        CLLoadedQueryEvent *loadedQuery = [[CLLoadedQueryEvent alloc] initWithResults:results];
+//        PUBLISH(loadedQuery);
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];

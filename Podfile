@@ -2,7 +2,7 @@ platform :ios, '7.0'
 
 pod 'AFNetworking'
 pod 'SSKeychain'
-pod 'Overcoat'
+pod 'Overcoat', '~> 2.0.2’
 pod 'Overcoat/ReactiveCocoa'
 pod 'MMDrawerController'
 pod 'SDWebImage'

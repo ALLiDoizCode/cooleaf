@@ -39,7 +39,7 @@
     [super viewDidLoad];
     
     // Searchbar color
-    barColor = [UIColor UIColorFromRGB:0x69C4BB];
+    barColor = [UIColor colorPrimary];
     
     // Init bar display
     [self setupDisplay];

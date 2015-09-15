@@ -9,7 +9,7 @@
 #import "CLSearchController.h"
 #import "CLClient.h"
 
-static NSString *const kSearchPath = @"search.json";
+static NSString *const kSearchPath = @"v3/search.json";
 
 @implementation CLSearchController
 

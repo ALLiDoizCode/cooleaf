@@ -13,7 +13,7 @@
 # pragma authenticate
 
 - (void)authenticate:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
-    [[CLClient getInstance] POST:@"authorize.json" parameters:params completion:^(id response, NSError *error) {
+    [[CLClient getInstance] POST:@"v2/authorize.json" parameters:params completion:^(id response, NSError *error) {
         if (!error) {
             success(response);
         } else {

@@ -13,7 +13,7 @@
 #import "CLQuery.h"
 
 static NSString *const BASE_API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu";
-static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api/v2";
+static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api";
 static NSString *const X_ORGANIZATION = @"X-Organization";
 
 @implementation CLClient
@@ -50,12 +50,12 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
  */
 + (NSDictionary *)modelClassesByResourcePath {
     return @{
-             @"authorize.json": [CLUser class],
-             @"events/*": [CLEvent class],
-             @"users/*": [CLUser class],
-             @"interests/*": [CLInterest class],
-             @"interests.json": [CLInterest class],
-             @"search.json": [CLQuery class]
+             @"v2/authorize.json": [CLUser class],
+             @"v2/events/*": [CLEvent class],
+             @"v2/users/*": [CLUser class],
+             @"v2/interests/*": [CLInterest class],
+             @"v2/interests.json": [CLInterest class],
+             @"v3/search.json": [CLQuery class]
              };
 }
 

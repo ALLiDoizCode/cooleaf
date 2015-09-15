@@ -16,5 +16,6 @@
 - (id)initWithInteractor:(id<ISearchInteractor>)interactor;
 - (void)registerOnBus;
 - (void)unregisterOnBus;
+- (void)loadQuery:(NSString *)query scope:(NSString *)scope;
 
 @end

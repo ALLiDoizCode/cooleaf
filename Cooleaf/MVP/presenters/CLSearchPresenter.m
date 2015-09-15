@@ -34,9 +34,11 @@ static NSInteger const PER_PAGE = 25;
 
 # pragma mark - loadQuery
 
-- (void)loadQuery:(NSString *)query {
-    CLLoadQueryEvent *loadQuery = [[CLLoadQueryEvent alloc] initWithQuery:query scope:nil page:PAGE perPage:PER_PAGE];
+- (void)loadQuery:(NSString *)query scope:(NSString *)scope {
+    CLLoadQueryEvent *loadQuery = [[CLLoadQueryEvent alloc] initWithQuery:query scope:scope page:PAGE perPage:PER_PAGE];
     PUBLISH(loadQuery);
 }
+
+
 
 @end

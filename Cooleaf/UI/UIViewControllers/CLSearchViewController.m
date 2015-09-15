@@ -13,7 +13,8 @@
 @interface CLSearchViewController() {
     @private
     CLSearchPresenter *_searchPresenter;
-    NSMutableArray *queryResults;
+    NSMutableArray *_queryResults;
+    NSInteger _currentScope;
 }
     
 @end
@@ -29,6 +30,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setupSearchPresenter];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -37,6 +39,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    if (_searchPresenter)
+        [_searchPresenter unregisterOnBus];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -47,6 +51,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+# pragma mark - setupSearchPresenter
+
+- (void)setupSearchPresenter {
+    _searchPresenter = [[CLSearchPresenter alloc] initWithInteractor:self];
+    [_searchPresenter registerOnBus];
+}
+
+# pragma mark - TableView Data Source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // TODO - add data
@@ -64,6 +77,9 @@
 - (void)setupSearch {
     self.searchBar.delegate = self;
     self.searchBar.placeholder = @"Search...";
+    self.searchBar.showsScopeBar = YES;
+    self.searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"All", @"People", @"Events", @"Groups", @"Posts", nil];
+    _currentScope = 0;
 }
 
 # pragma mark - configureSearchCell
@@ -89,12 +105,22 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"%@", searchBar.text);
+    NSString *query = searchBar.text;
+    NSString *scope = [searchBar.scopeButtonTitles objectAtIndex:_currentScope];
+    scope = ([scope isEqualToString:@"All"]) ? @"" : [scope lowercaseString];
+    [_searchPresenter loadQuery:query scope:scope];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     //dismiss keyboard and reload table
     [self.searchBar resignFirstResponder];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+    NSArray *titles = searchBar.scopeButtonTitles;
+    NSString *title = [titles objectAtIndex:selectedScope];
+    _currentScope = selectedScope;
+    // Do any work here when user selects scope, i.e. change results without doing an API call
 }
 
 /*
