@@ -90,14 +90,19 @@
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6Cu-En-uzf">
+                                    <rect key="frame" x="290" y="80" width="20" height="20"/>
+                                </activityIndicatorView>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="centerX" secondItem="4Z3-FL-3rI" secondAttribute="centerX" id="60c-8A-VX0"/>
                                 <constraint firstAttribute="centerX" secondItem="NbV-04-7VA" secondAttribute="centerX" id="6Wz-aB-9uB"/>
                                 <constraint firstAttribute="bottom" secondItem="OqA-Q2-Vqe" secondAttribute="bottom" constant="20" id="6lk-Tj-YHY"/>
                                 <constraint firstItem="OqA-Q2-Vqe" firstAttribute="top" secondItem="4Z3-FL-3rI" secondAttribute="bottom" id="8no-Wg-106"/>
+                                <constraint firstAttribute="centerY" secondItem="6Cu-En-uzf" secondAttribute="centerY" id="A03-WV-RpL"/>
                                 <constraint firstAttribute="centerX" secondItem="OqA-Q2-Vqe" secondAttribute="centerX" id="GLD-3T-Xc2"/>
                                 <constraint firstAttribute="centerX" secondItem="QMf-0C-uMK" secondAttribute="centerX" id="LU5-ii-roX"/>
+                                <constraint firstAttribute="centerX" secondItem="6Cu-En-uzf" secondAttribute="centerX" id="dFx-Jv-1u3"/>
                                 <constraint firstItem="QMf-0C-uMK" firstAttribute="top" secondItem="pub-6i-gz4" secondAttribute="top" constant="20" id="dui-eQ-l2c"/>
                                 <constraint firstItem="4Z3-FL-3rI" firstAttribute="top" secondItem="NbV-04-7VA" secondAttribute="bottom" id="sx7-nn-Yra"/>
                                 <constraint firstItem="NbV-04-7VA" firstAttribute="top" secondItem="QMf-0C-uMK" secondAttribute="bottom" constant="8" id="xKA-XY-bTM"/>
@@ -206,6 +211,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
+                        <outlet property="activityIndicator" destination="6Cu-En-uzf" id="DUS-yJ-rdO"/>
                         <outlet property="userCredentialsLabel" destination="4Z3-FL-3rI" id="kTN-qW-Jpl"/>
                         <outlet property="userImage" destination="QMf-0C-uMK" id="Cnz-09-P5d"/>
                         <outlet property="userNameLabel" destination="NbV-04-7VA" id="2bD-5K-VRP"/>

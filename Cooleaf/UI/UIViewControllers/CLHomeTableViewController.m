@@ -38,6 +38,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Hide activity indicator
+    [_activityIndicator setHidden:YES];
+    
     // Searchbar color
     barColor = [UIColor colorPrimary];
     
@@ -147,7 +150,7 @@
 # pragma mark - IAuthenticationInteractor methods
 
 - (void)initUser:(CLUser *)user {
-    
+    [self hideActivityIndicator];
     // Init user to the navigation drawer
     [((NPAppDelegate *) [UIApplication sharedApplication].delegate) setUserInDrawer:user];
     
@@ -186,6 +189,7 @@
     _authPres = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
     [_authPres registerOnBus];
     [_authPres authenticate:@"kevin.coleman@sparkstart.io" :@"passwordpassword"];
+    [self showActivityIndicator];
 }
 
 #pragma mark - Table view data source
@@ -323,5 +327,21 @@
     NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
     self.refreshControl.attributedTitle = attributedTitle;
 }
+
+# pragma mark - showActivityIndicator
+
+- (void)showActivityIndicator {
+    [_activityIndicator setHidden:NO];
+    [_activityIndicator setColor:[UIColor colorAccent]];
+    [_activityIndicator startAnimating];
+}
+
+# pragma mark - hideActivityIndicator
+
+- (void)hideActivityIndicator {
+    [_activityIndicator stopAnimating];
+    [_activityIndicator setHidden:YES];
+}
+
 
 @end
