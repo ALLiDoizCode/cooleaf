@@ -9,6 +9,7 @@
 #import "CLSearchPresenter.h"
 #import "CLBus.h"
 #import "CLLoadQueryEvent.h"
+#import "CLLoadedQueryEvent.h"
 
 static NSInteger const PAGE = 1;
 static NSInteger const PER_PAGE = 25;
@@ -39,6 +40,10 @@ static NSInteger const PER_PAGE = 25;
     PUBLISH(loadQuery);
 }
 
+# pragma mark - Subscription Methods
 
+SUBSCRIBE(CLLoadedQueryEvent) {
+    [_searchInfo initWithQueryResults:event.results];
+}
 
 @end

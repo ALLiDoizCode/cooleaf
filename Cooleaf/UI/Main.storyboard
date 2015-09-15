@@ -239,7 +239,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yfU-Fa-4tv" id="Sr4-Bt-KW9">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUj-ca-Gly">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HUj-ca-Gly">
                                                     <rect key="frame" x="88" y="16" width="284" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="7an-ds-zAR"/>
@@ -249,13 +249,13 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KET-wi-mFw">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KET-wi-mFw">
                                                     <rect key="frame" x="88" y="37" width="284" height="21"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syZ-OS-cGm">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syZ-OS-cGm">
                                                     <rect key="frame" x="559" y="24" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="42" id="I63-LV-I1X"/>
@@ -287,7 +287,7 @@
                                         <connections>
                                             <outlet property="cellImage" destination="yeq-oc-fpe" id="535-ue-Odz"/>
                                             <outlet property="countLabel" destination="syZ-OS-cGm" id="V6k-3U-X0m"/>
-                                            <outlet property="mainLablel" destination="HUj-ca-Gly" id="Mrw-I5-Muy"/>
+                                            <outlet property="mainLabel" destination="HUj-ca-Gly" id="22U-xc-8fh"/>
                                             <outlet property="subLabel" destination="KET-wi-mFw" id="MIg-bi-VbL"/>
                                         </connections>
                                     </tableViewCell>
@@ -303,6 +303,9 @@
                                 <color key="barTintColor" red="0.27843137254901962" green="0.80000000000000004" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="5Y0-kN-UXF">
+                                <rect key="frame" x="290" y="322" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -311,12 +314,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="L4d-em-WhG" secondAttribute="trailing" constant="-21" id="DE6-JM-2AX"/>
                             <constraint firstItem="VOp-26-9PL" firstAttribute="bottom" secondItem="L4d-em-WhG" secondAttribute="top" id="HUj-WK-kD0"/>
                             <constraint firstItem="VOp-26-9PL" firstAttribute="centerX" secondItem="L4d-em-WhG" secondAttribute="centerX" id="Zvh-FC-EPc"/>
+                            <constraint firstAttribute="centerY" secondItem="5Y0-kN-UXF" secondAttribute="centerY" constant="-32" id="bn3-aJ-5Jq"/>
                             <constraint firstItem="adk-Fq-mYf" firstAttribute="top" secondItem="L4d-em-WhG" secondAttribute="bottom" id="hJI-b5-chd"/>
                             <constraint firstItem="L4d-em-WhG" firstAttribute="leading" secondItem="04R-lF-trY" secondAttribute="leadingMargin" constant="-20" id="k5e-du-5ea"/>
+                            <constraint firstAttribute="centerX" secondItem="5Y0-kN-UXF" secondAttribute="centerX" id="pjw-Y2-elx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nqZ-Kg-8Nd"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="5Y0-kN-UXF" id="zoE-zp-sfv"/>
                         <outlet property="searchBar" destination="VOp-26-9PL" id="UFj-N9-wrX"/>
                         <outlet property="tableView" destination="L4d-em-WhG" id="GPC-9V-7sc"/>
                     </connections>

@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy, readonly) NSNumber *queryId;
 @property (nonatomic, copy) NSString *queryName;
+@property (nonatomic, copy) NSString *content;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, copy) NSMutableArray *tags;
 @property (nonatomic, copy) NSString *itemPath;

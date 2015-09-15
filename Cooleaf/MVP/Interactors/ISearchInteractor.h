@@ -8,6 +8,6 @@
 
 @protocol ISearchInteractor <NSObject>
 
-// Define methods here
+- (void)initWithQueryResults:(NSMutableArray *)results;
 
 @end

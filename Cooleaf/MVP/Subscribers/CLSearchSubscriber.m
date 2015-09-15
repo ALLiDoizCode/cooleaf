@@ -10,6 +10,7 @@
 #import "CLSearchController.h"
 #import "CLLoadQueryEvent.h"
 #import "CLLoadedQueryEvent.h"
+#import "CLQuery.h"
 
 @interface CLSearchSubscriber() {
     @private
@@ -28,18 +29,28 @@
 # pragma mark - subscription events
 
 SUBSCRIBE(CLLoadQueryEvent) {
-    NSDictionary *params = @{
-                             @"query": event.query,
-                             @"scope": event.scope,
-                             @"page": [NSString stringWithFormat:@"%lu", (long) event.page],
-                             @"per_page": [NSString stringWithFormat:@"%lu", (long) event.perPage]
-                             };
+    
+    NSDictionary *params = nil;
+    
+    if ([event.scope isEqualToString:@""]) {
+        params = @{
+                   @"query": event.query,
+                   @"page": [NSString stringWithFormat:@"%lu", (long) event.page],
+                   @"per_page": [NSString stringWithFormat:@"%lu", (long) event.perPage]
+                   };
+    } else {
+        params = @{
+                   @"query": event.query,
+                   @"scope": event.scope,
+                   @"page": [NSString stringWithFormat:@"%lu", (long) event.page],
+                   @"per_page": [NSString stringWithFormat:@"%lu", (long) event.perPage]
+                   };
+    }
     
     [_searchController executeQuery:params success:^(id JSON) {
         NSMutableArray *results = [JSON result];
-        NSLog(@"%@", results);
-//        CLLoadedQueryEvent *loadedQuery = [[CLLoadedQueryEvent alloc] initWithResults:results];
-//        PUBLISH(loadedQuery);
+        CLLoadedQueryEvent *loadedQuery = [[CLLoadedQueryEvent alloc] initWithResults:results];
+        PUBLISH(loadedQuery);
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];

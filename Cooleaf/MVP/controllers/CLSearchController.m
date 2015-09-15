@@ -14,7 +14,7 @@ static NSString *const kSearchPath = @"v3/search.json";
 @implementation CLSearchController
 
 - (void)executeQuery:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
-    [[CLClient getInstance] GET:kSearchPath parameters:nil completion:^(id response, NSError *error) {
+    [[CLClient getInstance] GET:kSearchPath parameters:params completion:^(id response, NSError *error) {
         if (!error) {
             success(response);
         } else {

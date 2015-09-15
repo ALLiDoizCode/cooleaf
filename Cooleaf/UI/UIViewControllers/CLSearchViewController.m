@@ -6,9 +6,12 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "CLSearchViewController.h"
 #import "CLHomeTableViewController.h"
 #import "CLSearchPresenter.h"
+#import "UIColor+CustomColors.h"
+#import "CLQuery.h"
 
 @interface CLSearchViewController() {
     @private
@@ -26,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupSearch];
+    [_activityIndicator setHidden:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -63,12 +67,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // TODO - add data
-    return 0;
+    return [_queryResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CLSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell"];
-    cell = [self configureSearchCell:cell];
+    
+    // Get the query
+    CLQuery *query = [_queryResults objectAtIndex:[indexPath row]];
+    
+    // Set the image
+    NSString *imagePath = [query imagePath];
+    [cell.cellImage sd_setImageWithURL:[NSURL URLWithString:imagePath] placeholderImage:[UIImage imageNamed:nil]];
+    
+    // Set labels
+    cell.mainLabel.text = ([query queryName]) ? [query queryName] : [query content];
+    cell.subLabel.text = [query type];
+
     return cell;
 }
 
@@ -82,12 +97,12 @@
     _currentScope = 0;
 }
 
-# pragma mark - configureSearchCell
+# pragma mark - ISearchInteractor Methods
 
-- (CLSearchCell *)configureSearchCell:(CLSearchCell *)searchCell {
-    searchCell.countLabel.text = @"10";
-    searchCell.cellImage.image = [UIImage imageNamed:@"TestImage"];
-    return searchCell;
+- (void)initWithQueryResults:(NSMutableArray *)results {
+    [self hideActivityIndicator];
+    _queryResults = results;
+    [self.tableView reloadData];
 }
 
 # pragma mark - SearchBar Delegates
@@ -109,6 +124,7 @@
     NSString *scope = [searchBar.scopeButtonTitles objectAtIndex:_currentScope];
     scope = ([scope isEqualToString:@"All"]) ? @"" : [scope lowercaseString];
     [_searchPresenter loadQuery:query scope:scope];
+    [self showActivityIndicator];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
@@ -121,6 +137,21 @@
     NSString *title = [titles objectAtIndex:selectedScope];
     _currentScope = selectedScope;
     // Do any work here when user selects scope, i.e. change results without doing an API call
+}
+
+# pragma mark - showActivityIndicator
+
+- (void)showActivityIndicator {
+    [_activityIndicator setHidden:NO];
+    [_activityIndicator setColor:[UIColor colorAccent]];
+    [_activityIndicator startAnimating];
+}
+
+# pragma mark - hideActivityIndicator
+
+- (void)hideActivityIndicator {
+    [_activityIndicator stopAnimating];
+    [_activityIndicator setHidden:YES];
 }
 
 /*

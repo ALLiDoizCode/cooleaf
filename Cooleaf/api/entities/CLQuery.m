@@ -17,6 +17,7 @@
     return @{
              @"queryId": @"id",
              @"queryName": @"name",
+             @"content": @"content",
              @"type": @"type",
              @"tags": @"tags",
              @"itemPath": @"url",
