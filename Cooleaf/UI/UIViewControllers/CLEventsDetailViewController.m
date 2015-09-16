@@ -105,42 +105,103 @@
 -(void)joinSelection {
     
     //Blur
-    UIView *bgBlur = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, _detailView.frame.size.height)];
-    bgBlur.backgroundColor = [UIColor offBlack];
-    bgBlur.alpha = 0.8;
+    _bgBlur = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, _detailView.frame.size.height)];
+    _bgBlur.backgroundColor = [UIColor offBlack];
+    _bgBlur.alpha = 0.8;
     
     //Background View
-    UIView *selectionView = [[UIView alloc] initWithFrame:CGRectMake(65, 100, 200, 300)];
-    selectionView.backgroundColor = [UIColor offWhite];
+    _selectionView = [[UIView alloc] initWithFrame:CGRectMake(65, 100, 200, 250)];
+    _selectionView.backgroundColor = [UIColor offWhite];
+    _selectionView.layer.cornerRadius = 3;
+    _selectionView.layer.masksToBounds = YES;
     
-    selectionView.layer.cornerRadius = 3;
-    selectionView.layer.masksToBounds = YES;
-    
-    BFPaperCheckbox *paperCheckbox = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, -20, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
+    BFPaperCheckbox *paperCheckbox = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 10, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
     paperCheckbox.tag = 1001;
     paperCheckbox.checkmarkColor = [UIColor UIColorFromRGB:0x00BCD5];
    
-    BFPaperCheckbox *paperCheckbox2 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 30, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
+    BFPaperCheckbox *paperCheckbox2 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 60, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
     paperCheckbox2.tag = 1002;
     paperCheckbox2.checkmarkColor = [UIColor UIColorFromRGB:0x00BCD5];
     
-    BFPaperCheckbox *paperCheckbox3 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 80, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
+    BFPaperCheckbox *paperCheckbox3 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 110, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
     paperCheckbox3.tag = 1003;
     paperCheckbox3.checkmarkColor = [UIColor UIColorFromRGB:0x00BCD5];
     
-    BFPaperCheckbox *paperCheckbox4 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 130, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
+    BFPaperCheckbox *paperCheckbox4 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 160, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
     paperCheckbox4.tag = 1004;
     paperCheckbox4.checkmarkColor = [UIColor UIColorFromRGB:0x00BCD5];
     
+    UILabel *selectTitle = [[UILabel alloc] initWithFrame:CGRectMake(15, -10, 200, 50)];
+    selectTitle.text = @"Select Events";
+    selectTitle.textColor = [UIColor offBlack];
+    selectTitle.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
     
-    [_scrollView addSubview:bgBlur];
-    [self.view addSubview:selectionView];
-    [selectionView addSubview:paperCheckbox];
-    [selectionView addSubview:paperCheckbox2];
-    [selectionView addSubview:paperCheckbox3];
-    [selectionView addSubview:paperCheckbox4];
+    //dates
+    _date1 = [[UILabel alloc] initWithFrame:CGRectMake(60, 22, 200, 50)];
+    _date1.text = @"sep 17, 9:00 PM";
+    _date1.textColor = [UIColor offBlack];
+    _date1.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13];
+    
+    _date2 = [[UILabel alloc] initWithFrame:CGRectMake(60, 72, 200, 50)];
+    _date2.text = @"sep 18, 10:00 PM";
+    _date2.textColor = [UIColor offBlack];
+    _date2.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13];
+
+    _date3 = [[UILabel alloc] initWithFrame:CGRectMake(60, 122, 200, 50)];
+    _date3.text = @"sep 19, 9:00 PM";
+    _date3.textColor = [UIColor offBlack];
+    _date3.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13];
+
+    
+    _date4 = [[UILabel alloc] initWithFrame:CGRectMake(60, 172, 200, 50)];
+    _date4.text = @"sep 20, 10:00 PM";
+    _date4.textColor = [UIColor offBlack];
+    _date4.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13];
+
+    
+    //Cancle
+    _cancle = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    _cancle.frame = CGRectMake(50, 220, 75, 30);
+    [_cancle setTitle:@"CANCLE" forState:UIControlStateNormal];
+    _cancle.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:11];
+    _cancle.backgroundColor = [UIColor clearColor];
+    _cancle.tintColor = [UIColor UIColorFromRGB:0x00BCD5];
+    _cancle.layer.cornerRadius = 2;
+    _cancle.layer.masksToBounds = YES;
+    [_cancle addTarget:self action:@selector(cancleJoin) forControlEvents:UIControlEventTouchUpInside];
+    
+    //Join
+    _joinEvents = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    _joinEvents.frame = CGRectMake(120, 220, 75, 30);
+    [_joinEvents setTitle:@"JOIN EVENTS" forState:UIControlStateNormal];
+    _joinEvents.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:11];
+    _joinEvents.backgroundColor = [UIColor clearColor];
+    _joinEvents.tintColor = [UIColor UIColorFromRGB:0x00BCD5];
+    _joinEvents.layer.cornerRadius = 2;
+    _joinEvents.layer.masksToBounds = YES;
+    //[_joinEvents addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_scrollView addSubview:_bgBlur];
+    [self.view addSubview:_selectionView];
+    [_selectionView addSubview:selectTitle];
+    [_selectionView addSubview:_joinEvents];
+    [_selectionView addSubview:_cancle];
+    [_selectionView addSubview:_date1];
+    [_selectionView addSubview:_date2];
+    [_selectionView addSubview:_date3];
+    [_selectionView addSubview:_date4];
+    [_selectionView addSubview:paperCheckbox];
+    [_selectionView addSubview:paperCheckbox2];
+    [_selectionView addSubview:paperCheckbox3];
+    [_selectionView addSubview:paperCheckbox4];
 
 
+}
+
+-(void)cancleJoin{
+    
+    _selectionView.hidden = YES;
+    _bgBlur.hidden =YES;
 }
 
 

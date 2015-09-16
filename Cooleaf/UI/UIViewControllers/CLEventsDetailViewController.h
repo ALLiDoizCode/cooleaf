@@ -16,7 +16,16 @@
 @property (strong, nonatomic) IBOutlet CLEventDetail *detailView;
 
 @property (nonatomic) CLEvent *currentEvent;
+@property (nonatomic) UIButton *joinEvents;
+@property (nonatomic) UIView *selectionView;
+@property (nonatomic) UIView *bgBlur;
+@property (nonatomic) UIButton *cancle;
+@property (nonatomic) UILabel *date1;
+@property (nonatomic) UILabel *date2;
+@property (nonatomic) UILabel *date3;
+@property (nonatomic) UILabel *date4;
 @property (weak, nonatomic) IBOutlet UICollectionView *eventCollectionView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 
 @end
