@@ -11,8 +11,6 @@
 
 @interface CLInterestSubscriber : CLBaseSubscriber
 
-@property (nonatomic) CLInterestController *interestController;
-
 - (id)init;
 
 @end

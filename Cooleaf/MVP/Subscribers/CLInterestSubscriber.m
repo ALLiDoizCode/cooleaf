@@ -10,6 +10,13 @@
 #import "CLLoadInterests.h"
 #import "CLLoadedInterests.h"
 
+@interface CLInterestSubscriber() {
+    @private
+    CLInterestController *_interestController;
+}
+
+@end
+
 @implementation CLInterestSubscriber
 
 # pragma init

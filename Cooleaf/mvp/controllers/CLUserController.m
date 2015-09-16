@@ -7,7 +7,19 @@
 //
 
 #import "CLUserController.h"
+#import "CLCLient.h"
+
+static NSString *const kUsersPath = @"v2/users.json";
 
 @implementation CLUserController
+
+- (void)getUsers:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    [[CLClient getInstance] GET:kUsersPath parameters:params completion:^(id response, NSError *error) {
+        if (!error)
+            success(response);
+        else
+            failure(error);
+    }];
+}
 
 @end

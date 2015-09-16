@@ -15,7 +15,7 @@ static NSString *const kUserEventsPath = @"v2/events/user/";
 
 # pragma getEvents
 
-- (void)getEvents:(NSMutableDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *error))failure {
+- (void)getEvents:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *error))failure {
     [[CLClient getInstance] GET:kOngoingEventsPath parameters:nil completion:^(id response, NSError *error) {
         if (!error) {
             success(response);
@@ -25,7 +25,7 @@ static NSString *const kUserEventsPath = @"v2/events/user/";
     }];
 }
 
-- (void)getUserEventsWithScope:(NSString *)userId params:(NSMutableDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+- (void)getUserEventsWithScope:(NSString *)userId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     NSString *path = [NSString stringWithFormat:@"%@%@%@", kUserEventsPath, userId, @".json"];
     [[CLClient getInstance] GET:path parameters:params completion:^(id response, NSError *error) {
        if (!error)
