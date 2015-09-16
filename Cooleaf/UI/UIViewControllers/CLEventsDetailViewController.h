@@ -10,11 +10,12 @@
 #import "CLEvent.h"
 #import "CLEventDetail.h"
 
-@interface CLEventsDetailViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface CLEventsDetailViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
 
 @property (strong, nonatomic) IBOutlet CLEventDetail *detailView;
 
 @property (nonatomic) CLEvent *currentEvent;
 @property (weak, nonatomic) IBOutlet UICollectionView *eventCollectionView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

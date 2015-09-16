@@ -705,12 +705,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3f4-J2-Nqf">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3f4-J2-Nqf">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQ0-Tp-yEG" customClass="CLEventDetail">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.74117647060000003" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="600" id="2dc-Wt-maX"/>
+                                            <constraint firstAttribute="height" constant="900" id="7iL-hK-dOy"/>
+                                        </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ak0-qC-MZk">
                                         <rect key="frame" x="10" y="355" width="202" height="44"/>
@@ -752,29 +756,17 @@
                                         </connections>
                                     </collectionView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="EQ0-Tp-yEG" firstAttribute="leading" secondItem="3f4-J2-Nqf" secondAttribute="leading" id="6N7-sc-X9e"/>
-                                    <constraint firstAttribute="trailing" secondItem="EQ0-Tp-yEG" secondAttribute="trailing" id="B7U-pf-XGr"/>
-                                    <constraint firstAttribute="bottom" secondItem="EQ0-Tp-yEG" secondAttribute="bottom" id="Cla-9T-HIZ"/>
-                                    <constraint firstItem="EQ0-Tp-yEG" firstAttribute="top" secondItem="3f4-J2-Nqf" secondAttribute="top" id="L3B-97-PHA"/>
-                                    <constraint firstItem="EQ0-Tp-yEG" firstAttribute="centerX" secondItem="3f4-J2-Nqf" secondAttribute="centerX" id="PbN-aJ-Ze2"/>
-                                    <constraint firstItem="EQ0-Tp-yEG" firstAttribute="centerY" secondItem="3f4-J2-Nqf" secondAttribute="centerY" id="suG-AW-KPY"/>
-                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="pTW-qw-EgO" id="nmq-cn-YEo"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="3f4-J2-Nqf" firstAttribute="leading" secondItem="47U-Se-1q7" secondAttribute="leadingMargin" constant="-16" id="H7a-MB-E9w"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3f4-J2-Nqf" secondAttribute="trailing" constant="-16" id="bpg-uq-W6a"/>
-                            <constraint firstAttribute="width" secondItem="3f4-J2-Nqf" secondAttribute="width" id="fJ0-7j-HEJ"/>
-                            <constraint firstItem="3f4-J2-Nqf" firstAttribute="top" secondItem="47U-Se-1q7" secondAttribute="topMargin" id="pVi-bn-EUD"/>
-                            <constraint firstItem="Eco-FF-fWP" firstAttribute="top" secondItem="3f4-J2-Nqf" secondAttribute="bottom" id="qv1-vv-EzA"/>
-                            <constraint firstAttribute="height" secondItem="3f4-J2-Nqf" secondAttribute="height" id="zY9-nr-S4v"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="detailView" destination="EQ0-Tp-yEG" id="IyQ-RS-9Zm"/>
                         <outlet property="eventCollectionView" destination="ak0-qC-MZk" id="sjS-VU-ksF"/>
+                        <outlet property="scrollView" destination="3f4-J2-Nqf" id="8tt-Wh-CLV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffN-eT-4Q3" userLabel="First Responder" sceneMemberID="firstResponder"/>

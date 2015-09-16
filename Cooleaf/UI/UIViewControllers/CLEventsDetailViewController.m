@@ -10,6 +10,7 @@
 #import "CLImage.h"
 #import "CLEventCollectionCell.h"
 #import "UIColor+CustomColors.h"
+#import <MapKit/MapKit.h>
 
 @interface CLEventsDetailViewController ()
 
@@ -18,6 +19,14 @@
 @implementation CLEventsDetailViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    _scrollView.scrollEnabled = YES;
+        
+     MKMapView *map = [[MKMapView alloc] initWithFrame:CGRectMake(0, 600, self.view.frame.size.width, 300)];
+    
+    [_scrollView addSubview:map];
+    _scrollView.contentSize = _detailView.frame.size;
     
      self.navigationController.navigationBar.tintColor = [UIColor offWhite];
     
@@ -50,6 +59,13 @@
     NSString *eventName = [_currentEvent name];
     
     _detailView.labelName.text = eventName;
+    
+}
+
+-(void)layoutSubviews {
+    
+    _scrollView.scrollEnabled = YES;
+    [_scrollView setContentSize: CGSizeMake(2400,8000)];
     
 }
 

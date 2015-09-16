@@ -21,6 +21,7 @@
 @property (nonatomic) UILabel *labelDate;
 @property (nonatomic) UILabel *labelEvent;
 @property (nonatomic) UILabel *labelEventSub;
+@property (nonatomic) UILabel *labelLocation;
 @property (nonatomic) UIButton *members;
 @property (nonatomic) UIButton *commentBtn;
 @property (nonatomic) UIButton *joinBtn;

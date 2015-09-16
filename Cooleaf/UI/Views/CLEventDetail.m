@@ -23,6 +23,7 @@
 -(void)layoutSubviews {
     
     [self labelWidth:_labelName];
+    [self labelWidth:_labelLocation];
     
     _detailDescription.frame = CGRectMake( _detailDescription.frame.origin.x,  _detailDescription.frame.origin.y, 200, 100);
     
@@ -55,9 +56,19 @@
     _mainImageView.layer.shouldRasterize = YES;
     _mainImageView.clipsToBounds = YES;
     
+    //Image
+    UIImageView *locationIcon = [[UIImageView alloc] initWithFrame:CGRectMake(280,550, 25,45)];
+    locationIcon.image = [UIImage imageNamed:@"blue-location"];
+    locationIcon.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    locationIcon.contentMode = UIViewContentModeScaleAspectFit;
+    locationIcon.layer.masksToBounds = YES;
+    locationIcon.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    locationIcon.layer.shouldRasterize = YES;
+    locationIcon.clipsToBounds = YES;
+    
     
     //Event label
-    _labelEvent = [[UILabel alloc] initWithFrame:CGRectMake(40, 408, 0, 0)];
+    _labelEvent = [[UILabel alloc] initWithFrame:CGRectMake(20, 408, 0, 0)];
     _labelEvent.textAlignment = NSTextAlignmentLeft;
     _labelEvent.text = @"Description";
     _labelEvent.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
@@ -68,7 +79,7 @@
     
     
     //Title
-    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(50, 210, 300, 0)];
+    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(20, 210, 300, 0)];
     _labelName.textAlignment = NSTextAlignmentLeft;
     _labelName.numberOfLines = 0;
     _labelName.text = @"#Prem Bhatia";
@@ -79,7 +90,7 @@
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //subTitle
-    _labelSub = [[UILabel alloc] initWithFrame:CGRectMake(50, 230, 300, 0)];
+    _labelSub = [[UILabel alloc] initWithFrame:CGRectMake(20, 230, 300, 0)];
     _labelSub.textAlignment = NSTextAlignmentLeft;
     _labelSub.numberOfLines = 0;
     _labelSub.text = @"#Prem Bhatia";
@@ -90,7 +101,7 @@
     _labelSub.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Comments Count
-    _labelCommentNum = [[UILabel alloc] initWithFrame:CGRectMake(50, 270, 300, 0)];
+    _labelCommentNum = [[UILabel alloc] initWithFrame:CGRectMake(20, 270, 300, 0)];
     _labelCommentNum.textAlignment = NSTextAlignmentLeft;
     _labelCommentNum.numberOfLines = 0;
     _labelCommentNum.text = @"2 Comments";
@@ -101,7 +112,7 @@
     _labelCommentNum.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Comments Count
-    _labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(490, 270, 300, 0)];
+    _labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(205, 270, 300, 0)];
     _labelRewards.textAlignment = NSTextAlignmentLeft;
     _labelRewards.numberOfLines = 0;
     _labelRewards.text = @"50 Reward Points";
@@ -114,7 +125,7 @@
     
     
     //Description
-    _detailDescription = [[UILabel alloc] initWithFrame:CGRectMake(40, 390, 200, 0)];
+    _detailDescription = [[UILabel alloc] initWithFrame:CGRectMake(20, 395, 200, 0)];
     _detailDescription.numberOfLines = 0;
     _detailDescription.textAlignment = NSTextAlignmentLeft;
     _detailDescription.text = @"Position";
@@ -137,7 +148,7 @@
     _titleDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Post Label
-    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(25, 545, 300, 0)];
+    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(25, 540, 300, 0)];
     _labelDate.numberOfLines = 0;
     _labelDate.textAlignment = NSTextAlignmentLeft;
     _labelDate.text = @"8/19/15 - 8/19/15";
@@ -146,6 +157,17 @@
     _labelDate.textColor = [UIColor lightGrayColor];
     [_labelDate sizeToFit];
     _labelDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    
+    //Location Label
+    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(160,560, 25,45)];
+    _labelLocation.numberOfLines = 0;
+    _labelLocation.textAlignment = NSTextAlignmentLeft;
+    _labelLocation.text = @"Location";
+    _labelLocation.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    _labelLocation.backgroundColor = [UIColor clearColor];
+    _labelLocation.textColor = [UIColor lightGrayColor];
+    [_labelLocation sizeToFit];
+    _labelLocation.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Comment
     _commentBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
@@ -215,9 +237,10 @@
     [self addSubview:_members];
     [self addSubview:_commentBtn];
     [self addSubview:_joinBtn];
+    [self addSubview:_labelLocation];
     [self addSubview:border];
     [self addSubview:border2];
-    //[self addSubview:memberImage];
+    [self addSubview:locationIcon];
     [bgview addSubview:_mainImageView];
     
     
