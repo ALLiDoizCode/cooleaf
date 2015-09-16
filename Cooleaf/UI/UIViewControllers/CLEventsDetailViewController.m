@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+     self.navigationController.navigationBar.tintColor = [UIColor offWhite];
+    
     UICollectionViewFlowLayout *layout;
     
     layout.minimumInteritemSpacing = 0;
