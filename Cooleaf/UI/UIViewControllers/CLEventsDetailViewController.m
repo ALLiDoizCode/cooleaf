@@ -110,42 +110,28 @@
     bgBlur.alpha = 0.8;
     
     //Background View
-    UIView *selectionView = [[UIView alloc] initWithFrame:CGRectMake(65, 100, 200, 200)];
+    UIView *selectionView = [[UIView alloc] initWithFrame:CGRectMake(65, 100, 200, 300)];
     selectionView.backgroundColor = [UIColor offWhite];
     
     selectionView.layer.cornerRadius = 3;
     selectionView.layer.masksToBounds = YES;
     
-    BFPaperCheckbox *paperCheckbox = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(10, 10, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
+    BFPaperCheckbox *paperCheckbox = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, -20, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
     paperCheckbox.tag = 1001;
-    paperCheckbox.rippleFromTapLocation = NO;
-    paperCheckbox.tapCirclePositiveColor = [UIColor paperColorAmber]; // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
-    paperCheckbox.tapCircleNegativeColor = [UIColor paperColorRed];   // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
     paperCheckbox.checkmarkColor = [UIColor UIColorFromRGB:0x00BCD5];
-    
-    BFPaperCheckbox *paperCheckbox2 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(10, 30, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
-    paperCheckbox2.center = CGPointMake(paperCheckbox.center.x, paperCheckbox2.frame.origin.y);
+   
+    BFPaperCheckbox *paperCheckbox2 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 30, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
     paperCheckbox2.tag = 1002;
-    paperCheckbox2.rippleFromTapLocation = NO;
-    paperCheckbox2.tapCirclePositiveColor = [UIColor paperColorAmber]; // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
-    paperCheckbox2.tapCircleNegativeColor = [UIColor paperColorRed];   // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
     paperCheckbox2.checkmarkColor = [UIColor UIColorFromRGB:0x00BCD5];
     
-    BFPaperCheckbox *paperCheckbox3 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(10, 50, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
-      paperCheckbox3.center = CGPointMake(paperCheckbox.center.x, paperCheckbox3.frame.origin.y);
+    BFPaperCheckbox *paperCheckbox3 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 80, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
     paperCheckbox3.tag = 1003;
-    paperCheckbox3.rippleFromTapLocation = NO;
-    paperCheckbox3.tapCirclePositiveColor = [UIColor paperColorAmber]; // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
-    paperCheckbox3.tapCircleNegativeColor = [UIColor paperColorRed];   // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
     paperCheckbox3.checkmarkColor = [UIColor UIColorFromRGB:0x00BCD5];
     
-    BFPaperCheckbox *paperCheckbox4 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(10, 70, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
-    paperCheckbox4.center = CGPointMake(paperCheckbox.center.x, paperCheckbox4.frame.origin.y);
+    BFPaperCheckbox *paperCheckbox4 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 130, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
     paperCheckbox4.tag = 1004;
-    paperCheckbox4.rippleFromTapLocation = NO;
-    paperCheckbox4.tapCirclePositiveColor = [UIColor paperColorAmber]; // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
-    paperCheckbox4.tapCircleNegativeColor = [UIColor paperColorRed];   // We could use [UIColor colorWithAlphaComponent] here to make a better tap-circle.
-    paperCheckbox4.checkmarkColor = [UIColor redColor];
+    paperCheckbox4.checkmarkColor = [UIColor UIColorFromRGB:0x00BCD5];
+    
     
     [_scrollView addSubview:bgBlur];
     [self.view addSubview:selectionView];
