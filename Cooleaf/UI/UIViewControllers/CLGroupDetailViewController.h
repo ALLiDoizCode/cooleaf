@@ -10,7 +10,7 @@
 #import "CLDetailView.h"
 #import "CLGroupPostViewcontroller.h"
 
-@interface CLGroupDetailViewController : UIViewController
+@interface CLGroupDetailViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic) NSString *currentImagePath;
 @property (nonatomic) NSString *currentName;

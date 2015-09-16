@@ -734,14 +734,49 @@
                         <viewControllerLayoutGuide type="top" id="tQp-Rg-5Tl"/>
                         <viewControllerLayoutGuide type="bottom" id="5Fy-bH-8PU"/>
                     </layoutGuides>
-                    <view key="view" tag="1" contentMode="scaleToFill" id="rDY-Av-Ztz" customClass="CLDetailView">
+                    <view key="view" tag="1" contentMode="scaleToFill" id="rDY-Av-Ztz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3O4-bC-qva">
+                                <rect key="frame" x="0.0" y="408" width="600" height="192"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="192" id="BBE-1Y-a05"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupDetailCell" id="lhe-lP-bfp" customClass="CLGroupPostCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lhe-lP-bfp" id="WN9-tc-FjR">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="eaP-m3-17O" id="vse-kb-wfc"/>
+                                    <outlet property="delegate" destination="eaP-m3-17O" id="jiK-QI-6On"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ab7-Mz-HLJ" customClass="CLDetailView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="474"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3O4-bC-qva" firstAttribute="bottom" secondItem="5Fy-bH-8PU" secondAttribute="top" id="9hj-bx-FkK"/>
+                            <constraint firstItem="Ab7-Mz-HLJ" firstAttribute="top" secondItem="rDY-Av-Ztz" secondAttribute="top" id="FBA-N0-nUA"/>
+                            <constraint firstItem="3O4-bC-qva" firstAttribute="trailing" secondItem="Ab7-Mz-HLJ" secondAttribute="trailing" id="RtO-4d-1tW"/>
+                            <constraint firstAttribute="trailing" secondItem="3O4-bC-qva" secondAttribute="trailing" id="Ymr-Q2-Mwx"/>
+                            <constraint firstItem="3O4-bC-qva" firstAttribute="leading" secondItem="Ab7-Mz-HLJ" secondAttribute="leading" id="foS-lY-bmM"/>
+                            <constraint firstItem="3O4-bC-qva" firstAttribute="leading" secondItem="rDY-Av-Ztz" secondAttribute="leading" id="gpQ-Wi-hE8"/>
+                            <constraint firstItem="3O4-bC-qva" firstAttribute="top" secondItem="Ab7-Mz-HLJ" secondAttribute="bottom" constant="-66" id="yiq-be-Vp6"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ikg-RU-UgL"/>
                     <connections>
-                        <outlet property="detailView" destination="rDY-Av-Ztz" id="e2L-TJ-71q"/>
+                        <outlet property="detailView" destination="Ab7-Mz-HLJ" id="qX1-tL-WVr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zi3-87-hLA" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -188,10 +188,10 @@
     [self addSubview:bgview];
     [self addSubview:blur];
     [self addSubview:_labelName];
-    [self addSubview:_labelPostName];
-    [self addSubview:_labelPostName2];
-    [self addSubview:_labelPost];
-    [self addSubview:_labelComment];
+    //[self addSubview:_labelPostName];
+    //[self addSubview:_labelPostName2];
+    //[self addSubview:_labelPost];
+    //[self addSubview:_labelComment];
     [self addSubview:_labelEvent];
     [self addSubview:_labelEventSub];
     [self addSubview:_members];
@@ -200,7 +200,7 @@
     [self addSubview:border];
     [self addSubview:border2];
     [self addSubview:memberImage];
-    [self addSubview:postImage];
+    //[self addSubview:postImage];
     [self addSubview:sendIcon];
     [bgview addSubview:_mainImageView];
 }
