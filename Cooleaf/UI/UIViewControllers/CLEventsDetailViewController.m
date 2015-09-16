@@ -8,6 +8,8 @@
 
 #import "CLEventsDetailViewController.h"
 #import "CLImage.h"
+#import "CLEventCollectionCell.h"
+#import "UIColor+CustomColors.h"
 
 @interface CLEventsDetailViewController ()
 
@@ -16,6 +18,10 @@
 @implementation CLEventsDetailViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [_eventCollectionView setShowsHorizontalScrollIndicator:NO];
+    [_eventCollectionView setShowsVerticalScrollIndicator:NO];
+    _detailView.backgroundColor = [UIColor offWhite];
     
     // Get the image url
     CLImage *eventImage = [_currentEvent eventImage];
@@ -43,6 +49,26 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return 4;
+}
+
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CLEventCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectioCell" forIndexPath:indexPath];
+    
+    cell.memberImage.image = [UIImage imageNamed:@"TestImage"];
+    
+    return cell;
 }
 
 /*

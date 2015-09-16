@@ -183,7 +183,7 @@
     [self addSubview:_joinBtn];
     [self addSubview:border];
     [self addSubview:border2];
-    [self addSubview:memberImage];
+    //[self addSubview:memberImage];
     [bgview addSubview:_mainImageView];
     
     
