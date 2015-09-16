@@ -40,7 +40,7 @@
     bgview.backgroundColor = [UIColor clearColor];
     
     //Blur
-    FXBlurView *blur = [[FXBlurView alloc] initWithFrame:CGRectMake(0, 235, self.frame.size.width, 65)];
+    FXBlurView *blur = [[FXBlurView alloc] initWithFrame:CGRectMake(0, 190, self.frame.size.width, 110)];
     blur.backgroundColor = [UIColor clearColor];
     blur.tintColor = [UIColor blackColor];
     blur.alpha = 0.85;
@@ -59,7 +59,7 @@
     //Event label
     _labelEvent = [[UILabel alloc] initWithFrame:CGRectMake(40, 408, 0, 0)];
     _labelEvent.textAlignment = NSTextAlignmentLeft;
-    _labelEvent.text = @"Events";
+    _labelEvent.text = @"Description";
     _labelEvent.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
     _labelEvent.backgroundColor = [UIColor clearColor];
     _labelEvent.textColor = [UIColor lightGrayColor];
@@ -68,59 +68,90 @@
     
     
     //Title
-    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(60, 255, 300, 0)];
+    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(50, 210, 300, 0)];
     _labelName.textAlignment = NSTextAlignmentLeft;
     _labelName.numberOfLines = 0;
     _labelName.text = @"#Prem Bhatia";
-    _labelName.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
+    _labelName.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17];
     _labelName.backgroundColor = [UIColor clearColor];
     _labelName.textColor = [UIColor offWhite];
     [_labelName sizeToFit];
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
+    //subTitle
+    _labelSub = [[UILabel alloc] initWithFrame:CGRectMake(50, 230, 300, 0)];
+    _labelSub.textAlignment = NSTextAlignmentLeft;
+    _labelSub.numberOfLines = 0;
+    _labelSub.text = @"#Prem Bhatia";
+    _labelSub.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:12];
+    _labelSub.backgroundColor = [UIColor clearColor];
+    _labelSub.textColor = [UIColor lightGrayColor];
+    [_labelSub sizeToFit];
+    _labelSub.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    
+    //Comments Count
+    _labelCommentNum = [[UILabel alloc] initWithFrame:CGRectMake(50, 270, 300, 0)];
+    _labelCommentNum.textAlignment = NSTextAlignmentLeft;
+    _labelCommentNum.numberOfLines = 0;
+    _labelCommentNum.text = @"2 Comments";
+    _labelCommentNum.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:12];
+    _labelCommentNum.backgroundColor = [UIColor clearColor];
+    _labelCommentNum.textColor = [UIColor lightGrayColor];
+    [_labelCommentNum sizeToFit];
+    _labelCommentNum.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    
+    //Comments Count
+    _labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(490, 270, 300, 0)];
+    _labelRewards.textAlignment = NSTextAlignmentLeft;
+    _labelRewards.numberOfLines = 0;
+    _labelRewards.text = @"50 Reward Points";
+    _labelRewards.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:12];
+    _labelRewards.backgroundColor = [UIColor clearColor];
+    _labelRewards.textColor = [UIColor lightGrayColor];
+    [_labelRewards sizeToFit];
+    _labelRewards.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     
-    //Name
-    _detailDescription = [[UILabel alloc] initWithFrame:CGRectMake(40, 400, 200, 0)];
+    
+    //Description
+    _detailDescription = [[UILabel alloc] initWithFrame:CGRectMake(40, 390, 200, 0)];
     _detailDescription.numberOfLines = 0;
     _detailDescription.textAlignment = NSTextAlignmentLeft;
     _detailDescription.text = @"Position";
-    //_detailDescription.preferredMaxLayoutWidth = 200;
-    //[_detailDescription setPreferredMaxLayoutWidth:YES];
-    _detailDescription.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    _detailDescription.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
     _detailDescription.backgroundColor = [UIColor clearColor];
-    _detailDescription.textColor = [UIColor lightGrayColor];
+    _detailDescription.textColor = [UIColor darkGrayColor];
     [_detailDescription sizeToFit];
     _detailDescription.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    //_detailDescription.clipsToBounds = YES;
+    
     
     //Post Label
-    _labelPost = [[UILabel alloc] initWithFrame:CGRectMake(120, 505, 300, 0)];
-    _labelPost.numberOfLines = 0;
-    _labelPost.textAlignment = NSTextAlignmentLeft;
-    _labelPost.text = @"We should eventually read classic books, like the one about the boy and his dog.";
-    _labelPost.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    _labelPost.backgroundColor = [UIColor clearColor];
-    _labelPost.textColor = [UIColor darkGrayColor];
-    [_labelPost sizeToFit];
-    _labelPost.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    _titleDate = [[UILabel alloc] initWithFrame:CGRectMake(25, 510, 300, 0)];
+    _titleDate.numberOfLines = 0;
+    _titleDate.textAlignment = NSTextAlignmentLeft;
+    _titleDate.text = @"Date";
+    _titleDate.font = [UIFont fontWithName:@"HelveticaNeue" size:11];
+    _titleDate.backgroundColor = [UIColor clearColor];
+    _titleDate.textColor = [UIColor darkGrayColor];
+    [_titleDate sizeToFit];
+    _titleDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Post Label
-    _labelComment = [[UILabel alloc] initWithFrame:CGRectMake(25, 545, 300, 0)];
-    _labelComment.numberOfLines = 0;
-    _labelComment.textAlignment = NSTextAlignmentLeft;
-    _labelComment.text = @"6 comments";
-    _labelComment.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
-    _labelComment.backgroundColor = [UIColor clearColor];
-    _labelComment.textColor = [UIColor lightGrayColor];
-    [_labelComment sizeToFit];
-    _labelComment.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(25, 545, 300, 0)];
+    _labelDate.numberOfLines = 0;
+    _labelDate.textAlignment = NSTextAlignmentLeft;
+    _labelDate.text = @"8/19/15 - 8/19/15";
+    _labelDate.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    _labelDate.backgroundColor = [UIColor clearColor];
+    _labelDate.textColor = [UIColor lightGrayColor];
+    [_labelDate sizeToFit];
+    _labelDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Comment
     _commentBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     _commentBtn.frame = CGRectMake(150, 315, 75, 30);
     [_commentBtn setTitle:@"COMMENTS" forState:UIControlStateNormal];
-    _commentBtn.font = [UIFont fontWithName:@"HelveticaNeue" size:11];
+    _commentBtn.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:11];
     _commentBtn.backgroundColor = [UIColor UIColorFromRGB:0xE0E1E4];
     _commentBtn.tintColor = [UIColor darkGrayColor];
     _commentBtn.layer.cornerRadius = 2;
@@ -131,7 +162,7 @@
     _joinBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     _joinBtn.frame = CGRectMake(230, 315, 75, 30);
     [_joinBtn setTitle:@"JOIN" forState:UIControlStateNormal];
-    _joinBtn.font = [UIFont fontWithName:@"HelveticaNeue" size:11];
+    _joinBtn.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:11];
     _joinBtn.backgroundColor = [UIColor UIColorFromRGB:0x00BCD5];
     _joinBtn.tintColor = offWhite;
     _joinBtn.layer.cornerRadius = 2;
@@ -172,10 +203,13 @@
     [self addSubview:bgview];
     [self addSubview:blur];
     [self addSubview:_labelName];
+    [self addSubview:_labelSub];
     [self addSubview:_labelPostName];
     [self addSubview:_detailDescription];
-    [self addSubview:_labelPost];
-    [self addSubview:_labelComment];
+    [self addSubview:_titleDate];
+    [self addSubview:_labelDate];
+    [self addSubview:_labelRewards];
+    [self addSubview:_labelCommentNum];
     [self addSubview:_labelEvent];
     [self addSubview:_labelEventSub];
     [self addSubview:_members];

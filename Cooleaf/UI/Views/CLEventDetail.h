@@ -12,10 +12,13 @@
 
 @property (nonatomic) UIImageView *mainImageView;
 @property (nonatomic) UILabel *labelName;
+@property (nonatomic) UILabel *labelSub;
+@property (nonatomic) UILabel *labelCommentNum;
+@property (nonatomic) UILabel *labelRewards;
 @property (nonatomic) UILabel *labelPostName;
 @property (nonatomic) UILabel *detailDescription;
-@property (nonatomic) UILabel *labelPost;
-@property (nonatomic) UILabel *labelComment;
+@property (nonatomic) UILabel *titleDate;
+@property (nonatomic) UILabel *labelDate;
 @property (nonatomic) UILabel *labelEvent;
 @property (nonatomic) UILabel *labelEventSub;
 @property (nonatomic) UIButton *members;

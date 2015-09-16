@@ -19,6 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UICollectionViewFlowLayout *layout;
+    
+    layout.minimumInteritemSpacing = 0;
+    layout.minimumLineSpacing = 0;
+    
     [_eventCollectionView setShowsHorizontalScrollIndicator:NO];
     [_eventCollectionView setShowsVerticalScrollIndicator:NO];
     _detailView.backgroundColor = [UIColor offWhite];
@@ -46,6 +51,11 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    
+    self.navigationController.navigationBar.alpha = 0.7;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -70,6 +80,7 @@
     
     return cell;
 }
+
 
 /*
 #pragma mark - Navigation

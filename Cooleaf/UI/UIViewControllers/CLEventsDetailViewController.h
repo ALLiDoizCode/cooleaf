@@ -10,7 +10,7 @@
 #import "CLEvent.h"
 #import "CLEventDetail.h"
 
-@interface CLEventsDetailViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface CLEventsDetailViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) IBOutlet CLEventDetail *detailView;
 

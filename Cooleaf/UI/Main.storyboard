@@ -712,8 +712,8 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ak0-qC-MZk">
                                 <rect key="frame" x="10" y="355" width="202" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="6" id="nxs-mV-lXb">
-                                    <size key="itemSize" width="42" height="37"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="nxs-mV-lXb">
+                                    <size key="itemSize" width="40" height="37"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -723,11 +723,11 @@
                                         <rect key="frame" x="0.0" y="3.5" width="42" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="42" height="37"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="40" height="37"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xRM-m8-NTZ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -735,8 +735,8 @@
                                         <constraints>
                                             <constraint firstItem="xRM-m8-NTZ" firstAttribute="leading" secondItem="xRF-BM-IyY" secondAttribute="leading" id="6en-bN-Y6R"/>
                                             <constraint firstItem="xRM-m8-NTZ" firstAttribute="top" secondItem="xRF-BM-IyY" secondAttribute="top" id="FXJ-ue-10T"/>
-                                            <constraint firstAttribute="trailing" secondItem="xRM-m8-NTZ" secondAttribute="trailing" constant="12" id="Lcu-vC-bGx"/>
-                                            <constraint firstAttribute="bottom" secondItem="xRM-m8-NTZ" secondAttribute="bottom" constant="7" id="ybE-i7-khL"/>
+                                            <constraint firstAttribute="trailing" secondItem="xRM-m8-NTZ" secondAttribute="trailing" constant="6" id="Lcu-vC-bGx"/>
+                                            <constraint firstAttribute="bottom" secondItem="xRM-m8-NTZ" secondAttribute="bottom" constant="3" id="ybE-i7-khL"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="memberImage" destination="xRM-m8-NTZ" id="3cS-BK-JsZ"/>
