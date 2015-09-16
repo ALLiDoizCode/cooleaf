@@ -81,7 +81,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CLPeopleCell * cell = [_tableView dequeueReusableCellWithIdentifier:@"peopleCell"];
+    CLPeopleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"peopleCell"];
     
     // Get the user object
     CLUser *user = [_organizationUsers objectAtIndex:[indexPath row]];
@@ -96,14 +96,13 @@
     NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"versions"][@"profile_ios"]];
     [cell.peopleImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     
-    
     return cell;
 }
 
 # pragma mark - TableView Delegate Methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 # pragma mark - showActivityIndicator
