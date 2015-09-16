@@ -18,7 +18,7 @@
     UIColor *offWhite = [UIColor UIColorFromRGB:0xFDFDFD];
     
     //Background View
-    UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(10, 20, 295, 150)];
+    UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(13, 20, 295, 150)];
     bgview.backgroundColor = offWhite;
     
     /// member Icon
