@@ -7,11 +7,14 @@
 //
 
 #import "CLPeopleCell.h"
+#import "LabelWidth.h"
 
 @implementation CLPeopleCell
 
 - (void)awakeFromNib {
     
+    [LabelWidth labelWidth:_peopleLabel];
+    [LabelWidth labelWidth:_positionLabel];
     _peopleImage.layer.cornerRadius = _peopleImage.frame.size.height/2;
     _peopleImage.layer.masksToBounds = YES;
 }

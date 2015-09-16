@@ -11,6 +11,8 @@
 #import "CLGroupDetailViewController.h"
 #import "UIColor+CustomColors.h"
 #import "CCColorCube.h"
+#import "CLGroupEventCell.h"
+#import "CLGroupDetailCollectionCell.h"
 
 @interface CLGroupDetailViewController ()  {
     @private
@@ -24,8 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //_eventTable.hidden = YES;
-    //_postTable.hidden = NO;
+    _eventTable.hidden = YES;
     
     [_detailView.postBtn2 addTarget:self action:@selector(showPost) forControlEvents:UIControlEventTouchUpInside];
     
@@ -98,25 +99,65 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CLGroupPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupDetailCell"];
-    return cell;
+    
+    if (_eventTable.hidden == YES) {
+        
+         CLGroupPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupDetailCell"];
+        
+        return cell;
+        
+    }else {
+        
+        CLGroupEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventDetailCell"];
+        
+        return cell;
+    }
+    
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return 4;
+}
+
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CLGroupDetailCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"detailGroupCollectionCell" forIndexPath:indexPath];
+    
+    cell.memberImage.image = [UIImage imageNamed:@"TestImage"];
+    
+    return cell;
 }
 
 -(void)showPost {
     
     _postTable.hidden = NO;
     _eventTable.hidden = YES;
+    _postTable.delegate = self;
+    _postTable.dataSource = self;
+    _postTable.reloadData;
 
 }
 
 -(void)showEvents {
     
+    _eventTable.delegate = self;
+    _eventTable.dataSource = self;
     _eventTable.hidden = NO;
     _postTable.hidden = YES;
+    _eventTable.reloadData;
 }
 
 /*

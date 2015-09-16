@@ -128,6 +128,9 @@
 		6877AFCC1B997D3F00113B86 /* CLDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFCB1B997D3F00113B86 /* CLDetailView.m */; };
 		6888B4031B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888B4021B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m */; };
 		6888B4061B99ABE5008D9CB3 /* CLGroupPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888B4051B99ABE5008D9CB3 /* CLGroupPostCell.m */; };
+		68AB42001BAA02F2006495DC /* CLGroupEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AB41FF1BAA02F2006495DC /* CLGroupEventCell.m */; };
+		68AB42031BAA1D26006495DC /* LabelWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AB42021BAA1D26006495DC /* LabelWidth.m */; };
+		68AB42061BAA23AB006495DC /* CLGroupDetailCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AB42051BAA23AB006495DC /* CLGroupDetailCollectionCell.m */; };
 		68B07EA91BA1313000FCF806 /* CCColorCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B07EA61BA1313000FCF806 /* CCColorCube.m */; };
 		68B07EAA1BA1313000FCF806 /* CCLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */; };
 		68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */; };
@@ -436,6 +439,12 @@
 		6888B4021B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupPostViewcontroller.m; sourceTree = "<group>"; };
 		6888B4041B99ABE5008D9CB3 /* CLGroupPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupPostCell.h; sourceTree = "<group>"; };
 		6888B4051B99ABE5008D9CB3 /* CLGroupPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupPostCell.m; sourceTree = "<group>"; };
+		68AB41FE1BAA02F2006495DC /* CLGroupEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupEventCell.h; sourceTree = "<group>"; };
+		68AB41FF1BAA02F2006495DC /* CLGroupEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupEventCell.m; sourceTree = "<group>"; };
+		68AB42011BAA1D26006495DC /* LabelWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelWidth.h; sourceTree = "<group>"; };
+		68AB42021BAA1D26006495DC /* LabelWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelWidth.m; sourceTree = "<group>"; };
+		68AB42041BAA23AB006495DC /* CLGroupDetailCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupDetailCollectionCell.h; sourceTree = "<group>"; };
+		68AB42051BAA23AB006495DC /* CLGroupDetailCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupDetailCollectionCell.m; sourceTree = "<group>"; };
 		68B07EA51BA1313000FCF806 /* CCColorCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCColorCube.h; sourceTree = "<group>"; };
 		68B07EA61BA1313000FCF806 /* CCColorCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCColorCube.m; sourceTree = "<group>"; };
 		68B07EA71BA1313000FCF806 /* CCLocalMaximum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocalMaximum.h; sourceTree = "<group>"; };
@@ -674,6 +683,8 @@
 				68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */,
 				4B6088471B929EA20029E659 /* UIColor+CustomColors.h */,
 				4B6088481B929EA20029E659 /* UIColor+CustomColors.m */,
+				68AB42011BAA1D26006495DC /* LabelWidth.h */,
+				68AB42021BAA1D26006495DC /* LabelWidth.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -914,6 +925,10 @@
 				4BBF2C321BA10A8F00ECC37F /* CLTagCollectionViewCell.m */,
 				680A64DB1BA255CE003C4B5E /* CLPeopleCell.h */,
 				680A64DC1BA255CE003C4B5E /* CLPeopleCell.m */,
+				68AB41FE1BAA02F2006495DC /* CLGroupEventCell.h */,
+				68AB41FF1BAA02F2006495DC /* CLGroupEventCell.m */,
+				68AB42041BAA23AB006495DC /* CLGroupDetailCollectionCell.h */,
+				68AB42051BAA23AB006495DC /* CLGroupDetailCollectionCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1506,6 +1521,7 @@
 				D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */,
 				4BA4E2F91B8BC76B0089CB2B /* CLOrganization.m in Sources */,
 				D93AAC89187B693B00E9B96A /* NPLocationCell.m in Sources */,
+				68AB42061BAA23AB006495DC /* CLGroupDetailCollectionCell.m in Sources */,
 				430936491AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m in Sources */,
 				D93AAC74187B170C00E9B96A /* NPAttendeesCell.m in Sources */,
 				4BA4E3491B8D133F0089CB2B /* CLAuthenticationController.m in Sources */,
@@ -1515,6 +1531,7 @@
 				43B0624C1AB71A64009F96CD /* NPMembersCell.m in Sources */,
 				D9507ADA187EE22C0020498A /* NPOtherEventCell.m in Sources */,
 				D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */,
+				68AB42031BAA1D26006495DC /* LabelWidth.m in Sources */,
 				523096DC1AA3E1A600649FB7 /* NPOtherHomeCell.m in Sources */,
 				6877AFB11B9905DF00113B86 /* CLPostViewController.m in Sources */,
 				4BAE006B1B8EE00D00779E1F /* CLEventSubscriber.m in Sources */,
@@ -1596,6 +1613,7 @@
 				4BA4E3351B8C1E280089CB2B /* CLFilePreview.m in Sources */,
 				4BA4E2F31B8BC6E70089CB2B /*  in Sources */,
 				4BA2A6591BA7F685004724EB /* CLLoadUsersEvent.m in Sources */,
+				68AB42001BAA02F2006495DC /* CLGroupEventCell.m in Sources */,
 				4BAE005D1B8EDEE200779E1F /* CLBaseNotificationRegistry.m in Sources */,
 				4BA2A65C1BA7F8ED004724EB /* CLLoadedUsersEvent.m in Sources */,
 				D93AACA9187C351500E9B96A /* NPNewTodoViewController.m in Sources */,

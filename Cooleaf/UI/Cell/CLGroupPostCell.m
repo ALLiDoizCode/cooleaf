@@ -8,6 +8,7 @@
 
 #import "CLGroupPostCell.h"
 #import "UIColor+CustomColors.h"
+#import "LabelWidth.h"
 
 @implementation CLGroupPostCell
 
@@ -52,6 +53,7 @@
     _labelPostName.textColor = [UIColor darkGrayColor];
     [_labelPostName sizeToFit];
     _labelPostName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [LabelWidth labelWidth:_labelPostName];
     
     
     //postion
@@ -63,6 +65,7 @@
     _labelPostName2.textColor = [UIColor lightGrayColor];
     [_labelPostName2 sizeToFit];
     _labelPostName2.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    [LabelWidth labelWidth:_labelPostName2];
     
     //Post Label
     _labelPost = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 270, 0)];

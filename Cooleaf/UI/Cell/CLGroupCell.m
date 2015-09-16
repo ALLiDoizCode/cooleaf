@@ -9,6 +9,7 @@
 #import "CLGroupCell.h"
 #import <FXBlurView.h>
 #import "UIColor+CustomColors.h"
+#import "LabelWidth.h"
 
 @implementation CLGroupCell
 
@@ -49,7 +50,7 @@
     IconImageView.clipsToBounds = YES;
     
     //Name
-    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(68, 120, 0, 0)];
+    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(108, 120, 0, 0)];
     _labelName.textAlignment = NSTextAlignmentLeft;
     _labelName.text = @"#Prem Bhatia";
     _labelName.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
@@ -57,6 +58,7 @@
     _labelName.textColor = offWhite;
     [_labelName sizeToFit];
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+     [LabelWidth labelWidth:_labelName];
     
     //Count Label
     _labelCount = [[UILabel alloc] initWithFrame:CGRectMake(458, 120, 0, 0)];
