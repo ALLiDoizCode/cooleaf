@@ -21,5 +21,7 @@
 @property (nonatomic) UIButton *members;
 @property (nonatomic) UIButton *postBtn;
 @property (nonatomic) UIButton *joinBtn;
+@property (nonatomic) UIButton *postBtn2;
+@property (nonatomic) UIButton *eventBtn;
 
 @end

@@ -53,27 +53,6 @@
     sendIcon.layer.shouldRasterize = YES;
     sendIcon.clipsToBounds = YES;
     
-    //Event label
-    _labelEvent = [[UILabel alloc] initWithFrame:CGRectMake(120, 408, 0, 0)];
-    _labelEvent.textAlignment = NSTextAlignmentLeft;
-    _labelEvent.text = @"Events";
-    _labelEvent.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
-    _labelEvent.backgroundColor = [UIColor clearColor];
-    _labelEvent.textColor = [UIColor lightGrayColor];
-    [_labelEvent sizeToFit];
-    _labelEvent.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    
-    //Event Sublabel
-    _labelEventSub = [[UILabel alloc] initWithFrame:CGRectMake(138, 425, 0, 0)];
-    _labelEventSub.textAlignment = NSTextAlignmentLeft;
-    _labelEventSub.text = @"23 past evets, 2 upcoming evets";
-    _labelEventSub.font = [UIFont fontWithName:@"HelveticaNeue" size:8];
-    _labelEventSub.backgroundColor = [UIColor clearColor];
-    _labelEventSub.textColor = [UIColor lightGrayColor];
-    [_labelEventSub sizeToFit];
-    _labelEventSub.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-
-    
     //Name
     _labelName = [[UILabel alloc] initWithFrame:CGRectMake(60, 255, 0, 0)];
     _labelName.textAlignment = NSTextAlignmentLeft;
@@ -147,6 +126,33 @@
     _joinBtn.layer.masksToBounds = YES;
      //[joinBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    //Post2
+    _postBtn2 = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    _postBtn2.frame = CGRectMake(90, 408, 80, 25);
+    [_postBtn2 setTitle:@"Posts" forState:UIControlStateNormal];
+    _postBtn2.backgroundColor = [UIColor offWhite];
+    _postBtn2.tintColor = [UIColor darkGrayColor];
+    _postBtn2.layer.cornerRadius = 3;
+    _postBtn2.layer.borderWidth = 2;
+    _postBtn2.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    _postBtn2.layer.masksToBounds = YES;
+    //[_postBtn2 addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //Join
+    _eventBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    _eventBtn.frame = CGRectMake(162, 408, 75, 25);
+    [_eventBtn setTitle:@"Events" forState:UIControlStateNormal];
+    _eventBtn.backgroundColor = [UIColor darkGrayColor];
+    _eventBtn.tintColor = [UIColor offWhite];
+    _eventBtn.layer.cornerRadius = 3;
+    _eventBtn.layer.borderWidth = 2;
+    _eventBtn.layer.borderColor = [UIColor darkGrayColor].CGColor;
+    
+    
+    _eventBtn.layer.masksToBounds = YES;
+    //[_eventBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    
     //Members
     _members = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     _members.frame  = CGRectMake(230, 380, 60, 10);
@@ -188,20 +194,16 @@
     [self addSubview:bgview];
     [self addSubview:blur];
     [self addSubview:_labelName];
-    //[self addSubview:_labelPostName];
-    //[self addSubview:_labelPostName2];
-    //[self addSubview:_labelPost];
-    //[self addSubview:_labelComment];
     [self addSubview:_labelEvent];
     [self addSubview:_labelEventSub];
     [self addSubview:_members];
     [self addSubview:_postBtn];
     [self addSubview:_joinBtn];
+    [self addSubview:_postBtn2];
+    [self addSubview:_eventBtn];
     [self addSubview:border];
     [self addSubview:border2];
     [self addSubview:memberImage];
-    //[self addSubview:postImage];
-    [self addSubview:sendIcon];
     [bgview addSubview:_mainImageView];
 }
 

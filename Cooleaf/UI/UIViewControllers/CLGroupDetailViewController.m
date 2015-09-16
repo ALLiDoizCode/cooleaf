@@ -24,6 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //_eventTable.hidden = YES;
+    //_postTable.hidden = NO;
+    
+    [_detailView.postBtn2 addTarget:self action:@selector(showPost) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_detailView.eventBtn addTarget:self action:@selector(showEvents) forControlEvents:UIControlEventTouchUpInside];
+    
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     [self setupSearch];
@@ -78,15 +85,16 @@
     commentBtn.tintColor = [UIColor whiteColor];
 }
 
+
 - (void)goToGroupPostViewController {    
     CLGroupPostViewcontroller *search = [self.storyboard instantiateViewControllerWithIdentifier:@"groupPostViewController"];
     [[self navigationController] pushViewController:search animated:YES];
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 5;
 }
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -96,6 +104,19 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(void)showPost {
+    
+    _postTable.hidden = NO;
+    _eventTable.hidden = YES;
+
+}
+
+-(void)showEvents {
+    
+    _eventTable.hidden = NO;
+    _postTable.hidden = YES;
 }
 
 /*

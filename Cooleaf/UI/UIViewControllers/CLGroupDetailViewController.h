@@ -15,5 +15,7 @@
 @property (nonatomic) NSString *currentImagePath;
 @property (nonatomic) NSString *currentName;
 @property (strong, nonatomic) IBOutlet CLDetailView *detailView;
+@property (weak, nonatomic) IBOutlet UITableView *eventTable;
+@property (weak, nonatomic) IBOutlet UITableView *postTable;
 
 @end

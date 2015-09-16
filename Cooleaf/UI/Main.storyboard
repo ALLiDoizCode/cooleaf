@@ -741,6 +741,19 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFV-uP-otr">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="358" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fdl-8u-IZS">
+                                        <rect key="frame" x="0.0" y="424" width="600" height="176"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventDetailCell" id="L22-bh-80U" customClass="CLEventCell">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L22-bh-80U" id="geJ-d8-iOD">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3O4-bC-qva">
                                         <rect key="frame" x="0.0" y="424" width="600" height="176"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -771,14 +784,18 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.95686274510000002" blue="0.0054740344939999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="fdl-8u-IZS" firstAttribute="top" secondItem="3O4-bC-qva" secondAttribute="top" id="1NV-e8-g8T"/>
                                     <constraint firstItem="3O4-bC-qva" firstAttribute="trailing" secondItem="Ab7-Mz-HLJ" secondAttribute="trailing" id="4sE-81-1VQ"/>
                                     <constraint firstItem="3O4-bC-qva" firstAttribute="top" secondItem="GFV-uP-otr" secondAttribute="top" constant="424" id="54w-Ae-eeP"/>
+                                    <constraint firstItem="fdl-8u-IZS" firstAttribute="bottom" secondItem="3O4-bC-qva" secondAttribute="bottom" id="Ebt-Wp-2oC"/>
                                     <constraint firstAttribute="trailing" secondItem="3O4-bC-qva" secondAttribute="trailing" id="Hf0-9P-MDj"/>
                                     <constraint firstItem="3O4-bC-qva" firstAttribute="bottom" secondItem="GFV-uP-otr" secondAttribute="bottomMargin" constant="8" id="LPr-kF-Kaj"/>
+                                    <constraint firstItem="fdl-8u-IZS" firstAttribute="trailing" secondItem="3O4-bC-qva" secondAttribute="trailing" id="QeQ-lY-JNi"/>
                                     <constraint firstItem="3O4-bC-qva" firstAttribute="leading" secondItem="GFV-uP-otr" secondAttribute="leading" id="REA-2m-EL3"/>
                                     <constraint firstItem="3O4-bC-qva" firstAttribute="centerX" secondItem="GFV-uP-otr" secondAttribute="centerX" id="TUe-EA-vyi"/>
                                     <constraint firstItem="Ab7-Mz-HLJ" firstAttribute="top" secondItem="GFV-uP-otr" secondAttribute="top" id="Ub4-ct-eDl"/>
                                     <constraint firstItem="3O4-bC-qva" firstAttribute="leading" secondItem="Ab7-Mz-HLJ" secondAttribute="leading" id="cWF-DP-x4H"/>
+                                    <constraint firstItem="fdl-8u-IZS" firstAttribute="leading" secondItem="3O4-bC-qva" secondAttribute="leading" id="z6P-Vv-6Fd"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -793,6 +810,8 @@
                     <navigationItem key="navigationItem" id="ikg-RU-UgL"/>
                     <connections>
                         <outlet property="detailView" destination="Ab7-Mz-HLJ" id="qX1-tL-WVr"/>
+                        <outlet property="eventTable" destination="fdl-8u-IZS" id="m4L-ch-BFR"/>
+                        <outlet property="postTable" destination="3O4-bC-qva" id="9nx-Lf-8H0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zi3-87-hLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
