@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CLEvent.h"
 #import "CLEventDetail.h"
+#import "BFPaperCheckbox.h"
 
-@interface CLEventsDetailViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
+@interface CLEventsDetailViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate, BFPaperCheckboxDelegate>
 
 @property (strong, nonatomic) IBOutlet CLEventDetail *detailView;
 
