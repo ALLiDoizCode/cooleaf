@@ -26,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [_detailScroll setContentSize:CGSizeMake(_detailScroll.contentSize.width, 1000)];
+    
     _eventTable.hidden = YES;
     
     [_detailView.postBtn2 addTarget:self action:@selector(showPost) forControlEvents:UIControlEventTouchUpInside];

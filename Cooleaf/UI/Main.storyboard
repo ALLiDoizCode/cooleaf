@@ -741,8 +741,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFV-uP-otr">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="180" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fdl-8u-IZS">
-                                        <rect key="frame" x="0.0" y="424" width="600" height="176"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="180" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fdl-8u-IZS">
+                                        <rect key="frame" x="0.0" y="424" width="600" height="575"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventDetailCell" id="L22-bh-80U" customClass="CLGroupEventCell">
@@ -755,12 +755,9 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="160" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3O4-bC-qva">
-                                        <rect key="frame" x="0.0" y="424" width="600" height="176"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="160" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3O4-bC-qva">
+                                        <rect key="frame" x="0.0" y="424" width="600" height="575"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="176" id="BBE-1Y-a05"/>
-                                        </constraints>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupDetailCell" id="lhe-lP-bfp" customClass="CLGroupPostCell">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -775,7 +772,7 @@
                                             <outlet property="delegate" destination="eaP-m3-17O" id="jiK-QI-6On"/>
                                         </connections>
                                     </tableView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ab7-Mz-HLJ" customClass="CLDetailView">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ab7-Mz-HLJ" customClass="CLDetailView">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xmm-Zc-Tti">
@@ -819,37 +816,21 @@
                                             </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="440" id="RHY-Rf-ef3"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="fdl-8u-IZS" firstAttribute="top" secondItem="3O4-bC-qva" secondAttribute="top" id="1NV-e8-g8T"/>
-                                    <constraint firstItem="3O4-bC-qva" firstAttribute="trailing" secondItem="Ab7-Mz-HLJ" secondAttribute="trailing" id="4sE-81-1VQ"/>
-                                    <constraint firstItem="3O4-bC-qva" firstAttribute="top" secondItem="GFV-uP-otr" secondAttribute="top" constant="424" id="54w-Ae-eeP"/>
-                                    <constraint firstItem="fdl-8u-IZS" firstAttribute="bottom" secondItem="3O4-bC-qva" secondAttribute="bottom" id="Ebt-Wp-2oC"/>
-                                    <constraint firstAttribute="trailing" secondItem="3O4-bC-qva" secondAttribute="trailing" id="Hf0-9P-MDj"/>
-                                    <constraint firstItem="3O4-bC-qva" firstAttribute="bottom" secondItem="GFV-uP-otr" secondAttribute="bottomMargin" constant="8" id="LPr-kF-Kaj"/>
-                                    <constraint firstItem="fdl-8u-IZS" firstAttribute="trailing" secondItem="3O4-bC-qva" secondAttribute="trailing" id="QeQ-lY-JNi"/>
-                                    <constraint firstItem="3O4-bC-qva" firstAttribute="leading" secondItem="GFV-uP-otr" secondAttribute="leading" id="REA-2m-EL3"/>
-                                    <constraint firstItem="3O4-bC-qva" firstAttribute="centerX" secondItem="GFV-uP-otr" secondAttribute="centerX" id="TUe-EA-vyi"/>
-                                    <constraint firstItem="Ab7-Mz-HLJ" firstAttribute="top" secondItem="GFV-uP-otr" secondAttribute="top" id="Ub4-ct-eDl"/>
-                                    <constraint firstItem="3O4-bC-qva" firstAttribute="leading" secondItem="Ab7-Mz-HLJ" secondAttribute="leading" id="cWF-DP-x4H"/>
-                                    <constraint firstItem="fdl-8u-IZS" firstAttribute="leading" secondItem="3O4-bC-qva" secondAttribute="leading" id="z6P-Vv-6Fd"/>
-                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="GFV-uP-otr" firstAttribute="leading" secondItem="rDY-Av-Ztz" secondAttribute="leading" id="7r4-Nz-mmC"/>
-                            <constraint firstItem="GFV-uP-otr" firstAttribute="bottom" secondItem="5Fy-bH-8PU" secondAttribute="top" id="KSB-dm-r8v"/>
-                            <constraint firstItem="GFV-uP-otr" firstAttribute="top" secondItem="rDY-Av-Ztz" secondAttribute="topMargin" id="iev-vz-L82"/>
-                            <constraint firstAttribute="trailing" secondItem="GFV-uP-otr" secondAttribute="trailing" id="zQd-TI-bIb"/>
+                            <constraint firstItem="GFV-uP-otr" firstAttribute="height" secondItem="rDY-Av-Ztz" secondAttribute="height" id="9ki-6b-ZCp"/>
+                            <constraint firstAttribute="centerY" secondItem="GFV-uP-otr" secondAttribute="centerY" id="c3z-hx-8R5"/>
+                            <constraint firstAttribute="centerX" secondItem="GFV-uP-otr" secondAttribute="centerX" id="dFb-7H-SoC"/>
+                            <constraint firstItem="GFV-uP-otr" firstAttribute="width" secondItem="rDY-Av-Ztz" secondAttribute="width" id="kbK-uc-0X4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ikg-RU-UgL"/>
                     <connections>
+                        <outlet property="detailScroll" destination="GFV-uP-otr" id="kNU-He-d5l"/>
                         <outlet property="detailView" destination="Ab7-Mz-HLJ" id="qX1-tL-WVr"/>
                         <outlet property="eventTable" destination="fdl-8u-IZS" id="m4L-ch-BFR"/>
                         <outlet property="postTable" destination="3O4-bC-qva" id="9nx-Lf-8H0"/>

@@ -18,4 +18,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *eventTable;
 @property (weak, nonatomic) IBOutlet UITableView *postTable;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *detailScroll;
+
 @end

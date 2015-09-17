@@ -43,7 +43,7 @@
     _eventImageView.clipsToBounds = YES;
     
     //Icon Image
-    UIImageView *IconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(517, 130, 20, 20)];
+    UIImageView *IconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(260, 130, 20, 20)];
     IconImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     IconImageView.image = [UIImage imageNamed:@"events_icon"];
     IconImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -53,7 +53,7 @@
     IconImageView.clipsToBounds = YES;
     
     //Name
-    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(90, 125, 0, 0)];
+    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(30, 130, 0, 0)];
     _labelName.textAlignment = NSTextAlignmentLeft;
     _labelName.text = @"Name of event goes here";
     _labelName.numberOfLines = 0;
@@ -64,7 +64,7 @@
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Count Label
-    _labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(460, 155, 0, 0)];
+    _labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(200, 155, 0, 0)];
     _labelRewards.textAlignment = NSTextAlignmentLeft;
     _labelRewards.text = @"50 Reward Points";
     _labelRewards.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
@@ -74,7 +74,7 @@
     _labelRewards.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Date Label
-    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(62, 155, 0, 0)];
+    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(30, 155, 0, 0)];
     _labelDate.textAlignment = NSTextAlignmentLeft;
     _labelDate.text = @"Dec 1, 2015";
     _labelDate.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
