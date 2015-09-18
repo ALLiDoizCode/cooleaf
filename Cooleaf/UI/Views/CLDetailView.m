@@ -113,7 +113,6 @@
     [self addSubview:_labelEvent];
     [self addSubview:_labelEventSub];
     [self addSubview:_members];
-    [self addSubview:_postBtn];
     [self addSubview:_joinBtn];
     [self addSubview:_segmentedControl];
     [self addSubview:border];

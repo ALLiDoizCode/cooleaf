@@ -12,6 +12,7 @@
 #import "CLGroupDetailViewController.h"
 #import "CLInterestPresenter.h"
 #import "CLInterest.h"
+#import "CLSearchViewController.h"
 
 @interface CLGroupViewController () {
     @private
@@ -62,7 +63,7 @@
 #pragma mark - searchDisplay
 
 -(void)setupSearch {
-    UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:nil];
+    UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchViewController)];
     UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
 
     NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
@@ -217,6 +218,13 @@
     fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"164x164"];
     NSLog(@"%@", fullPath);
     return [NSURL URLWithString:fullPath];
+}
+
+# pragma mark - searchViewController
+
+- (void)searchViewController {
+    CLSearchViewController *search = [self.storyboard instantiateViewControllerWithIdentifier:@"search"];
+    [[self navigationController] pushViewController:search animated:YES];
 }
 
 @end

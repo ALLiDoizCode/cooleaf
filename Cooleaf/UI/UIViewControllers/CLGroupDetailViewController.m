@@ -18,6 +18,7 @@
 #import "CLUser.h"
 #import "UIImageView+WebCache.h"
 #import "CLClient.h"
+#import "CLSearchViewController.h"
 
 @interface CLGroupDetailViewController()
 
@@ -90,7 +91,7 @@
     self.navigationController.navigationBar.barTintColor = _barColor;
     
     // Set buttons
-    UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:nil];
+    UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchViewController)];
     UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
     NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
     [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
@@ -244,6 +245,13 @@
     [cell.memberImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     
     return cell;
+}
+
+# pragma mark - searchViewController
+
+- (void)searchViewController {
+    CLSearchViewController *search = [self.storyboard instantiateViewControllerWithIdentifier:@"search"];
+    [[self navigationController] pushViewController:search animated:YES];
 }
 
 # pragma mark - getScrollViewHeight
