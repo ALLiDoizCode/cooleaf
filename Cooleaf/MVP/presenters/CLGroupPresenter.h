@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "IGroupInteractor.h"
+#import "IGroupDetailInteractor.h"
 
 @interface CLGroupPresenter : NSObject
 
 @property (nonatomic, assign) id<IGroupInteractor> groupInfo;
+@property (nonatomic, assign) id<IGroupDetailInteractor> groupDetailInfo;
 
 - (id)initWithInteractor:(id<IGroupInteractor>)interactor;
+- (id)initWithDetailInteractor:(id<IGroupDetailInteractor>)interactor;
 - (void)registerOnBus;
 - (void)unregisterOnBus;
 

@@ -13,16 +13,20 @@
 #import "CCColorCube.h"
 #import "CLEventCell.h"
 #import "CLGroupDetailCollectionCell.h"
-#import "CLGroupPresenter.h"
+#import "CLInterestPresenter.h"
 #import "CLGroupPostViewcontroller.h"
+#import "CLUser.h"
+#import "UIImageView+WebCache.h"
+#import "CLClient.h"
 
 @interface CLGroupDetailViewController()
 
 @property (assign) int currentIndex;
-@property (nonatomic, weak) CLGroupPresenter *groupPresenter;
+@property (nonatomic) CLInterestPresenter *interestPresenter;
 @property (nonatomic) UIColor *barColor;
 @property (nonatomic) NSMutableArray *posts;
 @property (nonatomic) NSMutableArray *events;
+@property (nonatomic) NSMutableArray *members;
 
 @end
 
@@ -38,6 +42,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setupInterestPresenter];
     [self grabColor];
 }
 
@@ -47,6 +52,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [_interestPresenter unregisterOnBus];
+    _interestPresenter = nil;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -129,6 +136,16 @@
                          forState:UIControlStateNormal];
 }
 
+# pragma mark - setupGroupPresenter
+
+- (void)setupInterestPresenter {
+    _interestPresenter = [[CLInterestPresenter alloc] initWithDetailInteractor:self];
+    [_interestPresenter registerOnBus];
+    
+    // Make a call to grab members
+    [_interestPresenter loadInterestMembers:[[_interest interestId] intValue]];
+}
+
 # pragma mark - CLDetailViewDelegate
 
 - (void)selectSegment:(CLDetailView *)detailView {
@@ -158,6 +175,20 @@
     CLGroupPostViewcontroller *search = [self.storyboard instantiateViewControllerWithIdentifier:@"groupPostViewController"];
     [[self navigationController] pushViewController:search animated:YES];
 }
+
+# pragma mark - IInterestDetailInteractor Methods
+
+- (void)initMembers:(NSMutableArray *)members {
+    // Add only four members from members list returned from API
+    _members = [NSMutableArray new];
+    for (int i = 0; i < 4; i++) {
+        [_members addObject:[members objectAtIndex:i]];
+    }
+    
+    // Reload collectionview
+    [self.collectionView reloadData];
+}
+
 
 # pragma mark - TableView Data Source
 
@@ -205,7 +236,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    return [_members count];
 }
 
 # pragma mark - Members CollectionView Delegate
@@ -215,7 +246,13 @@
     
     CLGroupDetailCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"detailGroupCollectionCell" forIndexPath:indexPath];
     
-    cell.memberImage.image = [UIImage imageNamed:@"TestImage"];
+    // Get member
+    NSDictionary *userDict = [_members objectAtIndex:[indexPath row]];
+
+    // Get the path
+    NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"versions"][@"icon"]];
+    NSLog(@"%@", userDict);
+    [cell.memberImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     
     return cell;
 }

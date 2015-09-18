@@ -909,6 +909,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ikg-RU-UgL"/>
                     <connections>
+                        <outlet property="collectionView" destination="xmm-Zc-Tti" id="QQK-FZ-pGb"/>
                         <outlet property="detailScroll" destination="GFV-uP-otr" id="kNU-He-d5l"/>
                         <outlet property="detailView" destination="Ab7-Mz-HLJ" id="qX1-tL-WVr"/>
                         <outlet property="tableView" destination="fdl-8u-IZS" id="1jz-Ic-DMi"/>

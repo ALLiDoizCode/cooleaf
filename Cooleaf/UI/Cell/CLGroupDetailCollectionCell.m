@@ -12,6 +12,7 @@
 
 -(void)awakeFromNib {
     // Make a rounded member photo
+    _memberImage.contentMode = UIViewContentModeScaleAspectFill;
     _memberImage.layer.cornerRadius = _memberImage.frame.size.height / 2;
     _memberImage.layer.masksToBounds = YES;
 }

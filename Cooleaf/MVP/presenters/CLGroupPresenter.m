@@ -18,6 +18,13 @@
     return self;
 }
 
+# pragma mark - Init Detail
+
+- (id)initWithDetailInteractor:(id<IGroupDetailInteractor>)interactor {
+    _groupDetailInfo = interactor;
+    return self;
+}
+
 # pragma mark - Bus Methods
 
 - (void)registerOnBus {

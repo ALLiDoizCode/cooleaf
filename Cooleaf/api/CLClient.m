@@ -54,8 +54,8 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
              @"v2/events/*": [CLEvent class],
              @"v2/users/*": [CLUser class],
              @"v2/users.json": [CLUser class],
-             @"v2/interests/*": [CLInterest class],
              @"v2/interests.json": [CLInterest class],
+             @"memberlist.json": [CLUser class],
              @"v3/search.json": [CLQuery class]
              };
 }

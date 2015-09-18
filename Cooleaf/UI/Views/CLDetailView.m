@@ -96,8 +96,8 @@
     
     //Members
     _members = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    _members.frame  = CGRectMake(230, 380, 60, 10);
-    _members.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    _members.frame  = CGRectMake(220, 380, 80, 10);
+    _members.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
     [_members setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     //[members addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
