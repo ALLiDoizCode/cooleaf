@@ -223,10 +223,12 @@
 - (CGFloat)getScrollViewHeight {
     switch (_currentIndex) {
         case 0:
-            return self.view.bounds.size.height + (1 * [self getRowHeight]);
+            // View's Height + (# of post items * 150.0f) + 10 pts of padding
+            return self.view.bounds.size.height + (1 * [self getRowHeight] + 10);
             break;
         case 1:
-            return self.view.bounds.size.height * (3 * [self getRowHeight]);
+            // View's Height + (# of event items * 150.0f) + 10 pts of padding
+            return self.view.bounds.size.height * (3 * [self getRowHeight] + 10);
         default:
             return 0.0f;
     }
@@ -241,7 +243,7 @@
             return 150.0f;
         case 1:
             // Return the CLGroupEventCell height
-            return 160.0f;
+            return 300.0f;
         default:
             // Default set height to 0.0
             return 0.0f;
