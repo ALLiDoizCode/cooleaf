@@ -42,7 +42,6 @@
     _mainImageView.layer.shouldRasterize = YES;
     _mainImageView.clipsToBounds = YES;
     
-    // Name
     _labelName = [[UILabel alloc] initWithFrame:CGRectMake(60, 255, 0, 0)];
     _labelName.textAlignment = NSTextAlignmentLeft;
     _labelName.text = @"#Prem Bhatia";
@@ -53,18 +52,8 @@
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     /**
-     *  Post and Join Buttons
+     *  Join Button
      */
-    
-    // Post
-    _postBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    _postBtn.frame = CGRectMake(150, 315, 75, 30);
-    [_postBtn setTitle:@"POST" forState:UIControlStateNormal];
-    _postBtn.backgroundColor = [UIColor postButtonColor];
-    _postBtn.tintColor = [UIColor darkGrayColor];
-    _postBtn.layer.cornerRadius = 2;
-    _postBtn.layer.masksToBounds = YES;
-    //[_postBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
     // Join
     _joinBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
@@ -94,18 +83,27 @@
     // Attach target action to the segmented control
     [self.segmentedControl addTarget:self action:@selector(selectSegment:) forControlEvents:UIControlEventValueChanged];
     
-    //Members
+    /**
+     *  Members button
+     */
+    
     _members = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    _members.frame  = CGRectMake(220, 380, 80, 10);
+    _members.frame  = CGRectMake(230, 380, 80, 10);
     _members.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
     [_members setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     //[members addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
-    //Border
+    /**
+     *  First border
+     */
+    
     UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 400, bgview.frame.size.width, 0.5)];
     border.backgroundColor = [UIColor lightGrayColor];
     
-    //Border2
+    /**
+     *  Second border
+     */
+    
     UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 440, bgview.frame.size.width, 0.5)];
     border2.backgroundColor = [UIColor lightGrayColor];
     

@@ -24,7 +24,6 @@
 @property (nonatomic, strong) UILabel *labelEvent;
 @property (nonatomic, strong) UILabel *labelEventSub;
 @property (nonatomic, strong) UIButton *members;
-@property (nonatomic, strong) UIButton *postBtn;
 @property (nonatomic, strong) UIButton *joinBtn;
 
 @end

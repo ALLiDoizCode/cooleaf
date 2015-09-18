@@ -128,9 +128,6 @@
     // Load name for group
     _detailView.labelName.text =[NSString stringWithFormat: @"#%@", _currentName];
     
-    // Add selector for POST button
-    [_detailView.postBtn addTarget:self action:@selector(goToGroupPostViewController) forControlEvents:UIControlEventTouchUpInside];
-    
     // Add number of participants
     [_detailView.members setTitle:[NSString stringWithFormat:@"%d Members >", [[_interest userCount] intValue]]
                          forState:UIControlStateNormal];
@@ -167,13 +164,6 @@
         default:
             break;
     }
-}
-
-# pragma mark - goToGroupPostViewController
-
-- (void)goToGroupPostViewController {    
-    CLGroupPostViewcontroller *search = [self.storyboard instantiateViewControllerWithIdentifier:@"groupPostViewController"];
-    [[self navigationController] pushViewController:search animated:YES];
 }
 
 # pragma mark - IInterestDetailInteractor Methods
@@ -246,12 +236,11 @@
     
     CLGroupDetailCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"detailGroupCollectionCell" forIndexPath:indexPath];
     
-    // Get member
+    // Get member dictionary
     NSDictionary *userDict = [_members objectAtIndex:[indexPath row]];
 
-    // Get the path
+    // Get the path and load the image
     NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"versions"][@"icon"]];
-    NSLog(@"%@", userDict);
     [cell.memberImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     
     return cell;
