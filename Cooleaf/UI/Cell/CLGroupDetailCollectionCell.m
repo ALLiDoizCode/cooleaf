@@ -11,8 +11,8 @@
 @implementation CLGroupDetailCollectionCell
 
 -(void)awakeFromNib {
-    
-    _memberImage.layer.cornerRadius = _memberImage.frame.size.height/2;
+    // Make a rounded member photo
+    _memberImage.layer.cornerRadius = _memberImage.frame.size.height / 2;
     _memberImage.layer.masksToBounds = YES;
 }
 

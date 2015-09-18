@@ -22,17 +22,17 @@
 
 - (void)awakeFromNib {
     
-    //Background View
+    // Background View
     UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 300)];
     bgview.backgroundColor = [UIColor clearColor];
     
-    //Blur
+    // Blur
     FXBlurView *blur = [[FXBlurView alloc] initWithFrame:CGRectMake(0, 235, self.frame.size.width, 65)];
     blur.backgroundColor = [UIColor clearColor];
     blur.tintColor = [UIColor blackColor];
     blur.alpha = 0.85;
     
-    //Image
+    // Image
     _mainImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, bgview.frame.size.width,bgview.frame.size.height)];
    _mainImageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     //_groupImageView.image = _groupImageView.image;
@@ -42,7 +42,7 @@
     _mainImageView.layer.shouldRasterize = YES;
     _mainImageView.clipsToBounds = YES;
     
-    //Name
+    // Name
     _labelName = [[UILabel alloc] initWithFrame:CGRectMake(60, 255, 0, 0)];
     _labelName.textAlignment = NSTextAlignmentLeft;
     _labelName.text = @"#Prem Bhatia";
@@ -52,7 +52,11 @@
     [_labelName sizeToFit];
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
-    //Post
+    /**
+     *  Post and Join Buttons
+     */
+    
+    // Post
     _postBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     _postBtn.frame = CGRectMake(150, 315, 75, 30);
     [_postBtn setTitle:@"POST" forState:UIControlStateNormal];
@@ -62,7 +66,7 @@
     _postBtn.layer.masksToBounds = YES;
     //[_postBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
-    //Join
+    // Join
     _joinBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     _joinBtn.frame = CGRectMake(230, 315, 75, 30);
     [_joinBtn setTitle:@"JOIN" forState:UIControlStateNormal];
@@ -72,8 +76,27 @@
     _joinBtn.layer.masksToBounds = YES;
      //[joinBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
+    /**
+     *  Segmented Control for switching posts and events
+     */
     
-    //Post2
+    // Make the frame for the segmented control
+    CGRect frame = CGRectMake(10, 405, 300, 30);
+    
+    // Make array of items for the segmented control
+    NSArray *segments = [[NSArray alloc] initWithObjects:@"Posts", @"Events", nil];
+    
+    // Initialize the segmented control, and set size and index
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:segments];
+    self.segmentedControl.frame = frame;
+    [self.segmentedControl setSelectedSegmentIndex:0];
+    
+    // Attach target action to the segmented control
+    [self.segmentedControl addTarget:self action:@selector(selectSegment:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    
+    // Post2
     _postBtn2 = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     _postBtn2.frame = CGRectMake(90, 408, 78, 25);
     [_postBtn2 setTitle:@"Posts" forState:UIControlStateNormal];
@@ -83,9 +106,10 @@
     _postBtn2.layer.borderWidth = 1.5;
     _postBtn2.layer.borderColor = [UIColor darkGrayColor].CGColor;
     _postBtn2.layer.masksToBounds = YES;
+    _postBtn2.hidden = YES;
     //[_postBtn2 addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
-    //Join
+    // Events button
     _eventBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     _eventBtn.frame = CGRectMake(162, 408, 75, 25);
     [_eventBtn setTitle:@"Events" forState:UIControlStateNormal];
@@ -93,6 +117,7 @@
     _eventBtn.tintColor = [UIColor offWhite];
     _eventBtn.layer.cornerRadius = 3;
     _eventBtn.layer.borderWidth = 1.5;
+    _eventBtn.hidden = YES;
     _eventBtn.layer.borderColor = [UIColor darkGrayColor].CGColor;
     
     
@@ -123,11 +148,17 @@
     [self addSubview:_members];
     [self addSubview:_postBtn];
     [self addSubview:_joinBtn];
+    [self addSubview:_segmentedControl];
     [self addSubview:_postBtn2];
     [self addSubview:_eventBtn];
     [self addSubview:border];
     [self addSubview:border2];
     [bgview addSubview:_mainImageView];
+}
+
+- (void)selectSegment:(UISegmentedControl *)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(selectSegment:)])
+        [self.delegate selectSegment:self];
 }
 
 @end

@@ -10,14 +10,12 @@
 #import "CLDetailView.h"
 #import "CLGroupPostViewcontroller.h"
 
-@interface CLGroupDetailViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UICollectionViewDataSource,UICollectionViewDelegate>
+@interface CLGroupDetailViewController : UIViewController <CLDetailViewDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic) NSString *currentImagePath;
 @property (nonatomic) NSString *currentName;
 @property (strong, nonatomic) IBOutlet CLDetailView *detailView;
-@property (weak, nonatomic) IBOutlet UITableView *eventTable;
-@property (weak, nonatomic) IBOutlet UITableView *postTable;
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIScrollView *detailScroll;
 
 @end

@@ -47,8 +47,16 @@ static NSInteger const PER_PAGE = 25;
     PUBLISH([[CLLoadEvents alloc] init]);
 }
 
+# pragma mark - loadUserEvents
+
 - (void)loadUserEvents:(NSString *)scope userIdString:(NSString *)userIdString {
     PUBLISH([[CLLoadUserEvents alloc] initWithUserId:userIdString page:PAGE perPage:PER_PAGE scope:scope]);
+}
+
+# pragma mark - joinEvent
+
+- (void)joinEvent:(NSInteger)eventId {
+    
 }
 
 # pragma mark - Subscription Methods

@@ -22,7 +22,7 @@
     UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(13, 20, 295, 150)];
     bgview.backgroundColor = offWhite;
     
-    /// member Icon
+    // Member Icon
     UIImageView *PostImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 35, 35)];
     PostImage.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     PostImage.image = [UIImage imageNamed:@"TestImage"];
@@ -87,7 +87,6 @@
     _commentLabel.textColor = [UIColor lightGrayColor];
     [_commentLabel sizeToFit];
     _commentLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    
     
     [self.contentView addSubview:bgview];
     [bgview addSubview:_labelCount];

@@ -16,5 +16,4 @@
 @property (nonatomic) UILabel *labelPost;
 @property (nonatomic) UILabel *commentLabel;
 
-
 @end
