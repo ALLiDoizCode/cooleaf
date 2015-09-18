@@ -11,6 +11,8 @@
 #import "CLLoadedInterests.h"
 #import "CLLoadInterestMembers.h"
 #import "CLLoadedInterestMembers.h"
+#import "CLLoadJoinInterest.h"
+#import "CLLoadLeaveInterest.h"
 
 @interface CLInterestSubscriber() {
     @private
@@ -52,6 +54,28 @@ SUBSCRIBE(CLLoadInterestMembers) {
         NSMutableArray *members = [JSON result];
         CLLoadedInterestMembers *interestMembers = [[CLLoadedInterestMembers alloc] initWithMembers:members];
         PUBLISH(interestMembers);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+SUBSCRIBE(CLLoadJoinInterest) {
+    
+    NSInteger interestId = event.interestId;
+    [_interestController joinInterest:interestId params:nil success:^(id JSON) {
+        NSLog(@"Success!!");
+        NSLog(@"%@", JSON);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+SUBSCRIBE(CLLoadLeaveInterest) {
+    
+    NSInteger interestId = event.interestId;
+    [_interestController leaveInterest:interestId params:nil success:^(id JSON) {
+        NSLog(@"Success!!");
+        NSLog(@"%@", JSON);
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];

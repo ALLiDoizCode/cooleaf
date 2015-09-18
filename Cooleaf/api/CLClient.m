@@ -27,6 +27,8 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
         return nil;
     
     self.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [self.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     return self;
 }
 

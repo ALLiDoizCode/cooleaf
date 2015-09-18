@@ -12,6 +12,8 @@
 #import "CLLoadedInterests.h"
 #import "CLLoadInterestMembers.h"
 #import "CLLoadedInterestMembers.h"
+#import "CLLoadJoinInterest.h"
+#import "CLLoadLeaveInterest.h"
 
 static NSInteger const PAGE = 1;
 static NSInteger const PER_PAGE = 25;
@@ -52,6 +54,17 @@ static NSInteger const PER_PAGE = 25;
 
 - (void)loadInterestMembers:(NSInteger)interestId {
     PUBLISH([[CLLoadInterestMembers alloc] initWithId:interestId page:PAGE perPage:PER_PAGE]);
+}
+
+# pragma mark - joinGroup
+
+- (void)joinGroup:(NSInteger)interestId {
+    PUBLISH([[CLLoadJoinInterest alloc] initWithInterestId:interestId]);
+}
+
+- (void)leaveGroup:(NSInteger)interestId {
+    PUBLISH([[CLLoadLeaveInterest alloc] initWithInterestId:interestId]);
+
 }
 
 # pragma mark - Subscription Events

@@ -138,8 +138,9 @@
     _detailView.labelName.text =[NSString stringWithFormat: @"#%@", _currentName];
     
     // Add number of participants
-    [_detailView.members setTitle:[NSString stringWithFormat:@"%d Members >", [[_interest userCount] intValue]]
-                         forState:UIControlStateNormal];
+    [_detailView.members setTitle:[NSString
+                         stringWithFormat:@"%d Members >", [[_interest userCount] intValue]]
+                         forState:UIControlStateNormal];    
 }
 
 # pragma mark - setupGroupPresenter
@@ -183,6 +184,14 @@
         default:
             break;
     }
+}
+
+- (void)joinGroup:(CLDetailView *)detailView {
+    bool isMember = [_interest active];
+    if (isMember)
+        [_interestPresenter leaveGroup:[[_interest interestId] intValue]];
+    else
+        [_interestPresenter joinGroup:[[_interest interestId] intValue]];
 }
 
 # pragma mark - IInterestDetailInteractor Methods

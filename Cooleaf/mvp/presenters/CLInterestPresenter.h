@@ -21,5 +21,7 @@
 - (void)unregisterOnBus;
 - (void)loadInterests;
 - (void)loadInterestMembers:(NSInteger)interestId;
+- (void)joinGroup:(NSInteger)interestId;
+- (void)leaveGroup:(NSInteger)interestId;
 
 @end

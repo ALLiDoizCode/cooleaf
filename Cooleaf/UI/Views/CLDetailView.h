@@ -11,6 +11,7 @@
 @class CLDetailView;
 @protocol CLDetailViewDelegate <NSObject>
 
+- (void)joinGroup:(CLDetailView *)detailView;
 - (void)selectSegment:(CLDetailView *)detailView;
 
 @end

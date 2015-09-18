@@ -63,7 +63,7 @@
     _joinBtn.tintColor = [UIColor offWhite];
     _joinBtn.layer.cornerRadius = 2;
     _joinBtn.layer.masksToBounds = YES;
-     //[joinBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    [_joinBtn addTarget:self action:@selector(joinGroup:) forControlEvents:UIControlEventTouchUpInside];
     
     /**
      *  Segmented Control for switching posts and events
@@ -118,6 +118,11 @@
     [self addSubview:border];
     [self addSubview:border2];
     [bgview addSubview:_mainImageView];
+}
+
+- (void)joinGroup:(UIButton *)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(joinGroup:)])
+        [self.delegate joinGroup:self];
 }
 
 - (void)selectSegment:(UISegmentedControl *)sender {
