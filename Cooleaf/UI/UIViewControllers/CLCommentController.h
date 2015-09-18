@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CLCommentTableView.h"
 
-@interface CLCommentController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CLCommentController : UIViewController<UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet CLCommentTableView *tableView;
 

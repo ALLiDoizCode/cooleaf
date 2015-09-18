@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _textField.delegate = self;
+    
     self.view.frame = [UIScreen mainScreen].bounds;
     
     [self configureView];
@@ -51,27 +53,6 @@
     
     [_mainView addSubview:labelTitle];
 }
-
-/*-(void)buildTextField {
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(60, 408, 180, 25)];
-    textField.backgroundColor = [UIColor clearColor];
-    textField.borderStyle = UITextBorderStyleRoundedRect;
-    textField.textColor = [UIColor darkTextColor];
-    textField.placeholder = @"Leave a comment...";
-    
-    
-    
-    [_mainView addSubview:textField];
-    [_mainView addConstraint:[NSLayoutConstraint constraintWithItem:textField
-                                                          attribute:NSLayoutAttributeHeight
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:_mainView
-                                                          attribute:NSLayoutAttributeHeight
-                                                         multiplier:0.5
-                                                           constant:0]];
-    
-    
-}*/
 
 -(void)buildButtons {
     
@@ -114,6 +95,39 @@
     
     [_mainView addSubview:topBorder];
 
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self animateTextField: textField up: YES];
+    NSLog(@"begin");
+}
+
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self animateTextField: textField up: NO];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [_textField endEditing:YES];
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+{
+    const int movementDistance = 250; // tweak as needed
+    const float movementDuration = 0.3f; // tweak as needed
+    
+    int movement = (up ? -movementDistance : movementDistance);
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    [UIView commitAnimations];
 }
 
 -(void)viewDidLayoutSubviews {
