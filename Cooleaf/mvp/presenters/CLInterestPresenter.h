@@ -8,14 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "IInterestInteractor.h"
+#import "IInterestDetailInteractor.h"
 
 @interface CLInterestPresenter : NSObject
 
 @property (nonatomic, assign) id<IInterestInteractor> interestInfo;
+@property (nonatomic, assign) id<IInterestDetailInteractor> interestDetailInfo;
 
 - (id)initWithInteractor:(id<IInterestInteractor>)interactor;
+- (id)initWithDetailInteractor:(id<IInterestDetailInteractor>)interactor;
 - (void)registerOnBus;
 - (void)unregisterOnBus;
 - (void)loadInterests;
+- (void)loadInterestMembers:(NSInteger)interestId;
+- (void)joinGroup:(NSInteger)interestId;
+- (void)leaveGroup:(NSInteger)interestId;
 
 @end

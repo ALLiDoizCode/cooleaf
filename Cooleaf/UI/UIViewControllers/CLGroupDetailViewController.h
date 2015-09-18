@@ -8,12 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "CLDetailView.h"
-#import "CLGroupPostViewcontroller.h"
+#import "CLInterest.h"
+#import "IInterestDetailInteractor.h"
+#import "IFeedInteractor.h"
 
-@interface CLGroupDetailViewController : UIViewController
+@interface CLGroupDetailViewController : UIViewController <IFeedInteractor, IInterestDetailInteractor, CLDetailViewDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic) NSString *currentImagePath;
 @property (nonatomic) NSString *currentName;
+@property (nonatomic, assign) CLInterest *interest;
 @property (strong, nonatomic) IBOutlet CLDetailView *detailView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIScrollView *detailScroll;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

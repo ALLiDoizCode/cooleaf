@@ -10,11 +10,47 @@
 #import "CLClient.h"
 
 static NSString *const kInterestsPath = @"v2/interests.json";
+static NSString *const kInterestPartialPath = @"v2/interests/";
 
 @implementation CLInterestController
 
 - (void)getInterests:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     [[CLClient getInstance] GET:kInterestsPath parameters:params completion:^(id response, NSError *error) {
+        if (!error)
+            success(response);
+        else
+            failure(error);
+    }];
+}
+
+- (void)getInterestMembers:(NSInteger)interestId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    // Members path url
+    NSString *membersPath = [NSString stringWithFormat:@"%@%d%@", kInterestPartialPath, (int) interestId, @"/memberlist.json"];
+    [[CLClient getInstance] GET:membersPath parameters:params completion:^(id response, NSError *error) {
+        if (!error)
+            success(response);
+        else
+            failure(error);
+    }];
+}
+
+- (void)joinInterest:(NSInteger)interestId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    NSString *joinPath = [NSString stringWithFormat:@"%@%d%@", kInterestPartialPath, (int) interestId, @"/join.json"];
+    NSLog(@"%@", joinPath);
+    [[CLClient getInstance] POST:joinPath parameters:params completion:^(id response, NSError *error) {
+        NSLog(@"%@", response);
+        if (!error)
+            success(response);
+        else
+            failure(error);
+    }];
+}
+
+- (void)leaveInterest:(NSInteger)interestId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    NSString *leavePath = [NSString stringWithFormat:@"%@%d%@", kInterestPartialPath, (int) interestId, @"/join.json"];
+    NSLog(@"%@", leavePath);
+    [[CLClient getInstance] DELETE:leavePath parameters:params completion:^(id response, NSError *error) {
+        NSLog(@"%@", response);
         if (!error)
             success(response);
         else

@@ -83,6 +83,24 @@
 		4BBF2C331BA10A8F00ECC37F /* CLTagCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF2C321BA10A8F00ECC37F /* CLTagCollectionViewCell.m */; };
 		4BBF2C371BA2B35600ECC37F /* CLLoadInterests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF2C361BA2B35600ECC37F /* CLLoadInterests.m */; };
 		4BBF2C3A1BA2C1C400ECC37F /* CLLoadedInterests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF2C391BA2C1C400ECC37F /* CLLoadedInterests.m */; };
+		4BE1DF3F1BABD12B009519CB /* CLGroupPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */; };
+		4BE1DF431BABD155009519CB /* CLGroupSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF421BABD155009519CB /* CLGroupSubscriber.m */; };
+		4BE1DF461BABD1D4009519CB /* CLGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF451BABD1D4009519CB /* CLGroupController.m */; };
+		4BE1DF4C1BABD3FA009519CB /* CLLoadInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF4B1BABD3FA009519CB /* CLLoadInterest.m */; };
+		4BE1DF4F1BABD405009519CB /* CLLoadedInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF4E1BABD405009519CB /* CLLoadedInterest.m */; };
+		4BE1DF521BABD415009519CB /* CLLoadInterestPosts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF511BABD415009519CB /* CLLoadInterestPosts.m */; };
+		4BE1DF551BABD425009519CB /* CLLoadInterestEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF541BABD425009519CB /* CLLoadInterestEvents.m */; };
+		4BE1DF5A1BABDDA9009519CB /* CLLoadInterestMembers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF591BABDDA9009519CB /* CLLoadInterestMembers.m */; };
+		4BE1DF5D1BABE0DB009519CB /* CLLoadedInterestMembers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF5C1BABE0DB009519CB /* CLLoadedInterestMembers.m */; };
+		4BE1DF601BABECAF009519CB /* CLFeedPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF5F1BABECAF009519CB /* CLFeedPresenter.m */; };
+		4BE1DF641BABECF5009519CB /* CLFeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF631BABECF5009519CB /* CLFeedController.m */; };
+		4BE1DF671BABED00009519CB /* CLFeedSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF661BABED00009519CB /* CLFeedSubscriber.m */; };
+		4BE1DF6A1BABEEB0009519CB /* CLLoadInterestFeeds.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF691BABEEB0009519CB /* CLLoadInterestFeeds.m */; };
+		4BE1DF6D1BABEEBB009519CB /* CLLoadedInterestFeeds.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF6C1BABEEBB009519CB /* CLLoadedInterestFeeds.m */; };
+		4BE1DF701BABF644009519CB /* CLFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF6F1BABF644009519CB /* CLFeed.m */; };
+		4BE1DF731BABF6C9009519CB /* CLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF721BABF6C9009519CB /* CLComment.m */; };
+		4BE1DF761BAC00D4009519CB /* CLLoadJoinInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF751BAC00D4009519CB /* CLLoadJoinInterest.m */; };
+		4BE1DF791BAC00F1009519CB /* CLLoadLeaveInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF781BAC00F1009519CB /* CLLoadLeaveInterest.m */; };
 		4BE63A491B94E8CE00231222 /* CLHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A481B94E8CE00231222 /* CLHomeTableViewController.m */; };
 		4BE63A4C1B94E9D800231222 /* CLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A4B1B94E9D800231222 /* CLMenuViewController.m */; };
 		4BE63A4F1B9502AD00231222 /* CLDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A4E1B9502AD00231222 /* CLDrawerViewController.m */; };
@@ -128,11 +146,12 @@
 		6877AFCC1B997D3F00113B86 /* CLDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFCB1B997D3F00113B86 /* CLDetailView.m */; };
 		6888B4031B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888B4021B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m */; };
 		6888B4061B99ABE5008D9CB3 /* CLGroupPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6888B4051B99ABE5008D9CB3 /* CLGroupPostCell.m */; };
+		68AB42001BAA02F2006495DC /* CLGroupEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AB41FF1BAA02F2006495DC /* CLGroupEventCell.m */; };
+		68AB42031BAA1D26006495DC /* LabelWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AB42021BAA1D26006495DC /* LabelWidth.m */; };
+		68AB42061BAA23AB006495DC /* CLGroupDetailCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AB42051BAA23AB006495DC /* CLGroupDetailCollectionCell.m */; };
 		68B07EA91BA1313000FCF806 /* CCColorCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B07EA61BA1313000FCF806 /* CCColorCube.m */; };
 		68B07EAA1BA1313000FCF806 /* CCLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */; };
 		68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */; };
-		68CDDC431B8EC279004C2897 /* CLTagGroupPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC421B8EC279004C2897 /* CLTagGroupPresenter.m */; };
-		68CDDC461B8EC3DF004C2897 /* CLTagPresenters.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC451B8EC3DF004C2897 /* CLTagPresenters.m */; };
 		68CDDC4C1B8ED353004C2897 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68CDDC4B1B8ED353004C2897 /* libPods.a */; };
 		D9242F8E1A768070006F7D92 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9242F8D1A768070006F7D92 /* Crashlytics.framework */; };
 		D931450D18925456002325CB /* NPCompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D931450C18925456002325CB /* NPCompanyCell.m */; };
@@ -355,6 +374,46 @@
 		4BBF2C361BA2B35600ECC37F /* CLLoadInterests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterests.m; sourceTree = "<group>"; };
 		4BBF2C381BA2C1C400ECC37F /* CLLoadedInterests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedInterests.h; sourceTree = "<group>"; };
 		4BBF2C391BA2C1C400ECC37F /* CLLoadedInterests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedInterests.m; sourceTree = "<group>"; };
+		4BE1DF3D1BABD12B009519CB /* CLGroupPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLGroupPresenter.h; path = Cooleaf/MVP/presenters/CLGroupPresenter.h; sourceTree = SOURCE_ROOT; };
+		4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLGroupPresenter.m; path = Cooleaf/MVP/presenters/CLGroupPresenter.m; sourceTree = SOURCE_ROOT; };
+		4BE1DF401BABD13A009519CB /* IGroupInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGroupInteractor.h; sourceTree = "<group>"; };
+		4BE1DF411BABD155009519CB /* CLGroupSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupSubscriber.h; sourceTree = "<group>"; };
+		4BE1DF421BABD155009519CB /* CLGroupSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupSubscriber.m; sourceTree = "<group>"; };
+		4BE1DF441BABD1D4009519CB /* CLGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLGroupController.h; path = Cooleaf/MVP/controllers/CLGroupController.h; sourceTree = SOURCE_ROOT; };
+		4BE1DF451BABD1D4009519CB /* CLGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLGroupController.m; path = Cooleaf/MVP/controllers/CLGroupController.m; sourceTree = SOURCE_ROOT; };
+		4BE1DF4A1BABD3FA009519CB /* CLLoadInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterest.h; sourceTree = "<group>"; };
+		4BE1DF4B1BABD3FA009519CB /* CLLoadInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterest.m; sourceTree = "<group>"; };
+		4BE1DF4D1BABD405009519CB /* CLLoadedInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedInterest.h; sourceTree = "<group>"; };
+		4BE1DF4E1BABD405009519CB /* CLLoadedInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedInterest.m; sourceTree = "<group>"; };
+		4BE1DF501BABD415009519CB /* CLLoadInterestPosts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterestPosts.h; sourceTree = "<group>"; };
+		4BE1DF511BABD415009519CB /* CLLoadInterestPosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterestPosts.m; sourceTree = "<group>"; };
+		4BE1DF531BABD425009519CB /* CLLoadInterestEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterestEvents.h; sourceTree = "<group>"; };
+		4BE1DF541BABD425009519CB /* CLLoadInterestEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterestEvents.m; sourceTree = "<group>"; };
+		4BE1DF561BABD99B009519CB /* IGroupDetailInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGroupDetailInteractor.h; sourceTree = "<group>"; };
+		4BE1DF571BABDB1B009519CB /* IInterestDetailInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IInterestDetailInteractor.h; sourceTree = "<group>"; };
+		4BE1DF581BABDDA9009519CB /* CLLoadInterestMembers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterestMembers.h; sourceTree = "<group>"; };
+		4BE1DF591BABDDA9009519CB /* CLLoadInterestMembers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterestMembers.m; sourceTree = "<group>"; };
+		4BE1DF5B1BABE0DB009519CB /* CLLoadedInterestMembers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedInterestMembers.h; sourceTree = "<group>"; };
+		4BE1DF5C1BABE0DB009519CB /* CLLoadedInterestMembers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedInterestMembers.m; sourceTree = "<group>"; };
+		4BE1DF5E1BABECAF009519CB /* CLFeedPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLFeedPresenter.h; path = Cooleaf/MVP/presenters/CLFeedPresenter.h; sourceTree = SOURCE_ROOT; };
+		4BE1DF5F1BABECAF009519CB /* CLFeedPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLFeedPresenter.m; path = Cooleaf/MVP/presenters/CLFeedPresenter.m; sourceTree = SOURCE_ROOT; };
+		4BE1DF611BABECD0009519CB /* IFeedInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFeedInteractor.h; sourceTree = "<group>"; };
+		4BE1DF621BABECF5009519CB /* CLFeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLFeedController.h; path = Cooleaf/MVP/controllers/CLFeedController.h; sourceTree = SOURCE_ROOT; };
+		4BE1DF631BABECF5009519CB /* CLFeedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLFeedController.m; path = Cooleaf/MVP/controllers/CLFeedController.m; sourceTree = SOURCE_ROOT; };
+		4BE1DF651BABED00009519CB /* CLFeedSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFeedSubscriber.h; sourceTree = "<group>"; };
+		4BE1DF661BABED00009519CB /* CLFeedSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFeedSubscriber.m; sourceTree = "<group>"; };
+		4BE1DF681BABEEB0009519CB /* CLLoadInterestFeeds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterestFeeds.h; sourceTree = "<group>"; };
+		4BE1DF691BABEEB0009519CB /* CLLoadInterestFeeds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterestFeeds.m; sourceTree = "<group>"; };
+		4BE1DF6B1BABEEBB009519CB /* CLLoadedInterestFeeds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedInterestFeeds.h; sourceTree = "<group>"; };
+		4BE1DF6C1BABEEBB009519CB /* CLLoadedInterestFeeds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedInterestFeeds.m; sourceTree = "<group>"; };
+		4BE1DF6E1BABF644009519CB /* CLFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFeed.h; sourceTree = "<group>"; };
+		4BE1DF6F1BABF644009519CB /* CLFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFeed.m; sourceTree = "<group>"; };
+		4BE1DF711BABF6C9009519CB /* CLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLComment.h; sourceTree = "<group>"; };
+		4BE1DF721BABF6C9009519CB /* CLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLComment.m; sourceTree = "<group>"; };
+		4BE1DF741BAC00D4009519CB /* CLLoadJoinInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadJoinInterest.h; sourceTree = "<group>"; };
+		4BE1DF751BAC00D4009519CB /* CLLoadJoinInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadJoinInterest.m; sourceTree = "<group>"; };
+		4BE1DF771BAC00F1009519CB /* CLLoadLeaveInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadLeaveInterest.h; sourceTree = "<group>"; };
+		4BE1DF781BAC00F1009519CB /* CLLoadLeaveInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadLeaveInterest.m; sourceTree = "<group>"; };
 		4BE63A471B94E8CE00231222 /* CLHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLHomeTableViewController.h; sourceTree = "<group>"; };
 		4BE63A481B94E8CE00231222 /* CLHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHomeTableViewController.m; sourceTree = "<group>"; };
 		4BE63A4A1B94E9D800231222 /* CLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMenuViewController.h; sourceTree = "<group>"; };
@@ -436,24 +495,21 @@
 		6888B4021B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupPostViewcontroller.m; sourceTree = "<group>"; };
 		6888B4041B99ABE5008D9CB3 /* CLGroupPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupPostCell.h; sourceTree = "<group>"; };
 		6888B4051B99ABE5008D9CB3 /* CLGroupPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupPostCell.m; sourceTree = "<group>"; };
+		68AB41FE1BAA02F2006495DC /* CLGroupEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupEventCell.h; sourceTree = "<group>"; };
+		68AB41FF1BAA02F2006495DC /* CLGroupEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupEventCell.m; sourceTree = "<group>"; };
+		68AB42011BAA1D26006495DC /* LabelWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelWidth.h; sourceTree = "<group>"; };
+		68AB42021BAA1D26006495DC /* LabelWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelWidth.m; sourceTree = "<group>"; };
+		68AB42041BAA23AB006495DC /* CLGroupDetailCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupDetailCollectionCell.h; sourceTree = "<group>"; };
+		68AB42051BAA23AB006495DC /* CLGroupDetailCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupDetailCollectionCell.m; sourceTree = "<group>"; };
 		68B07EA51BA1313000FCF806 /* CCColorCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCColorCube.h; sourceTree = "<group>"; };
 		68B07EA61BA1313000FCF806 /* CCColorCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCColorCube.m; sourceTree = "<group>"; };
 		68B07EA71BA1313000FCF806 /* CCLocalMaximum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocalMaximum.h; sourceTree = "<group>"; };
 		68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLocalMaximum.m; sourceTree = "<group>"; };
-		68CDDC081B8E8BB0004C2897 /* CLEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLEvents.h; sourceTree = "<group>"; };
-		68CDDC3B1B8EB7D1004C2897 /* CLInterest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLInterest.h; sourceTree = "<group>"; };
-		68CDDC3C1B8EBB4F004C2897 /* CLTagGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTagGroup.h; sourceTree = "<group>"; };
-		68CDDC3D1B8EBE60004C2897 /* CLTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLTag.h; sourceTree = "<group>"; };
 		68CDDC3E1B8EC0F8004C2897 /* CLInterestPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLInterestPresenter.h; path = Cooleaf/mvp/presenters/CLInterestPresenter.h; sourceTree = SOURCE_ROOT; };
 		68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLInterestPresenter.m; path = Cooleaf/mvp/presenters/CLInterestPresenter.m; sourceTree = SOURCE_ROOT; };
-		68CDDC411B8EC279004C2897 /* CLTagGroupPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTagGroupPresenter.h; path = Cooleaf/mvp/presenters/CLTagGroupPresenter.h; sourceTree = SOURCE_ROOT; };
-		68CDDC421B8EC279004C2897 /* CLTagGroupPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTagGroupPresenter.m; path = Cooleaf/mvp/presenters/CLTagGroupPresenter.m; sourceTree = SOURCE_ROOT; };
-		68CDDC441B8EC3DF004C2897 /* CLTagPresenters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLTagPresenters.h; path = Cooleaf/mvp/presenters/CLTagPresenters.h; sourceTree = SOURCE_ROOT; };
-		68CDDC451B8EC3DF004C2897 /* CLTagPresenters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLTagPresenters.m; path = Cooleaf/mvp/presenters/CLTagPresenters.m; sourceTree = SOURCE_ROOT; };
 		68CDDC471B8ED17D004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		68CDDC491B8ED33F004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		68CDDC4B1B8ED353004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
-		68D08E181B8E89E9000DEF69 /* CLLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLLogin.h; sourceTree = "<group>"; };
 		BFF39234F1654A6DBFF21105 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7A30D9ADB09ECA1212D0FB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D9242F8D1A768070006F7D92 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -612,13 +668,12 @@
 		4B6088431B929E4E0029E659 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4BE1DF3C1BABA488009519CB /* Helpers */,
 				4BE63A5A1B9580F200231222 /* Cell */,
 				4B6088461B929E8A0029E659 /* Custom */,
 				4B6088451B929E810029E659 /* Views */,
 				4B6088441B929E620029E659 /* UIViewControllers */,
 				4B066CBE1B94BB79006A7CF1 /* Main.storyboard */,
-				6877AFBE1B994C7100113B86 /* CLNavigation.h */,
-				6877AFBF1B994C7100113B86 /* CLNavigation.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -674,6 +729,8 @@
 				68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */,
 				4B6088471B929EA20029E659 /* UIColor+CustomColors.h */,
 				4B6088481B929EA20029E659 /* UIColor+CustomColors.m */,
+				68AB42011BAA1D26006495DC /* LabelWidth.h */,
+				68AB42021BAA1D26006495DC /* LabelWidth.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -738,6 +795,10 @@
 				4BA4E3341B8C1E280089CB2B /* CLFilePreview.m */,
 				4B3F2E661BA77AE900D4934E /* CLQuery.h */,
 				4B3F2E671BA77AE900D4934E /* CLQuery.m */,
+				4BE1DF6E1BABF644009519CB /* CLFeed.h */,
+				4BE1DF6F1BABF644009519CB /* CLFeed.m */,
+				4BE1DF711BABF6C9009519CB /* CLComment.h */,
+				4BE1DF721BABF6C9009519CB /* CLComment.m */,
 			);
 			name = Entities;
 			path = ../Api/Entities;
@@ -756,7 +817,6 @@
 			children = (
 				4BE63A501B9506ED00231222 /* Interactors */,
 				4BAE00651B8EDFA300779E1F /* Subscribers */,
-				68D08E191B8E89EE000DEF69 /* Protocol */,
 				4BA4E3461B8D13240089CB2B /* Controllers */,
 				4BA4E3531B8D1D820089CB2B /* Presenters */,
 			);
@@ -777,6 +837,10 @@
 				4BA4E3511B8D13610089CB2B /* CLUserController.m */,
 				4B3F2E6D1BA7884600D4934E /* CLSearchController.h */,
 				4B3F2E6E1BA7884600D4934E /* CLSearchController.m */,
+				4BE1DF441BABD1D4009519CB /* CLGroupController.h */,
+				4BE1DF451BABD1D4009519CB /* CLGroupController.m */,
+				4BE1DF621BABECF5009519CB /* CLFeedController.h */,
+				4BE1DF631BABECF5009519CB /* CLFeedController.m */,
 			);
 			name = Controllers;
 			path = ../MVP/Controllers;
@@ -791,14 +855,14 @@
 				4BA4E3931B8D4CF60089CB2B /* CLEventPresenter.m */,
 				68CDDC3E1B8EC0F8004C2897 /* CLInterestPresenter.h */,
 				68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */,
-				68CDDC411B8EC279004C2897 /* CLTagGroupPresenter.h */,
-				68CDDC421B8EC279004C2897 /* CLTagGroupPresenter.m */,
-				68CDDC441B8EC3DF004C2897 /* CLTagPresenters.h */,
-				68CDDC451B8EC3DF004C2897 /* CLTagPresenters.m */,
 				4B3F2E761BA78DAD00D4934E /* CLSearchPresenter.h */,
 				4B3F2E771BA78DAD00D4934E /* CLSearchPresenter.m */,
 				4BA2A6521BA7F57D004724EB /* CLUserPresenter.h */,
 				4BA2A6531BA7F57D004724EB /* CLUserPresenter.m */,
+				4BE1DF3D1BABD12B009519CB /* CLGroupPresenter.h */,
+				4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */,
+				4BE1DF5E1BABECAF009519CB /* CLFeedPresenter.h */,
+				4BE1DF5F1BABECAF009519CB /* CLFeedPresenter.m */,
 			);
 			name = Presenters;
 			path = ../MVP/Presenters;
@@ -841,6 +905,26 @@
 				4BA2A6581BA7F685004724EB /* CLLoadUsersEvent.m */,
 				4BA2A65A1BA7F8ED004724EB /* CLLoadedUsersEvent.h */,
 				4BA2A65B1BA7F8ED004724EB /* CLLoadedUsersEvent.m */,
+				4BE1DF4A1BABD3FA009519CB /* CLLoadInterest.h */,
+				4BE1DF4B1BABD3FA009519CB /* CLLoadInterest.m */,
+				4BE1DF4D1BABD405009519CB /* CLLoadedInterest.h */,
+				4BE1DF4E1BABD405009519CB /* CLLoadedInterest.m */,
+				4BE1DF501BABD415009519CB /* CLLoadInterestPosts.h */,
+				4BE1DF511BABD415009519CB /* CLLoadInterestPosts.m */,
+				4BE1DF531BABD425009519CB /* CLLoadInterestEvents.h */,
+				4BE1DF541BABD425009519CB /* CLLoadInterestEvents.m */,
+				4BE1DF581BABDDA9009519CB /* CLLoadInterestMembers.h */,
+				4BE1DF591BABDDA9009519CB /* CLLoadInterestMembers.m */,
+				4BE1DF5B1BABE0DB009519CB /* CLLoadedInterestMembers.h */,
+				4BE1DF5C1BABE0DB009519CB /* CLLoadedInterestMembers.m */,
+				4BE1DF681BABEEB0009519CB /* CLLoadInterestFeeds.h */,
+				4BE1DF691BABEEB0009519CB /* CLLoadInterestFeeds.m */,
+				4BE1DF6B1BABEEBB009519CB /* CLLoadedInterestFeeds.h */,
+				4BE1DF6C1BABEEBB009519CB /* CLLoadedInterestFeeds.m */,
+				4BE1DF741BAC00D4009519CB /* CLLoadJoinInterest.h */,
+				4BE1DF751BAC00D4009519CB /* CLLoadJoinInterest.m */,
+				4BE1DF771BAC00F1009519CB /* CLLoadLeaveInterest.h */,
+				4BE1DF781BAC00F1009519CB /* CLLoadLeaveInterest.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -870,9 +954,22 @@
 				4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */,
 				4B3F2E6A1BA7878B00D4934E /* CLSearchSubscriber.h */,
 				4B3F2E6B1BA7878B00D4934E /* CLSearchSubscriber.m */,
+				4BE1DF411BABD155009519CB /* CLGroupSubscriber.h */,
+				4BE1DF421BABD155009519CB /* CLGroupSubscriber.m */,
+				4BE1DF651BABED00009519CB /* CLFeedSubscriber.h */,
+				4BE1DF661BABED00009519CB /* CLFeedSubscriber.m */,
 			);
 			name = Subscribers;
 			path = ../MVP/Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE1DF3C1BABA488009519CB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6877AFBE1B994C7100113B86 /* CLNavigation.h */,
+				6877AFBF1B994C7100113B86 /* CLNavigation.m */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		4BE63A501B9506ED00231222 /* Interactors */ = {
@@ -883,6 +980,10 @@
 				4BBF2C341BA2B1E500ECC37F /* IInterestInteractor.h */,
 				4B3F2E691BA7876500D4934E /* ISearchInteractor.h */,
 				4BA2A6561BA7F5AE004724EB /* IUserInteractor.h */,
+				4BE1DF401BABD13A009519CB /* IGroupInteractor.h */,
+				4BE1DF561BABD99B009519CB /* IGroupDetailInteractor.h */,
+				4BE1DF571BABDB1B009519CB /* IInterestDetailInteractor.h */,
+				4BE1DF611BABECD0009519CB /* IFeedInteractor.h */,
 			);
 			name = Interactors;
 			path = ../MVP/Interactors;
@@ -914,6 +1015,10 @@
 				4BBF2C321BA10A8F00ECC37F /* CLTagCollectionViewCell.m */,
 				680A64DB1BA255CE003C4B5E /* CLPeopleCell.h */,
 				680A64DC1BA255CE003C4B5E /* CLPeopleCell.m */,
+				68AB41FE1BAA02F2006495DC /* CLGroupEventCell.h */,
+				68AB41FF1BAA02F2006495DC /* CLGroupEventCell.m */,
+				68AB42041BAA23AB006495DC /* CLGroupDetailCollectionCell.h */,
+				68AB42051BAA23AB006495DC /* CLGroupDetailCollectionCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1022,19 +1127,6 @@
 				526DDE171AC757550095FC27 /* NPMembersViewController.xib */,
 			);
 			name = NPMembersViewController;
-			sourceTree = "<group>";
-		};
-		68D08E191B8E89EE000DEF69 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				68D08E181B8E89E9000DEF69 /* CLLogin.h */,
-				68CDDC081B8E8BB0004C2897 /* CLEvents.h */,
-				68CDDC3B1B8EB7D1004C2897 /* CLInterest.h */,
-				68CDDC3C1B8EBB4F004C2897 /* CLTagGroup.h */,
-				68CDDC3D1B8EBE60004C2897 /* CLTag.h */,
-			);
-			name = Protocol;
-			path = ../MVP/Protocol;
 			sourceTree = "<group>";
 		};
 		CEE3E8F6427AC65C0C247FB1 /* Pods */ = {
@@ -1493,8 +1585,12 @@
 			files = (
 				4B3F2E721BA78A4900D4934E /* CLLoadQueryEvent.m in Sources */,
 				4BA4E30E1B8BC8F40089CB2B /* CLVersions.m in Sources */,
+				4BE1DF791BAC00F1009519CB /* CLLoadLeaveInterest.m in Sources */,
 				D93AAC9E187C29F000E9B96A /* NPTodoViewController.m in Sources */,
+				4BE1DF3F1BABD12B009519CB /* CLGroupPresenter.m in Sources */,
+				4BE1DF6A1BABEEB0009519CB /* CLLoadInterestFeeds.m in Sources */,
 				523096C01AA28F5D00649FB7 /* NPInterestsViewController.m in Sources */,
+				4BE1DF551BABD425009519CB /* CLLoadInterestEvents.m in Sources */,
 				437F3D861ABFEAD9007DE49B /* NPGroupEventsCell.m in Sources */,
 				F998F68C1AB218AF00213240 /* NPInterestViewCell.m in Sources */,
 				F9B37B9B1AAE0F7A003F3FB8 /* NPTag.m in Sources */,
@@ -1506,15 +1602,20 @@
 				D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */,
 				4BA4E2F91B8BC76B0089CB2B /* CLOrganization.m in Sources */,
 				D93AAC89187B693B00E9B96A /* NPLocationCell.m in Sources */,
+				68AB42061BAA23AB006495DC /* CLGroupDetailCollectionCell.m in Sources */,
 				430936491AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m in Sources */,
 				D93AAC74187B170C00E9B96A /* NPAttendeesCell.m in Sources */,
 				4BA4E3491B8D133F0089CB2B /* CLAuthenticationController.m in Sources */,
+				4BE1DF5D1BABE0DB009519CB /* CLLoadedInterestMembers.m in Sources */,
 				D93AACA2187C300E00E9B96A /* NPTodoCell.m in Sources */,
 				4B6B56F61B98E859008DF039 /* CLGroupCollectionViewCell.m in Sources */,
+				4BE1DF521BABD415009519CB /* CLLoadInterestPosts.m in Sources */,
 				4BA4E3521B8D13610089CB2B /* CLUserController.m in Sources */,
 				43B0624C1AB71A64009F96CD /* NPMembersCell.m in Sources */,
+				4BE1DF431BABD155009519CB /* CLGroupSubscriber.m in Sources */,
 				D9507ADA187EE22C0020498A /* NPOtherEventCell.m in Sources */,
 				D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */,
+				68AB42031BAA1D26006495DC /* LabelWidth.m in Sources */,
 				523096DC1AA3E1A600649FB7 /* NPOtherHomeCell.m in Sources */,
 				6877AFB11B9905DF00113B86 /* CLPostViewController.m in Sources */,
 				4BAE006B1B8EE00D00779E1F /* CLEventSubscriber.m in Sources */,
@@ -1524,6 +1625,7 @@
 				D93AAC80187B661400E9B96A /* NPTodosCell.m in Sources */,
 				68B07EAA1BA1313000FCF806 /* CCLocalMaximum.m in Sources */,
 				F9B37B981AAE0CA5003F3FB8 /* NPTagGroup.m in Sources */,
+				4BE1DF4F1BABD405009519CB /* CLLoadedInterest.m in Sources */,
 				52A9A19B1AACECDA004E6C13 /* NPOtherInterestCell.m in Sources */,
 				6877AFC01B994C7100113B86 /* CLNavigation.m in Sources */,
 				6877AFBD1B99423600113B86 /* CLGroupViewController.m in Sources */,
@@ -1536,15 +1638,19 @@
 				4BAE006E1B8EE03100779E1F /* CLInterestSubscriber.m in Sources */,
 				43EF2F191B00A8F5002A060A /* NPTagGroupsView.m in Sources */,
 				F998F6891AB211E100213240 /* NPInterestsViewController2.m in Sources */,
+				4BE1DF761BAC00D4009519CB /* CLLoadJoinInterest.m in Sources */,
 				430936441AD1ECA300E568CD /* NPSeriesEvent.m in Sources */,
 				4309364E1AD1FCCD00E568CD /* NPEventSeriesDateCell.m in Sources */,
 				4BA4E3231B8BF0230089CB2B /* CLTag.m in Sources */,
 				523096CE1AA295F500649FB7 /* MainViewController.m in Sources */,
 				52A9A1911AACEC8B004E6C13 /* NPInterestTopCell.m in Sources */,
+				4BE1DF671BABED00009519CB /* CLFeedSubscriber.m in Sources */,
 				4BA4E2FC1B8BC7A80089CB2B /* CLParentTag.m in Sources */,
 				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
 				D93AAC93187B704100E9B96A /* NPAttendeesViewController.m in Sources */,
+				4BE1DF461BABD1D4009519CB /* CLGroupController.m in Sources */,
 				4BA4E3321B8C1B930089CB2B /* CLParticipant.m in Sources */,
+				4BE1DF601BABECAF009519CB /* CLFeedPresenter.m in Sources */,
 				D93AABF3186EFAD100E9B96A /* NPProfileViewController.m in Sources */,
 				4B27746D1B9AE147004BFCF4 /* CLLoadedUserEvents.m in Sources */,
 				4BA4E3051B8BC8670089CB2B /* CLRole.m in Sources */,
@@ -1552,6 +1658,8 @@
 				D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */,
 				68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */,
 				4BBF2C371BA2B35600ECC37F /* CLLoadInterests.m in Sources */,
+				4BE1DF4C1BABD3FA009519CB /* CLLoadInterest.m in Sources */,
+				4BE1DF641BABECF5009519CB /* CLFeedController.m in Sources */,
 				F9B37B941AAB9802003F3FB8 /* NPRegistrationViewController.m in Sources */,
 				D93AAC7B187B5C9900E9B96A /* NPDateCell.m in Sources */,
 				4BA4E34F1B8D13580089CB2B /* CLInterestController.m in Sources */,
@@ -1564,6 +1672,7 @@
 				6877AFC91B997BCE00113B86 /* CLGroupDetailViewController.m in Sources */,
 				D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */,
 				4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */,
+				4BE1DF6D1BABEEBB009519CB /* CLLoadedInterestFeeds.m in Sources */,
 				4BA4E3111B8BC9240089CB2B /* CLUser.m in Sources */,
 				4BAE00711B8EE06900779E1F /* CLUserSubscriber.m in Sources */,
 				4BBF2C331BA10A8F00ECC37F /* CLTagCollectionViewCell.m in Sources */,
@@ -1573,7 +1682,6 @@
 				4BA4E31D1B8BDC4B0089CB2B /* CLEdit.m in Sources */,
 				4BA4E34C1B8D134C0089CB2B /* CLEventController.m in Sources */,
 				4BBF2C2B1B9FDC6B00ECC37F /* CLInformationTableViewHeader.m in Sources */,
-				68CDDC431B8EC279004C2897 /* CLTagGroupPresenter.m in Sources */,
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
 				4BA4E32C1B8BF8E00089CB2B /* CLTimeZone.m in Sources */,
 				4B3F2E6F1BA7884600D4934E /* CLSearchController.m in Sources */,
@@ -1596,8 +1704,10 @@
 				4BA4E3351B8C1E280089CB2B /* CLFilePreview.m in Sources */,
 				4BA4E2F31B8BC6E70089CB2B /*  in Sources */,
 				4BA2A6591BA7F685004724EB /* CLLoadUsersEvent.m in Sources */,
+				68AB42001BAA02F2006495DC /* CLGroupEventCell.m in Sources */,
 				4BAE005D1B8EDEE200779E1F /* CLBaseNotificationRegistry.m in Sources */,
 				4BA2A65C1BA7F8ED004724EB /* CLLoadedUsersEvent.m in Sources */,
+				4BE1DF731BABF6C9009519CB /* CLComment.m in Sources */,
 				D93AACA9187C351500E9B96A /* NPNewTodoViewController.m in Sources */,
 				523096C51AA2907600649FB7 /* NPChallengesViewController.m in Sources */,
 				4BAE00741B8F909500779E1F /* CLAuthenticationSuccessEvent.m in Sources */,
@@ -1606,6 +1716,7 @@
 				D9809554185CA557008F2B61 /* main.m in Sources */,
 				4BAE00601B8EDF0E00779E1F /* CLBaseSubscriber.m in Sources */,
 				680A64DA1BA251D4003C4B5E /* CLPeopleViewController.m in Sources */,
+				4BE1DF5A1BABDDA9009519CB /* CLLoadInterestMembers.m in Sources */,
 				4B6B56F01B98E0C8008DF039 /* CLProfileTableViewController.m in Sources */,
 				6877AFC61B9959C400113B86 /* CLGroupCell.m in Sources */,
 				4BA61B0B1B94CC6800774CC2 /* CLProfileHeaderView.m in Sources */,
@@ -1613,6 +1724,7 @@
 				4BBF2C301BA109A400ECC37F /* CLTagTableViewCell.m in Sources */,
 				4BA4E3261B8BF3940089CB2B /* CLInterest.m in Sources */,
 				D931450D18925456002325CB /* NPCompanyCell.m in Sources */,
+				4BE1DF701BABF644009519CB /* CLFeed.m in Sources */,
 				4BA4E3291B8BF5E00089CB2B /* CLImage.m in Sources */,
 				4BA4E3171B8BD9360089CB2B /* CLAddress.m in Sources */,
 				6888B4031B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m in Sources */,
@@ -1625,7 +1737,6 @@
 				523096D71AA3E17400649FB7 /* NPHomeCell.m in Sources */,
 				4BAE00681B8EDFD300779E1F /* CLAuthenticationSubscriber.m in Sources */,
 				6877AFAE1B98EF9300113B86 /* CLSearchCell.m in Sources */,
-				68CDDC461B8EC3DF004C2897 /* CLTagPresenters.m in Sources */,
 				4BA4E32F1B8BFA0C0089CB2B /* CLSeries.m in Sources */,
 				4BA4E3441B8D11440089CB2B /* CLClient.m in Sources */,
 			);

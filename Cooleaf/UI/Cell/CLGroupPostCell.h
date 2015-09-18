@@ -10,11 +10,11 @@
 
 @interface CLGroupPostCell : UITableViewCell
 
+@property (nonatomic) UIImageView *userImage;
 @property (nonatomic) UILabel *labelCount;
 @property (nonatomic) UILabel *labelPostName;
 @property (nonatomic) UILabel *labelPostName2;
 @property (nonatomic) UILabel *labelPost;
 @property (nonatomic) UILabel *commentLabel;
-
 
 @end

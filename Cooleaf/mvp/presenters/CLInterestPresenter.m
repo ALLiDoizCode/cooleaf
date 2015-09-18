@@ -10,9 +10,13 @@
 #import "CLBus.h"
 #import "CLLoadInterests.h"
 #import "CLLoadedInterests.h"
+#import "CLLoadInterestMembers.h"
+#import "CLLoadedInterestMembers.h"
+#import "CLLoadJoinInterest.h"
+#import "CLLoadLeaveInterest.h"
 
-@interface CLInterestPresenter()
-@end
+static NSInteger const PAGE = 1;
+static NSInteger const PER_PAGE = 25;
 
 @implementation CLInterestPresenter
 
@@ -20,6 +24,13 @@
 
 - (id)initWithInteractor:(id<IInterestInteractor>)interactor {
     _interestInfo = interactor;
+    return self;
+}
+
+# pragma mark - Init Detail
+
+- (id)initWithDetailInteractor:(id<IInterestDetailInteractor>)interactor {
+    _interestDetailInfo = interactor;
     return self;
 }
 
@@ -39,10 +50,31 @@
     PUBLISH([[CLLoadInterests alloc] init]);
 }
 
+# pragma mark - loadInterestMembers
+
+- (void)loadInterestMembers:(NSInteger)interestId {
+    PUBLISH([[CLLoadInterestMembers alloc] initWithId:interestId page:PAGE perPage:PER_PAGE]);
+}
+
+# pragma mark - joinGroup
+
+- (void)joinGroup:(NSInteger)interestId {
+    PUBLISH([[CLLoadJoinInterest alloc] initWithInterestId:interestId]);
+}
+
+- (void)leaveGroup:(NSInteger)interestId {
+    PUBLISH([[CLLoadLeaveInterest alloc] initWithInterestId:interestId]);
+
+}
+
 # pragma mark - Subscription Events
 
 SUBSCRIBE(CLLoadedInterests) {
     [_interestInfo initInterests:event.interests];
+}
+
+SUBSCRIBE(CLLoadedInterestMembers) {
+    [_interestDetailInfo initMembers:event.members];
 }
 
 @end

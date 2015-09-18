@@ -8,18 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+@class CLDetailView;
+@protocol CLDetailViewDelegate <NSObject>
+
+- (void)joinGroup:(CLDetailView *)detailView;
+- (void)selectSegment:(CLDetailView *)detailView;
+
+@end
+
 @interface CLDetailView : UIView
 
-@property (nonatomic) UIImageView *mainImageView;
-@property (nonatomic) UILabel *labelName;
-@property (nonatomic) UILabel *labelPostName;
-@property (nonatomic) UILabel *labelPostName2;
-@property (nonatomic) UILabel *labelPost;
-@property (nonatomic) UILabel *labelComment;
-@property (nonatomic) UILabel *labelEvent;
-@property (nonatomic) UILabel *labelEventSub;
-@property (nonatomic) UIButton *members;
-@property (nonatomic) UIButton *postBtn;
-@property (nonatomic) UIButton *joinBtn;
+@property (nonatomic, assign) id<CLDetailViewDelegate> delegate;
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) UIImageView *mainImageView;
+@property (nonatomic, strong) UILabel *labelName;
+@property (nonatomic, strong) UILabel *labelEvent;
+@property (nonatomic, strong) UILabel *labelEventSub;
+@property (nonatomic, strong) UIButton *members;
+@property (nonatomic, strong) UIButton *joinBtn;
 
 @end

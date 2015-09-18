@@ -12,5 +12,11 @@
 
 - (void)getInterests:(NSMutableDictionary *)params success:(void (^)(id JSON))success
           failure:(void (^)(NSError *error))failure;
+- (void)getInterestMembers:(NSInteger)interestId params:(NSDictionary *)params success:(void (^)(id JSON))success
+             failure:(void (^)(NSError *error))failure;
+- (void)joinInterest:(NSInteger)interestId params:(NSDictionary *)params success:(void (^)(id JSON))success
+                   failure:(void (^)(NSError *error))failure;
+- (void)leaveInterest:(NSInteger)interestId params:(NSDictionary *)params success:(void (^)(id JSON))success
+             failure:(void (^)(NSError *error))failure;
 
 @end
