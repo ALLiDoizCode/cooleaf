@@ -97,6 +97,8 @@
 		4BE1DF671BABED00009519CB /* CLFeedSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF661BABED00009519CB /* CLFeedSubscriber.m */; };
 		4BE1DF6A1BABEEB0009519CB /* CLLoadInterestFeeds.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF691BABEEB0009519CB /* CLLoadInterestFeeds.m */; };
 		4BE1DF6D1BABEEBB009519CB /* CLLoadedInterestFeeds.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF6C1BABEEBB009519CB /* CLLoadedInterestFeeds.m */; };
+		4BE1DF701BABF644009519CB /* CLFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF6F1BABF644009519CB /* CLFeed.m */; };
+		4BE1DF731BABF6C9009519CB /* CLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF721BABF6C9009519CB /* CLComment.m */; };
 		4BE63A491B94E8CE00231222 /* CLHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A481B94E8CE00231222 /* CLHomeTableViewController.m */; };
 		4BE63A4C1B94E9D800231222 /* CLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A4B1B94E9D800231222 /* CLMenuViewController.m */; };
 		4BE63A4F1B9502AD00231222 /* CLDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A4E1B9502AD00231222 /* CLDrawerViewController.m */; };
@@ -402,6 +404,10 @@
 		4BE1DF691BABEEB0009519CB /* CLLoadInterestFeeds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterestFeeds.m; sourceTree = "<group>"; };
 		4BE1DF6B1BABEEBB009519CB /* CLLoadedInterestFeeds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedInterestFeeds.h; sourceTree = "<group>"; };
 		4BE1DF6C1BABEEBB009519CB /* CLLoadedInterestFeeds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedInterestFeeds.m; sourceTree = "<group>"; };
+		4BE1DF6E1BABF644009519CB /* CLFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFeed.h; sourceTree = "<group>"; };
+		4BE1DF6F1BABF644009519CB /* CLFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFeed.m; sourceTree = "<group>"; };
+		4BE1DF711BABF6C9009519CB /* CLComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLComment.h; sourceTree = "<group>"; };
+		4BE1DF721BABF6C9009519CB /* CLComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLComment.m; sourceTree = "<group>"; };
 		4BE63A471B94E8CE00231222 /* CLHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLHomeTableViewController.h; sourceTree = "<group>"; };
 		4BE63A481B94E8CE00231222 /* CLHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHomeTableViewController.m; sourceTree = "<group>"; };
 		4BE63A4A1B94E9D800231222 /* CLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMenuViewController.h; sourceTree = "<group>"; };
@@ -783,6 +789,10 @@
 				4BA4E3341B8C1E280089CB2B /* CLFilePreview.m */,
 				4B3F2E661BA77AE900D4934E /* CLQuery.h */,
 				4B3F2E671BA77AE900D4934E /* CLQuery.m */,
+				4BE1DF6E1BABF644009519CB /* CLFeed.h */,
+				4BE1DF6F1BABF644009519CB /* CLFeed.m */,
+				4BE1DF711BABF6C9009519CB /* CLComment.h */,
+				4BE1DF721BABF6C9009519CB /* CLComment.m */,
 			);
 			name = Entities;
 			path = ../Api/Entities;
@@ -1685,6 +1695,7 @@
 				68AB42001BAA02F2006495DC /* CLGroupEventCell.m in Sources */,
 				4BAE005D1B8EDEE200779E1F /* CLBaseNotificationRegistry.m in Sources */,
 				4BA2A65C1BA7F8ED004724EB /* CLLoadedUsersEvent.m in Sources */,
+				4BE1DF731BABF6C9009519CB /* CLComment.m in Sources */,
 				D93AACA9187C351500E9B96A /* NPNewTodoViewController.m in Sources */,
 				523096C51AA2907600649FB7 /* NPChallengesViewController.m in Sources */,
 				4BAE00741B8F909500779E1F /* CLAuthenticationSuccessEvent.m in Sources */,
@@ -1701,6 +1712,7 @@
 				4BBF2C301BA109A400ECC37F /* CLTagTableViewCell.m in Sources */,
 				4BA4E3261B8BF3940089CB2B /* CLInterest.m in Sources */,
 				D931450D18925456002325CB /* NPCompanyCell.m in Sources */,
+				4BE1DF701BABF644009519CB /* CLFeed.m in Sources */,
 				4BA4E3291B8BF5E00089CB2B /* CLImage.m in Sources */,
 				4BA4E3171B8BD9360089CB2B /* CLAddress.m in Sources */,
 				6888B4031B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m in Sources */,

@@ -8,6 +8,6 @@
 
 @protocol IFeedInteractor <NSObject>
 
-
+- (void)initFeeds:(NSMutableArray *)feeds;
 
 @end

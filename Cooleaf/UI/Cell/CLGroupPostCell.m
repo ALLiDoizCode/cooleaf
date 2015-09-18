@@ -22,16 +22,15 @@
     UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(13, 20, 295, 150)];
     bgview.backgroundColor = offWhite;
     
-    // Member Icon
-    UIImageView *PostImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 35, 35)];
-    PostImage.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    PostImage.image = [UIImage imageNamed:@"TestImage"];
-    PostImage.layer.masksToBounds = YES;
-    PostImage.layer.cornerRadius = PostImage.frame.size.height/2;
-    PostImage.layer.borderColor = [UIColor clearColor].CGColor;
-    PostImage.layer.borderWidth = 3.0f;
-    PostImage.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    PostImage.layer.shouldRasterize = YES;
+    // User Icon
+    _userImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 35, 35)];
+    _userImage.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    _userImage.layer.masksToBounds = YES;
+    _userImage.layer.cornerRadius = _userImage.frame.size.height/2;
+    _userImage.layer.borderColor = [UIColor clearColor].CGColor;
+    _userImage.layer.borderWidth = 3.0f;
+    _userImage.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    _userImage.layer.shouldRasterize = YES;
     
     
     //Count Label
@@ -90,7 +89,7 @@
     
     [self.contentView addSubview:bgview];
     [bgview addSubview:_labelCount];
-    [bgview addSubview:PostImage];
+    [bgview addSubview:_userImage];
     [bgview addSubview:_labelPostName];
     [bgview addSubview:_labelPostName2];
     [bgview addSubview:_labelPost];

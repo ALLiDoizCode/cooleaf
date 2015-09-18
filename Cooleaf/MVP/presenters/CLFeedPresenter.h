@@ -16,5 +16,6 @@
 - (id)initWithInteractor:(id<IFeedInteractor>)interactor;
 - (void)registerOnBus;
 - (void)unregisterOnBus;
+- (void)loadInterestFeeds:(NSInteger)interestId;
 
 @end

@@ -10,8 +10,9 @@
 #import "CLDetailView.h"
 #import "CLInterest.h"
 #import "IInterestDetailInteractor.h"
+#import "IFeedInteractor.h"
 
-@interface CLGroupDetailViewController : UIViewController <IInterestDetailInteractor, CLDetailViewDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CLGroupDetailViewController : UIViewController <IFeedInteractor, IInterestDetailInteractor, CLDetailViewDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic) NSString *currentImagePath;
 @property (nonatomic) NSString *currentName;

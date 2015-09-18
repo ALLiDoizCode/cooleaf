@@ -8,6 +8,11 @@
 
 #import "CLFeedPresenter.h"
 #import "CLBus.h"
+#import "CLLoadInterestFeeds.h"
+#import "CLLoadedInterestFeeds.h"
+
+static NSInteger const PAGE = 1;
+static NSInteger const PER_PAGE = 25;
 
 @implementation CLFeedPresenter
 
@@ -26,6 +31,18 @@
 
 - (void)unregisterOnBus {
     UNREGISTER();
+}
+
+# pragma mark - loadInterestFeeds
+
+- (void)loadInterestFeeds:(NSInteger)interestId {
+    PUBLISH([[CLLoadInterestFeeds alloc] initWithId:interestId page:PAGE perPage:PER_PAGE]);
+}
+
+# pragma mark - Subscription Methods
+
+SUBSCRIBE(CLLoadedInterestFeeds) {
+    [_feedInfo initFeeds:event.feeds];
 }
 
 @end

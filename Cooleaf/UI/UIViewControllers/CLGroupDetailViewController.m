@@ -19,19 +19,24 @@
 #import "UIImageView+WebCache.h"
 #import "CLClient.h"
 #import "CLSearchViewController.h"
+#import "CLFeedPresenter.h"
+#import "CLFeed.h"
 
 @interface CLGroupDetailViewController()
 
 @property (assign) int currentIndex;
 @property (nonatomic) CLInterestPresenter *interestPresenter;
+@property (nonatomic) CLFeedPresenter *feedPresenter;
 @property (nonatomic) UIColor *barColor;
-@property (nonatomic) NSMutableArray *posts;
+@property (nonatomic) NSMutableArray *feeds;
 @property (nonatomic) NSMutableArray *events;
 @property (nonatomic) NSMutableArray *members;
 
 @end
 
 @implementation CLGroupDetailViewController
+
+# pragma mark - LifeCycle Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,7 +49,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setupInterestPresenter];
-    [self grabColor];
+    [self setupFeedPresenter];
+    [self grabColorFromImage];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -66,7 +72,9 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)grabColor {
+# pragma mark - grabColorFromImage
+
+-(void)grabColorFromImage {
     
     // Get four dominant colors from the image, but avoid the background color of our UI
     CCColorCube *colorCube = [[CCColorCube alloc] init];
@@ -144,6 +152,16 @@
     [_interestPresenter loadInterestMembers:[[_interest interestId] intValue]];
 }
 
+# pragma mark - setupFeedPresenter
+
+- (void)setupFeedPresenter {
+    _feedPresenter = [[CLFeedPresenter alloc] initWithInteractor:self];
+    [_feedPresenter registerOnBus];
+    
+    // Make a call to grab group feeds
+    [_feedPresenter loadInterestFeeds:[[_interest interestId] intValue]];
+}
+
 # pragma mark - CLDetailViewDelegate
 
 - (void)selectSegment:(CLDetailView *)detailView {
@@ -180,6 +198,12 @@
     [self.collectionView reloadData];
 }
 
+# pragma mark - IFeedInteractor Methods
+
+- (void)initFeeds:(NSMutableArray *)feeds {
+    _feeds = feeds;
+    [self.tableView reloadData];
+}
 
 # pragma mark - TableView Data Source
 
@@ -187,7 +211,7 @@
     // Return posts count if user selects posts segment, or events count if user selects events segment
     switch (_currentIndex) {
         case 0:
-            return [_posts count];
+            return [_feeds count];
         case 1:
             return [_events count];
         default:
@@ -195,12 +219,38 @@
     }
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (_currentIndex) {
         case 0: {
             // Create the CLGroupPostCell since user is on Posts segment
             CLGroupPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupDetailCell"];
+            
+            // Get a feed
+            CLFeed *feed = [_feeds objectAtIndex:[indexPath row]];
+            
+            // Get feed dictionary
+            NSDictionary *feedDict = [_feeds objectAtIndex:[indexPath row]];
+            
+            // Set the path and load the image
+            NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], feedDict[@"user_picture"][@"versions"][@"icon"]];
+            [cell.userImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+            
+            // Set the user name
+            NSString *userName = feedDict[@"user_name"];
+            cell.labelPostName.text = userName;
+            
+            // Set the content
+            NSString *content = feedDict[@"content"];
+            cell.labelPost.text = content;
+            
+            // Check if feeds comments is not nil or not zero
+            NSArray *comments = feedDict[@"comments"];
+            if (comments != nil || [comments count] > 0) {
+                cell.commentLabel.text = [NSString stringWithFormat:@"%lu comment", (unsigned long) [comments count]];
+            } else {
+                cell.commentLabel.text = @"0 comments";
+            }
+            
             return cell;
         }
         case 1: {

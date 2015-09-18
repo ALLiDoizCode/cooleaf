@@ -8,7 +8,6 @@
 
 #import "CLGroupSubscriber.h"
 #import "CLGroupController.h"
-#import "CLBus.h"
 
 @interface CLGroupSubscriber() {
     @private
