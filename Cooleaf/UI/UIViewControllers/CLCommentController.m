@@ -60,14 +60,10 @@
     UIButton *sendBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     sendBtn.frame = CGRectMake(220, 500, 100, 18);
     [sendBtn setTitle:@"Send" forState:UIControlStateNormal];
-    //[sendBtn addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
-    
-    //Send
-    UIButton *addImageBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    addImageBtn.frame = CGRectMake(15, 494, 30, 30);
-    [addImageBtn setTitle:@"Send" forState:UIControlStateNormal];
-    [addImageBtn setImage:[UIImage imageNamed:@"Camera"] forState:UIControlStateNormal];
     //[sendBtn addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];*/
+    
+   
+    [_addImage addTarget:self action:@selector(getPicture) forControlEvents:UIControlEventTouchUpInside];
     
     //Cancel
     UIButton *cancelBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
@@ -154,6 +150,30 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Do some stuff when the row is selected
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
+-(void)getPicture {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = NO;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)img editingInfo:(NSDictionary *)editInfo
+{
+    UIImage *chosenImage  = [editInfo objectForKey:@"UIImagePickerControllerOriginalImage"];
+    _imgToUpload = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
 }
 
 /*

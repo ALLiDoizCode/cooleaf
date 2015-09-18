@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CLCommentTableView.h"
 
-@interface CLCommentController : UIViewController<UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate>
+@interface CLCommentController : UIViewController<UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate,UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet CLCommentTableView *tableView;
 
@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *addImage;
 @property (weak, nonatomic) IBOutlet UIButton *send;
 @property (weak, nonatomic) IBOutlet UIView *bottomBordrer;
+@property (weak, nonatomic) UIImage *imgToUpload;
 
 @end
