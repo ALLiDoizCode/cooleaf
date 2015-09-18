@@ -11,6 +11,8 @@
 
 @interface CLFeedPresenter : NSObject
 
+@property (nonatomic, assign) id<IFeedInteractor> feedInfo;
+
 - (id)initWithInteractor:(id<IFeedInteractor>)interactor;
 - (void)registerOnBus;
 - (void)unregisterOnBus;

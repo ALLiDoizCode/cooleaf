@@ -21,6 +21,8 @@
 
 @implementation CLSearchSubscriber
 
+# pragma mark - init
+
 - (id)init {
     _searchController = [[CLSearchController alloc] init];
     return self;

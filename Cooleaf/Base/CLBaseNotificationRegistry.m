@@ -14,6 +14,7 @@
 #import "CLUserSubscriber.h"
 #import "CLSearchSubscriber.h"
 #import "CLGroupSubscriber.h"
+#import "CLFeedSubscriber.h"
 
 @implementation CLBaseNotificationRegistry
 
@@ -89,12 +90,14 @@
     CLUserSubscriber *userSubscriber = [[CLUserSubscriber alloc] init];
     CLSearchSubscriber *searchSubscriber = [[CLSearchSubscriber alloc] init];
     CLGroupSubscriber *groupSubscriber = [[CLGroupSubscriber alloc] init];
+    CLFeedSubscriber *feedSubscriber = [[CLFeedSubscriber alloc] init];
     [defaultSubscribers addObject:authenticationSubcriber];
     [defaultSubscribers addObject:interestSubscriber];
     [defaultSubscribers addObject:eventSubscriber];
     [defaultSubscribers addObject:userSubscriber];
     [defaultSubscribers addObject:searchSubscriber];
     [defaultSubscribers addObject:groupSubscriber];
+    [defaultSubscribers addObject:feedSubscriber];
     return defaultSubscribers;
 }
 

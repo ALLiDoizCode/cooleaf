@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "CLBaseSubscriber.h"
 
-@interface CLFeedSubscriber : NSObject
+@interface CLFeedSubscriber : CLBaseSubscriber
+
+- (id)init;
 
 @end

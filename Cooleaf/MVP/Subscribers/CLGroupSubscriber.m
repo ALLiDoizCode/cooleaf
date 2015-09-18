@@ -11,13 +11,15 @@
 #import "CLBus.h"
 
 @interface CLGroupSubscriber() {
-@private
+    @private
     CLGroupController *_groupController;
 }
 
 @end
 
 @implementation CLGroupSubscriber
+
+# pragma mark - init
 
 - (id)init {
     _groupController = [[CLGroupController alloc] init];

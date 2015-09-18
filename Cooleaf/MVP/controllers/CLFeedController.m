@@ -10,4 +10,8 @@
 
 @implementation CLFeedController
 
+- (void)getInterestFeeds:(NSInteger)interestId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    
+}
+
 @end

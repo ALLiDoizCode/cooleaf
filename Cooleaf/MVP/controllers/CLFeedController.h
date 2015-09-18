@@ -10,4 +10,7 @@
 
 @interface CLFeedController : NSObject
 
+- (void)getInterestFeeds:(NSInteger)interestId params:(NSDictionary *)params success:(void (^)(id JSON))success
+         failure:(void (^)(NSError *error))failure;
+
 @end

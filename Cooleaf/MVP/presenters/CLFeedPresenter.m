@@ -7,7 +7,25 @@
 //
 
 #import "CLFeedPresenter.h"
+#import "CLBus.h"
 
 @implementation CLFeedPresenter
+
+# pragma mark - Init
+
+- (id)initWithInteractor:(id<IFeedInteractor>)interactor {
+    _feedInfo = interactor;
+    return self;
+}
+
+# pragma mark - Bus Methods
+
+- (void)registerOnBus {
+    REGISTER();
+}
+
+- (void)unregisterOnBus {
+    UNREGISTER();
+}
 
 @end
