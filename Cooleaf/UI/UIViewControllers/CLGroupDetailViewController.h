@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CLDetailView.h"
-#import "CLGroupPostViewcontroller.h"
+#import "CLInterest.h"
 
 @interface CLGroupDetailViewController : UIViewController <CLDetailViewDelegate, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic) NSString *currentImagePath;
 @property (nonatomic) NSString *currentName;
+@property (nonatomic) CLInterest *interest;
 @property (strong, nonatomic) IBOutlet CLDetailView *detailView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIScrollView *detailScroll;

@@ -13,10 +13,13 @@
 #import "CCColorCube.h"
 #import "CLEventCell.h"
 #import "CLGroupDetailCollectionCell.h"
+#import "CLGroupPresenter.h"
+#import "CLGroupPostViewcontroller.h"
 
 @interface CLGroupDetailViewController()
 
 @property (assign) int currentIndex;
+@property (nonatomic, weak) CLGroupPresenter *groupPresenter;
 @property (nonatomic) UIColor *barColor;
 @property (nonatomic) NSMutableArray *posts;
 @property (nonatomic) NSMutableArray *events;
@@ -33,8 +36,21 @@
     [self setupUI];
 }
 
--(void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self grabColor];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +111,9 @@
     // Set size for ScrollView
     [_detailScroll setContentSize:CGSizeMake(_detailScroll.contentSize.width, [self getScrollViewHeight])];
     
+    // Set detail view delegate
+    _detailView.delegate = self;
+    
     // Load image for hero image
     [_detailView.mainImageView sd_setImageWithURL:[NSURL URLWithString:self.currentImagePath]
                                  placeholderImage:[UIImage imageNamed:nil]];
@@ -105,12 +124,9 @@
     // Add selector for POST button
     [_detailView.postBtn addTarget:self action:@selector(goToGroupPostViewController) forControlEvents:UIControlEventTouchUpInside];
     
-    // Set detail view delegate
-    _detailView.delegate = self;
-    
-    // Add selectors for Segemented Control like buttons
-//    [_detailView.postBtn2 addTarget:self action:@selector(showPost) forControlEvents:UIControlEventTouchUpInside];
-//    [_detailView.eventBtn addTarget:self action:@selector(showEvents) forControlEvents:UIControlEventTouchUpInside];
+    // Add number of participants
+    [_detailView.members setTitle:[NSString stringWithFormat:@"%d Members >", [[_interest userCount] intValue]]
+                         forState:UIControlStateNormal];
 }
 
 # pragma mark - CLDetailViewDelegate
@@ -149,9 +165,9 @@
     // Return posts count if user selects posts segment, or events count if user selects events segment
     switch (_currentIndex) {
         case 0:
-            return 1;
+            return [_posts count];
         case 1:
-            return 3;
+            return [_events count];
         default:
             return 0;
     }
@@ -172,22 +188,8 @@
             return cell;
         }
         default:
-            break;
+            return nil;;
     }
-//    if (_eventTable.hidden == YES) {
-//        
-//         CLGroupPostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupDetailCell"];
-//        
-//        return cell;
-//        
-//    }else {
-//        
-//        CLGroupEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventDetailCell"];
-//        
-//        return cell;
-//    }
-    
-    return nil;
 }
 
 # pragma mark - TableView Delegate

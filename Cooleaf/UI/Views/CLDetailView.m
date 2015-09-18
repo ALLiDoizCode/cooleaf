@@ -94,40 +94,9 @@
     // Attach target action to the segmented control
     [self.segmentedControl addTarget:self action:@selector(selectSegment:) forControlEvents:UIControlEventValueChanged];
     
-    
-    
-    // Post2
-    _postBtn2 = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    _postBtn2.frame = CGRectMake(90, 408, 78, 25);
-    [_postBtn2 setTitle:@"Posts" forState:UIControlStateNormal];
-    _postBtn2.backgroundColor = [UIColor offWhite];
-    _postBtn2.tintColor = [UIColor darkGrayColor];
-    _postBtn2.layer.cornerRadius = 3;
-    _postBtn2.layer.borderWidth = 1.5;
-    _postBtn2.layer.borderColor = [UIColor darkGrayColor].CGColor;
-    _postBtn2.layer.masksToBounds = YES;
-    _postBtn2.hidden = YES;
-    //[_postBtn2 addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
-    
-    // Events button
-    _eventBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    _eventBtn.frame = CGRectMake(162, 408, 75, 25);
-    [_eventBtn setTitle:@"Events" forState:UIControlStateNormal];
-    _eventBtn.backgroundColor = [UIColor darkGrayColor];
-    _eventBtn.tintColor = [UIColor offWhite];
-    _eventBtn.layer.cornerRadius = 3;
-    _eventBtn.layer.borderWidth = 1.5;
-    _eventBtn.hidden = YES;
-    _eventBtn.layer.borderColor = [UIColor darkGrayColor].CGColor;
-    
-    
-    _eventBtn.layer.masksToBounds = YES;
-    //[_eventBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
-    
     //Members
     _members = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     _members.frame  = CGRectMake(230, 380, 60, 10);
-    [_members setTitle:@"5 Members>" forState:UIControlStateNormal];
     _members.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
     [_members setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     //[members addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
@@ -149,8 +118,6 @@
     [self addSubview:_postBtn];
     [self addSubview:_joinBtn];
     [self addSubview:_segmentedControl];
-    [self addSubview:_postBtn2];
-    [self addSubview:_eventBtn];
     [self addSubview:border];
     [self addSubview:border2];
     [bgview addSubview:_mainImageView];

@@ -194,8 +194,9 @@
 
     NSString *currentName = [interest name];
     
-    detailView.currentImagePath = fullPath;
-    detailView.currentName = currentName;
+    [detailView setInterest:interest];
+    [detailView setCurrentImagePath:fullPath];
+    [detailView setCurrentName:currentName];
 }
 
 - (void)setAttributedTitle {
