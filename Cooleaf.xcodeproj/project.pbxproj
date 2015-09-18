@@ -621,13 +621,12 @@
 		4B6088431B929E4E0029E659 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4BE1DF3C1BABA488009519CB /* Helpers */,
 				4BE63A5A1B9580F200231222 /* Cell */,
 				4B6088461B929E8A0029E659 /* Custom */,
 				4B6088451B929E810029E659 /* Views */,
 				4B6088441B929E620029E659 /* UIViewControllers */,
 				4B066CBE1B94BB79006A7CF1 /* Main.storyboard */,
-				6877AFBE1B994C7100113B86 /* CLNavigation.h */,
-				6877AFBF1B994C7100113B86 /* CLNavigation.m */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -884,6 +883,15 @@
 			);
 			name = Subscribers;
 			path = ../MVP/Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE1DF3C1BABA488009519CB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6877AFBE1B994C7100113B86 /* CLNavigation.h */,
+				6877AFBF1B994C7100113B86 /* CLNavigation.m */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		4BE63A501B9506ED00231222 /* Interactors */ = {

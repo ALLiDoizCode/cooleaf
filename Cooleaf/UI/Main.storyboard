@@ -745,11 +745,44 @@
                                         <rect key="frame" x="0.0" y="424" width="600" height="575"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="groupEventCell" rowHeight="1000" id="0oo-Xj-JdA" customClass="CLEventCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="groupEventCell" rowHeight="502" id="0oo-Xj-JdA" customClass="CLEventCell">
                                                 <rect key="frame" x="0.0" y="-200" width="600" height="1000"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0oo-Xj-JdA" id="4f1-9G-W4O">
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nh4-xh-gIf" userLabel="EventView">
+                                                            <rect key="frame" x="8" y="0.0" width="584" height="502"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jxb-ic-Adp" userLabel="EventImage">
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" id="WcQ-Yn-5i8"/>
+                                                                        <constraint firstAttribute="width" secondItem="jxb-ic-Adp" secondAttribute="height" multiplier="2:1" id="ZUT-vu-H4l"/>
+                                                                        <constraint firstAttribute="width" secondItem="jxb-ic-Adp" secondAttribute="height" multiplier="2:1" id="mv4-3B-7AQ"/>
+                                                                    </constraints>
+                                                                    <variation key="default">
+                                                                        <mask key="constraints">
+                                                                            <exclude reference="WcQ-Yn-5i8"/>
+                                                                            <exclude reference="ZUT-vu-H4l"/>
+                                                                        </mask>
+                                                                    </variation>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="jxb-ic-Adp" firstAttribute="leading" secondItem="nh4-xh-gIf" secondAttribute="leading" id="6EJ-Zg-lIh"/>
+                                                                <constraint firstAttribute="trailing" secondItem="jxb-ic-Adp" secondAttribute="trailing" constant="584" id="CuG-e0-rgA"/>
+                                                                <constraint firstItem="jxb-ic-Adp" firstAttribute="top" secondItem="nh4-xh-gIf" secondAttribute="top" id="MOI-cn-nuA"/>
+                                                                <constraint firstAttribute="bottom" secondItem="jxb-ic-Adp" secondAttribute="bottom" constant="502" id="oQa-RY-JOw"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="nh4-xh-gIf" firstAttribute="leading" secondItem="4f1-9G-W4O" secondAttribute="leadingMargin" id="1C2-QP-YEY"/>
+                                                        <constraint firstItem="nh4-xh-gIf" firstAttribute="centerY" secondItem="4f1-9G-W4O" secondAttribute="centerY" id="FO9-hH-plq"/>
+                                                        <constraint firstItem="nh4-xh-gIf" firstAttribute="top" secondItem="4f1-9G-W4O" secondAttribute="top" id="e37-0U-Agu"/>
+                                                        <constraint firstItem="nh4-xh-gIf" firstAttribute="centerX" secondItem="4f1-9G-W4O" secondAttribute="centerX" id="ynf-gB-0zj"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupDetailCell" id="LD5-kU-xNY" customClass="CLGroupPostCell">
