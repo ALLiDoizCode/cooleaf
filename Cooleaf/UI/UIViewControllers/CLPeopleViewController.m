@@ -18,6 +18,7 @@
     @private
     CLUserPresenter *_userPresenter;
     NSMutableArray *_organizationUsers;
+    UIColor *_barColor;
 }
 
 @end
@@ -29,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_activityIndicator setHidden:YES];
+    [self setupNavBar];
     // Do any additional setup after loading the view.
 }
 
@@ -54,6 +56,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+# pragma mark - setupNavBar
+
+- (void)setupNavBar {
+    self.navigationController.navigationBar.topItem.title = @"People";
+    self.navigationController.navigationBar.alpha = 1;
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    _barColor = [UIColor colorPrimary];
+    self.navigationController.navigationBar.barTintColor = _barColor;
 }
 
 # pragma mark - setupUserPresenter
