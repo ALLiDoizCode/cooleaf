@@ -11,7 +11,17 @@
 
 @implementation CLCommentCell
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    //self.imageView.frame = CGRectMake(0,0,32,32);
+    
+    self.imageView.layer.masksToBounds = YES;
+    self.imageView.layer.cornerRadius = self.imageView.frame.size.height/2;
+}
+
 - (void)awakeFromNib {
+    
+   
     
     _cellImage.layer.cornerRadius = _cellImage.frame.size.height / 2;
     _cellImage.layer.masksToBounds = YES;

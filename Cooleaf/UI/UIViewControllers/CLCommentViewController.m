@@ -33,6 +33,8 @@ static const float movementDuration = 0.3f; // tweak as needed
     
     // Assign activity item event and image to header
     [self.tableView setHeaderContent:_event image:_backgroundImage.image];
+    _tableView.rowHeight = UITableViewAutomaticDimension;
+    _tableView.estimatedRowHeight = 140;
     
     _textField.delegate = self;
     
