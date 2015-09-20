@@ -208,9 +208,11 @@ static const float movementDuration = 0.3f; // tweak as needed
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     
-    // Get text and send to API
-    NSString *content = textField.text;
-    [_commentPresenter addEventComment:[[_event eventId] intValue] content:content];
+    // Get text and send to API only if the textfield is not empty
+    if (![textField.text isEqualToString:@""]) {
+        NSString *content = textField.text;
+        [_commentPresenter addEventComment:[[_event eventId] intValue] content:content];
+    }
     
     // Clear textfield
     textField.text = @"";
