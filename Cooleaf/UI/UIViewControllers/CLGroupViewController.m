@@ -99,11 +99,14 @@
     _interestPresenter = [[CLInterestPresenter alloc] initWithInteractor:self];
     [_interestPresenter registerOnBus];
     [_interestPresenter loadInterests];
+    [self showActivityIndicator];
 }
 
 # pragma mark - IInterestInteractor Methods
 
 - (void)initInterests:(NSMutableArray *)interests {
+    [self hideActivityIndicator];
+    
     _interests = interests;
     [self.tableView reloadData];
     
@@ -225,6 +228,21 @@
 - (void)searchViewController {
     CLSearchViewController *search = [self.storyboard instantiateViewControllerWithIdentifier:@"search"];
     [[self navigationController] pushViewController:search animated:YES];
+}
+
+# pragma mark - showActivityIndicator
+
+- (void)showActivityIndicator {
+    [_activityIndicator setHidden:NO];
+    [_activityIndicator setColor:[UIColor colorAccent]];
+    [_activityIndicator startAnimating];
+}
+
+# pragma mark - hideActivityIndicator
+
+- (void)hideActivityIndicator {
+    [_activityIndicator stopAnimating];
+    [_activityIndicator setHidden:YES];
 }
 
 @end

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eIY-Me-YIN">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -952,16 +953,22 @@
                                     <outlet property="delegate" destination="dYZ-SN-EYH" id="bnt-wr-Xor"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="NKg-iQ-HBQ">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ylv-sc-lSC" secondAttribute="trailing" id="7Ac-AD-QrH"/>
                             <constraint firstItem="ylv-sc-lSC" firstAttribute="leading" secondItem="7b1-TY-5EI" secondAttribute="leading" id="SrV-Ny-ZO0"/>
+                            <constraint firstAttribute="centerY" secondItem="NKg-iQ-HBQ" secondAttribute="centerY" id="izS-ek-R9u"/>
                             <constraint firstItem="ylv-sc-lSC" firstAttribute="top" secondItem="7b1-TY-5EI" secondAttribute="top" id="jz1-aC-AdY"/>
+                            <constraint firstAttribute="centerX" secondItem="NKg-iQ-HBQ" secondAttribute="centerX" id="r3Z-Mb-3bk"/>
                             <constraint firstItem="ylv-sc-lSC" firstAttribute="bottom" secondItem="gqj-ip-e3M" secondAttribute="top" id="xaD-IN-1sI"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="NKg-iQ-HBQ" id="RGz-3F-xdJ"/>
                         <outlet property="tableView" destination="ylv-sc-lSC" id="s3O-5s-RUe"/>
                     </connections>
                 </viewController>
