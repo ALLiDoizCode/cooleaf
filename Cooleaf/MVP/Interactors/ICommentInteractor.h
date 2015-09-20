@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import "CLComment.h"
 @protocol ICommentInteractor <NSObject>
 
-- (void)initComments:(NSMutableArray *)comments;
+- (void)initEventComments:(NSMutableArray *)comments;
+- (void)addEventComment:(CLComment *)comment;
 
 @end
