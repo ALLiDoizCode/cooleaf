@@ -19,7 +19,7 @@
 #import "CLSearchViewController.h"
 #import "CLEventController.h"
 #import "NPAppDelegate.h"
-#import "CLCommentController.h"
+#import "CLCommentViewController.h"
 
 @interface CLHomeTableViewController() {
     @private
@@ -140,7 +140,7 @@
     CLEvent *event = [_events objectAtIndex:[indexPath row]];
     
     // Instantiate comment controller and assign event
-    CLCommentController *commentController = [self.storyboard instantiateViewControllerWithIdentifier:@"commentController"];
+    CLCommentViewController *commentController = [self.storyboard instantiateViewControllerWithIdentifier:@"commentController"];
     [commentController setEvent:event];
     [[self navigationController] presentViewController:commentController animated:YES completion:nil];
 }

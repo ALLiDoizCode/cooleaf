@@ -15,6 +15,7 @@
 #import "CLSearchSubscriber.h"
 #import "CLGroupSubscriber.h"
 #import "CLFeedSubscriber.h"
+#import "CLCommentSubscriber.h"
 
 @implementation CLBaseNotificationRegistry
 
@@ -32,6 +33,7 @@
 # pragma mark - Singleton
 
 + (CLBaseNotificationRegistry *)getInstance {
+    // Create a singleton instance of the registry on application startup
     static CLBaseNotificationRegistry *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     
@@ -44,6 +46,7 @@
 # pragma mark - registerDefaultSubscribers
 
 - (void)registerDefaultSubscribers {
+    // Register all default subscribers when application starts
     [_defaultNotificationSubscribers removeAllObjects];
     [_defaultNotificationSubscribers addObjectsFromArray:[self createDefaultSubscribers]];
     for (id<CLNotificationSubscriber> subscriber in _defaultNotificationSubscribers) {
@@ -54,6 +57,7 @@
 # pragma mark - unregisterDefaultSubscribers
 
 - (void)unregisterDefaultSubscribers {
+    // Unregister all default subscribers when application terminates
     for (CLBaseSubscriber *subscriber in _defaultNotificationSubscribers) {
         [subscriber unregisterOnBus:_eventBus];
     }
@@ -63,6 +67,7 @@
 # pragma mark - registerSubscriber
 
 - (void)registerSubscriber:(id<CLNotificationSubscriber>)subscriber {
+    // Register an individual subscriber if it is not inside the MapTable
     if ([_notificationSubscribers objectForKey:subscriber]) {
         return;
     }
@@ -83,7 +88,10 @@
 # pragma mark - createDefaultSubscribers
 
 - (NSMutableArray *)createDefaultSubscribers {
+    // Init array for subscribers
     NSMutableArray *defaultSubscribers = [NSMutableArray array];
+    
+    // Initialize subscribers
     CLAuthenticationSubscriber *authenticationSubcriber = [[CLAuthenticationSubscriber alloc] init];
     CLInterestSubscriber *interestSubscriber = [[CLInterestSubscriber alloc] init];
     CLEventSubscriber *eventSubscriber = [[CLEventSubscriber alloc] init];
@@ -91,6 +99,9 @@
     CLSearchSubscriber *searchSubscriber = [[CLSearchSubscriber alloc] init];
     CLGroupSubscriber *groupSubscriber = [[CLGroupSubscriber alloc] init];
     CLFeedSubscriber *feedSubscriber = [[CLFeedSubscriber alloc] init];
+    CLCommentSubscriber *commentSubscriber = [[CLCommentSubscriber alloc] init];
+    
+    // Add subscribers to registry to be able to recieve events
     [defaultSubscribers addObject:authenticationSubcriber];
     [defaultSubscribers addObject:interestSubscriber];
     [defaultSubscribers addObject:eventSubscriber];
@@ -98,6 +109,8 @@
     [defaultSubscribers addObject:searchSubscriber];
     [defaultSubscribers addObject:groupSubscriber];
     [defaultSubscribers addObject:feedSubscriber];
+    [defaultSubscribers addObject:commentSubscriber];
+    
     return defaultSubscribers;
 }
 

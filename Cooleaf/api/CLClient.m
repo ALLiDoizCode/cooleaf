@@ -12,6 +12,7 @@
 #import "CLInterest.h"
 #import "CLQuery.h"
 #import "CLFeed.h"
+#import "CLComment.h"
 
 static NSString *const BASE_API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu";
 static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api";
@@ -60,7 +61,8 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
              @"v2/interests.json": [CLInterest class],
              @"memberlist.json": [CLUser class],
              @"v3/search.json": [CLQuery class],
-             @"v2/feeds/*": [CLFeed class]
+             @"v2/feeds/*": [CLFeed class],
+             @"v2/comments/*": [CLComment class]
              };
 }
 
