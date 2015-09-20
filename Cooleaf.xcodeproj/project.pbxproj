@@ -101,6 +101,11 @@
 		4BE1DF731BABF6C9009519CB /* CLComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF721BABF6C9009519CB /* CLComment.m */; };
 		4BE1DF761BAC00D4009519CB /* CLLoadJoinInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF751BAC00D4009519CB /* CLLoadJoinInterest.m */; };
 		4BE1DF791BAC00F1009519CB /* CLLoadLeaveInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF781BAC00F1009519CB /* CLLoadLeaveInterest.m */; };
+		4BE1DF7C1BAE9A04009519CB /* CLCommentPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF7B1BAE9A04009519CB /* CLCommentPresenter.m */; };
+		4BE1DF801BAE9ABA009519CB /* CLCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF7F1BAE9ABA009519CB /* CLCommentController.m */; };
+		4BE1DF831BAE9AC8009519CB /* CLCommentSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF821BAE9AC8009519CB /* CLCommentSubscriber.m */; };
+		4BE1DF861BAE9D96009519CB /* CLLoadEventComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF851BAE9D96009519CB /* CLLoadEventComments.m */; };
+		4BE1DF891BAE9DC8009519CB /* CLLoadedEventComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF881BAE9DC8009519CB /* CLLoadedEventComments.m */; };
 		4BE63A491B94E8CE00231222 /* CLHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A481B94E8CE00231222 /* CLHomeTableViewController.m */; };
 		4BE63A4C1B94E9D800231222 /* CLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A4B1B94E9D800231222 /* CLMenuViewController.m */; };
 		4BE63A4F1B9502AD00231222 /* CLDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE63A4E1B9502AD00231222 /* CLDrawerViewController.m */; };
@@ -153,7 +158,7 @@
 		68B07EAA1BA1313000FCF806 /* CCLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */; };
 		68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */; };
 		68CDDC4C1B8ED353004C2897 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68CDDC4B1B8ED353004C2897 /* libPods.a */; };
-		68DDFEFA1B9F443C00EDE1CF /* CLCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DDFEF91B9F443C00EDE1CF /* CLCommentController.m */; };
+		68DDFEFA1B9F443C00EDE1CF /* CLCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DDFEF91B9F443C00EDE1CF /* CLCommentViewController.m */; };
 		68DDFF001B9F4AC500EDE1CF /* CLCommentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DDFEFF1B9F4AC500EDE1CF /* CLCommentTableView.m */; };
 		68DDFF031B9F681200EDE1CF /* CLCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DDFF021B9F681200EDE1CF /* CLCommentCell.m */; };
 		D9242F8E1A768070006F7D92 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9242F8D1A768070006F7D92 /* Crashlytics.framework */; };
@@ -417,6 +422,17 @@
 		4BE1DF751BAC00D4009519CB /* CLLoadJoinInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadJoinInterest.m; sourceTree = "<group>"; };
 		4BE1DF771BAC00F1009519CB /* CLLoadLeaveInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadLeaveInterest.h; sourceTree = "<group>"; };
 		4BE1DF781BAC00F1009519CB /* CLLoadLeaveInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadLeaveInterest.m; sourceTree = "<group>"; };
+		4BE1DF7A1BAE9A04009519CB /* CLCommentPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLCommentPresenter.h; path = Cooleaf/MVP/presenters/CLCommentPresenter.h; sourceTree = SOURCE_ROOT; };
+		4BE1DF7B1BAE9A04009519CB /* CLCommentPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLCommentPresenter.m; path = Cooleaf/MVP/presenters/CLCommentPresenter.m; sourceTree = SOURCE_ROOT; };
+		4BE1DF7D1BAE9A31009519CB /* ICommentInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICommentInteractor.h; sourceTree = "<group>"; };
+		4BE1DF7E1BAE9ABA009519CB /* CLCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLCommentController.h; path = Cooleaf/MVP/controllers/CLCommentController.h; sourceTree = SOURCE_ROOT; };
+		4BE1DF7F1BAE9ABA009519CB /* CLCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLCommentController.m; path = Cooleaf/MVP/controllers/CLCommentController.m; sourceTree = SOURCE_ROOT; };
+		4BE1DF811BAE9AC8009519CB /* CLCommentSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCommentSubscriber.h; sourceTree = "<group>"; };
+		4BE1DF821BAE9AC8009519CB /* CLCommentSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCommentSubscriber.m; sourceTree = "<group>"; };
+		4BE1DF841BAE9D96009519CB /* CLLoadEventComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadEventComments.h; sourceTree = "<group>"; };
+		4BE1DF851BAE9D96009519CB /* CLLoadEventComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadEventComments.m; sourceTree = "<group>"; };
+		4BE1DF871BAE9DC8009519CB /* CLLoadedEventComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedEventComments.h; sourceTree = "<group>"; };
+		4BE1DF881BAE9DC8009519CB /* CLLoadedEventComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedEventComments.m; sourceTree = "<group>"; };
 		4BE63A471B94E8CE00231222 /* CLHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLHomeTableViewController.h; sourceTree = "<group>"; };
 		4BE63A481B94E8CE00231222 /* CLHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLHomeTableViewController.m; sourceTree = "<group>"; };
 		4BE63A4A1B94E9D800231222 /* CLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMenuViewController.h; sourceTree = "<group>"; };
@@ -513,9 +529,8 @@
 		68CDDC471B8ED17D004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		68CDDC491B8ED33F004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		68CDDC4B1B8ED353004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
-		68D08E181B8E89E9000DEF69 /* CLLogin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLLogin.h; sourceTree = "<group>"; };
-		68DDFEF81B9F443C00EDE1CF /* CLCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCommentController.h; sourceTree = "<group>"; };
-		68DDFEF91B9F443C00EDE1CF /* CLCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCommentController.m; sourceTree = "<group>"; };
+		68DDFEF81B9F443C00EDE1CF /* CLCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCommentViewController.h; sourceTree = "<group>"; };
+		68DDFEF91B9F443C00EDE1CF /* CLCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCommentViewController.m; sourceTree = "<group>"; };
 		68DDFEFE1B9F4AC500EDE1CF /* CLCommentTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCommentTableView.h; sourceTree = "<group>"; };
 		68DDFEFF1B9F4AC500EDE1CF /* CLCommentTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCommentTableView.m; sourceTree = "<group>"; };
 		68DDFF011B9F681200EDE1CF /* CLCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCommentCell.h; sourceTree = "<group>"; };
@@ -711,8 +726,8 @@
 				6888B4021B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m */,
 				680A64D81BA251D4003C4B5E /* CLPeopleViewController.h */,
 				680A64D91BA251D4003C4B5E /* CLPeopleViewController.m */,
-				68DDFEF81B9F443C00EDE1CF /* CLCommentController.h */,
-				68DDFEF91B9F443C00EDE1CF /* CLCommentController.m */,
+				68DDFEF81B9F443C00EDE1CF /* CLCommentViewController.h */,
+				68DDFEF91B9F443C00EDE1CF /* CLCommentViewController.m */,
 			);
 			path = UIViewControllers;
 			sourceTree = "<group>";
@@ -855,6 +870,8 @@
 				4BE1DF451BABD1D4009519CB /* CLGroupController.m */,
 				4BE1DF621BABECF5009519CB /* CLFeedController.h */,
 				4BE1DF631BABECF5009519CB /* CLFeedController.m */,
+				4BE1DF7E1BAE9ABA009519CB /* CLCommentController.h */,
+				4BE1DF7F1BAE9ABA009519CB /* CLCommentController.m */,
 			);
 			name = Controllers;
 			path = ../MVP/Controllers;
@@ -877,6 +894,8 @@
 				4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */,
 				4BE1DF5E1BABECAF009519CB /* CLFeedPresenter.h */,
 				4BE1DF5F1BABECAF009519CB /* CLFeedPresenter.m */,
+				4BE1DF7A1BAE9A04009519CB /* CLCommentPresenter.h */,
+				4BE1DF7B1BAE9A04009519CB /* CLCommentPresenter.m */,
 			);
 			name = Presenters;
 			path = ../MVP/Presenters;
@@ -939,6 +958,10 @@
 				4BE1DF751BAC00D4009519CB /* CLLoadJoinInterest.m */,
 				4BE1DF771BAC00F1009519CB /* CLLoadLeaveInterest.h */,
 				4BE1DF781BAC00F1009519CB /* CLLoadLeaveInterest.m */,
+				4BE1DF841BAE9D96009519CB /* CLLoadEventComments.h */,
+				4BE1DF851BAE9D96009519CB /* CLLoadEventComments.m */,
+				4BE1DF871BAE9DC8009519CB /* CLLoadedEventComments.h */,
+				4BE1DF881BAE9DC8009519CB /* CLLoadedEventComments.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -972,6 +995,8 @@
 				4BE1DF421BABD155009519CB /* CLGroupSubscriber.m */,
 				4BE1DF651BABED00009519CB /* CLFeedSubscriber.h */,
 				4BE1DF661BABED00009519CB /* CLFeedSubscriber.m */,
+				4BE1DF811BAE9AC8009519CB /* CLCommentSubscriber.h */,
+				4BE1DF821BAE9AC8009519CB /* CLCommentSubscriber.m */,
 			);
 			name = Subscribers;
 			path = ../MVP/Subscribers;
@@ -998,6 +1023,7 @@
 				4BE1DF561BABD99B009519CB /* IGroupDetailInteractor.h */,
 				4BE1DF571BABDB1B009519CB /* IInterestDetailInteractor.h */,
 				4BE1DF611BABECD0009519CB /* IFeedInteractor.h */,
+				4BE1DF7D1BAE9A31009519CB /* ICommentInteractor.h */,
 			);
 			name = Interactors;
 			path = ../MVP/Interactors;
@@ -1600,6 +1626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B3F2E721BA78A4900D4934E /* CLLoadQueryEvent.m in Sources */,
+				4BE1DF861BAE9D96009519CB /* CLLoadEventComments.m in Sources */,
 				4BA4E30E1B8BC8F40089CB2B /* CLVersions.m in Sources */,
 				4BE1DF791BAC00F1009519CB /* CLLoadLeaveInterest.m in Sources */,
 				D93AAC9E187C29F000E9B96A /* NPTodoViewController.m in Sources */,
@@ -1663,6 +1690,7 @@
 				4BE1DF671BABED00009519CB /* CLFeedSubscriber.m in Sources */,
 				4BA4E2FC1B8BC7A80089CB2B /* CLParentTag.m in Sources */,
 				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
+				4BE1DF831BAE9AC8009519CB /* CLCommentSubscriber.m in Sources */,
 				D93AAC93187B704100E9B96A /* NPAttendeesViewController.m in Sources */,
 				4BE1DF461BABD1D4009519CB /* CLGroupController.m in Sources */,
 				4BA4E3321B8C1B930089CB2B /* CLParticipant.m in Sources */,
@@ -1694,7 +1722,7 @@
 				4BAE00711B8EE06900779E1F /* CLUserSubscriber.m in Sources */,
 				4BBF2C331BA10A8F00ECC37F /* CLTagCollectionViewCell.m in Sources */,
 				432A499E1AE4FA2E001B3740 /* NPEditTagsViewController.m in Sources */,
-				68DDFEFA1B9F443C00EDE1CF /* CLCommentController.m in Sources */,
+				68DDFEFA1B9F443C00EDE1CF /* CLCommentViewController.m in Sources */,
 				F998F68F1AB3312500213240 /* NPInterest.m in Sources */,
 				D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */,
 				4BA4E31D1B8BDC4B0089CB2B /* CLEdit.m in Sources */,
@@ -1704,6 +1732,7 @@
 				4BA4E32C1B8BF8E00089CB2B /* CLTimeZone.m in Sources */,
 				4B3F2E6F1BA7884600D4934E /* CLSearchController.m in Sources */,
 				680A64DD1BA255CE003C4B5E /* CLPeopleCell.m in Sources */,
+				4BE1DF7C1BAE9A04009519CB /* CLCommentPresenter.m in Sources */,
 				68012DD81B97519D00251544 /* CLTableViewHome.m in Sources */,
 				4BE63A4F1B9502AD00231222 /* CLDrawerViewController.m in Sources */,
 				4B3F2E681BA77AE900D4934E /* CLQuery.m in Sources */,
@@ -1735,6 +1764,7 @@
 				4BAE00601B8EDF0E00779E1F /* CLBaseSubscriber.m in Sources */,
 				680A64DA1BA251D4003C4B5E /* CLPeopleViewController.m in Sources */,
 				4BE1DF5A1BABDDA9009519CB /* CLLoadInterestMembers.m in Sources */,
+				4BE1DF801BAE9ABA009519CB /* CLCommentController.m in Sources */,
 				4B6B56F01B98E0C8008DF039 /* CLProfileTableViewController.m in Sources */,
 				6877AFC61B9959C400113B86 /* CLGroupCell.m in Sources */,
 				4BA61B0B1B94CC6800774CC2 /* CLProfileHeaderView.m in Sources */,
@@ -1753,6 +1783,7 @@
 				4B3F2E781BA78DAD00D4934E /* CLSearchPresenter.m in Sources */,
 				4BE63A5D1B95811400231222 /* CLEventCell.m in Sources */,
 				6877AFCC1B997D3F00113B86 /* CLDetailView.m in Sources */,
+				4BE1DF891BAE9DC8009519CB /* CLLoadedEventComments.m in Sources */,
 				523096D71AA3E17400649FB7 /* NPHomeCell.m in Sources */,
 				4BAE00681B8EDFD300779E1F /* CLAuthenticationSubscriber.m in Sources */,
 				6877AFAE1B98EF9300113B86 /* CLSearchCell.m in Sources */,

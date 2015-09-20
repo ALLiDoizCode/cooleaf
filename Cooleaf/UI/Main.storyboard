@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eIY-Me-YIN">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -1122,10 +1121,10 @@
             </objects>
             <point key="canvasLocation" x="4819" y="799"/>
         </scene>
-        <!--Comment Controller-->
+        <!--Comment View Controller-->
         <scene sceneID="vwX-NT-vC2">
             <objects>
-                <viewController storyboardIdentifier="commentController" id="XFn-1X-MTq" customClass="CLCommentController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="commentController" id="XFn-1X-MTq" customClass="CLCommentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZFP-s0-oOE"/>
                         <viewControllerLayoutGuide type="bottom" id="qUi-OS-nZk"/>

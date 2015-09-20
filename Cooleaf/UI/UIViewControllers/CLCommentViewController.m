@@ -6,18 +6,23 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "CLCommentController.h"
+#import "CLCommentViewController.h"
 #import "UIColor+CustomColors.h"
 #import "CLCommentCell.h"
+#import "CLCommentPresenter.h"
 
 static const int movementDistance = 250; // tweak as needed
 static const float movementDuration = 0.3f; // tweak as needed
 
-@interface CLCommentController ()
+@interface CLCommentViewController()
+
+@property (nonatomic, strong) CLCommentPresenter *commentPresenter;
 
 @end
 
-@implementation CLCommentController
+@implementation CLCommentViewController
+
+# pragma mark - LifeCycle Methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,6 +35,24 @@ static const float movementDuration = 0.3f; // tweak as needed
     [self setupView];
     [self setupButtons];
     [self setupBorders];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (_commentPresenter)
+        [_commentPresenter unregisterOnBus];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,11 +117,47 @@ static const float movementDuration = 0.3f; // tweak as needed
     [_mainView addSubview:topBorder];
 }
 
+# pragma mark - setupCommentPresenter
+
+- (void)setupCommentPresenter {
+    _commentPresenter = [[CLCommentPresenter alloc] initWithInteractor:self];
+    [_commentPresenter registerOnBus];
+    [_commentPresenter loadEventComments:[[_event eventId] intValue]];
+}
+
 # pragma mark - closeCommentController
 
 // Needs to be added to the Navigation Class
 - (void)closeCommentController {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+# pragma mark - ICommentInteractor Methods
+
+- (void)initComments:(NSMutableArray *)comments {
+    NSLog(@"%@", comments);
+}
+
+# pragma mark - TableView Data Source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CLCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
+    cell.cellImage.image = [UIImage imageNamed:@"TestImage"];
+    cell.nameLabel.text = @"Prem Bhatia";
+    cell.postLabel.text = @"Hopefully something fun";
+    cell.timeLabel.text = @"1h";
+    return cell;
+}
+
+# pragma mark - TableView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Do some stuff when the row is selected
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 # pragma mark - TextField Delegate Methods
@@ -136,29 +195,7 @@ static const float movementDuration = 0.3f; // tweak as needed
     // Set height between textfield and tableview
     CGRect frm = _bottomBordrer.frame;
     frm.size.height = 0.5;
-   _bottomBordrer.frame = frm;
-}
-
-# pragma mark - TableView Data Source
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CLCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
-    cell.cellImage.image = [UIImage imageNamed:@"TestImage"];
-    cell.nameLabel.text = @"Prem Bhatia";
-    cell.postLabel.text = @"Hopefully something fun";
-    cell.timeLabel.text = @"1h";
-    return cell;
-}
-
-# pragma mark - TableView Delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Do some stuff when the row is selected
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    _bottomBordrer.frame = frm;
 }
 
 # pragma mark - getPicture

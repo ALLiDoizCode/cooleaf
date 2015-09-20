@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CLCommentTableView.h"
 #import "CLEvent.h"
+#import "ICommentInteractor.h"
 
-@interface CLCommentController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate>
+@interface CLCommentViewController : UIViewController <ICommentInteractor, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, assign) CLEvent *event;
 @property (weak, nonatomic) IBOutlet CLCommentTableView *tableView;
