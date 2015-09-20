@@ -17,6 +17,7 @@ static const float movementDuration = 0.3f; // tweak as needed
 @interface CLCommentViewController()
 
 @property (nonatomic, strong) CLCommentPresenter *commentPresenter;
+@property (nonatomic, strong) NSMutableArray *comments;
 
 @end
 
@@ -39,6 +40,7 @@ static const float movementDuration = 0.3f; // tweak as needed
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setupCommentPresenter];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -135,7 +137,8 @@ static const float movementDuration = 0.3f; // tweak as needed
 # pragma mark - ICommentInteractor Methods
 
 - (void)initComments:(NSMutableArray *)comments {
-    NSLog(@"%@", comments);
+    _comments = comments;
+    [self.tableView reloadData];
 }
 
 # pragma mark - TableView Data Source
