@@ -6,10 +6,13 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "CLCommentViewController.h"
 #import "UIColor+CustomColors.h"
 #import "CLCommentCell.h"
 #import "CLCommentPresenter.h"
+#import "CLComment.h"
+#import "CLClient.h"
 
 static const int movementDistance = 250; // tweak as needed
 static const float movementDuration = 0.3f; // tweak as needed
@@ -144,15 +147,28 @@ static const float movementDuration = 0.3f; // tweak as needed
 # pragma mark - TableView Data Source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return [_comments count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CLCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentCell"];
-    cell.cellImage.image = [UIImage imageNamed:@"TestImage"];
-    cell.nameLabel.text = @"Prem Bhatia";
-    cell.postLabel.text = @"Hopefully something fun";
+    
+    // Get the comment
+    NSDictionary *commentDict = [_comments objectAtIndex:[indexPath row]];
+    
+    // Set the user name
+    cell.nameLabel.text = commentDict[@"user_name"];
+    
+    // Set the content
+    cell.postLabel.text = commentDict[@"content"];
+    
+    // TODO - Set the time
     cell.timeLabel.text = @"1h";
+    
+    // Set the path and load the image
+    NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], commentDict[@"user_picture"][@"versions"][@"icon"]];
+    [cell.cellImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+    
     return cell;
 }
 
