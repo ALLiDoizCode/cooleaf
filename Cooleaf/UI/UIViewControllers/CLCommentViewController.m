@@ -91,6 +91,9 @@ static const float movementDuration = 0.3f; // tweak as needed
 
 - (void)setupButtons {
     
+    // Send comment button
+    [_send addTarget:self action:@selector(sendEventComment) forControlEvents:UIControlEventTouchUpInside];
+    
     // Add image button
     [_addImage addTarget:self action:@selector(getPicture) forControlEvents:UIControlEventTouchUpInside];
     
@@ -120,6 +123,13 @@ static const float movementDuration = 0.3f; // tweak as needed
     _commentPresenter = [[CLCommentPresenter alloc] initWithInteractor:self];
     [_commentPresenter registerOnBus];
     [_commentPresenter loadEventComments:[[_event eventId] intValue]];
+}
+
+# pragma mark - sendEventComment
+
+- (void)sendEventComment {
+    // Call textfield delegate to send comment on send button touch
+    [self textFieldShouldReturn:self.textField];
 }
 
 # pragma mark - closeCommentController
