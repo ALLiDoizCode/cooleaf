@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *send;
 @property (weak, nonatomic) IBOutlet UIView *bottomBordrer;
 @property (weak, nonatomic) UIImage *imgToUpload;
+@property (nonatomic, assign) UIImageView *backgroundImage;
 
 @end
