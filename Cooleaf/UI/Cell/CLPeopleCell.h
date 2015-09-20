@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CLPeopleCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *peopleImage;
 @property (weak, nonatomic) IBOutlet UILabel *peopleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *positionLabel;

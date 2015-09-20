@@ -1287,8 +1287,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Camera" width="512" height="512"/>
         <image name="TestImage" width="712" height="838"/>
         <image name="photo" width="128" height="128"/>
-        <image name="Camera" width="512" height="512"/>
     </resources>
 </document>

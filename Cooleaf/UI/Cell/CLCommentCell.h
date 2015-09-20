@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CLCommentCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *cellImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postLabel;

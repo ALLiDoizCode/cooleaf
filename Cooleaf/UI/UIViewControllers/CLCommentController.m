@@ -10,6 +10,9 @@
 #import "UIColor+CustomColors.h"
 #import "CLCommentCell.h"
 
+static const int movementDistance = 250; // tweak as needed
+static const float movementDuration = 0.3f; // tweak as needed
+
 @interface CLCommentController ()
 
 @end
@@ -23,10 +26,10 @@
     
     self.view.frame = [UIScreen mainScreen].bounds;
     
-    [self configureView];
-   // [self buildTextField];
-    [self buildBorders];
-    [self buildButtons];
+    // Initialize Comments UI
+    [self setupView];
+    [self setupButtons];
+    [self setupBorders];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,10 +37,10 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)configureView {
-    
-    
-    //Name
+# pragma mark - setupView
+
+- (void)setupView {
+    // Comments header label for CLCommentViewController
     UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(250, 10, 100, 18)];
     labelTitle.textAlignment = NSTextAlignmentLeft;
     labelTitle.text = @"Comments";
@@ -47,14 +50,18 @@
     [labelTitle sizeToFit];
     labelTitle.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
+    // Set the background color and edge corner radius of the tableview for comments
     _tableView.backgroundColor = [UIColor offWhite];
     _mainView.backgroundColor = [UIColor offWhite];
     _mainView.layer.cornerRadius = 3;
     
+    // Add label view
     [_mainView addSubview:labelTitle];
 }
 
--(void)buildButtons {
+# pragma mark - setupButtons
+
+- (void)setupButtons {
     
   /*  //Send
     UIButton *sendBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
@@ -69,35 +76,36 @@
     UIButton *cancelBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     cancelBtn.frame = CGRectMake(-10, 10, 100, 18);
     [cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
-    [cancelBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    [cancelBtn addTarget:self action:@selector(closeCommentController) forControlEvents:UIControlEventTouchUpInside];
     
     //[_mainView addSubview:sendBtn];
     [_mainView addSubview:cancelBtn];
     //[_mainView addSubview:addImageBtn];
 }
 
-//This function is here to demostrate closing the postview controller but needs to be added to the navigation class once the group branch is merged with master
-- (void)close {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+# pragma mark - setupBorders
 
--(void)buildBorders {
-    
+- (void)setupBorders {
+    // Add a small black border below header
     UIView *topBorder = [[UIView alloc] initWithFrame:CGRectMake(0, 40, 300, 0.5)];
     topBorder.backgroundColor = [UIColor offBlack];
     
-    
-    
-    
+    // Add to main view
     [_mainView addSubview:topBorder];
-
 }
+
+# pragma mark - closeCommentController
+
+// Needs to be added to the Navigation Class
+- (void)closeCommentController {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+# pragma mark - TextField Delegate Methods
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     [self animateTextField: textField up: YES];
-    NSLog(@"begin");
 }
-
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [self animateTextField: textField up: NO];
@@ -107,17 +115,15 @@
     [_textField endEditing:YES];
 }
 
--(BOOL) textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
 }
 
-- (void) animateTextField: (UITextField*) textField up: (BOOL) up
-{
-    const int movementDistance = 250; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
+- (void)animateTextField:(UITextField*)textField up:(BOOL)up {
     
-    int movement = (up ? -movementDistance : movementDistance);
+    // If moving up raise textfield up by movementDistance else lower it by movement distance with a defined duration
+    int movement = up ? -movementDistance : movementDistance;
     
     [UIView beginAnimations: @"anim" context: nil];
     [UIView setAnimationBeginsFromCurrentState: YES];
@@ -126,13 +132,14 @@
     [UIView commitAnimations];
 }
 
--(void)viewDidLayoutSubviews {
-    
+- (void)viewDidLayoutSubviews {
+    // Set height between textfield and tableview
     CGRect frm = _bottomBordrer.frame;
     frm.size.height = 0.5;
    _bottomBordrer.frame = frm;
 }
 
+# pragma mark - TableView Data Source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 5;
@@ -147,14 +154,16 @@
     return cell;
 }
 
+# pragma mark - TableView Delegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Do some stuff when the row is selected
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+# pragma mark - getPicture
 
 -(void)getPicture {
-    
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = NO;
@@ -163,17 +172,17 @@
     [self presentViewController:picker animated:YES completion:NULL];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)img editingInfo:(NSDictionary *)editInfo
-{
+# pragma mark - UIImagePickerController Delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)img editingInfo:(NSDictionary *)editInfo {
     UIImage *chosenImage  = [editInfo objectForKey:@"UIImagePickerControllerOriginalImage"];
     _imgToUpload = chosenImage;
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
+
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    
 }
 
 /*

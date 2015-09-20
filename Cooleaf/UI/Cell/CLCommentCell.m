@@ -13,11 +13,10 @@
 
 - (void)awakeFromNib {
     
-    _cellImage.layer.cornerRadius = _cellImage.frame.size.height/2;
+    _cellImage.layer.cornerRadius = _cellImage.frame.size.height / 2;
     _cellImage.layer.masksToBounds = YES;
     _nameLabel.textColor = [UIColor darkGrayColor];
     _postLabel.textColor = [UIColor offBlack];
-
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
