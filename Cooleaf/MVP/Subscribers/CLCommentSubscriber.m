@@ -12,6 +12,8 @@
 #import "CLLoadEventComments.h"
 #import "CLCommentController.h"
 #import "CLLoadedEventComments.h"
+#import "CLAddEventComment.h"
+#import "CLAddedEventComment.h"
 
 @interface CLCommentSubscriber() {
     @private
@@ -43,6 +45,23 @@ SUBSCRIBE(CLLoadEventComments) {
         NSMutableArray *comments = [JSON result];
         CLLoadedEventComments *loadedEventComments = [[CLLoadedEventComments alloc] initWithComments:comments];
         PUBLISH(loadedEventComments);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+SUBSCRIBE(CLAddEventComment) {
+    // Initialize parameters
+    NSInteger eventId = event.eventId;
+    NSString *content = event.content;
+    NSDictionary *params = @{
+                             @"content": content
+                             };
+    
+    [_commentController addEventComment:eventId params:params success:^(id JSON) {
+        CLComment *comment = [JSON result];
+        CLAddedEventComment *addedEventComment = [[CLAddedEventComment alloc] initWithComment:comment];
+        PUBLISH(addedEventComment);
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];

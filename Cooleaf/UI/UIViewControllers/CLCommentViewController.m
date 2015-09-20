@@ -91,24 +91,16 @@ static const float movementDuration = 0.3f; // tweak as needed
 
 - (void)setupButtons {
     
-  /*  //Send
-    UIButton *sendBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    sendBtn.frame = CGRectMake(220, 500, 100, 18);
-    [sendBtn setTitle:@"Send" forState:UIControlStateNormal];
-    //[sendBtn addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];*/
-    
-   
+    // Add image button
     [_addImage addTarget:self action:@selector(getPicture) forControlEvents:UIControlEventTouchUpInside];
     
-    //Cancel
+    // Cancel button
     UIButton *cancelBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     cancelBtn.frame = CGRectMake(-10, 10, 100, 18);
     [cancelBtn setTitle:@"Cancel" forState:UIControlStateNormal];
     [cancelBtn addTarget:self action:@selector(closeCommentController) forControlEvents:UIControlEventTouchUpInside];
     
-    //[_mainView addSubview:sendBtn];
     [_mainView addSubview:cancelBtn];
-    //[_mainView addSubview:addImageBtn];
 }
 
 # pragma mark - setupBorders
@@ -139,9 +131,29 @@ static const float movementDuration = 0.3f; // tweak as needed
 
 # pragma mark - ICommentInteractor Methods
 
-- (void)initComments:(NSMutableArray *)comments {
-    _comments = comments;
+- (void)initEventComments:(NSMutableArray *)comments {
+    _comments = [[NSMutableArray alloc] initWithArray:comments];
     [self.tableView reloadData];
+}
+
+- (void)addEventComment:(CLComment *)comment {
+    
+    // Add new comment to comment array
+    [_comments addObject:comment];
+    
+    // Get the path to the last row
+    NSInteger lastSectionIndex = [self.tableView numberOfSections] - 1;
+    NSInteger lastRowIndex = [self.tableView numberOfRowsInSection:lastSectionIndex];
+    NSIndexPath *pathToLastRow = [NSIndexPath indexPathForRow:lastRowIndex inSection:lastSectionIndex];
+    
+    // Add the new comment with animation to the tableview
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:@[pathToLastRow] withRowAnimation:UITableViewRowAnimationBottom];
+    [self.tableView reloadData];
+    [self.tableView endUpdates];
+    
+    // Scroll to the bottom of the tableview
+    [self.tableView scrollToRowAtIndexPath:pathToLastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 # pragma mark - TableView Data Source
@@ -195,6 +207,14 @@ static const float movementDuration = 0.3f; // tweak as needed
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
+    
+    // Get text and send to API
+    NSString *content = textField.text;
+    [_commentPresenter addEventComment:[[_event eventId] intValue] content:content];
+    
+    // Clear textfield
+    textField.text = @"";
+    
     return YES;
 }
 

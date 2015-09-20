@@ -12,5 +12,7 @@
 
 - (void)getEventComments:(NSInteger)eventId params:(NSDictionary *)params success:(void (^)(id JSON))success
                  failure:(void (^)(NSError *error))failure;
+- (void)addEventComment:(NSInteger)eventId params:(NSDictionary *)params success:(void (^)(id JSON))success
+                 failure:(void (^)(NSError *error))failure;
 
 @end

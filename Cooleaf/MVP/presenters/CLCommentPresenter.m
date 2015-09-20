@@ -10,6 +10,8 @@
 #import "CLBus.h"
 #import "CLLoadEventComments.h"
 #import "CLLoadedEventComments.h"
+#import "CLAddEventComment.h"
+#import "CLAddedEventComment.h"
 
 static NSInteger const PAGE = 1;
 static NSInteger const PER_PAGE = 25;
@@ -39,10 +41,20 @@ static NSInteger const PER_PAGE = 25;
     PUBLISH([[CLLoadEventComments alloc] initWithId:eventId page:PAGE perPage:PER_PAGE]);
 }
 
+# pragma mark - addComment
+
+- (void)addEventComment:(NSInteger)eventId content:(NSString *)content {
+    PUBLISH([[CLAddEventComment alloc] initWithId:eventId content:content]);
+}
+
 # pragma mark - Subscription Methods
 
 SUBSCRIBE(CLLoadedEventComments) {
-    [_commentInfo initComments:event.comments];
+    [_commentInfo initEventComments:event.comments];
+}
+
+SUBSCRIBE(CLAddedEventComment) {
+    [_commentInfo addEventComment:event.comment];
 }
 
 @end

@@ -17,5 +17,6 @@
 - (void)registerOnBus;
 - (void)unregisterOnBus;
 - (void)loadEventComments:(NSInteger)eventId;
+- (void)addEventComment:(NSInteger)eventId content:(NSString *)content;
 
 @end

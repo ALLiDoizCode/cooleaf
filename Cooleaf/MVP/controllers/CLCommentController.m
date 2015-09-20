@@ -23,4 +23,14 @@ static NSString *const kCommentsEventPath = @"v2/comments/Event/";
     }];
 }
 
+- (void)addEventComment:(NSInteger)eventId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    NSString *path = [NSString stringWithFormat:@"%@%d%@", kCommentsEventPath, (int) eventId, @".json"];
+    [[CLClient getInstance] POST:path parameters:params completion:^(id response, NSError *error) {
+        if (!error)
+            success(response);
+        else
+            failure(error);
+    }];
+}
+
 @end
