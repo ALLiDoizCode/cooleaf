@@ -31,6 +31,9 @@ static const float movementDuration = 0.3f; // tweak as needed
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Assign activity item event and image to header
+    [self.tableView setHeaderContent:_event image:_backgroundImage.image];
+    
     _textField.delegate = self;
     
     self.view.frame = [UIScreen mainScreen].bounds;

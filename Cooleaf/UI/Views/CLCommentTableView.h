@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CLEvent.h"
 
 @interface CLCommentTableView : UITableView
+
+- (void)setHeaderContent:(CLEvent *)event image:(UIImage *)image;
 
 @end
