@@ -25,7 +25,6 @@
     //self.estimatedRowHeight = 400.0;
     
     
-    
     self.tableHeaderView = ({
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 100.0f)];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 20, 70, 70)];

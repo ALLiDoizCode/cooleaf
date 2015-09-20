@@ -19,6 +19,7 @@
 #import "CLSearchViewController.h"
 #import "CLEventController.h"
 #import "NPAppDelegate.h"
+#import "CLCommentController.h"
 
 @interface CLHomeTableViewController() {
     @private
@@ -134,13 +135,18 @@
 # pragma mark - CLEventCellDelegate
 
 - (void)didPressComment:(CLEventCell *)cell {
+    // Get the indexpath and event
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     CLEvent *event = [_events objectAtIndex:[indexPath row]];
     
-    // Add a comment
+    // Instantiate comment controller and assign event
+    CLCommentController *commentController = [self.storyboard instantiateViewControllerWithIdentifier:@"commentController"];
+    [commentController setEvent:event];
+    [[self navigationController] presentViewController:commentController animated:YES completion:nil];
 }
 
 - (void)didPressJoin:(CLEventCell *)cell {
+    // Get the indexpath and event
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     CLEvent *event = [_events objectAtIndex:[indexPath row]];
     
@@ -342,6 +348,5 @@
     [_activityIndicator stopAnimating];
     [_activityIndicator setHidden:YES];
 }
-
 
 @end
