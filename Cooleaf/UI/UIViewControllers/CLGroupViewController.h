@@ -13,5 +13,6 @@
 @interface CLGroupViewController : UIViewController <IInterestInteractor, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
