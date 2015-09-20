@@ -212,10 +212,8 @@ static const float movementDuration = 0.3f; // tweak as needed
     if (![textField.text isEqualToString:@""]) {
         NSString *content = textField.text;
         [_commentPresenter addEventComment:[[_event eventId] intValue] content:content];
+        textField.text = @"";
     }
-    
-    // Clear textfield
-    textField.text = @"";
     
     return YES;
 }
