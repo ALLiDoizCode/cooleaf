@@ -246,13 +246,17 @@ static const float movementDuration = 0.3f; // tweak as needed
 # pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // Get comment from the saved indexpath
+    CLComment *commentToBeDeleted = [_comments objectAtIndex:[_savedIndexPath row]];
+    
     switch (buttonIndex) {
         case 0:
             // User hit the delete button - delete comment if its their own comment
-            
+            [_commentPresenter deleteEventComment:[[_event eventId] integerValue] commentId:[[commentToBeDeleted commentId] integerValue]];
             break;
         case 1:
             // User hit the edit button - edit comment if its their own comment
+            
             break;
         default:
             break;
