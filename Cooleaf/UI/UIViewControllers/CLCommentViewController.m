@@ -31,13 +31,9 @@ static const float movementDuration = 0.3f; // tweak as needed
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Assign activity item event and image to header
-    [self.tableView setHeaderContent:_event image:_backgroundImage.image];
-    _tableView.rowHeight = UITableViewAutomaticDimension;
-    _tableView.estimatedRowHeight = 140;
+    [self setupTableView];
     
     _textField.delegate = self;
-    
     self.view.frame = [UIScreen mainScreen].bounds;
     
     // Initialize Comments UI
@@ -68,6 +64,17 @@ static const float movementDuration = 0.3f; // tweak as needed
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+# pragma mark - setupTableView
+
+- (void)setupTableView {
+    // Assign activity item event and image to header
+    [self.tableView setHeaderContent:_event image:_backgroundImage.image];
+    
+    // Assign estimated and automatic dimension for dynamic resizing of cell
+    _tableView.rowHeight = UITableViewAutomaticDimension;
+    _tableView.estimatedRowHeight = 140;
 }
 
 # pragma mark - setupView
