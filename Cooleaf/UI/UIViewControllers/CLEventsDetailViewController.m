@@ -62,7 +62,7 @@
     // Get the locaiton and setup the map
     
     ///replace with location/////////////////////////////
-    NSString *eventlocation = @"3423 Piedmont Rd NE, Atlanta, GA 30305";
+    NSString *eventlocation = nil;
     ////////////////////////////////////////////////////
     
     [self setupMap:eventlocation];
@@ -268,7 +268,18 @@
         
     }else {
         
-        _scrollView.contentSize = CGSizeMake(_detailView.frame.size.width, _detailView.frame.size.height - 255);
+        if( [[UIScreen mainScreen] bounds].size.height >= 568 || [[UIScreen mainScreen] bounds].size.width >= 568 )
+        {
+            //device = DEVICE_TYPE_IPHONE5 ;
+              _scrollView.contentSize = CGSizeMake(_detailView.frame.size.width, _detailView.frame.size.height - 255);
+        }
+        else
+        {
+            //device = DEVICE_TYPE_IPHONE4 ;
+              _scrollView.contentSize = CGSizeMake(_detailView.frame.size.width, _detailView.frame.size.height - 195);
+        }
+        
+      
     }
     
    
