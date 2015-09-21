@@ -14,6 +14,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    // Setup attachment imageview
     self.imageView.layer.masksToBounds = YES;
     self.imageView.layer.cornerRadius = self.imageView.frame.size.height / 2;
     self.imageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -21,10 +22,11 @@
 
 - (void)awakeFromNib {
     
-   
-    
+    // Setup the user imageview
     _cellImage.layer.cornerRadius = _cellImage.frame.size.height / 2;
     _cellImage.layer.masksToBounds = YES;
+    
+    // Setup name and post label views
     _nameLabel.textColor = [UIColor darkGrayColor];
     _postLabel.textColor = [UIColor offBlack];
 }
