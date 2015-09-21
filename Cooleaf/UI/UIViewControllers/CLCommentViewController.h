@@ -11,7 +11,7 @@
 #import "CLEvent.h"
 #import "ICommentInteractor.h"
 
-@interface CLCommentViewController : UIViewController <ICommentInteractor, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate>
+@interface CLCommentViewController : UIViewController <ICommentInteractor, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, assign) CLEvent *event;
 @property (weak, nonatomic) IBOutlet CLCommentTableView *tableView;

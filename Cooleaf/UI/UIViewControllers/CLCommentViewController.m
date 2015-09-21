@@ -218,7 +218,24 @@ static const float movementDuration = 0.3f; // tweak as needed
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Do some stuff when the row is selected
+    
+    // Actionsheet for editing a comment
+    UIActionSheet *commentActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                    delegate:self
+                                                           cancelButtonTitle:@"Cancel"
+                                                      destructiveButtonTitle:@"Delete"
+                                                           otherButtonTitles:@"Edit", nil];
+    
+    // Show the actionsheet
+    [commentActionSheet showInView:self.view];
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+# pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
 }
 
 # pragma mark - TextField Delegate Methods
