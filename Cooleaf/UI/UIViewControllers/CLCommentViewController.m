@@ -21,6 +21,7 @@ static const float movementDuration = 0.3f; // tweak as needed
 
 @property (nonatomic, strong) CLCommentPresenter *commentPresenter;
 @property (nonatomic, strong) NSMutableArray *comments;
+@property (nonatomic, strong) NSIndexPath *savedIndexPath;
 
 @end
 
@@ -178,6 +179,15 @@ static const float movementDuration = 0.3f; // tweak as needed
     [self.tableView scrollToRowAtIndexPath:pathToLastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
+- (void)deleteEventComment:(CLComment *)comment {
+    CLComment *commentToBeDeleted = [_comments objectAtIndex:[_savedIndexPath row]];
+    if ([commentToBeDeleted commentId] == [comment commentId]) {
+        [self.tableView beginUpdates];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:_savedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+    }
+}
+
 # pragma mark - TableView Data Source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -217,7 +227,8 @@ static const float movementDuration = 0.3f; // tweak as needed
 # pragma mark - TableView Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Do some stuff when the row is selected
+    // Save the indexpath and scroll to that section
+    _savedIndexPath = indexPath;
     
     // Actionsheet for editing a comment
     UIActionSheet *commentActionSheet = [[UIActionSheet alloc] initWithTitle:nil
@@ -235,7 +246,17 @@ static const float movementDuration = 0.3f; // tweak as needed
 # pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
+    switch (buttonIndex) {
+        case 0:
+            // User hit the delete button - delete comment if its their own comment
+            
+            break;
+        case 1:
+            // User hit the edit button - edit comment if its their own comment
+            break;
+        default:
+            break;
+    }
 }
 
 # pragma mark - TextField Delegate Methods

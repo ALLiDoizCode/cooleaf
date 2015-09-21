@@ -13,6 +13,7 @@
 
 @interface CLCommentViewController : UIViewController <ICommentInteractor, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
+@property (nonatomic, assign) NSNumber *userId;
 @property (nonatomic, assign) CLEvent *event;
 @property (weak, nonatomic) IBOutlet CLCommentTableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *mainView;

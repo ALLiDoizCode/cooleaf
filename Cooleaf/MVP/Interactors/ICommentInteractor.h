@@ -11,5 +11,6 @@
 
 - (void)initEventComments:(NSMutableArray *)comments;
 - (void)addEventComment:(CLComment *)comment;
+- (void)deleteEventComment:(CLComment *)comment;
 
 @end

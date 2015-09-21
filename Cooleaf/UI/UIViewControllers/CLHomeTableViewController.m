@@ -143,6 +143,7 @@
     CLCommentViewController *commentController = [self.storyboard instantiateViewControllerWithIdentifier:@"commentController"];
     [commentController setEvent:event];
     [commentController setBackgroundImage:cell.eventImage];
+    [commentController setUserId:[_user userId]];
     [[self navigationController] presentViewController:commentController animated:YES completion:nil];
 }
 
