@@ -46,7 +46,7 @@
     //specify CGRect bounds in place of self.view.bounds to make it as a portion of parent view!
     textScroll.backgroundColor = [UIColor clearColor];
     
-    textScroll.contentSize = CGSizeMake(400,200);   //scroll view size
+    textScroll.contentSize = CGSizeMake(textScroll.contentSize.width, _detailDescription.frame.size.height + 100);   //scroll view size
     
     textScroll.showsVerticalScrollIndicator = NO;    // to hide scroll indicators!
     
