@@ -14,6 +14,8 @@
 #import "CLLoadedEventComments.h"
 #import "CLAddEventComment.h"
 #import "CLAddedEventComment.h"
+#import "CLDeleteEventComment.h"
+#import "CLDeletedEventComment.h"
 
 @interface CLCommentSubscriber() {
     @private
@@ -62,6 +64,20 @@ SUBSCRIBE(CLAddEventComment) {
         CLComment *comment = [JSON result];
         CLAddedEventComment *addedEventComment = [[CLAddedEventComment alloc] initWithComment:comment];
         PUBLISH(addedEventComment);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+SUBSCRIBE(CLDeleteEventComment) {
+    // Initialize parameters
+    NSInteger eventId = event.eventId;
+    NSInteger commentid = event.commentId;
+    
+    [_commentController deleteEventComment:eventId comment:commentid params:nil success:^(id JSON) {
+        CLComment *comment = [JSON result];
+        CLDeletedEventComment *deletedEventComment = [[CLDeletedEventComment alloc] initWithComment:comment];
+        PUBLISH(deletedEventComment);
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];

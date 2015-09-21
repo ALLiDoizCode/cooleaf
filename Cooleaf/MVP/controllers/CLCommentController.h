@@ -14,5 +14,7 @@
                  failure:(void (^)(NSError *error))failure;
 - (void)addEventComment:(NSInteger)eventId params:(NSDictionary *)params success:(void (^)(id JSON))success
                  failure:(void (^)(NSError *error))failure;
+- (void)deleteEventComment:(NSInteger)eventId comment:(NSInteger)commentId params:(NSDictionary *)params success:(void (^)(id JSON))success
+                failure:(void (^)(NSError *error))failure;
 
 @end
