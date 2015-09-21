@@ -31,11 +31,9 @@ static const float movementDuration = 0.3f; // tweak as needed
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Assign activity item event and image to header
-    [self.tableView setHeaderContent:_event image:_backgroundImage.image];
+    [self setupTableView];
     
     _textField.delegate = self;
-    
     self.view.frame = [UIScreen mainScreen].bounds;
     
     // Initialize Comments UI
@@ -66,6 +64,17 @@ static const float movementDuration = 0.3f; // tweak as needed
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+# pragma mark - setupTableView
+
+- (void)setupTableView {
+    // Assign activity item event and image to header
+    [self.tableView setHeaderContent:_event image:_backgroundImage.image];
+    
+    // Assign estimated and automatic dimension for dynamic resizing of cell
+    _tableView.rowHeight = UITableViewAutomaticDimension;
+    _tableView.estimatedRowHeight = 140;
 }
 
 # pragma mark - setupView
@@ -193,6 +202,14 @@ static const float movementDuration = 0.3f; // tweak as needed
     // Set the path and load the image
     NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], commentDict[@"user_picture"][@"versions"][@"icon"]];
     [cell.cellImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+    
+    
+    ////// Use this to check if a comment contains a image replace fullImagepath with the object thats holds the iamge for teh comment
+    if (fullImagePath != nil) {
+        
+       // _tableView.rowHeight = _tableView.rowHeight + 10;
+         [cell.mainImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+    }
     
     return cell;
 }
