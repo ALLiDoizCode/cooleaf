@@ -1497,7 +1497,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = NP;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Nova Project";
 				TargetAttributes = {
 					D9809543185CA557008F2B61 = {
@@ -1861,6 +1861,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Sarwar Bhuiyan (GY237B5U7U)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sarwar Bhuiyan (GY237B5U7U)";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1900,6 +1902,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Sarwar Bhuiyan (GY237B5U7U)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sarwar Bhuiyan (GY237B5U7U)";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1933,6 +1936,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cooleaf.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -1958,6 +1962,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cooleaf.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -1982,6 +1987,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "CooleafTests/CooleafTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.novaproject.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -2003,6 +2009,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cooleaf/Cooleaf-Prefix.pch";
 				INFOPLIST_FILE = "CooleafTests/CooleafTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.novaproject.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUNDLE_LOADER)";
