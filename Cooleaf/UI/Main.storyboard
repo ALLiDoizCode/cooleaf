@@ -868,10 +868,10 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TestImage" translatesAutoresizingMaskIntoConstraints="NO" id="djU-7F-MZ0">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="TestImage" translatesAutoresizingMaskIntoConstraints="NO" id="djU-7F-MZ0">
                                                                     <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                                 </imageView>
                                                             </subviews>
@@ -1145,33 +1145,51 @@
                                         <rect key="frame" x="0.0" y="40" width="580" height="469"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" textLabel="u2D-Im-bBD" detailTextLabel="hZi-bR-NQw" imageView="8cq-5q-yCh" style="IBUITableViewCellStyleSubtitle" id="RW2-nf-Jte" customClass="CLCommentCell">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" id="RW2-nf-Jte" customClass="CLCommentCell">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RW2-nf-Jte" id="H2f-yA-4NM">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u2D-Im-bBD">
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDo-y0-o5m">
+                                                            <rect key="frame" x="56" y="38" width="505" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPg-jE-gB9">
+                                                            <rect key="frame" x="56" y="19" width="505" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hZi-bR-NQw">
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Da1-GU-Gbz">
+                                                            <rect key="frame" x="8" y="19" width="40" height="40"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KM8-7b-cxl">
+                                                            <rect key="frame" x="269" y="23" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" image="AvatarPlaceholderMaleMedium" id="8cq-5q-yCh">
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </imageView>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="FPg-jE-gB9" firstAttribute="leading" secondItem="H2f-yA-4NM" secondAttribute="leadingMargin" constant="48" id="0a5-6O-Wqd"/>
+                                                        <constraint firstItem="FPg-jE-gB9" firstAttribute="top" secondItem="H2f-yA-4NM" secondAttribute="topMargin" constant="11" id="5D6-Zp-EGC"/>
+                                                        <constraint firstItem="hDo-y0-o5m" firstAttribute="leading" secondItem="H2f-yA-4NM" secondAttribute="leadingMargin" constant="48" id="Jlj-EJ-Hfi"/>
+                                                        <constraint firstItem="hDo-y0-o5m" firstAttribute="top" secondItem="FPg-jE-gB9" secondAttribute="bottom" constant="-2" id="Mer-5k-P4q"/>
+                                                        <constraint firstItem="FPg-jE-gB9" firstAttribute="leading" secondItem="Da1-GU-Gbz" secondAttribute="trailing" constant="8" id="evF-Sf-Ctv"/>
+                                                        <constraint firstItem="hDo-y0-o5m" firstAttribute="top" secondItem="H2f-yA-4NM" secondAttribute="topMargin" constant="30" id="nh9-iZ-4Ck"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="FPg-jE-gB9" secondAttribute="trailing" constant="11" id="q1H-Cu-WHP"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="hDo-y0-o5m" secondAttribute="trailing" constant="11" id="vk3-zF-1hB"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="hDo-y0-o5m" secondAttribute="bottom" constant="20" id="zD7-7w-esu"/>
+                                                    </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="cellImage" destination="8cq-5q-yCh" id="3A7-63-QAx"/>
-                                                    <outlet property="nameLabel" destination="u2D-Im-bBD" id="Knw-Fx-1A3"/>
-                                                    <outlet property="postLabel" destination="hZi-bR-NQw" id="YJ2-oj-2cH"/>
+                                                    <outlet property="cellImage" destination="Da1-GU-Gbz" id="lnP-UR-HqJ"/>
+                                                    <outlet property="nameLabel" destination="FPg-jE-gB9" id="Ooh-Yq-1lo"/>
+                                                    <outlet property="postLabel" destination="hDo-y0-o5m" id="hPv-Ma-5jJ"/>
+                                                    <outlet property="timeLabel" destination="KM8-7b-cxl" id="09N-Mf-RbJ"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -1258,7 +1276,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AvatarPlaceholderMaleMedium" width="45" height="45"/>
         <image name="Camera" width="512" height="512"/>
         <image name="TestImage" width="712" height="838"/>
         <image name="photo" width="128" height="128"/>
