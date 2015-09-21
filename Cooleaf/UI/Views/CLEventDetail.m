@@ -72,7 +72,7 @@
     _mainImageView.clipsToBounds = YES;
     
     //Event label
-    _labelEvent = [[UILabel alloc] initWithFrame:CGRectMake(20, 408, 0, 0)];
+    _labelEvent = [[UILabel alloc] initWithFrame:CGRectMake(10, 408, 0, 0)];
     _labelEvent.textAlignment = NSTextAlignmentLeft;
     _labelEvent.text = @"Description";
     _labelEvent.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
@@ -83,33 +83,33 @@
     
     
     //Title
-    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(20, 210, 300, 0)];
+    _labelName = [[UILabel alloc] initWithFrame:CGRectMake(10, 210, 300, 0)];
     _labelName.textAlignment = NSTextAlignmentLeft;
     _labelName.numberOfLines = 0;
     _labelName.text = @"#Prem Bhatia";
-    _labelName.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:17];
+    _labelName.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     _labelName.backgroundColor = [UIColor clearColor];
     _labelName.textColor = [UIColor offWhite];
     [_labelName sizeToFit];
     _labelName.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //subTitle
-    _labelSub = [[UILabel alloc] initWithFrame:CGRectMake(20, 230, 300, 0)];
+    _labelSub = [[UILabel alloc] initWithFrame:CGRectMake(10, 230, 300, 0)];
     _labelSub.textAlignment = NSTextAlignmentLeft;
     _labelSub.numberOfLines = 0;
     _labelSub.text = @"#Prem Bhatia";
-    _labelSub.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:12];
+    _labelSub.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     _labelSub.backgroundColor = [UIColor clearColor];
     _labelSub.textColor = [UIColor lightGrayColor];
     [_labelSub sizeToFit];
     _labelSub.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Comments Count
-    _labelCommentNum = [[UILabel alloc] initWithFrame:CGRectMake(20, 270, 300, 0)];
+    _labelCommentNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 270, 300, 0)];
     _labelCommentNum.textAlignment = NSTextAlignmentLeft;
     _labelCommentNum.numberOfLines = 0;
     _labelCommentNum.text = @"2 Comments";
-    _labelCommentNum.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:12];
+    _labelCommentNum.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     _labelCommentNum.backgroundColor = [UIColor clearColor];
     _labelCommentNum.textColor = [UIColor lightGrayColor];
     [_labelCommentNum sizeToFit];
@@ -120,14 +120,14 @@
     _labelRewards.textAlignment = NSTextAlignmentLeft;
     _labelRewards.numberOfLines = 0;
     _labelRewards.text = @"50 Reward Points";
-    _labelRewards.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:12];
+    _labelRewards.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     _labelRewards.backgroundColor = [UIColor clearColor];
     _labelRewards.textColor = [UIColor lightGrayColor];
     [_labelRewards sizeToFit];
     _labelRewards.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Description
-    _detailDescription = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 200, 0)];
+    _detailDescription = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 200, 0)];
     _detailDescription.numberOfLines = 2;
     _detailDescription.textAlignment = NSTextAlignmentLeft;
     _detailDescription.text = @"Position";
@@ -139,7 +139,7 @@
     _detailDescription.lineBreakMode = UILineBreakModeWordWrap;
     
     //Post Label
-    _titleDate = [[UILabel alloc] initWithFrame:CGRectMake(25, 510, 300, 0)];
+    _titleDate = [[UILabel alloc] initWithFrame:CGRectMake(15, 510, 300, 0)];
     _titleDate.numberOfLines = 0;
     _titleDate.textAlignment = NSTextAlignmentLeft;
     _titleDate.text = @"Date";
@@ -150,7 +150,7 @@
     _titleDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Post Label
-    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(25, 540, 300, 0)];
+    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(15, 540, 300, 0)];
     _labelDate.numberOfLines = 0;
     _labelDate.textAlignment = NSTextAlignmentLeft;
     _labelDate.text = @"8/19/15 - 8/19/15";
@@ -161,7 +161,7 @@
     _labelDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Location Label
-    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(25,560, 25,45)];
+    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(15,560, 25,45)];
     _labelLocation.numberOfLines = 0;
     _labelLocation.textAlignment = NSTextAlignmentLeft;
     _labelLocation.text = @"Location";
@@ -175,7 +175,7 @@
     _commentBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     _commentBtn.frame = CGRectMake(150, 315, 75, 30);
     [_commentBtn setTitle:@"COMMENTS" forState:UIControlStateNormal];
-    _commentBtn.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:11];
+    _commentBtn.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
     _commentBtn.backgroundColor = [UIColor UIColorFromRGB:0xE0E1E4];
     _commentBtn.tintColor = [UIColor darkGrayColor];
     _commentBtn.layer.cornerRadius = 2;
@@ -186,7 +186,7 @@
     _joinBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     _joinBtn.frame = CGRectMake(230, 315, 75, 30);
     [_joinBtn setTitle:@"JOIN" forState:UIControlStateNormal];
-    _joinBtn.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:11];
+    _joinBtn.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
     _joinBtn.backgroundColor = [UIColor UIColorFromRGB:0x00BCD5];
     _joinBtn.tintColor = offWhite;
     _joinBtn.layer.cornerRadius = 2;

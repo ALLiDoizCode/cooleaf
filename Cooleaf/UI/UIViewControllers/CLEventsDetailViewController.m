@@ -22,13 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor offWhite];
+    
     [_detailView.joinBtn addTarget:self action:@selector(joinSelection) forControlEvents:UIControlEventTouchUpInside];
     
     _scrollView.scrollEnabled = YES;
-        
-     MKMapView *map = [[MKMapView alloc] initWithFrame:CGRectMake(0, 600, self.view.frame.size.width, 300)];
     
-    [_scrollView addSubview:map];
     _scrollView.contentSize = _detailView.frame.size;
     
      self.navigationController.navigationBar.tintColor = [UIColor offWhite];
@@ -54,13 +53,19 @@
     // Get the event description
     NSString *eventDescription = [_currentEvent eventDescription];
     
-    //_detailView.detailDescription.text = eventDescription;
-    
-    _detailView.detailDescription.text = @"dsfhkfhshfksfhsfsdfsdhfksfhkfhsfhfhfhkfhkfhkfhkfhskfhfhgdfskljsdfjsdfjlfjlfjlfjffhskhsdflhjdafjhfiefhirhiuafharewgirghitgrhtgfikathighifdghiujkrefeghrgrisuthiudfghreghibgvirhiukfhbfbeibiqbfgbiqbigbuifbhifrhrquifhefhweufihweufihuifhwufihwfhifhifhifhfihifhfhhefhqehfhiuqhfiuwhiuehiuhifhihweufihweifhewufihewuifhweuifhweufihewfihewifhewfhwefihewfhwefhewfhewfhewfhewfhfhfhwfhwfhwefihewihewufihwefihewifhewfhewfhwefhewfhewfhewfhwkfhskfhskfhdsdsfhkfhshfksfhsfsdfsdhfksfhkfhsfhfhfhkfhkfhkfhkfhskfhfhgdfskljsdfjsdfjlfjlfjlfjffhskhsdflhjdafjhfiefhirhiuafharewgirghitgrhtgfikathighifdghiujkrefeghrgrisuthiudfghreghibgvirhiukfhbfbeibiqbfgbiqbigbuifbhifrhrquifhefhweufihweufihuifhwufihwfhifhifhifhfihifhfhhefhqehfhiuqhfiuwhiuehiuhifhihweufihweifhewufihewuifhweuifhweufihewfihewifhewfhwefihewfhwefhewfhewfhewfhewfhfhfhwfhwfhwefihewihewufihwefihewifhewfhewfhwefhewfhewfhewfhwkfhskfhskfhdskdsfhkfhshfksfhsfsdfsdhfksfhkfhsfhfhfhkfhkfhkfhkfhskfhfhgdfskljsdfjsdfjlfjlfjlfjffhskhsdflhjdafjhfiefhirhiuafharewgirghitgrhtgfikathighifdghiujkrefeghrgrisuthiudfghreghibgvirhiukfhbfbeibiqbfgbiqbigbuifbhifrhrquifhefhweufihweufihuifhwufihwfhifhifhifhfihifhfhhefhqehfhiuqhfiuwhiuehiuhifhihweufihweifhewufihewuifhweuifhweufihewfihewifhewfhwefihewfhwefhewfhewfhewfhewfhfhfhwfhwfhwefihewihewufihwefihewifhewfhewfhwefhewfhewfhewfhwkfhskfhskfhdskdsfhkfhshfksfhsfsdfsdhfksfhkfhsfhfhfhkfhkfhkfhkfhskfhfhgdfskljsdfjsdfjlfjlfjlfjffhskhsdflhjdafjhfiefhirhiuafharewgirghitgrhtgfikathighifdghiujkrefeghrgrisuthiudfghreghibgvirhiukfhbfbeibiqbfgbiqbigbuifbhifrhrquifhefhweufihweufihuifhwufihwfhifhifhifhfihifhfhhefhqehfhiuqhfiuwhiuehiuhifhihweufihweifhewufihewuifhweuifhweufihewfihewifhewfhwefihewfhwefhewfhewfhewfhewfhfhfhwfhwfhwefihewihewufihwefihewifhewfhewfhwefhewfhewfhewfhwkfhskfhskfhdskdsfhkfhshfksfhsfsdfsdhfksfhkfhsfhfhfhkfhkfhkfhkfhskfhfhgdfskljsdfjsdfjlfjlfjlfjffhskhsdflhjdafjhfiefhirhiuafharewgirghitgrhtgfikathighifdghiujkrefeghrgrisuthiudfghreghibgvirhiukfhbfbeibiqbfgbiqbigbuifbhifrhrquifhefhweufihweufihuifhwufihwfhifhifhifhfihifhfhhefhqehfhiuqhfiuwhiuehiuhifhihweufihweifhewufihewuifhweuifhweufihewfihewifhewfhwefihewfhwefhewfhewfhewfhewfhfhfhwfhwfhwefihewihewufihwefihewifhewfhewfhwefhewfhewfhewfhwkfhskfhskfhdskk";
+    _detailView.detailDescription.text = eventDescription;
     
     NSString *eventName = [_currentEvent name];
     
     _detailView.labelName.text = eventName;
+    
+    // Get the locaiton and setup the map
+    
+    ///replace with location/////////////////////////////
+    NSString *eventlocation = @"3423 Piedmont Rd NE, Atlanta, GA 30305";
+    ////////////////////////////////////////////////////
+    
+    [self setupMap:eventlocation];
     
 }
 
@@ -218,6 +223,33 @@
     size = CGSizeMake(ceil(boundingBox.width), ceil(boundingBox.height));
     
     return size.height;
+}
+
+-(void)setupMap:(NSString *)location{
+    
+    MKMapView *map = [[MKMapView alloc] initWithFrame:CGRectMake(15, 590, self.view.frame.size.width- 28, 255)];
+    map.layer.cornerRadius = 2;
+    map.layer.masksToBounds = YES;
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:location
+                 completionHandler:^(NSArray* placemarks, NSError* error){
+                     if (placemarks && placemarks.count > 0) {
+                         CLPlacemark *topResult = [placemarks objectAtIndex:0];
+                         MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
+                         
+                         MKCoordinateRegion region = map.region;
+                         region.center = placemark.region.center;
+                         region.span.longitudeDelta /= 8.0;
+                         region.span.latitudeDelta /= 8.0;
+                         
+                         [map setRegion:region animated:YES];
+                         [map addAnnotation:placemark];
+                     }
+                 }
+     ];
+    
+    [_scrollView addSubview:map];
 }
 
 
