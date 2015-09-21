@@ -225,6 +225,17 @@
     return size.height;
 }
 
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+        [renderer setStrokeColor:[UIColor blueColor]];
+        [renderer setLineWidth:5.0];
+        return renderer;
+    }
+    return nil;
+}
+
 -(void)setupMap:(NSString *)location{
     
     MKMapView *map;
@@ -244,8 +255,8 @@
                              
                              MKCoordinateRegion region = map.region;
                              region.center = placemark.region.center;
-                             region.span.longitudeDelta /= 8.0;
-                             region.span.latitudeDelta /= 8.0;
+                             region.span.longitudeDelta /= 2000.0;
+                             region.span.latitudeDelta /= 2000.0;
                              
                              [map setRegion:region animated:YES];
                              [map addAnnotation:placemark];
