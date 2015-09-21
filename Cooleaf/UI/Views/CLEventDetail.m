@@ -25,7 +25,7 @@
     [self labelWidth:_labelName];
     [self labelWidth:_labelLocation];
     
-    _detailDescription.frame = CGRectMake( _detailDescription.frame.origin.x,  _detailDescription.frame.origin.y, 200, 100);
+    _detailDescription.frame = CGRectMake( _detailDescription.frame.origin.x,  _detailDescription.frame.origin.y, 285, 100);
     
     _detailDescription.numberOfLines = 0;
     
@@ -39,6 +39,21 @@
     //Background View
     UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 300)];
     bgview.backgroundColor = [UIColor clearColor];
+    
+    
+    
+    UIScrollView *textScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 430, self.frame.size.width, 70)];
+    //specify CGRect bounds in place of self.view.bounds to make it as a portion of parent view!
+    textScroll.backgroundColor = [UIColor clearColor];
+    
+    textScroll.contentSize = CGSizeMake(400,200);   //scroll view size
+    
+    textScroll.showsVerticalScrollIndicator = NO;    // to hide scroll indicators!
+    
+    textScroll.showsHorizontalScrollIndicator = YES; //by default, it shows!
+    
+    textScroll.scrollEnabled = YES;                 //say "NO" to disable scroll
+    
     
     //Blur
     FXBlurView *blur = [[FXBlurView alloc] initWithFrame:CGRectMake(0, 190, self.frame.size.width, 110)];
@@ -55,17 +70,6 @@
     _mainImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
     _mainImageView.layer.shouldRasterize = YES;
     _mainImageView.clipsToBounds = YES;
-    
-    //Image
-    UIImageView *locationIcon = [[UIImageView alloc] initWithFrame:CGRectMake(280,550, 25,45)];
-    locationIcon.image = [UIImage imageNamed:@"blue-location"];
-    locationIcon.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    locationIcon.contentMode = UIViewContentModeScaleAspectFit;
-    locationIcon.layer.masksToBounds = YES;
-    locationIcon.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    locationIcon.layer.shouldRasterize = YES;
-    locationIcon.clipsToBounds = YES;
-    
     
     //Event label
     _labelEvent = [[UILabel alloc] initWithFrame:CGRectMake(20, 408, 0, 0)];
@@ -122,11 +126,9 @@
     [_labelRewards sizeToFit];
     _labelRewards.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
-    
-    
     //Description
-    _detailDescription = [[UILabel alloc] initWithFrame:CGRectMake(20, 395, 200, 0)];
-    _detailDescription.numberOfLines = 0;
+    _detailDescription = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 200, 0)];
+    _detailDescription.numberOfLines = 2;
     _detailDescription.textAlignment = NSTextAlignmentLeft;
     _detailDescription.text = @"Position";
     _detailDescription.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
@@ -134,7 +136,7 @@
     _detailDescription.textColor = [UIColor darkGrayColor];
     [_detailDescription sizeToFit];
     _detailDescription.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    
+    _detailDescription.lineBreakMode = UILineBreakModeWordWrap;
     
     //Post Label
     _titleDate = [[UILabel alloc] initWithFrame:CGRectMake(25, 510, 300, 0)];
@@ -159,7 +161,7 @@
     _labelDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Location Label
-    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(160,560, 25,45)];
+    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(25,560, 25,45)];
     _labelLocation.numberOfLines = 0;
     _labelLocation.textAlignment = NSTextAlignmentLeft;
     _labelLocation.text = @"Location";
@@ -223,11 +225,12 @@
     
     
     [self addSubview:bgview];
+    [self addSubview:textScroll];
     [self addSubview:blur];
     [self addSubview:_labelName];
     [self addSubview:_labelSub];
     [self addSubview:_labelPostName];
-    [self addSubview:_detailDescription];
+    [textScroll addSubview:_detailDescription];
     [self addSubview:_titleDate];
     [self addSubview:_labelDate];
     [self addSubview:_labelRewards];
@@ -240,9 +243,7 @@
     [self addSubview:_labelLocation];
     [self addSubview:border];
     [self addSubview:border2];
-    [self addSubview:locationIcon];
     [bgview addSubview:_mainImageView];
-    
     
 }
 
@@ -259,5 +260,6 @@
     //point.x, point.y -> origin for label;
     //height -> your label height;
 }
+
 
 @end

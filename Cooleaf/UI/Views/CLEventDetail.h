@@ -25,5 +25,5 @@
 @property (nonatomic) UIButton *members;
 @property (nonatomic) UIButton *commentBtn;
 @property (nonatomic) UIButton *joinBtn;
-
+@property (nonatomic) UIScrollView *textScroll;
 @end

@@ -56,8 +56,7 @@
     
     //_detailView.detailDescription.text = eventDescription;
     
-    [_detailView.detailDescription setText:eventDescription];
-    
+    _detailView.detailDescription.text = @"dsfhkfhshfksfhsfsdfsdhfksfhkfhsfhfhfhkfhkfhkfhkfhskfhfhgdfskljsdfjsdfjlfjlfjlfjffhskhsdflhjdafjhfiefhirhiuafharewgirghitgrhtgfikathighifdghiujkrefeghrgrisuthiudfghreghibgvirhiukfhbfbeibiqbfgbiqbigbuifbhifrhrquifhefhweufihweufihuifhwufihwfhifhifhifhfihifhfhhefhqehfhiuqhfiuwhiuehiuhifhihweufihweifhewufihewuifhweuifhweufihewfihewifhewfhwefihewfhwefhewfhewfhewfhewfhfhfhwfhwfhwefihewihewufihwefihewifhewfhewfhwefhewfhewfhewfhwkfhskfhskfhdsk";
     
     NSString *eventName = [_currentEvent name];
     
@@ -202,6 +201,23 @@
     
     _selectionView.hidden = YES;
     _bgBlur.hidden =YES;
+}
+
+
+- (CGFloat)getLabelHeight:(UILabel*)label {
+    
+    CGSize constraint = CGSizeMake(label.frame.size.width, 260.0f);
+    CGSize size;
+    
+    NSStringDrawingContext *context = [[NSStringDrawingContext alloc] init];
+    CGSize boundingBox = [label.text boundingRectWithSize:constraint
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                               attributes:@{NSFontAttributeName:label.font}
+                                                  context:context].size;
+    
+    size = CGSizeMake(ceil(boundingBox.width), ceil(boundingBox.height));
+    
+    return size.height;
 }
 
 
