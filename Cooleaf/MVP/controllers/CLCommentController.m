@@ -35,7 +35,7 @@ static NSString *const kCommentsEventPath = @"v2/comments/Event/";
 }
 
 - (void)deleteEventComment:(NSInteger)eventId comment:(NSInteger)commentId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
-    NSString *path = [NSString stringWithFormat:@"%@%d%d%@", kCommentsEventPath, (int) eventId, (int)commentId, @".json"];
+    NSString *path = [NSString stringWithFormat:@"%@%d/%d%@", kCommentsEventPath, (int) eventId, (int)commentId, @".json"];
     [[CLClient getInstance] DELETE:path parameters:params completion:^(id response, NSError *error) {
        if (!error)
            success(response);

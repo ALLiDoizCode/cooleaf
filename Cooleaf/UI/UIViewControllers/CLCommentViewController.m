@@ -180,8 +180,12 @@ static const float movementDuration = 0.3f; // tweak as needed
 }
 
 - (void)deleteEventComment:(CLComment *)comment {
-    CLComment *commentToBeDeleted = [_comments objectAtIndex:[_savedIndexPath row]];
-    if ([commentToBeDeleted commentId] == [comment commentId]) {
+    // Convert comment objects to dictionary
+    NSDictionary *commentDict = (NSDictionary *) comment;
+    NSDictionary *deletedCommentDict = [_comments objectAtIndex:[_savedIndexPath row]];
+    
+    // If ids match, delete comment
+    if (deletedCommentDict[@"id"] == commentDict[@"id"]) {
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:_savedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
@@ -246,13 +250,14 @@ static const float movementDuration = 0.3f; // tweak as needed
 # pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    // Get comment from the saved indexpath
-    CLComment *commentToBeDeleted = [_comments objectAtIndex:[_savedIndexPath row]];
+    // Get comment id from the saved indexpath
+    NSDictionary *deletedCommentDict = [_comments objectAtIndex:[_savedIndexPath row]];
+    NSNumber *commentId = deletedCommentDict[@"id"];
     
     switch (buttonIndex) {
         case 0:
             // User hit the delete button - delete comment if its their own comment
-            [_commentPresenter deleteEventComment:[[_event eventId] integerValue] commentId:[[commentToBeDeleted commentId] integerValue]];
+            [_commentPresenter deleteEventComment:[[_event eventId] integerValue] commentId:[commentId integerValue]];
             break;
         case 1:
             // User hit the edit button - edit comment if its their own comment
