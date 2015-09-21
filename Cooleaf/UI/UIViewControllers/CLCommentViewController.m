@@ -196,6 +196,8 @@ static const float movementDuration = 0.3f; // tweak as needed
     NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], commentDict[@"user_picture"][@"versions"][@"icon"]];
     [cell.cellImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     
+    
+    ////// Use this to check if a comment contains a image replace fullImagepath with the object thats holds the iamge for teh comment
     if (fullImagePath != nil) {
         
        // _tableView.rowHeight = _tableView.rowHeight + 10;
