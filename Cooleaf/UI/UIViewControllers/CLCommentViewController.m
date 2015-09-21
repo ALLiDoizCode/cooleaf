@@ -196,6 +196,12 @@ static const float movementDuration = 0.3f; // tweak as needed
     NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], commentDict[@"user_picture"][@"versions"][@"icon"]];
     [cell.cellImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     
+    if (fullImagePath != nil) {
+        
+       // _tableView.rowHeight = _tableView.rowHeight + 10;
+         [cell.mainImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+    }
+    
     return cell;
 }
 
