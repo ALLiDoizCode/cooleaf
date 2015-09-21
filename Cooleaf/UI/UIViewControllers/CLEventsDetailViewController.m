@@ -227,29 +227,40 @@
 
 -(void)setupMap:(NSString *)location{
     
-    MKMapView *map = [[MKMapView alloc] initWithFrame:CGRectMake(15, 590, self.view.frame.size.width- 28, 255)];
-    map.layer.cornerRadius = 2;
-    map.layer.masksToBounds = YES;
+    MKMapView *map;
     
-    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    [geocoder geocodeAddressString:location
-                 completionHandler:^(NSArray* placemarks, NSError* error){
-                     if (placemarks && placemarks.count > 0) {
-                         CLPlacemark *topResult = [placemarks objectAtIndex:0];
-                         MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
-                         
-                         MKCoordinateRegion region = map.region;
-                         region.center = placemark.region.center;
-                         region.span.longitudeDelta /= 8.0;
-                         region.span.latitudeDelta /= 8.0;
-                         
-                         [map setRegion:region animated:YES];
-                         [map addAnnotation:placemark];
+    if (location != nil) {
+        
+        map = [[MKMapView alloc] initWithFrame:CGRectMake(15, 590, self.view.frame.size.width- 28, 255)];
+        map.layer.cornerRadius = 2;
+        map.layer.masksToBounds = YES;
+        
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        [geocoder geocodeAddressString:location
+                     completionHandler:^(NSArray* placemarks, NSError* error){
+                         if (placemarks && placemarks.count > 0) {
+                             CLPlacemark *topResult = [placemarks objectAtIndex:0];
+                             MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:topResult];
+                             
+                             MKCoordinateRegion region = map.region;
+                             region.center = placemark.region.center;
+                             region.span.longitudeDelta /= 8.0;
+                             region.span.latitudeDelta /= 8.0;
+                             
+                             [map setRegion:region animated:YES];
+                             [map addAnnotation:placemark];
+                         }
                      }
-                 }
-     ];
+         ];
+        
+        [_scrollView addSubview:map];
+        
+    }else {
+        
+        _scrollView.contentSize = CGSizeMake(_detailView.frame.size.width, _detailView.frame.size.height - 255);
+    }
     
-    [_scrollView addSubview:map];
+   
 }
 
 
