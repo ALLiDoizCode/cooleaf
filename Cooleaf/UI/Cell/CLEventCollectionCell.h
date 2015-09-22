@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CLEventCollectionCell : UICollectionViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *memberImage;
 
 @end

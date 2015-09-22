@@ -40,18 +40,13 @@
     UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 300)];
     bgview.backgroundColor = [UIColor clearColor];
     
-    
-    
     UIScrollView *textScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 430, self.frame.size.width, 70)];
+    
     //specify CGRect bounds in place of self.view.bounds to make it as a portion of parent view!
     textScroll.backgroundColor = [UIColor clearColor];
-    
     textScroll.contentSize = CGSizeMake(textScroll.contentSize.width, _detailDescription.frame.size.height + 100);   //scroll view size
-    
     textScroll.showsVerticalScrollIndicator = NO;    // to hide scroll indicators!
-    
     textScroll.showsHorizontalScrollIndicator = YES; //by default, it shows!
-    
     textScroll.scrollEnabled = YES;                 //say "NO" to disable scroll
     
     
@@ -222,8 +217,6 @@
     UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 500, bgview.frame.size.width, 0.5)];
     border2.backgroundColor = [UIColor lightGrayColor];
     
-    
-    
     [self addSubview:bgview];
     [self addSubview:textScroll];
     [self addSubview:blur];
@@ -249,16 +242,15 @@
 
 -(void)labelWidth:(UILabel *)theLabel {
     
-    //use this for custom font
-    //CGFloat width =  [theLabel.text sizeWithFont:[UIFont fontWithName:@"ChaparralPro-Bold" size:40 ]].width;
+    // use this for custom font
+    // CGFloat width =  [theLabel.text sizeWithFont:[UIFont fontWithName:@"ChaparralPro-Bold" size:40 ]].width;
     
-    //use this for system font
+    // Use this for system font
     CGFloat width =  [theLabel.text sizeWithFont:[UIFont systemFontOfSize:40 ]].width;
-    
     theLabel.frame = CGRectMake(theLabel.frame.origin.x, theLabel.frame.origin.y, width, theLabel.frame.size.height);
     
-    //point.x, point.y -> origin for label;
-    //height -> your label height;
+    // point.x, point.y -> origin for label;
+    // height -> your label height;
 }
 
 

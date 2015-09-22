@@ -99,7 +99,7 @@
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    CLEventCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectioCell" forIndexPath:indexPath];
+    CLEventCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionCell" forIndexPath:indexPath];
     
     cell.memberImage.image = [UIImage imageNamed:@"TestImage"];
     
@@ -140,7 +140,7 @@
     selectTitle.textColor = [UIColor offBlack];
     selectTitle.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
     
-    //dates
+    // dates
     _date1 = [[UILabel alloc] initWithFrame:CGRectMake(60, 22, 200, 50)];
     _date1.text = @"sep 17, 9:00 PM";
     _date1.textColor = [UIColor offBlack];
@@ -156,23 +156,21 @@
     _date3.textColor = [UIColor offBlack];
     _date3.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13];
 
-    
     _date4 = [[UILabel alloc] initWithFrame:CGRectMake(60, 172, 200, 50)];
     _date4.text = @"sep 20, 10:00 PM";
     _date4.textColor = [UIColor offBlack];
     _date4.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13];
 
-    
-    //Cancle
-    _cancle = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    _cancle.frame = CGRectMake(50, 220, 75, 30);
-    [_cancle setTitle:@"CANCLE" forState:UIControlStateNormal];
-    _cancle.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:11];
-    _cancle.backgroundColor = [UIColor clearColor];
-    _cancle.tintColor = [UIColor UIColorFromRGB:0x00BCD5];
-    _cancle.layer.cornerRadius = 2;
-    _cancle.layer.masksToBounds = YES;
-    [_cancle addTarget:self action:@selector(cancleJoin) forControlEvents:UIControlEventTouchUpInside];
+    //Cancel
+    _cancel = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    _cancel.frame = CGRectMake(50, 220, 75, 30);
+    [_cancel setTitle:@"CANCEL" forState:UIControlStateNormal];
+    _cancel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:11];
+    _cancel.backgroundColor = [UIColor clearColor];
+    _cancel.tintColor = [UIColor UIColorFromRGB:0x00BCD5];
+    _cancel.layer.cornerRadius = 2;
+    _cancel.layer.masksToBounds = YES;
+    [_cancel addTarget:self action:@selector(cancelJoin) forControlEvents:UIControlEventTouchUpInside];
     
     //Join
     _joinEvents = [UIButton buttonWithType: UIButtonTypeRoundedRect];
@@ -189,25 +187,22 @@
     [self.view addSubview:_selectionView];
     [_selectionView addSubview:selectTitle];
     [_selectionView addSubview:_joinEvents];
-    [_selectionView addSubview:_cancle];
+    [_selectionView addSubview:_cancel];
     [_selectionView addSubview:_date1];
     [_selectionView addSubview:_date2];
     [_selectionView addSubview:_date3];
     [_selectionView addSubview:_date4];
+    [_selectionView addSubview:date5];
     [_selectionView addSubview:paperCheckbox];
     [_selectionView addSubview:paperCheckbox2];
     [_selectionView addSubview:paperCheckbox3];
     [_selectionView addSubview:paperCheckbox4];
-
-
 }
 
--(void)cancleJoin{
-    
+-(void)cancelJoin{
     _selectionView.hidden = YES;
     _bgBlur.hidden =YES;
 }
-
 
 - (CGFloat)getLabelHeight:(UILabel*)label {
     
@@ -225,8 +220,7 @@
     return size.height;
 }
 
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
-{
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     if ([overlay isKindOfClass:[MKPolyline class]]) {
         MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
         [renderer setStrokeColor:[UIColor blueColor]];
@@ -265,26 +259,18 @@
          ];
         
         [_scrollView addSubview:map];
+    } else {
         
-    }else {
-        
-        if( [[UIScreen mainScreen] bounds].size.height >= 568 || [[UIScreen mainScreen] bounds].size.width >= 568 )
-        {
+        if ([[UIScreen mainScreen] bounds].size.height >= 568 || [[UIScreen mainScreen] bounds].size.width >= 568 ) {
             //device = DEVICE_TYPE_IPHONE5 ;
-              _scrollView.contentSize = CGSizeMake(_detailView.frame.size.width, _detailView.frame.size.height - 255);
-        }
-        else
-        {
+            _scrollView.contentSize = CGSizeMake(_detailView.frame.size.width, _detailView.frame.size.height - 255);
+        } else {
             //device = DEVICE_TYPE_IPHONE4 ;
-              _scrollView.contentSize = CGSizeMake(_detailView.frame.size.width, _detailView.frame.size.height - 195);
+            _scrollView.contentSize = CGSizeMake(_detailView.frame.size.width, _detailView.frame.size.height - 195);
         }
         
-      
     }
-    
-   
 }
-
 
 /*
 #pragma mark - Navigation
