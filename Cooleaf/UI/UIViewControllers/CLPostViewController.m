@@ -34,6 +34,8 @@
     [self buildLabel];
     [self buildButtons];
     [self buildImage];
+    [self checkForCamera];
+    //[self setUpGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,38 +44,33 @@
 }
 
 -(void)buildView {
-    postView = [[UIView alloc] initWithFrame:CGRectMake(10, 35, 300, 285)];
-    postView.backgroundColor = [UIColor offWhite];
-    postView.layer.cornerRadius = 3;
     
     postView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    postView.backgroundColor = [UIColor whiteColor];
+    postView.backgroundColor = [UIColor offWhite];
    
-    UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
+    UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width, 60)];
     barView.backgroundColor = [UIColor barWhite];
     
     //Border
-    UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0,60, self.view.frame.size.width, 0.5)];
+    UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0,60, postView.bounds.size.width, 0.5)];
     border.backgroundColor = [UIColor lightGrayColor];
-    
-    UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, postView.frame.size.height - 55, 300, 0.5)];
-    border2.backgroundColor = [UIColor lightGrayColor];
     
     [self.view addSubview:postView];
     [postView addSubview:border];
-    [postView addSubview:border2];
     [postView addSubview:barView];
 }
 
 -(void)buildTextView {
     
     //TextView
-    postTextView = [[UITextView alloc] initWithFrame:CGRectMake(10, 115, postView.bounds.size.width - 10, 200)];
+    postTextView = [[UITextView alloc] initWithFrame:CGRectMake(10, 115, postView.bounds.size.width - 20, 200)];
     postTextView.backgroundColor = [UIColor clearColor];
     postTextView.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
     CGPoint scrollPoint = postTextView.contentOffset;
     scrollPoint.y= scrollPoint.y+40;
     [postTextView setContentOffset:scrollPoint animated:YES];
+    postTextView.backgroundColor = [UIColor clearColor];
+    postTextView.delegate = self;
     [postView addSubview:postTextView];
 }
 
@@ -106,20 +103,19 @@
 
 -(void)buildButtons {
     
-    // A better locaiton for the buttons are needed
-    /*//cameraBtn
+    //cameraBtn
     cameraBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     cameraBtn.frame = CGRectMake(10, postView.frame.size.height - 50, 40, 40);
     [cameraBtn setTitle:@"Image" forState:UIControlStateNormal];
     [cameraBtn setImage:[UIImage imageNamed:@"Camera"] forState:UIControlStateNormal];
-    //[postBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
+    [cameraBtn addTarget:self action:@selector(getCamera) forControlEvents:UIControlEventTouchUpInside];
     
     //addImage
     addImageBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    addImageBtn.frame = CGRectMake(250, postView.frame.size.height - 50, 40, 40);
+    addImageBtn.frame = CGRectMake(270, postView.frame.size.height - 50, 40, 40);
     [addImageBtn setTitle:@"Image" forState:UIControlStateNormal];
     [addImageBtn setImage:[UIImage imageNamed:@"photo"] forState:UIControlStateNormal];
-    [addImageBtn addTarget:self action:@selector(addImage) forControlEvents:UIControlEventTouchUpInside];*/
+    [addImageBtn addTarget:self action:@selector(getPicture) forControlEvents:UIControlEventTouchUpInside];
     
     //Post
     UIButton *postBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
@@ -136,17 +132,18 @@
     [postView addSubview:postBtn];
     [postView addSubview:cancelBtn];
     
-    //[postView addSubview:cameraBtn];
-    //[postView addSubview:addImageBtn];
+    [postView addSubview:cameraBtn];
+    [postView addSubview:addImageBtn];
 }
 
 -(void)buildImage {
-    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(210, 80, 95, 95)];
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 320, postView.bounds.size.width - 20, 180)];
     imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     imageView.image = [UIImage imageNamed:@"TestImage"];
     imageView.layer.masksToBounds = YES;
     imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
     imageView.layer.shouldRasterize = YES;
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.clipsToBounds = YES;
     imageView.hidden = true;
     
@@ -168,15 +165,107 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-//This function demostrates adding a image to teh users post but needs to be placed in a seprate class the handles adding an image from the devices gallery.
--(void)addImage {
-    imageView.hidden = false;
-}
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [postTextView endEditing:YES];
     
+}
+
+
+
+# pragma mark - getPicture
+
+-(void)getPicture {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+-(void)getCamera {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+
+-(void)checkForCamera{
+    
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                              message:@"Device has no camera"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles: nil];
+        
+        [myAlertView show];
+        
+    }
+}
+
+# pragma mark - UIImagePickerController Delegate
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage  = info[UIImagePickerControllerOriginalImage];
+    _imgToUpload = chosenImage;
+    
+    imageView.image = _imgToUpload;
+    imageView.hidden = false;
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    [self animateTextView: YES];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    [self animateTextView:NO];
+}
+
+- (void) animateTextView:(BOOL) up {
+    
+    static const int movementDistance = 100; // tweak as needed
+    static const int movementDistanceButton = 150; // tweak as needed
+    static const float movementDuration = 0.3f; // tweak as needed
+
+    
+    // If moving up raise textfield up by movementDistance else lower it by movement distance with a defined duration
+    int movement = up ? -movementDistance : movementDistance;
+    int buttonMovement = up ? -movementDistanceButton : movementDistanceButton;
+    
+    [UIView beginAnimations: @"anim" context: nil];
+    [UIView setAnimationBeginsFromCurrentState: YES];
+    [UIView setAnimationDuration: movementDuration];
+    
+    self.view.frame = CGRectOffset(self.view.frame, 0, movement);
+    addImageBtn.frame = CGRectOffset(addImageBtn.frame, 0, buttonMovement);
+    cameraBtn.frame = CGRectOffset(cameraBtn.frame, 0, buttonMovement);
+    [UIView commitAnimations];
+}
+
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if ([text isEqualToString:@"\n"]) {
+        
+        [textView resignFirstResponder];
+        // Return FALSE so that the final '\n' character doesn't get added
+        return NO;
+    }
+    // For any other character return TRUE so that the text gets added to the view
+    return YES;
 }
 
 /*

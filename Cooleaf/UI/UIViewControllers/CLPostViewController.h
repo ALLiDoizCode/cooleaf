@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CLPostViewController : UIViewController <UITextViewDelegate>
+@interface CLPostViewController : UIViewController <UITextViewDelegate,UIImagePickerControllerDelegate>
+
+@property (weak, nonatomic) UIImage *imgToUpload;
 
 @end

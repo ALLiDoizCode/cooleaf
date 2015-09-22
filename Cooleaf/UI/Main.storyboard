@@ -946,6 +946,34 @@
                                                                 <constraint firstItem="Ye1-HF-CBH" firstAttribute="top" secondItem="OXL-nf-tnY" secondAttribute="bottom" constant="8" id="zl6-No-P6k"/>
                                                             </constraints>
                                                         </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bft-f1-Fnq">
+                                                            <rect key="frame" x="546" y="426" width="30" height="30"/>
+                                                            <state key="normal" title="Join">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59k-tM-FAQ">
+                                                            <rect key="frame" x="470" y="426" width="68" height="30"/>
+                                                            <state key="normal" title="Comment">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" misplaced="YES" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRm-6l-djP">
+                                                            <rect key="frame" x="8" y="308" width="584" height="98"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="zRm-6l-djP" secondAttribute="height" multiplier="7:1" id="7d0-w0-2IF"/>
+                                                                <constraint firstAttribute="width" secondItem="zRm-6l-djP" secondAttribute="height" multiplier="6:1" id="zu5-j6-oWn"/>
+                                                            </constraints>
+                                                            <string key="text">asdlkajsd aldkja dlkajsd aldkja lsdka das dla asdakdjahd akdha d;kjad ;asdlkajsd aldkja dlkajsd aldkja lsdka das dla asdakdjahd akdha d;kjad ;asdlkajsd aldkja dlkajsd aldkja lsdka das dla asdakdjahd akdha d;kjad ;asdlkajsd aldkja dlkajsd aldkja lsdka das dla asdakdjahd akdha d;kjad ;asdlkajsd aldkja dlkajsd aldkja lsdka das dla asdakdjahd akdha d;kjad ;</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="7d0-w0-2IF"/>
+                                                                    <exclude reference="zu5-j6-oWn"/>
+                                                                </mask>
+                                                            </variation>
+                                                        </textView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.87825311942958995" green="0.87825311942958995" blue="0.87825311942958995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
