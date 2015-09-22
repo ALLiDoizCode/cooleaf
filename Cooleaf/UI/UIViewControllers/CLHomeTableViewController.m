@@ -20,7 +20,7 @@
 #import "CLEventController.h"
 #import "NPAppDelegate.h"
 #import "CLCommentViewController.h"
-#import "CLEventsDetailViewController.h"
+#import "CLEventDetailViewController.h"
 
 @interface CLHomeTableViewController() {
     @private
@@ -259,7 +259,7 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    CLEventsDetailViewController *detailViewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"eventDetail"];
+    CLEventDetailViewController *detailViewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"eventDetail"];
     
     // Get the event
     CLEvent *currentEvent = [_events objectAtIndex:[indexPath row]];

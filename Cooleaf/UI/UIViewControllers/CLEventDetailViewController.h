@@ -12,10 +12,9 @@
 #import "BFPaperCheckbox.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface CLEventsDetailViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,CLLocationManagerDelegate, BFPaperCheckboxDelegate>
+@interface CLEventDetailViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,CLLocationManagerDelegate, BFPaperCheckboxDelegate>
 
 @property (strong, nonatomic) IBOutlet CLEventDetail *detailView;
-
 @property (nonatomic) CLEvent *currentEvent;
 @property (nonatomic) UIButton *joinEvents;
 @property (nonatomic) UIView *selectionView;

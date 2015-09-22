@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
-#import "CLEventsDetailViewController.h"
+#import "CLEventDetailViewController.h"
 #import "CLImage.h"
 #import "CLEventCollectionCell.h"
 #import "UIColor+CustomColors.h"
