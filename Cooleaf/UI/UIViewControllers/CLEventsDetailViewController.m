@@ -192,7 +192,6 @@
     [_selectionView addSubview:_date2];
     [_selectionView addSubview:_date3];
     [_selectionView addSubview:_date4];
-    [_selectionView addSubview:date5];
     [_selectionView addSubview:paperCheckbox];
     [_selectionView addSubview:paperCheckbox2];
     [_selectionView addSubview:paperCheckbox3];
