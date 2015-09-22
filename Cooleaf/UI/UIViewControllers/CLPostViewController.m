@@ -73,7 +73,7 @@
     postTextView.delegate = self;
     [postView addSubview:postTextView];
     
-    postTextView.text = @"Write a Post";
+    postTextView.text = @"Enter your post...";
     postTextView.textColor = [UIColor lightGrayColor];
 }
 
@@ -232,7 +232,7 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     [self animateTextView: YES];
     
-    if ([textView.text isEqualToString:@"Write a Post"])
+    if ([textView.text isEqualToString:@"Enter your post..."])
         
     {
         
