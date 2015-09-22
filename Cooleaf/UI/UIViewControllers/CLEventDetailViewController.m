@@ -43,8 +43,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    // Adjust navigation drawer
     self.navigationController.navigationBar.alpha = 1.0;
     self.navigationController.navigationBar.barTintColor = [UIColor eventColor];
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -124,6 +127,13 @@
     // Set the event name
     NSString *eventName = [_event name];
     _detailView.labelName.text = eventName;
+    
+    // Rewards label
+    _detailView.labelRewards.text = [NSString stringWithFormat:@"%d %@", [[_event rewardPoints] intValue], @"Rewards"];
+    
+    // Set coordinator name
+    NSDictionary *eventDict = [_event dictionaryValue];
+    _detailView.labelSub.text = eventDict[@"coordinator"][@"name"];
 }
 
 # pragma mark - setupMap

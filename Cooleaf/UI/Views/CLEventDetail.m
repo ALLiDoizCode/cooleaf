@@ -34,7 +34,7 @@
 
 - (void)awakeFromNib {
     
-    UIColor *offWhite = [UIColor UIColorFromRGB:0xFDFDFD];
+    UIColor *offWhite = [UIColor offWhite];
     
     //Background View
     UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 300)];
@@ -196,7 +196,7 @@
     [_members setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     //[members addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
-    /// member Icon
+    //Member icon
     UIImageView *memberImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 355, 40, 40)];
     memberImage.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     memberImage.image = [UIImage imageNamed:@"TestImage"];
@@ -215,13 +215,13 @@
     UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 500, bgview.frame.size.width, 0.5)];
     border2.backgroundColor = [UIColor lightGrayColor];
     
+    [textScroll addSubview:_detailDescription];
     [self addSubview:bgview];
     [self addSubview:textScroll];
     [self addSubview:blur];
     [self addSubview:_labelName];
     [self addSubview:_labelSub];
     [self addSubview:_labelPostName];
-    [textScroll addSubview:_detailDescription];
     [self addSubview:_titleDate];
     [self addSubview:_labelDate];
     [self addSubview:_labelRewards];
@@ -235,7 +235,6 @@
     [self addSubview:border];
     [self addSubview:border2];
     [bgview addSubview:_mainImageView];
-    
 }
 
 -(void)labelWidth:(UILabel *)theLabel {
