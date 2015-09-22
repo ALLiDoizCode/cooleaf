@@ -46,8 +46,6 @@
     // Adjust navigation drawer
     self.navigationController.navigationBar.alpha = 1.0;
     self.navigationController.navigationBar.barTintColor = [UIColor eventColor];
-    
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
