@@ -58,11 +58,20 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    if (_eventPresenter)
+        [_eventPresenter unregisterOnBus];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+# pragma mark - initEventPresenter
+
+- (void)initEventPresenter {
+    _eventPresenter = [[CLEventPresenter alloc] init];
+    [_eventPresenter registerOnBus];
 }
 
 # pragma mark - layoutSubviews
