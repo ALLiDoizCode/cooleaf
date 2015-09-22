@@ -29,6 +29,8 @@
 + (UIColor *)barWhite;
 + (UIColor *)groupNavBarColor;
 + (UIColor *)postButtonColor;
++ (UIColor *)eventColor;
++ (UIColor *)commentButtonColor;
 + (UIColor *)UIColorFromRGB:(int)rgbValue;
 
 @end
