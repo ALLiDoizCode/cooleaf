@@ -12,6 +12,8 @@
 #import "CLLoadedEventComments.h"
 #import "CLAddEventComment.h"
 #import "CLAddedEventComment.h"
+#import "CLDeleteEventComment.h"
+#import "CLDeletedEventComment.h"
 
 static NSInteger const PAGE = 1;
 static NSInteger const PER_PAGE = 25;
@@ -47,6 +49,12 @@ static NSInteger const PER_PAGE = 25;
     PUBLISH([[CLAddEventComment alloc] initWithId:eventId content:content]);
 }
 
+# pragma mark - deleteEventComment 
+
+- (void)deleteEventComment:(NSInteger)eventId commentId:(NSInteger)commentId {
+    PUBLISH([[CLDeleteEventComment alloc] initWithEventId:eventId commentId:commentId]);
+}
+
 # pragma mark - Subscription Methods
 
 SUBSCRIBE(CLLoadedEventComments) {
@@ -55,6 +63,12 @@ SUBSCRIBE(CLLoadedEventComments) {
 
 SUBSCRIBE(CLAddedEventComment) {
     [_commentInfo addEventComment:event.comment];
+}
+
+SUBSCRIBE(CLDeletedEventComment) {
+    // If there is a comment object returned then delete the event comment 
+    if (event.comment)
+        [_commentInfo deleteEventComment:event.comment];
 }
 
 @end

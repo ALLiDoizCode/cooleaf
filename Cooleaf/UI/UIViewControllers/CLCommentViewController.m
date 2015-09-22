@@ -21,6 +21,7 @@ static const float movementDuration = 0.3f; // tweak as needed
 
 @property (nonatomic, strong) CLCommentPresenter *commentPresenter;
 @property (nonatomic, strong) NSMutableArray *comments;
+@property (nonatomic, strong) NSIndexPath *savedIndexPath;
 
 @end
 
@@ -178,6 +179,25 @@ static const float movementDuration = 0.3f; // tweak as needed
     [self.tableView scrollToRowAtIndexPath:pathToLastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
+- (void)deleteEventComment:(CLComment *)comment {
+    // Convert comment objects to dictionary
+    NSDictionary *commentDict = (NSDictionary *) comment;
+    NSDictionary *deletedCommentDict = [_comments objectAtIndex:[_savedIndexPath row]];
+    
+    // Grab the ids
+    NSNumber *deletedCommentId = deletedCommentDict[@"id"];
+    NSNumber *commentId = commentDict[@"id"];
+    
+    // If ids match, delete comment
+    if ([deletedCommentId intValue] == [commentId intValue]) {
+        [self.tableView beginUpdates];
+        [_comments removeObjectAtIndex:[_savedIndexPath row]];
+        [self.tableView deleteRowsAtIndexPaths:@[_savedIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadData];
+        [self.tableView endUpdates];
+    }
+}
+
 # pragma mark - TableView Data Source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -217,8 +237,48 @@ static const float movementDuration = 0.3f; // tweak as needed
 # pragma mark - TableView Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Do some stuff when the row is selected
+    // Save the indexpath and scroll to that section
+    _savedIndexPath = indexPath;
+    
+    // Get the comment at that index
+    NSDictionary *commentDict = [_comments objectAtIndex:[indexPath row]];
+    NSNumber *commentUserId = commentDict[@"user_id"];
+    
+    // If user ids match go ahead and allow editing
+    if ([_userId intValue] == [commentUserId intValue]) {
+        // Actionsheet for editing a comment
+        UIActionSheet *commentActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"Cancel"
+                                                          destructiveButtonTitle:@"Delete"
+                                                               otherButtonTitles:@"Edit", nil];
+    
+        // Show the actionsheet
+        [commentActionSheet showInView:self.view];
+    }
+        
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+# pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // Get comment id from the saved indexpath
+    NSDictionary *deletedCommentDict = [_comments objectAtIndex:[_savedIndexPath row]];
+    NSNumber *commentId = deletedCommentDict[@"id"];
+    
+    switch (buttonIndex) {
+        case 0:
+            // User hit the delete button - delete comment if its their own comment
+            [_commentPresenter deleteEventComment:[[_event eventId] integerValue] commentId:[commentId integerValue]];
+            break;
+        case 1:
+            // User hit the edit button - edit comment if its their own comment
+            
+            break;
+        default:
+            break;
+    }
 }
 
 # pragma mark - TextField Delegate Methods
