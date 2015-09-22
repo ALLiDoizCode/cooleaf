@@ -6,79 +6,57 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import <FXBlurView.h>
+#import <MapKit/MapKit.h>
 #import "CLEventDetailViewController.h"
 #import "CLImage.h"
 #import "CLEventCollectionCell.h"
 #import "UIColor+CustomColors.h"
-#import <MapKit/MapKit.h>
 #import "UIColor+BFPaperColors.h"
-#import <FXBlurView.h>
+#import "CLEventPresenter.h"
+#import "UIColor+CustomColors.h"
 
-@interface CLEventDetailViewController ()
+@interface CLEventDetailViewController()
+
+@property (nonatomic, strong) CLEventPresenter *eventPresenter;
 
 @end
 
 @implementation CLEventDetailViewController
+
+# pragma mark - LifeCycle Methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor offWhite];
-    
+    // Add join API call to join button
     [_detailView.joinBtn addTarget:self action:@selector(joinSelection) forControlEvents:UIControlEventTouchUpInside];
     
-    _scrollView.scrollEnabled = YES;
-    
-    _scrollView.contentSize = _detailView.frame.size;
-    
-     self.navigationController.navigationBar.tintColor = [UIColor offWhite];
-    
-    UICollectionViewFlowLayout *layout;
-    
-    layout.minimumInteritemSpacing = 0;
-    layout.minimumLineSpacing = 0;
-    
-    [_eventCollectionView setShowsHorizontalScrollIndicator:NO];
-    [_eventCollectionView setShowsVerticalScrollIndicator:NO];
-    _detailView.backgroundColor = [UIColor offWhite];
-    
-    // Get the image url
-    CLImage *eventImage = [_currentEvent eventImage];
-    NSString *imageUrl = eventImage.url;
-    NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
-    fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"1600x400"];
-    
-    _detailView.mainImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:fullPath]]];
-    
-  
-    // Get the event description
-    NSString *eventDescription = [_currentEvent eventDescription];
-    
-    _detailView.detailDescription.text = eventDescription;
-    
-    NSString *eventName = [_currentEvent name];
-    
-    _detailView.labelName.text = eventName;
-    
-    // Get the locaiton and setup the map
-    
-    ///replace with location/////////////////////////////
-    NSString *eventlocation = nil;
-    ////////////////////////////////////////////////////
-    
-    [self setupMap:eventlocation];
-    
+    [self setupMainView];
+    [self setupScrollView];
+    [self setupEventCollectionView];
+    [self setupFlowLayout];
+    [self setupEventImage];
+    [self setupEventLabels];
+    [self setupMap];
 }
 
--(void)layoutSubviews {
-    
-    _scrollView.scrollEnabled = YES;
-    [_scrollView setContentSize: CGSizeMake(2400,8000)];
-    
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.alpha = 1.0;
+    self.navigationController.navigationBar.barTintColor = [UIColor eventColor];
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    
-    self.navigationController.navigationBar.alpha = 0.7;
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,25 +64,95 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+# pragma mark - layoutSubviews
+
+- (void)layoutSubviews {
+    _scrollView.scrollEnabled = YES;
+    [_scrollView setContentSize: CGSizeMake(2400,8000)];
+}
+
+# pragma mark - setupMainView
+
+- (void)setupMainView {
+    self.view.backgroundColor = [UIColor offWhite];
+    self.navigationController.navigationBar.tintColor = [UIColor offWhite];
+    _detailView.backgroundColor = [UIColor offWhite];
+}
+
+# pragma mark - setupScrollView
+
+- (void)setupScrollView {
+    _scrollView.scrollEnabled = YES;
+    _scrollView.contentSize = _detailView.frame.size;
+}
+
+# pragma mark - setupEventCollectionView 
+
+- (void)setupEventCollectionView {
+    [_eventCollectionView setShowsHorizontalScrollIndicator:NO];
+    [_eventCollectionView setShowsVerticalScrollIndicator:NO];
+}
+
+# pragma mark - setupFlowLayout
+
+- (void)setupFlowLayout {
+    UICollectionViewFlowLayout *layout;
+    layout.minimumInteritemSpacing = 0;
+    layout.minimumLineSpacing = 0;
+}
+
+# pragma mark - setupEventImage
+
+- (void)setupEventImage {
+    // Get the image url
+    CLImage *eventImage = [_event eventImage];
+    NSString *imageUrl = eventImage.url;
+    NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
+    fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"1600x400"];
     
+    // Set the image
+    _detailView.mainImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:fullPath]]];
+}
+
+# pragma mark - setupEventLabels
+
+- (void)setupEventLabels {
+    // Set the event description
+    NSString *eventDescription = [_event eventDescription];
+    _detailView.detailDescription.text = eventDescription;
+    
+    // Set the event name
+    NSString *eventName = [_event name];
+    _detailView.labelName.text = eventName;
+}
+
+# pragma mark - setupMap
+
+- (void)setupMap {
+    // Get the locaiton and setup the map
+    NSString *eventlocation = nil;
+    [self setupMap:eventlocation];
+}
+
+# pragma mark - TableView Data Source
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
     return 4;
 }
 
-// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+# pragma mark - Participants CollectionView Data Source
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     CLEventCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionCell" forIndexPath:indexPath];
-    
     cell.memberImage.image = [UIImage imageNamed:@"TestImage"];
-    
     return cell;
 }
+
+# pragma mark - Event Series Join Box
 
 -(void)joinSelection {
     
@@ -198,10 +246,14 @@
     [_selectionView addSubview:paperCheckbox4];
 }
 
+# pragma mark - cancelJoin
+
 -(void)cancelJoin{
     _selectionView.hidden = YES;
     _bgBlur.hidden =YES;
 }
+
+# pragma mark - getLabelHeight
 
 - (CGFloat)getLabelHeight:(UILabel*)label {
     
@@ -219,6 +271,8 @@
     return size.height;
 }
 
+# pragma mark - MapView Renderer
+
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
     if ([overlay isKindOfClass:[MKPolyline class]]) {
         MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
@@ -228,6 +282,8 @@
     }
     return nil;
 }
+
+# pragma mark - setupMap
 
 -(void)setupMap:(NSString *)location{
     

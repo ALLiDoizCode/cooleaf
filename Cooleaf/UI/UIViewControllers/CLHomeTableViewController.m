@@ -43,15 +43,8 @@
     // Hide activity indicator
     [_activityIndicator setHidden:YES];
     
-    // Searchbar color
-    barColor = [UIColor colorPrimary];
-    
     // Init bar display
     [self setupDisplay];
-    
-    // Init nav bar color
-    self.navigationController.navigationBar.barTintColor = [UIColor colorPrimary];
-    self.navigationController.navigationBar.tintColor = [UIColor colorPrimaryDark];
 
     [self initViews];
     [self initUserImageGestureRecognizer];
@@ -65,6 +58,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    // Set bar color
+    self.navigationController.navigationBar.alpha = 1.0;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorPrimary];
+    self.navigationController.navigationBar.tintColor = [UIColor colorPrimary];
+    // Searchbar color
+    barColor = [UIColor colorPrimary];
+    
+    // Initialize presenter
     [self initPresenter];
 }
 
@@ -247,6 +249,7 @@
 
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    
 }
 
 // Override to support conditional rearranging of the table view.
@@ -256,15 +259,14 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    // Instantiate EventDetailViewController and set current event
     CLEventDetailViewController *detailViewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"eventDetail"];
     
-    // Get the event
+    // Set the event
     CLEvent *currentEvent = [_events objectAtIndex:[indexPath row]];
-    
-    detailViewController.currentEvent = currentEvent;
+    detailViewController.event = currentEvent;
     
     [[self navigationController] pushViewController:detailViewController animated:YES];
 }
