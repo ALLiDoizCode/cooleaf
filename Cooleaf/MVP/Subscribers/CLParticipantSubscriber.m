@@ -30,6 +30,7 @@
 # pragma mark - subscription events
 
 SUBSCRIBE(CLLoadEventParticipants) {
+    NSLog(@"CLLoadEventParticipants");
     // Initialize parameters
     NSInteger eventId = event.eventId;
     NSDictionary *params = @{

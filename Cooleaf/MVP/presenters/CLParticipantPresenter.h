@@ -16,5 +16,6 @@
 - (id)initWithInteractor:(id<IParticipantInteractor>)interactor;
 - (void)registerOnBus;
 - (void)unregisterOnBus;
+- (void)loadEventParticipants:(NSInteger)eventId;
 
 @end

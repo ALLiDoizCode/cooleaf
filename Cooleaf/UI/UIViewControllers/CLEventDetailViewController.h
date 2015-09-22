@@ -11,8 +11,10 @@
 #import "CLEventDetail.h"
 #import "BFPaperCheckbox.h"
 #import <CoreLocation/CoreLocation.h>
+#import "IEventInteractor.h"
+#import "IParticipantInteractor.h"
 
-@interface CLEventDetailViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate,CLLocationManagerDelegate, BFPaperCheckboxDelegate>
+@interface CLEventDetailViewController : UIViewController <IEventInteractor, IParticipantInteractor, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, CLLocationManagerDelegate, BFPaperCheckboxDelegate>
 
 @property (strong, nonatomic) IBOutlet CLEventDetail *detailView;
 @property (nonatomic) CLEvent *event;

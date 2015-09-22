@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import <FXBlurView.h>
 #import <MapKit/MapKit.h>
 #import "CLEventDetailViewController.h"
@@ -15,10 +16,14 @@
 #import "UIColor+BFPaperColors.h"
 #import "CLEventPresenter.h"
 #import "UIColor+CustomColors.h"
+#import "CLParticipantPresenter.h"
+#import "CLClient.h"
 
 @interface CLEventDetailViewController()
 
 @property (nonatomic, strong) CLEventPresenter *eventPresenter;
+@property (nonatomic, strong) CLParticipantPresenter *participantPresenter;
+@property (nonatomic, strong) NSMutableArray *participants;
 
 @end
 
@@ -46,6 +51,9 @@
     // Adjust navigation drawer
     self.navigationController.navigationBar.alpha = 1.0;
     self.navigationController.navigationBar.barTintColor = [UIColor eventColor];
+    
+    [self initEventPresenter];
+    [self initParticipantPresenter];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -70,8 +78,53 @@
 # pragma mark - initEventPresenter
 
 - (void)initEventPresenter {
-    _eventPresenter = [[CLEventPresenter alloc] init];
+    _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
     [_eventPresenter registerOnBus];
+}
+
+# pragma mark - initParticipantPresenter 
+
+- (void)initParticipantPresenter {
+    _participantPresenter = [[CLParticipantPresenter alloc] initWithInteractor:self];
+    [_participantPresenter registerOnBus];
+    [_participantPresenter loadEventParticipants:[[_event eventId] integerValue]];
+}
+
+# pragma mark - IEventInteractor Methods
+
+- (void)initEvents:(NSMutableArray *)events {
+    
+}
+
+- (void)initUserEvents:(NSMutableArray *)userEvents {
+    
+}
+
+# pragma mark - IParticipantInteractor Methods
+
+- (void)initParticipants:(NSMutableArray *)participants {
+    // Create an NSMutableArray with only 4 participants
+    _participants = [NSMutableArray new];
+    
+    // Get count
+    int count = (int) [participants count];
+    
+    // Initialize a participants mutable array with 4 or less participants
+    // If count is less than 4 then use count
+    if (count >= 4) {
+        for (int i = 0; i < 4; i++) {
+            CLParticipant *participant = [participants objectAtIndex:i];
+            [_participants addObject:participant];
+        }
+    } else {
+        for (int i = 0; i < count; i++) {
+            CLParticipant *participant = [participants objectAtIndex:i];
+            [_participants addObject:participant];
+        }
+    }
+    
+    // Reload collectionview to show after initialization
+    [self.eventCollectionView reloadData];
 }
 
 # pragma mark - layoutSubviews
@@ -141,6 +194,18 @@
     // Set coordinator name
     NSDictionary *eventDict = [_event dictionaryValue];
     _detailView.labelSub.text = eventDict[@"coordinator"][@"name"];
+    
+    // Set participants count, check if less than or equal to 1 then adjust text
+    int participantsCount = [[_event participantsCount] intValue];
+    if (participantsCount <= 1) {
+        [_detailView.participantsButton setTitle:[NSString
+                                        stringWithFormat:@"%d Participant >", participantsCount]
+                                        forState:UIControlStateNormal];
+    } else {
+        [_detailView.participantsButton setTitle:[NSString
+                                        stringWithFormat:@"%d Participants >", participantsCount]
+                                        forState:UIControlStateNormal];
+    }
 }
 
 # pragma mark - setupMap
@@ -151,21 +216,34 @@
     [self setupMap:eventlocation];
 }
 
-# pragma mark - TableView Data Source
+# pragma mark - Participants CollectionView Data Source
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    return [_participants count];
 }
 
-# pragma mark - Participants CollectionView Data Source
+# pragma mark - Participants CollectionView Delegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CLEventCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"collectionCell" forIndexPath:indexPath];
-    cell.memberImage.image = [UIImage imageNamed:@"TestImage"];
+    
+    // Get the participant
+    CLParticipant *participant = [_participants objectAtIndex:[indexPath row]];
+    
+    // Get the participant dictionary
+    NSDictionary *participantDict = (NSDictionary *) participant;
+    
+    // Get path
+    NSString *imageUrlPath = participantDict[@"profile"][@"picture"][@"versions"][@"icon"];
+    
+    // Set the path and load the image
+    NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], imageUrlPath];
+    [cell.memberImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+    
     return cell;
 }
 

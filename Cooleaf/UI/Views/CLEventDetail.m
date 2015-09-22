@@ -103,18 +103,17 @@
     _labelCommentNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 270, 300, 0)];
     _labelCommentNum.textAlignment = NSTextAlignmentLeft;
     _labelCommentNum.numberOfLines = 0;
-    _labelCommentNum.text = @"2 Comments";
     _labelCommentNum.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     _labelCommentNum.backgroundColor = [UIColor clearColor];
     _labelCommentNum.textColor = [UIColor lightGrayColor];
     [_labelCommentNum sizeToFit];
     _labelCommentNum.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
-    //Comments Count
-    _labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(205, 270, 300, 0)];
+    //Rewards Count
+    _labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(240, 270, 300, 0)];
     _labelRewards.textAlignment = NSTextAlignmentLeft;
     _labelRewards.numberOfLines = 0;
-    _labelRewards.text = @"50 Reward Points";
+    _labelRewards.text = @"0 Rewards";
     _labelRewards.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     _labelRewards.backgroundColor = [UIColor clearColor];
     _labelRewards.textColor = [UIColor lightGrayColor];
@@ -189,11 +188,10 @@
     //[joinBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
     //Members
-    _members = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    _members.frame  = CGRectMake(230, 380, 70, 10);
-    [_members setTitle:@"5 Participants>" forState:UIControlStateNormal];
-    _members.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
-    [_members setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    _participantsButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    _participantsButton.frame  = CGRectMake(230, 380, 80, 10);
+    _participantsButton.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    [_participantsButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     //[members addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
     //Member icon
@@ -228,7 +226,7 @@
     [self addSubview:_labelCommentNum];
     [self addSubview:_labelEvent];
     [self addSubview:_labelEventSub];
-    [self addSubview:_members];
+    [self addSubview:_participantsButton];
     [self addSubview:_commentBtn];
     [self addSubview:_joinBtn];
     [self addSubview:_labelLocation];

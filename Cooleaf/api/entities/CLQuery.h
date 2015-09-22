@@ -7,8 +7,9 @@
 //
 
 #import "MTLModel.h"
+#import "MTLJSONAdapter.h"
 
-@interface CLQuery : MTLModel
+@interface CLQuery : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSNumber *queryId;
 @property (nonatomic, copy) NSString *queryName;

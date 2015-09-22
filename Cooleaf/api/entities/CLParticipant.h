@@ -14,7 +14,9 @@
 @property (nonatomic, readonly) NSNumber *participantId;
 @property (nonatomic) NSString *name;
 @property (nonatomic) CLProfile *profile;
-@property (nonatomic) NSString *pictureUrl;
-@property (nonatomic) NSMutableArray *primaryTagNames;
+@property (nonatomic) NSMutableArray *categories;
+@property (nonatomic, assign) BOOL selected;
+@property (nonatomic, readonly) NSNumber *eventId;
+@property (nonatomic) NSMutableArray *checkedOutEvents;
 
 @end
