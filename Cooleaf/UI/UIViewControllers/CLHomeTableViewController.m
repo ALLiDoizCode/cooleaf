@@ -20,6 +20,7 @@
 #import "CLEventController.h"
 #import "NPAppDelegate.h"
 #import "CLCommentViewController.h"
+#import "CLEventDetailViewController.h"
 
 @interface CLHomeTableViewController() {
     @private
@@ -252,6 +253,20 @@
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    CLEventDetailViewController *detailViewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"eventDetail"];
+    
+    // Get the event
+    CLEvent *currentEvent = [_events objectAtIndex:[indexPath row]];
+    
+    detailViewController.currentEvent = currentEvent;
+    
+    [[self navigationController] pushViewController:detailViewController animated:YES];
 }
 
 # pragma mark - Helper Methods

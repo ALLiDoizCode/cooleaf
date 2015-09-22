@@ -16,6 +16,7 @@
 #import "UIFont+ApplicationFont.h"
 #import "NPEventViewController.h"
 #import "MainViewController.h"
+#import "UIColor+CustomColors.h"
 
 #define kAppleLookupURLTemplate     @"http://itunes.apple.com/lookup?id=%@"
 #define kAppStoreURLTemplate        @"https://itunes.apple.com/app/id"
@@ -62,6 +63,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+   
     // Go ahead and startEventProcessing...
     [self startEventProcessing];
     

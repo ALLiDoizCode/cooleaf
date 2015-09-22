@@ -41,6 +41,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.tintColor = [UIColor offWhite];
+    
     [self setupSearch];
     [self setupTableView];
     [self setupUI];
