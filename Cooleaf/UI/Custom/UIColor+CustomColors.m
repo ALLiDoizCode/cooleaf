@@ -105,12 +105,24 @@
     return [self UIColorFromRGB:0xE0E1E4];
 }
 
+# pragma mark - eventColor
+
++ (UIColor *)eventColor {
+    return [self UIColorFromRGB:0x00BCD5];
+}
+
+# pragma mark - commentButtonColor
+
++ (UIColor *)commentButtonColor {
+    return [self UIColorFromRGB:0xE0E1E4];
+}
+
 # pragma UIColorFromRGB
 
 + (UIColor *)UIColorFromRGB:(int)rgbValue {
-    return [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
-                           green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
-                            blue:((float)(rgbValue & 0xFF))/255.0
+    return [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16)) /255.0 \
+                           green:((float)((rgbValue & 0xFF00) >> 8)) /255.0 \
+                            blue:((float)(rgbValue & 0xFF)) /255.0
                            alpha:1.0];
 }
 

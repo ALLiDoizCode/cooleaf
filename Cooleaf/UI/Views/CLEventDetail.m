@@ -171,7 +171,7 @@
     _commentBtn.frame = CGRectMake(150, 315, 75, 30);
     [_commentBtn setTitle:@"COMMENTS" forState:UIControlStateNormal];
     _commentBtn.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
-    _commentBtn.backgroundColor = [UIColor UIColorFromRGB:0xE0E1E4];
+    _commentBtn.backgroundColor = [UIColor commentButtonColor];
     _commentBtn.tintColor = [UIColor darkGrayColor];
     _commentBtn.layer.cornerRadius = 2;
     _commentBtn.layer.masksToBounds = YES;
@@ -182,7 +182,7 @@
     _joinBtn.frame = CGRectMake(230, 315, 75, 30);
     [_joinBtn setTitle:@"JOIN" forState:UIControlStateNormal];
     _joinBtn.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
-    _joinBtn.backgroundColor = [UIColor UIColorFromRGB:0x00BCD5];
+    _joinBtn.backgroundColor = [UIColor eventColor];
     _joinBtn.tintColor = offWhite;
     _joinBtn.layer.cornerRadius = 2;
     _joinBtn.layer.masksToBounds = YES;
@@ -206,8 +206,6 @@
     memberImage.layer.borderWidth = 3.0f;
     memberImage.layer.rasterizationScale = [UIScreen mainScreen].scale;
     memberImage.layer.shouldRasterize = YES;
-    
-    
     
     //Border
     UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 400, bgview.frame.size.width, 0.5)];
