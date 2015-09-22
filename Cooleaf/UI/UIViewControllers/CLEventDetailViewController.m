@@ -14,11 +14,11 @@
 #import "UIColor+BFPaperColors.h"
 #import <FXBlurView.h>
 
-@interface CLEventsDetailViewController ()
+@interface CLEventDetailViewController ()
 
 @end
 
-@implementation CLEventsDetailViewController
+@implementation CLEventDetailViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
