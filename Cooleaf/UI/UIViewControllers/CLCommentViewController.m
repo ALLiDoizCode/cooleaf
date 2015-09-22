@@ -184,10 +184,16 @@ static const float movementDuration = 0.3f; // tweak as needed
     NSDictionary *commentDict = (NSDictionary *) comment;
     NSDictionary *deletedCommentDict = [_comments objectAtIndex:[_savedIndexPath row]];
     
+    // Grab the ids
+    NSNumber *deletedCommentId = deletedCommentDict[@"id"];
+    NSNumber *commentId = commentDict[@"id"];
+    
     // If ids match, delete comment
-    if (deletedCommentDict[@"id"] == commentDict[@"id"]) {
+    if ([deletedCommentId intValue] == [commentId intValue]) {
         [self.tableView beginUpdates];
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:_savedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [_comments removeObjectAtIndex:[_savedIndexPath row]];
+        [self.tableView deleteRowsAtIndexPaths:@[_savedIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadData];
         [self.tableView endUpdates];
     }
 }
@@ -234,16 +240,23 @@ static const float movementDuration = 0.3f; // tweak as needed
     // Save the indexpath and scroll to that section
     _savedIndexPath = indexPath;
     
-    // Actionsheet for editing a comment
-    UIActionSheet *commentActionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                                    delegate:self
-                                                           cancelButtonTitle:@"Cancel"
-                                                      destructiveButtonTitle:@"Delete"
-                                                           otherButtonTitles:@"Edit", nil];
+    // Get the comment at that index
+    NSDictionary *commentDict = [_comments objectAtIndex:[indexPath row]];
+    NSNumber *commentUserId = commentDict[@"user_id"];
     
-    // Show the actionsheet
-    [commentActionSheet showInView:self.view];
+    // If user ids match go ahead and allow editing
+    if ([_userId intValue] == [commentUserId intValue]) {
+        // Actionsheet for editing a comment
+        UIActionSheet *commentActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                        delegate:self
+                                                               cancelButtonTitle:@"Cancel"
+                                                          destructiveButtonTitle:@"Delete"
+                                                               otherButtonTitles:@"Edit", nil];
     
+        // Show the actionsheet
+        [commentActionSheet showInView:self.view];
+    }
+        
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
