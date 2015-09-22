@@ -21,6 +21,7 @@
 #import "CLSearchViewController.h"
 #import "CLFeedPresenter.h"
 #import "CLFeed.h"
+#import "CLNavigation.h"
 
 @interface CLGroupDetailViewController()
 
@@ -40,6 +41,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.detailView.members addTarget:self action:@selector(gotoPeople) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationController.navigationBar.tintColor = [UIColor offWhite];
     
@@ -72,6 +75,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)gotoPeople{
+    
+    CLNavigation *navigateTo = [[CLNavigation alloc] init];
+    [navigateTo groupPeopleController:self.navigationController];
 }
 
 # pragma mark - grabColorFromImage
@@ -279,6 +288,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
 }
 
 # pragma mark - Members CollectionView Data Source
@@ -306,6 +317,11 @@
     [cell.memberImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self gotoPeople];
 }
 
 # pragma mark - searchViewController

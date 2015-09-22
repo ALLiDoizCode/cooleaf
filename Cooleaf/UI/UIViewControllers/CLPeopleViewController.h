@@ -13,5 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) NSString *currentView;
 
 @end

@@ -19,6 +19,7 @@
 #import "CLParticipantPresenter.h"
 #import "CLClient.h"
 #import "CLDateUtil.h"
+#import "CLNavigation.h"
 
 @interface CLEventDetailViewController()
 
@@ -37,6 +38,9 @@
     
     // Add join API call to join button
     [_detailView.joinBtn addTarget:self action:@selector(joinSelection) forControlEvents:UIControlEventTouchUpInside];
+    
+    // Add selector for participants button to go to people view controller
+    [_detailView.participantsButton addTarget:self action:@selector(goToPeopleController) forControlEvents:UIControlEventTouchUpInside];
     
     [self setupMainView];
     [self setupScrollView];
@@ -230,6 +234,13 @@
     [self setupMap:fullAddress];
 }
 
+# pragma mark - goToPeopleController
+
+-(void)goToPeopleController{
+    CLNavigation *navigateTo = [[CLNavigation alloc] init];
+    [navigateTo eventPeopleController:self.navigationController];
+}
+
 # pragma mark - Participants CollectionView Data Source
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -259,6 +270,11 @@
     [cell.memberImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // Go to people view controller if user touches member icon
+    [self goToPeopleController];
 }
 
 # pragma mark - Event Series Join Box

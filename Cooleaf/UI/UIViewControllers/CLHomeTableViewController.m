@@ -227,23 +227,34 @@
     cell.layer.shadowColor = [UIColor blackColor].CGColor;
     cell.layer.zPosition = 777;
     
-    // Get the event
-    CLEvent *event = [_events objectAtIndex:[indexPath row]];
+    ///CurrentView is being passed an NString "My Events" from CLNavigaton inside of the myEventController function. Here since curretView is a string we are checking it against myEventView which contains a string as well. From here if currentView is equal to myEventView then we know that this viewcontroller was navigated to from the MyEvents cell on the nav draw and can populate the ui elements with the MyEvents data thats being pulled from the api. Else we just populate the UI with just the event data.
+    NSString *myEventView = @"My Events";
     
-    // Get the image url
-    CLImage *eventImage = [event eventImage];
-    NSString *imageUrl = eventImage.url;
-    NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
-    fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"500x200"];
-    
-    // Set it into the imageview
-    [cell.eventImage sd_setImageWithURL:[NSURL URLWithString:fullPath]
-                       placeholderImage:[UIImage imageNamed:@"CoverPhotoPlaceholder"]];
-    
-    // Get the event description
-    NSString *eventDescription = [event eventDescription];
-    
-    cell.eventDescription.text = eventDescription;
+    if (self.currentView == myEventView) {
+        
+        NSLog(@"Hello I am from MyEvents");
+        
+    }else {
+        
+        NSLog(@"Welcome Home");
+        // Get the event
+        CLEvent *event = [_events objectAtIndex:[indexPath row]];
+        
+        // Get the image url
+        CLImage *eventImage = [event eventImage];
+        NSString *imageUrl = eventImage.url;
+        NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
+        fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"500x200"];
+        
+        // Set it into the imageview
+        [cell.eventImage sd_setImageWithURL:[NSURL URLWithString:fullPath]
+                           placeholderImage:[UIImage imageNamed:@"CoverPhotoPlaceholder"]];
+        
+        // Get the event description
+        NSString *eventDescription = [event eventDescription];
+        
+        cell.eventDescription.text = eventDescription;
+    }
     
     return cell;
 }

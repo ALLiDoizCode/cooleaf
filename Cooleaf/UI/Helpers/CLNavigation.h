@@ -14,5 +14,8 @@
 - (void)homeController;
 - (void)groupController;
 - (void)peopleController;
+- (void)myEventController;
+- (void)groupPeopleController:(UINavigationController *)nav;
+- (void)eventPeopleController:(UINavigationController *)nav;
 
 @end
