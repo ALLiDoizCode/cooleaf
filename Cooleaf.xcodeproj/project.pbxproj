@@ -32,6 +32,7 @@
 		4B3B36821BB1FC6200C7AEE5 /* CLParticipantSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B36811BB1FC6200C7AEE5 /* CLParticipantSubscriber.m */; settings = {ASSET_TAGS = (); }; };
 		4B3B36851BB1FCAA00C7AEE5 /* CLParticipantController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B36841BB1FCAA00C7AEE5 /* CLParticipantController.m */; settings = {ASSET_TAGS = (); }; };
 		4B3B36881BB20C7300C7AEE5 /* CLCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B36871BB20C7300C7AEE5 /* CLCategory.m */; settings = {ASSET_TAGS = (); }; };
+		4B3B368C1BB21E5700C7AEE5 /* CLDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B368B1BB21E5700C7AEE5 /* CLDateUtil.m */; settings = {ASSET_TAGS = (); }; };
 		4B3F2E681BA77AE900D4934E /* CLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3F2E671BA77AE900D4934E /* CLQuery.m */; };
 		4B3F2E6C1BA7878B00D4934E /* CLSearchSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3F2E6B1BA7878B00D4934E /* CLSearchSubscriber.m */; };
 		4B3F2E6F1BA7884600D4934E /* CLSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3F2E6E1BA7884600D4934E /* CLSearchController.m */; };
@@ -294,6 +295,8 @@
 		4B3B36841BB1FCAA00C7AEE5 /* CLParticipantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLParticipantController.m; path = Cooleaf/MVP/controllers/CLParticipantController.m; sourceTree = SOURCE_ROOT; };
 		4B3B36861BB20C7300C7AEE5 /* CLCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCategory.h; sourceTree = "<group>"; };
 		4B3B36871BB20C7300C7AEE5 /* CLCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCategory.m; sourceTree = "<group>"; };
+		4B3B368A1BB21E5700C7AEE5 /* CLDateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDateUtil.h; sourceTree = "<group>"; };
+		4B3B368B1BB21E5700C7AEE5 /* CLDateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDateUtil.m; sourceTree = "<group>"; };
 		4B3F2E661BA77AE900D4934E /* CLQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLQuery.h; sourceTree = "<group>"; };
 		4B3F2E671BA77AE900D4934E /* CLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLQuery.m; sourceTree = "<group>"; };
 		4B3F2E691BA7876500D4934E /* ISearchInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISearchInteractor.h; sourceTree = "<group>"; };
@@ -734,6 +737,15 @@
 				437F3D851ABFEAD9007DE49B /* NPGroupEventsCell.xib */,
 			);
 			name = InterestPage;
+			sourceTree = "<group>";
+		};
+		4B3B36891BB21E2C00C7AEE5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4B3B368A1BB21E5700C7AEE5 /* CLDateUtil.h */,
+				4B3B368B1BB21E5700C7AEE5 /* CLDateUtil.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		4B6088431B929E4E0029E659 /* UI */ = {
@@ -1387,6 +1399,7 @@
 		D980954D185CA557008F2B61 /* Cooleaf */ = {
 			isa = PBXGroup;
 			children = (
+				4B3B36891BB21E2C00C7AEE5 /* Utils */,
 				4B6088431B929E4E0029E659 /* UI */,
 				4BAE005A1B8EDEBB00779E1F /* Base */,
 				4BAE00521B8EDE1800779E1F /* Bus */,
@@ -1804,6 +1817,7 @@
 				D93AAC97187B70F800E9B96A /* NPAttendeeCell.m in Sources */,
 				4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */,
 				4BE1DF6D1BABEEBB009519CB /* CLLoadedInterestFeeds.m in Sources */,
+				4B3B368C1BB21E5700C7AEE5 /* CLDateUtil.m in Sources */,
 				4BA4E3111B8BC9240089CB2B /* CLUser.m in Sources */,
 				4BAE00711B8EE06900779E1F /* CLUserSubscriber.m in Sources */,
 				4BBF2C331BA10A8F00ECC37F /* CLTagCollectionViewCell.m in Sources */,

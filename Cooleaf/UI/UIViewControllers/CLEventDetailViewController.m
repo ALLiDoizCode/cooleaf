@@ -18,6 +18,7 @@
 #import "UIColor+CustomColors.h"
 #import "CLParticipantPresenter.h"
 #import "CLClient.h"
+#import "CLDateUtil.h"
 
 @interface CLEventDetailViewController()
 
@@ -206,6 +207,9 @@
                                         stringWithFormat:@"%d Participants >", participantsCount]
                                         forState:UIControlStateNormal];
     }
+    
+    // Set the date
+    _detailView.labelDate.text = [CLDateUtil getReadableDateFromUnixString:[_event startTime]];
 }
 
 # pragma mark - setupMap

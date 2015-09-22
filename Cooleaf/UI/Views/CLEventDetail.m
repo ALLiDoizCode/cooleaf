@@ -132,7 +132,7 @@
     _detailDescription.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     _detailDescription.lineBreakMode = UILineBreakModeWordWrap;
     
-    //Post Label
+    //Date Label
     _titleDate = [[UILabel alloc] initWithFrame:CGRectMake(15, 510, 300, 0)];
     _titleDate.numberOfLines = 0;
     _titleDate.textAlignment = NSTextAlignmentLeft;
@@ -143,7 +143,7 @@
     [_titleDate sizeToFit];
     _titleDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
-    //Post Label
+    //Date text Label
     _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(15, 540, 300, 0)];
     _labelDate.numberOfLines = 0;
     _labelDate.textAlignment = NSTextAlignmentLeft;
