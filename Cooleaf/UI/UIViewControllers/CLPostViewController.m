@@ -72,6 +72,9 @@
     postTextView.backgroundColor = [UIColor clearColor];
     postTextView.delegate = self;
     [postView addSubview:postTextView];
+    
+    postTextView.text = @"Write a Post";
+    postTextView.textColor = [UIColor lightGrayColor];
 }
 
 -(void)buildLabel {
@@ -228,6 +231,18 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
     [self animateTextView: YES];
+    
+    if ([textView.text isEqualToString:@"Write a Post"])
+        
+    {
+        
+        textView.text = @"";
+        
+        textView.textColor = [UIColor offBlack];
+        
+    }
+    
+    [textView becomeFirstResponder];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
@@ -267,6 +282,10 @@
     // For any other character return TRUE so that the text gets added to the view
     return YES;
 }
+
+
+
+
 
 /*
 #pragma mark - Navigation
