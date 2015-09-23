@@ -172,6 +172,7 @@
     NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"original"]];
 
     self.tableView.tableHeaderView = ({
+        
         // Initialize Header Views
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
         // Header ImageView
