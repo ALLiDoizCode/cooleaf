@@ -177,13 +177,14 @@
         // Header ImageView
         userImageView = [self setupHeaderImage];
         [userImageView sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
-        //Border
-        UIView *border = [self setupHeaderBorder];
-        //Name
+        
+        // Name
         userNameLabel = [self setupHeaderLabelName:userName];
-        //Orginization
+        
+        // Organization
         userCredentialsLabel = [self setupHeaderOrganizationLabel:userCredentials];
-        //Rewards
+        
+        // Rewards
         userRewardsLabel = [self setupHeaderRewardsLabel:rewardPoints];
         
         // Add views
@@ -191,9 +192,7 @@
         [view addSubview:userNameLabel];
         [view addSubview:userCredentialsLabel];
         [view addSubview:userRewardsLabel];
-        [view addSubview:border];
         view;
-
     });
 }
 
@@ -212,12 +211,6 @@
     userImageView.clipsToBounds = YES;
     
     return userImageView;
-}
-
-- (UIView *)setupHeaderBorder {
-    UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 180, 400, 0.5)];
-    border.backgroundColor = textColor;
-    return border;
 }
 
 - (UILabel *)setupHeaderLabelName:(NSString *)userName {
