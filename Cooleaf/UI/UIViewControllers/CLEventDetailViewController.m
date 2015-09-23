@@ -63,6 +63,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    // Remove title when coming back from participants
+    self.navigationController.navigationBar.topItem.title = @"";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -179,7 +181,7 @@
     fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"1600x400"];
     
     // Set the image
-    _detailView.mainImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:fullPath]]];
+    _detailView.mainImageView.image = _eventImageView.image;
 }
 
 # pragma mark - setupEventLabels
@@ -238,7 +240,7 @@
 
 -(void)goToPeopleController{
     CLNavigation *navigateTo = [[CLNavigation alloc] init];
-    [navigateTo eventPeopleController:self.navigationController];
+    [navigateTo eventPeopleController:self.navigationController event:_event];
 }
 
 # pragma mark - Participants CollectionView Data Source

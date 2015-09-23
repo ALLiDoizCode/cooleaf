@@ -14,7 +14,6 @@ static NSString *const kParticipantsPath = @"v2/participations/";
 @implementation CLParticipantController
 
 - (void)getEventParticipants:(NSInteger)eventId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
-    NSLog(@"Controller");
     NSString *path = [NSString stringWithFormat:@"%@%d%@", kParticipantsPath, (int) eventId, @".json"];
     [[CLClient getInstance] GET:path parameters:params completion:^(id response, NSError *error) {
        if (!error)

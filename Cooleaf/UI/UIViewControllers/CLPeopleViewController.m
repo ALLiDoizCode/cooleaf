@@ -13,11 +13,17 @@
 #import "CLUserPresenter.h"
 #import "CLUser.h"
 #import "CLClient.h"
+#import "CLInterestPresenter.h"
+#import "CLParticipantPresenter.h"
 
 @interface CLPeopleViewController() {
     @private
     CLUserPresenter *_userPresenter;
+    CLParticipantPresenter *_participantPresenter;
+    CLInterestPresenter *_interestPresenter;
     NSMutableArray *_organizationUsers;
+    NSMutableArray *_members;
+    NSMutableArray *_participants;
     UIColor *_barColor;
 }
 
@@ -36,7 +42,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self setupUserPresenter];
+    if (_currentView == nil) {
+        [self setupUserPresenter];
+    } else {
+        if ([_currentView isEqualToString:@"Events"])
+            [self setupParticipantPresenter];
+            
+        if ([_currentView isEqualToString:@"Groups"])
+            [self setupInterestPresenter];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -61,7 +75,15 @@
 # pragma mark - setupNavBar
 
 - (void)setupNavBar {
-    self.navigationController.navigationBar.topItem.title = @"People";
+    
+    // Adjust nav bar title based on current view identifier
+    if (_currentView == nil)
+        self.navigationController.navigationBar.topItem.title = @"People";
+    else if ([_currentView isEqualToString:@"Events"])
+        self.navigationController.navigationBar.topItem.title = @"Participants";
+    else
+        self.navigationController.navigationBar.topItem.title = @"Members";
+    
     self.navigationController.navigationBar.alpha = 1;
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
     _barColor = [UIColor colorPrimary];
@@ -77,6 +99,24 @@
     [self showActivityIndicator];
 }
 
+# pragma mark - setupParticipantPresenter
+
+- (void)setupParticipantPresenter {
+    _participantPresenter = [[CLParticipantPresenter alloc] initWithInteractor:self];
+    [_participantPresenter registerOnBus];
+    [_participantPresenter loadEventParticipants:[[_event eventId] integerValue]];
+    [self showActivityIndicator];
+}
+
+# pragma mark - setupInterestPresenter
+
+- (void)setupInterestPresenter {
+    _interestPresenter = [[CLInterestPresenter alloc] initWithDetailInteractor:self];
+    [_interestPresenter registerOnBus];
+    [_interestPresenter loadInterestMembers:[[_interest interestId] integerValue]];
+    [self showActivityIndicator];
+}
+
 # pragma mark - IUserInteractor Methods
 
 - (void)initOrganizationUsers:(NSMutableArray *)organizationUsers {
@@ -85,27 +125,72 @@
     [_tableView reloadData];
 }
 
+# pragma mark - IParticipantInteractor Methods
+
+- (void)initParticipants:(NSMutableArray *)participants {
+    [self hideActivityIndicator];
+    _participants = participants;
+    [_tableView reloadData];
+}
+
+# pragma mark - IInterestDetailInteractor Methods
+
+- (void)initMembers:(NSMutableArray *)members {
+    [self hideActivityIndicator];
+    _members = members;
+    [_tableView reloadData];
+}
+
 # pragma mark - TableView Data Source Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_organizationUsers count];
+    // Check to see where people view controller was instantiated from get correct count
+    if (_currentView == nil)
+        return [_organizationUsers count];
+    else if ([_currentView isEqualToString:@"Events"])
+        return [_participants count];
+    else
+        return [_members count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     CLPeopleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"peopleCell"];
     
-    NSString *groups = @"Groups";
-    NSString *events = @"Events";
-    
-    if (self.currentView == groups) {
+    if ([_currentView isEqualToString:@"Groups"]) {
         
-        NSLog(@"Group Members");
+        // Get the participant dictionary
+        NSDictionary *participantDict = [_members objectAtIndex:[indexPath row]];
         
-    }else if (self.currentView == events){
+        // Set the name
+        cell.peopleLabel.text = participantDict[@"name"];
         
-        NSLog(@"Event Particpants");
+        // Set the position label
+        cell.positionLabel.text = @"";
         
-    }else{
+        // Set the image
+        NSString *path = participantDict[@"profile"][@"picture"][@"versions"][@"icon"];
+        NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], path];
+        [cell.peopleImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+        
+    } else if ([_currentView isEqualToString:@"Events"]) {
+        
+        // Get the participant dictionary
+        NSDictionary *participantDict = [_participants objectAtIndex:[indexPath row]];
+        
+        // Set the name
+        cell.peopleLabel.text = participantDict[@"name"];
+        
+        // Get a tag at index 0 of structure_tags array and set it
+        NSString *tagName = [participantDict[@"role"][@"structure_tags"] objectAtIndex:0][@"name"];
+        cell.positionLabel.text = tagName;
+        
+        // Set the image
+        NSString *path = participantDict[@"profile"][@"picture"][@"versions"][@"icon"];
+        NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], path];
+        [cell.peopleImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+        
+    } else {
         
         // Get the user object
         CLUser *user = [_organizationUsers objectAtIndex:[indexPath row]];
@@ -117,7 +202,8 @@
         cell.positionLabel.text = userDict[@"role"][@"department"][@"name"];
         
         // Load user image into avatar imageview
-        NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"versions"][@"profile_ios"]];
+        NSString *path = userDict[@"profile"][@"picture"][@"versions"][@"icon"];
+        NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], path];
         [cell.peopleImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     }
     

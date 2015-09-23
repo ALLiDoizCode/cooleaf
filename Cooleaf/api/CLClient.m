@@ -56,6 +56,8 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
     return @{
              @"v2/authorize.json": [CLUser class],
              @"v2/events/*": [CLEvent class],
+             @"v2/events/ongoing.json": [CLEvent class],
+             @"v2/events/user/*": [CLEvent class],
              @"v2/users/*": [CLUser class],
              @"v2/users.json": [CLUser class],
              @"v2/interests.json": [CLInterest class],

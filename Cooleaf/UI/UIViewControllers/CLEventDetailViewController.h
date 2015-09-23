@@ -17,7 +17,8 @@
 @interface CLEventDetailViewController : UIViewController <IEventInteractor, IParticipantInteractor, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, CLLocationManagerDelegate, BFPaperCheckboxDelegate>
 
 @property (strong, nonatomic) IBOutlet CLEventDetail *detailView;
-@property (nonatomic) CLEvent *event;
+@property (nonatomic, assign) CLEvent *event;
+@property (nonatomic, assign) UIImageView *eventImageView;
 @property (nonatomic) UIButton *joinEvents;
 @property (nonatomic) UIView *selectionView;
 @property (nonatomic) UIView *bgBlur;

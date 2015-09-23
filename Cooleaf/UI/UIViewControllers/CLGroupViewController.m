@@ -117,16 +117,6 @@
     }
 }
 
-/*#pragma mark - Search
-
-- (void)SearchViewController {
-    
-    CLSearchViewController *search = [self.storyboard instantiateViewControllerWithIdentifier:@"search"];
-    
-    //searchomtroller
-    [[self navigationController] pushViewController:search animated:YES];
-}*/
-
 # pragma mark - TableView Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -144,13 +134,15 @@
     CLImage *image = [interest image];
     
     // Get image path
-    NSString *url = [image url];
-    NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", url];
-    fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"1600x400"];
+    if ([image url]) {
+        NSString *url = [image url];
+        NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", url];
+        fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"1600x400"];
     
-    // Set image
-    [cell.groupImageView sd_setImageWithURL:[NSURL URLWithString:fullPath]
-                           placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        // Set image
+        [cell.groupImageView sd_setImageWithURL:[NSURL URLWithString:fullPath]
+                               placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    }
     
     // Set name
     cell.labelName.text = name;

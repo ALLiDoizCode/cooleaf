@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "CLEvent.h"
+#import "CLInterest.h"
 
 /**
  *  Helper class for side menu navigation and other navigation points
@@ -18,7 +20,7 @@
 - (void)groupController;
 - (void)peopleController;
 - (void)myEventController;
-- (void)groupPeopleController:(UINavigationController *)nav;
-- (void)eventPeopleController:(UINavigationController *)nav;
+- (void)interestPeopleController:(UINavigationController *)nav interest:(CLInterest *)interest;
+- (void)eventPeopleController:(UINavigationController *)nav event:(CLEvent *)event;
 
 @end
