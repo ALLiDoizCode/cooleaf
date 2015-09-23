@@ -109,6 +109,14 @@
 
 -(void)setupDisplay {
     
+    if ([_currentView isEqualToString:@"My Events"])
+        self.navigationController.navigationBar.topItem.title = @"My Events";
+    else
+        self.navigationController.navigationBar.topItem.title = @"Home";
+    
+    self.navigationController.navigationBar.alpha = 1;
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    
     MMDrawerBarButtonItem *drawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(openDrawer)];
     [drawerButton setTintColor:[UIColor whiteColor]];
     
