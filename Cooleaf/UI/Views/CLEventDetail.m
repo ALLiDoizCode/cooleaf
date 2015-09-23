@@ -34,7 +34,7 @@
 
 - (void)awakeFromNib {
     
-    UIColor *offWhite = [UIColor UIColorFromRGB:0xFDFDFD];
+    UIColor *offWhite = [UIColor offWhite];
     
     //Background View
     UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 300)];
@@ -72,10 +72,9 @@
     _labelEvent.text = @"Description";
     _labelEvent.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
     _labelEvent.backgroundColor = [UIColor clearColor];
-    _labelEvent.textColor = [UIColor lightGrayColor];
+    _labelEvent.textColor = [UIColor darkGrayColor];
     [_labelEvent sizeToFit];
     _labelEvent.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    
     
     //Title
     _labelName = [[UILabel alloc] initWithFrame:CGRectMake(10, 210, 300, 0)];
@@ -103,18 +102,17 @@
     _labelCommentNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 270, 300, 0)];
     _labelCommentNum.textAlignment = NSTextAlignmentLeft;
     _labelCommentNum.numberOfLines = 0;
-    _labelCommentNum.text = @"2 Comments";
     _labelCommentNum.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     _labelCommentNum.backgroundColor = [UIColor clearColor];
     _labelCommentNum.textColor = [UIColor lightGrayColor];
     [_labelCommentNum sizeToFit];
     _labelCommentNum.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
-    //Comments Count
-    _labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(205, 270, 300, 0)];
+    //Rewards Count
+    _labelRewards = [[UILabel alloc] initWithFrame:CGRectMake(240, 270, 300, 0)];
     _labelRewards.textAlignment = NSTextAlignmentLeft;
     _labelRewards.numberOfLines = 0;
-    _labelRewards.text = @"50 Reward Points";
+    _labelRewards.text = @"0 Rewards";
     _labelRewards.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     _labelRewards.backgroundColor = [UIColor clearColor];
     _labelRewards.textColor = [UIColor lightGrayColor];
@@ -126,43 +124,43 @@
     _detailDescription.numberOfLines = 2;
     _detailDescription.textAlignment = NSTextAlignmentLeft;
     _detailDescription.text = @"Position";
-    _detailDescription.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    _detailDescription.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
     _detailDescription.backgroundColor = [UIColor clearColor];
     _detailDescription.textColor = [UIColor darkGrayColor];
     [_detailDescription sizeToFit];
     _detailDescription.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     _detailDescription.lineBreakMode = UILineBreakModeWordWrap;
     
-    //Post Label
-    _titleDate = [[UILabel alloc] initWithFrame:CGRectMake(15, 510, 300, 0)];
+    //Date Label
+    _titleDate = [[UILabel alloc] initWithFrame:CGRectMake(10, 510, 300, 0)];
     _titleDate.numberOfLines = 0;
     _titleDate.textAlignment = NSTextAlignmentLeft;
     _titleDate.text = @"Date";
-    _titleDate.font = [UIFont fontWithName:@"HelveticaNeue" size:11];
+    _titleDate.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
     _titleDate.backgroundColor = [UIColor clearColor];
     _titleDate.textColor = [UIColor darkGrayColor];
     [_titleDate sizeToFit];
     _titleDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
-    //Post Label
-    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(15, 540, 300, 0)];
+    //Date text Label
+    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(10, 540, 300, 0)];
     _labelDate.numberOfLines = 0;
     _labelDate.textAlignment = NSTextAlignmentLeft;
-    _labelDate.text = @"8/19/15 - 8/19/15";
-    _labelDate.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    _labelDate.text = @"8/19/15";
+    _labelDate.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
     _labelDate.backgroundColor = [UIColor clearColor];
-    _labelDate.textColor = [UIColor lightGrayColor];
+    _labelDate.textColor = [UIColor darkGrayColor];
     [_labelDate sizeToFit];
     _labelDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Location Label
-    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(15,560, 25,45)];
+    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(10,560, 25,45)];
     _labelLocation.numberOfLines = 0;
     _labelLocation.textAlignment = NSTextAlignmentLeft;
     _labelLocation.text = @"Location";
-    _labelLocation.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    _labelLocation.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
     _labelLocation.backgroundColor = [UIColor clearColor];
-    _labelLocation.textColor = [UIColor lightGrayColor];
+    _labelLocation.textColor = [UIColor darkGrayColor];
     [_labelLocation sizeToFit];
     _labelLocation.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
@@ -171,7 +169,7 @@
     _commentBtn.frame = CGRectMake(150, 315, 75, 30);
     [_commentBtn setTitle:@"COMMENTS" forState:UIControlStateNormal];
     _commentBtn.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
-    _commentBtn.backgroundColor = [UIColor UIColorFromRGB:0xE0E1E4];
+    _commentBtn.backgroundColor = [UIColor commentButtonColor];
     _commentBtn.tintColor = [UIColor darkGrayColor];
     _commentBtn.layer.cornerRadius = 2;
     _commentBtn.layer.masksToBounds = YES;
@@ -182,21 +180,20 @@
     _joinBtn.frame = CGRectMake(230, 315, 75, 30);
     [_joinBtn setTitle:@"JOIN" forState:UIControlStateNormal];
     _joinBtn.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
-    _joinBtn.backgroundColor = [UIColor UIColorFromRGB:0x00BCD5];
+    _joinBtn.backgroundColor = [UIColor eventColor];
     _joinBtn.tintColor = offWhite;
     _joinBtn.layer.cornerRadius = 2;
     _joinBtn.layer.masksToBounds = YES;
     //[joinBtn addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
     //Members
-    _members = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    _members.frame  = CGRectMake(230, 380, 70, 10);
-    [_members setTitle:@"5 Participants>" forState:UIControlStateNormal];
-    _members.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
-    [_members setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    _participantsButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    _participantsButton.frame  = CGRectMake(230, 380, 80, 10);
+    _participantsButton.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    [_participantsButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     //[members addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
     
-    /// member Icon
+    //Member icon
     UIImageView *memberImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 355, 40, 40)];
     memberImage.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     memberImage.image = [UIImage imageNamed:@"TestImage"];
@@ -207,8 +204,6 @@
     memberImage.layer.rasterizationScale = [UIScreen mainScreen].scale;
     memberImage.layer.shouldRasterize = YES;
     
-    
-    
     //Border
     UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 400, bgview.frame.size.width, 0.5)];
     border.backgroundColor = [UIColor lightGrayColor];
@@ -217,27 +212,26 @@
     UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 500, bgview.frame.size.width, 0.5)];
     border2.backgroundColor = [UIColor lightGrayColor];
     
+    [textScroll addSubview:_detailDescription];
     [self addSubview:bgview];
     [self addSubview:textScroll];
     [self addSubview:blur];
     [self addSubview:_labelName];
     [self addSubview:_labelSub];
     [self addSubview:_labelPostName];
-    [textScroll addSubview:_detailDescription];
     [self addSubview:_titleDate];
     [self addSubview:_labelDate];
     [self addSubview:_labelRewards];
     [self addSubview:_labelCommentNum];
     [self addSubview:_labelEvent];
     [self addSubview:_labelEventSub];
-    [self addSubview:_members];
+    [self addSubview:_participantsButton];
     [self addSubview:_commentBtn];
     [self addSubview:_joinBtn];
     [self addSubview:_labelLocation];
     [self addSubview:border];
     [self addSubview:border2];
     [bgview addSubview:_mainImageView];
-    
 }
 
 -(void)labelWidth:(UILabel *)theLabel {

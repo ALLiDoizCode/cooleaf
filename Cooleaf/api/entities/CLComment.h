@@ -8,8 +8,9 @@
 
 #import "MTLModel.h"
 #import "CLPicture.h"
+#import "MTLJSONAdapter.h"
 
-@interface CLComment : MTLModel
+@interface CLComment : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSNumber *commentId;
 @property (nonatomic, copy, readonly) NSNumber *userId;

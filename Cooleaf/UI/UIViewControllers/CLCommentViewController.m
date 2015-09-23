@@ -224,7 +224,7 @@ static const float movementDuration = 0.3f; // tweak as needed
     [cell.cellImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     
     
-    ////// Use this to check if a comment contains a image replace fullImagepath with the object thats holds the iamge for teh comment
+    /// Use this to check if a comment contains a image replace fullImagepath with the object thats holds the iamge for teh comment
     if (fullImagePath != nil) {
         
        // _tableView.rowHeight = _tableView.rowHeight + 10;

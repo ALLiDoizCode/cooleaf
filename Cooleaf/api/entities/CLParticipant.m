@@ -7,6 +7,8 @@
 //
 
 #import "CLParticipant.h"
+#import "CLRole.h"
+#import "CLCategory.h"
 
 @implementation CLParticipant
 
@@ -14,14 +16,29 @@
     return @{
              @"participantId": @"id",
              @"name": @"name",
+             @"email": @"email",
+             @"role": @"role",
              @"profile": @"profile",
-             @"pictureUrl": @"picture_url",
-             @"primaryTagNames": @"primary_tag_names"
+             @"categories": @"categories",
+             @"selected": @"selected",
+             @"eventId": @"event_id",
+             @"checkedOutEvents": [NSNull null] // Ignore this property
              };
 }
 
+# pragma mark - profileJSONTransformer
 
-# pragma profileJSONTransformer
+- (NSValueTransformer *)roleJSONTransformer {
+    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSDictionary *roleDict) {
+        return [MTLJSONAdapter  modelOfClass:CLRole.class
+                          fromJSONDictionary:roleDict
+                                       error:nil];
+    } reverseBlock:^(CLRole *role) {
+        return [MTLJSONAdapter JSONDictionaryFromModel:role];
+    }];
+}
+
+# pragma mark - profileJSONTransformer
 
 - (NSValueTransformer *)profileJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSDictionary *profileDict) {
@@ -33,21 +50,18 @@
     }];
 }
 
+# pragma mark - categoriesJSONTransformer
 
-# pragma urlSchemeJSONTransformer
+- (NSValueTransformer *)categoriesJSONTransformer {
+    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:CLCategory.class];
+}
+
+# pragma mark - urlSchemeJSONTransformer
 
 + (NSValueTransformer *)urlSchemeJSONTransformer {
     // use Mantle's built-in "value transformer" to convert strings to NSURL and vice-versa
     // you can write your own transformers
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
-
-
-# pragma primaryTagNameJSONTransformer
-
-- (NSValueTransformer *)primaryTagNameJSONTransformer {
-    return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:NSString.class];
-}
-
 
 @end

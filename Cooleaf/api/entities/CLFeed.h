@@ -8,8 +8,9 @@
 
 #import "MTLModel.h"
 #import "CLPicture.h"
+#import "MTLJSONAdapter.h"
 
-@interface CLFeed : MTLModel
+@interface CLFeed : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSNumber *feedId;
 @property (nonatomic, copy, readonly) NSNumber *userId;
