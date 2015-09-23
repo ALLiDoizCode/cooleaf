@@ -54,10 +54,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    // Remove title when coming back from members
-    self.navigationController.navigationBar.topItem.title = @"";
-    
     [self setupInterestPresenter];
     [self setupFeedPresenter];
     [self grabColorFromImage];
@@ -65,6 +61,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    // Remove title when coming back from members
+    self.navigationController.navigationBar.topItem.title = @"";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
