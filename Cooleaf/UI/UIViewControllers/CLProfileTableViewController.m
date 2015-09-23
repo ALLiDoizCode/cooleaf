@@ -46,11 +46,6 @@ static NSString *const kScope = @"past";
     // Change tint of navbar
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    // Set title to navbar
-    self.navigationController.navigationBar.topItem.title = @"Profile";
-    self.navigationController.navigationBar.alpha = 1;
-    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
-    
     // Set tableview ui
     self.tableView.backgroundColor = [UIColor offWhite];
     self.tableView.rowHeight = [self height];
