@@ -44,7 +44,7 @@
     [self setupFlowLayout];
     [self setupEventImage];
     [self setupEventLabels];
-    [self setupMap];
+    [self setupEventMap];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -209,15 +209,25 @@
     }
     
     // Set the date
-    _detailView.labelDate.text = [CLDateUtil getReadableDateFromUnixString:[_event startTime]];
+    NSString *readableDate = [CLDateUtil getReadableDateFromUnixString:[_event startTime]];
+    _detailView.labelDate.text = readableDate;
 }
 
-# pragma mark - setupMap
+# pragma mark - setupEventMap
 
-- (void)setupMap {
-    // Get the locaiton and setup the map
-    NSString *eventlocation = nil;
-    [self setupMap:eventlocation];
+- (void)setupEventMap {
+    // Get the locaiton
+    NSDictionary *addressDict = (NSDictionary *) [_event address];
+    
+    // Build address
+    NSString *address1 = addressDict[@"address1"];
+    NSString *city = addressDict[@"city"];
+    NSString *state = addressDict[@"state"];
+    NSString *zip = addressDict[@"zip"];
+    NSString *fullAddress = [NSString stringWithFormat:@"%@, %@ %@, %@", address1, city, state, zip];
+    
+    // Set into map
+    [self setupMap:fullAddress];
 }
 
 # pragma mark - Participants CollectionView Data Source
@@ -390,7 +400,7 @@
     
     if (location != nil) {
         
-        map = [[MKMapView alloc] initWithFrame:CGRectMake(15, 590, self.view.frame.size.width- 28, 255)];
+        map = [[MKMapView alloc] initWithFrame:CGRectMake(15, 590, self.view.frame.size.width - 28, 255)];
         map.layer.cornerRadius = 2;
         map.layer.masksToBounds = YES;
         

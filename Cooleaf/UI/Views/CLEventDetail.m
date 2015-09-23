@@ -72,10 +72,9 @@
     _labelEvent.text = @"Description";
     _labelEvent.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
     _labelEvent.backgroundColor = [UIColor clearColor];
-    _labelEvent.textColor = [UIColor lightGrayColor];
+    _labelEvent.textColor = [UIColor darkGrayColor];
     [_labelEvent sizeToFit];
     _labelEvent.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-    
     
     //Title
     _labelName = [[UILabel alloc] initWithFrame:CGRectMake(10, 210, 300, 0)];
@@ -125,7 +124,7 @@
     _detailDescription.numberOfLines = 2;
     _detailDescription.textAlignment = NSTextAlignmentLeft;
     _detailDescription.text = @"Position";
-    _detailDescription.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    _detailDescription.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
     _detailDescription.backgroundColor = [UIColor clearColor];
     _detailDescription.textColor = [UIColor darkGrayColor];
     [_detailDescription sizeToFit];
@@ -133,35 +132,35 @@
     _detailDescription.lineBreakMode = UILineBreakModeWordWrap;
     
     //Date Label
-    _titleDate = [[UILabel alloc] initWithFrame:CGRectMake(15, 510, 300, 0)];
+    _titleDate = [[UILabel alloc] initWithFrame:CGRectMake(10, 510, 300, 0)];
     _titleDate.numberOfLines = 0;
     _titleDate.textAlignment = NSTextAlignmentLeft;
     _titleDate.text = @"Date";
-    _titleDate.font = [UIFont fontWithName:@"HelveticaNeue" size:11];
+    _titleDate.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
     _titleDate.backgroundColor = [UIColor clearColor];
     _titleDate.textColor = [UIColor darkGrayColor];
     [_titleDate sizeToFit];
     _titleDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Date text Label
-    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(15, 540, 300, 0)];
+    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(10, 540, 300, 0)];
     _labelDate.numberOfLines = 0;
     _labelDate.textAlignment = NSTextAlignmentLeft;
-    _labelDate.text = @"8/19/15 - 8/19/15";
-    _labelDate.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    _labelDate.text = @"8/19/15";
+    _labelDate.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
     _labelDate.backgroundColor = [UIColor clearColor];
-    _labelDate.textColor = [UIColor lightGrayColor];
+    _labelDate.textColor = [UIColor darkGrayColor];
     [_labelDate sizeToFit];
     _labelDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Location Label
-    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(15,560, 25,45)];
+    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(10,560, 25,45)];
     _labelLocation.numberOfLines = 0;
     _labelLocation.textAlignment = NSTextAlignmentLeft;
     _labelLocation.text = @"Location";
-    _labelLocation.font = [UIFont fontWithName:@"HelveticaNeue" size:10];
+    _labelLocation.font = [UIFont fontWithName:@"HelveticaNeue" size:15];
     _labelLocation.backgroundColor = [UIColor clearColor];
-    _labelLocation.textColor = [UIColor lightGrayColor];
+    _labelLocation.textColor = [UIColor darkGrayColor];
     [_labelLocation sizeToFit];
     _labelLocation.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
