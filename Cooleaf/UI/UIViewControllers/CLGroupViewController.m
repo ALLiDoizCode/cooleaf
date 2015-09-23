@@ -13,6 +13,9 @@
 #import "CLInterestPresenter.h"
 #import "CLInterest.h"
 #import "CLSearchViewController.h"
+#import "MMDrawerBarButtonItem.h"
+#import "MMDrawerController.h"
+#import "NPAppDelegate.h"
 
 @interface CLGroupViewController () {
     @private
@@ -63,12 +66,17 @@
 #pragma mark - searchDisplay
 
 -(void)setupSearch {
+    
+    MMDrawerBarButtonItem *drawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(openDrawer)];
+    [drawerButton setTintColor:[UIColor whiteColor]];
+    
+    // Create right navbar buttons
     UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchViewController)];
     UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
-
     NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
     
     [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
+    [[self navigationItem] setLeftBarButtonItem:drawerButton];
     
     searchBtn.tintColor = [UIColor whiteColor];
     commentBtn.tintColor = [UIColor whiteColor];
@@ -213,6 +221,13 @@
     fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"164x164"];
     NSLog(@"%@", fullPath);
     return [NSURL URLWithString:fullPath];
+}
+
+# pragma mark - openDrawer
+
+- (void)openDrawer {
+    NPAppDelegate *appDelegate = (NPAppDelegate *) [UIApplication sharedApplication].delegate;
+    [appDelegate openDrawer];
 }
 
 # pragma mark - searchViewController

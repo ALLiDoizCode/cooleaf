@@ -19,6 +19,7 @@
 @property (weak, nonatomic) MMDrawerController *drawerController;
 @property (nonatomic, assign) CLUser *user;
 
+- (void)openDrawer;
 - (void)setUserInDrawer:(CLUser *)user;
 
 @end

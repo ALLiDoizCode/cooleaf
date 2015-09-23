@@ -70,6 +70,8 @@
     return [self UIColorFromRGB:0x47546E];
 }
 
+# pragma mark - menuTextColor
+
 + (UIColor *)menuTextColor {
     return [self UIColorFromRGB:0xFDFDFD];
 }

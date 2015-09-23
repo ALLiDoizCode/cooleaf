@@ -15,6 +15,8 @@
 #import "CLClient.h"
 #import "CLInterestPresenter.h"
 #import "CLParticipantPresenter.h"
+#import "MMDrawerBarButtonItem.h"
+#import "NPAppDelegate.h"
 
 @interface CLPeopleViewController() {
     @private
@@ -77,12 +79,19 @@
 - (void)setupNavBar {
     
     // Adjust nav bar title based on current view identifier
-    if (_currentView == nil)
+    if (_currentView == nil) {
+        // Set the drawer button
+        MMDrawerBarButtonItem *drawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(openDrawer)];
+        [drawerButton setTintColor:[UIColor whiteColor]];
+        
+        [[self navigationItem] setLeftBarButtonItem:drawerButton];
+        
         self.navigationController.navigationBar.topItem.title = @"People";
-    else if ([_currentView isEqualToString:@"Events"])
+    } else if ([_currentView isEqualToString:@"Events"]) {
         self.navigationController.navigationBar.topItem.title = @"Participants";
-    else
+    } else {
         self.navigationController.navigationBar.topItem.title = @"Members";
+    }
     
     self.navigationController.navigationBar.alpha = 1;
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
@@ -229,6 +238,13 @@
 - (void)hideActivityIndicator {
     [_activityIndicator stopAnimating];
     [_activityIndicator setHidden:YES];
+}
+
+# pragma mark - openDrawer
+
+- (void)openDrawer {
+    NPAppDelegate *appDelegate = (NPAppDelegate *) [UIApplication sharedApplication].delegate;
+    [appDelegate openDrawer];
 }
 
 /*

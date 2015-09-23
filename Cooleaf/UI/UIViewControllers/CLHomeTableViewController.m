@@ -21,6 +21,7 @@
 #import "NPAppDelegate.h"
 #import "CLCommentViewController.h"
 #import "CLEventDetailViewController.h"
+#import "MMDrawerBarButtonItem.h"
 
 @interface CLHomeTableViewController() {
     @private
@@ -107,13 +108,19 @@
 #pragma mark - setupDisplay
 
 -(void)setupDisplay {
-    // Do any additional setup after loading the view.
+    
+    MMDrawerBarButtonItem *drawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(openDrawer)];
+    [drawerButton setTintColor:[UIColor whiteColor]];
+    
+    // Create right navbar buttons
     UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchViewController)];
     
     UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(postViewController)];
-    
     NSArray *rightButtons = [NSArray arrayWithObjects:searchBtn, commentBtn, nil];
+    
+    // Set navbar buttons
     [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
+    [[self navigationItem] setLeftBarButtonItem:drawerButton];
     
     searchBtn.tintColor = [UIColor whiteColor];
     commentBtn.tintColor = [UIColor whiteColor];
@@ -376,6 +383,12 @@
                                                                 forKey:NSForegroundColorAttributeName];
     NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
     self.refreshControl.attributedTitle = attributedTitle;
+}
+
+# pragma mark - openDrawer
+
+- (void)openDrawer {
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 # pragma mark - showActivityIndicator

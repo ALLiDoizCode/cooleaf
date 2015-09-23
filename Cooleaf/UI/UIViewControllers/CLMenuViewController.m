@@ -41,7 +41,6 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     titles = @[@"Home", @"My Events", @"Groups",@"People",@"My Profile"];
-    titles2 = @[@"#Running", @"#Picnicholiday2015", @"#Walking"];
     
     icons = @[@"Profile",@"Profile",@"Profile",@"Profile",@"Profile"];
     icons2 = @[@"Profile"];
@@ -92,14 +91,11 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex {
-    if (sectionIndex == 0)
-        return titles.count;
-    else
-        return titles2.count;
+    return [titles count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,9 +108,8 @@
     if (indexPath.section == 0) {
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:icons[indexPath.row]];
-    } else {
-        cell.textLabel.text = titles2[indexPath.row];
     }
+    
     return cell;
 }
 
@@ -142,7 +137,7 @@
             NSLog(@"4" );
             break;
         default:
-            NSLog(@"default" );
+            break;
     }
 }
 
@@ -151,7 +146,6 @@
 - (void)setupTableViewUIData {
     textColor = [UIColor menuTextColor];
     titles = @[@"Home", @"My Events", @"Groups",@"People",@"My Profile"];
-    titles2 = @[@"#Running", @"#Picnicholiday2015", @"#Walking"];
     icons = @[@"home-1",@"calendar",@"Profile",@"Profile",@"Profile"];
     icons2 = @[@"Profile"];
 }
@@ -178,18 +172,20 @@
     NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"original"]];
 
     self.tableView.tableHeaderView = ({
+        
         // Initialize Header Views
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
         // Header ImageView
         userImageView = [self setupHeaderImage];
         [userImageView sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
-        //Border
-        UIView *border = [self setupHeaderBorder];
-        //Name
+        
+        // Name
         userNameLabel = [self setupHeaderLabelName:userName];
-        //Orginization
+        
+        // Organization
         userCredentialsLabel = [self setupHeaderOrganizationLabel:userCredentials];
-        //Rewards
+        
+        // Rewards
         userRewardsLabel = [self setupHeaderRewardsLabel:rewardPoints];
         
         // Add views
@@ -197,9 +193,7 @@
         [view addSubview:userNameLabel];
         [view addSubview:userCredentialsLabel];
         [view addSubview:userRewardsLabel];
-        [view addSubview:border];
         view;
-
     });
 }
 
@@ -218,12 +212,6 @@
     userImageView.clipsToBounds = YES;
     
     return userImageView;
-}
-
-- (UIView *)setupHeaderBorder {
-    UIView *border = [[UIView alloc] initWithFrame:CGRectMake(0, 180, 400, 0.5)];
-    border.backgroundColor = textColor;
-    return border;
 }
 
 - (UILabel *)setupHeaderLabelName:(NSString *)userName {

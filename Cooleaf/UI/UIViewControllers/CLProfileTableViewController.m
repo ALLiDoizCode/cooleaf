@@ -15,6 +15,7 @@
 #import "CLParentTag.h"
 #import "CLEventPresenter.h"
 #import "UIColor+CustomColors.h"
+#import "CLEvent.h"
 
 static NSString *const kScope = @"past";
 
@@ -169,17 +170,21 @@ static NSString *const kScope = @"past";
             eventCell.layer.shadowColor = [UIColor blackColor].CGColor;
             eventCell.layer.zPosition = 777;
             
+            // Get the event
+            CLEvent *event = [_pastEvents objectAtIndexedSubscript:[indexPath row]];
+            
             // Get the image url
-            NSString *imageUrl = [_pastEvents objectAtIndex:[indexPath row]][@"image"][@"url"];
+            CLImage *eventImage = [event eventImage];
+            NSString *imageUrl = eventImage.url;
             NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
             fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"500x200"];
-            
+                        
             // Set it into the imageview
             [eventCell.eventImage sd_setImageWithURL:[NSURL URLWithString:fullPath]
                                     placeholderImage:[UIImage imageNamed:nil]];
             
             // Get the event description
-            NSString *eventDescription = [_pastEvents objectAtIndex:[indexPath row]][@"name"];
+            NSString *eventDescription = [event eventDescription];
             eventCell.eventDescription.text = eventDescription;
             
             return eventCell;
