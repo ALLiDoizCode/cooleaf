@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userCredentialsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userRewardsLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic) NSString *currentView;
 
 - (void)initAuthPresenter;
 - (void)initPresenter;

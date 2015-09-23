@@ -9,10 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+/**
+ *  Helper class for side menu navigation and other navigation points
+ */
 @interface CLNavigation : NSObject
 
 - (void)homeController;
 - (void)groupController;
 - (void)peopleController;
+- (void)myEventController;
+- (void)groupPeopleController:(UINavigationController *)nav;
+- (void)eventPeopleController:(UINavigationController *)nav;
 
 @end

@@ -130,7 +130,7 @@
             [navigateTo homeController] ;
             break;
         case 1:
-            NSLog(@"1");
+           [navigateTo myEventController];
             break;
         case 2:
             [navigateTo groupController];

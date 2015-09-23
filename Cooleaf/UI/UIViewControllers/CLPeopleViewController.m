@@ -94,18 +94,32 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CLPeopleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"peopleCell"];
     
-    // Get the user object
-    CLUser *user = [_organizationUsers objectAtIndex:[indexPath row]];
+    NSString *groups = @"Groups";
+    NSString *events = @"Events";
     
-    // Get the user dictionary
-    NSDictionary *userDict = [user dictionaryValue];
-    
-    cell.peopleLabel.text = [user userName];
-    cell.positionLabel.text = userDict[@"role"][@"department"][@"name"];
-    
-    // Load user image into avatar imageview
-    NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"versions"][@"profile_ios"]];
-    [cell.peopleImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+    if (self.currentView == groups) {
+        
+        NSLog(@"Group Members");
+        
+    }else if (self.currentView == events){
+        
+        NSLog(@"Event Particpants");
+        
+    }else{
+        
+        // Get the user object
+        CLUser *user = [_organizationUsers objectAtIndex:[indexPath row]];
+        
+        // Get the user dictionary
+        NSDictionary *userDict = [user dictionaryValue];
+        
+        cell.peopleLabel.text = [user userName];
+        cell.positionLabel.text = userDict[@"role"][@"department"][@"name"];
+        
+        // Load user image into avatar imageview
+        NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"versions"][@"profile_ios"]];
+        [cell.peopleImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
+    }
     
     return cell;
 }
