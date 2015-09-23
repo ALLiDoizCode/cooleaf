@@ -54,6 +54,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    // Remove title when coming back from members
+    self.navigationController.navigationBar.topItem.title = @"";
+    
     [self setupInterestPresenter];
     [self setupFeedPresenter];
     [self grabColorFromImage];
@@ -135,9 +139,6 @@
 # pragma mark - setupUI
 
 - (void)setupUI {
-    
-    // Remove title when coming back from members
-    self.navigationController.navigationBar.topItem.title = @"";
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
