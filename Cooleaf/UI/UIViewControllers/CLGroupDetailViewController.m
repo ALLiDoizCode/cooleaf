@@ -56,7 +56,8 @@
     [super viewWillAppear:animated];
     [self setupInterestPresenter];
     [self setupFeedPresenter];
-    [self grabColorFromImage];
+    if (_currentImagePath)
+        [self grabColorFromImage];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -85,21 +86,6 @@
 -(void)goToPeopleController{
     CLNavigation *navigateTo = [[CLNavigation alloc] init];
     [navigateTo interestPeopleController:self.navigationController interest:_interest];
-}
-
-# pragma mark - grabColorFromImage
-
--(void)grabColorFromImage {
-    
-    // Get four dominant colors from the image, but avoid the background color of our UI
-    CCColorCube *colorCube = [[CCColorCube alloc] init];
-    UIImage *img =_detailView.mainImageView.image;
-    NSArray *imgColors = [colorCube extractColorsFromImage:img flags:nil];
-    _barColor = imgColors[1];
-    
-    self.navigationController.navigationBar.barTintColor = _barColor;
-    self.navigationController.navigationBar.alpha = 0.7;
-    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
 }
 
 #pragma mark - searchDisplay
@@ -147,9 +133,11 @@
     _detailView.delegate = self;
     
     // Load image for hero image
-    [_detailView.mainImageView sd_setImageWithURL:[NSURL URLWithString:self.currentImagePath]
-                                 placeholderImage:[UIImage imageNamed:nil]];
-    
+    if (_currentImagePath) {
+        [_detailView.mainImageView sd_setImageWithURL:[NSURL URLWithString:self.currentImagePath]
+                                     placeholderImage:[UIImage imageNamed:nil]];
+    }
+        
     // Load name for group
     _detailView.labelName.text =[NSString stringWithFormat: @"#%@", _currentName];
     
@@ -177,6 +165,21 @@
     
     // Make a call to grab group feeds
     [_feedPresenter loadInterestFeeds:[[_interest interestId] intValue]];
+}
+
+# pragma mark - grabColorFromImage
+
+-(void)grabColorFromImage {
+    
+    // Get four dominant colors from the image, but avoid the background color of our UI
+    CCColorCube *colorCube = [[CCColorCube alloc] init];
+    UIImage *img =_detailView.mainImageView.image;
+    NSArray *imgColors = [colorCube extractColorsFromImage:img flags:nil];
+    _barColor = imgColors[1];
+    
+    self.navigationController.navigationBar.barTintColor = _barColor;
+    self.navigationController.navigationBar.alpha = 0.7;
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
 }
 
 # pragma mark - CLDetailViewDelegate

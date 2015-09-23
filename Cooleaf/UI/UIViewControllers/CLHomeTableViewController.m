@@ -66,8 +66,8 @@
     // Searchbar color
     barColor = [UIColor colorPrimary];
     
-    // Initialize presenter
-    [self initPresenter];
+    // Initialize Event presenter
+    [self initEventPresenter];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -87,6 +87,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+# pragma mark - Init Presenters
+
+- (void)initEventPresenter {
+    _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
+    [_eventPresenter registerOnBus];
+}
+
+- (void)initAuthPresenter {
+    // Init auth presenter
+    _authPres = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
+    [_authPres registerOnBus];
+    [_authPres authenticate:@"kevin.coleman@sparkstart.io" :@"passwordpassword"];
+    [self showActivityIndicator];
 }
 
 #pragma mark - setupDisplay
@@ -167,14 +182,19 @@
     
     _user = user;
     [self initProfileHeaderWithUser:_user];
-    [_eventPresenter loadEvents];
+    if (_currentView == nil) {
+        [_eventPresenter loadEvents];
+    } else {
+        NSString *userIdString = [NSString stringWithFormat:@"%d", [[_user userId] intValue]];
+        [_eventPresenter loadUserEvents:@"ongoing" userIdString:userIdString];
+    }
 }
 
 # pragma mark - IEventInteractor methods
 
 - (void)initEvents:(NSMutableArray *)events {
     // Events receieved here, set into tableview
-    _events = events;
+    _events = [[NSMutableArray alloc] initWithArray:events];
     [self.tableView reloadData];
     
     // If refreshing end refreshing
@@ -185,22 +205,14 @@
 }
 
 - (void)initUserEvents:(NSMutableArray *)userEvents {
-    // Used for handled back navigation from Profile when loading user events.
-}
-
-# pragma mark - Init Presenters
-
-- (void)initPresenter {
-    _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
-    [_eventPresenter registerOnBus];
-}
-
-- (void)initAuthPresenter {
-    // Init auth presenter
-    _authPres = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
-    [_authPres registerOnBus];
-    [_authPres authenticate:@"kevin.coleman@sparkstart.io" :@"passwordpassword"];
-    [self showActivityIndicator];
+    _events = [[NSMutableArray alloc] initWithArray:userEvents];
+    [self.tableView reloadData];
+    
+    // If refreshing end refreshing
+    if (self.refreshControl) {
+        [self setAttributedTitle];
+        [self.refreshControl endRefreshing];
+    }
 }
 
 #pragma mark - Table view data source
@@ -226,34 +238,27 @@
     cell.layer.shadowOffset = CGSizeMake(0, 0);
     cell.layer.shadowColor = [UIColor blackColor].CGColor;
     cell.layer.zPosition = 777;
+        
+    // Get the event
+    CLEvent *event = [_events objectAtIndex:[indexPath row]];
     
-    ///CurrentView is being passed an NString "My Events" from CLNavigaton inside of the myEventController function. Here since curretView is a string we are checking it against myEventView which contains a string as well. From here if currentView is equal to myEventView then we know that this viewcontroller was navigated to from the MyEvents cell on the nav draw and can populate the ui elements with the MyEvents data thats being pulled from the api. Else we just populate the UI with just the event data.
-    NSString *myEventView = @"My Events";
-    
-    if (self.currentView == myEventView) {
+    // Get the dictionary
+    NSDictionary *eventDict = [event dictionaryValue];
         
-        NSLog(@"Hello I am from MyEvents");
+    // Get the image url
+    CLImage *eventImage = [event eventImage];
+    NSString *imageUrl = eventImage.url;
+    NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
+    fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"500x200"];
         
-    } else {
+    // Set it into the imageview
+    [cell.eventImage sd_setImageWithURL:[NSURL URLWithString:fullPath]
+                       placeholderImage:[UIImage imageNamed:@"CoverPhotoPlaceholder"]];
         
-        // Get the event
-        CLEvent *event = [_events objectAtIndex:[indexPath row]];
+    // Get the event description
+    NSString *eventDescription = [event eventDescription];
         
-        // Get the image url
-        CLImage *eventImage = [event eventImage];
-        NSString *imageUrl = eventImage.url;
-        NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", imageUrl];
-        fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"500x200"];
-        
-        // Set it into the imageview
-        [cell.eventImage sd_setImageWithURL:[NSURL URLWithString:fullPath]
-                           placeholderImage:[UIImage imageNamed:@"CoverPhotoPlaceholder"]];
-        
-        // Get the event description
-        NSString *eventDescription = [event eventDescription];
-        
-        cell.eventDescription.text = eventDescription;
-    }
+    cell.eventDescription.text = eventDescription;
     
     return cell;
 }
@@ -340,7 +345,13 @@
 }
 
 - (void)reloadEvents {
-    [_eventPresenter loadEvents];
+    // If current view is nil load ongoing events, else load user's events - they are in My Events
+    if (_currentView == nil) {
+        [_eventPresenter loadEvents];
+    } else {
+        NSString *userIdString = [NSString stringWithFormat:@"%d", [[_user userId] intValue]];
+        [_eventPresenter loadUserEvents:@"ongoing" userIdString:userIdString];
+    }
 }
 
 - (void)displayEmptyMessage {
