@@ -151,13 +151,36 @@
     
     if ([_currentView isEqualToString:@"Groups"]) {
         
+        // Get the participant dictionary
         NSDictionary *participantDict = [_members objectAtIndex:[indexPath row]];
-        NSLog(@"%@", participantDict);
+        
+        // Set the name
+        cell.peopleLabel.text = participantDict[@"name"];
+        
+        // Set the position label
+        cell.positionLabel.text = @"";
+        
+        // Set the image
+        NSString *path = participantDict[@"profile"][@"picture"][@"versions"][@"icon"];
+        NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], path];
+        [cell.peopleImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
         
     } else if ([_currentView isEqualToString:@"Events"]) {
         
+        // Get the participant dictionary
         NSDictionary *participantDict = [_participants objectAtIndex:[indexPath row]];
-        NSLog(@"%@", participantDict);
+        
+        // Set the name
+        cell.peopleLabel.text = participantDict[@"name"];
+        
+        // Get a tag at index 0 of structure_tags array and set it
+        NSString *tagName = [participantDict[@"role"][@"structure_tags"] objectAtIndex:0][@"name"];
+        cell.positionLabel.text = tagName;
+        
+        // Set the image
+        NSString *path = participantDict[@"profile"][@"picture"][@"versions"][@"icon"];
+        NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], path];
+        [cell.peopleImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
         
     } else {
         
@@ -171,7 +194,8 @@
         cell.positionLabel.text = userDict[@"role"][@"department"][@"name"];
         
         // Load user image into avatar imageview
-        NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], userDict[@"profile"][@"picture"][@"versions"][@"profile_ios"]];
+        NSString *path = userDict[@"profile"][@"picture"][@"versions"][@"icon"];
+        NSString *fullImagePath = [NSString stringWithFormat:@"%@%@", [CLClient getBaseApiURL], path];
         [cell.peopleImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     }
     
