@@ -75,7 +75,15 @@
 # pragma mark - setupNavBar
 
 - (void)setupNavBar {
-    self.navigationController.navigationBar.topItem.title = @"People";
+    
+    // Adjust nav bar title based on current view identifier
+    if (_currentView == nil)
+        self.navigationController.navigationBar.topItem.title = @"People";
+    else if ([_currentView isEqualToString:@"Events"])
+        self.navigationController.navigationBar.topItem.title = @"Participants";
+    else
+        self.navigationController.navigationBar.topItem.title = @"Members";
+    
     self.navigationController.navigationBar.alpha = 1;
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
     _barColor = [UIColor colorPrimary];

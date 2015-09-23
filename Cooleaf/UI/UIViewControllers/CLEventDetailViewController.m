@@ -142,6 +142,9 @@
 # pragma mark - setupMainView
 
 - (void)setupMainView {
+    // Remove title when coming back from participants
+    self.navigationController.navigationBar.topItem.title = @"";
+    
     self.view.backgroundColor = [UIColor offWhite];
     self.navigationController.navigationBar.tintColor = [UIColor offWhite];
     _detailView.backgroundColor = [UIColor offWhite];
