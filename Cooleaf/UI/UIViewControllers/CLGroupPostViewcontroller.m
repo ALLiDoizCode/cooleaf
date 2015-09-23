@@ -40,10 +40,10 @@
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
     self.title = @"Post";
     
-    // Set navbar buttons
+    // Set right navbar buttons
     UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:nil];
     UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
-
+    
     NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
     
     [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];

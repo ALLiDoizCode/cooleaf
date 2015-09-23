@@ -41,7 +41,6 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     titles = @[@"Home", @"My Events", @"Groups",@"People",@"My Profile"];
-    titles2 = @[@"#Running", @"#Picnicholiday2015", @"#Walking"];
     
     icons = @[@"Profile",@"Profile",@"Profile",@"Profile",@"Profile"];
     icons2 = @[@"Profile"];
@@ -92,14 +91,11 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex {
-    if (sectionIndex == 0)
-        return titles.count;
-    else
-        return titles2.count;
+    return [titles count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,9 +108,8 @@
     if (indexPath.section == 0) {
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:icons[indexPath.row]];
-    } else {
-        cell.textLabel.text = titles2[indexPath.row];
     }
+    
     return cell;
 }
 
@@ -142,7 +137,7 @@
             NSLog(@"4" );
             break;
         default:
-            NSLog(@"default" );
+            break;
     }
 }
 
@@ -151,7 +146,6 @@
 - (void)setupTableViewUIData {
     textColor = [UIColor menuTextColor];
     titles = @[@"Home", @"My Events", @"Groups",@"People",@"My Profile"];
-    titles2 = @[@"#Running", @"#Picnicholiday2015", @"#Walking"];
     icons = @[@"home-1",@"calendar",@"Profile",@"Profile",@"Profile"];
     icons2 = @[@"Profile"];
 }

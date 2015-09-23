@@ -158,6 +158,13 @@
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
 }
 
+# pragma mark - openDrawer
+
+- (void)openDrawer {
+    if (_drawerController)
+        [_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
 # pragma mark - setUserInDrawer 
 
 - (void)setUserInDrawer:(CLUser *)user {

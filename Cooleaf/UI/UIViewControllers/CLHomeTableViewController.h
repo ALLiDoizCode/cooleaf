@@ -13,8 +13,7 @@
 #import "CLAuthenticationPresenter.h"
 #import "CLEventPresenter.h"
 
-@interface CLHomeTableViewController : UITableViewController <CLEventCellDelegate, IAuthenticationInteractor, IEventInteractor,
-                                                        UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate,UISearchDisplayDelegate>
+@interface CLHomeTableViewController : UITableViewController <CLEventCellDelegate, IAuthenticationInteractor, IEventInteractor, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UISearchDisplayController *searchController;
@@ -26,7 +25,6 @@
 @property (nonatomic) NSString *currentView;
 
 - (void)initAuthPresenter;
-- (void)initPresenter;
 - (void)setupDisplay;
 
 @end
