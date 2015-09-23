@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "IUserInteractor.h"
+#import "IParticipantInteractor.h"
+#import "IInterestDetailInteractor.h"
+#import "CLEvent.h"
+#import "CLInterest.h"
 
-@interface CLPeopleViewController : UIViewController <IUserInteractor, UITableViewDataSource, UITableViewDelegate>
+@interface CLPeopleViewController : UIViewController <IUserInteractor, IParticipantInteractor, IInterestDetailInteractor, UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, assign) NSString *currentView;
+@property (nonatomic, assign) CLEvent *event;
+@property (nonatomic, assign) CLInterest *interest;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic) NSString *currentView;
 
 @end

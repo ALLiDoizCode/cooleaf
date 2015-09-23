@@ -11,6 +11,7 @@
 #import "CLGroupViewController.h"
 #import "CLPeopleViewController.h"
 #import "CLHomeTableViewController.h"
+#import "CLInterest.h"
 
 /**
  *  Classes used for navigation through side menu
@@ -55,17 +56,19 @@
     [[appDelegate drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
-- (void)groupPeopleController:(UINavigationController *)nav {
+- (void)interestPeopleController:(UINavigationController *)nav interest:(CLInterest *)interest {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     CLPeopleViewController *people = [storyboard instantiateViewControllerWithIdentifier:@"people"];
-    people.currentView = @"Groups";
+    [people setCurrentView:@"Groups"];
+    [people setInterest:interest];
     [nav pushViewController:people animated:YES];
 }
 
-- (void)eventPeopleController:(UINavigationController *)nav {
+- (void)eventPeopleController:(UINavigationController *)nav event:(CLEvent *)event {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     CLPeopleViewController *people = [storyboard instantiateViewControllerWithIdentifier:@"people"];
-    people.currentView = @"Events";
+    [people setCurrentView:@"Events"];
+    [people setEvent:event];
     [nav pushViewController:people animated:YES];
 }
 

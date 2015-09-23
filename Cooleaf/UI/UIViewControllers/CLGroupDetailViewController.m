@@ -42,7 +42,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.detailView.members addTarget:self action:@selector(gotoPeople) forControlEvents:UIControlEventTouchUpInside];
+    // Selector to go to people view controller
+    [self.detailView.members addTarget:self action:@selector(goToPeopleController) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationController.navigationBar.tintColor = [UIColor offWhite];
     
@@ -77,10 +78,11 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)gotoPeople{
-    
+# pragma mark - goToPeopleController
+
+-(void)goToPeopleController{
     CLNavigation *navigateTo = [[CLNavigation alloc] init];
-    [navigateTo groupPeopleController:self.navigationController];
+    [navigateTo interestPeopleController:self.navigationController interest:_interest];
 }
 
 # pragma mark - grabColorFromImage
@@ -288,8 +290,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
 }
 
 # pragma mark - Members CollectionView Data Source
@@ -320,8 +320,8 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [self gotoPeople];
+    // If user touches member photo icon they go to people view controller
+    [self goToPeopleController];
 }
 
 # pragma mark - searchViewController

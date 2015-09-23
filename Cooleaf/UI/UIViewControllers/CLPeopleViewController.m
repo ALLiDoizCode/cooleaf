@@ -13,11 +13,17 @@
 #import "CLUserPresenter.h"
 #import "CLUser.h"
 #import "CLClient.h"
+#import "CLInterestPresenter.h"
+#import "CLParticipantPresenter.h"
 
 @interface CLPeopleViewController() {
     @private
     CLUserPresenter *_userPresenter;
+    CLParticipantPresenter *_participantPresenter;
+    CLInterestPresenter *_interestPresenter;
     NSMutableArray *_organizationUsers;
+    NSMutableArray *_members;
+    NSMutableArray *_participants;
     UIColor *_barColor;
 }
 
@@ -36,7 +42,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self setupUserPresenter];
+    if (_currentView == nil) {
+        [self setupUserPresenter];
+    } else {
+        if ([_currentView isEqualToString:@"Events"])
+            [self setupParticipantPresenter];
+            
+        if ([_currentView isEqualToString:@"Groups"])
+            [self setupInterestPresenter];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -77,6 +91,24 @@
     [self showActivityIndicator];
 }
 
+# pragma mark - setupParticipantPresenter
+
+- (void)setupParticipantPresenter {
+    _participantPresenter = [[CLParticipantPresenter alloc] initWithInteractor:self];
+    [_participantPresenter registerOnBus];
+    [_participantPresenter loadEventParticipants:[[_event eventId] integerValue]];
+    [self showActivityIndicator];
+}
+
+# pragma mark - setupInterestPresenter
+
+- (void)setupInterestPresenter {
+    _interestPresenter = [[CLInterestPresenter alloc] initWithDetailInteractor:self];
+    [_interestPresenter registerOnBus];
+    [_interestPresenter loadInterestMembers:[[_interest interestId] integerValue]];
+    [self showActivityIndicator];
+}
+
 # pragma mark - IUserInteractor Methods
 
 - (void)initOrganizationUsers:(NSMutableArray *)organizationUsers {
@@ -85,27 +117,49 @@
     [_tableView reloadData];
 }
 
+# pragma mark - IParticipantInteractor Methods
+
+- (void)initParticipants:(NSMutableArray *)participants {
+    [self hideActivityIndicator];
+    _participants = participants;
+    [_tableView reloadData];
+}
+
+# pragma mark - IInterestDetailInteractor Methods
+
+- (void)initMembers:(NSMutableArray *)members {
+    [self hideActivityIndicator];
+    _members = members;
+    [_tableView reloadData];
+}
+
 # pragma mark - TableView Data Source Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_organizationUsers count];
+    // Check to see where people view controller was instantiated from get correct count
+    if (_currentView == nil)
+        return [_organizationUsers count];
+    else if ([_currentView isEqualToString:@"Events"])
+        return [_participants count];
+    else
+        return [_members count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     CLPeopleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"peopleCell"];
     
-    NSString *groups = @"Groups";
-    NSString *events = @"Events";
-    
-    if (self.currentView == groups) {
+    if ([_currentView isEqualToString:@"Groups"]) {
         
-        NSLog(@"Group Members");
+        NSDictionary *participantDict = [_members objectAtIndex:[indexPath row]];
+        NSLog(@"%@", participantDict);
         
-    }else if (self.currentView == events){
+    } else if ([_currentView isEqualToString:@"Events"]) {
         
-        NSLog(@"Event Particpants");
+        NSDictionary *participantDict = [_participants objectAtIndex:[indexPath row]];
+        NSLog(@"%@", participantDict);
         
-    }else{
+    } else {
         
         // Get the user object
         CLUser *user = [_organizationUsers objectAtIndex:[indexPath row]];

@@ -234,9 +234,8 @@
         
         NSLog(@"Hello I am from MyEvents");
         
-    }else {
+    } else {
         
-        NSLog(@"Welcome Home");
         // Get the event
         CLEvent *event = [_events objectAtIndex:[indexPath row]];
         
@@ -271,16 +270,20 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    CLEventCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     // Instantiate EventDetailViewController and set current event
     CLEventDetailViewController *detailViewController = [[self storyboard] instantiateViewControllerWithIdentifier:@"eventDetail"];
     
     // Set the event
     CLEvent *currentEvent = [_events objectAtIndex:[indexPath row]];
-    detailViewController.event = currentEvent;
+    [detailViewController setEvent:currentEvent];
+    [detailViewController setEventImageView:cell.eventImage];
     
     [[self navigationController] pushViewController:detailViewController animated:YES];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 # pragma mark - Helper Methods
