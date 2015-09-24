@@ -8,6 +8,8 @@
 
 #import "CLPostViewController.h"
 #import "UIColor+CustomColors.h"
+#import "CLPostCell.h"
+#include <AssetsLibrary/AssetsLibrary.h> 
 
 @interface CLPostViewController () {
     @private
@@ -18,9 +20,15 @@
     UIImageView *imageView;
     UIButton *cameraBtn;
     UIButton *addImageBtn;
+    
+    ALAssetsLibrary *library;
+    NSArray *imageArray;
+    NSMutableArray *mutableArray;
 }
 
 @end
+
+static int count=0;
 
 @implementation CLPostViewController
 
@@ -35,7 +43,7 @@
     [self buildButtons];
     [self buildImage];
     [self checkForCamera];
-    //[self setUpGestureRecognizer];
+    [self getAllPictures];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,7 +56,7 @@
     postView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     postView.backgroundColor = [UIColor offWhite];
    
-    UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width, 60)];
+    UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.navigationController.navigationBar.bounds.size.height)];
     barView.backgroundColor = [UIColor barWhite];
     
     //Border
@@ -178,12 +186,14 @@
 # pragma mark - getPicture
 
 -(void)getPicture {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    /*UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
-    [self presentViewController:picker animated:YES completion:NULL];
+    [self presentViewController:picker animated:YES completion:NULL];*/
+    
+    //[self getAllPictures];
 }
 
 -(void)getCamera {
@@ -215,8 +225,9 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    UIImage *chosenImage  = info[UIImagePickerControllerOriginalImage];
-    _imgToUpload = chosenImage;
+    UIImage *chosenEditedImage  = info[UIImagePickerControllerEditedImage];
+    
+    _imgToUpload = chosenEditedImage;
     
     imageView.image = _imgToUpload;
     imageView.hidden = false;
@@ -282,6 +293,87 @@
     // For any other character return TRUE so that the text gets added to the view
     return YES;
 }
+
+
+# pragma mark - Members CollectionView Data Source
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [imageArray count];
+}
+
+# pragma mark - Members CollectionView Delegate
+
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CLPostCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"postCell" forIndexPath:indexPath];
+    
+    // load the images
+    cell.images = [UIImage imageNamed:@"TestImage"];
+   
+    
+    return cell;
+}
+
+-(void)getAllPictures {
+    
+    imageArray=[[NSArray alloc] init];
+    mutableArray =[[NSMutableArray alloc]init];
+    NSMutableArray* assetURLDictionaries = [[NSMutableArray alloc] init];
+    
+    library = [[ALAssetsLibrary alloc] init];
+    
+    void (^assetEnumerator)( ALAsset *, NSUInteger, BOOL *) = ^(ALAsset *result, NSUInteger index, BOOL *stop) {
+        if(result != nil) {
+            if([[result valueForProperty:ALAssetPropertyType] isEqualToString:ALAssetTypePhoto]) {
+                [assetURLDictionaries addObject:[result valueForProperty:ALAssetPropertyURLs]];
+                
+                NSURL *url= (NSURL*) [[result defaultRepresentation]url];
+                
+                [library assetForURL:url
+                         resultBlock:^(ALAsset *asset) {
+                             [mutableArray addObject:[UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]]];
+                             
+                             if ([mutableArray count]==count)
+                             {
+                                 imageArray=[[NSArray alloc] initWithArray:mutableArray];
+                                 //[self allPhotosCollected:imageArray];
+                                 
+                                 self.imageCollectionView.reloadData;
+                             }
+                         }
+                        failureBlock:^(NSError *error){ NSLog(@"operation was not successfull!"); } ];
+                
+            }
+        }
+    };
+    
+    NSMutableArray *assetGroups = [[NSMutableArray alloc] init];
+    
+    void (^ assetGroupEnumerator) ( ALAssetsGroup *, BOOL *)= ^(ALAssetsGroup *group, BOOL *stop) {
+        if(group != nil) {
+            [group enumerateAssetsUsingBlock:assetEnumerator];
+            [assetGroups addObject:group];
+            count=[group numberOfAssets];
+        }
+    };
+    
+    assetGroups = [[NSMutableArray alloc] init];
+    
+    [library enumerateGroupsWithTypes:ALAssetsGroupAll
+                           usingBlock:assetGroupEnumerator
+                         failureBlock:^(NSError *error) {NSLog(@"There is an error");}];
+}
+
+/*-(void)allPhotosCollected:(NSArray*)imgArray
+{
+    //write your code here after getting all the photos from library...
+    NSLog(@"all pictures are %@",imgArray);
+}*/
 
 
 

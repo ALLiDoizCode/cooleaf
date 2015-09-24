@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eIY-Me-YIN">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -1274,7 +1273,50 @@
                     <view key="view" contentMode="scaleToFill" id="arB-OD-3UM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="guT-9I-Hgn">
+                                <rect key="frame" x="0.0" y="115" width="600" height="485"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oQF-rO-WhH">
+                                    <size key="itemSize" width="102" height="98"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="postCell" id="8SP-db-Oqt" customClass="CLPostCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="102" height="98"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="102" height="98"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wVZ-JW-bW9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="102" height="98"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="images" destination="wVZ-JW-bW9" id="jGm-0S-mJe"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y1d-8n-tmI" id="QOQ-V2-eq8"/>
+                                    <outlet property="delegate" destination="Y1d-8n-tmI" id="MmT-wn-TE8"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="guT-9I-Hgn" secondAttribute="trailing" constant="-16" id="FYc-U6-w9s"/>
+                            <constraint firstItem="guT-9I-Hgn" firstAttribute="leading" secondItem="arB-OD-3UM" secondAttribute="leadingMargin" constant="-16" id="KEn-Mf-7Vd"/>
+                            <constraint firstItem="guT-9I-Hgn" firstAttribute="top" secondItem="8s1-Wj-ZwO" secondAttribute="bottom" constant="95" id="NIq-Og-HcP"/>
+                            <constraint firstItem="sLU-Bd-k1I" firstAttribute="top" secondItem="guT-9I-Hgn" secondAttribute="bottom" id="i1D-ev-GA2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageCollectionView" destination="guT-9I-Hgn" id="hhM-JG-d87"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLL-fJ-2hr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
