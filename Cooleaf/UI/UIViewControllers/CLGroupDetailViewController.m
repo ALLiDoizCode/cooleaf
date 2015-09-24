@@ -116,6 +116,9 @@
     if (self.tableView != nil) {
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        // Assign estimated and automatic dimension for dynamic resizing of cell
+        _tableView.rowHeight = UITableViewAutomaticDimension;
+        _tableView.estimatedRowHeight = 140;
         [self.tableView reloadData];
     }
 }
