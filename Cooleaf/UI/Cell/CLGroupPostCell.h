@@ -16,5 +16,6 @@
 @property (weak,nonatomic)IBOutlet UILabel *labelPostName2;
 @property (weak,nonatomic)IBOutlet UILabel *labelPost;
 @property (weak,nonatomic)IBOutlet UILabel *commentLabel;
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 
 @end

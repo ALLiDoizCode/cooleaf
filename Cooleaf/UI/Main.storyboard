@@ -708,7 +708,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3f4-J2-Nqf">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQ0-Tp-yEG" customClass="CLEventDetail">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQ0-Tp-yEG" customClass="CLEventDetail">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.74117647060000003" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -847,7 +847,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kkb-sD-Q4S">
-                                                            <rect key="frame" x="5" y="46" width="310" height="126"/>
+                                                            <rect key="frame" x="5" y="30" width="310" height="126"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ye1-HF-CBH">
                                                                     <rect key="frame" x="8" y="56" width="295" height="21"/>
@@ -910,15 +910,16 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.87825311942958995" green="0.87825311942958995" blue="0.87825311942958995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="Kkb-sD-Q4S" firstAttribute="bottom" secondItem="WK9-fy-Zem" secondAttribute="bottomMargin" id="PJi-4P-0SP"/>
-                                                        <constraint firstItem="Kkb-sD-Q4S" firstAttribute="top" secondItem="WK9-fy-Zem" secondAttribute="topMargin" constant="38" id="U9s-SW-NbK"/>
+                                                        <constraint firstItem="Kkb-sD-Q4S" firstAttribute="bottom" secondItem="WK9-fy-Zem" secondAttribute="bottomMargin" constant="-16" id="PJi-4P-0SP"/>
+                                                        <constraint firstItem="Kkb-sD-Q4S" firstAttribute="top" secondItem="WK9-fy-Zem" secondAttribute="topMargin" constant="22" id="U9s-SW-NbK"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="Kkb-sD-Q4S" secondAttribute="trailing" constant="277" id="csS-wn-9rn"/>
                                                         <constraint firstItem="Kkb-sD-Q4S" firstAttribute="leading" secondItem="WK9-fy-Zem" secondAttribute="leadingMargin" constant="-3" id="shA-0d-w88"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="bgView" destination="Kkb-sD-Q4S" id="YoZ-8v-XUk"/>
                                                     <outlet property="commentLabel" destination="gub-hG-YOi" id="yvB-ab-K3E"/>
                                                     <outlet property="labelCount" destination="vsp-es-c26" id="YBM-cg-pNG"/>
                                                     <outlet property="labelPost" destination="Ye1-HF-CBH" id="pDa-2e-Cay"/>

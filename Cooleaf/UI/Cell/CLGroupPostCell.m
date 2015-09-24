@@ -15,21 +15,18 @@
 
 -(void)layoutSubviews {
     
-    //self.contentView.frame = CGRectMake( self.contentView.frame.origin.x + 40,  self.contentView.frame.origin.y, self.contentView.frame.size.width - 300, self.contentView.frame.size.height - 25);
-    //self.contentView.backgroundColor = [UIColor redColor];
    
 }
 
 - (void)awakeFromNib {
   
    
-    
     //Background View
-    //UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(13, 20, 295, 150)];
-    //bgview.backgroundColor = [UIColor offWhite];
+       _bgView.backgroundColor = [UIColor offWhite];
+    _bgView.layer.cornerRadius = 1;
+    _bgView.layer.masksToBounds = YES;
     
     // User Icon
-   // _userImage = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 35, 35)];
     _userImage.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     _userImage.layer.masksToBounds = YES;
     _userImage.layer.cornerRadius = _userImage.frame.size.height/2;
@@ -40,7 +37,6 @@
     
     
     //Count Label
-   // _labelCount = [[UILabel alloc] initWithFrame:CGRectMake(260, 10, 0, 0)];
     _labelCount.textAlignment = NSTextAlignmentLeft;
     _labelCount.text = @"1hr";
     _labelCount.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
@@ -50,7 +46,6 @@
     _labelCount.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Name
-   // _labelPostName = [[UILabel alloc] initWithFrame:CGRectMake(60, 10, 35, 35)];
     _labelPostName.textAlignment = NSTextAlignmentLeft;
     _labelPostName.text = @"Prem Bhatia";
     _labelPostName.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
@@ -62,7 +57,6 @@
     
     
     //postion
-   // _labelPostName2 = [[UILabel alloc] initWithFrame:CGRectMake(60, 30, 35, 35)];
     _labelPostName2.textAlignment = NSTextAlignmentLeft;
     _labelPostName2.text = @"Position";
     _labelPostName2.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
@@ -73,7 +67,6 @@
     [LabelWidth labelWidth:_labelPostName2];
     
     //Post Label
-   // _labelPost = [[UILabel alloc] initWithFrame:CGRectMake(10, 60, 270, 0)];
     _labelPost.numberOfLines = 0;
     _labelPost.textAlignment = NSTextAlignmentLeft;
     _labelPost.text = @"We should eventually read classic books, like the one about the boy and his dog.";
