@@ -22,6 +22,8 @@
 
 - (void)awakeFromNib {
     
+    self.backgroundColor = [UIColor offWhite];
+    
     // Background View
     UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 300)];
     bgview.backgroundColor = [UIColor clearColor];
@@ -65,12 +67,23 @@
     _joinBtn.layer.masksToBounds = YES;
     [_joinBtn addTarget:self action:@selector(joinGroup:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    // Events
+    _eventsBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    _eventsBtn.frame = CGRectMake(15, 410, 290, 30);
+    [_eventsBtn setTitle:@"Events" forState:UIControlStateNormal];
+    _eventsBtn.backgroundColor = [UIColor groupNavBarColor];
+    _eventsBtn.tintColor = [UIColor offWhite];
+    _eventsBtn.layer.cornerRadius = 2;
+    _eventsBtn.layer.masksToBounds = YES;
+    
+    
     /**
      *  Segmented Control for switching posts and events
      */
     
     // Make the frame for the segmented control
-    CGRect frame = CGRectMake(10, 405, 300, 30);
+   /* CGRect frame = CGRectMake(10, 405, 300, 30);
     
     // Make array of items for the segmented control
     NSArray *segments = [[NSArray alloc] initWithObjects:@"Posts", @"Events", nil];
@@ -104,7 +117,7 @@
      *  Second border
      */
     
-    UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 440, bgview.frame.size.width, 0.5)];
+    UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 450, bgview.frame.size.width, 0.5)];
     border2.backgroundColor = [UIColor lightGrayColor];
     
     [self addSubview:bgview];
@@ -114,7 +127,8 @@
     [self addSubview:_labelEventSub];
     [self addSubview:_members];
     [self addSubview:_joinBtn];
-    [self addSubview:_segmentedControl];
+    [self addSubview:_eventsBtn];
+    //[self addSubview:_segmentedControl];
     [self addSubview:border];
     [self addSubview:border2];
     [bgview addSubview:_mainImageView];

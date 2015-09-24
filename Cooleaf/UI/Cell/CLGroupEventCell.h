@@ -7,12 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FXBlurView.h>
 
 @interface CLGroupEventCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *mainImage;
+@property (weak, nonatomic) IBOutlet FXBlurView *blurView;
+@property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rewardsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventDescription;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+@property (weak, nonatomic) IBOutlet UILabel *participansLabel;
 
-@property (nonatomic) UIImageView *eventImageView;
-@property (nonatomic) UILabel *labelName;
-@property (nonatomic) UILabel *labelRewards;
-@property (nonatomic) UILabel *labelDate;
+@property (weak, nonatomic) IBOutlet UIButton *commentBtn;
+@property (weak, nonatomic) IBOutlet UIButton *leaveBtn;
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 
 @end

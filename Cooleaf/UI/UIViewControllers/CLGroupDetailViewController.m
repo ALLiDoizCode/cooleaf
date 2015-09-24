@@ -22,6 +22,7 @@
 #import "CLFeedPresenter.h"
 #import "CLFeed.h"
 #import "CLNavigation.h"
+#import "CLGroupEventCell.h"
 
 @interface CLGroupDetailViewController()
 
@@ -147,7 +148,15 @@
     // Add number of participants
     [_detailView.members setTitle:[NSString
                          stringWithFormat:@"%d Members >", [[_interest userCount] intValue]]
-                         forState:UIControlStateNormal];    
+                         forState:UIControlStateNormal];
+    
+    [_detailView.eventsBtn addTarget:self action:@selector(gotoEvents) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)gotoEvents{
+     CLNavigation *navigateTo = [[CLNavigation alloc] init];
+    [navigateTo groupEventsController:self.navigationController];
+    
 }
 
 # pragma mark - setupGroupPresenter
