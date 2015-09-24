@@ -24,6 +24,9 @@
     
     [self labelWidth:_labelName];
     [self labelWidth:_labelLocation];
+    [self labelWidth:_labelDate];
+    [self labelWidth:_labelLocation];
+    [self labelWidth:_labelRewards];
     
     _detailDescription.frame = CGRectMake( _detailDescription.frame.origin.x,  _detailDescription.frame.origin.y, 285, 100);
     
@@ -154,7 +157,7 @@
     _labelDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Location Label
-    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(10,560, 25,45)];
+    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(10,560, 250,45)];
     _labelLocation.numberOfLines = 0;
     _labelLocation.textAlignment = NSTextAlignmentLeft;
     _labelLocation.text = @"Location";
