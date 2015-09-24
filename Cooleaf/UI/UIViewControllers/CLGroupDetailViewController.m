@@ -130,7 +130,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     // Set size for ScrollView
-    [_detailScroll setContentSize:CGSizeMake(_detailScroll.contentSize.width, [self getScrollViewHeight])];
+    [_detailScroll setContentSize:CGSizeMake(_detailScroll.contentSize.width, (self.detailView.bounds.size.height + self.tableView.bounds.size.height) - 15)];
     
     // Set detail view delegate
     _detailView.delegate = self;
