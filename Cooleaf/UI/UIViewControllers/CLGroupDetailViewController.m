@@ -193,14 +193,18 @@
         case 0: {
             // User selected posts, set row height and reload data
             [_detailScroll setContentSize:CGSizeMake(_detailScroll.contentSize.width, [self getScrollViewHeight])];
-            [self.tableView setRowHeight:[self getRowHeight]];
+            //[self.tableView setRowHeight:[self getRowHeight]];
+            _tableView.rowHeight = UITableViewAutomaticDimension;
+             _tableView.estimatedRowHeight = [self getRowHeight];
             [self.tableView reloadData];
             break;
         }
         case 1: {
             // User selected events
             [_detailScroll setContentSize:CGSizeMake(_detailScroll.contentSize.width, [self getScrollViewHeight])];
-            [self.tableView setRowHeight:[self getRowHeight]];
+            //[self.tableView setRowHeight:[self getRowHeight]];
+            _tableView.rowHeight = UITableViewAutomaticDimension;
+            _tableView.estimatedRowHeight = [self getRowHeight];
             [self.tableView reloadData];
         }
         default:

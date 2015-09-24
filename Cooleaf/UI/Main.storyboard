@@ -708,7 +708,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3f4-J2-Nqf">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQ0-Tp-yEG" customClass="CLEventDetail">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQ0-Tp-yEG" customClass="CLEventDetail">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.74117647060000003" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
