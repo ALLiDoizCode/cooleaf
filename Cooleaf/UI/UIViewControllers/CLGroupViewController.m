@@ -73,6 +73,8 @@
     // Create right navbar buttons
     UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchViewController)];
     
+    NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn, nil];
+    
     [[self navigationItem] setRightBarButtonItem:searchBtn];
     [[self navigationItem] setLeftBarButtonItem:drawerButton];
     
