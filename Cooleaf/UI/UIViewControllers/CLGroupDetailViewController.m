@@ -150,13 +150,14 @@
                          stringWithFormat:@"%d Members >", [[_interest userCount] intValue]]
                          forState:UIControlStateNormal];
     
-    [_detailView.eventsBtn addTarget:self action:@selector(gotoEvents) forControlEvents:UIControlEventTouchUpInside];
+    [_detailView.eventsBtn addTarget:self action:@selector(goToEvents) forControlEvents:UIControlEventTouchUpInside];
 }
 
--(void)gotoEvents{
-     CLNavigation *navigateTo = [[CLNavigation alloc] init];
+# pragma mark - goToEvents
+
+-(void)goToEvents{
+    CLNavigation *navigateTo = [[CLNavigation alloc] init];
     [navigateTo groupEventsController:self.navigationController];
-    
 }
 
 # pragma mark - setupGroupPresenter

@@ -15,11 +15,26 @@
 
 @implementation CLGroupEventsController
 
+# pragma mark - LifeCycle Methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    //_tableview.rowHeight = UITableViewAutomaticDimension;
-    //_tableview.estimatedRowHeight = 140;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,13 +45,12 @@
 # pragma mark - TableView DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-     CLGroupEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupEvent"];
+    CLGroupEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupEvent"];
     
     cell.eventTitleLabel.text = @"Marathon of the Century";
     cell.dateLabel.text = @"July 1,2015";
@@ -48,13 +62,11 @@
     return cell;
 }
 
-
 # pragma mark - TableView Delegate
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 
 /*
 #pragma mark - Navigation
