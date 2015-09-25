@@ -20,7 +20,14 @@
 }
 */
 
+-(void)layoutSubviews {
+    
+    [self labelWidth:_labelName];
+}
+
 - (void)awakeFromNib {
+    
+    
     
     self.backgroundColor = [UIColor offWhite];
     
@@ -70,12 +77,31 @@
     
     // Events
     _eventsBtn = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    _eventsBtn.frame = CGRectMake(15, 410, 290, 30);
+    _eventsBtn.frame = CGRectMake(10, 405, 300, 40);
     [_eventsBtn setTitle:@"Events" forState:UIControlStateNormal];
     _eventsBtn.backgroundColor = [UIColor groupNavBarColor];
     _eventsBtn.tintColor = [UIColor offWhite];
     _eventsBtn.layer.cornerRadius = 2;
     _eventsBtn.layer.masksToBounds = YES;
+    
+    // eventIcons
+    UIImageView *eventsIcon = [[UIImageView alloc] initWithFrame:CGRectMake(20, 410, 25, 25)];
+    eventsIcon.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    eventsIcon.image = [UIImage imageNamed:@"WhiteEvents"];
+    eventsIcon.contentMode = UIViewContentModeScaleAspectFill;
+    eventsIcon.layer.masksToBounds = YES;
+    eventsIcon.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    eventsIcon.layer.shouldRasterize = YES;
+    eventsIcon.clipsToBounds = YES;
+    
+    UIImageView *arrowIcon = [[UIImageView alloc] initWithFrame:CGRectMake(270, 415, 30, 25)];
+    arrowIcon.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+    arrowIcon.image = [UIImage imageNamed:@"arrow"];
+    arrowIcon.contentMode = UIViewContentModeScaleAspectFill;
+    arrowIcon.layer.masksToBounds = YES;
+    arrowIcon.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    arrowIcon.layer.shouldRasterize = YES;
+    arrowIcon.clipsToBounds = YES;
     
     
     /**
@@ -128,6 +154,8 @@
     [self addSubview:_members];
     [self addSubview:_joinBtn];
     [self addSubview:_eventsBtn];
+    [self addSubview:eventsIcon];
+    [self addSubview:arrowIcon];
     //[self addSubview:_segmentedControl];
     [self addSubview:border];
     [self addSubview:border2];
@@ -142,6 +170,19 @@
 - (void)selectSegment:(UISegmentedControl *)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(selectSegment:)])
         [self.delegate selectSegment:self];
+}
+
+-(void)labelWidth:(UILabel *)theLabel {
+    
+    // use this for custom font
+    // CGFloat width =  [theLabel.text sizeWithFont:[UIFont fontWithName:@"ChaparralPro-Bold" size:40 ]].width;
+    
+    // Use this for system font
+    CGFloat width =  [theLabel.text sizeWithFont:[UIFont systemFontOfSize:40 ]].width;
+    theLabel.frame = CGRectMake(theLabel.frame.origin.x, theLabel.frame.origin.y, width, theLabel.frame.size.height);
+    
+    // point.x, point.y -> origin for label;
+    // height -> your label height;
 }
 
 @end

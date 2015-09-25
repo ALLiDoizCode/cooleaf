@@ -30,7 +30,9 @@
     self.commentLabel.textColor = [UIColor lightGrayColor];
     self.participansLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
      self.participansLabel.textColor = [UIColor lightGrayColor];
+    [self.commentBtn setTitle:@"COMMENT" forState:UIControlStateNormal];
     self.commentBtn.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
+   [self.leaveBtn setTitle:@"LEAVE" forState:UIControlStateNormal];
     self.leaveBtn.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11];
 }
 

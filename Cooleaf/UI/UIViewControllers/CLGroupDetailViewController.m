@@ -186,12 +186,17 @@
     // Get four dominant colors from the image, but avoid the background color of our UI
     CCColorCube *colorCube = [[CCColorCube alloc] init];
     UIImage *img =_detailView.mainImageView.image;
-    NSArray *imgColors = [colorCube extractColorsFromImage:img flags:nil];
-    _barColor = imgColors[1];
+    NSArray *imgColors = [colorCube extractColorsFromImage:img flags:self.view.backgroundColor];
+    _barColor = imgColors[2];
     
     self.navigationController.navigationBar.barTintColor = _barColor;
     self.navigationController.navigationBar.alpha = 0.7;
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    
+        _detailView.joinBtn.backgroundColor = _barColor;
+        _detailView.eventsBtn.backgroundColor = _barColor;
+    
+    
 }
 
 # pragma mark - CLDetailViewDelegate

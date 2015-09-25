@@ -745,7 +745,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3f4-J2-Nqf">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQ0-Tp-yEG" customClass="CLEventDetail">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQ0-Tp-yEG" customClass="CLEventDetail">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.74117647060000003" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1407,10 +1407,10 @@
             </objects>
             <point key="canvasLocation" x="5593" y="799"/>
         </scene>
-        <!--Group Events Controller-->
+        <!--Group Events-->
         <scene sceneID="dDz-MB-xBo">
             <objects>
-                <viewController storyboardIdentifier="groupEvents" id="8fo-wr-7fZ" customClass="CLGroupEventsController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="groupEvents" title="Group Events" id="8fo-wr-7fZ" customClass="CLGroupEventsController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bfn-BN-E9m"/>
                         <viewControllerLayoutGuide type="bottom" id="cID-fV-eGf"/>
@@ -1656,7 +1656,7 @@
                                                     </variation>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.83529411760000005" green="0.84313725490000002" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.88383838380000002" green="0.88383838380000002" blue="0.88383838380000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="centerX" secondItem="xHo-m3-2Vx" secondAttribute="centerX" id="D01-PF-Ycb"/>
                                                 <constraint firstAttribute="centerY" secondItem="xHo-m3-2Vx" secondAttribute="centerY" id="Kin-Ah-pKW">
