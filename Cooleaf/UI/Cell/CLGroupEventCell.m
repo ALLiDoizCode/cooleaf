@@ -12,6 +12,10 @@
 
 @implementation CLGroupEventCell
 
+-(void)layoutSubviews {
+    
+    [self labelWidth:_eventTitleLabel];
+}
 
 - (void)awakeFromNib {
     self.bgView.layer.borderWidth = 0.5;
@@ -42,6 +46,18 @@
     // Configure the view for the selected state
 }
 
+-(void)labelWidth:(UILabel *)theLabel {
+    
+    // use this for custom font
+    // CGFloat width =  [theLabel.text sizeWithFont:[UIFont fontWithName:@"ChaparralPro-Bold" size:40 ]].width;
+    
+    // Use this for system font
+    CGFloat width =  [theLabel.text sizeWithFont:[UIFont systemFontOfSize:40 ]].width;
+    theLabel.frame = CGRectMake(theLabel.frame.origin.x, theLabel.frame.origin.y, width, theLabel.frame.size.height);
+    
+    // point.x, point.y -> origin for label;
+    // height -> your label height;
+}
 
 
 @end

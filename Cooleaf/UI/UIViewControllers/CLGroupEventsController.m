@@ -27,11 +27,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+# pragma mark - TableView DataSource
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     return 3;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -45,6 +46,13 @@
     cell.participansLabel.text = @"5 participants";
     
     return cell;
+}
+
+
+# pragma mark - TableView Delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
