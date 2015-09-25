@@ -418,8 +418,10 @@
     
     if (location != nil) {
         
-        map = [[MKMapView alloc] initWithFrame:CGRectMake(15, 590, self.view.frame.size.width - 28, 255)];
-        map.layer.cornerRadius = 2;
+        map = [[MKMapView alloc] initWithFrame:CGRectMake(15, 600, self.view.frame.size.width - 28, 255)];
+        map.layer.borderWidth = 2;
+        map.layer.borderColor = [UIColor offBlack].CGColor;
+        map.layer.cornerRadius = 1.5;
         map.layer.masksToBounds = YES;
         
         CLGeocoder *geocoder = [[CLGeocoder alloc] init];

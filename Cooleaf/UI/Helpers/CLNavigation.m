@@ -12,6 +12,7 @@
 #import "CLPeopleViewController.h"
 #import "CLHomeTableViewController.h"
 #import "CLInterest.h"
+#import "CLGroupEventsController.h"
 
 /**
  *  Classes used for navigation through side menu
@@ -36,6 +37,12 @@
     [[appDelegate drawerController] setCenterViewController:myEventNav];
     [[appDelegate drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
     
+}
+
+- (void)groupEventsController:(UINavigationController *)nav {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    CLGroupEventsController *groupEvents = [storyboard instantiateViewControllerWithIdentifier:@"groupEvents"];
+    [nav pushViewController:groupEvents animated:YES];
 }
 
 - (void)groupController {

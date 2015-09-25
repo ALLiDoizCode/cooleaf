@@ -22,6 +22,7 @@
 #import "CLFeedPresenter.h"
 #import "CLFeed.h"
 #import "CLNavigation.h"
+#import "CLGroupEventCell.h"
 
 @interface CLGroupDetailViewController()
 
@@ -116,6 +117,9 @@
     if (self.tableView != nil) {
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        // Assign estimated and automatic dimension for dynamic resizing of cell
+        _tableView.rowHeight = UITableViewAutomaticDimension;
+        _tableView.estimatedRowHeight = 140;
         [self.tableView reloadData];
     }
 }
@@ -127,7 +131,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     // Set size for ScrollView
-    [_detailScroll setContentSize:CGSizeMake(_detailScroll.contentSize.width, [self getScrollViewHeight])];
+    [_detailScroll setContentSize:CGSizeMake(_detailScroll.contentSize.width, (self.detailView.bounds.size.height + self.tableView.bounds.size.height) - 15)];
     
     // Set detail view delegate
     _detailView.delegate = self;
@@ -144,7 +148,16 @@
     // Add number of participants
     [_detailView.members setTitle:[NSString
                          stringWithFormat:@"%d Members >", [[_interest userCount] intValue]]
-                         forState:UIControlStateNormal];    
+                         forState:UIControlStateNormal];
+    
+    [_detailView.eventsBtn addTarget:self action:@selector(goToEvents) forControlEvents:UIControlEventTouchUpInside];
+}
+
+# pragma mark - goToEvents
+
+-(void)goToEvents{
+    CLNavigation *navigateTo = [[CLNavigation alloc] init];
+    [navigateTo groupEventsController:self.navigationController];
 }
 
 # pragma mark - setupGroupPresenter
@@ -174,12 +187,17 @@
     // Get four dominant colors from the image, but avoid the background color of our UI
     CCColorCube *colorCube = [[CCColorCube alloc] init];
     UIImage *img =_detailView.mainImageView.image;
-    NSArray *imgColors = [colorCube extractColorsFromImage:img flags:nil];
-    _barColor = imgColors[1];
+    NSArray *imgColors = [colorCube extractColorsFromImage:img flags:self.view.backgroundColor];
+    _barColor = imgColors[2];
     
     self.navigationController.navigationBar.barTintColor = _barColor;
     self.navigationController.navigationBar.alpha = 0.7;
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    
+        _detailView.joinBtn.backgroundColor = _barColor;
+        _detailView.eventsBtn.backgroundColor = _barColor;
+    
+    
 }
 
 # pragma mark - CLDetailViewDelegate
@@ -189,15 +207,19 @@
     switch (_currentIndex) {
         case 0: {
             // User selected posts, set row height and reload data
-            [_detailScroll setContentSize:CGSizeMake(_detailScroll.contentSize.width, [self getScrollViewHeight])];
-            [self.tableView setRowHeight:[self getRowHeight]];
+             [_detailScroll setContentSize:CGSizeMake(_detailScroll.contentSize.width, (self.detailView.bounds.size.height + self.tableView.bounds.size.height) - 15)];
+            //[self.tableView setRowHeight:[self getRowHeight]];
+            _tableView.rowHeight = UITableViewAutomaticDimension;
+             _tableView.estimatedRowHeight = [self getRowHeight];
             [self.tableView reloadData];
             break;
         }
         case 1: {
             // User selected events
-            [_detailScroll setContentSize:CGSizeMake(_detailScroll.contentSize.width, [self getScrollViewHeight])];
-            [self.tableView setRowHeight:[self getRowHeight]];
+              [_detailScroll setContentSize:CGSizeMake(_detailScroll.contentSize.width, (self.detailView.bounds.size.height + self.tableView.bounds.size.height) - 15)];
+            //[self.tableView setRowHeight:[self getRowHeight]];
+            _tableView.rowHeight = UITableViewAutomaticDimension;
+            _tableView.estimatedRowHeight = [self getRowHeight];
             [self.tableView reloadData];
         }
         default:

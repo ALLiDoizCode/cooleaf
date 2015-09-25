@@ -20,6 +20,7 @@
 - (void)groupController;
 - (void)peopleController;
 - (void)myEventController;
+- (void)groupEventsController:(UINavigationController *)nav;
 - (void)interestPeopleController:(UINavigationController *)nav interest:(CLInterest *)interest;
 - (void)eventPeopleController:(UINavigationController *)nav event:(CLEvent *)event;
 
