@@ -30,6 +30,7 @@
     [super viewDidLoad];
     [self setupSearch];
     [_activityIndicator setHidden:YES];
+    self.navigationController.navigationBar.tintColor = [UIColor offWhite];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

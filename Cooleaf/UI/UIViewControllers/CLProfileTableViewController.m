@@ -44,7 +44,7 @@ static NSString *const kScope = @"past";
     [self initProfileHeaderWithUser:_user];
     
     // Change tint of navbar
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = [UIColor offWhite];
     
     // Set tableview ui
     self.tableView.backgroundColor = [UIColor offWhite];
@@ -60,6 +60,9 @@ static NSString *const kScope = @"past";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    // Navbar color
+    self.navigationController.navigationBar.tintColor = [UIColor offWhite];
+    
     _openSections = [NSMutableSet new];
     [self initEventPresenter];
 }
