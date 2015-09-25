@@ -6,15 +6,16 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "CLEvent.h"
 #import "CLEventDetail.h"
 #import "BFPaperCheckbox.h"
-#import <CoreLocation/CoreLocation.h>
 #import "IEventInteractor.h"
 #import "IParticipantInteractor.h"
 
-@interface CLEventDetailViewController : UIViewController <IEventInteractor, IParticipantInteractor, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, CLLocationManagerDelegate, BFPaperCheckboxDelegate>
+@interface CLEventDetailViewController : UIViewController <IEventInteractor, IParticipantInteractor, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate, CLLocationManagerDelegate, MKMapViewDelegate, BFPaperCheckboxDelegate>
 
 @property (strong, nonatomic) IBOutlet CLEventDetail *detailView;
 @property (nonatomic, assign) CLEvent *event;

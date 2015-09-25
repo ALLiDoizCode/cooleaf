@@ -138,7 +138,7 @@
 
 - (void)layoutSubviews {
     _scrollView.scrollEnabled = YES;
-    [_scrollView setContentSize: CGSizeMake(2400,8000)];
+    [_scrollView setContentSize: CGSizeMake(2400, 8000)];
 }
 
 # pragma mark - setupMainView
@@ -416,13 +416,14 @@
     
     MKMapView *map;
     
-    if (location != nil) {
+    if (location != nil || ![location isEqualToString:@""]) {
         
-        map = [[MKMapView alloc] initWithFrame:CGRectMake(15, 600, self.view.frame.size.width - 28, 255)];
+        map = [[MKMapView alloc] initWithFrame:CGRectMake(15, 640, self.view.frame.size.width - 28, 200)];
         map.layer.borderWidth = 2;
         map.layer.borderColor = [UIColor offBlack].CGColor;
         map.layer.cornerRadius = 1.5;
         map.layer.masksToBounds = YES;
+        map.delegate = self;
         
         CLGeocoder *geocoder = [[CLGeocoder alloc] init];
         [geocoder geocodeAddressString:location
@@ -454,6 +455,47 @@
         }
         
     }
+}
+
+# pragma mark - MapView Delegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+    MKPinAnnotationView *pinView = nil;
+    
+    static NSString *defaultPinID = @"EventDetailAnnotation";
+    pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+    if ( pinView == nil ) {
+        pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+        
+        pinView.pinColor = MKPinAnnotationColorGreen;
+        
+        pinView.enabled = YES;
+        pinView.canShowCallout = YES;
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        
+        //Accessoryview for the annotation view in ios.
+        pinView.rightCalloutAccessoryView = btn;
+    } else {
+        pinView.annotation = annotation;
+    }
+    
+    return pinView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    id<MKAnnotation> annotation = view.annotation;
+    CLLocationCoordinate2D coordinate = [annotation coordinate];
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:coordinate addressDictionary:nil];
+    MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:placemark];
+    mapItem.name = annotation.title;
+    [mapItem openInMapsWithLaunchOptions:nil];
+}
+
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray<MKAnnotationView *> *)views {
+    // Use this to show pop up over map annotation when user enters event detail
+    [mapView selectAnnotation:[[mapView annotations] lastObject] animated:YES];
 }
 
 /*

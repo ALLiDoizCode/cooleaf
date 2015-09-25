@@ -135,7 +135,7 @@
     _detailDescription.lineBreakMode = UILineBreakModeWordWrap;
     
     //Date Label
-    _titleDate = [[UILabel alloc] initWithFrame:CGRectMake(10, 510, 300, 0)];
+    _titleDate = [[UILabel alloc] initWithFrame:CGRectMake(10, 540, 300, 0)];
     _titleDate.numberOfLines = 0;
     _titleDate.textAlignment = NSTextAlignmentLeft;
     _titleDate.text = @"Date";
@@ -146,7 +146,7 @@
     _titleDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Date text Label
-    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(10, 540, 300, 0)];
+    _labelDate = [[UILabel alloc] initWithFrame:CGRectMake(10, 560, 300, 0)];
     _labelDate.numberOfLines = 0;
     _labelDate.textAlignment = NSTextAlignmentLeft;
     _labelDate.text = @"8/19/15";
@@ -157,7 +157,7 @@
     _labelDate.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     
     //Location Label
-    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(10,560, 250,45)];
+    _labelLocation = [[UILabel alloc] initWithFrame:CGRectMake(10, 600, 250, 45)];
     _labelLocation.numberOfLines = 0;
     _labelLocation.textAlignment = NSTextAlignmentLeft;
     _labelLocation.text = @"Location";
@@ -212,8 +212,12 @@
     border.backgroundColor = [UIColor lightGrayColor];
     
     //Border2
-    UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 500, bgview.frame.size.width, 0.5)];
+    UIView *border2 = [[UIView alloc] initWithFrame:CGRectMake(0, 520, bgview.frame.size.width, 0.5)];
     border2.backgroundColor = [UIColor lightGrayColor];
+    
+    //Border3
+    UIView *border3 = [[UIView alloc] initWithFrame:CGRectMake(0, 590, bgview.frame.size.width, 0.5)];
+    border3.backgroundColor = [UIColor lightGrayColor];
     
     [textScroll addSubview:_detailDescription];
     [self addSubview:bgview];
@@ -234,10 +238,11 @@
     [self addSubview:_labelLocation];
     [self addSubview:border];
     [self addSubview:border2];
+    [self addSubview:border3];
     [bgview addSubview:_mainImageView];
 }
 
--(void)labelWidth:(UILabel *)theLabel {
+- (void)labelWidth:(UILabel *)theLabel {
     
     // use this for custom font
     // CGFloat width =  [theLabel.text sizeWithFont:[UIFont fontWithName:@"ChaparralPro-Bold" size:40 ]].width;
