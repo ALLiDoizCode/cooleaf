@@ -225,15 +225,19 @@
     // Get the locaiton
     NSDictionary *addressDict = (NSDictionary *) [_event address];
     
-    // Build address
-    NSString *address1 = addressDict[@"address1"];
-    NSString *city = addressDict[@"city"];
-    NSString *state = addressDict[@"state"];
-    NSString *zip = addressDict[@"zip"];
-    NSString *fullAddress = [NSString stringWithFormat:@"%@, %@ %@, %@", address1, city, state, zip];
+    int addressItemCount = (int) [addressDict count];
     
-    // Set into map
-    [self setupMap:fullAddress];
+    if (addressItemCount > 0) {
+        // Build address
+        NSString *address1 = addressDict[@"address1"];
+        NSString *city = addressDict[@"city"];
+        NSString *state = addressDict[@"state"];
+        NSString *zip = addressDict[@"zip"];
+        NSString *fullAddress = [NSString stringWithFormat:@"%@, %@ %@, %@", address1, city, state, zip];
+    
+        // Set into map
+        [self setupMap:fullAddress];
+    }
 }
 
 # pragma mark - goToPeopleController
@@ -416,7 +420,7 @@
     
     MKMapView *map;
     
-    if (location != nil || ![location isEqualToString:@""]) {
+    if (location != nil || [location isEqualToString:@""]) {
         
         map = [[MKMapView alloc] initWithFrame:CGRectMake(15, 640, self.view.frame.size.width - 28, 200)];
         map.layer.borderWidth = 2;
