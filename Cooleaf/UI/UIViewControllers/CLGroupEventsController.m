@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //_tableview.rowHeight = UITableViewAutomaticDimension;
+    //_tableview.estimatedRowHeight = 140;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,6 +36,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
      CLGroupEventCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupEvent"];
+    
+    cell.eventTitleLabel.text = @"Marathon of the Century";
+    cell.dateLabel.text = @"July 1,2015";
+    cell.rewardsLabel.text = @"50 Reward Points";
+    cell.eventDescription.text = @"Prepare yourself for the Marathon of the Century and the picnic afterwoods!";
+    cell.commentLabel.text = @"4 comments";
+    cell.participansLabel.text = @"5 participants";
     
     return cell;
 }
