@@ -185,6 +185,7 @@
 		680A64DA1BA251D4003C4B5E /* CLPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680A64D91BA251D4003C4B5E /* CLPeopleViewController.m */; };
 		680A64DD1BA255CE003C4B5E /* CLPeopleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 680A64DC1BA255CE003C4B5E /* CLPeopleCell.m */; };
 		68674F351BB4BC1C00ADB6F3 /* CLGroupEventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68674F341BB4BC1C00ADB6F3 /* CLGroupEventsController.m */; };
+		68674F381BB4F1D800ADB6F3 /* CLPostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68674F371BB4F1D800ADB6F3 /* CLPostView.m */; };
 		6877AFAE1B98EF9300113B86 /* CLSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFAD1B98EF9300113B86 /* CLSearchCell.m */; };
 		6877AFB11B9905DF00113B86 /* CLPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFB01B9905DF00113B86 /* CLPostViewController.m */; };
 		6877AFBD1B99423600113B86 /* CLGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFBC1B99423600113B86 /* CLGroupViewController.m */; };
@@ -635,6 +636,8 @@
 		680A64DC1BA255CE003C4B5E /* CLPeopleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPeopleCell.m; sourceTree = "<group>"; };
 		68674F331BB4BC1C00ADB6F3 /* CLGroupEventsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupEventsController.h; sourceTree = "<group>"; };
 		68674F341BB4BC1C00ADB6F3 /* CLGroupEventsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupEventsController.m; sourceTree = "<group>"; };
+		68674F361BB4F1D800ADB6F3 /* CLPostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPostView.h; sourceTree = "<group>"; };
+		68674F371BB4F1D800ADB6F3 /* CLPostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPostView.m; sourceTree = "<group>"; };
 		6877AFAC1B98EF9300113B86 /* CLSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSearchCell.h; sourceTree = "<group>"; };
 		6877AFAD1B98EF9300113B86 /* CLSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSearchCell.m; sourceTree = "<group>"; };
 		6877AFAF1B9905DF00113B86 /* CLPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPostViewController.h; sourceTree = "<group>"; };
@@ -889,6 +892,8 @@
 				68DDFEFF1B9F4AC500EDE1CF /* CLCommentTableView.m */,
 				68E102911BA2C19C009033AD /* CLEventDetail.h */,
 				68E102921BA2C19C009033AD /* CLEventDetail.m */,
+				68674F361BB4F1D800ADB6F3 /* CLPostView.h */,
+				68674F371BB4F1D800ADB6F3 /* CLPostView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2395,6 +2400,7 @@
 				4BE1DF861BAE9D96009519CB /* CLLoadEventComments.m in Sources */,
 				4BE1B2B51BBB569800A07DA1 /* CLRegistration.m in Sources */,
 				4BA4E30E1B8BC8F40089CB2B /* CLVersions.m in Sources */,
+				68674F381BB4F1D800ADB6F3 /* CLPostView.m in Sources */,
 				4BE1DF791BAC00F1009519CB /* CLLoadLeaveInterest.m in Sources */,
 				D93AAC9E187C29F000E9B96A /* NPTodoViewController.m in Sources */,
 				4BE1DF3F1BABD12B009519CB /* CLGroupPresenter.m in Sources */,

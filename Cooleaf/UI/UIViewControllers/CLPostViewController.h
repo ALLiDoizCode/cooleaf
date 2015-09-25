@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CLPostView.h"
 
 @interface CLPostViewController : UIViewController <UITextViewDelegate,UIImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak, nonatomic) UIImage *imgToUpload;
 
-@property (weak, nonatomic) IBOutlet UICollectionView *imageCollectionView;
-
+@property (weak, nonatomic) IBOutlet CLPostView *postView;
 
 @end

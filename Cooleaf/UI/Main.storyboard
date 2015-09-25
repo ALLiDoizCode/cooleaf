@@ -1306,21 +1306,47 @@
                                     <outlet property="delegate" destination="Y1d-8n-tmI" id="MmT-wn-TE8"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6A-d3-H0c" customClass="CLPostView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.0" green="0.95686274510000002" blue="0.0054740344939999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="guT-9I-Hgn" secondAttribute="trailing" constant="-16" id="FYc-U6-w9s"/>
-                            <constraint firstItem="guT-9I-Hgn" firstAttribute="leading" secondItem="arB-OD-3UM" secondAttribute="leadingMargin" constant="-16" id="KEn-Mf-7Vd"/>
-                            <constraint firstItem="guT-9I-Hgn" firstAttribute="top" secondItem="8s1-Wj-ZwO" secondAttribute="bottom" constant="95" id="NIq-Og-HcP"/>
-                            <constraint firstItem="sLU-Bd-k1I" firstAttribute="top" secondItem="guT-9I-Hgn" secondAttribute="bottom" id="i1D-ev-GA2"/>
+                            <constraint firstItem="j6A-d3-H0c" firstAttribute="leading" secondItem="arB-OD-3UM" secondAttribute="leading" id="Aoe-it-ubf"/>
+                            <constraint firstItem="j6A-d3-H0c" firstAttribute="top" secondItem="arB-OD-3UM" secondAttribute="top" id="XdH-wt-cCz"/>
+                            <constraint firstItem="j6A-d3-H0c" firstAttribute="bottom" secondItem="sLU-Bd-k1I" secondAttribute="top" id="jD9-gA-Rnu"/>
+                            <constraint firstAttribute="trailing" secondItem="j6A-d3-H0c" secondAttribute="trailing" id="mzo-Ma-thK"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="j6A-d3-H0c"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Aoe-it-ubf"/>
+                                <exclude reference="XdH-wt-cCz"/>
+                                <exclude reference="jD9-gA-Rnu"/>
+                                <exclude reference="mzo-Ma-thK"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="j6A-d3-H0c"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Aoe-it-ubf"/>
+                                <include reference="XdH-wt-cCz"/>
+                                <include reference="jD9-gA-Rnu"/>
+                                <include reference="mzo-Ma-thK"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="imageCollectionView" destination="guT-9I-Hgn" id="hhM-JG-d87"/>
+                        <outlet property="postView" destination="j6A-d3-H0c" id="nlM-nA-9S7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLL-fJ-2hr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4819" y="799"/>
+            <point key="canvasLocation" x="4818" y="798.75"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="vwX-NT-vC2">
