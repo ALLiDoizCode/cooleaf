@@ -79,7 +79,9 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [_authPres unregisterOnBus];
     [_eventPresenter unregisterOnBus];
+    _authPres = nil;
     _eventPresenter = nil;
 }
 

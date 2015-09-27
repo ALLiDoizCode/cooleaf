@@ -12,6 +12,7 @@
 #import "NPCooleafClient.h"
 #import "UIBarButtonItem+NPBarButtonItems.h"
 #import "CLAuthenticationPresenter.h"
+#import "CLClient.h"
 
 #define UPSHIFT 101
 
@@ -65,24 +66,23 @@
         //_logoView.alpha = 0.0;
     } completion:^(BOOL finished) {
         //_logoView.hidden = YES;
-		
         NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
         NSString *password = [SSKeychain passwordForService:@"cooleaf" account:username];
         NSLog(@"Username is: %@", username);
         NSLog(@"Password is: %@", password);
         if (username && [SSKeychain passwordForService:@"cooleaf" account:username]) {
-            [_globalSpinner startAnimating];
-            _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:username password:[SSKeychain passwordForService:@"cooleaf" account:username]
-                                                                     completion:^(NSError *error) {
-                                                                         if (error)
-                                                                         {
-                                                                             [self unlockView];
-                                                                         }
-                                                                         else
-                                                                         {
-                                                                             [self dismissViewControllerAnimated:YES completion:nil];
-                                                                         }
-                                                                     }];
+//            [_globalSpinner startAnimating];
+//            _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:username password:[SSKeychain passwordForService:@"cooleaf" account:username]
+//                                                                     completion:^(NSError *error) {
+//                                                                         if (error)
+//                                                                         {
+//                                                                             [self unlockView];
+//                                                                         }
+//                                                                         else
+//                                                                         {
+//                                                                             [self dismissViewControllerAnimated:YES completion:nil];
+//                                                                         }
+//                                                                     }];
         } else {
             _containerView.alpha = 0.0;
             _containerView.hidden = NO;
@@ -91,13 +91,10 @@
                 _containerView.alpha = 1.0;
                 _forgotPasswdBtn.alpha = 1.0;
             } completion:^(BOOL finished) {
-                if (username)
-                {
+                if (username) {
                     _usernameField.text = username;
                     [_passwordField becomeFirstResponder];
-                }
-                else
-                {
+                } else {
                     [_usernameField becomeFirstResponder];
                 }
                 
@@ -117,14 +114,7 @@
     [super viewDidLoad];
     
     [self setupUI];
-    
-    if ([NPCooleafClient sharedClient].notificationUDID) {
-        NSLog(@"%@", [NPCooleafClient sharedClient].notificationUDID);
-        NSLog(@"Has notificationUDID, starting login...");
-        [self startLogin];
-    } else {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationUDIDReceived:) name:kNPCooleafClientRUDIDHarvestedNotification object:nil];
-    }
+    [self unlockView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -171,6 +161,15 @@
 }
 
 # pragma mark - checkLogin
+
+- (void)checkLogin {
+    if ([CLClient getInstance].notificationUDID) {
+        NSLog(@"Starting login...");
+        [self startLogin];
+    } else {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationUDIDReceived:) name:kNPCooleafClientRUDIDHarvestedNotification object:nil];
+    }
+}
 
 # pragma mark - preferredStatusBarStyle
 

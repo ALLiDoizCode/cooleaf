@@ -10,7 +10,7 @@
 
 @interface CLClient : OVCHTTPRequestOperationManager
 
-@property (nonatomic, strong) NSString *notificationId;
+@property (nonatomic, strong) NSString *notificationUDID;
 
 + (CLClient *)getInstance;
 + (void)setOrganizationHeader:(NSString *)header;
