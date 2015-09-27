@@ -10,6 +10,8 @@
 
 @interface CLClient : OVCHTTPRequestOperationManager
 
+@property (nonatomic, strong) NSString *notificationId;
+
 + (CLClient *)getInstance;
 + (void)setOrganizationHeader:(NSString *)header;
 + (NSString *)getBaseApiURL;

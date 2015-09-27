@@ -11,7 +11,14 @@
 #import "CLUser.h"
 #import "CLClient.h"
 
+extern NSString *const kNPCooleafClientRefreshNotification;
+extern NSString *const kNPCooleafClientRUDIDHarvestedNotification;
+extern NSString *const kNPCooleafClientSignOut;
+
 @interface CLAuthenticationController : NSObject
+
+@property (nonatomic, readonly) NSDictionary *userData;
+@property (nonatomic, setter = setNotificationUDID:) NSString *notificationUDID;
 
 - (void)authenticate:(NSDictionary *)params success:(void (^)(id JSON))success
           failure:(void (^)(NSError *error))failure;

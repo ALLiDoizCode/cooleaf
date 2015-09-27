@@ -56,9 +56,9 @@ SUBSCRIBE(CLDeAuthorizeEvent) {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *username = [userDefaults objectForKey:@"username"];
     
-    // Set username and password to null
+    // Set username to null and delete password
     [userDefaults setObject:@"" forKey:username];
-    [SSKeychain setPassword:@"" forService:@"cooleaf" account:username];
+    [SSKeychain deletePasswordForService:@"cooleaf" account:username];
     
     // Go ahead and deauthorize
     [_authenticationController deauthenticate:nil success:^(id JSON) {
