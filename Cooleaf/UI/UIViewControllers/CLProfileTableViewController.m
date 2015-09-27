@@ -136,7 +136,7 @@ static NSString *const kScope = @"past";
 }
 
 - (void)deAuthorized {
-    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 # pragma mark - IEventInteractor Methods

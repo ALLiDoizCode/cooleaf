@@ -47,27 +47,25 @@
 
 @implementation NPLoginViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
+    if (self) {
         self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     }
-    
     return self;
 }
 
-- (void)startLogin
-{
+- (void)startLogin {
     [UIView animateWithDuration:0.3 animations:^{
         //_logoView.alpha = 0.0;
     } completion:^(BOOL finished) {
         //_logoView.hidden = YES;
 		
         NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-        if (username && [SSKeychain passwordForService:@"cooleaf" account:username])
-        {
+        NSString *password = [SSKeychain passwordForService:@"cooleaf" account:username];
+        NSLog(@"Username is: %@", username);
+        NSLog(@"Password is: %@", password);
+        if (username && [SSKeychain passwordForService:@"cooleaf" account:username]) {
             [_globalSpinner startAnimating];
             _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:username password:[SSKeychain passwordForService:@"cooleaf" account:username]
                                                                      completion:^(NSError *error) {
@@ -80,9 +78,7 @@
                                                                              [self dismissViewControllerAnimated:YES completion:nil];
                                                                          }
                                                                      }];
-        }
-        else
-        {
+        } else {
             _containerView.alpha = 0.0;
             _containerView.hidden = NO;
             _forgotPasswdBtn.hidden = YES;

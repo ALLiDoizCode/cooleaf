@@ -42,6 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self showLogin];
     // Hide activity indicator
     [_activityIndicator setHidden:YES];
     
@@ -102,7 +103,6 @@
     // Init auth presenter
     _authPres = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
     [_authPres registerOnBus];
-    [_authPres authenticate:@"kevin.coleman@sparkstart.io" :@"passwordpassword"];
     [self showActivityIndicator];
 }
 
@@ -207,7 +207,7 @@
 }
 
 - (void)deAuthorized {
-    
+    [self showLogin];
 }
 
 # pragma mark - IEventInteractor methods
@@ -417,6 +417,13 @@
 - (void)hideActivityIndicator {
     [_activityIndicator stopAnimating];
     [_activityIndicator setHidden:YES];
+}
+
+# pragma mark - showLogin
+
+- (void)showLogin {
+    NPLoginViewController *loginViewController = [[NPLoginViewController alloc] init];
+    [self.navigationController presentViewController:loginViewController animated:YES completion:nil];
 }
 
 @end

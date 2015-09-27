@@ -10,11 +10,13 @@
 #import "CLDeAuthorizeEvent.h"
 #import "CLDeAuthorizedEvent.h"
 
-@implementation CLAuthenticationPresenter {
-    
-@private
-    id <IAuthenticationInteractor> _authInfo;
-}
+@interface CLAuthenticationPresenter()
+
+@property (weak) id<IAuthenticationInteractor> authInfo;
+
+@end
+
+@implementation CLAuthenticationPresenter
 
 # pragma initWithInteractor
 
