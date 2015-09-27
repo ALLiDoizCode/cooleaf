@@ -43,7 +43,6 @@
 - (IBAction)signupButtonTapped:(id)sender;
 - (IBAction)termsButtonTapped:(id)sender;
 
-
 @end
 
 @implementation NPLoginViewController

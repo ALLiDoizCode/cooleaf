@@ -7,13 +7,14 @@
 //
 
 #import "CLAuthenticationPresenter.h"
+#import "CLDeAuthorizeEvent.h"
+#import "CLDeAuthorizedEvent.h"
 
 @implementation CLAuthenticationPresenter {
     
 @private
     id <IAuthenticationInteractor> _authInfo;
 }
-
 
 # pragma initWithInteractor
 
@@ -22,20 +23,17 @@
     return self;
 }
 
-
 # pragma registerOnBus
 
 - (void)registerOnBus {
     REGISTER();
 }
 
-
 # pragma unregisterOnBus
 
 - (void)unregisterOnBus {
     UNREGISTER();
 }
-
 
 #pragma authenticate
 
@@ -44,19 +42,26 @@
     PUBLISH(authenticationEvent);
 }
 
+# pragma mark - deauthenticate
 
-# pragma onAuthenticationSuccessEvent
+- (void)deauthenticate {
+    PUBLISH([[CLDeAuthorizeEvent alloc] init]);
+}
+
+# pragma mark - Subscription Methods
 
 SUBSCRIBE(CLAuthenticationSuccessEvent) {
     [_authInfo initUser:event.user];
 }
 
+SUBSCRIBE(CLDeAuthorizedEvent) {
+    [_authInfo deAuthorized];
+}
 
 # pragma dealloc
 
 - (void)dealloc {
     [self unregisterOnBus];
 }
-
 
 @end

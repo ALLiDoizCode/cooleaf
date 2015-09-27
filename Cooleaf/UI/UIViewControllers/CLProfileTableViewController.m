@@ -16,6 +16,7 @@
 #import "CLEventPresenter.h"
 #import "UIColor+CustomColors.h"
 #import "CLEvent.h"
+#import "CLAuthenticationPresenter.h"
 
 static NSString *const kScope = @"past";
 
@@ -23,6 +24,8 @@ static NSString *const kScope = @"past";
     @private
     NSMutableSet *_openSections;
 }
+
+@property (nonatomic, strong) CLAuthenticationPresenter *authenticationPresenter;
 
 @end
 
@@ -43,8 +46,7 @@ static NSString *const kScope = @"past";
     // Go ahead and init the profile header with the user
     [self initProfileHeaderWithUser:_user];
     
-    // Change tint of navbar
-    self.navigationController.navigationBar.tintColor = [UIColor offWhite];
+    [self setupNavBar];
     
     // Set tableview ui
     self.tableView.backgroundColor = [UIColor offWhite];
@@ -65,6 +67,7 @@ static NSString *const kScope = @"past";
     
     _openSections = [NSMutableSet new];
     [self initEventPresenter];
+    [self initAuthenticationPresenter];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -82,6 +85,30 @@ static NSString *const kScope = @"past";
     [super viewDidDisappear:animated];
 }
 
+# pragma mark - setupNavBar
+
+- (void)setupNavBar {
+    // Change tint of navbar
+    self.navigationController.navigationBar.tintColor = [UIColor offWhite];
+
+    // Create right navbar buttons
+    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
+    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(editProfile)];
+    NSArray *rightButtons = [NSArray arrayWithObjects:signOutButton, editButton, nil];
+    
+    // Set navbar buttons
+    [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
+    
+    signOutButton.tintColor = [UIColor whiteColor];
+    editButton.tintColor = [UIColor whiteColor];
+}
+
+# pragma mark - signOut 
+
+- (void)signOut {
+    [_authenticationPresenter deauthenticate];
+}
+
 # pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -95,6 +122,21 @@ static NSString *const kScope = @"past";
     [_eventPresenter registerOnBus];
     NSString *userIdString = [[_user userId] stringValue];
     [_eventPresenter loadUserEvents:kScope userIdString:userIdString];
+}
+
+- (void)initAuthenticationPresenter {
+    _authenticationPresenter = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
+    [_authenticationPresenter registerOnBus];
+}
+
+# pragma mark - IAuthenticationInteractor Methods
+
+- (void)initUser:(CLUser *)user {
+    
+}
+
+- (void)deAuthorized {
+    
 }
 
 # pragma mark - IEventInteractor Methods

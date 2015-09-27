@@ -11,8 +11,9 @@
 #import "CLInformationTableViewHeader.h"
 #import "CLEventCell.h"
 #import "IEventInteractor.h"
+#import "IAuthenticationInteractor.h"
 
-@interface CLProfileTableViewController : UITableViewController <IEventInteractor, CLEventCellDelegate, CLInformationHeaderDelegate>
+@interface CLProfileTableViewController : UITableViewController <IAuthenticationInteractor, IEventInteractor, CLEventCellDelegate, CLInformationHeaderDelegate>
 
 @property (nonatomic) CLUser *user;
 @property (weak, nonatomic) IBOutlet UIImageView *blurImage;

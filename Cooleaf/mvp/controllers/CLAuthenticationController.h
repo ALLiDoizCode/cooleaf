@@ -15,5 +15,7 @@
 
 - (void)authenticate:(NSDictionary *)params success:(void (^)(id JSON))success
           failure:(void (^)(NSError *error))failure;
+- (void)deauthenticate:(NSDictionary *)params success:(void (^)(id JSON))success
+             failure:(void (^)(NSError *error))failure;
 
 @end

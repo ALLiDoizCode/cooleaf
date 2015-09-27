@@ -13,6 +13,7 @@
 #import "CLQuery.h"
 #import "CLFeed.h"
 #import "CLComment.h"
+#import "CLDeauthenticationResponse.h"
 
 static NSString *const BASE_API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu";
 static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api";
@@ -72,7 +73,7 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
 
 + (NSDictionary *)responseClassesByResourcePath {
     return @{
-             
+             @"v2/deauthorize.json": [CLDeauthenticationResponse class]
              };
 }
 

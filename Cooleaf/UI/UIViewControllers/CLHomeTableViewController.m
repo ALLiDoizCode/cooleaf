@@ -22,6 +22,7 @@
 #import "CLCommentViewController.h"
 #import "CLEventDetailViewController.h"
 #import "MMDrawerBarButtonItem.h"
+#import "NPLoginViewController.h"
 
 @interface CLHomeTableViewController() {
     @private
@@ -203,6 +204,10 @@
         NSString *userIdString = [NSString stringWithFormat:@"%d", [[_user userId] intValue]];
         [_eventPresenter loadUserEvents:@"ongoing" userIdString:userIdString];
     }
+}
+
+- (void)deAuthorized {
+    
 }
 
 # pragma mark - IEventInteractor methods

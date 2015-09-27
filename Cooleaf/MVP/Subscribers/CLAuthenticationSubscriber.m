@@ -7,6 +7,9 @@
 //
 
 #import "CLAuthenticationSubscriber.h"
+#import "CLDeAuthorizeEvent.h"
+#import "SSKeychain.h"
+#import "CLDeAuthorizedEvent.h"
 
 static NSString *const kCLOrganizatonHeader = @"X-Organization";
 
@@ -42,6 +45,26 @@ SUBSCRIBE(CLAuthenticationEvent) {
         [CLClient setOrganizationHeader:organizationHeader];
         CLAuthenticationSuccessEvent *authenticationSuccessEvent = [[CLAuthenticationSuccessEvent alloc] initWithUser:user];
         PUBLISH(authenticationSuccessEvent);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+SUBSCRIBE(CLDeAuthorizeEvent) {
+    
+    // Access NSUserDefaults
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [userDefaults objectForKey:@"username"];
+    
+    // Set username and password to null
+    [userDefaults setObject:@"" forKey:username];
+    [SSKeychain setPassword:@"" forService:@"cooleaf" account:username];
+    
+    // Go ahead and deauthorize
+    [_authenticationController deauthenticate:nil success:^(id JSON) {
+        NSLog(@"deauthentication successfull");
+        CLDeAuthorizedEvent *deauthorizedEvent = [[CLDeAuthorizedEvent alloc] init];
+        PUBLISH(deauthorizedEvent);
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];

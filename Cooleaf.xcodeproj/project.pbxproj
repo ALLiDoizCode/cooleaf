@@ -94,6 +94,9 @@
 		4BBF2C331BA10A8F00ECC37F /* CLTagCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF2C321BA10A8F00ECC37F /* CLTagCollectionViewCell.m */; };
 		4BBF2C371BA2B35600ECC37F /* CLLoadInterests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF2C361BA2B35600ECC37F /* CLLoadInterests.m */; };
 		4BBF2C3A1BA2C1C400ECC37F /* CLLoadedInterests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF2C391BA2C1C400ECC37F /* CLLoadedInterests.m */; };
+		4BC481B91BB86D4E00076A62 /* CLDeAuthorizeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC481B81BB86D4E00076A62 /* CLDeAuthorizeEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4BC481BC1BB86D8600076A62 /* CLDeAuthorizedEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC481BB1BB86D8600076A62 /* CLDeAuthorizedEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4BC481C21BB8751D00076A62 /* CLDeauthenticationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC481C11BB8751D00076A62 /* CLDeauthenticationResponse.m */; settings = {ASSET_TAGS = (); }; };
 		4BE1DF3F1BABD12B009519CB /* CLGroupPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */; };
 		4BE1DF431BABD155009519CB /* CLGroupSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF421BABD155009519CB /* CLGroupSubscriber.m */; };
 		4BE1DF461BABD1D4009519CB /* CLGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF451BABD1D4009519CB /* CLGroupController.m */; };
@@ -422,6 +425,12 @@
 		4BBF2C361BA2B35600ECC37F /* CLLoadInterests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterests.m; sourceTree = "<group>"; };
 		4BBF2C381BA2C1C400ECC37F /* CLLoadedInterests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedInterests.h; sourceTree = "<group>"; };
 		4BBF2C391BA2C1C400ECC37F /* CLLoadedInterests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedInterests.m; sourceTree = "<group>"; };
+		4BC481B71BB86D4E00076A62 /* CLDeAuthorizeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDeAuthorizeEvent.h; sourceTree = "<group>"; };
+		4BC481B81BB86D4E00076A62 /* CLDeAuthorizeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDeAuthorizeEvent.m; sourceTree = "<group>"; };
+		4BC481BA1BB86D8600076A62 /* CLDeAuthorizedEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDeAuthorizedEvent.h; sourceTree = "<group>"; };
+		4BC481BB1BB86D8600076A62 /* CLDeAuthorizedEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDeAuthorizedEvent.m; sourceTree = "<group>"; };
+		4BC481C01BB8751D00076A62 /* CLDeauthenticationResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDeauthenticationResponse.h; sourceTree = "<group>"; };
+		4BC481C11BB8751D00076A62 /* CLDeauthenticationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDeauthenticationResponse.m; sourceTree = "<group>"; };
 		4BE1DF3D1BABD12B009519CB /* CLGroupPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLGroupPresenter.h; path = Cooleaf/MVP/presenters/CLGroupPresenter.h; sourceTree = SOURCE_ROOT; };
 		4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLGroupPresenter.m; path = Cooleaf/MVP/presenters/CLGroupPresenter.m; sourceTree = SOURCE_ROOT; };
 		4BE1DF401BABD13A009519CB /* IGroupInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGroupInteractor.h; sourceTree = "<group>"; };
@@ -909,6 +918,8 @@
 		4BA4E3361B8D06EA0089CB2B /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				4BC481C01BB8751D00076A62 /* CLDeauthenticationResponse.h */,
+				4BC481C11BB8751D00076A62 /* CLDeauthenticationResponse.m */,
 			);
 			name = Responses;
 			path = ../Api/Responses;
@@ -1051,6 +1062,10 @@
 				4B3B367B1BB1FB1F00C7AEE5 /* CLLoadEventParticipants.m */,
 				4B3B367D1BB1FB7400C7AEE5 /* CLLoadedEventParticipants.h */,
 				4B3B367E1BB1FB7400C7AEE5 /* CLLoadedEventParticipants.m */,
+				4BC481B71BB86D4E00076A62 /* CLDeAuthorizeEvent.h */,
+				4BC481B81BB86D4E00076A62 /* CLDeAuthorizeEvent.m */,
+				4BC481BA1BB86D8600076A62 /* CLDeAuthorizedEvent.h */,
+				4BC481BB1BB86D8600076A62 /* CLDeAuthorizedEvent.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1771,6 +1786,7 @@
 				4B7A62941BB0AC7B00DF7A36 /* CLDeleteEventComment.m in Sources */,
 				6877AFC01B994C7100113B86 /* CLNavigation.m in Sources */,
 				6877AFBD1B99423600113B86 /* CLGroupViewController.m in Sources */,
+				4BC481BC1BB86D8600076A62 /* CLDeAuthorizedEvent.m in Sources */,
 				4BE63A581B95205000231222 /* CLLoadedEvents.m in Sources */,
 				D93AAC8C187B6D5F00E9B96A /* NPDetailsCell.m in Sources */,
 				4BAE00591B8EDE8600779E1F /* CLAuthenticationEvent.m in Sources */,
@@ -1829,9 +1845,11 @@
 				68D85D351BA929EA00C4620A /* UIColor+BFPaperColors.m in Sources */,
 				432A499E1AE4FA2E001B3740 /* NPEditTagsViewController.m in Sources */,
 				68DDFEFA1B9F443C00EDE1CF /* CLCommentViewController.m in Sources */,
+				4BC481C21BB8751D00076A62 /* CLDeauthenticationResponse.m in Sources */,
 				F998F68F1AB3312500213240 /* NPInterest.m in Sources */,
 				D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */,
 				4BA4E31D1B8BDC4B0089CB2B /* CLEdit.m in Sources */,
+				4BC481B91BB86D4E00076A62 /* CLDeAuthorizeEvent.m in Sources */,
 				4BA4E34C1B8D134C0089CB2B /* CLEventController.m in Sources */,
 				4BBF2C2B1B9FDC6B00ECC37F /* CLInformationTableViewHeader.m in Sources */,
 				D980957C185CA7AC008F2B61 /* NPEventListViewController.m in Sources */,
