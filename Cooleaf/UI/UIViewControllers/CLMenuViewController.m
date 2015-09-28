@@ -15,6 +15,7 @@
 
 @interface CLMenuViewController () {
     @private
+    CLUser *user;
     NSArray *titles;
     NSArray *titles2;
     NSArray *icons;
@@ -134,7 +135,7 @@
             [navigateTo peopleController];
             break;
         case 4:
-            NSLog(@"4" );
+            [navigateTo profileController:user];
             break;
         default:
             break;

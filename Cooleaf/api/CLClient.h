@@ -10,9 +10,13 @@
 
 @interface CLClient : OVCHTTPRequestOperationManager
 
+@property (nonatomic, strong) NSString *notificationUDID;
+
 + (CLClient *)getInstance;
 + (void)setOrganizationHeader:(NSString *)header;
 + (NSString *)getBaseApiURL;
+- (void)saveCookies;
+- (void)loadCookies;
 
 @end
 

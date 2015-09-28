@@ -17,6 +17,7 @@
 #import "NPEventViewController.h"
 #import "MainViewController.h"
 #import "UIColor+CustomColors.h"
+#import "CLClient.h"
 
 #define kAppleLookupURLTemplate     @"http://itunes.apple.com/lookup?id=%@"
 #define kAppStoreURLTemplate        @"https://itunes.apple.com/app/id"
@@ -61,15 +62,16 @@
     });
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-   
+    // Initialize base views here
+    [self initViews];
+    
+    // Present LoginViewController
+    [self.drawerController.navigationController presentViewController:[NPLoginViewController new] animated:NO completion:nil];
+    
     // Go ahead and startEventProcessing...
     [self startEventProcessing];
-    
-    // Initialize Views
-    [self initViews];
     
     [Crashlytics startWithAPIKey:@"7dcedf5a21b0ddf4342ff0b3104aa0242456847d"];
     
@@ -107,20 +109,18 @@
 	return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
+- (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
+- (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    
     [[NPCooleafClient sharedClient] checkEndpoints];
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
@@ -156,6 +156,7 @@
     // Set gestures
     [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
 }
 
 # pragma mark - openDrawer
@@ -192,6 +193,7 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *strDeviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
 	strDeviceToken = [strDeviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [CLClient getInstance].notificationUDID = strDeviceToken;
     [NPCooleafClient sharedClient].notificationUDID = strDeviceToken;
 }
 
@@ -242,6 +244,7 @@
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    [CLClient getInstance].notificationUDID = @"";
     [NPCooleafClient sharedClient].notificationUDID = @"";
 }
 

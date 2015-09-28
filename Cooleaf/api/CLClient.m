@@ -13,6 +13,7 @@
 #import "CLQuery.h"
 #import "CLFeed.h"
 #import "CLComment.h"
+#import "SSKeychain.h"
 
 static NSString *const BASE_API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu";
 static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api";
@@ -59,6 +60,7 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
              @"v2/events/ongoing.json": [CLEvent class],
              @"v2/events/user/*": [CLEvent class],
              @"v2/users/*": [CLUser class],
+             @"v2/users/me.json": [CLUser class],
              @"v2/users.json": [CLUser class],
              @"v2/interests.json": [CLInterest class],
              @"memberlist.json": [CLUser class],
@@ -88,6 +90,27 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
 
 + (NSString *)getBaseApiURL {
     return BASE_API_URL;
+}
+
+# pragma mark - Cookie Persistence - SWITCH OVER TO SSKEYCHAIN INSTEAD OF NSUSERDEFAULTS
+
+- (void)saveCookies {
+    NSString *username = [[SSKeychain accountsForService:@"cooleaf"] valueForKey:@"acct"];
+    
+    NSData *cookiesData = [NSKeyedArchiver archivedDataWithRootObject: [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject: cookiesData forKey: @"sessionCookies"];
+    [defaults synchronize];
+}
+
+- (void)loadCookies {
+    NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData: [[NSUserDefaults standardUserDefaults] objectForKey: @"sessionCookies"]];
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    
+    for (NSHTTPCookie *cookie in cookies){
+        [cookieStorage setCookie: cookie];
+    }
 }
 
 @end

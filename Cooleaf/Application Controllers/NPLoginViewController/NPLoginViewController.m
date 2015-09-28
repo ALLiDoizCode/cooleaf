@@ -11,6 +11,9 @@
 #import "NPRegistrationViewController.h"
 #import "NPCooleafClient.h"
 #import "UIBarButtonItem+NPBarButtonItems.h"
+#import "CLAuthenticationPresenter.h"
+#import "CLClient.h"
+#import "CLHomeTableViewController.h"
 
 #define UPSHIFT 101
 
@@ -18,6 +21,8 @@
 {
     AFHTTPRequestOperation *_loginOperation;
 }
+
+@property (nonatomic, strong) CLAuthenticationPresenter *authenticationPresenter;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswdBtn;
@@ -30,10 +35,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *signupTabButton;
 @property (weak, nonatomic) IBOutlet UIView *signupHighlight;
 @property (weak, nonatomic) IBOutlet UIButton *termsButton;
-
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *globalSpinner;
 @property (weak, nonatomic) IBOutlet UIImageView *logoView;
-//@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 
 - (IBAction)signInTapped:(id)sender;
 - (IBAction)forgotPasswdTapped:(id)sender;
@@ -43,47 +46,33 @@
 - (IBAction)signupButtonTapped:(id)sender;
 - (IBAction)termsButtonTapped:(id)sender;
 
-
 @end
 
 @implementation NPLoginViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+# pragma mark - initWithNibName
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
+    if (self) {
         self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     }
-    
     return self;
 }
 
-- (void)startLogin
-{
+# pragma mark - startLogin
+
+- (void)startLogin {
     [UIView animateWithDuration:0.3 animations:^{
         //_logoView.alpha = 0.0;
     } completion:^(BOOL finished) {
         //_logoView.hidden = YES;
-		
         NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-        if (username && [SSKeychain passwordForService:@"cooleaf" account:username])
-        {
+        NSString *password = [SSKeychain passwordForService:@"cooleaf" account:username];
+        if (username && [SSKeychain passwordForService:@"cooleaf" account:username]) {
             [_globalSpinner startAnimating];
-            _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:username password:[SSKeychain passwordForService:@"cooleaf" account:username]
-                                                                     completion:^(NSError *error) {
-                                                                         if (error)
-                                                                         {
-                                                                             [self unlockView];
-                                                                         }
-                                                                         else
-                                                                         {
-                                                                             [self dismissViewControllerAnimated:YES completion:nil];
-                                                                         }
-                                                                     }];
-        }
-        else
-        {
+            [_authenticationPresenter authenticate:username :password];
+        } else {
             _containerView.alpha = 0.0;
             _containerView.hidden = NO;
             _forgotPasswdBtn.hidden = YES;
@@ -91,13 +80,10 @@
                 _containerView.alpha = 1.0;
                 _forgotPasswdBtn.alpha = 1.0;
             } completion:^(BOOL finished) {
-                if (username)
-                {
+                if (username) {
                     _usernameField.text = username;
                     [_passwordField becomeFirstResponder];
-                }
-                else
-                {
+                } else {
                     [_usernameField becomeFirstResponder];
                 }
                 
@@ -107,65 +93,86 @@
     }];
 }
 
-- (void)notificationUDIDReceived:(NSNotification *)not
-{
+- (void)notificationUDIDReceived:(NSNotification *)not {
     [self startLogin];
 }
 
-- (void)viewDidLoad
-{
+# pragma mark - LifeCycle Methods
+
+- (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+	[self.navigationController setNavigationBarHidden:TRUE];
+    [self initAuthenticationPresenter];
+    [self checkLogin];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+# pragma mark - setupUI
+
+- (void)setupUI {
     _containerView.hidden = YES;
     _forgotPasswdBtn.hidden = YES;
     _containerView.layer.cornerRadius = 4.0;
-	_loginHighlight.alpha = 1.0;
-	_signupHighlight.alpha = 0.0;
-	_signUpButton.alpha = 0.0;
-	_signUpButton.hidden = YES;
-	_termsButton.alpha = 0.0;
-	
-    if ([UIScreen mainScreen].bounds.size.height < 500)
-    {
+    _loginHighlight.alpha = 1.0;
+    _signupHighlight.alpha = 0.0;
+    _signUpButton.alpha = 0.0;
+    _signUpButton.hidden = YES;
+    _termsButton.alpha = 0.0;
+    
+    if ([UIScreen mainScreen].bounds.size.height < 500) {
         _containerView.transform = CGAffineTransformMakeTranslation(0, -100);
         _forgotPasswdBtn.transform = CGAffineTransformMakeTranslation(0, -170);
         _logoView.transform = CGAffineTransformMakeTranslation(-2, -48);
         _globalSpinner.transform = CGAffineTransformMakeTranslation(0, -80);
     }
-    
-    if ([NPCooleafClient sharedClient].notificationUDID)
-    {
+
+}
+
+# pragma mark - checkLogin
+
+- (void)checkLogin {
+    if ([CLClient getInstance].notificationUDID) {
         [self startLogin];
-    }
-    else
-    {
+    } else {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationUDIDReceived:) name:kNPCooleafClientRUDIDHarvestedNotification object:nil];
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-	[self.navigationController setNavigationBarHidden:TRUE];
-}
+# pragma mark - preferredStatusBarStyle
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
+- (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+# pragma mark - unlockView
 
-- (void)unlockView
-{
+- (void)unlockView {
     _loginOperation = nil;
     [_spinner stopAnimating];
     [_globalSpinner stopAnimating];
-    if (_containerView.hidden)
-    {
+    if (_containerView.hidden) {
         _containerView.alpha = 0.0;
         _containerView.hidden = NO;
         _forgotPasswdBtn.hidden = YES;
@@ -174,13 +181,10 @@
             _forgotPasswdBtn.alpha = 1.0;
         } completion:^(BOOL finished) {
             NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-            if (username)
-            {
+            if (username) {
                 _usernameField.text = username;
                 [_passwordField becomeFirstResponder];
-            }
-            else
-            {
+            } else {
                 [_usernameField becomeFirstResponder];
             }
         }];
@@ -192,13 +196,30 @@
     _forgotPasswdBtn.enabled = NO;
 }
 
-- (IBAction)signInTapped:(id)sender
-{
+# pragma mark - initAuthenticationPresenter
+
+- (void)initAuthenticationPresenter {
+    _authenticationPresenter = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
+    [_authenticationPresenter registerOnBus];
+}
+
+# pragma mark - IAuthenticationInteractor
+
+- (void)initUser:(CLUser *)user {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)deAuthorized {
+    
+}
+
+# pragma mark - signInTapped
+
+- (IBAction)signInTapped:(id)sender {
     [_usernameField resignFirstResponder];
     [_passwordField resignFirstResponder];
     
-    if (_usernameField.text.length < 5 || _passwordField.text.length == 0)
-    {
+    if (_usernameField.text.length < 5 || _passwordField.text.length == 0) {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Sign in failed", @"Sign in failure alert title")
                                                      message:NSLocalizedString(@"Given username or password is too short.", @"Wrong credentials given. Too little data")
                                                     delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
@@ -212,27 +233,27 @@
     [_spinner startAnimating];
     _usernameField.enabled = NO;
     _passwordField.enabled = NO;
-    _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:_usernameField.text password:_passwordField.text completion:^(NSError *error) {
-        [self unlockView];
-        if (error)
-        {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Log In Failed", @"Sign in failure alert title")
-                                                         message:NSLocalizedString(@"Invalid username/password or account not yet activated. Please ‘Sign Up’ to activate your account or try again with your corporate email.", @"Wrong credentials given. Server responded with error")
-                                                        delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
-            [av show];
-            
-        }
-        else
-        {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-        
-    }];
+    [_authenticationPresenter authenticate:_usernameField.text :_passwordField.text];
+    [self unlockView];
+//    _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:_usernameField.text password:_passwordField.text completion:^(NSError *error) {
+//        [self unlockView];
+//        if (error) {
+//            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Log In Failed", @"Sign in failure alert title")
+//                                                         message:NSLocalizedString(@"Invalid username/password or account not yet activated. Please ‘Sign Up’ to activate your account or try again with your corporate email.", @"Wrong credentials given. Server responded with error")
+//                                                        delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+//            [av show];
+//            
+//        } else {
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//        }
+//        
+//    }];
     
 }
 
-- (IBAction)signupButtonTapped:(id)sender
-{
+# pragma mark - signupButtonTapped
+
+- (IBAction)signupButtonTapped:(id)sender {
 	[_usernameField resignFirstResponder];
 	[_passwordField resignFirstResponder];
 	
@@ -246,24 +267,26 @@
 	}
 	
 	NPRegistrationViewController *controller = [[NPRegistrationViewController alloc] initWithUsername:_usernameField.text andPassword:_passwordField.text];
-//[self presentViewController:controller animated:TRUE completion:nil];
 	[self.navigationController pushViewController:controller animated:TRUE];
 }
 
-- (IBAction)termsButtonTapped:(id)sender
-{
+# pragma mark - termsButtonTapped
+
+- (IBAction)termsButtonTapped:(id)sender {
 	NSURL *termsURL = [NSURL URLWithString:@"http://www.cooleaf.com/pages/tos/"];
 	[[UIApplication sharedApplication] openURL:termsURL];
 }
 
-- (void)cancelLogin:(id)sender
-{
+# pragma mark - cancelLogin
+
+- (void)cancelLogin:(id)sender {
     [_loginOperation cancel];
     [self unlockView];
 }
 
-- (IBAction)loginTabTapped:(id)sender
-{
+# pragma mark - loginTabTapped
+
+- (IBAction)loginTabTapped:(id)sender {
 	[UIView animateWithDuration:0.5 animations:^{
 		_loginHighlight.alpha = 1.0;
 		_signupHighlight.alpha = 0.0;
@@ -279,8 +302,9 @@
 
 }
 
-- (IBAction)signupTabTapped:(id)sender
-{
+# pragma mark - signupTabTapped
+
+- (IBAction)signupTabTapped:(id)sender {
 	[UIView animateWithDuration:0.5 animations:^{
 		_loginHighlight.alpha = 0.0;
 		_signupHighlight.alpha = 1.0;
@@ -295,20 +319,20 @@
 	}];
 }
 
-- (IBAction)forgotPasswdTapped:(id)sender
-{
+# pragma mark - forgotPasswdTapped
+
+- (IBAction)forgotPasswdTapped:(id)sender {
     if (_loginOperation)
         [self cancelLogin:sender];
-    else
-    {
+    else {
         NSURL *forgotPwdURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:@"/users/password/new"];
         [[UIApplication sharedApplication] openURL:forgotPwdURL];
     }
 }
 
+# pragma mark - textFieldShouldReturn
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (_usernameField == textField)
         [_passwordField becomeFirstResponder];
 	else if (_passwordField == textField) {
@@ -318,8 +342,7 @@
 		else
 			[self signInTapped:nil];
 	}
-	
-    
+
     return YES;
 }
 

@@ -24,6 +24,20 @@
 
 # pragma deauthenticate
 
-
+- (void)deauthenticate:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    
+    [[CLClient getInstance] POST:@"v2/deauthorize.json" parameters:params success:^(AFHTTPRequestOperation *operation, id response) {
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        // Valid JSON is not returned therefore it throws an error, however status code is 200
+        NSInteger statusCode = [[operation response] statusCode];
+        if (statusCode == 200) {
+            success(operation);
+        } else {
+            // Something else went wrong with network
+            NSLog(@"%@", error);
+            failure(error);
+        }
+    }];
+}
 
 @end

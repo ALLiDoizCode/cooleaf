@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "CLEventCell.h"
+#import "IUserInteractor.h"
 #import "IAuthenticationInteractor.h"
 #import "IEventInteractor.h"
 #import "CLAuthenticationPresenter.h"
 #import "CLEventPresenter.h"
 
-@interface CLHomeTableViewController : UITableViewController <CLEventCellDelegate, IAuthenticationInteractor, IEventInteractor, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
+@interface CLHomeTableViewController : UITableViewController <CLEventCellDelegate, IUserInteractor, IAuthenticationInteractor, IEventInteractor, UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 
+@property (nonatomic, strong) CLUser *user;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UISearchDisplayController *searchController;
 @property (weak, nonatomic) IBOutlet UIImageView *userImage;
@@ -24,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic) NSString *currentView;
 
-- (void)initAuthPresenter;
 - (void)setupDisplay;
 
 @end
