@@ -8,6 +8,8 @@
 
 @protocol IEventInteractor <NSObject>
 
+- (void)joinedEvent;
+- (void)leftEvent;
 - (void)initEvents:(NSMutableArray *)events;
 - (void)initUserEvents:(NSMutableArray *)userEvents;
 

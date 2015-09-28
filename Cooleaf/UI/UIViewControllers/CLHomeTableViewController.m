@@ -221,7 +221,11 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     CLEvent *event = [_events objectAtIndex:[indexPath row]];
     
-    // Join event
+    BOOL attending = [event isAttending];
+    if (attending)
+        [_eventPresenter leaveEvent:[[event eventId] integerValue]];
+    else
+        [_eventPresenter joinEvent:[[event eventId] integerValue]];
 }
 
 # pragma mark - IUserInteractor Methods
@@ -268,6 +272,14 @@
 }
 
 # pragma mark - IEventInteractor methods
+
+- (void)joinedEvent {
+    NSLog(@"Joined Event");
+}
+
+- (void)leftEvent {
+    NSLog(@"Left Event");
+}
 
 - (void)initEvents:(NSMutableArray *)events {
     // Events receieved here, set into tableview
