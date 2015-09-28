@@ -21,5 +21,6 @@
 - (void)unregisterOnBus;
 - (void)loadEvents;
 - (void)loadUserEvents:(NSString *)scope userIdString:(NSString *)userIdString;
+- (void)joinEvent:(NSInteger)eventId;
 
 @end

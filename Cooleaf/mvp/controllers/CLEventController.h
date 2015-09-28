@@ -15,5 +15,7 @@
            failure:(void (^)(NSError *error))failure;
 - (void)getUserEventsWithScope:(NSString *)userId params:(NSDictionary *)params success:(void (^)(id JSON))success
                    failure:(void (^)(NSError *))failure;
+- (void)joinEventWithId:(NSInteger)eventId params:(NSDictionary *)params success:(void (^)(id JSON))success
+                       failure:(void (^)(NSError *))failure;
 
 @end

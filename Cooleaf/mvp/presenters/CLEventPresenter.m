@@ -12,6 +12,7 @@
 #import "CLLoadedEvents.h"
 #import "CLLoadUserEvents.h"
 #import "CLLoadedUserEvents.h"
+#import "CLLoadJoinEvent.h"
 
 static NSInteger const PAGE = 1;
 static NSInteger const PER_PAGE = 25;
@@ -63,7 +64,7 @@ static NSInteger const PER_PAGE = 25;
 # pragma mark - joinEvent
 
 - (void)joinEvent:(NSInteger)eventId {
-    
+    PUBLISH([[CLLoadJoinEvent alloc] initWithEventId:eventId]);
 }
 
 # pragma mark - Subscription Methods

@@ -8,6 +8,7 @@
 
 #import "CLEventController.h"
 
+static NSString *const kEventsPath = @"v2/events/";
 static NSString *const kOngoingEventsPath = @"v2/events/ongoing.json";
 static NSString *const kUserEventsPath = @"v2/events/user/";
 
@@ -32,6 +33,16 @@ static NSString *const kUserEventsPath = @"v2/events/user/";
            success(response);
        else
            failure(error);
+    }];
+}
+
+- (void)joinEventWithId:(NSInteger)eventId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    NSString *path = [NSString stringWithFormat:@"%@%d%@", kEventsPath, (int) eventId, @"/join.json"];
+    [[CLClient getInstance] POST:path parameters:params completion:^(id response, NSError *error) {
+        if (!error)
+            success(response);
+        else
+            failure(error);
     }];
 }
 

@@ -85,7 +85,7 @@
 # pragma mark - initEventPresenter
 
 - (void)initEventPresenter {
-    _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
+    _eventPresenter = [[CLEventPresenter alloc] initWithDetailInteractor:self];
     [_eventPresenter registerOnBus];
 }
 
@@ -97,13 +97,13 @@
     [_participantPresenter loadEventParticipants:[[_event eventId] integerValue]];
 }
 
-# pragma mark - IEventInteractor Methods
+# pragma mark - IEventDetailInteractor Methods
 
-- (void)initEvents:(NSMutableArray *)events {
+- (void)joinedEvent {
     
 }
 
-- (void)initUserEvents:(NSMutableArray *)userEvents {
+- (void)leftEvent {
     
 }
 
@@ -217,6 +217,13 @@
     // Set the date
     NSString *readableDate = [CLDateUtil getReadableDateFromUnixString:[_event startTime]];
     _detailView.labelDate.text = readableDate;
+    
+    // Adjust join button
+    BOOL attending = [_event isAttending];
+    if (attending)
+        [_detailView.joinBtn setTitle:@"Leave" forState:UIControlStateNormal];
+    else
+        [_detailView.joinBtn setTitle:@"Join" forState:UIControlStateNormal];
 }
 
 # pragma mark - setupEventMap
@@ -289,7 +296,7 @@
 # pragma mark - joinEvent
 
 - (void)joinEvent {
-    NSLog(@"%d", [[_event eventId] intValue]);
+    [_eventPresenter joinEvent:[[_event eventId] integerValue]];
 }
 
 # pragma mark - getLabelHeight
