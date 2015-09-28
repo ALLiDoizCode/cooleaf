@@ -25,6 +25,7 @@
 		4B27746A1B9AC63F004BFCF4 /* CLLoadUserEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2774691B9AC63F004BFCF4 /* CLLoadUserEvents.m */; };
 		4B27746D1B9AE147004BFCF4 /* CLLoadedUserEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27746C1B9AE147004BFCF4 /* CLLoadedUserEvents.m */; };
 		4B2C13EE1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C13ED1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m */; settings = {ASSET_TAGS = (); }; };
+		4B2C13F11BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C13F01BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m */; settings = {ASSET_TAGS = (); }; };
 		4B3408921BAEAF8E0081B6D4 /* CLAddEventComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3408911BAEAF8E0081B6D4 /* CLAddEventComment.m */; };
 		4B3408951BAEAF9A0081B6D4 /* CLAddedEventComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3408941BAEAF9A0081B6D4 /* CLAddedEventComment.m */; };
 		4B3B36781BB1F9A900C7AEE5 /* CLParticipantPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B36771BB1F9A900C7AEE5 /* CLParticipantPresenter.m */; };
@@ -286,6 +287,8 @@
 		4B27746C1B9AE147004BFCF4 /* CLLoadedUserEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedUserEvents.m; sourceTree = "<group>"; };
 		4B2C13EC1BB948EE00DAA8F2 /* CLLoadedJoinInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedJoinInterest.h; sourceTree = "<group>"; };
 		4B2C13ED1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedJoinInterest.m; sourceTree = "<group>"; };
+		4B2C13EF1BB94AED00DAA8F2 /* CLLoadedLeaveInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedLeaveInterest.h; sourceTree = "<group>"; };
+		4B2C13F01BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedLeaveInterest.m; sourceTree = "<group>"; };
 		4B3408901BAEAF8E0081B6D4 /* CLAddEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAddEventComment.h; sourceTree = "<group>"; };
 		4B3408911BAEAF8E0081B6D4 /* CLAddEventComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAddEventComment.m; sourceTree = "<group>"; };
 		4B3408931BAEAF9A0081B6D4 /* CLAddedEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAddedEventComment.h; sourceTree = "<group>"; };
@@ -1076,6 +1079,8 @@
 				4BC616331BB9199800EB9476 /* CLLoadedMeEvent.m */,
 				4B2C13EC1BB948EE00DAA8F2 /* CLLoadedJoinInterest.h */,
 				4B2C13ED1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m */,
+				4B2C13EF1BB94AED00DAA8F2 /* CLLoadedLeaveInterest.h */,
+				4B2C13F01BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1828,6 +1833,7 @@
 				4B27746D1B9AE147004BFCF4 /* CLLoadedUserEvents.m in Sources */,
 				4BA4E3051B8BC8670089CB2B /* CLRole.m in Sources */,
 				6888B4061B99ABE5008D9CB3 /* CLGroupPostCell.m in Sources */,
+				4B2C13F11BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m in Sources */,
 				D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */,
 				68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */,
 				4BBF2C371BA2B35600ECC37F /* CLLoadInterests.m in Sources */,

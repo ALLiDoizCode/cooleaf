@@ -59,6 +59,19 @@ static NSString *const kInterestPartialPath = @"v2/interests/";
         else
             failure(error);
     }];
+    [[CLClient getInstance] DELETE:leavePath parameters:params success:^(AFHTTPRequestOperation *operation, id response) {
+        success(response);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        // Valid JSON is not returned therefore it throws an error, however status code is 200
+        NSInteger statusCode = [[operation response] statusCode];
+        if (statusCode == 200) {
+            success(operation);
+        } else {
+            // Something else went wrong with network
+            failure(error);
+        }
+        
+    }];
 }
 
 @end

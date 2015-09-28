@@ -15,6 +15,7 @@
 #import "CLLoadJoinInterest.h"
 #import "CLLoadLeaveInterest.h"
 #import "CLLoadedJoinInterest.h"
+#import "CLLoadedLeaveInterest.h"
 
 static NSInteger const PAGE = 1;
 static NSInteger const PER_PAGE = 25;
@@ -80,6 +81,10 @@ SUBSCRIBE(CLLoadedInterestMembers) {
 
 SUBSCRIBE(CLLoadedJoinInterest) {
     [_interestDetailInfo joinedInterest];
+}
+
+SUBSCRIBE(CLLoadedLeaveInterest) {
+    [_interestDetailInfo leaveInterest];
 }
 
 @end

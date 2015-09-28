@@ -14,6 +14,7 @@
 #import "CLLoadJoinInterest.h"
 #import "CLLoadLeaveInterest.h"
 #import "CLLoadedJoinInterest.h"
+#import "CLLoadedLeaveInterest.h"
 
 @interface CLInterestSubscriber() {
     @private
@@ -74,8 +75,7 @@ SUBSCRIBE(CLLoadLeaveInterest) {
     
     NSInteger interestId = event.interestId;
     [_interestController leaveInterest:interestId params:nil success:^(id JSON) {
-        NSLog(@"Success!!");
-        NSLog(@"%@", JSON);
+        PUBLISH([[CLLoadedLeaveInterest alloc] init]);
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];

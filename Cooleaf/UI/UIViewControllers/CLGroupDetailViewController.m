@@ -246,7 +246,14 @@
 - (void)joinedInterest {
     // Change join button and load feeds
     [_detailView.joinBtn setTitle:@"Leave" forState:UIControlStateNormal];
+    _tableView.hidden = NO; // Show feed tableview
     [_feedPresenter loadInterestFeeds:[[_interest interestId] integerValue]];
+}
+
+- (void)leaveInterest {
+    // Change join button and load feeds
+    [_detailView.joinBtn setTitle:@"Join" forState:UIControlStateNormal];
+    _tableView.hidden = YES; // Hide feed tableview
 }
 
 - (void)initMembers:(NSMutableArray *)members {
