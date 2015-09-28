@@ -76,7 +76,7 @@ SUBSCRIBE(CLLoadJoinEvent) {
 SUBSCRIBE(CLLoadLeaveEvent) {
     // Get event id
     NSInteger eventId = event.eventId;
-    [_eventController joinEventWithId:eventId params:nil success:^(id JSON) {
+    [_eventController leftEventWithId:eventId params:nil success:^(id JSON) {
         PUBLISH([[CLLoadedLeaveEvent alloc] init]);
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
