@@ -72,14 +72,11 @@
     
     // Create right navbar buttons
     UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchViewController)];
-    UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
-    NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
     
-    [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
+    [[self navigationItem] setRightBarButtonItem:searchBtn];
     [[self navigationItem] setLeftBarButtonItem:drawerButton];
     
     searchBtn.tintColor = [UIColor whiteColor];
-    commentBtn.tintColor = [UIColor whiteColor];
 }
 
 # pragma mark - initPullToRefresh
