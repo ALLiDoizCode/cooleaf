@@ -13,6 +13,9 @@
 #import "CLLoadUserEvents.h"
 #import "CLLoadedUserEvents.h"
 #import "CLLoadJoinEvent.h"
+#import "CLLoadedJoinEvent.h"
+#import "CLLoadedLeaveEvent.h"
+#import "CLLoadLeaveEvent.h"
 
 static NSInteger const PAGE = 1;
 static NSInteger const PER_PAGE = 25;
@@ -67,6 +70,12 @@ static NSInteger const PER_PAGE = 25;
     PUBLISH([[CLLoadJoinEvent alloc] initWithEventId:eventId]);
 }
 
+# pragma mark - leaveEvent
+
+- (void)leaveEvent:(NSInteger)eventId {
+    PUBLISH([[CLLoadLeaveEvent alloc] initWithEventId:eventId]);
+}
+
 # pragma mark - Subscription Methods
 
 SUBSCRIBE(CLLoadedEvents) {
@@ -77,6 +86,14 @@ SUBSCRIBE(CLLoadedEvents) {
 SUBSCRIBE(CLLoadedUserEvents) {
     if (_eventInfo != nil)
         [_eventInfo initUserEvents:event.events];
+}
+
+SUBSCRIBE(CLLoadedJoinEvent) {
+    [_eventDetailInfo joinedEvent];
+}
+
+SUBSCRIBE(CLLoadedLeaveEvent) {
+    [_eventDetailInfo leftEvent];
 }
 
 @end

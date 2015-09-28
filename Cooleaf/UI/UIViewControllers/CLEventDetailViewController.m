@@ -100,11 +100,15 @@
 # pragma mark - IEventDetailInteractor Methods
 
 - (void)joinedEvent {
-    
+    // Joined event, change button to leave and reload participants
+    [_participantPresenter loadEventParticipants:[[_event eventId] integerValue]];
+    [_detailView.joinBtn setTitle:@"Leave" forState:UIControlStateNormal];
 }
 
 - (void)leftEvent {
-    
+    // Joined event, change button to leave and reload participants
+    [_participantPresenter loadEventParticipants:[[_event eventId] integerValue]];
+    [_detailView.joinBtn setTitle:@"Join" forState:UIControlStateNormal];
 }
 
 # pragma mark - IParticipantInteractor Methods
@@ -296,7 +300,11 @@
 # pragma mark - joinEvent
 
 - (void)joinEvent {
-    [_eventPresenter joinEvent:[[_event eventId] integerValue]];
+    BOOL attending = [_event isAttending];
+    if (attending)
+        [_eventPresenter leaveEvent:[[_event eventId] integerValue]];
+    else
+        [_eventPresenter joinEvent:[[_event eventId] integerValue]];
 }
 
 # pragma mark - getLabelHeight

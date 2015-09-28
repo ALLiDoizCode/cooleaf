@@ -22,5 +22,6 @@
 - (void)loadEvents;
 - (void)loadUserEvents:(NSString *)scope userIdString:(NSString *)userIdString;
 - (void)joinEvent:(NSInteger)eventId;
+- (void)leaveEvent:(NSInteger)eventId;
 
 @end

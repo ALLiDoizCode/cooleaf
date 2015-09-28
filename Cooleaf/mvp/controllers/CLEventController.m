@@ -38,11 +38,35 @@ static NSString *const kUserEventsPath = @"v2/events/user/";
 
 - (void)joinEventWithId:(NSInteger)eventId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     NSString *path = [NSString stringWithFormat:@"%@%d%@", kEventsPath, (int) eventId, @"/join.json"];
-    [[CLClient getInstance] POST:path parameters:params completion:^(id response, NSError *error) {
-        if (!error)
-            success(response);
-        else
+    [[CLClient getInstance] POST:path parameters:params success:^(AFHTTPRequestOperation *operation, id response) {
+        success(response);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        // Valid JSON is not returned therefore it throws an error, however status code is 201
+        NSInteger statusCode = [[operation response] statusCode];
+        if (statusCode == 201) {
+            success(operation);
+        } else {
+            // Something else went wrong with network
             failure(error);
+        }
+        
+    }];
+}
+
+- (void)leftEventWithId:(NSInteger)eventId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    NSString *path = [NSString stringWithFormat:@"%@%d%@", kEventsPath, (int) eventId, @"/join.json"];
+    [[CLClient getInstance] DELETE:path parameters:params success:^(AFHTTPRequestOperation *operation, id response) {
+        success(response);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        // Valid JSON is not returned therefore it throws an error, however status code is 200
+        NSInteger statusCode = [[operation response] statusCode];
+        if (statusCode == 200) {
+            success(operation);
+        } else {
+            // Something else went wrong with network
+            failure(error);
+        }
+        
     }];
 }
 
