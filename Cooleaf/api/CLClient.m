@@ -13,6 +13,7 @@
 #import "CLQuery.h"
 #import "CLFeed.h"
 #import "CLComment.h"
+#import "SSKeychain.h"
 
 static NSString *const BASE_API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu";
 static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api";
@@ -91,14 +92,16 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
     return BASE_API_URL;
 }
 
-# pragma mark - Cookie Persistence
+# pragma mark - Cookie Persistence - SWITCH OVER TO SSKEYCHAIN INSTEAD OF NSUSERDEFAULTS
 
 - (void)saveCookies {
+    NSString *username = [[SSKeychain accountsForService:@"cooleaf"] valueForKey:@"acct"];
+    
     NSData *cookiesData = [NSKeyedArchiver archivedDataWithRootObject: [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
     [defaults setObject: cookiesData forKey: @"sessionCookies"];
     [defaults synchronize];
-    
 }
 
 - (void)loadCookies {
