@@ -8,15 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "IEventInteractor.h"
+#import "IEventDetailInteractor.h"
 
 @interface CLEventPresenter : NSObject
 
 @property (nonatomic, assign) id<IEventInteractor> eventInfo;
+@property (nonatomic, assign) id<IEventDetailInteractor> eventDetailInfo;
 
 - (id)initWithInteractor:(id<IEventInteractor>)interactor;
+- (id)initWithDetailInteractor:(id<IEventDetailInteractor>)interactor;
 - (void)registerOnBus;
 - (void)unregisterOnBus;
 - (void)loadEvents;
 - (void)loadUserEvents:(NSString *)scope userIdString:(NSString *)userIdString;
+- (void)joinEvent:(NSInteger)eventId;
+- (void)leaveEvent:(NSInteger)eventId;
 
 @end

@@ -37,7 +37,7 @@
     [super viewDidLoad];
     
     // Add join API call to join button
-    [_detailView.joinBtn addTarget:self action:@selector(joinSelection) forControlEvents:UIControlEventTouchUpInside];
+    [_detailView.joinBtn addTarget:self action:@selector(joinEvent) forControlEvents:UIControlEventTouchUpInside];
     
     // Add selector for participants button to go to people view controller
     [_detailView.participantsButton addTarget:self action:@selector(goToPeopleController) forControlEvents:UIControlEventTouchUpInside];
@@ -85,7 +85,7 @@
 # pragma mark - initEventPresenter
 
 - (void)initEventPresenter {
-    _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
+    _eventPresenter = [[CLEventPresenter alloc] initWithDetailInteractor:self];
     [_eventPresenter registerOnBus];
 }
 
@@ -97,14 +97,18 @@
     [_participantPresenter loadEventParticipants:[[_event eventId] integerValue]];
 }
 
-# pragma mark - IEventInteractor Methods
+# pragma mark - IEventDetailInteractor Methods
 
-- (void)initEvents:(NSMutableArray *)events {
-    
+- (void)joinedEvent {
+    // Joined event, change button to leave and reload participants
+    [_participantPresenter loadEventParticipants:[[_event eventId] integerValue]];
+    [_detailView.joinBtn setTitle:@"Leave" forState:UIControlStateNormal];
 }
 
-- (void)initUserEvents:(NSMutableArray *)userEvents {
-    
+- (void)leftEvent {
+    // Joined event, change button to leave and reload participants
+    [_participantPresenter loadEventParticipants:[[_event eventId] integerValue]];
+    [_detailView.joinBtn setTitle:@"Join" forState:UIControlStateNormal];
 }
 
 # pragma mark - IParticipantInteractor Methods
@@ -115,6 +119,18 @@
     
     // Get count
     int count = (int) [participants count];
+    
+    // Set participant count label
+    if (count <= 1) {
+        [_detailView.participantsButton setTitle:[NSString
+                                stringWithFormat:@"%d Participant >", count]
+                                        forState:UIControlStateNormal];
+    } else {
+        [_detailView.participantsButton setTitle:[NSString
+                                stringWithFormat:@"%d Participants >", count]
+                                        forState:UIControlStateNormal];
+    }
+
     
     // Initialize a participants mutable array with 4 or less participants
     // If count is less than 4 then use count
@@ -217,6 +233,13 @@
     // Set the date
     NSString *readableDate = [CLDateUtil getReadableDateFromUnixString:[_event startTime]];
     _detailView.labelDate.text = readableDate;
+    
+    // Adjust join button
+    BOOL attending = [_event isAttending];
+    if (attending)
+        [_detailView.joinBtn setTitle:@"Leave" forState:UIControlStateNormal];
+    else
+        [_detailView.joinBtn setTitle:@"Join" forState:UIControlStateNormal];
 }
 
 # pragma mark - setupEventMap
@@ -286,105 +309,14 @@
     [self goToPeopleController];
 }
 
-# pragma mark - Event Series Join Box
+# pragma mark - joinEvent
 
--(void)joinSelection {
-    
-    //Blur
-    _bgBlur = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, _detailView.frame.size.height)];
-    _bgBlur.backgroundColor = [UIColor offBlack];
-    _bgBlur.alpha = 0.8;
-    
-    //Background View
-    _selectionView = [[UIView alloc] initWithFrame:CGRectMake(65, 100, 200, 250)];
-    _selectionView.backgroundColor = [UIColor offWhite];
-    _selectionView.layer.cornerRadius = 3;
-    _selectionView.layer.masksToBounds = YES;
-    
-    BFPaperCheckbox *paperCheckbox = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 10, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
-    paperCheckbox.tag = 1001;
-    paperCheckbox.checkmarkColor = [UIColor UIColorFromRGB:0x00BCD5];
-   
-    BFPaperCheckbox *paperCheckbox2 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 60, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
-    paperCheckbox2.tag = 1002;
-    paperCheckbox2.checkmarkColor = [UIColor UIColorFromRGB:0x00BCD5];
-    
-    BFPaperCheckbox *paperCheckbox3 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 110, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
-    paperCheckbox3.tag = 1003;
-    paperCheckbox3.checkmarkColor = [UIColor UIColorFromRGB:0x00BCD5];
-    
-    BFPaperCheckbox *paperCheckbox4 = [[BFPaperCheckbox alloc] initWithFrame:CGRectMake(0, 160, bfPaperCheckboxDefaultRadius * 2, bfPaperCheckboxDefaultRadius * 2)];
-    paperCheckbox4.tag = 1004;
-    paperCheckbox4.checkmarkColor = [UIColor UIColorFromRGB:0x00BCD5];
-    
-    UILabel *selectTitle = [[UILabel alloc] initWithFrame:CGRectMake(15, -10, 200, 50)];
-    selectTitle.text = @"Select Events";
-    selectTitle.textColor = [UIColor offBlack];
-    selectTitle.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
-    
-    // dates
-    _date1 = [[UILabel alloc] initWithFrame:CGRectMake(60, 22, 200, 50)];
-    _date1.text = @"sep 17, 9:00 PM";
-    _date1.textColor = [UIColor offBlack];
-    _date1.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13];
-    
-    _date2 = [[UILabel alloc] initWithFrame:CGRectMake(60, 72, 200, 50)];
-    _date2.text = @"sep 18, 10:00 PM";
-    _date2.textColor = [UIColor offBlack];
-    _date2.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13];
-
-    _date3 = [[UILabel alloc] initWithFrame:CGRectMake(60, 122, 200, 50)];
-    _date3.text = @"sep 19, 9:00 PM";
-    _date3.textColor = [UIColor offBlack];
-    _date3.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13];
-
-    _date4 = [[UILabel alloc] initWithFrame:CGRectMake(60, 172, 200, 50)];
-    _date4.text = @"sep 20, 10:00 PM";
-    _date4.textColor = [UIColor offBlack];
-    _date4.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:13];
-
-    //Cancel
-    _cancel = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    _cancel.frame = CGRectMake(50, 220, 75, 30);
-    [_cancel setTitle:@"CANCEL" forState:UIControlStateNormal];
-    _cancel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:11];
-    _cancel.backgroundColor = [UIColor clearColor];
-    _cancel.tintColor = [UIColor UIColorFromRGB:0x00BCD5];
-    _cancel.layer.cornerRadius = 2;
-    _cancel.layer.masksToBounds = YES;
-    [_cancel addTarget:self action:@selector(cancelJoin) forControlEvents:UIControlEventTouchUpInside];
-    
-    //Join
-    _joinEvents = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    _joinEvents.frame = CGRectMake(120, 220, 75, 30);
-    [_joinEvents setTitle:@"JOIN EVENTS" forState:UIControlStateNormal];
-    _joinEvents.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:11];
-    _joinEvents.backgroundColor = [UIColor clearColor];
-    _joinEvents.tintColor = [UIColor UIColorFromRGB:0x00BCD5];
-    _joinEvents.layer.cornerRadius = 2;
-    _joinEvents.layer.masksToBounds = YES;
-    //[_joinEvents addTarget:self action:@selector(somefunc:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [_scrollView addSubview:_bgBlur];
-    [self.view addSubview:_selectionView];
-    [_selectionView addSubview:selectTitle];
-    [_selectionView addSubview:_joinEvents];
-    [_selectionView addSubview:_cancel];
-    [_selectionView addSubview:_date1];
-    [_selectionView addSubview:_date2];
-    [_selectionView addSubview:_date3];
-    [_selectionView addSubview:_date4];
-    [_selectionView addSubview:paperCheckbox];
-    [_selectionView addSubview:paperCheckbox2];
-    [_selectionView addSubview:paperCheckbox3];
-    [_selectionView addSubview:paperCheckbox4];
-}
-
-# pragma mark - cancelJoin
-
--(void)cancelJoin{
-    _selectionView.hidden = YES;
-    _bgBlur.hidden =YES;
+- (void)joinEvent {
+    BOOL attending = [_event isAttending];
+    if (attending)
+        [_eventPresenter leaveEvent:[[_event eventId] integerValue]];
+    else
+        [_eventPresenter joinEvent:[[_event eventId] integerValue]];
 }
 
 # pragma mark - getLabelHeight

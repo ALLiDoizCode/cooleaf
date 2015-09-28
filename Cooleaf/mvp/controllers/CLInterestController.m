@@ -53,12 +53,6 @@ static NSString *const kInterestPartialPath = @"v2/interests/";
 
 - (void)leaveInterest:(NSInteger)interestId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     NSString *leavePath = [NSString stringWithFormat:@"%@%d%@", kInterestPartialPath, (int) interestId, @"/join.json"];
-    [[CLClient getInstance] DELETE:leavePath parameters:params completion:^(id response, NSError *error) {
-        if (!error)
-            success(response);
-        else
-            failure(error);
-    }];
     [[CLClient getInstance] DELETE:leavePath parameters:params success:^(AFHTTPRequestOperation *operation, id response) {
         success(response);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

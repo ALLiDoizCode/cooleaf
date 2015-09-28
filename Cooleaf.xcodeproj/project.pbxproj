@@ -26,6 +26,10 @@
 		4B27746D1B9AE147004BFCF4 /* CLLoadedUserEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B27746C1B9AE147004BFCF4 /* CLLoadedUserEvents.m */; };
 		4B2C13EE1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C13ED1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m */; settings = {ASSET_TAGS = (); }; };
 		4B2C13F11BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C13F01BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m */; settings = {ASSET_TAGS = (); }; };
+		4B2C13F51BB953B300DAA8F2 /* CLLoadJoinEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C13F41BB953B300DAA8F2 /* CLLoadJoinEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4B2C13F81BB9540400DAA8F2 /* CLLoadedJoinEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C13F71BB9540400DAA8F2 /* CLLoadedJoinEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4B2C13FB1BB95CC300DAA8F2 /* CLLoadLeaveEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C13FA1BB95CC300DAA8F2 /* CLLoadLeaveEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4B2C13FE1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C13FD1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4B3408921BAEAF8E0081B6D4 /* CLAddEventComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3408911BAEAF8E0081B6D4 /* CLAddEventComment.m */; };
 		4B3408951BAEAF9A0081B6D4 /* CLAddedEventComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3408941BAEAF9A0081B6D4 /* CLAddedEventComment.m */; };
 		4B3B36781BB1F9A900C7AEE5 /* CLParticipantPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B36771BB1F9A900C7AEE5 /* CLParticipantPresenter.m */; };
@@ -289,6 +293,15 @@
 		4B2C13ED1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedJoinInterest.m; sourceTree = "<group>"; };
 		4B2C13EF1BB94AED00DAA8F2 /* CLLoadedLeaveInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedLeaveInterest.h; sourceTree = "<group>"; };
 		4B2C13F01BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedLeaveInterest.m; sourceTree = "<group>"; };
+		4B2C13F21BB9521800DAA8F2 /* IEventDetailInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEventDetailInteractor.h; sourceTree = "<group>"; };
+		4B2C13F31BB953B300DAA8F2 /* CLLoadJoinEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadJoinEvent.h; sourceTree = "<group>"; };
+		4B2C13F41BB953B300DAA8F2 /* CLLoadJoinEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadJoinEvent.m; sourceTree = "<group>"; };
+		4B2C13F61BB9540400DAA8F2 /* CLLoadedJoinEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedJoinEvent.h; sourceTree = "<group>"; };
+		4B2C13F71BB9540400DAA8F2 /* CLLoadedJoinEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedJoinEvent.m; sourceTree = "<group>"; };
+		4B2C13F91BB95CC300DAA8F2 /* CLLoadLeaveEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadLeaveEvent.h; sourceTree = "<group>"; };
+		4B2C13FA1BB95CC300DAA8F2 /* CLLoadLeaveEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadLeaveEvent.m; sourceTree = "<group>"; };
+		4B2C13FC1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedLeaveEvent.h; sourceTree = "<group>"; };
+		4B2C13FD1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedLeaveEvent.m; sourceTree = "<group>"; };
 		4B3408901BAEAF8E0081B6D4 /* CLAddEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAddEventComment.h; sourceTree = "<group>"; };
 		4B3408911BAEAF8E0081B6D4 /* CLAddEventComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAddEventComment.m; sourceTree = "<group>"; };
 		4B3408931BAEAF9A0081B6D4 /* CLAddedEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAddedEventComment.h; sourceTree = "<group>"; };
@@ -1081,6 +1094,14 @@
 				4B2C13ED1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m */,
 				4B2C13EF1BB94AED00DAA8F2 /* CLLoadedLeaveInterest.h */,
 				4B2C13F01BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m */,
+				4B2C13F31BB953B300DAA8F2 /* CLLoadJoinEvent.h */,
+				4B2C13F41BB953B300DAA8F2 /* CLLoadJoinEvent.m */,
+				4B2C13F61BB9540400DAA8F2 /* CLLoadedJoinEvent.h */,
+				4B2C13F71BB9540400DAA8F2 /* CLLoadedJoinEvent.m */,
+				4B2C13F91BB95CC300DAA8F2 /* CLLoadLeaveEvent.h */,
+				4B2C13FA1BB95CC300DAA8F2 /* CLLoadLeaveEvent.m */,
+				4B2C13FC1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.h */,
+				4B2C13FD1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1146,6 +1167,7 @@
 				4BE1DF611BABECD0009519CB /* IFeedInteractor.h */,
 				4BE1DF7D1BAE9A31009519CB /* ICommentInteractor.h */,
 				4B3B36791BB1FA0200C7AEE5 /* IParticipantInteractor.h */,
+				4B2C13F21BB9521800DAA8F2 /* IEventDetailInteractor.h */,
 			);
 			name = Interactors;
 			path = ../MVP/Interactors;
@@ -1833,6 +1855,7 @@
 				4B27746D1B9AE147004BFCF4 /* CLLoadedUserEvents.m in Sources */,
 				4BA4E3051B8BC8670089CB2B /* CLRole.m in Sources */,
 				6888B4061B99ABE5008D9CB3 /* CLGroupPostCell.m in Sources */,
+				4B2C13FE1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.m in Sources */,
 				4B2C13F11BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m in Sources */,
 				D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */,
 				68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */,
@@ -1844,6 +1867,7 @@
 				D93AAC7B187B5C9900E9B96A /* NPDateCell.m in Sources */,
 				4BA4E34F1B8D13580089CB2B /* CLInterestController.m in Sources */,
 				43B062471AB664B0009F96CD /* NPInterestViewController.m in Sources */,
+				4B2C13F81BB9540400DAA8F2 /* CLLoadedJoinEvent.m in Sources */,
 				4BBF2C3A1BA2C1C400ECC37F /* CLLoadedInterests.m in Sources */,
 				4BA4E3021B8BC8360089CB2B /* CLProfile.m in Sources */,
 				68DDFF001B9F4AC500EDE1CF /* CLCommentTableView.m in Sources */,
@@ -1921,6 +1945,7 @@
 				68DDFF031B9F681200EDE1CF /* CLCommentCell.m in Sources */,
 				D931450D18925456002325CB /* NPCompanyCell.m in Sources */,
 				4BE1DF701BABF644009519CB /* CLFeed.m in Sources */,
+				4B2C13F51BB953B300DAA8F2 /* CLLoadJoinEvent.m in Sources */,
 				4BA4E3291B8BF5E00089CB2B /* CLImage.m in Sources */,
 				4BA4E3171B8BD9360089CB2B /* CLAddress.m in Sources */,
 				6888B4031B99AB5B008D9CB3 /* CLGroupPostViewcontroller.m in Sources */,
@@ -1933,6 +1958,7 @@
 				4BE1DF891BAE9DC8009519CB /* CLLoadedEventComments.m in Sources */,
 				523096D71AA3E17400649FB7 /* NPHomeCell.m in Sources */,
 				4BAE00681B8EDFD300779E1F /* CLAuthenticationSubscriber.m in Sources */,
+				4B2C13FB1BB95CC300DAA8F2 /* CLLoadLeaveEvent.m in Sources */,
 				6877AFAE1B98EF9300113B86 /* CLSearchCell.m in Sources */,
 				4BA4E32F1B8BFA0C0089CB2B /* CLSeries.m in Sources */,
 				4B3B36851BB1FCAA00C7AEE5 /* CLParticipantController.m in Sources */,

@@ -11,6 +11,10 @@
 #import "CLLoadedEvents.h"
 #import "CLLoadEvents.h"
 #import "CLLoadedUserEvents.h"
+#import "CLLoadJoinEvent.h"
+#import "CLLoadedJoinEvent.h"
+#import "CLLoadLeaveEvent.h"
+#import "CLLoadedLeaveEvent.h"
 
 @interface CLEventSubscriber() {
     @private
@@ -57,6 +61,26 @@ SUBSCRIBE(CLLoadUserEvents) {
                                      } failure:^(NSError *error) {
                                          NSLog(@"%@", error);
                                      }];
+}
+
+SUBSCRIBE(CLLoadJoinEvent) {
+    // Get event id
+    NSInteger eventId = event.eventId;
+    [_eventController joinEventWithId:eventId params:nil success:^(id JSON) {
+        PUBLISH([[CLLoadedJoinEvent alloc] init]);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
+
+SUBSCRIBE(CLLoadLeaveEvent) {
+    // Get event id
+    NSInteger eventId = event.eventId;
+    [_eventController leftEventWithId:eventId params:nil success:^(id JSON) {
+        PUBLISH([[CLLoadedLeaveEvent alloc] init]);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
 }
 
 @end
