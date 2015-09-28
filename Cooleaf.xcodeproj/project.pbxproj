@@ -289,6 +289,7 @@
 		4B2C13ED1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedJoinInterest.m; sourceTree = "<group>"; };
 		4B2C13EF1BB94AED00DAA8F2 /* CLLoadedLeaveInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedLeaveInterest.h; sourceTree = "<group>"; };
 		4B2C13F01BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedLeaveInterest.m; sourceTree = "<group>"; };
+		4B2C13F21BB9521800DAA8F2 /* IEventDetailInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEventDetailInteractor.h; sourceTree = "<group>"; };
 		4B3408901BAEAF8E0081B6D4 /* CLAddEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAddEventComment.h; sourceTree = "<group>"; };
 		4B3408911BAEAF8E0081B6D4 /* CLAddEventComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAddEventComment.m; sourceTree = "<group>"; };
 		4B3408931BAEAF9A0081B6D4 /* CLAddedEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAddedEventComment.h; sourceTree = "<group>"; };
@@ -1146,6 +1147,7 @@
 				4BE1DF611BABECD0009519CB /* IFeedInteractor.h */,
 				4BE1DF7D1BAE9A31009519CB /* ICommentInteractor.h */,
 				4B3B36791BB1FA0200C7AEE5 /* IParticipantInteractor.h */,
+				4B2C13F21BB9521800DAA8F2 /* IEventDetailInteractor.h */,
 			);
 			name = Interactors;
 			path = ../MVP/Interactors;

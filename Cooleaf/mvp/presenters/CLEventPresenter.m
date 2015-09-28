@@ -28,6 +28,13 @@ static NSInteger const PER_PAGE = 25;
     return self;
 }
 
+# pragma mark - Init Detail
+
+- (id)initWithDetailInteractor:(id)interactor {
+    _eventDetailInfo = interactor;
+    return self;
+}
+
 # pragma mark - Bus Methods
 
 - (void)registerOnBus {
