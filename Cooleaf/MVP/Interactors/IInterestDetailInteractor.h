@@ -8,6 +8,7 @@
 
 @protocol IInterestDetailInteractor <NSObject>
 
+- (void)joinedInterest;
 - (void)initMembers:(NSMutableArray *)members;
 
 @end

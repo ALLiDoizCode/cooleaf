@@ -36,17 +36,15 @@ static NSString *const kInterestPartialPath = @"v2/interests/";
 
 - (void)joinInterest:(NSInteger)interestId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     NSString *joinPath = [NSString stringWithFormat:@"%@%d%@", kInterestPartialPath, (int) interestId, @"/join.json"];
-    
     [[CLClient getInstance] POST:joinPath parameters:params success:^(AFHTTPRequestOperation *operation, id response) {
         success(response);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        // Valid JSON is not returned therefore it throws an error, however status code is 200
+        // Valid JSON is not returned therefore it throws an error, however status code is 201
         NSInteger statusCode = [[operation response] statusCode];
-        if (statusCode == 200) {
+        if (statusCode == 201) {
             success(operation);
         } else {
             // Something else went wrong with network
-            NSLog(@"%@", error);
             failure(error);
         }
 
@@ -55,9 +53,7 @@ static NSString *const kInterestPartialPath = @"v2/interests/";
 
 - (void)leaveInterest:(NSInteger)interestId params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     NSString *leavePath = [NSString stringWithFormat:@"%@%d%@", kInterestPartialPath, (int) interestId, @"/join.json"];
-    NSLog(@"%@", leavePath);
     [[CLClient getInstance] DELETE:leavePath parameters:params completion:^(id response, NSError *error) {
-        NSLog(@"%@", response);
         if (!error)
             success(response);
         else

@@ -18,5 +18,6 @@
 @property (nonatomic, copy) NSString *parentType;
 @property (nonatomic, copy) CLImage *image;
 @property (nonatomic, copy) NSNumber *userCount;
+@property (nonatomic, assign) BOOL member;
 
 @end

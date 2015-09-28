@@ -18,7 +18,8 @@
              @"active": @"active",
              @"parentType": @"parent_type",
              @"image": @"image",
-             @"userCount": @"users_count"
+             @"userCount": @"users_count",
+             @"member": @"member"
              };
 }
 
