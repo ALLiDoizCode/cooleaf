@@ -65,12 +65,19 @@
     [super viewDidAppear:animated];
     // Remove title when coming back from members
     self.navigationController.navigationBar.topItem.title = @"";
+    
+    // Make a call to grab members
+    [_interestPresenter loadInterestMembers:[[_interest interestId] intValue]];
+
+    if ([_interest member]) {
+        // Make a call to grab group feeds if a member
+        [_feedPresenter loadInterestFeeds:[[_interest interestId] intValue]];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [_interestPresenter unregisterOnBus];
-    _interestPresenter = nil;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -151,6 +158,13 @@
                          forState:UIControlStateNormal];
     
     [_detailView.eventsBtn addTarget:self action:@selector(goToEvents) forControlEvents:UIControlEventTouchUpInside];
+    
+    // Set join button to join or leave
+    BOOL member = [_interest member];
+    if (member)
+        [_detailView.joinBtn setTitle:@"Leave" forState:UIControlStateNormal];
+    else
+        [_detailView.joinBtn setTitle:@"Join" forState:UIControlStateNormal];
 }
 
 # pragma mark - goToEvents
@@ -165,9 +179,6 @@
 - (void)setupInterestPresenter {
     _interestPresenter = [[CLInterestPresenter alloc] initWithDetailInteractor:self];
     [_interestPresenter registerOnBus];
-    
-    // Make a call to grab members
-    [_interestPresenter loadInterestMembers:[[_interest interestId] intValue]];
 }
 
 # pragma mark - setupFeedPresenter
@@ -175,9 +186,6 @@
 - (void)setupFeedPresenter {
     _feedPresenter = [[CLFeedPresenter alloc] initWithInteractor:self];
     [_feedPresenter registerOnBus];
-    
-    // Make a call to grab group feeds
-    [_feedPresenter loadInterestFeeds:[[_interest interestId] intValue]];
 }
 
 # pragma mark - grabColorFromImage
@@ -187,7 +195,7 @@
     // Get four dominant colors from the image, but avoid the background color of our UI
     CCColorCube *colorCube = [[CCColorCube alloc] init];
     UIImage *img =_detailView.mainImageView.image;
-    NSArray *imgColors = [colorCube extractColorsFromImage:img flags:self.view.backgroundColor];
+    NSArray *imgColors = [colorCube extractColorsFromImage:img flags:(int) self.view.backgroundColor];
     _barColor = imgColors[4];
     
     self.navigationController.navigationBar.barTintColor = _barColor;
@@ -226,7 +234,7 @@
 }
 
 - (void)joinGroup:(CLDetailView *)detailView {
-    bool isMember = [_interest active];
+    bool isMember = [_interest member];
     if (isMember)
         [_interestPresenter leaveGroup:[[_interest interestId] intValue]];
     else
@@ -234,6 +242,19 @@
 }
 
 # pragma mark - IInterestDetailInteractor Methods
+
+- (void)joinedInterest {
+    // Change join button and load feeds
+    [_detailView.joinBtn setTitle:@"Leave" forState:UIControlStateNormal];
+    _tableView.hidden = NO; // Show feed tableview
+    [_feedPresenter loadInterestFeeds:[[_interest interestId] integerValue]];
+}
+
+- (void)leaveInterest {
+    // Change join button and load feeds
+    [_detailView.joinBtn setTitle:@"Join" forState:UIControlStateNormal];
+    _tableView.hidden = YES; // Hide feed tableview
+}
 
 - (void)initMembers:(NSMutableArray *)members {
     // Add only four members from members list returned from API
