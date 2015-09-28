@@ -120,6 +120,18 @@
     // Get count
     int count = (int) [participants count];
     
+    // Set participant count label
+    if (count <= 1) {
+        [_detailView.participantsButton setTitle:[NSString
+                                stringWithFormat:@"%d Participant >", count]
+                                        forState:UIControlStateNormal];
+    } else {
+        [_detailView.participantsButton setTitle:[NSString
+                                stringWithFormat:@"%d Participants >", count]
+                                        forState:UIControlStateNormal];
+    }
+
+    
     // Initialize a participants mutable array with 4 or less participants
     // If count is less than 4 then use count
     if (count >= 4) {
