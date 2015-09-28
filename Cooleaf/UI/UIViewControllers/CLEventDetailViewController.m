@@ -237,6 +237,9 @@
     
         // Set into map
         [self setupMap:fullAddress];
+    } else {
+        // Hide location
+        _detailView.labelLocation.hidden = YES;
     }
 }
 
