@@ -16,7 +16,7 @@
 
 @property (nonatomic) NSString *currentImagePath;
 @property (nonatomic) NSString *currentName;
-@property (nonatomic, assign) CLInterest *interest;
+@property (nonatomic, strong) CLInterest *interest;
 @property (strong, nonatomic) IBOutlet CLDetailView *detailView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIScrollView *detailScroll;

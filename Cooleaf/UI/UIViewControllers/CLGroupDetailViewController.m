@@ -65,12 +65,17 @@
     [super viewDidAppear:animated];
     // Remove title when coming back from members
     self.navigationController.navigationBar.topItem.title = @"";
+    
+    // Make a call to grab members
+    [_interestPresenter loadInterestMembers:[[_interest interestId] intValue]];
+    
+    // Make a call to grab group feeds
+    [_feedPresenter loadInterestFeeds:[[_interest interestId] intValue]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [_interestPresenter unregisterOnBus];
-    _interestPresenter = nil;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -151,6 +156,13 @@
                          forState:UIControlStateNormal];
     
     [_detailView.eventsBtn addTarget:self action:@selector(goToEvents) forControlEvents:UIControlEventTouchUpInside];
+    
+    // Set join button to join or leave
+    BOOL active = [_interest active];
+    if (active)
+        [_detailView.joinBtn setTitle:@"Leave" forState:UIControlStateNormal];
+    else
+        [_detailView.joinBtn setTitle:@"Join" forState:UIControlStateNormal];
 }
 
 # pragma mark - goToEvents
@@ -165,9 +177,6 @@
 - (void)setupInterestPresenter {
     _interestPresenter = [[CLInterestPresenter alloc] initWithDetailInteractor:self];
     [_interestPresenter registerOnBus];
-    
-    // Make a call to grab members
-    [_interestPresenter loadInterestMembers:[[_interest interestId] intValue]];
 }
 
 # pragma mark - setupFeedPresenter
@@ -175,9 +184,6 @@
 - (void)setupFeedPresenter {
     _feedPresenter = [[CLFeedPresenter alloc] initWithInteractor:self];
     [_feedPresenter registerOnBus];
-    
-    // Make a call to grab group feeds
-    [_feedPresenter loadInterestFeeds:[[_interest interestId] intValue]];
 }
 
 # pragma mark - grabColorFromImage
