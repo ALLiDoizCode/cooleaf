@@ -23,12 +23,16 @@
 #import "CLEventDetailViewController.h"
 #import "MMDrawerBarButtonItem.h"
 #import "NPLoginViewController.h"
+#import "CLUserPresenter.h"
+#import "SSKeychain.h"
+
+#define StringFromBoolean (return value ? @"YES" : @"NO")
 
 @interface CLHomeTableViewController() {
     @private
-    CLAuthenticationPresenter *_authPres;
+    CLAuthenticationPresenter *_authPresenter;
+    CLUserPresenter *_userPresenter;
     CLEventPresenter *_eventPresenter;
-    CLUser *_user;
     NSMutableArray *_events;
     UIColor *barColor;
 }
@@ -42,7 +46,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self showLogin];
+    // Checks for user login - this can be done better
+    if (![self isLoggedIn] && [self hasUserCredentials]) {
+        NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+        NSString *password = [SSKeychain passwordForService:@"cooleaf" account:username];
+        [_authPresenter authenticate:username :password];
+    }
+    
+    if (![_currentView isEqualToString:@"My Events"] && ![self hasUserCredentials] && ![self isLoggedIn]) {
+        [self showLogin];
+    }
+    
     // Hide activity indicator
     [_activityIndicator setHidden:YES];
     
@@ -54,34 +68,36 @@
     
     // Init pull to refresh
     [self initPullToRefresh];
-    
-    // Init auth presenter
-    [self initAuthPresenter];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    // Set bar color
-    self.navigationController.navigationBar.alpha = 1.0;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorPrimary];
-    self.navigationController.navigationBar.tintColor = [UIColor colorPrimary];
-    // Searchbar color
-    barColor = [UIColor colorPrimary];
+    if ([self hasUserCredentials])
+        [self setupNavBar];
+    else
+        [self showLogin];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    // Initialize Auth Presenter
+    if (!_authPresenter)
+        [self initAuthPresenter];
+    // Initialize User Presenter
+    [self setupUserPresenter];
     
     // Initialize Event presenter
     [self initEventPresenter];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [_authPres unregisterOnBus];
+    [_authPresenter unregisterOnBus];
+    [_userPresenter unregisterOnBus];
     [_eventPresenter unregisterOnBus];
-    _authPres = nil;
+    _authPresenter = nil;
+    _userPresenter = nil;
     _eventPresenter = nil;
 }
 
@@ -96,21 +112,27 @@
 
 # pragma mark - Init Presenters
 
+- (void)initAuthPresenter {
+    _authPresenter = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
+    [_authPresenter registerOnBus];
+}
+
 - (void)initEventPresenter {
     _eventPresenter = [[CLEventPresenter alloc] initWithInteractor:self];
     [_eventPresenter registerOnBus];
 }
 
-- (void)initAuthPresenter {
-    // Init auth presenter
-    _authPres = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
-    [_authPres registerOnBus];
+- (void)setupUserPresenter {
+    // Initialize user presenter
+    _userPresenter = [[CLUserPresenter alloc] initWithInteractor:self];
+    [_userPresenter registerOnBus];
+    [_userPresenter loadMe];
     [self showActivityIndicator];
 }
 
 #pragma mark - setupDisplay
 
--(void)setupDisplay {
+- (void)setupDisplay {
     
     if ([_currentView isEqualToString:@"My Events"])
         self.navigationController.navigationBar.topItem.title = @"My Events";
@@ -135,6 +157,17 @@
     
     searchBtn.tintColor = [UIColor whiteColor];
     commentBtn.tintColor = [UIColor whiteColor];
+}
+
+# pragma mark - setupNavBar
+
+- (void)setupNavBar {
+    // Set bar color
+    self.navigationController.navigationBar.alpha = 1.0;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorPrimary];
+    self.navigationController.navigationBar.tintColor = [UIColor colorPrimary];
+    // Searchbar color
+    barColor = [UIColor colorPrimary];
 }
 
 # pragma mark - postViewController
@@ -189,6 +222,28 @@
     CLEvent *event = [_events objectAtIndex:[indexPath row]];
     
     // Join event
+}
+
+# pragma mark - IUserInteractor Methods
+
+- (void)initMe:(id)user {
+    [self hideActivityIndicator];
+    // Init user to the navigation drawer
+    [((NPAppDelegate *) [UIApplication sharedApplication].delegate) setUserInDrawer:user];
+    
+    _user = user;
+    [self initProfileHeaderWithUser:_user];
+    if (_currentView == nil) {
+        [_eventPresenter loadEvents];
+    } else {
+        NSString *userIdString = [NSString stringWithFormat:@"%d", [[_user userId] intValue]];
+        [_eventPresenter loadUserEvents:@"ongoing" userIdString:userIdString];
+    }
+
+}
+
+- (void)initOrganizationUsers:(NSMutableArray *)organizationUsers {
+    
 }
 
 # pragma mark - IAuthenticationInteractor methods
@@ -285,18 +340,16 @@
     return cell;
 }
 
-// Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
     
 }
 
-// Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CLEventCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
@@ -426,6 +479,20 @@
 - (void)showLogin {
     NPLoginViewController *loginViewController = [[NPLoginViewController alloc] init];
     [self.navigationController presentViewController:loginViewController animated:YES completion:nil];
+}
+
+# pragma mark - hasUserCredentials
+
+- (BOOL)hasUserCredentials {
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    NSString *password = [SSKeychain passwordForService:@"cooleaf" account:username];
+    return (username != nil) && (password != nil);
+}
+
+# pragma mark - isLoggedIn
+
+- (BOOL)isLoggedIn {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"isLoggedIn"];
 }
 
 @end

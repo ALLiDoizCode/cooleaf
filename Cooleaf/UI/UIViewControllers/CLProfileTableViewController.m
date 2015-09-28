@@ -17,6 +17,7 @@
 #import "UIColor+CustomColors.h"
 #import "CLEvent.h"
 #import "CLAuthenticationPresenter.h"
+#import "NPLoginViewController.h"
 
 static NSString *const kScope = @"past";
 
@@ -136,7 +137,7 @@ static NSString *const kScope = @"past";
 }
 
 - (void)deAuthorized {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self popViewController];
 }
 
 # pragma mark - IEventInteractor Methods
@@ -401,6 +402,12 @@ static NSString *const kScope = @"past";
     [_userImage sd_setImageWithURL:[NSURL URLWithString: fullImagePath] placeholderImage:[UIImage imageNamed:@"AvatarPlaceholderMaleMedium"]];
     _userImage.layer.cornerRadius = _userImage.frame.size.width / 2;
     _userImage.clipsToBounds = YES;
+}
+
+# pragma mark - popViewController
+
+- (void)popViewController {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

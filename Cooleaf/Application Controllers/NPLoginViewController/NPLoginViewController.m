@@ -13,6 +13,7 @@
 #import "UIBarButtonItem+NPBarButtonItems.h"
 #import "CLAuthenticationPresenter.h"
 #import "CLClient.h"
+#import "CLHomeTableViewController.h"
 
 #define UPSHIFT 101
 
@@ -68,21 +69,9 @@
         //_logoView.hidden = YES;
         NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
         NSString *password = [SSKeychain passwordForService:@"cooleaf" account:username];
-        NSLog(@"Username is: %@", username);
-        NSLog(@"Password is: %@", password);
         if (username && [SSKeychain passwordForService:@"cooleaf" account:username]) {
-//            [_globalSpinner startAnimating];
-//            _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:username password:[SSKeychain passwordForService:@"cooleaf" account:username]
-//                                                                     completion:^(NSError *error) {
-//                                                                         if (error)
-//                                                                         {
-//                                                                             [self unlockView];
-//                                                                         }
-//                                                                         else
-//                                                                         {
-//                                                                             [self dismissViewControllerAnimated:YES completion:nil];
-//                                                                         }
-//                                                                     }];
+            [_globalSpinner startAnimating];
+            [_authenticationPresenter authenticate:username :password];
         } else {
             _containerView.alpha = 0.0;
             _containerView.hidden = NO;
@@ -114,12 +103,13 @@
     [super viewDidLoad];
     
     [self setupUI];
-    [self unlockView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	[self.navigationController setNavigationBarHidden:TRUE];
+    [self initAuthenticationPresenter];
+    [self checkLogin];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -164,7 +154,6 @@
 
 - (void)checkLogin {
     if ([CLClient getInstance].notificationUDID) {
-        NSLog(@"Starting login...");
         [self startLogin];
     } else {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationUDIDReceived:) name:kNPCooleafClientRUDIDHarvestedNotification object:nil];
@@ -207,6 +196,23 @@
     _forgotPasswdBtn.enabled = NO;
 }
 
+# pragma mark - initAuthenticationPresenter
+
+- (void)initAuthenticationPresenter {
+    _authenticationPresenter = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
+    [_authenticationPresenter registerOnBus];
+}
+
+# pragma mark - IAuthenticationInteractor
+
+- (void)initUser:(CLUser *)user {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)deAuthorized {
+    
+}
+
 # pragma mark - signInTapped
 
 - (IBAction)signInTapped:(id)sender {
@@ -227,19 +233,21 @@
     [_spinner startAnimating];
     _usernameField.enabled = NO;
     _passwordField.enabled = NO;
-    _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:_usernameField.text password:_passwordField.text completion:^(NSError *error) {
-        [self unlockView];
-        if (error) {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Log In Failed", @"Sign in failure alert title")
-                                                         message:NSLocalizedString(@"Invalid username/password or account not yet activated. Please ‘Sign Up’ to activate your account or try again with your corporate email.", @"Wrong credentials given. Server responded with error")
-                                                        delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
-            [av show];
-            
-        } else {
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }
-        
-    }];
+    [_authenticationPresenter authenticate:_usernameField.text :_passwordField.text];
+    [self unlockView];
+//    _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:_usernameField.text password:_passwordField.text completion:^(NSError *error) {
+//        [self unlockView];
+//        if (error) {
+//            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Log In Failed", @"Sign in failure alert title")
+//                                                         message:NSLocalizedString(@"Invalid username/password or account not yet activated. Please ‘Sign Up’ to activate your account or try again with your corporate email.", @"Wrong credentials given. Server responded with error")
+//                                                        delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
+//            [av show];
+//            
+//        } else {
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//        }
+//        
+//    }];
     
 }
 

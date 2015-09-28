@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CLBus.h"
 #import "CLAuthenticationEvent.h"
+#import "IAuthenticationInteractor.h"
 
-@interface NPLoginViewController : UIViewController <UITextFieldDelegate>
+@interface NPLoginViewController : UIViewController <IAuthenticationInteractor, UITextFieldDelegate>
 
 
 

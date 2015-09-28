@@ -13,6 +13,7 @@
 #import "CLHomeTableViewController.h"
 #import "CLInterest.h"
 #import "CLGroupEventsController.h"
+#import "CLProfileTableViewController.h"
 
 /**
  *  Classes used for navigation through side menu
@@ -77,6 +78,16 @@
     [people setCurrentView:@"Events"];
     [people setEvent:event];
     [nav pushViewController:people animated:YES];
+}
+
+- (void)profileController:(CLUser *)user {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    CLProfileTableViewController *profile = [storyboard instantiateViewControllerWithIdentifier:@"profile"];
+    [profile setUser:user];
+    UINavigationController *profileNav = [[UINavigationController alloc] initWithRootViewController:profile];
+    NPAppDelegate *appDelegate = (NPAppDelegate *) [UIApplication sharedApplication].delegate;
+    [[appDelegate drawerController] setCenterViewController:profileNav];
+    [[appDelegate drawerController] toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
 @end

@@ -9,6 +9,9 @@
 #import "CLUserSubscriber.h"
 #import "CLLoadUsersEvent.h"
 #import "CLLoadedUsersEvent.h"
+#import "CLLoadMeEvent.h"
+#import "CLLoadedMeEvent.h"
+#import "CLUser.h"
 
 @interface CLUserSubscriber() {
     @private
@@ -27,6 +30,16 @@
 }
 
 # pragma mark - subscription events
+
+SUBSCRIBE(CLLoadMeEvent) {
+    [_userController getMe:nil success:^(id JSON) {
+        CLUser *user = [JSON result];
+        CLLoadedMeEvent *loadedMeEvent = [[CLLoadedMeEvent alloc] initWithUser:user];
+        PUBLISH(loadedMeEvent);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
+}
 
 SUBSCRIBE(CLLoadUsersEvent) {
     // Load params

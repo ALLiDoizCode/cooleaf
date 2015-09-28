@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "CLEvent.h"
 #import "CLInterest.h"
+#import "CLUser.h"
 
 /**
  *  Helper class for side menu navigation and other navigation points
@@ -23,5 +24,6 @@
 - (void)groupEventsController:(UINavigationController *)nav;
 - (void)interestPeopleController:(UINavigationController *)nav interest:(CLInterest *)interest;
 - (void)eventPeopleController:(UINavigationController *)nav event:(CLEvent *)event;
+- (void)profileController:(CLUser *)user;
 
 @end

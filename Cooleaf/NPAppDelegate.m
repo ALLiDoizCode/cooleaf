@@ -17,6 +17,7 @@
 #import "NPEventViewController.h"
 #import "MainViewController.h"
 #import "UIColor+CustomColors.h"
+#import "CLClient.h"
 
 #define kAppleLookupURLTemplate     @"http://itunes.apple.com/lookup?id=%@"
 #define kAppStoreURLTemplate        @"https://itunes.apple.com/app/id"
@@ -192,6 +193,7 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSString *strDeviceToken = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
 	strDeviceToken = [strDeviceToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [CLClient getInstance].notificationUDID = strDeviceToken;
     [NPCooleafClient sharedClient].notificationUDID = strDeviceToken;
 }
 
@@ -242,6 +244,7 @@
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    [CLClient getInstance].notificationUDID = @"";
     [NPCooleafClient sharedClient].notificationUDID = @"";
 }
 

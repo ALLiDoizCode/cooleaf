@@ -6,8 +6,11 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import "CLUser.h"
+
 @protocol IUserInteractor <NSObject>
 
+- (void)initMe:(CLUser *)user;
 - (void)initOrganizationUsers:(NSMutableArray *)organizationUsers;
 
 @end

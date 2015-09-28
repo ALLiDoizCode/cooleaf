@@ -16,6 +16,7 @@
 - (id)initWithInteractor:(id<IUserInteractor>)interactor;
 - (void)registerOnBus;
 - (void)unregisterOnBus;
+- (void)loadMe;
 - (void)loadOrganizationUsers;
 
 @end

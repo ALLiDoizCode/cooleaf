@@ -10,6 +10,8 @@
 #import "CLBus.h"
 #import "CLLoadUsersEvent.h"
 #import "CLLoadedUsersEvent.h"
+#import "CLLoadMeEvent.h"
+#import "CLLoadedMeEvent.h"
 
 static NSInteger const PAGE = 1;
 static NSInteger const PER_PAGE = 25;
@@ -33,6 +35,12 @@ static NSInteger const PER_PAGE = 25;
     UNREGISTER();
 }
 
+# pragma mark - loadMe
+
+- (void)loadMe {
+    PUBLISH([[CLLoadMeEvent alloc] init]);
+}
+
 # pragma mark - loadOrganizationUsers
 
 - (void)loadOrganizationUsers {
@@ -44,6 +52,10 @@ static NSInteger const PER_PAGE = 25;
 
 SUBSCRIBE(CLLoadedUsersEvent) {
     [_userInfo initOrganizationUsers:event.users];
+}
+
+SUBSCRIBE(CLLoadedMeEvent) {
+    [_userInfo initMe:event.user];
 }
 
 @end
