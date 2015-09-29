@@ -112,7 +112,6 @@
 		4BE1DF461BABD1D4009519CB /* CLGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF451BABD1D4009519CB /* CLGroupController.m */; };
 		4BE1DF4C1BABD3FA009519CB /* CLLoadInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF4B1BABD3FA009519CB /* CLLoadInterest.m */; };
 		4BE1DF4F1BABD405009519CB /* CLLoadedInterest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF4E1BABD405009519CB /* CLLoadedInterest.m */; };
-		4BE1DF521BABD415009519CB /* CLLoadInterestPosts.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF511BABD415009519CB /* CLLoadInterestPosts.m */; };
 		4BE1DF551BABD425009519CB /* CLLoadInterestEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF541BABD425009519CB /* CLLoadInterestEvents.m */; };
 		4BE1DF5A1BABDDA9009519CB /* CLLoadInterestMembers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF591BABDDA9009519CB /* CLLoadInterestMembers.m */; };
 		4BE1DF5D1BABE0DB009519CB /* CLLoadedInterestMembers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF5C1BABE0DB009519CB /* CLLoadedInterestMembers.m */; };
@@ -480,8 +479,6 @@
 		4BE1DF4B1BABD3FA009519CB /* CLLoadInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterest.m; sourceTree = "<group>"; };
 		4BE1DF4D1BABD405009519CB /* CLLoadedInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedInterest.h; sourceTree = "<group>"; };
 		4BE1DF4E1BABD405009519CB /* CLLoadedInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedInterest.m; sourceTree = "<group>"; };
-		4BE1DF501BABD415009519CB /* CLLoadInterestPosts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterestPosts.h; sourceTree = "<group>"; };
-		4BE1DF511BABD415009519CB /* CLLoadInterestPosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterestPosts.m; sourceTree = "<group>"; };
 		4BE1DF531BABD425009519CB /* CLLoadInterestEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterestEvents.h; sourceTree = "<group>"; };
 		4BE1DF541BABD425009519CB /* CLLoadInterestEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterestEvents.m; sourceTree = "<group>"; };
 		4BE1DF581BABDDA9009519CB /* CLLoadInterestMembers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterestMembers.h; sourceTree = "<group>"; };
@@ -986,86 +983,6 @@
 		4BAE00561B8EDE3400779E1F /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				4BAE00571B8EDE8600779E1F /* CLAuthenticationEvent.h */,
-				4BAE00581B8EDE8600779E1F /* CLAuthenticationEvent.m */,
-				4BAE00721B8F909500779E1F /* CLAuthenticationSuccessEvent.h */,
-				4BAE00731B8F909500779E1F /* CLAuthenticationSuccessEvent.m */,
-				4BE63A531B951FF000231222 /* CLLoadEvents.h */,
-				4BE63A541B951FF000231222 /* CLLoadEvents.m */,
-				4BE63A561B95205000231222 /* CLLoadedEvents.h */,
-				4BE63A571B95205000231222 /* CLLoadedEvents.m */,
-				4B2774681B9AC63F004BFCF4 /* CLLoadUserEvents.h */,
-				4B2774691B9AC63F004BFCF4 /* CLLoadUserEvents.m */,
-				4B27746B1B9AE147004BFCF4 /* CLLoadedUserEvents.h */,
-				4B27746C1B9AE147004BFCF4 /* CLLoadedUserEvents.m */,
-				4BBF2C351BA2B35600ECC37F /* CLLoadInterests.h */,
-				4BBF2C361BA2B35600ECC37F /* CLLoadInterests.m */,
-				4BBF2C381BA2C1C400ECC37F /* CLLoadedInterests.h */,
-				4BBF2C391BA2C1C400ECC37F /* CLLoadedInterests.m */,
-				4B3F2E701BA78A4900D4934E /* CLLoadQueryEvent.h */,
-				4B3F2E711BA78A4900D4934E /* CLLoadQueryEvent.m */,
-				4B3F2E731BA78C1100D4934E /* CLLoadedQueryEvent.h */,
-				4B3F2E741BA78C1100D4934E /* CLLoadedQueryEvent.m */,
-				4BA2A6571BA7F685004724EB /* CLLoadUsersEvent.h */,
-				4BA2A6581BA7F685004724EB /* CLLoadUsersEvent.m */,
-				4BA2A65A1BA7F8ED004724EB /* CLLoadedUsersEvent.h */,
-				4BA2A65B1BA7F8ED004724EB /* CLLoadedUsersEvent.m */,
-				4BE1DF4A1BABD3FA009519CB /* CLLoadInterest.h */,
-				4BE1DF4B1BABD3FA009519CB /* CLLoadInterest.m */,
-				4BE1DF4D1BABD405009519CB /* CLLoadedInterest.h */,
-				4BE1DF4E1BABD405009519CB /* CLLoadedInterest.m */,
-				4BE1DF501BABD415009519CB /* CLLoadInterestPosts.h */,
-				4BE1DF511BABD415009519CB /* CLLoadInterestPosts.m */,
-				4BE1DF531BABD425009519CB /* CLLoadInterestEvents.h */,
-				4BE1DF541BABD425009519CB /* CLLoadInterestEvents.m */,
-				4BE1DF581BABDDA9009519CB /* CLLoadInterestMembers.h */,
-				4BE1DF591BABDDA9009519CB /* CLLoadInterestMembers.m */,
-				4BE1DF5B1BABE0DB009519CB /* CLLoadedInterestMembers.h */,
-				4BE1DF5C1BABE0DB009519CB /* CLLoadedInterestMembers.m */,
-				4BE1DF681BABEEB0009519CB /* CLLoadInterestFeeds.h */,
-				4BE1DF691BABEEB0009519CB /* CLLoadInterestFeeds.m */,
-				4BE1DF6B1BABEEBB009519CB /* CLLoadedInterestFeeds.h */,
-				4BE1DF6C1BABEEBB009519CB /* CLLoadedInterestFeeds.m */,
-				4BE1DF741BAC00D4009519CB /* CLLoadJoinInterest.h */,
-				4BE1DF751BAC00D4009519CB /* CLLoadJoinInterest.m */,
-				4BE1DF771BAC00F1009519CB /* CLLoadLeaveInterest.h */,
-				4BE1DF781BAC00F1009519CB /* CLLoadLeaveInterest.m */,
-				4BE1DF841BAE9D96009519CB /* CLLoadEventComments.h */,
-				4BE1DF851BAE9D96009519CB /* CLLoadEventComments.m */,
-				4BE1DF871BAE9DC8009519CB /* CLLoadedEventComments.h */,
-				4BE1DF881BAE9DC8009519CB /* CLLoadedEventComments.m */,
-				4B3408901BAEAF8E0081B6D4 /* CLAddEventComment.h */,
-				4B3408911BAEAF8E0081B6D4 /* CLAddEventComment.m */,
-				4B3408931BAEAF9A0081B6D4 /* CLAddedEventComment.h */,
-				4B3408941BAEAF9A0081B6D4 /* CLAddedEventComment.m */,
-				4B7A62921BB0AC7B00DF7A36 /* CLDeleteEventComment.h */,
-				4B7A62931BB0AC7B00DF7A36 /* CLDeleteEventComment.m */,
-				4B7A62951BB0ACE100DF7A36 /* CLDeletedEventComment.h */,
-				4B7A62961BB0ACE100DF7A36 /* CLDeletedEventComment.m */,
-				4B3B367A1BB1FB1F00C7AEE5 /* CLLoadEventParticipants.h */,
-				4B3B367B1BB1FB1F00C7AEE5 /* CLLoadEventParticipants.m */,
-				4B3B367D1BB1FB7400C7AEE5 /* CLLoadedEventParticipants.h */,
-				4B3B367E1BB1FB7400C7AEE5 /* CLLoadedEventParticipants.m */,
-				4BC481B71BB86D4E00076A62 /* CLDeAuthorizeEvent.h */,
-				4BC481B81BB86D4E00076A62 /* CLDeAuthorizeEvent.m */,
-				4BC481BA1BB86D8600076A62 /* CLDeAuthorizedEvent.h */,
-				4BC481BB1BB86D8600076A62 /* CLDeAuthorizedEvent.m */,
-				4BC6162F1BB9198800EB9476 /* CLLoadMeEvent.h */,
-				4BC616301BB9198800EB9476 /* CLLoadMeEvent.m */,
-				4BC616321BB9199800EB9476 /* CLLoadedMeEvent.h */,
-				4BC616331BB9199800EB9476 /* CLLoadedMeEvent.m */,
-				4B2C13EC1BB948EE00DAA8F2 /* CLLoadedJoinInterest.h */,
-				4B2C13ED1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m */,
-				4B2C13EF1BB94AED00DAA8F2 /* CLLoadedLeaveInterest.h */,
-				4B2C13F01BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m */,
-				4B2C13F31BB953B300DAA8F2 /* CLLoadJoinEvent.h */,
-				4B2C13F41BB953B300DAA8F2 /* CLLoadJoinEvent.m */,
-				4B2C13F61BB9540400DAA8F2 /* CLLoadedJoinEvent.h */,
-				4B2C13F71BB9540400DAA8F2 /* CLLoadedJoinEvent.m */,
-				4B2C13F91BB95CC300DAA8F2 /* CLLoadLeaveEvent.h */,
-				4B2C13FA1BB95CC300DAA8F2 /* CLLoadLeaveEvent.m */,
-				4B2C13FC1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.h */,
-				4B2C13FD1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1086,6 +1003,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE1B2631BBB301000A07DA1 /* Controllers */,
+				4BE1B2951BBB40BE00A07DA1 /* Events */,
 				4BE1B2621BBB300700A07DA1 /* Interactors */,
 				4BE1B2611BBB300100A07DA1 /* Presenters */,
 				4BE1B2601BBB2FFC00A07DA1 /* Subscribers */,
@@ -1098,6 +1016,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE1B2751BBB308000A07DA1 /* Controllers */,
+				4BE1B29C1BBB40FA00A07DA1 /* Events */,
 				4BE1B2741BBB307A00A07DA1 /* Interactors */,
 				4BE1B2731BBB307600A07DA1 /* Presenters */,
 				4BE1B2721BBB307100A07DA1 /* Subscribers */,
@@ -1110,6 +1029,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE1B2691BBB303700A07DA1 /* Controllers */,
+				4BE1B2981BBB40D600A07DA1 /* Events */,
 				4BE1B2681BBB303200A07DA1 /* Interactors */,
 				4BE1B2671BBB302D00A07DA1 /* Presenters */,
 				4BE1B2661BBB302800A07DA1 /* Subscribers */,
@@ -1122,6 +1042,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE1B2581BBB2F5500A07DA1 /* Controllers */,
+				4BE1B2931BBB409D00A07DA1 /* Events */,
 				4BE1B2591BBB2F6100A07DA1 /* Interactors */,
 				4BE1B25A1BBB2F7300A07DA1 /* Presenters */,
 				4BE1B25B1BBB2F9300A07DA1 /* Subscribers */,
@@ -1134,6 +1055,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE1B2711BBB306C00A07DA1 /* Controllers */,
+				4BE1B29A1BBB40EC00A07DA1 /* Events */,
 				4BE1B2701BBB306600A07DA1 /* Interactors */,
 				4BE1B26F1BBB305E00A07DA1 /* Presenters */,
 				4BE1B26E1BBB305900A07DA1 /* Subscribers */,
@@ -1146,6 +1068,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE1B25F1BBB2FF700A07DA1 /* Controllers */,
+				4BE1B2941BBB40B300A07DA1 /* Events */,
 				4BE1B25E1BBB2FF200A07DA1 /* Interactors */,
 				4BE1B25D1BBB2FEE00A07DA1 /* Presenters */,
 				4BE1B25C1BBB2FE700A07DA1 /* Subscribers */,
@@ -1158,6 +1081,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE1B26D1BBB305400A07DA1 /* Controllers */,
+				4BE1B2991BBB40E100A07DA1 /* Events */,
 				4BE1B26C1BBB304E00A07DA1 /* Interactors */,
 				4BE1B26B1BBB304200A07DA1 /* Presenters */,
 				4BE1B26A1BBB303C00A07DA1 /* Subscribers */,
@@ -1417,6 +1341,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE1B27A1BBB34CF00A07DA1 /* Controllers */,
+				4BE1B29B1BBB40F300A07DA1 /* Events */,
 				4BE1B2791BBB34C800A07DA1 /* Interactors */,
 				4BE1B2781BBB34C200A07DA1 /* Presenters */,
 				4BE1B2771BBB34BA00A07DA1 /* Subscribers */,
@@ -1464,6 +1389,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE1B27F1BBB359900A07DA1 /* Controllers */,
+				4BE1B2971BBB40CF00A07DA1 /* Events */,
 				4BE1B27E1BBB359400A07DA1 /* Interactors */,
 				4BE1B27D1BBB358E00A07DA1 /* Presenters */,
 				4BE1B27C1BBB358800A07DA1 /* Subscribers */,
@@ -1512,6 +1438,7 @@
 			isa = PBXGroup;
 			children = (
 				4BE1B2841BBB35FC00A07DA1 /* Controllers */,
+				4BE1B2961BBB40C800A07DA1 /* Events */,
 				4BE1B2831BBB35F600A07DA1 /* Interactors */,
 				4BE1B2821BBB35F000A07DA1 /* Presenters */,
 				4BE1B2811BBB35EB00A07DA1 /* Subscribers */,
@@ -1553,6 +1480,154 @@
 				4BE1DF631BABECF5009519CB /* CLFeedController.m */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4BE1B2931BBB409D00A07DA1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4BAE00571B8EDE8600779E1F /* CLAuthenticationEvent.h */,
+				4BAE00581B8EDE8600779E1F /* CLAuthenticationEvent.m */,
+				4BAE00721B8F909500779E1F /* CLAuthenticationSuccessEvent.h */,
+				4BAE00731B8F909500779E1F /* CLAuthenticationSuccessEvent.m */,
+				4BC481B71BB86D4E00076A62 /* CLDeAuthorizeEvent.h */,
+				4BC481B81BB86D4E00076A62 /* CLDeAuthorizeEvent.m */,
+				4BC481BA1BB86D8600076A62 /* CLDeAuthorizedEvent.h */,
+				4BC481BB1BB86D8600076A62 /* CLDeAuthorizedEvent.m */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4BE1B2941BBB40B300A07DA1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1DF841BAE9D96009519CB /* CLLoadEventComments.h */,
+				4BE1DF851BAE9D96009519CB /* CLLoadEventComments.m */,
+				4BE1DF871BAE9DC8009519CB /* CLLoadedEventComments.h */,
+				4BE1DF881BAE9DC8009519CB /* CLLoadedEventComments.m */,
+				4B3408901BAEAF8E0081B6D4 /* CLAddEventComment.h */,
+				4B3408911BAEAF8E0081B6D4 /* CLAddEventComment.m */,
+				4B3408931BAEAF9A0081B6D4 /* CLAddedEventComment.h */,
+				4B3408941BAEAF9A0081B6D4 /* CLAddedEventComment.m */,
+				4B7A62921BB0AC7B00DF7A36 /* CLDeleteEventComment.h */,
+				4B7A62931BB0AC7B00DF7A36 /* CLDeleteEventComment.m */,
+				4B7A62951BB0ACE100DF7A36 /* CLDeletedEventComment.h */,
+				4B7A62961BB0ACE100DF7A36 /* CLDeletedEventComment.m */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4BE1B2951BBB40BE00A07DA1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4BE63A531B951FF000231222 /* CLLoadEvents.h */,
+				4BE63A541B951FF000231222 /* CLLoadEvents.m */,
+				4BE63A561B95205000231222 /* CLLoadedEvents.h */,
+				4BE63A571B95205000231222 /* CLLoadedEvents.m */,
+				4B2774681B9AC63F004BFCF4 /* CLLoadUserEvents.h */,
+				4B2774691B9AC63F004BFCF4 /* CLLoadUserEvents.m */,
+				4B27746B1B9AE147004BFCF4 /* CLLoadedUserEvents.h */,
+				4B27746C1B9AE147004BFCF4 /* CLLoadedUserEvents.m */,
+				4B2C13F31BB953B300DAA8F2 /* CLLoadJoinEvent.h */,
+				4B2C13F41BB953B300DAA8F2 /* CLLoadJoinEvent.m */,
+				4B2C13F61BB9540400DAA8F2 /* CLLoadedJoinEvent.h */,
+				4B2C13F71BB9540400DAA8F2 /* CLLoadedJoinEvent.m */,
+				4B2C13F91BB95CC300DAA8F2 /* CLLoadLeaveEvent.h */,
+				4B2C13FA1BB95CC300DAA8F2 /* CLLoadLeaveEvent.m */,
+				4B2C13FC1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.h */,
+				4B2C13FD1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.m */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4BE1B2961BBB40C800A07DA1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1DF681BABEEB0009519CB /* CLLoadInterestFeeds.h */,
+				4BE1DF691BABEEB0009519CB /* CLLoadInterestFeeds.m */,
+				4BE1DF6B1BABEEBB009519CB /* CLLoadedInterestFeeds.h */,
+				4BE1DF6C1BABEEBB009519CB /* CLLoadedInterestFeeds.m */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4BE1B2971BBB40CF00A07DA1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4BE1B2981BBB40D600A07DA1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF2C351BA2B35600ECC37F /* CLLoadInterests.h */,
+				4BBF2C361BA2B35600ECC37F /* CLLoadInterests.m */,
+				4BBF2C381BA2C1C400ECC37F /* CLLoadedInterests.h */,
+				4BBF2C391BA2C1C400ECC37F /* CLLoadedInterests.m */,
+				4BE1DF4A1BABD3FA009519CB /* CLLoadInterest.h */,
+				4BE1DF4B1BABD3FA009519CB /* CLLoadInterest.m */,
+				4BE1DF4D1BABD405009519CB /* CLLoadedInterest.h */,
+				4BE1DF4E1BABD405009519CB /* CLLoadedInterest.m */,
+				4BE1DF531BABD425009519CB /* CLLoadInterestEvents.h */,
+				4BE1DF541BABD425009519CB /* CLLoadInterestEvents.m */,
+				4BE1DF581BABDDA9009519CB /* CLLoadInterestMembers.h */,
+				4BE1DF591BABDDA9009519CB /* CLLoadInterestMembers.m */,
+				4BE1DF5B1BABE0DB009519CB /* CLLoadedInterestMembers.h */,
+				4BE1DF5C1BABE0DB009519CB /* CLLoadedInterestMembers.m */,
+				4BE1DF741BAC00D4009519CB /* CLLoadJoinInterest.h */,
+				4BE1DF751BAC00D4009519CB /* CLLoadJoinInterest.m */,
+				4BE1DF771BAC00F1009519CB /* CLLoadLeaveInterest.h */,
+				4BE1DF781BAC00F1009519CB /* CLLoadLeaveInterest.m */,
+				4B2C13EC1BB948EE00DAA8F2 /* CLLoadedJoinInterest.h */,
+				4B2C13ED1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m */,
+				4B2C13EF1BB94AED00DAA8F2 /* CLLoadedLeaveInterest.h */,
+				4B2C13F01BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4BE1B2991BBB40E100A07DA1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4B3B367A1BB1FB1F00C7AEE5 /* CLLoadEventParticipants.h */,
+				4B3B367B1BB1FB1F00C7AEE5 /* CLLoadEventParticipants.m */,
+				4B3B367D1BB1FB7400C7AEE5 /* CLLoadedEventParticipants.h */,
+				4B3B367E1BB1FB7400C7AEE5 /* CLLoadedEventParticipants.m */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4BE1B29A1BBB40EC00A07DA1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4BE1B29B1BBB40F300A07DA1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4B3F2E701BA78A4900D4934E /* CLLoadQueryEvent.h */,
+				4B3F2E711BA78A4900D4934E /* CLLoadQueryEvent.m */,
+				4B3F2E731BA78C1100D4934E /* CLLoadedQueryEvent.h */,
+				4B3F2E741BA78C1100D4934E /* CLLoadedQueryEvent.m */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4BE1B29C1BBB40FA00A07DA1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4BA2A6571BA7F685004724EB /* CLLoadUsersEvent.h */,
+				4BA2A6581BA7F685004724EB /* CLLoadUsersEvent.m */,
+				4BA2A65A1BA7F8ED004724EB /* CLLoadedUsersEvent.h */,
+				4BA2A65B1BA7F8ED004724EB /* CLLoadedUsersEvent.m */,
+				4BC6162F1BB9198800EB9476 /* CLLoadMeEvent.h */,
+				4BC616301BB9198800EB9476 /* CLLoadMeEvent.m */,
+				4BC616321BB9199800EB9476 /* CLLoadedMeEvent.h */,
+				4BC616331BB9199800EB9476 /* CLLoadedMeEvent.m */,
+			);
+			path = Events;
 			sourceTree = "<group>";
 		};
 		4BE1DF3C1BABA488009519CB /* Helpers */ = {
@@ -2192,7 +2267,6 @@
 				4BE1DF5D1BABE0DB009519CB /* CLLoadedInterestMembers.m in Sources */,
 				D93AACA2187C300E00E9B96A /* NPTodoCell.m in Sources */,
 				4B6B56F61B98E859008DF039 /* CLGroupCollectionViewCell.m in Sources */,
-				4BE1DF521BABD415009519CB /* CLLoadInterestPosts.m in Sources */,
 				4BA4E3521B8D13610089CB2B /* CLUserController.m in Sources */,
 				43B0624C1AB71A64009F96CD /* NPMembersCell.m in Sources */,
 				4BE1DF431BABD155009519CB /* CLGroupSubscriber.m in Sources */,

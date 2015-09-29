@@ -28,4 +28,10 @@
     UNREGISTER();
 }
 
+# pragma mark - checkRegistrationWithEmail
+
+- (void)checkRegistrationWithEmail:(NSString *)email password:(NSString *)password {
+    
+}
+
 @end
