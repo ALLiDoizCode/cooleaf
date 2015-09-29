@@ -95,7 +95,7 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
 # pragma mark - Cookie Persistence - SWITCH OVER TO SSKEYCHAIN INSTEAD OF NSUSERDEFAULTS
 
 - (void)saveCookies {
-    NSString *username = [[SSKeychain accountsForService:@"cooleaf"] valueForKey:@"acct"];
+    //NSString *username = [[SSKeychain accountsForService:@"cooleaf"] valueForKey:@"acct"];
     
     NSData *cookiesData = [NSKeyedArchiver archivedDataWithRootObject: [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

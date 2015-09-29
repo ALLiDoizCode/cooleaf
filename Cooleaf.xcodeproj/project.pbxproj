@@ -266,23 +266,23 @@
 /* Begin PBXFileReference section */
 		430936421AD1ECA300E568CD /* NPSeriesEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPSeriesEvent.h; path = Model/NPSeriesEvent.h; sourceTree = "<group>"; };
 		430936431AD1ECA300E568CD /* NPSeriesEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPSeriesEvent.m; path = Model/NPSeriesEvent.m; sourceTree = "<group>"; };
-		430936461AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPSeriesEventSelectionViewController.h; path = "Application Controllers/NPEventViewController/SeriesEventModalController/NPSeriesEventSelectionViewController.h"; sourceTree = "<group>"; };
-		430936471AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPSeriesEventSelectionViewController.m; path = "Application Controllers/NPEventViewController/SeriesEventModalController/NPSeriesEventSelectionViewController.m"; sourceTree = "<group>"; };
-		430936481AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPSeriesEventSelectionViewController.xib; path = "Application Controllers/NPEventViewController/SeriesEventModalController/NPSeriesEventSelectionViewController.xib"; sourceTree = "<group>"; };
-		4309364B1AD1FCCD00E568CD /* NPEventSeriesDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPEventSeriesDateCell.h; path = "Application Controllers/NPEventViewController/SeriesEventModalController/NPEventSeriesDateCell.h"; sourceTree = "<group>"; };
-		4309364C1AD1FCCD00E568CD /* NPEventSeriesDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPEventSeriesDateCell.m; path = "Application Controllers/NPEventViewController/SeriesEventModalController/NPEventSeriesDateCell.m"; sourceTree = "<group>"; };
-		4309364D1AD1FCCD00E568CD /* NPEventSeriesDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPEventSeriesDateCell.xib; path = "Application Controllers/NPEventViewController/SeriesEventModalController/NPEventSeriesDateCell.xib"; sourceTree = "<group>"; };
-		432A499C1AE4FA2E001B3740 /* NPEditTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPEditTagsViewController.h; path = "Application Controllers/NPProfileViewController/NPEditTagsViewController.h"; sourceTree = "<group>"; };
-		432A499D1AE4FA2E001B3740 /* NPEditTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPEditTagsViewController.m; path = "Application Controllers/NPProfileViewController/NPEditTagsViewController.m"; sourceTree = "<group>"; };
-		437F3D831ABFEAD9007DE49B /* NPGroupEventsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPGroupEventsCell.h; path = "Application Controllers/Interests/SingleInterestPage/NPGroupEventsCell.h"; sourceTree = "<group>"; };
-		437F3D841ABFEAD9007DE49B /* NPGroupEventsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPGroupEventsCell.m; path = "Application Controllers/Interests/SingleInterestPage/NPGroupEventsCell.m"; sourceTree = "<group>"; };
-		437F3D851ABFEAD9007DE49B /* NPGroupEventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPGroupEventsCell.xib; path = "Application Controllers/Interests/SingleInterestPage/NPGroupEventsCell.xib"; sourceTree = "<group>"; };
-		43B062441AB664B0009F96CD /* NPInterestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestViewController.h; path = "Application Controllers/Interests/SingleInterestPage/NPInterestViewController.h"; sourceTree = "<group>"; };
-		43B062451AB664B0009F96CD /* NPInterestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestViewController.m; path = "Application Controllers/Interests/SingleInterestPage/NPInterestViewController.m"; sourceTree = "<group>"; };
-		43B062461AB664B0009F96CD /* NPInterestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPInterestViewController.xib; path = "Application Controllers/Interests/SingleInterestPage/NPInterestViewController.xib"; sourceTree = "<group>"; };
-		43B062491AB71A64009F96CD /* NPMembersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPMembersCell.h; path = "Application Controllers/Interests/SingleInterestPage/NPMembersCell.h"; sourceTree = "<group>"; };
-		43B0624A1AB71A64009F96CD /* NPMembersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPMembersCell.m; path = "Application Controllers/Interests/SingleInterestPage/NPMembersCell.m"; sourceTree = "<group>"; };
-		43B0624B1AB71A64009F96CD /* NPMembersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPMembersCell.xib; path = "Application Controllers/Interests/SingleInterestPage/NPMembersCell.xib"; sourceTree = "<group>"; };
+		430936461AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPSeriesEventSelectionViewController.h; sourceTree = "<group>"; };
+		430936471AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPSeriesEventSelectionViewController.m; sourceTree = "<group>"; };
+		430936481AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPSeriesEventSelectionViewController.xib; sourceTree = "<group>"; };
+		4309364B1AD1FCCD00E568CD /* NPEventSeriesDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPEventSeriesDateCell.h; sourceTree = "<group>"; };
+		4309364C1AD1FCCD00E568CD /* NPEventSeriesDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPEventSeriesDateCell.m; sourceTree = "<group>"; };
+		4309364D1AD1FCCD00E568CD /* NPEventSeriesDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPEventSeriesDateCell.xib; sourceTree = "<group>"; };
+		432A499C1AE4FA2E001B3740 /* NPEditTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPEditTagsViewController.h; sourceTree = "<group>"; };
+		432A499D1AE4FA2E001B3740 /* NPEditTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPEditTagsViewController.m; sourceTree = "<group>"; };
+		437F3D831ABFEAD9007DE49B /* NPGroupEventsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPGroupEventsCell.h; sourceTree = "<group>"; };
+		437F3D841ABFEAD9007DE49B /* NPGroupEventsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPGroupEventsCell.m; sourceTree = "<group>"; };
+		437F3D851ABFEAD9007DE49B /* NPGroupEventsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPGroupEventsCell.xib; sourceTree = "<group>"; };
+		43B062441AB664B0009F96CD /* NPInterestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPInterestViewController.h; sourceTree = "<group>"; };
+		43B062451AB664B0009F96CD /* NPInterestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPInterestViewController.m; sourceTree = "<group>"; };
+		43B062461AB664B0009F96CD /* NPInterestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPInterestViewController.xib; sourceTree = "<group>"; };
+		43B062491AB71A64009F96CD /* NPMembersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMembersCell.h; sourceTree = "<group>"; };
+		43B0624A1AB71A64009F96CD /* NPMembersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMembersCell.m; sourceTree = "<group>"; };
+		43B0624B1AB71A64009F96CD /* NPMembersCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPMembersCell.xib; sourceTree = "<group>"; };
 		43EF2F161B00A8F5002A060A /* NPTagGroupsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPTagGroupsView.h; sourceTree = "<group>"; };
 		43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPTagGroupsView.m; sourceTree = "<group>"; };
 		43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPTagGroupView.xib; sourceTree = "<group>"; };
@@ -525,44 +525,44 @@
 		4BE63A571B95205000231222 /* CLLoadedEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedEvents.m; sourceTree = "<group>"; };
 		4BE63A5B1B95811400231222 /* CLEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEventCell.h; sourceTree = "<group>"; };
 		4BE63A5C1B95811400231222 /* CLEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEventCell.m; sourceTree = "<group>"; };
-		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPickYourInterestsLabelCell.h; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.h"; sourceTree = "<group>"; };
-		52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPPickYourInterestsLabelCell.m; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.m"; sourceTree = "<group>"; };
-		523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsViewController.h; path = "Application Controllers/NPInterestsViewController.h"; sourceTree = "<group>"; };
-		523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestsViewController.m; path = "Application Controllers/NPInterestsViewController.m"; sourceTree = "<group>"; };
-		523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPInterestsViewController.xib; path = "Application Controllers/NPInterestsViewController.xib"; sourceTree = "<group>"; };
-		523096C21AA2907600649FB7 /* NPChallengesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPChallengesViewController.h; path = "Application Controllers/NPChallengesViewController.h"; sourceTree = "<group>"; };
-		523096C31AA2907600649FB7 /* NPChallengesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPChallengesViewController.m; path = "Application Controllers/NPChallengesViewController.m"; sourceTree = "<group>"; };
-		523096C41AA2907600649FB7 /* NPChallengesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPChallengesViewController.xib; path = "Application Controllers/NPChallengesViewController.xib"; sourceTree = "<group>"; };
-		523096C71AA291B200649FB7 /* NPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPHomeViewController.h; path = "Application Controllers/NPHomeViewController.h"; sourceTree = "<group>"; };
-		523096C81AA291B200649FB7 /* NPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPHomeViewController.m; path = "Application Controllers/NPHomeViewController.m"; sourceTree = "<group>"; };
-		523096C91AA291B200649FB7 /* NPHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPHomeViewController.xib; path = "Application Controllers/NPHomeViewController.xib"; sourceTree = "<group>"; };
-		523096CC1AA295F500649FB7 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = "Application Controllers/MainViewController.h"; sourceTree = "<group>"; };
-		523096CD1AA295F500649FB7 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = "Application Controllers/MainViewController.m"; sourceTree = "<group>"; };
-		523096D41AA3E17400649FB7 /* NPHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPHomeCell.h; path = "Application Controllers/HomeTab/NPHomeCell.h"; sourceTree = "<group>"; };
-		523096D51AA3E17400649FB7 /* NPHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPHomeCell.m; path = "Application Controllers/HomeTab/NPHomeCell.m"; sourceTree = "<group>"; };
-		523096D61AA3E17400649FB7 /* NPHomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPHomeCell.xib; path = "Application Controllers/HomeTab/NPHomeCell.xib"; sourceTree = "<group>"; };
-		523096D91AA3E1A600649FB7 /* NPOtherHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPOtherHomeCell.h; path = "Application Controllers/HomeTab/NPOtherHomeCell.h"; sourceTree = "<group>"; };
-		523096DA1AA3E1A600649FB7 /* NPOtherHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPOtherHomeCell.m; path = "Application Controllers/HomeTab/NPOtherHomeCell.m"; sourceTree = "<group>"; };
-		523096DB1AA3E1A600649FB7 /* NPOtherHomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPOtherHomeCell.xib; path = "Application Controllers/HomeTab/NPOtherHomeCell.xib"; sourceTree = "<group>"; };
-		523096DE1AA3E24800649FB7 /* NPHomeTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPHomeTopCell.h; path = "Application Controllers/HomeTab/NPHomeTopCell.h"; sourceTree = "<group>"; };
-		523096DF1AA3E24800649FB7 /* NPHomeTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPHomeTopCell.m; path = "Application Controllers/HomeTab/NPHomeTopCell.m"; sourceTree = "<group>"; };
-		523096E01AA3E24800649FB7 /* NPHomeTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPHomeTopCell.xib; path = "Application Controllers/HomeTab/NPHomeTopCell.xib"; sourceTree = "<group>"; };
+		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPPickYourInterestsLabelCell.h; sourceTree = "<group>"; };
+		52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPPickYourInterestsLabelCell.m; sourceTree = "<group>"; };
+		523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPInterestsViewController.h; sourceTree = "<group>"; };
+		523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPInterestsViewController.m; sourceTree = "<group>"; };
+		523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPInterestsViewController.xib; sourceTree = "<group>"; };
+		523096C21AA2907600649FB7 /* NPChallengesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPChallengesViewController.h; sourceTree = "<group>"; };
+		523096C31AA2907600649FB7 /* NPChallengesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPChallengesViewController.m; sourceTree = "<group>"; };
+		523096C41AA2907600649FB7 /* NPChallengesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPChallengesViewController.xib; sourceTree = "<group>"; };
+		523096C71AA291B200649FB7 /* NPHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPHomeViewController.h; sourceTree = "<group>"; };
+		523096C81AA291B200649FB7 /* NPHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPHomeViewController.m; sourceTree = "<group>"; };
+		523096C91AA291B200649FB7 /* NPHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPHomeViewController.xib; sourceTree = "<group>"; };
+		523096CC1AA295F500649FB7 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		523096CD1AA295F500649FB7 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		523096D41AA3E17400649FB7 /* NPHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPHomeCell.h; sourceTree = "<group>"; };
+		523096D51AA3E17400649FB7 /* NPHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPHomeCell.m; sourceTree = "<group>"; };
+		523096D61AA3E17400649FB7 /* NPHomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPHomeCell.xib; sourceTree = "<group>"; };
+		523096D91AA3E1A600649FB7 /* NPOtherHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPOtherHomeCell.h; sourceTree = "<group>"; };
+		523096DA1AA3E1A600649FB7 /* NPOtherHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPOtherHomeCell.m; sourceTree = "<group>"; };
+		523096DB1AA3E1A600649FB7 /* NPOtherHomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPOtherHomeCell.xib; sourceTree = "<group>"; };
+		523096DE1AA3E24800649FB7 /* NPHomeTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPHomeTopCell.h; sourceTree = "<group>"; };
+		523096DF1AA3E24800649FB7 /* NPHomeTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPHomeTopCell.m; sourceTree = "<group>"; };
+		523096E01AA3E24800649FB7 /* NPHomeTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPHomeTopCell.xib; sourceTree = "<group>"; };
 		52402D5B1A99A93100937798 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
-		526DDE101AC756DB0095FC27 /* NPMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPMemberCell.h; path = "Application Controllers/Interests/SingleInterestPage/MemberCell/NPMemberCell.h"; sourceTree = "<group>"; };
-		526DDE111AC756DB0095FC27 /* NPMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPMemberCell.m; path = "Application Controllers/Interests/SingleInterestPage/MemberCell/NPMemberCell.m"; sourceTree = "<group>"; };
-		526DDE121AC756DB0095FC27 /* NPMemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPMemberCell.xib; path = "Application Controllers/Interests/SingleInterestPage/MemberCell/NPMemberCell.xib"; sourceTree = "<group>"; };
-		526DDE151AC757550095FC27 /* NPMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPMembersViewController.h; path = "Application Controllers/Interests/SingleInterestPage/MemberCell/NPMembersViewController.h"; sourceTree = "<group>"; };
-		526DDE161AC757550095FC27 /* NPMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPMembersViewController.m; path = "Application Controllers/Interests/SingleInterestPage/MemberCell/NPMembersViewController.m"; sourceTree = "<group>"; };
-		526DDE171AC757550095FC27 /* NPMembersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPMembersViewController.xib; path = "Application Controllers/Interests/SingleInterestPage/MemberCell/NPMembersViewController.xib"; sourceTree = "<group>"; };
-		52A9A18E1AACEC8B004E6C13 /* NPInterestTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestTopCell.h; path = "Application Controllers/Interests/NPInterestTopCell.h"; sourceTree = "<group>"; };
-		52A9A18F1AACEC8B004E6C13 /* NPInterestTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestTopCell.m; path = "Application Controllers/Interests/NPInterestTopCell.m"; sourceTree = "<group>"; };
-		52A9A1901AACEC8B004E6C13 /* NPInterestTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPInterestTopCell.xib; path = "Application Controllers/Interests/NPInterestTopCell.xib"; sourceTree = "<group>"; };
-		52A9A1931AACECC5004E6C13 /* NPInterestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestCell.h; path = "Application Controllers/Interests/NPInterestCell.h"; sourceTree = "<group>"; };
-		52A9A1941AACECC5004E6C13 /* NPInterestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestCell.m; path = "Application Controllers/Interests/NPInterestCell.m"; sourceTree = "<group>"; };
-		52A9A1951AACECC5004E6C13 /* NPInterestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPInterestCell.xib; path = "Application Controllers/Interests/NPInterestCell.xib"; sourceTree = "<group>"; };
-		52A9A1981AACECDA004E6C13 /* NPOtherInterestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPOtherInterestCell.h; path = "Application Controllers/Interests/NPOtherInterestCell.h"; sourceTree = "<group>"; };
-		52A9A1991AACECDA004E6C13 /* NPOtherInterestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPOtherInterestCell.m; path = "Application Controllers/Interests/NPOtherInterestCell.m"; sourceTree = "<group>"; };
-		52A9A19A1AACECDA004E6C13 /* NPOtherInterestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPOtherInterestCell.xib; path = "Application Controllers/Interests/NPOtherInterestCell.xib"; sourceTree = "<group>"; };
+		526DDE101AC756DB0095FC27 /* NPMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMemberCell.h; sourceTree = "<group>"; };
+		526DDE111AC756DB0095FC27 /* NPMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMemberCell.m; sourceTree = "<group>"; };
+		526DDE121AC756DB0095FC27 /* NPMemberCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPMemberCell.xib; sourceTree = "<group>"; };
+		526DDE151AC757550095FC27 /* NPMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPMembersViewController.h; sourceTree = "<group>"; };
+		526DDE161AC757550095FC27 /* NPMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPMembersViewController.m; sourceTree = "<group>"; };
+		526DDE171AC757550095FC27 /* NPMembersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPMembersViewController.xib; sourceTree = "<group>"; };
+		52A9A18E1AACEC8B004E6C13 /* NPInterestTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPInterestTopCell.h; sourceTree = "<group>"; };
+		52A9A18F1AACEC8B004E6C13 /* NPInterestTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPInterestTopCell.m; sourceTree = "<group>"; };
+		52A9A1901AACEC8B004E6C13 /* NPInterestTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPInterestTopCell.xib; sourceTree = "<group>"; };
+		52A9A1931AACECC5004E6C13 /* NPInterestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPInterestCell.h; sourceTree = "<group>"; };
+		52A9A1941AACECC5004E6C13 /* NPInterestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPInterestCell.m; sourceTree = "<group>"; };
+		52A9A1951AACECC5004E6C13 /* NPInterestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPInterestCell.xib; sourceTree = "<group>"; };
+		52A9A1981AACECDA004E6C13 /* NPOtherInterestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPOtherInterestCell.h; sourceTree = "<group>"; };
+		52A9A1991AACECDA004E6C13 /* NPOtherInterestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPOtherInterestCell.m; sourceTree = "<group>"; };
+		52A9A19A1AACECDA004E6C13 /* NPOtherInterestCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPOtherInterestCell.xib; sourceTree = "<group>"; };
 		5835FE81ECFB8936D5916B56 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		68012DCA1B968C3600251544 /* CLTableViewGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTableViewGradient.h; sourceTree = "<group>"; };
 		68012DCB1B968C3600251544 /* CLTableViewGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewGradient.m; sourceTree = "<group>"; };
@@ -628,64 +628,64 @@
 		BFF39234F1654A6DBFF21105 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7A30D9ADB09ECA1212D0FB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D9242F8D1A768070006F7D92 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		D931450B18925456002325CB /* NPCompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPCompanyCell.h; path = "Application Controllers/NPEventListViewController/NPCompanyCell.h"; sourceTree = "<group>"; };
-		D931450C18925456002325CB /* NPCompanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPCompanyCell.m; path = "Application Controllers/NPEventListViewController/NPCompanyCell.m"; sourceTree = "<group>"; };
-		D931450E18925467002325CB /* NPCompanyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPCompanyCell.xib; path = "Application Controllers/NPEventListViewController/NPCompanyCell.xib"; sourceTree = "<group>"; };
-		D93AABF0186EFAD100E9B96A /* NPProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPProfileViewController.h; path = "Application Controllers/NPProfileViewController/NPProfileViewController.h"; sourceTree = "<group>"; };
-		D93AABF1186EFAD100E9B96A /* NPProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPProfileViewController.m; path = "Application Controllers/NPProfileViewController/NPProfileViewController.m"; sourceTree = "<group>"; };
-		D93AABF2186EFAD100E9B96A /* NPProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPProfileViewController.xib; path = "Application Controllers/NPProfileViewController/NPProfileViewController.xib"; sourceTree = "<group>"; };
-		D93AAC6D187AFE0700E9B96A /* NPEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPEventViewController.h; path = "Application Controllers/NPEventViewController/NPEventViewController.h"; sourceTree = "<group>"; };
-		D93AAC6E187AFE0700E9B96A /* NPEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPEventViewController.m; path = "Application Controllers/NPEventViewController/NPEventViewController.m"; sourceTree = "<group>"; };
-		D93AAC6F187AFE0700E9B96A /* NPEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPEventViewController.xib; path = "Application Controllers/NPEventViewController/NPEventViewController.xib"; sourceTree = "<group>"; };
-		D93AAC72187B170C00E9B96A /* NPAttendeesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPAttendeesCell.h; path = "Application Controllers/NPEventViewController/NPAttendeesCell.h"; sourceTree = "<group>"; };
-		D93AAC73187B170C00E9B96A /* NPAttendeesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPAttendeesCell.m; path = "Application Controllers/NPEventViewController/NPAttendeesCell.m"; sourceTree = "<group>"; };
-		D93AAC75187B171F00E9B96A /* NPAttendeesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPAttendeesCell.xib; path = "Application Controllers/NPEventViewController/NPAttendeesCell.xib"; sourceTree = "<group>"; };
-		D93AAC77187B5C6F00E9B96A /* NPDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPDateCell.xib; path = "Application Controllers/NPEventViewController/NPDateCell.xib"; sourceTree = "<group>"; };
-		D93AAC79187B5C9900E9B96A /* NPDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPDateCell.h; path = "Application Controllers/NPEventViewController/NPDateCell.h"; sourceTree = "<group>"; };
-		D93AAC7A187B5C9900E9B96A /* NPDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPDateCell.m; path = "Application Controllers/NPEventViewController/NPDateCell.m"; sourceTree = "<group>"; };
+		D931450B18925456002325CB /* NPCompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPCompanyCell.h; sourceTree = "<group>"; };
+		D931450C18925456002325CB /* NPCompanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPCompanyCell.m; sourceTree = "<group>"; };
+		D931450E18925467002325CB /* NPCompanyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPCompanyCell.xib; sourceTree = "<group>"; };
+		D93AABF0186EFAD100E9B96A /* NPProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPProfileViewController.h; sourceTree = "<group>"; };
+		D93AABF1186EFAD100E9B96A /* NPProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPProfileViewController.m; sourceTree = "<group>"; };
+		D93AABF2186EFAD100E9B96A /* NPProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPProfileViewController.xib; sourceTree = "<group>"; };
+		D93AAC6D187AFE0700E9B96A /* NPEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPEventViewController.h; sourceTree = "<group>"; };
+		D93AAC6E187AFE0700E9B96A /* NPEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPEventViewController.m; sourceTree = "<group>"; };
+		D93AAC6F187AFE0700E9B96A /* NPEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPEventViewController.xib; sourceTree = "<group>"; };
+		D93AAC72187B170C00E9B96A /* NPAttendeesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPAttendeesCell.h; sourceTree = "<group>"; };
+		D93AAC73187B170C00E9B96A /* NPAttendeesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPAttendeesCell.m; sourceTree = "<group>"; };
+		D93AAC75187B171F00E9B96A /* NPAttendeesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPAttendeesCell.xib; sourceTree = "<group>"; };
+		D93AAC77187B5C6F00E9B96A /* NPDateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPDateCell.xib; sourceTree = "<group>"; };
+		D93AAC79187B5C9900E9B96A /* NPDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPDateCell.h; sourceTree = "<group>"; };
+		D93AAC7A187B5C9900E9B96A /* NPDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPDateCell.m; sourceTree = "<group>"; };
 		D93AAC7C187B646700E9B96A /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
-		D93AAC7E187B661400E9B96A /* NPTodosCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPTodosCell.h; path = "Application Controllers/NPEventViewController/NPTodosCell.h"; sourceTree = "<group>"; };
-		D93AAC7F187B661400E9B96A /* NPTodosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPTodosCell.m; path = "Application Controllers/NPEventViewController/NPTodosCell.m"; sourceTree = "<group>"; };
-		D93AAC81187B662200E9B96A /* NPTodosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPTodosCell.xib; path = "Application Controllers/NPEventViewController/NPTodosCell.xib"; sourceTree = "<group>"; };
+		D93AAC7E187B661400E9B96A /* NPTodosCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPTodosCell.h; sourceTree = "<group>"; };
+		D93AAC7F187B661400E9B96A /* NPTodosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPTodosCell.m; sourceTree = "<group>"; };
+		D93AAC81187B662200E9B96A /* NPTodosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPTodosCell.xib; sourceTree = "<group>"; };
 		D93AAC83187B691600E9B96A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		D93AAC85187B692800E9B96A /* NPLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPLocationCell.xib; path = "Application Controllers/NPEventViewController/NPLocationCell.xib"; sourceTree = "<group>"; };
-		D93AAC87187B693B00E9B96A /* NPLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPLocationCell.h; path = "Application Controllers/NPEventViewController/NPLocationCell.h"; sourceTree = "<group>"; };
-		D93AAC88187B693B00E9B96A /* NPLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPLocationCell.m; path = "Application Controllers/NPEventViewController/NPLocationCell.m"; sourceTree = "<group>"; };
-		D93AAC8A187B6D5F00E9B96A /* NPDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPDetailsCell.h; path = "Application Controllers/NPEventViewController/NPDetailsCell.h"; sourceTree = "<group>"; };
-		D93AAC8B187B6D5F00E9B96A /* NPDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPDetailsCell.m; path = "Application Controllers/NPEventViewController/NPDetailsCell.m"; sourceTree = "<group>"; };
-		D93AAC8D187B6D7100E9B96A /* NPDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPDetailsCell.xib; path = "Application Controllers/NPEventViewController/NPDetailsCell.xib"; sourceTree = "<group>"; };
-		D93AAC90187B704100E9B96A /* NPAttendeesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPAttendeesViewController.h; path = "Application Controllers/NPAttendeesViewController/NPAttendeesViewController.h"; sourceTree = "<group>"; };
-		D93AAC91187B704100E9B96A /* NPAttendeesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPAttendeesViewController.m; path = "Application Controllers/NPAttendeesViewController/NPAttendeesViewController.m"; sourceTree = "<group>"; };
-		D93AAC92187B704100E9B96A /* NPAttendeesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPAttendeesViewController.xib; path = "Application Controllers/NPAttendeesViewController/NPAttendeesViewController.xib"; sourceTree = "<group>"; };
-		D93AAC95187B70F800E9B96A /* NPAttendeeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPAttendeeCell.h; path = "Application Controllers/NPAttendeesViewController/NPAttendeeCell.h"; sourceTree = "<group>"; };
-		D93AAC96187B70F800E9B96A /* NPAttendeeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPAttendeeCell.m; path = "Application Controllers/NPAttendeesViewController/NPAttendeeCell.m"; sourceTree = "<group>"; };
-		D93AAC98187B710700E9B96A /* NPAttendeeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPAttendeeCell.xib; path = "Application Controllers/NPAttendeesViewController/NPAttendeeCell.xib"; sourceTree = "<group>"; };
-		D93AAC9B187C29F000E9B96A /* NPTodoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPTodoViewController.h; path = "Application Controllers/NPTodoViewController/NPTodoViewController.h"; sourceTree = "<group>"; };
-		D93AAC9C187C29F000E9B96A /* NPTodoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPTodoViewController.m; path = "Application Controllers/NPTodoViewController/NPTodoViewController.m"; sourceTree = "<group>"; };
-		D93AAC9D187C29F000E9B96A /* NPTodoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPTodoViewController.xib; path = "Application Controllers/NPTodoViewController/NPTodoViewController.xib"; sourceTree = "<group>"; };
-		D93AACA0187C300E00E9B96A /* NPTodoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPTodoCell.h; path = "Application Controllers/NPTodoViewController/NPTodoCell.h"; sourceTree = "<group>"; };
-		D93AACA1187C300E00E9B96A /* NPTodoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPTodoCell.m; path = "Application Controllers/NPTodoViewController/NPTodoCell.m"; sourceTree = "<group>"; };
-		D93AACA3187C301C00E9B96A /* NPTodoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPTodoCell.xib; path = "Application Controllers/NPTodoViewController/NPTodoCell.xib"; sourceTree = "<group>"; };
-		D93AACA6187C351500E9B96A /* NPNewTodoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPNewTodoViewController.h; path = "Application Controllers/NPNewTodoViewController/NPNewTodoViewController.h"; sourceTree = "<group>"; };
-		D93AACA7187C351500E9B96A /* NPNewTodoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPNewTodoViewController.m; path = "Application Controllers/NPNewTodoViewController/NPNewTodoViewController.m"; sourceTree = "<group>"; };
-		D93AACA8187C351500E9B96A /* NPNewTodoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPNewTodoViewController.xib; path = "Application Controllers/NPNewTodoViewController/NPNewTodoViewController.xib"; sourceTree = "<group>"; };
-		D94664F61863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIBarButtonItem+NPBarButtonItems.h"; path = "Custom Controllers/UIBarButtonItem+NPBarButtonItems.h"; sourceTree = "<group>"; };
-		D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIBarButtonItem+NPBarButtonItems.m"; path = "Custom Controllers/UIBarButtonItem+NPBarButtonItems.m"; sourceTree = "<group>"; };
-		D94664F9186339360084BBB2 /* UIFont+ApplicationFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+ApplicationFont.h"; path = "Custom Controllers/UIFont+ApplicationFont.h"; sourceTree = "<group>"; };
-		D94664FA186339360084BBB2 /* UIFont+ApplicationFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+ApplicationFont.m"; path = "Custom Controllers/UIFont+ApplicationFont.m"; sourceTree = "<group>"; };
-		D94664FC18634DEB0084BBB2 /* NPGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPGradientView.h; path = "Custom Controllers/NPGradientView.h"; sourceTree = "<group>"; };
-		D94664FD18634DEB0084BBB2 /* NPGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPGradientView.m; path = "Custom Controllers/NPGradientView.m"; sourceTree = "<group>"; };
-		D9507AD7187EE22C0020498A /* NPOtherEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPOtherEventCell.h; path = "Application Controllers/NPEventListViewController/NPOtherEventCell.h"; sourceTree = "<group>"; };
-		D9507AD8187EE22C0020498A /* NPOtherEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPOtherEventCell.m; path = "Application Controllers/NPEventListViewController/NPOtherEventCell.m"; sourceTree = "<group>"; };
-		D9507AD9187EE22C0020498A /* NPOtherEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPOtherEventCell.xib; path = "Application Controllers/NPEventListViewController/NPOtherEventCell.xib"; sourceTree = "<group>"; };
+		D93AAC85187B692800E9B96A /* NPLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPLocationCell.xib; sourceTree = "<group>"; };
+		D93AAC87187B693B00E9B96A /* NPLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPLocationCell.h; sourceTree = "<group>"; };
+		D93AAC88187B693B00E9B96A /* NPLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPLocationCell.m; sourceTree = "<group>"; };
+		D93AAC8A187B6D5F00E9B96A /* NPDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPDetailsCell.h; sourceTree = "<group>"; };
+		D93AAC8B187B6D5F00E9B96A /* NPDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPDetailsCell.m; sourceTree = "<group>"; };
+		D93AAC8D187B6D7100E9B96A /* NPDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPDetailsCell.xib; sourceTree = "<group>"; };
+		D93AAC90187B704100E9B96A /* NPAttendeesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPAttendeesViewController.h; sourceTree = "<group>"; };
+		D93AAC91187B704100E9B96A /* NPAttendeesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPAttendeesViewController.m; sourceTree = "<group>"; };
+		D93AAC92187B704100E9B96A /* NPAttendeesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPAttendeesViewController.xib; sourceTree = "<group>"; };
+		D93AAC95187B70F800E9B96A /* NPAttendeeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPAttendeeCell.h; sourceTree = "<group>"; };
+		D93AAC96187B70F800E9B96A /* NPAttendeeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPAttendeeCell.m; sourceTree = "<group>"; };
+		D93AAC98187B710700E9B96A /* NPAttendeeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPAttendeeCell.xib; sourceTree = "<group>"; };
+		D93AAC9B187C29F000E9B96A /* NPTodoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPTodoViewController.h; sourceTree = "<group>"; };
+		D93AAC9C187C29F000E9B96A /* NPTodoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPTodoViewController.m; sourceTree = "<group>"; };
+		D93AAC9D187C29F000E9B96A /* NPTodoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPTodoViewController.xib; sourceTree = "<group>"; };
+		D93AACA0187C300E00E9B96A /* NPTodoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPTodoCell.h; sourceTree = "<group>"; };
+		D93AACA1187C300E00E9B96A /* NPTodoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPTodoCell.m; sourceTree = "<group>"; };
+		D93AACA3187C301C00E9B96A /* NPTodoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPTodoCell.xib; sourceTree = "<group>"; };
+		D93AACA6187C351500E9B96A /* NPNewTodoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPNewTodoViewController.h; sourceTree = "<group>"; };
+		D93AACA7187C351500E9B96A /* NPNewTodoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPNewTodoViewController.m; sourceTree = "<group>"; };
+		D93AACA8187C351500E9B96A /* NPNewTodoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPNewTodoViewController.xib; sourceTree = "<group>"; };
+		D94664F61863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+NPBarButtonItems.h"; sourceTree = "<group>"; };
+		D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+NPBarButtonItems.m"; sourceTree = "<group>"; };
+		D94664F9186339360084BBB2 /* UIFont+ApplicationFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+ApplicationFont.h"; sourceTree = "<group>"; };
+		D94664FA186339360084BBB2 /* UIFont+ApplicationFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+ApplicationFont.m"; sourceTree = "<group>"; };
+		D94664FC18634DEB0084BBB2 /* NPGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPGradientView.h; sourceTree = "<group>"; };
+		D94664FD18634DEB0084BBB2 /* NPGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPGradientView.m; sourceTree = "<group>"; };
+		D9507AD7187EE22C0020498A /* NPOtherEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPOtherEventCell.h; sourceTree = "<group>"; };
+		D9507AD8187EE22C0020498A /* NPOtherEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPOtherEventCell.m; sourceTree = "<group>"; };
+		D9507AD9187EE22C0020498A /* NPOtherEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPOtherEventCell.xib; sourceTree = "<group>"; };
 		D9809544185CA557008F2B61 /* Cooleaf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cooleaf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9809547185CA557008F2B61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9809549185CA557008F2B61 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D980954B185CA557008F2B61 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D980954F185CA557008F2B61 /* Cooleaf-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cooleaf-Info.plist"; sourceTree = "<group>"; };
+		D980954F185CA557008F2B61 /* Cooleaf-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Cooleaf-Info.plist"; path = "Cooleaf/Cooleaf-Info.plist"; sourceTree = "<group>"; };
 		D9809551185CA557008F2B61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D9809553185CA557008F2B61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D9809555185CA557008F2B61 /* Cooleaf-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cooleaf-Prefix.pch"; sourceTree = "<group>"; };
+		D9809553185CA557008F2B61 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Cooleaf/main.m; sourceTree = "<group>"; };
+		D9809555185CA557008F2B61 /* Cooleaf */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Cooleaf; path = "../../../../Users/ZkHaider/Documents/iOSProjects/Cooleaf-iOS/Cooleaf"; sourceTree = DEVELOPER_DIR; };
 		D9809556185CA557008F2B61 /* NPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NPAppDelegate.h; sourceTree = "<group>"; };
 		D9809557185CA557008F2B61 /* NPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NPAppDelegate.m; sourceTree = "<group>"; };
 		D9809559185CA557008F2B61 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -694,33 +694,33 @@
 		D9809568185CA557008F2B61 /* CooleafTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CooleafTests-Info.plist"; sourceTree = "<group>"; };
 		D980956A185CA557008F2B61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D980956C185CA557008F2B61 /* CooleafTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CooleafTests.m; sourceTree = "<group>"; };
-		D9809579185CA7AC008F2B61 /* NPEventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPEventListViewController.h; path = "Application Controllers/NPEventListViewController/NPEventListViewController.h"; sourceTree = "<group>"; };
-		D980957A185CA7AC008F2B61 /* NPEventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPEventListViewController.m; path = "Application Controllers/NPEventListViewController/NPEventListViewController.m"; sourceTree = "<group>"; };
-		D980957B185CA7AC008F2B61 /* NPEventListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPEventListViewController.xib; path = "Application Controllers/NPEventListViewController/NPEventListViewController.xib"; sourceTree = "<group>"; };
-		D980957E185CA7D2008F2B61 /* NPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPLoginViewController.h; path = "Application Controllers/NPLoginViewController/NPLoginViewController.h"; sourceTree = "<group>"; };
-		D980957F185CA7D2008F2B61 /* NPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPLoginViewController.m; path = "Application Controllers/NPLoginViewController/NPLoginViewController.m"; sourceTree = "<group>"; };
-		D9809580185CA7D2008F2B61 /* NPLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPLoginViewController.xib; path = "Application Controllers/NPLoginViewController/NPLoginViewController.xib"; sourceTree = "<group>"; };
+		D9809579185CA7AC008F2B61 /* NPEventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPEventListViewController.h; sourceTree = "<group>"; };
+		D980957A185CA7AC008F2B61 /* NPEventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPEventListViewController.m; sourceTree = "<group>"; };
+		D980957B185CA7AC008F2B61 /* NPEventListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPEventListViewController.xib; sourceTree = "<group>"; };
+		D980957E185CA7D2008F2B61 /* NPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPLoginViewController.h; sourceTree = "<group>"; };
+		D980957F185CA7D2008F2B61 /* NPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPLoginViewController.m; sourceTree = "<group>"; };
+		D9809580185CA7D2008F2B61 /* NPLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPLoginViewController.xib; sourceTree = "<group>"; };
 		D9809583185CA86A008F2B61 /* NPCooleafClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPCooleafClient.h; sourceTree = "<group>"; };
 		D9809584185CA86A008F2B61 /* NPCooleafClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPCooleafClient.m; sourceTree = "<group>"; };
-		D9809586185CCFFB008F2B61 /* NPEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPEventCell.h; path = "Application Controllers/NPEventListViewController/NPEventCell.h"; sourceTree = "<group>"; };
-		D9809587185CCFFB008F2B61 /* NPEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPEventCell.m; path = "Application Controllers/NPEventListViewController/NPEventCell.m"; sourceTree = "<group>"; };
-		D9809589185CD013008F2B61 /* NPEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NPEventCell.xib; path = "Application Controllers/NPEventListViewController/NPEventCell.xib"; sourceTree = "<group>"; };
+		D9809586185CCFFB008F2B61 /* NPEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPEventCell.h; sourceTree = "<group>"; };
+		D9809587185CCFFB008F2B61 /* NPEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPEventCell.m; sourceTree = "<group>"; };
+		D9809589185CD013008F2B61 /* NPEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPEventCell.xib; sourceTree = "<group>"; };
 		D980958B185F2C5D008F2B61 /* NSFileManager+ImageCaching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+ImageCaching.h"; sourceTree = "<group>"; };
 		D980958C185F2C5D008F2B61 /* NSFileManager+ImageCaching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ImageCaching.m"; sourceTree = "<group>"; };
-		F998F6871AB211E100213240 /* NPInterestsViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsViewController2.h; path = "Application Controllers/NPInterestsViewController/NPInterestsViewController2.h"; sourceTree = "<group>"; };
-		F998F6881AB211E100213240 /* NPInterestsViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestsViewController2.m; path = "Application Controllers/NPInterestsViewController/NPInterestsViewController2.m"; sourceTree = "<group>"; };
-		F998F68A1AB218AF00213240 /* NPInterestViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestViewCell.h; path = "Application Controllers/NPInterestsViewController/NPInterestViewCell.h"; sourceTree = "<group>"; };
-		F998F68B1AB218AF00213240 /* NPInterestViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestViewCell.m; path = "Application Controllers/NPInterestsViewController/NPInterestViewCell.m"; sourceTree = "<group>"; };
+		F998F6871AB211E100213240 /* NPInterestsViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPInterestsViewController2.h; sourceTree = "<group>"; };
+		F998F6881AB211E100213240 /* NPInterestsViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPInterestsViewController2.m; sourceTree = "<group>"; };
+		F998F68A1AB218AF00213240 /* NPInterestViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPInterestViewCell.h; sourceTree = "<group>"; };
+		F998F68B1AB218AF00213240 /* NPInterestViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPInterestViewCell.m; sourceTree = "<group>"; };
 		F998F68D1AB3312500213240 /* NPInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterest.h; path = Model/NPInterest.h; sourceTree = "<group>"; };
 		F998F68E1AB3312500213240 /* NPInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterest.m; path = Model/NPInterest.m; sourceTree = "<group>"; };
-		F9B37B921AAB9802003F3FB8 /* NPRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPRegistrationViewController.h; path = "Application Controllers/NPRegistrationViewController/NPRegistrationViewController.h"; sourceTree = "<group>"; };
-		F9B37B931AAB9802003F3FB8 /* NPRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPRegistrationViewController.m; path = "Application Controllers/NPRegistrationViewController/NPRegistrationViewController.m"; sourceTree = "<group>"; };
+		F9B37B921AAB9802003F3FB8 /* NPRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPRegistrationViewController.h; sourceTree = "<group>"; };
+		F9B37B931AAB9802003F3FB8 /* NPRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPRegistrationViewController.m; sourceTree = "<group>"; };
 		F9B37B961AAE0CA5003F3FB8 /* NPTagGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPTagGroup.h; path = Model/NPTagGroup.h; sourceTree = "<group>"; };
 		F9B37B971AAE0CA5003F3FB8 /* NPTagGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPTagGroup.m; path = Model/NPTagGroup.m; sourceTree = "<group>"; };
 		F9B37B991AAE0F7A003F3FB8 /* NPTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPTag.h; path = Model/NPTag.h; sourceTree = "<group>"; };
 		F9B37B9A1AAE0F7A003F3FB8 /* NPTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPTag.m; path = Model/NPTag.m; sourceTree = "<group>"; };
-		F9F445E81AB8AED700C655CF /* NPInterestsHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPInterestsHeaderViewCell.h; path = "Application Controllers/NPInterestsViewController/NPInterestsHeaderViewCell.h"; sourceTree = "<group>"; };
-		F9F445E91AB8AED700C655CF /* NPInterestsHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NPInterestsHeaderViewCell.m; path = "Application Controllers/NPInterestsViewController/NPInterestsHeaderViewCell.m"; sourceTree = "<group>"; };
+		F9F445E81AB8AED700C655CF /* NPInterestsHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NPInterestsHeaderViewCell.h; sourceTree = "<group>"; };
+		F9F445E91AB8AED700C655CF /* NPInterestsHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NPInterestsHeaderViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -751,40 +751,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		430936451AD1FB4B00E568CD /* NPSeriesEventModal */ = {
-			isa = PBXGroup;
-			children = (
-				430936461AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.h */,
-				430936471AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m */,
-				430936481AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.xib */,
-				4309364B1AD1FCCD00E568CD /* NPEventSeriesDateCell.h */,
-				4309364C1AD1FCCD00E568CD /* NPEventSeriesDateCell.m */,
-				4309364D1AD1FCCD00E568CD /* NPEventSeriesDateCell.xib */,
-			);
-			name = NPSeriesEventModal;
-			sourceTree = "<group>";
-		};
-		43B0623E1AB64F7B009F96CD /* InterestPage */ = {
-			isa = PBXGroup;
-			children = (
-				43B062441AB664B0009F96CD /* NPInterestViewController.h */,
-				43B062451AB664B0009F96CD /* NPInterestViewController.m */,
-				43B062461AB664B0009F96CD /* NPInterestViewController.xib */,
-				43B062491AB71A64009F96CD /* NPMembersCell.h */,
-				43B0624A1AB71A64009F96CD /* NPMembersCell.m */,
-				43B0624B1AB71A64009F96CD /* NPMembersCell.xib */,
-				437F3D831ABFEAD9007DE49B /* NPGroupEventsCell.h */,
-				437F3D841ABFEAD9007DE49B /* NPGroupEventsCell.m */,
-				437F3D851ABFEAD9007DE49B /* NPGroupEventsCell.xib */,
-			);
-			name = InterestPage;
-			sourceTree = "<group>";
-		};
 		4B3B36891BB21E2C00C7AEE5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				4B3B368A1BB21E5700C7AEE5 /* CLDateUtil.h */,
 				4B3B368B1BB21E5700C7AEE5 /* CLDateUtil.m */,
+				D980958B185F2C5D008F2B61 /* NSFileManager+ImageCaching.h */,
+				D980958C185F2C5D008F2B61 /* NSFileManager+ImageCaching.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -805,6 +778,7 @@
 		4B6088441B929E620029E659 /* UIViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4BE1B29E1BBB45D600A07DA1 /* OldViewControllers */,
 				4BE63A471B94E8CE00231222 /* CLHomeTableViewController.h */,
 				4BE63A481B94E8CE00231222 /* CLHomeTableViewController.m */,
 				4BE63A4A1B94E9D800231222 /* CLMenuViewController.h */,
@@ -857,6 +831,12 @@
 		4B6088461B929E8A0029E659 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				D94664F61863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.h */,
+				D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */,
+				D94664F9186339360084BBB2 /* UIFont+ApplicationFont.h */,
+				D94664FA186339360084BBB2 /* UIFont+ApplicationFont.m */,
+				D94664FC18634DEB0084BBB2 /* NPGradientView.h */,
+				D94664FD18634DEB0084BBB2 /* NPGradientView.m */,
 				68D85D301BA929A300C4620A /* BFPaperCheckbox.h */,
 				68D85D311BA929A300C4620A /* BFPaperCheckbox.m */,
 				68D85D331BA929EA00C4620A /* UIColor+BFPaperColors.h */,
@@ -876,8 +856,9 @@
 		4BA4E2EF1B8BC5CA0089CB2B /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				4BA4E3361B8D06EA0089CB2B /* Responses */,
 				4BA4E2F01B8BC5E60089CB2B /* Entities */,
+				4BE1B2B21BBB4DA100A07DA1 /* OldClient */,
+				4BA4E3361B8D06EA0089CB2B /* Responses */,
 				4BA4E3421B8D11440089CB2B /* CLClient.h */,
 				4BA4E3431B8D11440089CB2B /* CLClient.m */,
 			);
@@ -1622,6 +1603,292 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
+		4BE1B29E1BBB45D600A07DA1 /* OldViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B29F1BBB46B300A07DA1 /* TabBar */,
+				4BE1B2A01BBB46BA00A07DA1 /* NPInterestsViewController */,
+				4BE1B2A11BBB46C800A07DA1 /* NPRegistrationViewController */,
+			);
+			path = OldViewControllers;
+			sourceTree = "<group>";
+		};
+		4BE1B29F1BBB46B300A07DA1 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2A61BBB472300A07DA1 /* Profile */,
+				4BE1B2A51BBB471F00A07DA1 /* Interests */,
+				4BE1B2A41BBB471900A07DA1 /* Challenges */,
+				4BE1B2A31BBB471200A07DA1 /* Events */,
+				4BE1B2A21BBB470D00A07DA1 /* Home */,
+				523096CC1AA295F500649FB7 /* MainViewController.h */,
+				523096CD1AA295F500649FB7 /* MainViewController.m */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		4BE1B2A01BBB46BA00A07DA1 /* NPInterestsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F998F6871AB211E100213240 /* NPInterestsViewController2.h */,
+				F998F6881AB211E100213240 /* NPInterestsViewController2.m */,
+				F998F68A1AB218AF00213240 /* NPInterestViewCell.h */,
+				F998F68B1AB218AF00213240 /* NPInterestViewCell.m */,
+				F9F445E81AB8AED700C655CF /* NPInterestsHeaderViewCell.h */,
+				F9F445E91AB8AED700C655CF /* NPInterestsHeaderViewCell.m */,
+				52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */,
+				52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */,
+			);
+			path = NPInterestsViewController;
+			sourceTree = "<group>";
+		};
+		4BE1B2A11BBB46C800A07DA1 /* NPRegistrationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2B01BBB48EF00A07DA1 /* NPLoginViewController */,
+				F9B37B921AAB9802003F3FB8 /* NPRegistrationViewController.h */,
+				F9B37B931AAB9802003F3FB8 /* NPRegistrationViewController.m */,
+			);
+			path = NPRegistrationViewController;
+			sourceTree = "<group>";
+		};
+		4BE1B2A21BBB470D00A07DA1 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				523096C71AA291B200649FB7 /* NPHomeViewController.h */,
+				523096C81AA291B200649FB7 /* NPHomeViewController.m */,
+				523096C91AA291B200649FB7 /* NPHomeViewController.xib */,
+				523096D41AA3E17400649FB7 /* NPHomeCell.h */,
+				523096D51AA3E17400649FB7 /* NPHomeCell.m */,
+				523096D61AA3E17400649FB7 /* NPHomeCell.xib */,
+				523096D91AA3E1A600649FB7 /* NPOtherHomeCell.h */,
+				523096DA1AA3E1A600649FB7 /* NPOtherHomeCell.m */,
+				523096DB1AA3E1A600649FB7 /* NPOtherHomeCell.xib */,
+				523096DE1AA3E24800649FB7 /* NPHomeTopCell.h */,
+				523096DF1AA3E24800649FB7 /* NPHomeTopCell.m */,
+				523096E01AA3E24800649FB7 /* NPHomeTopCell.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4BE1B2A31BBB471200A07DA1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2AF1BBB486900A07DA1 /* NPEventListViewController */,
+				4BE1B2AE1BBB485A00A07DA1 /* NPEventViewController */,
+				4BE1B2AD1BBB484100A07DA1 /* NPAttendeesViewController */,
+				4BE1B2AC1BBB482C00A07DA1 /* NPTodoViewController */,
+				4BE1B2AB1BBB480600A07DA1 /* NPNewTodoViewController */,
+				4BE1B2AA1BBB47EF00A07DA1 /* NPSeriesEventModal */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4BE1B2A41BBB471900A07DA1 /* Challenges */ = {
+			isa = PBXGroup;
+			children = (
+				523096C21AA2907600649FB7 /* NPChallengesViewController.h */,
+				523096C31AA2907600649FB7 /* NPChallengesViewController.m */,
+				523096C41AA2907600649FB7 /* NPChallengesViewController.xib */,
+			);
+			path = Challenges;
+			sourceTree = "<group>";
+		};
+		4BE1B2A51BBB471F00A07DA1 /* Interests */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2A91BBB47B100A07DA1 /* InterestPage */,
+				4BE1B2A81BBB478400A07DA1 /* NPMembersViewController */,
+				523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */,
+				523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */,
+				523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */,
+				52A9A18E1AACEC8B004E6C13 /* NPInterestTopCell.h */,
+				52A9A18F1AACEC8B004E6C13 /* NPInterestTopCell.m */,
+				52A9A1901AACEC8B004E6C13 /* NPInterestTopCell.xib */,
+				52A9A1931AACECC5004E6C13 /* NPInterestCell.h */,
+				52A9A1941AACECC5004E6C13 /* NPInterestCell.m */,
+				52A9A1951AACECC5004E6C13 /* NPInterestCell.xib */,
+				52A9A1981AACECDA004E6C13 /* NPOtherInterestCell.h */,
+				52A9A1991AACECDA004E6C13 /* NPOtherInterestCell.m */,
+				52A9A19A1AACECDA004E6C13 /* NPOtherInterestCell.xib */,
+			);
+			path = Interests;
+			sourceTree = "<group>";
+		};
+		4BE1B2A61BBB472300A07DA1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2A71BBB476400A07DA1 /* NPProfileViewController */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		4BE1B2A71BBB476400A07DA1 /* NPProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43EF2F161B00A8F5002A060A /* NPTagGroupsView.h */,
+				43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */,
+				43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */,
+				D93AABF0186EFAD100E9B96A /* NPProfileViewController.h */,
+				D93AABF1186EFAD100E9B96A /* NPProfileViewController.m */,
+				D93AABF2186EFAD100E9B96A /* NPProfileViewController.xib */,
+				432A499C1AE4FA2E001B3740 /* NPEditTagsViewController.h */,
+				432A499D1AE4FA2E001B3740 /* NPEditTagsViewController.m */,
+			);
+			path = NPProfileViewController;
+			sourceTree = "<group>";
+		};
+		4BE1B2A81BBB478400A07DA1 /* NPMembersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				526DDE101AC756DB0095FC27 /* NPMemberCell.h */,
+				526DDE111AC756DB0095FC27 /* NPMemberCell.m */,
+				526DDE121AC756DB0095FC27 /* NPMemberCell.xib */,
+				526DDE151AC757550095FC27 /* NPMembersViewController.h */,
+				526DDE161AC757550095FC27 /* NPMembersViewController.m */,
+				526DDE171AC757550095FC27 /* NPMembersViewController.xib */,
+			);
+			path = NPMembersViewController;
+			sourceTree = "<group>";
+		};
+		4BE1B2A91BBB47B100A07DA1 /* InterestPage */ = {
+			isa = PBXGroup;
+			children = (
+				43B062441AB664B0009F96CD /* NPInterestViewController.h */,
+				43B062451AB664B0009F96CD /* NPInterestViewController.m */,
+				43B062461AB664B0009F96CD /* NPInterestViewController.xib */,
+				43B062491AB71A64009F96CD /* NPMembersCell.h */,
+				43B0624A1AB71A64009F96CD /* NPMembersCell.m */,
+				43B0624B1AB71A64009F96CD /* NPMembersCell.xib */,
+				437F3D831ABFEAD9007DE49B /* NPGroupEventsCell.h */,
+				437F3D841ABFEAD9007DE49B /* NPGroupEventsCell.m */,
+				437F3D851ABFEAD9007DE49B /* NPGroupEventsCell.xib */,
+			);
+			path = InterestPage;
+			sourceTree = "<group>";
+		};
+		4BE1B2AA1BBB47EF00A07DA1 /* NPSeriesEventModal */ = {
+			isa = PBXGroup;
+			children = (
+				430936461AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.h */,
+				430936471AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m */,
+				430936481AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.xib */,
+				4309364B1AD1FCCD00E568CD /* NPEventSeriesDateCell.h */,
+				4309364C1AD1FCCD00E568CD /* NPEventSeriesDateCell.m */,
+				4309364D1AD1FCCD00E568CD /* NPEventSeriesDateCell.xib */,
+			);
+			path = NPSeriesEventModal;
+			sourceTree = "<group>";
+		};
+		4BE1B2AB1BBB480600A07DA1 /* NPNewTodoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D93AACA6187C351500E9B96A /* NPNewTodoViewController.h */,
+				D93AACA7187C351500E9B96A /* NPNewTodoViewController.m */,
+				D93AACA8187C351500E9B96A /* NPNewTodoViewController.xib */,
+			);
+			path = NPNewTodoViewController;
+			sourceTree = "<group>";
+		};
+		4BE1B2AC1BBB482C00A07DA1 /* NPTodoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D93AACA0187C300E00E9B96A /* NPTodoCell.h */,
+				D93AACA1187C300E00E9B96A /* NPTodoCell.m */,
+				D93AACA3187C301C00E9B96A /* NPTodoCell.xib */,
+				D93AAC9B187C29F000E9B96A /* NPTodoViewController.h */,
+				D93AAC9C187C29F000E9B96A /* NPTodoViewController.m */,
+				D93AAC9D187C29F000E9B96A /* NPTodoViewController.xib */,
+			);
+			path = NPTodoViewController;
+			sourceTree = "<group>";
+		};
+		4BE1B2AD1BBB484100A07DA1 /* NPAttendeesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D93AAC95187B70F800E9B96A /* NPAttendeeCell.h */,
+				D93AAC96187B70F800E9B96A /* NPAttendeeCell.m */,
+				D93AAC98187B710700E9B96A /* NPAttendeeCell.xib */,
+				D93AAC90187B704100E9B96A /* NPAttendeesViewController.h */,
+				D93AAC91187B704100E9B96A /* NPAttendeesViewController.m */,
+				D93AAC92187B704100E9B96A /* NPAttendeesViewController.xib */,
+			);
+			path = NPAttendeesViewController;
+			sourceTree = "<group>";
+		};
+		4BE1B2AE1BBB485A00A07DA1 /* NPEventViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D93AAC79187B5C9900E9B96A /* NPDateCell.h */,
+				D93AAC7A187B5C9900E9B96A /* NPDateCell.m */,
+				D93AAC77187B5C6F00E9B96A /* NPDateCell.xib */,
+				D93AAC72187B170C00E9B96A /* NPAttendeesCell.h */,
+				D93AAC73187B170C00E9B96A /* NPAttendeesCell.m */,
+				D93AAC75187B171F00E9B96A /* NPAttendeesCell.xib */,
+				D93AAC7E187B661400E9B96A /* NPTodosCell.h */,
+				D93AAC7F187B661400E9B96A /* NPTodosCell.m */,
+				D93AAC81187B662200E9B96A /* NPTodosCell.xib */,
+				D93AAC87187B693B00E9B96A /* NPLocationCell.h */,
+				D93AAC88187B693B00E9B96A /* NPLocationCell.m */,
+				D93AAC85187B692800E9B96A /* NPLocationCell.xib */,
+				D93AAC8A187B6D5F00E9B96A /* NPDetailsCell.h */,
+				D93AAC8B187B6D5F00E9B96A /* NPDetailsCell.m */,
+				D93AAC8D187B6D7100E9B96A /* NPDetailsCell.xib */,
+				D93AAC6D187AFE0700E9B96A /* NPEventViewController.h */,
+				D93AAC6E187AFE0700E9B96A /* NPEventViewController.m */,
+				D93AAC6F187AFE0700E9B96A /* NPEventViewController.xib */,
+			);
+			path = NPEventViewController;
+			sourceTree = "<group>";
+		};
+		4BE1B2AF1BBB486900A07DA1 /* NPEventListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D9809579185CA7AC008F2B61 /* NPEventListViewController.h */,
+				D980957A185CA7AC008F2B61 /* NPEventListViewController.m */,
+				D980957B185CA7AC008F2B61 /* NPEventListViewController.xib */,
+				D9809586185CCFFB008F2B61 /* NPEventCell.h */,
+				D9809587185CCFFB008F2B61 /* NPEventCell.m */,
+				D9809589185CD013008F2B61 /* NPEventCell.xib */,
+				D9507AD7187EE22C0020498A /* NPOtherEventCell.h */,
+				D9507AD8187EE22C0020498A /* NPOtherEventCell.m */,
+				D9507AD9187EE22C0020498A /* NPOtherEventCell.xib */,
+				D931450B18925456002325CB /* NPCompanyCell.h */,
+				D931450C18925456002325CB /* NPCompanyCell.m */,
+				D931450E18925467002325CB /* NPCompanyCell.xib */,
+			);
+			path = NPEventListViewController;
+			sourceTree = "<group>";
+		};
+		4BE1B2B01BBB48EF00A07DA1 /* NPLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D980957E185CA7D2008F2B61 /* NPLoginViewController.h */,
+				D980957F185CA7D2008F2B61 /* NPLoginViewController.m */,
+				D9809580185CA7D2008F2B61 /* NPLoginViewController.xib */,
+			);
+			path = NPLoginViewController;
+			sourceTree = "<group>";
+		};
+		4BE1B2B11BBB4D3700A07DA1 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D9809556185CA557008F2B61 /* NPAppDelegate.h */,
+				D9809557185CA557008F2B61 /* NPAppDelegate.m */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		4BE1B2B21BBB4DA100A07DA1 /* OldClient */ = {
+			isa = PBXGroup;
+			children = (
+				D9809583185CA86A008F2B61 /* NPCooleafClient.h */,
+				D9809584185CA86A008F2B61 /* NPCooleafClient.m */,
+			);
+			name = OldClient;
+			path = ../Api/OldClient;
+			sourceTree = "<group>";
+		};
 		4BE1DF3C1BABA488009519CB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1669,110 +1936,12 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		523096B71AA28D0500649FB7 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				523096C71AA291B200649FB7 /* NPHomeViewController.h */,
-				523096C81AA291B200649FB7 /* NPHomeViewController.m */,
-				523096C91AA291B200649FB7 /* NPHomeViewController.xib */,
-				523096D41AA3E17400649FB7 /* NPHomeCell.h */,
-				523096D51AA3E17400649FB7 /* NPHomeCell.m */,
-				523096D61AA3E17400649FB7 /* NPHomeCell.xib */,
-				523096D91AA3E1A600649FB7 /* NPOtherHomeCell.h */,
-				523096DA1AA3E1A600649FB7 /* NPOtherHomeCell.m */,
-				523096DB1AA3E1A600649FB7 /* NPOtherHomeCell.xib */,
-				523096DE1AA3E24800649FB7 /* NPHomeTopCell.h */,
-				523096DF1AA3E24800649FB7 /* NPHomeTopCell.m */,
-				523096E01AA3E24800649FB7 /* NPHomeTopCell.xib */,
-			);
-			name = Home;
-			sourceTree = "<group>";
-		};
-		523096B81AA28D1000649FB7 /* Events */ = {
-			isa = PBXGroup;
-			children = (
-				430936451AD1FB4B00E568CD /* NPSeriesEventModal */,
-				D93AACA5187C34F200E9B96A /* NPNewTodoViewController */,
-				D93AAC9A187C29D300E9B96A /* NPTodoViewController */,
-				D93AAC8F187B701D00E9B96A /* NPAttendeesViewController */,
-				D93AAC6C187AFDEF00E9B96A /* NPEventViewController */,
-				D9809578185CA71A008F2B61 /* NPEventListViewController */,
-			);
-			name = Events;
-			sourceTree = "<group>";
-		};
-		523096B91AA28D6B00649FB7 /* Challenges */ = {
-			isa = PBXGroup;
-			children = (
-				523096C21AA2907600649FB7 /* NPChallengesViewController.h */,
-				523096C31AA2907600649FB7 /* NPChallengesViewController.m */,
-				523096C41AA2907600649FB7 /* NPChallengesViewController.xib */,
-			);
-			name = Challenges;
-			sourceTree = "<group>";
-		};
-		523096BA1AA28D7D00649FB7 /* Interests */ = {
-			isa = PBXGroup;
-			children = (
-				526DDE0F1AC756650095FC27 /* NPMembersViewController */,
-				43B0623E1AB64F7B009F96CD /* InterestPage */,
-				523096BD1AA28F5C00649FB7 /* NPInterestsViewController.h */,
-				523096BE1AA28F5C00649FB7 /* NPInterestsViewController.m */,
-				523096BF1AA28F5C00649FB7 /* NPInterestsViewController.xib */,
-				52A9A18E1AACEC8B004E6C13 /* NPInterestTopCell.h */,
-				52A9A18F1AACEC8B004E6C13 /* NPInterestTopCell.m */,
-				52A9A1901AACEC8B004E6C13 /* NPInterestTopCell.xib */,
-				52A9A1931AACECC5004E6C13 /* NPInterestCell.h */,
-				52A9A1941AACECC5004E6C13 /* NPInterestCell.m */,
-				52A9A1951AACECC5004E6C13 /* NPInterestCell.xib */,
-				52A9A1981AACECDA004E6C13 /* NPOtherInterestCell.h */,
-				52A9A1991AACECDA004E6C13 /* NPOtherInterestCell.m */,
-				52A9A19A1AACECDA004E6C13 /* NPOtherInterestCell.xib */,
-			);
-			name = Interests;
-			sourceTree = "<group>";
-		};
-		523096BB1AA28D8700649FB7 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				D93AABEF186EFAAF00E9B96A /* NPProfileViewController */,
-			);
-			name = Profile;
-			sourceTree = "<group>";
-		};
-		523096BC1AA28E7500649FB7 /* TabBar */ = {
-			isa = PBXGroup;
-			children = (
-				523096BB1AA28D8700649FB7 /* Profile */,
-				523096BA1AA28D7D00649FB7 /* Interests */,
-				523096B91AA28D6B00649FB7 /* Challenges */,
-				523096B81AA28D1000649FB7 /* Events */,
-				523096B71AA28D0500649FB7 /* Home */,
-				523096CC1AA295F500649FB7 /* MainViewController.h */,
-				523096CD1AA295F500649FB7 /* MainViewController.m */,
-			);
-			name = TabBar;
-			sourceTree = "<group>";
-		};
 		52402D5D1A99A94B00937798 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
 				52402D5B1A99A93100937798 /* logo@2x.png */,
 			);
-			name = Assets;
-			sourceTree = "<group>";
-		};
-		526DDE0F1AC756650095FC27 /* NPMembersViewController */ = {
-			isa = PBXGroup;
-			children = (
-				526DDE101AC756DB0095FC27 /* NPMemberCell.h */,
-				526DDE111AC756DB0095FC27 /* NPMemberCell.m */,
-				526DDE121AC756DB0095FC27 /* NPMemberCell.xib */,
-				526DDE151AC757550095FC27 /* NPMembersViewController.h */,
-				526DDE161AC757550095FC27 /* NPMembersViewController.m */,
-				526DDE171AC757550095FC27 /* NPMembersViewController.xib */,
-			);
-			name = NPMembersViewController;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		CEE3E8F6427AC65C0C247FB1 /* Pods */ = {
@@ -1784,99 +1953,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D93AABEF186EFAAF00E9B96A /* NPProfileViewController */ = {
-			isa = PBXGroup;
-			children = (
-				43EF2F161B00A8F5002A060A /* NPTagGroupsView.h */,
-				43EF2F171B00A8F5002A060A /* NPTagGroupsView.m */,
-				43EF2F181B00A8F5002A060A /* NPTagGroupView.xib */,
-				D93AABF0186EFAD100E9B96A /* NPProfileViewController.h */,
-				D93AABF1186EFAD100E9B96A /* NPProfileViewController.m */,
-				D93AABF2186EFAD100E9B96A /* NPProfileViewController.xib */,
-				432A499C1AE4FA2E001B3740 /* NPEditTagsViewController.h */,
-				432A499D1AE4FA2E001B3740 /* NPEditTagsViewController.m */,
-			);
-			name = NPProfileViewController;
-			sourceTree = "<group>";
-		};
-		D93AAC6C187AFDEF00E9B96A /* NPEventViewController */ = {
-			isa = PBXGroup;
-			children = (
-				D93AAC79187B5C9900E9B96A /* NPDateCell.h */,
-				D93AAC7A187B5C9900E9B96A /* NPDateCell.m */,
-				D93AAC77187B5C6F00E9B96A /* NPDateCell.xib */,
-				D93AAC72187B170C00E9B96A /* NPAttendeesCell.h */,
-				D93AAC73187B170C00E9B96A /* NPAttendeesCell.m */,
-				D93AAC75187B171F00E9B96A /* NPAttendeesCell.xib */,
-				D93AAC7E187B661400E9B96A /* NPTodosCell.h */,
-				D93AAC7F187B661400E9B96A /* NPTodosCell.m */,
-				D93AAC81187B662200E9B96A /* NPTodosCell.xib */,
-				D93AAC87187B693B00E9B96A /* NPLocationCell.h */,
-				D93AAC88187B693B00E9B96A /* NPLocationCell.m */,
-				D93AAC85187B692800E9B96A /* NPLocationCell.xib */,
-				D93AAC8A187B6D5F00E9B96A /* NPDetailsCell.h */,
-				D93AAC8B187B6D5F00E9B96A /* NPDetailsCell.m */,
-				D93AAC8D187B6D7100E9B96A /* NPDetailsCell.xib */,
-				D93AAC6D187AFE0700E9B96A /* NPEventViewController.h */,
-				D93AAC6E187AFE0700E9B96A /* NPEventViewController.m */,
-				D93AAC6F187AFE0700E9B96A /* NPEventViewController.xib */,
-			);
-			name = NPEventViewController;
-			sourceTree = "<group>";
-		};
-		D93AAC8F187B701D00E9B96A /* NPAttendeesViewController */ = {
-			isa = PBXGroup;
-			children = (
-				D93AAC95187B70F800E9B96A /* NPAttendeeCell.h */,
-				D93AAC96187B70F800E9B96A /* NPAttendeeCell.m */,
-				D93AAC98187B710700E9B96A /* NPAttendeeCell.xib */,
-				D93AAC90187B704100E9B96A /* NPAttendeesViewController.h */,
-				D93AAC91187B704100E9B96A /* NPAttendeesViewController.m */,
-				D93AAC92187B704100E9B96A /* NPAttendeesViewController.xib */,
-			);
-			name = NPAttendeesViewController;
-			sourceTree = "<group>";
-		};
-		D93AAC9A187C29D300E9B96A /* NPTodoViewController */ = {
-			isa = PBXGroup;
-			children = (
-				D93AACA0187C300E00E9B96A /* NPTodoCell.h */,
-				D93AACA1187C300E00E9B96A /* NPTodoCell.m */,
-				D93AACA3187C301C00E9B96A /* NPTodoCell.xib */,
-				D93AAC9B187C29F000E9B96A /* NPTodoViewController.h */,
-				D93AAC9C187C29F000E9B96A /* NPTodoViewController.m */,
-				D93AAC9D187C29F000E9B96A /* NPTodoViewController.xib */,
-			);
-			name = NPTodoViewController;
-			sourceTree = "<group>";
-		};
-		D93AACA5187C34F200E9B96A /* NPNewTodoViewController */ = {
-			isa = PBXGroup;
-			children = (
-				D93AACA6187C351500E9B96A /* NPNewTodoViewController.h */,
-				D93AACA7187C351500E9B96A /* NPNewTodoViewController.m */,
-				D93AACA8187C351500E9B96A /* NPNewTodoViewController.xib */,
-			);
-			name = NPNewTodoViewController;
-			sourceTree = "<group>";
-		};
-		D94664F51863292B0084BBB2 /* Custom Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				D94664F61863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.h */,
-				D94664F71863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m */,
-				D94664F9186339360084BBB2 /* UIFont+ApplicationFont.h */,
-				D94664FA186339360084BBB2 /* UIFont+ApplicationFont.m */,
-				D94664FC18634DEB0084BBB2 /* NPGradientView.h */,
-				D94664FD18634DEB0084BBB2 /* NPGradientView.m */,
-			);
-			name = "Custom Controllers";
-			sourceTree = "<group>";
-		};
 		D980953B185CA557008F2B61 = {
 			isa = PBXGroup;
 			children = (
 				D980954D185CA557008F2B61 /* Cooleaf */,
+				D9809550185CA557008F2B61 /* InfoPlist.strings */,
+				D9809555185CA557008F2B61 /* Cooleaf */,
+				D980954F185CA557008F2B61 /* Cooleaf-Info.plist */,
+				D9809553185CA557008F2B61 /* main.m */,
 				D9809566185CA557008F2B61 /* CooleafTests */,
 				D9809546185CA557008F2B61 /* Frameworks */,
 				D9809545185CA557008F2B61 /* Products */,
@@ -1914,23 +1998,16 @@
 		D980954D185CA557008F2B61 /* Cooleaf */ = {
 			isa = PBXGroup;
 			children = (
-				4B3B36891BB21E2C00C7AEE5 /* Utils */,
-				4B6088431B929E4E0029E659 /* UI */,
+				4BA4E2EF1B8BC5CA0089CB2B /* Api */,
+				4BE1B2B11BBB4D3700A07DA1 /* Application */,
 				4BAE005A1B8EDEBB00779E1F /* Base */,
 				4BAE00521B8EDE1800779E1F /* Bus */,
-				4BA4E2EF1B8BC5CA0089CB2B /* Api */,
-				4BA4E3451B8D13080089CB2B /* MVP */,
 				F9B37B951AAE0C59003F3FB8 /* Model */,
-				D94664F51863292B0084BBB2 /* Custom Controllers */,
-				D9809576185CA709008F2B61 /* Application Controllers */,
-				D9809556185CA557008F2B61 /* NPAppDelegate.h */,
-				D9809557185CA557008F2B61 /* NPAppDelegate.m */,
+				4BA4E3451B8D13080089CB2B /* MVP */,
+				4B6088431B929E4E0029E659 /* UI */,
+				4B3B36891BB21E2C00C7AEE5 /* Utils */,
 				D9809559185CA557008F2B61 /* Images.xcassets */,
 				D980954E185CA557008F2B61 /* Supporting Files */,
-				D9809583185CA86A008F2B61 /* NPCooleafClient.h */,
-				D9809584185CA86A008F2B61 /* NPCooleafClient.m */,
-				D980958B185F2C5D008F2B61 /* NSFileManager+ImageCaching.h */,
-				D980958C185F2C5D008F2B61 /* NSFileManager+ImageCaching.m */,
 			);
 			path = Cooleaf;
 			sourceTree = "<group>";
@@ -1939,12 +2016,8 @@
 			isa = PBXGroup;
 			children = (
 				52402D5D1A99A94B00937798 /* Assets */,
-				D980954F185CA557008F2B61 /* Cooleaf-Info.plist */,
-				D9809550185CA557008F2B61 /* InfoPlist.strings */,
-				D9809553185CA557008F2B61 /* main.m */,
-				D9809555185CA557008F2B61 /* Cooleaf-Prefix.pch */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		D9809566185CA557008F2B61 /* CooleafTests */ = {
@@ -1963,70 +2036,6 @@
 				D9809569185CA557008F2B61 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D9809576185CA709008F2B61 /* Application Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				523096BC1AA28E7500649FB7 /* TabBar */,
-				F998F6861AB20E0400213240 /* NPInterestsViewController */,
-				F9B37B911AAB94C2003F3FB8 /* NPRegistrationViewController */,
-			);
-			name = "Application Controllers";
-			sourceTree = "<group>";
-		};
-		D9809577185CA710008F2B61 /* NPLoginViewController */ = {
-			isa = PBXGroup;
-			children = (
-				D980957E185CA7D2008F2B61 /* NPLoginViewController.h */,
-				D980957F185CA7D2008F2B61 /* NPLoginViewController.m */,
-				D9809580185CA7D2008F2B61 /* NPLoginViewController.xib */,
-			);
-			name = NPLoginViewController;
-			sourceTree = "<group>";
-		};
-		D9809578185CA71A008F2B61 /* NPEventListViewController */ = {
-			isa = PBXGroup;
-			children = (
-				D9809579185CA7AC008F2B61 /* NPEventListViewController.h */,
-				D980957A185CA7AC008F2B61 /* NPEventListViewController.m */,
-				D980957B185CA7AC008F2B61 /* NPEventListViewController.xib */,
-				D9809586185CCFFB008F2B61 /* NPEventCell.h */,
-				D9809587185CCFFB008F2B61 /* NPEventCell.m */,
-				D9809589185CD013008F2B61 /* NPEventCell.xib */,
-				D9507AD7187EE22C0020498A /* NPOtherEventCell.h */,
-				D9507AD8187EE22C0020498A /* NPOtherEventCell.m */,
-				D9507AD9187EE22C0020498A /* NPOtherEventCell.xib */,
-				D931450B18925456002325CB /* NPCompanyCell.h */,
-				D931450C18925456002325CB /* NPCompanyCell.m */,
-				D931450E18925467002325CB /* NPCompanyCell.xib */,
-			);
-			name = NPEventListViewController;
-			sourceTree = "<group>";
-		};
-		F998F6861AB20E0400213240 /* NPInterestsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				F998F6871AB211E100213240 /* NPInterestsViewController2.h */,
-				F998F6881AB211E100213240 /* NPInterestsViewController2.m */,
-				F998F68A1AB218AF00213240 /* NPInterestViewCell.h */,
-				F998F68B1AB218AF00213240 /* NPInterestViewCell.m */,
-				F9F445E81AB8AED700C655CF /* NPInterestsHeaderViewCell.h */,
-				F9F445E91AB8AED700C655CF /* NPInterestsHeaderViewCell.m */,
-				52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */,
-				52212E3E1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.m */,
-			);
-			name = NPInterestsViewController;
-			sourceTree = "<group>";
-		};
-		F9B37B911AAB94C2003F3FB8 /* NPRegistrationViewController */ = {
-			isa = PBXGroup;
-			children = (
-				D9809577185CA710008F2B61 /* NPLoginViewController */,
-				F9B37B921AAB9802003F3FB8 /* NPRegistrationViewController.h */,
-				F9B37B931AAB9802003F3FB8 /* NPRegistrationViewController.m */,
-			);
-			name = NPRegistrationViewController;
 			sourceTree = "<group>";
 		};
 		F9B37B951AAE0C59003F3FB8 /* Model */ = {
@@ -2451,6 +2460,7 @@
 				D9809551185CA557008F2B61 /* en */,
 			);
 			name = InfoPlist.strings;
+			path = Cooleaf;
 			sourceTree = "<group>";
 		};
 		D9809569185CA557008F2B61 /* InfoPlist.strings */ = {
