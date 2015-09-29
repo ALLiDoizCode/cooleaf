@@ -296,7 +296,6 @@
 		4B2C13ED1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedJoinInterest.m; sourceTree = "<group>"; };
 		4B2C13EF1BB94AED00DAA8F2 /* CLLoadedLeaveInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedLeaveInterest.h; sourceTree = "<group>"; };
 		4B2C13F01BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedLeaveInterest.m; sourceTree = "<group>"; };
-		4B2C13F21BB9521800DAA8F2 /* IEventDetailInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEventDetailInteractor.h; sourceTree = "<group>"; };
 		4B2C13F31BB953B300DAA8F2 /* CLLoadJoinEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadJoinEvent.h; sourceTree = "<group>"; };
 		4B2C13F41BB953B300DAA8F2 /* CLLoadJoinEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadJoinEvent.m; sourceTree = "<group>"; };
 		4B2C13F61BB9540400DAA8F2 /* CLLoadedJoinEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedJoinEvent.h; sourceTree = "<group>"; };
@@ -305,45 +304,42 @@
 		4B2C13FA1BB95CC300DAA8F2 /* CLLoadLeaveEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadLeaveEvent.m; sourceTree = "<group>"; };
 		4B2C13FC1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedLeaveEvent.h; sourceTree = "<group>"; };
 		4B2C13FD1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedLeaveEvent.m; sourceTree = "<group>"; };
-		4B2C13FF1BBA7EC700DAA8F2 /* CLRegistrationPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRegistrationPresenter.h; path = Cooleaf/MVP/presenters/CLRegistrationPresenter.h; sourceTree = SOURCE_ROOT; };
-		4B2C14001BBA7EC700DAA8F2 /* CLRegistrationPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRegistrationPresenter.m; path = Cooleaf/MVP/presenters/CLRegistrationPresenter.m; sourceTree = SOURCE_ROOT; };
-		4B2C14021BBA7EE900DAA8F2 /* IRegistrationInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRegistrationInteractor.h; sourceTree = "<group>"; };
+		4B2C13FF1BBA7EC700DAA8F2 /* CLRegistrationPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRegistrationPresenter.h; path = Cooleaf/MVP/Registrations/Presenters/CLRegistrationPresenter.h; sourceTree = SOURCE_ROOT; };
+		4B2C14001BBA7EC700DAA8F2 /* CLRegistrationPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRegistrationPresenter.m; path = Cooleaf/MVP/Registrations/Presenters/CLRegistrationPresenter.m; sourceTree = SOURCE_ROOT; };
 		4B2C14031BBA7F5900DAA8F2 /* CLRegistrationSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLRegistrationSubscriber.h; sourceTree = "<group>"; };
 		4B2C14041BBA7F5900DAA8F2 /* CLRegistrationSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLRegistrationSubscriber.m; sourceTree = "<group>"; };
-		4B2C14061BBA7F6800DAA8F2 /* CLRegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRegistrationController.h; path = Cooleaf/MVP/controllers/CLRegistrationController.h; sourceTree = SOURCE_ROOT; };
-		4B2C14071BBA7F6800DAA8F2 /* CLRegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRegistrationController.m; path = Cooleaf/MVP/controllers/CLRegistrationController.m; sourceTree = SOURCE_ROOT; };
+		4B2C14061BBA7F6800DAA8F2 /* CLRegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRegistrationController.h; path = Cooleaf/MVP/Registrations/Controllers/CLRegistrationController.h; sourceTree = SOURCE_ROOT; };
+		4B2C14071BBA7F6800DAA8F2 /* CLRegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRegistrationController.m; path = Cooleaf/MVP/Registrations/Controllers/CLRegistrationController.m; sourceTree = SOURCE_ROOT; };
 		4B3408901BAEAF8E0081B6D4 /* CLAddEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAddEventComment.h; sourceTree = "<group>"; };
 		4B3408911BAEAF8E0081B6D4 /* CLAddEventComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAddEventComment.m; sourceTree = "<group>"; };
 		4B3408931BAEAF9A0081B6D4 /* CLAddedEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAddedEventComment.h; sourceTree = "<group>"; };
 		4B3408941BAEAF9A0081B6D4 /* CLAddedEventComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAddedEventComment.m; sourceTree = "<group>"; };
-		4B3B36761BB1F9A900C7AEE5 /* CLParticipantPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLParticipantPresenter.h; path = Cooleaf/MVP/presenters/CLParticipantPresenter.h; sourceTree = SOURCE_ROOT; };
-		4B3B36771BB1F9A900C7AEE5 /* CLParticipantPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLParticipantPresenter.m; path = Cooleaf/MVP/presenters/CLParticipantPresenter.m; sourceTree = SOURCE_ROOT; };
-		4B3B36791BB1FA0200C7AEE5 /* IParticipantInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IParticipantInteractor.h; sourceTree = "<group>"; };
+		4B3B36761BB1F9A900C7AEE5 /* CLParticipantPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLParticipantPresenter.h; path = Cooleaf/MVP/Participants/Presenters/CLParticipantPresenter.h; sourceTree = SOURCE_ROOT; };
+		4B3B36771BB1F9A900C7AEE5 /* CLParticipantPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLParticipantPresenter.m; path = Cooleaf/MVP/Participants/Presenters/CLParticipantPresenter.m; sourceTree = SOURCE_ROOT; };
 		4B3B367A1BB1FB1F00C7AEE5 /* CLLoadEventParticipants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadEventParticipants.h; sourceTree = "<group>"; };
 		4B3B367B1BB1FB1F00C7AEE5 /* CLLoadEventParticipants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadEventParticipants.m; sourceTree = "<group>"; };
 		4B3B367D1BB1FB7400C7AEE5 /* CLLoadedEventParticipants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedEventParticipants.h; sourceTree = "<group>"; };
 		4B3B367E1BB1FB7400C7AEE5 /* CLLoadedEventParticipants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedEventParticipants.m; sourceTree = "<group>"; };
 		4B3B36801BB1FC6200C7AEE5 /* CLParticipantSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLParticipantSubscriber.h; sourceTree = "<group>"; };
 		4B3B36811BB1FC6200C7AEE5 /* CLParticipantSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLParticipantSubscriber.m; sourceTree = "<group>"; };
-		4B3B36831BB1FCAA00C7AEE5 /* CLParticipantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLParticipantController.h; path = Cooleaf/MVP/controllers/CLParticipantController.h; sourceTree = SOURCE_ROOT; };
-		4B3B36841BB1FCAA00C7AEE5 /* CLParticipantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLParticipantController.m; path = Cooleaf/MVP/controllers/CLParticipantController.m; sourceTree = SOURCE_ROOT; };
+		4B3B36831BB1FCAA00C7AEE5 /* CLParticipantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLParticipantController.h; path = Cooleaf/MVP/Participants/Controllers/CLParticipantController.h; sourceTree = SOURCE_ROOT; };
+		4B3B36841BB1FCAA00C7AEE5 /* CLParticipantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLParticipantController.m; path = Cooleaf/MVP/Participants/Controllers/CLParticipantController.m; sourceTree = SOURCE_ROOT; };
 		4B3B36861BB20C7300C7AEE5 /* CLCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCategory.h; sourceTree = "<group>"; };
 		4B3B36871BB20C7300C7AEE5 /* CLCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCategory.m; sourceTree = "<group>"; };
 		4B3B368A1BB21E5700C7AEE5 /* CLDateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDateUtil.h; sourceTree = "<group>"; };
 		4B3B368B1BB21E5700C7AEE5 /* CLDateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDateUtil.m; sourceTree = "<group>"; };
 		4B3F2E661BA77AE900D4934E /* CLQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLQuery.h; sourceTree = "<group>"; };
 		4B3F2E671BA77AE900D4934E /* CLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLQuery.m; sourceTree = "<group>"; };
-		4B3F2E691BA7876500D4934E /* ISearchInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISearchInteractor.h; sourceTree = "<group>"; };
 		4B3F2E6A1BA7878B00D4934E /* CLSearchSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSearchSubscriber.h; sourceTree = "<group>"; };
 		4B3F2E6B1BA7878B00D4934E /* CLSearchSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSearchSubscriber.m; sourceTree = "<group>"; };
-		4B3F2E6D1BA7884600D4934E /* CLSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLSearchController.h; path = Cooleaf/MVP/controllers/CLSearchController.h; sourceTree = SOURCE_ROOT; };
-		4B3F2E6E1BA7884600D4934E /* CLSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLSearchController.m; path = Cooleaf/MVP/controllers/CLSearchController.m; sourceTree = SOURCE_ROOT; };
+		4B3F2E6D1BA7884600D4934E /* CLSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLSearchController.h; path = Cooleaf/MVP/Search/Controllers/CLSearchController.h; sourceTree = SOURCE_ROOT; };
+		4B3F2E6E1BA7884600D4934E /* CLSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLSearchController.m; path = Cooleaf/MVP/Search/Controllers/CLSearchController.m; sourceTree = SOURCE_ROOT; };
 		4B3F2E701BA78A4900D4934E /* CLLoadQueryEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadQueryEvent.h; sourceTree = "<group>"; };
 		4B3F2E711BA78A4900D4934E /* CLLoadQueryEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadQueryEvent.m; sourceTree = "<group>"; };
 		4B3F2E731BA78C1100D4934E /* CLLoadedQueryEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedQueryEvent.h; sourceTree = "<group>"; };
 		4B3F2E741BA78C1100D4934E /* CLLoadedQueryEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedQueryEvent.m; sourceTree = "<group>"; };
-		4B3F2E761BA78DAD00D4934E /* CLSearchPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLSearchPresenter.h; path = Cooleaf/MVP/presenters/CLSearchPresenter.h; sourceTree = SOURCE_ROOT; };
-		4B3F2E771BA78DAD00D4934E /* CLSearchPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLSearchPresenter.m; path = Cooleaf/MVP/presenters/CLSearchPresenter.m; sourceTree = SOURCE_ROOT; };
+		4B3F2E761BA78DAD00D4934E /* CLSearchPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLSearchPresenter.h; path = Cooleaf/MVP/Search/Presenters/CLSearchPresenter.h; sourceTree = SOURCE_ROOT; };
+		4B3F2E771BA78DAD00D4934E /* CLSearchPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLSearchPresenter.m; path = Cooleaf/MVP/Search/Presenters/CLSearchPresenter.m; sourceTree = SOURCE_ROOT; };
 		4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBranch.m; sourceTree = "<group>"; };
 		4B4AE2611B9A4773006040F0 /* CLInformationTableViewcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInformationTableViewcell.h; sourceTree = "<group>"; };
 		4B4AE2621B9A4773006040F0 /* CLInformationTableViewcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInformationTableViewcell.m; sourceTree = "<group>"; };
@@ -359,9 +355,8 @@
 		4B7A62931BB0AC7B00DF7A36 /* CLDeleteEventComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDeleteEventComment.m; sourceTree = "<group>"; };
 		4B7A62951BB0ACE100DF7A36 /* CLDeletedEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDeletedEventComment.h; sourceTree = "<group>"; };
 		4B7A62961BB0ACE100DF7A36 /* CLDeletedEventComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDeletedEventComment.m; sourceTree = "<group>"; };
-		4BA2A6521BA7F57D004724EB /* CLUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLUserPresenter.h; path = Cooleaf/MVP/presenters/CLUserPresenter.h; sourceTree = SOURCE_ROOT; };
-		4BA2A6531BA7F57D004724EB /* CLUserPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLUserPresenter.m; path = Cooleaf/MVP/presenters/CLUserPresenter.m; sourceTree = SOURCE_ROOT; };
-		4BA2A6561BA7F5AE004724EB /* IUserInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUserInteractor.h; sourceTree = "<group>"; };
+		4BA2A6521BA7F57D004724EB /* CLUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLUserPresenter.h; path = Cooleaf/MVP/Users/Presenters/CLUserPresenter.h; sourceTree = SOURCE_ROOT; };
+		4BA2A6531BA7F57D004724EB /* CLUserPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLUserPresenter.m; path = Cooleaf/MVP/Users/Presenters/CLUserPresenter.m; sourceTree = SOURCE_ROOT; };
 		4BA2A6571BA7F685004724EB /* CLLoadUsersEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadUsersEvent.h; sourceTree = "<group>"; };
 		4BA2A6581BA7F685004724EB /* CLLoadUsersEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadUsersEvent.m; sourceTree = "<group>"; };
 		4BA2A65A1BA7F8ED004724EB /* CLLoadedUsersEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedUsersEvent.h; sourceTree = "<group>"; };
@@ -433,14 +428,14 @@
 		4BAE005E1B8EDF0E00779E1F /* CLBaseSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBaseSubscriber.h; sourceTree = "<group>"; };
 		4BAE005F1B8EDF0E00779E1F /* CLBaseSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBaseSubscriber.m; sourceTree = "<group>"; };
 		4BAE00641B8EDF6200779E1F /* CLNotificationSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLNotificationSubscriber.h; sourceTree = "<group>"; };
-		4BAE00661B8EDFD300779E1F /* CLAuthenticationSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAuthenticationSubscriber.h; path = Cooleaf/MVP/Subscribers/CLAuthenticationSubscriber.h; sourceTree = SOURCE_ROOT; };
-		4BAE00671B8EDFD300779E1F /* CLAuthenticationSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAuthenticationSubscriber.m; path = Cooleaf/MVP/Subscribers/CLAuthenticationSubscriber.m; sourceTree = SOURCE_ROOT; };
-		4BAE00691B8EE00D00779E1F /* CLEventSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLEventSubscriber.h; path = Cooleaf/MVP/Subscribers/CLEventSubscriber.h; sourceTree = SOURCE_ROOT; };
-		4BAE006A1B8EE00D00779E1F /* CLEventSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLEventSubscriber.m; path = Cooleaf/MVP/Subscribers/CLEventSubscriber.m; sourceTree = SOURCE_ROOT; };
-		4BAE006C1B8EE03100779E1F /* CLInterestSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLInterestSubscriber.h; path = Cooleaf/MVP/Subscribers/CLInterestSubscriber.h; sourceTree = SOURCE_ROOT; };
-		4BAE006D1B8EE03100779E1F /* CLInterestSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLInterestSubscriber.m; path = Cooleaf/MVP/Subscribers/CLInterestSubscriber.m; sourceTree = SOURCE_ROOT; };
-		4BAE006F1B8EE06900779E1F /* CLUserSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLUserSubscriber.h; path = Cooleaf/MVP/Subscribers/CLUserSubscriber.h; sourceTree = SOURCE_ROOT; };
-		4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLUserSubscriber.m; path = Cooleaf/MVP/Subscribers/CLUserSubscriber.m; sourceTree = SOURCE_ROOT; };
+		4BAE00661B8EDFD300779E1F /* CLAuthenticationSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLAuthenticationSubscriber.h; path = Cooleaf/MVP/Authentication/Subscribers/CLAuthenticationSubscriber.h; sourceTree = SOURCE_ROOT; };
+		4BAE00671B8EDFD300779E1F /* CLAuthenticationSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLAuthenticationSubscriber.m; path = Cooleaf/MVP/Authentication/Subscribers/CLAuthenticationSubscriber.m; sourceTree = SOURCE_ROOT; };
+		4BAE00691B8EE00D00779E1F /* CLEventSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLEventSubscriber.h; path = Cooleaf/MVP/Events/Subscribers/CLEventSubscriber.h; sourceTree = SOURCE_ROOT; };
+		4BAE006A1B8EE00D00779E1F /* CLEventSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLEventSubscriber.m; path = Cooleaf/MVP/Events/Subscribers/CLEventSubscriber.m; sourceTree = SOURCE_ROOT; };
+		4BAE006C1B8EE03100779E1F /* CLInterestSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLInterestSubscriber.h; path = Cooleaf/MVP/Interests/Subscribers/CLInterestSubscriber.h; sourceTree = SOURCE_ROOT; };
+		4BAE006D1B8EE03100779E1F /* CLInterestSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLInterestSubscriber.m; path = Cooleaf/MVP/Interests/Subscribers/CLInterestSubscriber.m; sourceTree = SOURCE_ROOT; };
+		4BAE006F1B8EE06900779E1F /* CLUserSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLUserSubscriber.h; path = Cooleaf/MVP/Users/Subscribers/CLUserSubscriber.h; sourceTree = SOURCE_ROOT; };
+		4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLUserSubscriber.m; path = Cooleaf/MVP/Users/Subscribers/CLUserSubscriber.m; sourceTree = SOURCE_ROOT; };
 		4BAE00721B8F909500779E1F /* CLAuthenticationSuccessEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAuthenticationSuccessEvent.h; sourceTree = "<group>"; };
 		4BAE00731B8F909500779E1F /* CLAuthenticationSuccessEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAuthenticationSuccessEvent.m; sourceTree = "<group>"; };
 		4BBF2C291B9FDC6B00ECC37F /* CLInformationTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInformationTableViewHeader.h; sourceTree = "<group>"; };
@@ -450,7 +445,6 @@
 		4BBF2C2F1BA109A400ECC37F /* CLTagTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTagTableViewCell.m; sourceTree = "<group>"; };
 		4BBF2C311BA10A8F00ECC37F /* CLTagCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTagCollectionViewCell.h; sourceTree = "<group>"; };
 		4BBF2C321BA10A8F00ECC37F /* CLTagCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTagCollectionViewCell.m; sourceTree = "<group>"; };
-		4BBF2C341BA2B1E500ECC37F /* IInterestInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IInterestInteractor.h; sourceTree = "<group>"; };
 		4BBF2C351BA2B35600ECC37F /* CLLoadInterests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterests.h; sourceTree = "<group>"; };
 		4BBF2C361BA2B35600ECC37F /* CLLoadInterests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterests.m; sourceTree = "<group>"; };
 		4BBF2C381BA2C1C400ECC37F /* CLLoadedInterests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedInterests.h; sourceTree = "<group>"; };
@@ -463,13 +457,25 @@
 		4BC616301BB9198800EB9476 /* CLLoadMeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadMeEvent.m; sourceTree = "<group>"; };
 		4BC616321BB9199800EB9476 /* CLLoadedMeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedMeEvent.h; sourceTree = "<group>"; };
 		4BC616331BB9199800EB9476 /* CLLoadedMeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedMeEvent.m; sourceTree = "<group>"; };
-		4BE1DF3D1BABD12B009519CB /* CLGroupPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLGroupPresenter.h; path = Cooleaf/MVP/presenters/CLGroupPresenter.h; sourceTree = SOURCE_ROOT; };
-		4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLGroupPresenter.m; path = Cooleaf/MVP/presenters/CLGroupPresenter.m; sourceTree = SOURCE_ROOT; };
-		4BE1DF401BABD13A009519CB /* IGroupInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGroupInteractor.h; sourceTree = "<group>"; };
+		4BE1B2851BBB39C000A07DA1 /* IAuthenticationInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAuthenticationInteractor.h; sourceTree = "<group>"; };
+		4BE1B2861BBB39FD00A07DA1 /* ICommentInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICommentInteractor.h; sourceTree = "<group>"; };
+		4BE1B2871BBB3A2400A07DA1 /* IEventInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEventInteractor.h; sourceTree = "<group>"; };
+		4BE1B2881BBB3A4C00A07DA1 /* IFeedInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFeedInteractor.h; sourceTree = "<group>"; };
+		4BE1B2891BBB3A7500A07DA1 /* IGroupInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGroupInteractor.h; sourceTree = "<group>"; };
+		4BE1B28A1BBB3AB100A07DA1 /* IInterestInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IInterestInteractor.h; sourceTree = "<group>"; };
+		4BE1B28B1BBB3ACD00A07DA1 /* IParticipantInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IParticipantInteractor.h; sourceTree = "<group>"; };
+		4BE1B28C1BBB3AEB00A07DA1 /* IRegistrationInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRegistrationInteractor.h; sourceTree = "<group>"; };
+		4BE1B28E1BBB3B3000A07DA1 /* ISearchInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISearchInteractor.h; sourceTree = "<group>"; };
+		4BE1B28F1BBB3B4900A07DA1 /* IUserInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUserInteractor.h; sourceTree = "<group>"; };
+		4BE1B2901BBB3B6700A07DA1 /* IGroupDetailInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGroupDetailInteractor.h; sourceTree = "<group>"; };
+		4BE1B2911BBB3B8800A07DA1 /* IInterestDetailInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IInterestDetailInteractor.h; sourceTree = "<group>"; };
+		4BE1B2921BBB3BA400A07DA1 /* IEventDetailInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEventDetailInteractor.h; sourceTree = "<group>"; };
+		4BE1DF3D1BABD12B009519CB /* CLGroupPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLGroupPresenter.h; path = Cooleaf/MVP/Groups/Presenters/CLGroupPresenter.h; sourceTree = SOURCE_ROOT; };
+		4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLGroupPresenter.m; path = Cooleaf/MVP/Groups/Presenters/CLGroupPresenter.m; sourceTree = SOURCE_ROOT; };
 		4BE1DF411BABD155009519CB /* CLGroupSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupSubscriber.h; sourceTree = "<group>"; };
 		4BE1DF421BABD155009519CB /* CLGroupSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupSubscriber.m; sourceTree = "<group>"; };
-		4BE1DF441BABD1D4009519CB /* CLGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLGroupController.h; path = Cooleaf/MVP/controllers/CLGroupController.h; sourceTree = SOURCE_ROOT; };
-		4BE1DF451BABD1D4009519CB /* CLGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLGroupController.m; path = Cooleaf/MVP/controllers/CLGroupController.m; sourceTree = SOURCE_ROOT; };
+		4BE1DF441BABD1D4009519CB /* CLGroupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLGroupController.h; path = Cooleaf/MVP/Groups/Controllers/CLGroupController.h; sourceTree = SOURCE_ROOT; };
+		4BE1DF451BABD1D4009519CB /* CLGroupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLGroupController.m; path = Cooleaf/MVP/Groups/Controllers/CLGroupController.m; sourceTree = SOURCE_ROOT; };
 		4BE1DF4A1BABD3FA009519CB /* CLLoadInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterest.h; sourceTree = "<group>"; };
 		4BE1DF4B1BABD3FA009519CB /* CLLoadInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterest.m; sourceTree = "<group>"; };
 		4BE1DF4D1BABD405009519CB /* CLLoadedInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedInterest.h; sourceTree = "<group>"; };
@@ -478,17 +484,14 @@
 		4BE1DF511BABD415009519CB /* CLLoadInterestPosts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterestPosts.m; sourceTree = "<group>"; };
 		4BE1DF531BABD425009519CB /* CLLoadInterestEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterestEvents.h; sourceTree = "<group>"; };
 		4BE1DF541BABD425009519CB /* CLLoadInterestEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterestEvents.m; sourceTree = "<group>"; };
-		4BE1DF561BABD99B009519CB /* IGroupDetailInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGroupDetailInteractor.h; sourceTree = "<group>"; };
-		4BE1DF571BABDB1B009519CB /* IInterestDetailInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IInterestDetailInteractor.h; sourceTree = "<group>"; };
 		4BE1DF581BABDDA9009519CB /* CLLoadInterestMembers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterestMembers.h; sourceTree = "<group>"; };
 		4BE1DF591BABDDA9009519CB /* CLLoadInterestMembers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadInterestMembers.m; sourceTree = "<group>"; };
 		4BE1DF5B1BABE0DB009519CB /* CLLoadedInterestMembers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedInterestMembers.h; sourceTree = "<group>"; };
 		4BE1DF5C1BABE0DB009519CB /* CLLoadedInterestMembers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedInterestMembers.m; sourceTree = "<group>"; };
-		4BE1DF5E1BABECAF009519CB /* CLFeedPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLFeedPresenter.h; path = Cooleaf/MVP/presenters/CLFeedPresenter.h; sourceTree = SOURCE_ROOT; };
-		4BE1DF5F1BABECAF009519CB /* CLFeedPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLFeedPresenter.m; path = Cooleaf/MVP/presenters/CLFeedPresenter.m; sourceTree = SOURCE_ROOT; };
-		4BE1DF611BABECD0009519CB /* IFeedInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFeedInteractor.h; sourceTree = "<group>"; };
-		4BE1DF621BABECF5009519CB /* CLFeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLFeedController.h; path = Cooleaf/MVP/controllers/CLFeedController.h; sourceTree = SOURCE_ROOT; };
-		4BE1DF631BABECF5009519CB /* CLFeedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLFeedController.m; path = Cooleaf/MVP/controllers/CLFeedController.m; sourceTree = SOURCE_ROOT; };
+		4BE1DF5E1BABECAF009519CB /* CLFeedPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLFeedPresenter.h; path = Cooleaf/MVP/Feeds/Presenters/CLFeedPresenter.h; sourceTree = SOURCE_ROOT; };
+		4BE1DF5F1BABECAF009519CB /* CLFeedPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLFeedPresenter.m; path = Cooleaf/MVP/Feeds/Presenters/CLFeedPresenter.m; sourceTree = SOURCE_ROOT; };
+		4BE1DF621BABECF5009519CB /* CLFeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLFeedController.h; path = Cooleaf/MVP/Feeds/Controllers/CLFeedController.h; sourceTree = SOURCE_ROOT; };
+		4BE1DF631BABECF5009519CB /* CLFeedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLFeedController.m; path = Cooleaf/MVP/Feeds/Controllers/CLFeedController.m; sourceTree = SOURCE_ROOT; };
 		4BE1DF651BABED00009519CB /* CLFeedSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFeedSubscriber.h; sourceTree = "<group>"; };
 		4BE1DF661BABED00009519CB /* CLFeedSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFeedSubscriber.m; sourceTree = "<group>"; };
 		4BE1DF681BABEEB0009519CB /* CLLoadInterestFeeds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadInterestFeeds.h; sourceTree = "<group>"; };
@@ -503,11 +506,10 @@
 		4BE1DF751BAC00D4009519CB /* CLLoadJoinInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadJoinInterest.m; sourceTree = "<group>"; };
 		4BE1DF771BAC00F1009519CB /* CLLoadLeaveInterest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadLeaveInterest.h; sourceTree = "<group>"; };
 		4BE1DF781BAC00F1009519CB /* CLLoadLeaveInterest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadLeaveInterest.m; sourceTree = "<group>"; };
-		4BE1DF7A1BAE9A04009519CB /* CLCommentPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLCommentPresenter.h; path = Cooleaf/MVP/presenters/CLCommentPresenter.h; sourceTree = SOURCE_ROOT; };
-		4BE1DF7B1BAE9A04009519CB /* CLCommentPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLCommentPresenter.m; path = Cooleaf/MVP/presenters/CLCommentPresenter.m; sourceTree = SOURCE_ROOT; };
-		4BE1DF7D1BAE9A31009519CB /* ICommentInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICommentInteractor.h; sourceTree = "<group>"; };
-		4BE1DF7E1BAE9ABA009519CB /* CLCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLCommentController.h; path = Cooleaf/MVP/controllers/CLCommentController.h; sourceTree = SOURCE_ROOT; };
-		4BE1DF7F1BAE9ABA009519CB /* CLCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLCommentController.m; path = Cooleaf/MVP/controllers/CLCommentController.m; sourceTree = SOURCE_ROOT; };
+		4BE1DF7A1BAE9A04009519CB /* CLCommentPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLCommentPresenter.h; path = Cooleaf/MVP/Comments/Presenters/CLCommentPresenter.h; sourceTree = SOURCE_ROOT; };
+		4BE1DF7B1BAE9A04009519CB /* CLCommentPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLCommentPresenter.m; path = Cooleaf/MVP/Comments/Presenters/CLCommentPresenter.m; sourceTree = SOURCE_ROOT; };
+		4BE1DF7E1BAE9ABA009519CB /* CLCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLCommentController.h; path = Cooleaf/MVP/Comments/Controllers/CLCommentController.h; sourceTree = SOURCE_ROOT; };
+		4BE1DF7F1BAE9ABA009519CB /* CLCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLCommentController.m; path = Cooleaf/MVP/Comments/Controllers/CLCommentController.m; sourceTree = SOURCE_ROOT; };
 		4BE1DF811BAE9AC8009519CB /* CLCommentSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCommentSubscriber.h; sourceTree = "<group>"; };
 		4BE1DF821BAE9AC8009519CB /* CLCommentSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCommentSubscriber.m; sourceTree = "<group>"; };
 		4BE1DF841BAE9D96009519CB /* CLLoadEventComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadEventComments.h; sourceTree = "<group>"; };
@@ -520,12 +522,10 @@
 		4BE63A4B1B94E9D800231222 /* CLMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMenuViewController.m; sourceTree = "<group>"; };
 		4BE63A4D1B9502AD00231222 /* CLDrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLDrawerViewController.h; sourceTree = "<group>"; };
 		4BE63A4E1B9502AD00231222 /* CLDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLDrawerViewController.m; sourceTree = "<group>"; };
-		4BE63A521B9507C800231222 /* IEventInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEventInteractor.h; sourceTree = "<group>"; };
 		4BE63A531B951FF000231222 /* CLLoadEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadEvents.h; sourceTree = "<group>"; };
 		4BE63A541B951FF000231222 /* CLLoadEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadEvents.m; sourceTree = "<group>"; };
 		4BE63A561B95205000231222 /* CLLoadedEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedEvents.h; sourceTree = "<group>"; };
 		4BE63A571B95205000231222 /* CLLoadedEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedEvents.m; sourceTree = "<group>"; };
-		4BE63A591B9551C500231222 /* IAuthenticationInteractor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IAuthenticationInteractor.h; sourceTree = "<group>"; };
 		4BE63A5B1B95811400231222 /* CLEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLEventCell.h; sourceTree = "<group>"; };
 		4BE63A5C1B95811400231222 /* CLEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEventCell.m; sourceTree = "<group>"; };
 		52212E3D1AD0A0D2008905A7 /* NPPickYourInterestsLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NPPickYourInterestsLabelCell.h; path = "Application Controllers/NPInterestsViewController/NPPickYourInterestsLabelCell.h"; sourceTree = "<group>"; };
@@ -607,8 +607,8 @@
 		68B07EA61BA1313000FCF806 /* CCColorCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCColorCube.m; sourceTree = "<group>"; };
 		68B07EA71BA1313000FCF806 /* CCLocalMaximum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocalMaximum.h; sourceTree = "<group>"; };
 		68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLocalMaximum.m; sourceTree = "<group>"; };
-		68CDDC3E1B8EC0F8004C2897 /* CLInterestPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLInterestPresenter.h; path = Cooleaf/mvp/presenters/CLInterestPresenter.h; sourceTree = SOURCE_ROOT; };
-		68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLInterestPresenter.m; path = Cooleaf/mvp/presenters/CLInterestPresenter.m; sourceTree = SOURCE_ROOT; };
+		68CDDC3E1B8EC0F8004C2897 /* CLInterestPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLInterestPresenter.h; path = Cooleaf/MVP/Interests/Presenters/CLInterestPresenter.h; sourceTree = SOURCE_ROOT; };
+		68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLInterestPresenter.m; path = Cooleaf/MVP/Interests/Presenters/CLInterestPresenter.m; sourceTree = SOURCE_ROOT; };
 		68CDDC471B8ED17D004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		68CDDC491B8ED33F004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		68CDDC4B1B8ED353004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
@@ -958,69 +958,19 @@
 		4BA4E3451B8D13080089CB2B /* MVP */ = {
 			isa = PBXGroup;
 			children = (
-				4BE63A501B9506ED00231222 /* Interactors */,
-				4BAE00651B8EDFA300779E1F /* Subscribers */,
-				4BA4E3461B8D13240089CB2B /* Controllers */,
-				4BA4E3531B8D1D820089CB2B /* Presenters */,
+				4BE1B2521BBB2EB400A07DA1 /* Authentication */,
+				4BE1B2551BBB2EDA00A07DA1 /* Comments */,
+				4BE1B24F1BBB2E9700A07DA1 /* Events */,
+				4BE1B2801BBB35D900A07DA1 /* Feeds */,
+				4BE1B27B1BBB352E00A07DA1 /* Groups */,
+				4BE1B2511BBB2EA600A07DA1 /* Interests */,
+				4BE1B2561BBB2EE400A07DA1 /* Participants */,
+				4BE1B2531BBB2EBC00A07DA1 /* Registrations */,
+				4BE1B2761BBB34AF00A07DA1 /* Search */,
+				4BE1B2501BBB2E9D00A07DA1 /* Users */,
 			);
 			name = MVP;
 			path = mvp;
-			sourceTree = "<group>";
-		};
-		4BA4E3461B8D13240089CB2B /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				4BA4E3471B8D133F0089CB2B /* CLAuthenticationController.h */,
-				4BA4E3481B8D133F0089CB2B /* CLAuthenticationController.m */,
-				4BA4E34A1B8D134C0089CB2B /* CLEventController.h */,
-				4BA4E34B1B8D134C0089CB2B /* CLEventController.m */,
-				4BA4E34D1B8D13580089CB2B /* CLInterestController.h */,
-				4BA4E34E1B8D13580089CB2B /* CLInterestController.m */,
-				4BA4E3501B8D13610089CB2B /* CLUserController.h */,
-				4BA4E3511B8D13610089CB2B /* CLUserController.m */,
-				4B3F2E6D1BA7884600D4934E /* CLSearchController.h */,
-				4B3F2E6E1BA7884600D4934E /* CLSearchController.m */,
-				4BE1DF441BABD1D4009519CB /* CLGroupController.h */,
-				4BE1DF451BABD1D4009519CB /* CLGroupController.m */,
-				4BE1DF621BABECF5009519CB /* CLFeedController.h */,
-				4BE1DF631BABECF5009519CB /* CLFeedController.m */,
-				4BE1DF7E1BAE9ABA009519CB /* CLCommentController.h */,
-				4BE1DF7F1BAE9ABA009519CB /* CLCommentController.m */,
-				4B3B36831BB1FCAA00C7AEE5 /* CLParticipantController.h */,
-				4B3B36841BB1FCAA00C7AEE5 /* CLParticipantController.m */,
-				4B2C14061BBA7F6800DAA8F2 /* CLRegistrationController.h */,
-				4B2C14071BBA7F6800DAA8F2 /* CLRegistrationController.m */,
-			);
-			name = Controllers;
-			path = ../MVP/Controllers;
-			sourceTree = "<group>";
-		};
-		4BA4E3531B8D1D820089CB2B /* Presenters */ = {
-			isa = PBXGroup;
-			children = (
-				4BA4E3581B8D1E4C0089CB2B /* CLAuthenticationPresenter.h */,
-				4BA4E3591B8D1E4C0089CB2B /* CLAuthenticationPresenter.m */,
-				4BA4E3921B8D4CF60089CB2B /* CLEventPresenter.h */,
-				4BA4E3931B8D4CF60089CB2B /* CLEventPresenter.m */,
-				68CDDC3E1B8EC0F8004C2897 /* CLInterestPresenter.h */,
-				68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */,
-				4B3F2E761BA78DAD00D4934E /* CLSearchPresenter.h */,
-				4B3F2E771BA78DAD00D4934E /* CLSearchPresenter.m */,
-				4BA2A6521BA7F57D004724EB /* CLUserPresenter.h */,
-				4BA2A6531BA7F57D004724EB /* CLUserPresenter.m */,
-				4BE1DF3D1BABD12B009519CB /* CLGroupPresenter.h */,
-				4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */,
-				4BE1DF5E1BABECAF009519CB /* CLFeedPresenter.h */,
-				4BE1DF5F1BABECAF009519CB /* CLFeedPresenter.m */,
-				4BE1DF7A1BAE9A04009519CB /* CLCommentPresenter.h */,
-				4BE1DF7B1BAE9A04009519CB /* CLCommentPresenter.m */,
-				4B3B36761BB1F9A900C7AEE5 /* CLParticipantPresenter.h */,
-				4B3B36771BB1F9A900C7AEE5 /* CLParticipantPresenter.m */,
-				4B2C13FF1BBA7EC700DAA8F2 /* CLRegistrationPresenter.h */,
-				4B2C14001BBA7EC700DAA8F2 /* CLRegistrationPresenter.m */,
-			);
-			name = Presenters;
-			path = ../MVP/Presenters;
 			sourceTree = "<group>";
 		};
 		4BAE00521B8EDE1800779E1F /* Bus */ = {
@@ -1132,32 +1082,477 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		4BAE00651B8EDFA300779E1F /* Subscribers */ = {
+		4BE1B24F1BBB2E9700A07DA1 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2631BBB301000A07DA1 /* Controllers */,
+				4BE1B2621BBB300700A07DA1 /* Interactors */,
+				4BE1B2611BBB300100A07DA1 /* Presenters */,
+				4BE1B2601BBB2FFC00A07DA1 /* Subscribers */,
+			);
+			name = Events;
+			path = ../MVP/Events;
+			sourceTree = "<group>";
+		};
+		4BE1B2501BBB2E9D00A07DA1 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2751BBB308000A07DA1 /* Controllers */,
+				4BE1B2741BBB307A00A07DA1 /* Interactors */,
+				4BE1B2731BBB307600A07DA1 /* Presenters */,
+				4BE1B2721BBB307100A07DA1 /* Subscribers */,
+			);
+			name = Users;
+			path = ../MVP/Users;
+			sourceTree = "<group>";
+		};
+		4BE1B2511BBB2EA600A07DA1 /* Interests */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2691BBB303700A07DA1 /* Controllers */,
+				4BE1B2681BBB303200A07DA1 /* Interactors */,
+				4BE1B2671BBB302D00A07DA1 /* Presenters */,
+				4BE1B2661BBB302800A07DA1 /* Subscribers */,
+			);
+			name = Interests;
+			path = ../MVP/Interests;
+			sourceTree = "<group>";
+		};
+		4BE1B2521BBB2EB400A07DA1 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2581BBB2F5500A07DA1 /* Controllers */,
+				4BE1B2591BBB2F6100A07DA1 /* Interactors */,
+				4BE1B25A1BBB2F7300A07DA1 /* Presenters */,
+				4BE1B25B1BBB2F9300A07DA1 /* Subscribers */,
+			);
+			name = Authentication;
+			path = ../MVP/Authentication;
+			sourceTree = "<group>";
+		};
+		4BE1B2531BBB2EBC00A07DA1 /* Registrations */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2711BBB306C00A07DA1 /* Controllers */,
+				4BE1B2701BBB306600A07DA1 /* Interactors */,
+				4BE1B26F1BBB305E00A07DA1 /* Presenters */,
+				4BE1B26E1BBB305900A07DA1 /* Subscribers */,
+			);
+			name = Registrations;
+			path = ../MVP/Registrations;
+			sourceTree = "<group>";
+		};
+		4BE1B2551BBB2EDA00A07DA1 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B25F1BBB2FF700A07DA1 /* Controllers */,
+				4BE1B25E1BBB2FF200A07DA1 /* Interactors */,
+				4BE1B25D1BBB2FEE00A07DA1 /* Presenters */,
+				4BE1B25C1BBB2FE700A07DA1 /* Subscribers */,
+			);
+			name = Comments;
+			path = ../MVP/Comments;
+			sourceTree = "<group>";
+		};
+		4BE1B2561BBB2EE400A07DA1 /* Participants */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B26D1BBB305400A07DA1 /* Controllers */,
+				4BE1B26C1BBB304E00A07DA1 /* Interactors */,
+				4BE1B26B1BBB304200A07DA1 /* Presenters */,
+				4BE1B26A1BBB303C00A07DA1 /* Subscribers */,
+			);
+			name = Participants;
+			path = ../MVP/Participants;
+			sourceTree = "<group>";
+		};
+		4BE1B2581BBB2F5500A07DA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4BA4E3471B8D133F0089CB2B /* CLAuthenticationController.h */,
+				4BA4E3481B8D133F0089CB2B /* CLAuthenticationController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4BE1B2591BBB2F6100A07DA1 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2851BBB39C000A07DA1 /* IAuthenticationInteractor.h */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		4BE1B25A1BBB2F7300A07DA1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				4BA4E3581B8D1E4C0089CB2B /* CLAuthenticationPresenter.h */,
+				4BA4E3591B8D1E4C0089CB2B /* CLAuthenticationPresenter.m */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		4BE1B25B1BBB2F9300A07DA1 /* Subscribers */ = {
 			isa = PBXGroup;
 			children = (
 				4BAE00661B8EDFD300779E1F /* CLAuthenticationSubscriber.h */,
 				4BAE00671B8EDFD300779E1F /* CLAuthenticationSubscriber.m */,
-				4BAE00691B8EE00D00779E1F /* CLEventSubscriber.h */,
-				4BAE006A1B8EE00D00779E1F /* CLEventSubscriber.m */,
-				4BAE006C1B8EE03100779E1F /* CLInterestSubscriber.h */,
-				4BAE006D1B8EE03100779E1F /* CLInterestSubscriber.m */,
-				4BAE006F1B8EE06900779E1F /* CLUserSubscriber.h */,
-				4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */,
-				4B3F2E6A1BA7878B00D4934E /* CLSearchSubscriber.h */,
-				4B3F2E6B1BA7878B00D4934E /* CLSearchSubscriber.m */,
-				4BE1DF411BABD155009519CB /* CLGroupSubscriber.h */,
-				4BE1DF421BABD155009519CB /* CLGroupSubscriber.m */,
-				4BE1DF651BABED00009519CB /* CLFeedSubscriber.h */,
-				4BE1DF661BABED00009519CB /* CLFeedSubscriber.m */,
+			);
+			path = Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE1B25C1BBB2FE700A07DA1 /* Subscribers */ = {
+			isa = PBXGroup;
+			children = (
 				4BE1DF811BAE9AC8009519CB /* CLCommentSubscriber.h */,
 				4BE1DF821BAE9AC8009519CB /* CLCommentSubscriber.m */,
+			);
+			path = Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE1B25D1BBB2FEE00A07DA1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1DF7A1BAE9A04009519CB /* CLCommentPresenter.h */,
+				4BE1DF7B1BAE9A04009519CB /* CLCommentPresenter.m */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		4BE1B25E1BBB2FF200A07DA1 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2861BBB39FD00A07DA1 /* ICommentInteractor.h */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		4BE1B25F1BBB2FF700A07DA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1DF7E1BAE9ABA009519CB /* CLCommentController.h */,
+				4BE1DF7F1BAE9ABA009519CB /* CLCommentController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4BE1B2601BBB2FFC00A07DA1 /* Subscribers */ = {
+			isa = PBXGroup;
+			children = (
+				4BAE00691B8EE00D00779E1F /* CLEventSubscriber.h */,
+				4BAE006A1B8EE00D00779E1F /* CLEventSubscriber.m */,
+			);
+			path = Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE1B2611BBB300100A07DA1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				4BA4E3921B8D4CF60089CB2B /* CLEventPresenter.h */,
+				4BA4E3931B8D4CF60089CB2B /* CLEventPresenter.m */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		4BE1B2621BBB300700A07DA1 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2871BBB3A2400A07DA1 /* IEventInteractor.h */,
+				4BE1B2921BBB3BA400A07DA1 /* IEventDetailInteractor.h */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		4BE1B2631BBB301000A07DA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4BA4E34A1B8D134C0089CB2B /* CLEventController.h */,
+				4BA4E34B1B8D134C0089CB2B /* CLEventController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4BE1B2661BBB302800A07DA1 /* Subscribers */ = {
+			isa = PBXGroup;
+			children = (
+				4BAE006C1B8EE03100779E1F /* CLInterestSubscriber.h */,
+				4BAE006D1B8EE03100779E1F /* CLInterestSubscriber.m */,
+			);
+			path = Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE1B2671BBB302D00A07DA1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				68CDDC3E1B8EC0F8004C2897 /* CLInterestPresenter.h */,
+				68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		4BE1B2681BBB303200A07DA1 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B28A1BBB3AB100A07DA1 /* IInterestInteractor.h */,
+				4BE1B2911BBB3B8800A07DA1 /* IInterestDetailInteractor.h */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		4BE1B2691BBB303700A07DA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4BA4E34D1B8D13580089CB2B /* CLInterestController.h */,
+				4BA4E34E1B8D13580089CB2B /* CLInterestController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4BE1B26A1BBB303C00A07DA1 /* Subscribers */ = {
+			isa = PBXGroup;
+			children = (
 				4B3B36801BB1FC6200C7AEE5 /* CLParticipantSubscriber.h */,
 				4B3B36811BB1FC6200C7AEE5 /* CLParticipantSubscriber.m */,
+			);
+			path = Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE1B26B1BBB304200A07DA1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				4B3B36761BB1F9A900C7AEE5 /* CLParticipantPresenter.h */,
+				4B3B36771BB1F9A900C7AEE5 /* CLParticipantPresenter.m */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		4BE1B26C1BBB304E00A07DA1 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B28B1BBB3ACD00A07DA1 /* IParticipantInteractor.h */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		4BE1B26D1BBB305400A07DA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4B3B36831BB1FCAA00C7AEE5 /* CLParticipantController.h */,
+				4B3B36841BB1FCAA00C7AEE5 /* CLParticipantController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4BE1B26E1BBB305900A07DA1 /* Subscribers */ = {
+			isa = PBXGroup;
+			children = (
 				4B2C14031BBA7F5900DAA8F2 /* CLRegistrationSubscriber.h */,
 				4B2C14041BBA7F5900DAA8F2 /* CLRegistrationSubscriber.m */,
 			);
-			name = Subscribers;
-			path = ../MVP/Subscribers;
+			path = Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE1B26F1BBB305E00A07DA1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				4B2C13FF1BBA7EC700DAA8F2 /* CLRegistrationPresenter.h */,
+				4B2C14001BBA7EC700DAA8F2 /* CLRegistrationPresenter.m */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		4BE1B2701BBB306600A07DA1 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B28C1BBB3AEB00A07DA1 /* IRegistrationInteractor.h */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		4BE1B2711BBB306C00A07DA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4B2C14061BBA7F6800DAA8F2 /* CLRegistrationController.h */,
+				4B2C14071BBA7F6800DAA8F2 /* CLRegistrationController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4BE1B2721BBB307100A07DA1 /* Subscribers */ = {
+			isa = PBXGroup;
+			children = (
+				4BAE006F1B8EE06900779E1F /* CLUserSubscriber.h */,
+				4BAE00701B8EE06900779E1F /* CLUserSubscriber.m */,
+			);
+			path = Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE1B2731BBB307600A07DA1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				4BA2A6521BA7F57D004724EB /* CLUserPresenter.h */,
+				4BA2A6531BA7F57D004724EB /* CLUserPresenter.m */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		4BE1B2741BBB307A00A07DA1 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B28F1BBB3B4900A07DA1 /* IUserInteractor.h */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		4BE1B2751BBB308000A07DA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4BA4E3501B8D13610089CB2B /* CLUserController.h */,
+				4BA4E3511B8D13610089CB2B /* CLUserController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4BE1B2761BBB34AF00A07DA1 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B27A1BBB34CF00A07DA1 /* Controllers */,
+				4BE1B2791BBB34C800A07DA1 /* Interactors */,
+				4BE1B2781BBB34C200A07DA1 /* Presenters */,
+				4BE1B2771BBB34BA00A07DA1 /* Subscribers */,
+			);
+			name = Search;
+			path = ../MVP/Search;
+			sourceTree = "<group>";
+		};
+		4BE1B2771BBB34BA00A07DA1 /* Subscribers */ = {
+			isa = PBXGroup;
+			children = (
+				4B3F2E6A1BA7878B00D4934E /* CLSearchSubscriber.h */,
+				4B3F2E6B1BA7878B00D4934E /* CLSearchSubscriber.m */,
+			);
+			path = Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE1B2781BBB34C200A07DA1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				4B3F2E761BA78DAD00D4934E /* CLSearchPresenter.h */,
+				4B3F2E771BA78DAD00D4934E /* CLSearchPresenter.m */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		4BE1B2791BBB34C800A07DA1 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B28E1BBB3B3000A07DA1 /* ISearchInteractor.h */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		4BE1B27A1BBB34CF00A07DA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4B3F2E6D1BA7884600D4934E /* CLSearchController.h */,
+				4B3F2E6E1BA7884600D4934E /* CLSearchController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4BE1B27B1BBB352E00A07DA1 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B27F1BBB359900A07DA1 /* Controllers */,
+				4BE1B27E1BBB359400A07DA1 /* Interactors */,
+				4BE1B27D1BBB358E00A07DA1 /* Presenters */,
+				4BE1B27C1BBB358800A07DA1 /* Subscribers */,
+			);
+			name = Groups;
+			path = ../MVP/Groups;
+			sourceTree = "<group>";
+		};
+		4BE1B27C1BBB358800A07DA1 /* Subscribers */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1DF411BABD155009519CB /* CLGroupSubscriber.h */,
+				4BE1DF421BABD155009519CB /* CLGroupSubscriber.m */,
+			);
+			path = Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE1B27D1BBB358E00A07DA1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1DF3D1BABD12B009519CB /* CLGroupPresenter.h */,
+				4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		4BE1B27E1BBB359400A07DA1 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2891BBB3A7500A07DA1 /* IGroupInteractor.h */,
+				4BE1B2901BBB3B6700A07DA1 /* IGroupDetailInteractor.h */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		4BE1B27F1BBB359900A07DA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1DF441BABD1D4009519CB /* CLGroupController.h */,
+				4BE1DF451BABD1D4009519CB /* CLGroupController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4BE1B2801BBB35D900A07DA1 /* Feeds */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2841BBB35FC00A07DA1 /* Controllers */,
+				4BE1B2831BBB35F600A07DA1 /* Interactors */,
+				4BE1B2821BBB35F000A07DA1 /* Presenters */,
+				4BE1B2811BBB35EB00A07DA1 /* Subscribers */,
+			);
+			name = Feeds;
+			path = ../MVP/Feeds;
+			sourceTree = "<group>";
+		};
+		4BE1B2811BBB35EB00A07DA1 /* Subscribers */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1DF651BABED00009519CB /* CLFeedSubscriber.h */,
+				4BE1DF661BABED00009519CB /* CLFeedSubscriber.m */,
+			);
+			path = Subscribers;
+			sourceTree = "<group>";
+		};
+		4BE1B2821BBB35F000A07DA1 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1DF5E1BABECAF009519CB /* CLFeedPresenter.h */,
+				4BE1DF5F1BABECAF009519CB /* CLFeedPresenter.m */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		4BE1B2831BBB35F600A07DA1 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1B2881BBB3A4C00A07DA1 /* IFeedInteractor.h */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		4BE1B2841BBB35FC00A07DA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4BE1DF621BABECF5009519CB /* CLFeedController.h */,
+				4BE1DF631BABECF5009519CB /* CLFeedController.m */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		4BE1DF3C1BABA488009519CB /* Helpers */ = {
@@ -1167,27 +1562,6 @@
 				6877AFBF1B994C7100113B86 /* CLNavigation.m */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		4BE63A501B9506ED00231222 /* Interactors */ = {
-			isa = PBXGroup;
-			children = (
-				4BE63A521B9507C800231222 /* IEventInteractor.h */,
-				4BE63A591B9551C500231222 /* IAuthenticationInteractor.h */,
-				4BBF2C341BA2B1E500ECC37F /* IInterestInteractor.h */,
-				4B3F2E691BA7876500D4934E /* ISearchInteractor.h */,
-				4BA2A6561BA7F5AE004724EB /* IUserInteractor.h */,
-				4BE1DF401BABD13A009519CB /* IGroupInteractor.h */,
-				4BE1DF561BABD99B009519CB /* IGroupDetailInteractor.h */,
-				4BE1DF571BABDB1B009519CB /* IInterestDetailInteractor.h */,
-				4BE1DF611BABECD0009519CB /* IFeedInteractor.h */,
-				4BE1DF7D1BAE9A31009519CB /* ICommentInteractor.h */,
-				4B3B36791BB1FA0200C7AEE5 /* IParticipantInteractor.h */,
-				4B2C13F21BB9521800DAA8F2 /* IEventDetailInteractor.h */,
-				4B2C14021BBA7EE900DAA8F2 /* IRegistrationInteractor.h */,
-			);
-			name = Interactors;
-			path = ../MVP/Interactors;
 			sourceTree = "<group>";
 		};
 		4BE63A5A1B9580F200231222 /* Cell */ = {

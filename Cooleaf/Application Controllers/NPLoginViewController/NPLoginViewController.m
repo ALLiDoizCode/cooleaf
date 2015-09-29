@@ -248,20 +248,6 @@
     _passwordField.enabled = NO;
     [_authenticationPresenter authenticate:_usernameField.text :_passwordField.text];
     [self unlockView];
-//    _loginOperation = [[NPCooleafClient sharedClient] loginWithUsername:_usernameField.text password:_passwordField.text completion:^(NSError *error) {
-//        [self unlockView];
-//        if (error) {
-//            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Log In Failed", @"Sign in failure alert title")
-//                                                         message:NSLocalizedString(@"Invalid username/password or account not yet activated. Please ‘Sign Up’ to activate your account or try again with your corporate email.", @"Wrong credentials given. Server responded with error")
-//                                                        delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil];
-//            [av show];
-//            
-//        } else {
-//            [self dismissViewControllerAnimated:YES completion:nil];
-//        }
-//        
-//    }];
-    
 }
 
 # pragma mark - signupButtonTapped
@@ -270,6 +256,7 @@
 	[_usernameField resignFirstResponder];
 	[_passwordField resignFirstResponder];
     
+    // If textfield attributes are too short show an AlertView, else try to do a registration check
 	if (_usernameField.text.length < 8 || _passwordField.text.length < 8) {
 		[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Registration failed", @"Registration failure alert title")
 																message:NSLocalizedString(@"Given username or password is too short. (minimum is 8 characters)", @"Invalid credentials given. Too little data")
@@ -277,9 +264,9 @@
 											cancelButtonTitle:NSLocalizedString(@"OK", nil)
 											otherButtonTitles: nil] show];
 		return;
-	}
-
-    
+    } else {
+        
+    }
     
 	NPRegistrationViewController *controller = [[NPRegistrationViewController alloc] initWithUsername:_usernameField.text andPassword:_passwordField.text];
     [self presentViewController:controller animated:YES completion:nil];
