@@ -973,18 +973,10 @@
 		4BAE00521B8EDE1800779E1F /* Bus */ = {
 			isa = PBXGroup;
 			children = (
-				4BAE00561B8EDE3400779E1F /* Events */,
 				4BAE00531B8EDE2E00779E1F /* CLBus.h */,
 				4BAE00541B8EDE2E00779E1F /* CLBus.m */,
 			);
 			path = Bus;
-			sourceTree = "<group>";
-		};
-		4BAE00561B8EDE3400779E1F /* Events */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Events;
 			sourceTree = "<group>";
 		};
 		4BAE005A1B8EDEBB00779E1F /* Base */ = {
