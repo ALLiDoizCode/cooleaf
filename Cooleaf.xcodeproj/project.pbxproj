@@ -30,6 +30,9 @@
 		4B2C13F81BB9540400DAA8F2 /* CLLoadedJoinEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C13F71BB9540400DAA8F2 /* CLLoadedJoinEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4B2C13FB1BB95CC300DAA8F2 /* CLLoadLeaveEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C13FA1BB95CC300DAA8F2 /* CLLoadLeaveEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4B2C13FE1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C13FD1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4B2C14011BBA7EC700DAA8F2 /* CLRegistrationPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C14001BBA7EC700DAA8F2 /* CLRegistrationPresenter.m */; settings = {ASSET_TAGS = (); }; };
+		4B2C14051BBA7F5900DAA8F2 /* CLRegistrationSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C14041BBA7F5900DAA8F2 /* CLRegistrationSubscriber.m */; settings = {ASSET_TAGS = (); }; };
+		4B2C14081BBA7F6800DAA8F2 /* CLRegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B2C14071BBA7F6800DAA8F2 /* CLRegistrationController.m */; settings = {ASSET_TAGS = (); }; };
 		4B3408921BAEAF8E0081B6D4 /* CLAddEventComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3408911BAEAF8E0081B6D4 /* CLAddEventComment.m */; };
 		4B3408951BAEAF9A0081B6D4 /* CLAddedEventComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3408941BAEAF9A0081B6D4 /* CLAddedEventComment.m */; };
 		4B3B36781BB1F9A900C7AEE5 /* CLParticipantPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B36771BB1F9A900C7AEE5 /* CLParticipantPresenter.m */; };
@@ -302,6 +305,13 @@
 		4B2C13FA1BB95CC300DAA8F2 /* CLLoadLeaveEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadLeaveEvent.m; sourceTree = "<group>"; };
 		4B2C13FC1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLLoadedLeaveEvent.h; sourceTree = "<group>"; };
 		4B2C13FD1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLLoadedLeaveEvent.m; sourceTree = "<group>"; };
+		4B2C13FF1BBA7EC700DAA8F2 /* CLRegistrationPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRegistrationPresenter.h; path = Cooleaf/MVP/presenters/CLRegistrationPresenter.h; sourceTree = SOURCE_ROOT; };
+		4B2C14001BBA7EC700DAA8F2 /* CLRegistrationPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRegistrationPresenter.m; path = Cooleaf/MVP/presenters/CLRegistrationPresenter.m; sourceTree = SOURCE_ROOT; };
+		4B2C14021BBA7EE900DAA8F2 /* IRegistrationInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRegistrationInteractor.h; sourceTree = "<group>"; };
+		4B2C14031BBA7F5900DAA8F2 /* CLRegistrationSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLRegistrationSubscriber.h; sourceTree = "<group>"; };
+		4B2C14041BBA7F5900DAA8F2 /* CLRegistrationSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLRegistrationSubscriber.m; sourceTree = "<group>"; };
+		4B2C14061BBA7F6800DAA8F2 /* CLRegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLRegistrationController.h; path = Cooleaf/MVP/controllers/CLRegistrationController.h; sourceTree = SOURCE_ROOT; };
+		4B2C14071BBA7F6800DAA8F2 /* CLRegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLRegistrationController.m; path = Cooleaf/MVP/controllers/CLRegistrationController.m; sourceTree = SOURCE_ROOT; };
 		4B3408901BAEAF8E0081B6D4 /* CLAddEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAddEventComment.h; sourceTree = "<group>"; };
 		4B3408911BAEAF8E0081B6D4 /* CLAddEventComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAddEventComment.m; sourceTree = "<group>"; };
 		4B3408931BAEAF9A0081B6D4 /* CLAddedEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAddedEventComment.h; sourceTree = "<group>"; };
@@ -978,6 +988,8 @@
 				4BE1DF7F1BAE9ABA009519CB /* CLCommentController.m */,
 				4B3B36831BB1FCAA00C7AEE5 /* CLParticipantController.h */,
 				4B3B36841BB1FCAA00C7AEE5 /* CLParticipantController.m */,
+				4B2C14061BBA7F6800DAA8F2 /* CLRegistrationController.h */,
+				4B2C14071BBA7F6800DAA8F2 /* CLRegistrationController.m */,
 			);
 			name = Controllers;
 			path = ../MVP/Controllers;
@@ -1004,6 +1016,8 @@
 				4BE1DF7B1BAE9A04009519CB /* CLCommentPresenter.m */,
 				4B3B36761BB1F9A900C7AEE5 /* CLParticipantPresenter.h */,
 				4B3B36771BB1F9A900C7AEE5 /* CLParticipantPresenter.m */,
+				4B2C13FF1BBA7EC700DAA8F2 /* CLRegistrationPresenter.h */,
+				4B2C14001BBA7EC700DAA8F2 /* CLRegistrationPresenter.m */,
 			);
 			name = Presenters;
 			path = ../MVP/Presenters;
@@ -1139,6 +1153,8 @@
 				4BE1DF821BAE9AC8009519CB /* CLCommentSubscriber.m */,
 				4B3B36801BB1FC6200C7AEE5 /* CLParticipantSubscriber.h */,
 				4B3B36811BB1FC6200C7AEE5 /* CLParticipantSubscriber.m */,
+				4B2C14031BBA7F5900DAA8F2 /* CLRegistrationSubscriber.h */,
+				4B2C14041BBA7F5900DAA8F2 /* CLRegistrationSubscriber.m */,
 			);
 			name = Subscribers;
 			path = ../MVP/Subscribers;
@@ -1168,6 +1184,7 @@
 				4BE1DF7D1BAE9A31009519CB /* ICommentInteractor.h */,
 				4B3B36791BB1FA0200C7AEE5 /* IParticipantInteractor.h */,
 				4B2C13F21BB9521800DAA8F2 /* IEventDetailInteractor.h */,
+				4B2C14021BBA7EE900DAA8F2 /* IRegistrationInteractor.h */,
 			);
 			name = Interactors;
 			path = ../MVP/Interactors;
@@ -1843,6 +1860,7 @@
 				52A9A1911AACEC8B004E6C13 /* NPInterestTopCell.m in Sources */,
 				4B3B367F1BB1FB7400C7AEE5 /* CLLoadedEventParticipants.m in Sources */,
 				4BE1DF671BABED00009519CB /* CLFeedSubscriber.m in Sources */,
+				4B2C14051BBA7F5900DAA8F2 /* CLRegistrationSubscriber.m in Sources */,
 				4BA4E2FC1B8BC7A80089CB2B /* CLParentTag.m in Sources */,
 				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
 				4BE1DF831BAE9AC8009519CB /* CLCommentSubscriber.m in Sources */,
@@ -1858,6 +1876,7 @@
 				4B2C13FE1BB95CE700DAA8F2 /* CLLoadedLeaveEvent.m in Sources */,
 				4B2C13F11BB94AED00DAA8F2 /* CLLoadedLeaveInterest.m in Sources */,
 				D93AAC70187AFE0700E9B96A /* NPEventViewController.m in Sources */,
+				4B2C14081BBA7F6800DAA8F2 /* CLRegistrationController.m in Sources */,
 				68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */,
 				4BBF2C371BA2B35600ECC37F /* CLLoadInterests.m in Sources */,
 				4BE1DF4C1BABD3FA009519CB /* CLLoadInterest.m in Sources */,
@@ -1954,6 +1973,7 @@
 				526DDE181AC757550095FC27 /* NPMembersViewController.m in Sources */,
 				4B3F2E781BA78DAD00D4934E /* CLSearchPresenter.m in Sources */,
 				4BE63A5D1B95811400231222 /* CLEventCell.m in Sources */,
+				4B2C14011BBA7EC700DAA8F2 /* CLRegistrationPresenter.m in Sources */,
 				6877AFCC1B997D3F00113B86 /* CLDetailView.m in Sources */,
 				4BE1DF891BAE9DC8009519CB /* CLLoadedEventComments.m in Sources */,
 				523096D71AA3E17400649FB7 /* NPHomeCell.m in Sources */,

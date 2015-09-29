@@ -14,6 +14,7 @@
 #import "CLAuthenticationPresenter.h"
 #import "CLClient.h"
 #import "CLHomeTableViewController.h"
+#import "CLRegistrationPresenter.h"
 
 #define UPSHIFT 101
 
@@ -22,6 +23,7 @@
     AFHTTPRequestOperation *_loginOperation;
 }
 
+@property (nonatomic, strong) CLRegistrationPresenter *registrationPresenter;
 @property (nonatomic, strong) CLAuthenticationPresenter *authenticationPresenter;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -108,7 +110,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	[self.navigationController setNavigationBarHidden:TRUE];
-    [self initAuthenticationPresenter];
+    [self setupAuthenticationPresenter];
     [self checkLogin];
 }
 
@@ -196,12 +198,23 @@
     _forgotPasswdBtn.enabled = NO;
 }
 
-# pragma mark - initAuthenticationPresenter
+# pragma mark - setupRegistrationPresenter
 
-- (void)initAuthenticationPresenter {
+- (void)setupRegistrationPresenter {
+    _registrationPresenter = [[CLRegistrationPresenter alloc] initWithInteractor:self];
+    [_registrationPresenter registerOnBus];
+}
+
+# pragma mark - setupAuthenticationPresenter
+
+- (void)setupAuthenticationPresenter {
     _authenticationPresenter = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
     [_authenticationPresenter registerOnBus];
 }
+
+# pragma mark - IRegistrationInteractor
+
+
 
 # pragma mark - IAuthenticationInteractor
 
@@ -265,7 +278,9 @@
 											otherButtonTitles: nil] show];
 		return;
 	}
-	
+
+    
+    
 	NPRegistrationViewController *controller = [[NPRegistrationViewController alloc] initWithUsername:_usernameField.text andPassword:_passwordField.text];
     [self presentViewController:controller animated:YES completion:nil];
 }

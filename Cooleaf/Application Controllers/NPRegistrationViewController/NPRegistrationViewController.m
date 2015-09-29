@@ -14,18 +14,14 @@
 #import "UIFont+ApplicationFont.h"
 
 @class NPRegistrationPicker;
-
 @interface NPRegistrationViewController (PrivateMethods)
+
 - (void)showPicker:(NPRegistrationPicker *)picker;
+
 @end
 
-
-
-
-
-@interface NPRegistrationPicker : NSObject <UIPickerViewDelegate, UIPickerViewDataSource>
-{
-@public
+@interface NPRegistrationPicker : NSObject <UIPickerViewDelegate, UIPickerViewDataSource> {
+    @public
 	__unsafe_unretained NPRegistrationViewController *_parent;
 	NSString *_title;
 	NSArray *_options;
@@ -40,8 +36,7 @@
 
 #pragma mark - Structors
 
-- (id)init
-{
+- (id)init {
 	self = [super init];
 	
 	if (self) {
@@ -53,8 +48,7 @@
 
 #pragma mark - Accessors
 
-- (NSString *)selectedValue
-{
+- (NSString *)selectedValue {
 	if (_index < 0 || _index >= _options.count)
 		return nil;
 	else {
@@ -68,8 +62,7 @@
 	}
 }
 
-- (void)setSelectedValue:(NSObject *)value
-{
+- (void)setSelectedValue:(NSObject *)value {
 	NSInteger valueInt = 0;
 	
 	if (value == nil)
@@ -95,8 +88,7 @@
 
 #pragma mark - Actions
 
-- (void)doActionShowPicker:(id)sender
-{
+- (void)doActionShowPicker:(id)sender {
 	if (_options.count != 0) {
 		if (_index == -1) {
 			_index = 0;
@@ -110,8 +102,7 @@
 
 #pragma mark - UIPickerViewDelegate
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
 	NSObject *object = _options[row];
 	
 	if ([object isKindOfClass:NPTag.class])
@@ -122,31 +113,24 @@
 		return @"";
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
 	_index = row;
 	_label.text = [self pickerView:pickerView titleForRow:row forComponent:component];
 }
 
 #pragma mark - UIPickerViewDataSource
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
 	return 1;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
 	return _options.count;
 }
 
 @end
 
-
-
-
-
-@interface NPRegistrationViewController () <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@interface NPRegistrationViewController() <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
 	/**
 	 * Data
 	 */
@@ -202,8 +186,7 @@
 
 #pragma mark - UIViewController
 
-- (id)initWithUsername:(NSString *)username andPassword:(NSString *)password
-{
+- (id)initWithUsername:(NSString *)username andPassword:(NSString *)password {
 	self = [super init];
 	
 	if (self) {
@@ -215,21 +198,18 @@
 	return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
 	[super viewDidLoad];
-    NSLog(@"ViewDidLoad");
 	
-	// keyboard notifications
+	// Keyboard notifications
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doNotificationKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doNotificationKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 	
-	// main view
+	// Main view
 	_mainView = [[UIView alloc] init];
 	_mainView.translatesAutoresizingMaskIntoConstraints = FALSE;
 	_mainView.backgroundColor = UIColor.whiteColor;
@@ -240,10 +220,10 @@
 	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:_mainView attribute:NSLayoutAttributeWidth  relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth  multiplier:1 constant:0]];
 	[self.view addConstraint:[NSLayoutConstraint constraintWithItem:_mainView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:1 constant:0]];
 	
-	// top bar
+	// Top bar
 	[self renderTopBar];
 	
-	// content view
+	// Content view
 	_contentView = [[UIScrollView alloc] init];
 	_contentView.translatesAutoresizingMaskIntoConstraints = FALSE;
 	_contentView.backgroundColor = UIColor.whiteColor;
@@ -253,7 +233,7 @@
 	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:_mainView   attribute:NSLayoutAttributeRight  multiplier:1 constant:0]];
 	[_mainView addConstraint:[NSLayoutConstraint constraintWithItem:_contentView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_mainView   attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
 	
-	// "basic information" label
+	// "Basic Information" label
 	_basicInfoLbl = [[UILabel alloc] init];
 	_basicInfoLbl.translatesAutoresizingMaskIntoConstraints = FALSE;
 	_basicInfoLbl.font = [UIFont mediumApplicationFontOfSize:15];
