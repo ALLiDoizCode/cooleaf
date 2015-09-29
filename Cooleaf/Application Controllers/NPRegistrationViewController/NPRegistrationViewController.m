@@ -146,8 +146,7 @@
 
 
 
-@interface NPRegistrationViewController () <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-{
+@interface NPRegistrationViewController () <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
 	/**
 	 * Data
 	 */
@@ -224,6 +223,7 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+    NSLog(@"ViewDidLoad");
 	
 	// keyboard notifications
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(doNotificationKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -728,8 +728,8 @@
 - (void)doActionBack:(id)sender
 {
 	DLog(@"");
-	[self.navigationController popViewControllerAnimated:TRUE];
-//[self dismissViewControllerAnimated:TRUE completion:nil];
+	//[self.navigationController popViewControllerAnimated:TRUE];
+    [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (void)doActionNext:(id)sender

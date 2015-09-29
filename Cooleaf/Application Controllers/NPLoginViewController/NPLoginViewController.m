@@ -256,7 +256,7 @@
 - (IBAction)signupButtonTapped:(id)sender {
 	[_usernameField resignFirstResponder];
 	[_passwordField resignFirstResponder];
-	
+    
 	if (_usernameField.text.length < 8 || _passwordField.text.length < 8) {
 		[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Registration failed", @"Registration failure alert title")
 																message:NSLocalizedString(@"Given username or password is too short. (minimum is 8 characters)", @"Invalid credentials given. Too little data")
@@ -267,7 +267,7 @@
 	}
 	
 	NPRegistrationViewController *controller = [[NPRegistrationViewController alloc] initWithUsername:_usernameField.text andPassword:_passwordField.text];
-	[self.navigationController pushViewController:controller animated:TRUE];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 # pragma mark - termsButtonTapped
