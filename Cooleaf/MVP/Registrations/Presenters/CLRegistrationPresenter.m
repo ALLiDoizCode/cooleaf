@@ -9,6 +9,7 @@
 #import "CLRegistrationPresenter.h"
 #import "CLBus.h"
 #import "CLCheckRegistrationEvent.h"
+#import "CLFailedRegistrationEvent.h"
 
 @implementation CLRegistrationPresenter
 
@@ -33,6 +34,12 @@
 
 - (void)checkRegistrationWithEmail:(NSString *)email {
     PUBLISH([[CLCheckRegistrationEvent alloc] initWithEmail:email]);
+}
+
+# pragma mark - Subscription Methods
+
+SUBSCRIBE(CLFailedRegistrationEvent) {
+    [_registrationInfo registrationFailed];
 }
 
 @end

@@ -14,6 +14,7 @@
                 <outlet property="loginTabButton" destination="4Ng-9u-py0" id="BqH-3U-p6m"/>
                 <outlet property="logoView" destination="V5V-Bw-vuq" id="jG4-bb-AAI"/>
                 <outlet property="passwordField" destination="TEg-1U-ICU" id="wXu-o0-CTp"/>
+                <outlet property="separator" destination="W1l-Th-Cgt" id="b6U-UQ-q6r"/>
                 <outlet property="signInBtn" destination="bWS-Zh-x6R" id="3P2-lt-WYq"/>
                 <outlet property="signUpButton" destination="RzA-cT-qAS" id="CjZ-Wq-Eug"/>
                 <outlet property="signupHighlight" destination="SEz-XS-06j" id="9cq-qy-4HL"/>

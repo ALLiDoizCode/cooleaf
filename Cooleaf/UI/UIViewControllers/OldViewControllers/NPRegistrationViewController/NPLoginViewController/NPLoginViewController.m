@@ -27,6 +27,7 @@
 @property (nonatomic, strong) CLAuthenticationPresenter *authenticationPresenter;
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UIView *separator;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswdBtn;
 @property (weak, nonatomic) IBOutlet UIButton *signInBtn;
 @property (weak, nonatomic) IBOutlet UIButton *signUpButton;
@@ -214,7 +215,19 @@
 
 # pragma mark - IRegistrationInteractor
 
+- (void)registrationCheckSuccess:(CLRegistration *)registration {
+    [_spinner stopAnimating];
+    _passwordField.enabled = YES;
+    _signUpButton.hidden = NO;
 
+    
+}
+
+- (void)registrationFailed {
+    [_spinner stopAnimating];
+    _passwordField.enabled = YES;
+    _signUpButton.hidden = NO;
+}
 
 # pragma mark - IAuthenticationInteractor
 
@@ -266,6 +279,7 @@
 		return;
     } else {
         [_registrationPresenter checkRegistrationWithEmail:_usernameField.text];
+        _passwordField.enabled = NO;
         _signUpButton.hidden = YES;
         [_spinner startAnimating];
     }
@@ -291,6 +305,8 @@
 # pragma mark - loginTabTapped
 
 - (IBAction)loginTabTapped:(id)sender {
+    [_spinner stopAnimating];
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
 	[UIView animateWithDuration:0.5 animations:^{
 		_loginHighlight.alpha = 1.0;
 		_signupHighlight.alpha = 0.0;
@@ -299,7 +315,12 @@
 		_signInBtn.hidden = NO;
 		_signInBtn.alpha = 1.0;
 		_termsButton.alpha = 0.0;
+        _usernameField.text = username;
+        _usernameField.placeholder = @"Email";
+        _passwordField.enabled = YES;
+        _passwordField.hidden = NO;
 		_passwordField.placeholder = @"Password";
+        _passwordField.enabled = YES;
 		[self.view bringSubviewToFront:_signInBtn];
 	} completion:^(BOOL finished) {
 	}];
@@ -309,6 +330,8 @@
 # pragma mark - signupTabTapped
 
 - (IBAction)signupTabTapped:(id)sender {
+    [_spinner stopAnimating];
+    _passwordField.text = @"";
 	[UIView animateWithDuration:0.5 animations:^{
 		_loginHighlight.alpha = 0.0;
 		_signupHighlight.alpha = 1.0;
@@ -317,7 +340,9 @@
 		_signInBtn.hidden = YES;
 		_signInBtn.alpha = 0.0;
 		_termsButton.alpha = 1.0;
-		_passwordField.placeholder = @"Create Password";
+        _usernameField.text = @"";
+        _usernameField.placeholder = @"Please enter corporate email";
+        _passwordField.placeholder = @"Create password";
 		[self.view bringSubviewToFront:_signUpButton];
 	} completion:^(BOOL finished) {
 	}];

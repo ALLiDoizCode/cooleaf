@@ -10,5 +10,6 @@
 @protocol IRegistrationInteractor <NSObject>
 
 - (void)registrationCheckSuccess:(CLRegistration *)registration;
+- (void)registrationFailed;
 
 @end
