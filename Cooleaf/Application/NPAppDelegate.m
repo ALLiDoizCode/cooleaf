@@ -8,6 +8,7 @@
 
 #import <SSKeychain/SSKeychain.h>
 #import <Crashlytics/Crashlytics.h>
+#import <IQKeyboardManager.h>
 #import "CLMenuViewController.h"
 #import "NPAppDelegate.h"
 #import "NPCooleafClient.h"
@@ -63,6 +64,9 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // Setup Keyboard Manager for automanaging keyboard
+    [IQKeyboardManager sharedManager].enable = YES;
     
     // Initialize base views here
     [self initViews];
