@@ -7,9 +7,13 @@
 //
 
 #import "CLRegistration.h"
+#import "CLUser.h"
 @protocol IRegistrationInteractor <NSObject>
 
+@optional
 - (void)registrationCheckSuccess:(CLRegistration *)registration;
-- (void)registrationFailed;
+- (void)registrationCheckFailed;
+- (void)registeredUser:(CLUser *)user;
+- (void)registerFailed;
 
 @end

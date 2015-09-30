@@ -11,6 +11,8 @@
 #import "CLCheckRegistrationEvent.h"
 #import "CLFailedRegistrationEvent.h"
 #import "CLCheckedRegistrationEvent.h"
+#import "CLRegisterUserEvent.h"
+#import "CLRegisteredUserEvent.h"
 
 @implementation CLRegistrationPresenter
 
@@ -37,6 +39,12 @@
     PUBLISH([[CLCheckRegistrationEvent alloc] initWithEmail:email]);
 }
 
+# pragma mark - registerUserWithToken
+
+- (void)registerUserWithToken:(NSString *)token name:(NSString *)name password:(NSString *)password tags:(NSMutableArray *)tags {
+    PUBLISH([[CLRegisterUserEvent alloc] initWithToken:token name:name password:password tags:tags]);
+}
+
 # pragma mark - Subscription Methods
 
 SUBSCRIBE(CLCheckedRegistrationEvent) {
@@ -44,7 +52,11 @@ SUBSCRIBE(CLCheckedRegistrationEvent) {
 }
 
 SUBSCRIBE(CLFailedRegistrationEvent) {
-    [_registrationInfo registrationFailed];
+    [_registrationInfo registrationCheckFailed];
+}
+
+SUBSCRIBE(CLRegisteredUserEvent) {
+    [_registrationInfo registeredUser:event.user];
 }
 
 @end

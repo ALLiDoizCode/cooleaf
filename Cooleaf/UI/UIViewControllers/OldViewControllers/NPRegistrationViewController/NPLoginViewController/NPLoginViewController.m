@@ -226,7 +226,7 @@
     [self presentViewController:controller animated:YES completion:nil];
 }
 
-- (void)registrationFailed {
+- (void)registrationCheckFailed {
     [_spinner stopAnimating];
     _passwordField.enabled = YES;
     _signUpButton.hidden = NO;

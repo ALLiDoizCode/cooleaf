@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CLRegistration.h"
+#import "IRegistrationInteractor.h"
 
-@interface NPRegistrationViewController : UIViewController
+@interface NPRegistrationViewController : UIViewController <IRegistrationInteractor>
 
 @property (nonatomic, strong) CLRegistration *registration;
 

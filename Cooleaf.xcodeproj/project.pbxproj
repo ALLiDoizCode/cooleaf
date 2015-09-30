@@ -51,6 +51,8 @@
 		4B4452B51B8ED9E2001FA1E2 /* CLBranch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4452B41B8ED9E2001FA1E2 /* CLBranch.m */; };
 		4B4AE2631B9A4773006040F0 /* CLInformationTableViewcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B4AE2621B9A4773006040F0 /* CLInformationTableViewcell.m */; };
 		4B6088491B929EA20029E659 /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6088481B929EA20029E659 /* UIColor+CustomColors.m */; };
+		4B64D36E1BBB9BC900DF4FF3 /* CLRegisterUserEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D36D1BBB9BC900DF4FF3 /* CLRegisterUserEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4B64D3711BBB9E4400DF4FF3 /* CLRegisteredUserEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D3701BBB9E4400DF4FF3 /* CLRegisteredUserEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4B6B56F01B98E0C8008DF039 /* CLProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56EF1B98E0C8008DF039 /* CLProfileTableViewController.m */; };
 		4B6B56F31B98E220008DF039 /* CLGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56F21B98E220008DF039 /* CLGroupTableViewCell.m */; };
 		4B6B56F61B98E859008DF039 /* CLGroupCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56F51B98E859008DF039 /* CLGroupCollectionViewCell.m */; };
@@ -349,6 +351,10 @@
 		4B4AE2621B9A4773006040F0 /* CLInformationTableViewcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInformationTableViewcell.m; sourceTree = "<group>"; };
 		4B6088471B929EA20029E659 /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
 		4B6088481B929EA20029E659 /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
+		4B64D36C1BBB9BC900DF4FF3 /* CLRegisterUserEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLRegisterUserEvent.h; sourceTree = "<group>"; };
+		4B64D36D1BBB9BC900DF4FF3 /* CLRegisterUserEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLRegisterUserEvent.m; sourceTree = "<group>"; };
+		4B64D36F1BBB9E4400DF4FF3 /* CLRegisteredUserEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLRegisteredUserEvent.h; sourceTree = "<group>"; };
+		4B64D3701BBB9E4400DF4FF3 /* CLRegisteredUserEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLRegisteredUserEvent.m; sourceTree = "<group>"; };
 		4B6B56EE1B98E0C8008DF039 /* CLProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProfileTableViewController.h; sourceTree = "<group>"; };
 		4B6B56EF1B98E0C8008DF039 /* CLProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLProfileTableViewController.m; sourceTree = "<group>"; };
 		4B6B56F11B98E220008DF039 /* CLGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupTableViewCell.h; sourceTree = "<group>"; };
@@ -1598,6 +1604,10 @@
 				4BE1B2BA1BBB5FEF00A07DA1 /* CLCheckedRegistrationEvent.m */,
 				4BE1B2BC1BBB64CF00A07DA1 /* CLFailedRegistrationEvent.h */,
 				4BE1B2BD1BBB64CF00A07DA1 /* CLFailedRegistrationEvent.m */,
+				4B64D36C1BBB9BC900DF4FF3 /* CLRegisterUserEvent.h */,
+				4B64D36D1BBB9BC900DF4FF3 /* CLRegisterUserEvent.m */,
+				4B64D36F1BBB9E4400DF4FF3 /* CLRegisteredUserEvent.h */,
+				4B64D3701BBB9E4400DF4FF3 /* CLRegisteredUserEvent.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -2311,6 +2321,7 @@
 				4B6088491B929EA20029E659 /* UIColor+CustomColors.m in Sources */,
 				D93AAC80187B661400E9B96A /* NPTodosCell.m in Sources */,
 				68B07EAA1BA1313000FCF806 /* CCLocalMaximum.m in Sources */,
+				4B64D36E1BBB9BC900DF4FF3 /* CLRegisterUserEvent.m in Sources */,
 				F9B37B981AAE0CA5003F3FB8 /* NPTagGroup.m in Sources */,
 				4BE1DF4F1BABD405009519CB /* CLLoadedInterest.m in Sources */,
 				52A9A19B1AACECDA004E6C13 /* NPOtherInterestCell.m in Sources */,
@@ -2383,6 +2394,7 @@
 				432A499E1AE4FA2E001B3740 /* NPEditTagsViewController.m in Sources */,
 				68DDFEFA1B9F443C00EDE1CF /* CLCommentViewController.m in Sources */,
 				F998F68F1AB3312500213240 /* NPInterest.m in Sources */,
+				4B64D3711BBB9E4400DF4FF3 /* CLRegisteredUserEvent.m in Sources */,
 				4B2C13EE1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m in Sources */,
 				4BE1B2B81BBB5B0500A07DA1 /* CLCheckRegistrationEvent.m in Sources */,
 				D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */,

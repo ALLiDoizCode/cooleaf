@@ -12,6 +12,7 @@
 #import "NPTag.h"
 #import "NPTagGroup.h"
 #import "UIFont+ApplicationFont.h"
+#import "CLRegistrationPresenter.h"
 
 @class NPRegistrationPicker;
 @interface NPRegistrationViewController (PrivateMethods)
@@ -179,6 +180,11 @@
 	 */
 	UIView *_modalView;
 	UIActivityIndicatorView *_modalSpinner;
+    
+    /**
+     *
+     */
+    CLRegistrationPresenter *_registrationPresenter;
 }
 @end
 
@@ -252,10 +258,29 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[self.navigationController setNavigationBarHidden:TRUE];
+    [self setupRegistrationPresenter];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
+}
+
+# pragma mark - setupRegistrationPresenter
+
+- (void)setupRegistrationPresenter {
+    _registrationPresenter = [[CLRegistrationPresenter alloc] initWithInteractor:self];
 }
 
 # pragma mark - Rendering Methods
@@ -511,6 +536,24 @@
     }
 }
 
+# pragma mark - IRegistrationInteractor Methods
+
+- (void)registrationCheckSuccess:(CLRegistration *)registration {
+    
+}
+
+- (void)registrationCheckFailed {
+    
+}
+
+- (void)registeredUser:(CLUser *)user {
+    
+}
+
+- (void)registerFailed {
+    
+}
+
 # pragma mark - Picker Delegate
 
 /**
@@ -674,95 +717,65 @@
 
 - (void)doActionNext:(id)sender {
 	
-	//Tag Groups Setup
-//	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
-//	NSMutableDictionary *tagGroups = [[NSMutableDictionary alloc] init];
-//	
-//	[(NSArray *)uD[@"role"][@"organization"][@"structures"] enumerateObjectsUsingBlock:^ (NSDictionary *structure, NSUInteger index, BOOL *stop) {
-//		NPTagGroup *tagGroup = [[NPTagGroup alloc] initWithDictionary:structure];
-//		tagGroups[tagGroup.name] = tagGroup;
-//	}];
-//	
+    // Allocate a new mutablearray and get values from pickers
+    NSMutableArray *tags = [[NSMutableArray alloc] init];
+    [_pickers enumerateObjectsUsingBlock:^ (NPRegistrationPicker *picker, NSUInteger index, BOOL *stop) {
+        NSString *title = picker->_title;
+        [tags addObjectsFromArray:[self valuesForPickersWithTitle:title]];
+    }];
 	
-	NSArray *allStructureNames = [_tagGroups allKeys];
-	DLog(@" All the Structure names are %@", allStructureNames);
-	
+    // Remove dupliates -- FIX THIS LATER
+    NSOrderedSet *orderedSet = [NSOrderedSet orderedSetWithArray:tags];
+    NSMutableArray *tagsWithoutDuplicates = [[NSMutableArray alloc] initWithArray:[orderedSet array]];
     
-	
-	NSMutableArray *tags = [[NSMutableArray alloc] init];
-	
-	[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[0]]];
-	
-	if (allStructureNames.count > 1) {
-		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[1]]];
-	}
-	if (allStructureNames.count > 2) {
-		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[2]]];
-	}
-	if (allStructureNames.count > 3) {
-		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[3]]];
-	}
-	if (allStructureNames.count > 4) {
-		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[4]]];
-	}
-	if (allStructureNames.count > 5) {
-		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[5]]];
-	}
-	if (allStructureNames.count > 6) {
-		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[6]]];
-	}
-	if (allStructureNames.count > 7) {
-		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[7]]];
-	}
-	if (allStructureNames.count > 8) {
-		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[8]]];
-	}
-	if (allStructureNames.count > 9) {
-		[tags addObjectsFromArray:[self valuesForPickersWithTitle:allStructureNames[9]]];
-	}
-	
-	DLog(@"the tags we're sending are == %@", tags);
-	NSString *gender = [self valueForPickerWithTitle:@"Gender"];
-	
-	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:gender password:_password tags:tags completion:^ (BOOL success, NSString *error) {
-		DLog(@"Done! success = %@", NSStringFromBool(success));
-		
-		if (success == FALSE) {
-			[[[UIAlertView alloc] initWithTitle:@"Registration Failed." message:error delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
-			[self dismissViewControllerAnimated:YES completion:nil];
-			return;
-		}
-		
-		[[NPCooleafClient sharedClient] loginWithUsername:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"] password:_password completion:^(NSError *error) {
-			
-			NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
-			interestsController.editModeOn = TRUE;
-			interestsController.topBarEnabled = TRUE;
-			interestsController.scrollEnabled = TRUE;
-			[self.navigationController pushViewController:interestsController animated:TRUE];
-			DLog(@"collectionView = %@", interestsController.collectionView);
-			
-			[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarImg.image completion:^ (NSDictionary *unused) {
-				DLog(@"Done! unused = %@", unused);
-				
-				if (unused != nil) {
-					NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
-					DLog(@"avatarUrl = %@", avatarURL);
-					[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion: ^ (NSString *imagePath, UIImage *image) {
-						if (image && [imagePath isEqual:avatarURL.absoluteString])
-							_avatarImg.image = image;
-					}];
-					
-					NSDictionary *uD = [NPCooleafClient sharedClient].userData;
-					[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:nil profileWeeklyDigest:nil profile:uD[@"profile"] completion:^{
-						NSLog(@"Success");
-						[[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientRefreshNotification object:nil];
-
-					}];
-				}
-			}];
-		}];
-	}];
+    NSDictionary *registrationDict = (NSDictionary *) _registration;
+    
+    // Get the token, username, and password
+    NSString *token = registrationDict[@"token"];
+    NSString *username = _nameTxt.text;
+    NSString *password = _password;
+    
+    [_modalSpinner startAnimating];
+    [_registrationPresenter registerUserWithToken:token name:username password:password tags:tagsWithoutDuplicates];
+//	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:gender password:_password tags:tags completion:^ (BOOL success, NSString *error) {
+//		DLog(@"Done! success = %@", NSStringFromBool(success));
+//		
+//		if (success == FALSE) {
+//			[[[UIAlertView alloc] initWithTitle:@"Registration Failed." message:error delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
+//			[self dismissViewControllerAnimated:YES completion:nil];
+//			return;
+//		}
+//		
+//		[[NPCooleafClient sharedClient] loginWithUsername:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"] password:_password completion:^(NSError *error) {
+//			
+//			NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
+//			interestsController.editModeOn = TRUE;
+//			interestsController.topBarEnabled = TRUE;
+//			interestsController.scrollEnabled = TRUE;
+//			[self.navigationController pushViewController:interestsController animated:TRUE];
+//			DLog(@"collectionView = %@", interestsController.collectionView);
+//			
+//			[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarImg.image completion:^ (NSDictionary *unused) {
+//				DLog(@"Done! unused = %@", unused);
+//				
+//				if (unused != nil) {
+//					NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
+//					DLog(@"avatarUrl = %@", avatarURL);
+//					[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion: ^ (NSString *imagePath, UIImage *image) {
+//						if (image && [imagePath isEqual:avatarURL.absoluteString])
+//							_avatarImg.image = image;
+//					}];
+//					
+//					NSDictionary *uD = [NPCooleafClient sharedClient].userData;
+//					[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:nil profileWeeklyDigest:nil profile:uD[@"profile"] completion:^{
+//						NSLog(@"Success");
+//						[[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientRefreshNotification object:nil];
+//
+//					}];
+//				}
+//			}];
+//		}];
+//	}];
 }
 
 - (void)doActionPicture:(id)sender {

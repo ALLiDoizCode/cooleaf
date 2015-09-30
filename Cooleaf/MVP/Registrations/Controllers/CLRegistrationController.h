@@ -12,5 +12,7 @@
 
 - (void)checkRegistrationWithParams:(NSDictionary *)params success:(void (^)(id JSON))success
 failure:(void (^)(NSError *error))failure;
+- (void)registerUserWithParams:(NSDictionary *)params success:(void (^)(id JSON))success
+failure:(void (^)(NSError *error))failure;
 
 @end

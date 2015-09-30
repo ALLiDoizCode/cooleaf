@@ -12,6 +12,9 @@
 #import "CLCheckedRegistrationEvent.h"
 #import "CLRegistration.h"
 #import "CLFailedRegistrationEvent.h"
+#import "CLRegisterUserEvent.h"
+#import "CLUser.h"
+#import "CLRegisteredUserEvent.h"
 
 @interface CLRegistrationSubscriber() {
     @private
@@ -48,6 +51,33 @@ SUBSCRIBE(CLCheckRegistrationEvent) {
         [[[UIAlertView alloc] initWithTitle:@"Registration Failed" message:@"Please make sure to use your corporate email or try to ‘Log In’ as you may have already activated your account." delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:nil] show];
         CLFailedRegistrationEvent *failedRegistrationEvent = [[CLFailedRegistrationEvent alloc] init];
         PUBLISH(failedRegistrationEvent);
+    }];
+}
+
+SUBSCRIBE(CLRegisterUserEvent) {
+    // Get values
+    NSString *token = event.token;
+    NSString *username = event.name;
+    NSString *password = event.password;
+    NSMutableArray *tags = event.tags;
+    
+    // Set params
+    NSDictionary *params = @{
+                                 @"token": token,
+                                 @"name": username,
+                                 @"password": password,
+                                 @"tag_ids": tags
+                                 };
+    
+    // Go ahead and hit the api to register
+    [_registrationController registerUserWithParams:params success:^(id JSON) {
+        CLUser *user = [JSON result];
+        NSLog(@"%@", user);
+        CLRegisteredUserEvent *registeredUserEvent = [[CLRegisteredUserEvent alloc] initWithUser:user];
+        PUBLISH(registeredUserEvent);
+    } failure:^(NSError *error) {
+        [[[UIAlertView alloc] initWithTitle:@"Registration Failed" message:@"Please make sure to use your corporate email or try to ‘Log In’ as you may have already activated your account." delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:nil] show];
+        NSLog(@"%@", error);
     }];
 }
 

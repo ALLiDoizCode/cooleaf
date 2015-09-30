@@ -17,5 +17,6 @@
 - (void)registerOnBus;
 - (void)unregisterOnBus;
 - (void)checkRegistrationWithEmail:(NSString *)email;
+- (void)registerUserWithToken:(NSString *)token name:(NSString *)name password:(NSString *)password tags:(NSMutableArray *)tags;
 
 @end
