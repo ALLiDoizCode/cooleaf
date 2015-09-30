@@ -10,6 +10,7 @@
 #import "CLDeAuthorizeEvent.h"
 #import "SSKeychain.h"
 #import "CLDeAuthorizedEvent.h"
+#import "CLAuthenticationFailedEvent.h"
 
 static NSString *const kCLOrganizatonHeader = @"X-Organization";
 
@@ -60,9 +61,10 @@ SUBSCRIBE(CLAuthenticationEvent) {
         CLAuthenticationSuccessEvent *authenticationSuccessEvent = [[CLAuthenticationSuccessEvent alloc] initWithUser:user];
         PUBLISH(authenticationSuccessEvent);
     } failure:^(NSError *error) {
-        [self clearUserDefaults];
+        [self clearSensitiveUserDefaults];
         [self showLoginFailedAlertView];
-        NSLog(@"%@", error);
+        CLAuthenticationFailedEvent *authFailedEvent = [[CLAuthenticationFailedEvent alloc] init];
+        PUBLISH(authFailedEvent);
     }];
 }
 
@@ -78,7 +80,7 @@ SUBSCRIBE(CLDeAuthorizeEvent) {
     
     // Go ahead and deauthorize
     [_authenticationController deauthenticate:nil success:^(id JSON) {
-        NSLog(@"deauthentication successfull");
+        [self clearSensitiveUserDefaults];
         CLDeAuthorizedEvent *deauthorizedEvent = [[CLDeAuthorizedEvent alloc] init];
         PUBLISH(deauthorizedEvent);
     } failure:^(NSError *error) {
@@ -114,6 +116,19 @@ SUBSCRIBE(CLDeAuthorizeEvent) {
     NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
     [SSKeychain deletePasswordForService:@"cooleaf" account:username];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"username"];
+}
+
+- (void)clearSensitiveUserDefaults {
+    
+    // Clear organization header
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"X-Organization"];
+    
+    // Clear logged in flag
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLoggedIn"];
+    
+    // Clear credentials
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    [SSKeychain deletePasswordForService:@"cooleaf" account:username];
 }
 
 - (void)showLoginFailedAlertView {

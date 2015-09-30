@@ -220,7 +220,10 @@
     _passwordField.enabled = YES;
     _signUpButton.hidden = NO;
 
-    
+    // Registration is a success go ahead and initialize NPRegistrationViewController and set Registration object
+    NPRegistrationViewController *controller = [[NPRegistrationViewController alloc] initWithUsername:_usernameField.text andPassword:_passwordField.text];
+    [controller setRegistration:registration];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 - (void)registrationFailed {
@@ -233,6 +236,11 @@
 
 - (void)initUser:(CLUser *)user {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)authenticationFailed {
+    [_spinner stopAnimating];
+    _signInBtn.hidden = NO;
 }
 
 - (void)deAuthorized {
@@ -252,15 +260,11 @@
         [av show];
         return;
     }
-    
-    // Testing
-    _signInBtn.hidden = YES;
+
     [_forgotPasswdBtn setTitle:NSLocalizedString(@"Cancel", @"Cancel button title on login screen") forState:UIControlStateNormal];
+    _signInBtn.hidden = YES;
     [_spinner startAnimating];
-    _usernameField.enabled = NO;
-    _passwordField.enabled = NO;
     [_authenticationPresenter authenticate:_usernameField.text :_passwordField.text];
-    [self unlockView];
 }
 
 # pragma mark - signupButtonTapped
@@ -277,15 +281,13 @@
 											cancelButtonTitle:NSLocalizedString(@"OK", nil)
 											otherButtonTitles: nil] show];
 		return;
-    } else {
-        [_registrationPresenter checkRegistrationWithEmail:_usernameField.text];
-        _passwordField.enabled = NO;
-        _signUpButton.hidden = YES;
-        [_spinner startAnimating];
     }
     
-//	NPRegistrationViewController *controller = [[NPRegistrationViewController alloc] initWithUsername:_usernameField.text andPassword:_passwordField.text];
-//    [self presentViewController:controller animated:YES completion:nil];
+    // Everything checks out go ahead and try checking if registration email is valid
+    [_registrationPresenter checkRegistrationWithEmail:_usernameField.text];
+    _passwordField.enabled = NO;
+    _signUpButton.hidden = YES;
+    [_spinner startAnimating];
 }
 
 # pragma mark - termsButtonTapped
@@ -307,6 +309,8 @@
 - (IBAction)loginTabTapped:(id)sender {
     [_spinner stopAnimating];
     NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    _usernameField.text = username;
+    _passwordField.text = @"";
 	[UIView animateWithDuration:0.5 animations:^{
 		_loginHighlight.alpha = 1.0;
 		_signupHighlight.alpha = 0.0;
@@ -315,10 +319,7 @@
 		_signInBtn.hidden = NO;
 		_signInBtn.alpha = 1.0;
 		_termsButton.alpha = 0.0;
-        _usernameField.text = username;
         _usernameField.placeholder = @"Email";
-        _passwordField.enabled = YES;
-        _passwordField.hidden = NO;
 		_passwordField.placeholder = @"Password";
         _passwordField.enabled = YES;
 		[self.view bringSubviewToFront:_signInBtn];

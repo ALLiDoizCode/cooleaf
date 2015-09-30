@@ -111,6 +111,7 @@
 		4BE1B2B81BBB5B0500A07DA1 /* CLCheckRegistrationEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1B2B71BBB5B0500A07DA1 /* CLCheckRegistrationEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4BE1B2BB1BBB5FEF00A07DA1 /* CLCheckedRegistrationEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1B2BA1BBB5FEF00A07DA1 /* CLCheckedRegistrationEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4BE1B2BE1BBB64CF00A07DA1 /* CLFailedRegistrationEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1B2BD1BBB64CF00A07DA1 /* CLFailedRegistrationEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4BE1B2C11BBB6A7500A07DA1 /* CLAuthenticationFailedEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1B2C01BBB6A7500A07DA1 /* CLAuthenticationFailedEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4BE1DF3F1BABD12B009519CB /* CLGroupPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */; };
 		4BE1DF431BABD155009519CB /* CLGroupSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF421BABD155009519CB /* CLGroupSubscriber.m */; };
 		4BE1DF461BABD1D4009519CB /* CLGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF451BABD1D4009519CB /* CLGroupController.m */; };
@@ -481,6 +482,8 @@
 		4BE1B2BA1BBB5FEF00A07DA1 /* CLCheckedRegistrationEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCheckedRegistrationEvent.m; sourceTree = "<group>"; };
 		4BE1B2BC1BBB64CF00A07DA1 /* CLFailedRegistrationEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFailedRegistrationEvent.h; sourceTree = "<group>"; };
 		4BE1B2BD1BBB64CF00A07DA1 /* CLFailedRegistrationEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFailedRegistrationEvent.m; sourceTree = "<group>"; };
+		4BE1B2BF1BBB6A7500A07DA1 /* CLAuthenticationFailedEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAuthenticationFailedEvent.h; sourceTree = "<group>"; };
+		4BE1B2C01BBB6A7500A07DA1 /* CLAuthenticationFailedEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAuthenticationFailedEvent.m; sourceTree = "<group>"; };
 		4BE1DF3D1BABD12B009519CB /* CLGroupPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLGroupPresenter.h; path = Cooleaf/MVP/Groups/Presenters/CLGroupPresenter.h; sourceTree = SOURCE_ROOT; };
 		4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLGroupPresenter.m; path = Cooleaf/MVP/Groups/Presenters/CLGroupPresenter.m; sourceTree = SOURCE_ROOT; };
 		4BE1DF411BABD155009519CB /* CLGroupSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupSubscriber.h; sourceTree = "<group>"; };
@@ -1480,6 +1483,8 @@
 				4BC481B81BB86D4E00076A62 /* CLDeAuthorizeEvent.m */,
 				4BC481BA1BB86D8600076A62 /* CLDeAuthorizedEvent.h */,
 				4BC481BB1BB86D8600076A62 /* CLDeAuthorizedEvent.m */,
+				4BE1B2BF1BBB6A7500A07DA1 /* CLAuthenticationFailedEvent.h */,
+				4BE1B2C01BBB6A7500A07DA1 /* CLAuthenticationFailedEvent.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -2335,6 +2340,7 @@
 				4BA4E2FC1B8BC7A80089CB2B /* CLParentTag.m in Sources */,
 				D9809585185CA86A008F2B61 /* NPCooleafClient.m in Sources */,
 				4BE1DF831BAE9AC8009519CB /* CLCommentSubscriber.m in Sources */,
+				4BE1B2C11BBB6A7500A07DA1 /* CLAuthenticationFailedEvent.m in Sources */,
 				D93AAC93187B704100E9B96A /* NPAttendeesViewController.m in Sources */,
 				4BE1DF461BABD1D4009519CB /* CLGroupController.m in Sources */,
 				4B3B367C1BB1FB1F00C7AEE5 /* CLLoadEventParticipants.m in Sources */,

@@ -57,7 +57,6 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
 + (NSDictionary *)modelClassesByResourcePath {
     return @{
              @"v2/authorize.json": [CLUser class],
-             @"v2/registrations/check.json": [CLRegistration class],
              @"v2/events/*": [CLEvent class],
              @"v2/events/ongoing.json": [CLEvent class],
              @"v2/events/user/*": [CLEvent class],

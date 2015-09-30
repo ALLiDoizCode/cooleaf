@@ -9,6 +9,7 @@
 #import "CLAuthenticationPresenter.h"
 #import "CLDeAuthorizeEvent.h"
 #import "CLDeAuthorizedEvent.h"
+#import "CLAuthenticationFailedEvent.h"
 
 @interface CLAuthenticationPresenter()
 
@@ -54,6 +55,10 @@
 
 SUBSCRIBE(CLAuthenticationSuccessEvent) {
     [_authInfo initUser:event.user];
+}
+
+SUBSCRIBE(CLAuthenticationFailedEvent) {
+    [_authInfo authenticationFailed];
 }
 
 SUBSCRIBE(CLDeAuthorizedEvent) {

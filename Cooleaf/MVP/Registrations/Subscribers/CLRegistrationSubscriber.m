@@ -40,7 +40,6 @@ SUBSCRIBE(CLCheckRegistrationEvent) {
                              @"email": email
                              };
     
-    NSLog(@"_registrationController");
     [_registrationController checkRegistrationWithParams:params success:^(id JSON) {
         CLRegistration *registration = [JSON result];
         CLCheckedRegistrationEvent *checkedRegistrationEvent = [[CLCheckedRegistrationEvent alloc] initWithRegistration:registration];

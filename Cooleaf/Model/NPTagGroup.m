@@ -9,8 +9,7 @@
 #import "NPTagGroup.h"
 #import "NPTag.h"
 
-@interface NPTagGroup ()
-{
+@interface NPTagGroup() {
 	NSMutableArray *_tags;
 	NSMutableDictionary *_tagsByName;
 }
@@ -18,8 +17,7 @@
 
 @implementation NPTagGroup
 
-- (id)initWithDictionary:(NSDictionary *)dictionary
-{
+- (id)initWithDictionary:(NSDictionary *)dictionary {
 	self = [super init];
 	
 	if (self) {
@@ -41,8 +39,7 @@
 	return self;
 }
 
-- (NSString *)description
-{
+- (NSString *)description {
 	return [NSString stringWithFormat:@"%@<%p>::{ objectId=%d, name=%@, isPrimary=%@, isRequired=%@, tags.count=%d }",
 					NSStringFromClass(self.class), self,
 					(int)_objectId, _name, NSStringFromBool(_isPrimary), NSStringFromBool(_isRequired), (int)_tags.count];

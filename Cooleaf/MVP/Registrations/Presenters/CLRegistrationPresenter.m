@@ -10,6 +10,7 @@
 #import "CLBus.h"
 #import "CLCheckRegistrationEvent.h"
 #import "CLFailedRegistrationEvent.h"
+#import "CLCheckedRegistrationEvent.h"
 
 @implementation CLRegistrationPresenter
 
@@ -37,6 +38,10 @@
 }
 
 # pragma mark - Subscription Methods
+
+SUBSCRIBE(CLCheckedRegistrationEvent) {
+    [_registrationInfo registrationCheckSuccess:event.registration];
+}
 
 SUBSCRIBE(CLFailedRegistrationEvent) {
     [_registrationInfo registrationFailed];

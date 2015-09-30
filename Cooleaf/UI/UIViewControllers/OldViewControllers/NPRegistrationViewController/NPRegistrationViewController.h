@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CLRegistration.h"
 
 @interface NPRegistrationViewController : UIViewController
+
+@property (nonatomic, strong) CLRegistration *registration;
 
 - (id)initWithUsername:(NSString *)username andPassword:(NSString *)password;
 
