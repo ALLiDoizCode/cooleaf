@@ -10,6 +10,8 @@
 #import "CLDeAuthorizeEvent.h"
 #import "CLDeAuthorizedEvent.h"
 #import "CLAuthenticationFailedEvent.h"
+#import "CLAuthenticateNewUserEvent.h"
+#import "CLAuthenticatedNewUserEvent.h"
 
 @interface CLAuthenticationPresenter()
 
@@ -19,30 +21,37 @@
 
 @implementation CLAuthenticationPresenter
 
-# pragma initWithInteractor
+# pragma mark - initWithInteractor
 
 - (id)initWithInteractor:(id<IAuthenticationInteractor>)interactor {
     _authInfo = interactor;
     return self;
 }
 
-# pragma registerOnBus
+# pragma mark - registerOnBus
 
 - (void)registerOnBus {
     REGISTER();
 }
 
-# pragma unregisterOnBus
+# pragma mark - unregisterOnBus
 
 - (void)unregisterOnBus {
     UNREGISTER();
 }
 
-#pragma authenticate
+# pragma mark - authenticate
 
 - (void)authenticate:(NSString *)email :(NSString *)password {
     CLAuthenticationEvent *authenticationEvent = [[CLAuthenticationEvent alloc] initWithCredentials:email :password];
     PUBLISH(authenticationEvent);
+}
+
+# pragma mark - authenticateNewUser
+
+- (void)authenticateNewUser:(NSString *)email password:(NSString *)password {
+    CLAuthenticateNewUserEvent *authNewUserEvent = [[CLAuthenticateNewUserEvent alloc] initWithEmail:email password:password];
+    PUBLISH(authNewUserEvent);
 }
 
 # pragma mark - deauthenticate
@@ -63,6 +72,10 @@ SUBSCRIBE(CLAuthenticationFailedEvent) {
 
 SUBSCRIBE(CLDeAuthorizedEvent) {
     [_authInfo deAuthorized];
+}
+
+SUBSCRIBE(CLAuthenticatedNewUserEvent) {
+    [_authInfo newUserAuthenticated:event.user];
 }
 
 # pragma dealloc

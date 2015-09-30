@@ -13,6 +13,7 @@
 #import "NPTagGroup.h"
 #import "UIFont+ApplicationFont.h"
 #import "CLRegistrationPresenter.h"
+#import "CLAuthenticationPresenter.h"
 
 @class NPRegistrationPicker;
 @interface NPRegistrationViewController (PrivateMethods)
@@ -185,6 +186,7 @@
      *
      */
     CLRegistrationPresenter *_registrationPresenter;
+    CLAuthenticationPresenter *_authenticationPresenter;
 }
 @end
 
@@ -259,6 +261,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[self.navigationController setNavigationBarHidden:TRUE];
     [self setupRegistrationPresenter];
+    [self setupAuthPresenter];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -281,6 +284,14 @@
 
 - (void)setupRegistrationPresenter {
     _registrationPresenter = [[CLRegistrationPresenter alloc] initWithInteractor:self];
+    [_registrationPresenter registerOnBus];
+}
+
+# pragma mark - setupAuthPresenter
+
+- (void)setupAuthPresenter {
+    _authenticationPresenter = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
+    [_authenticationPresenter registerOnBus];
 }
 
 # pragma mark - Rendering Methods
@@ -547,11 +558,33 @@
 }
 
 - (void)registeredUser:(CLUser *)user {
+    // Get user email
+    NSDictionary *userDict = (NSDictionary *) user;
+    NSString *email = userDict[@"email"];
     
+    // Authenticate new user
+    [_authenticationPresenter authenticateNewUser:email password:_password];
 }
 
 - (void)registerFailed {
     
+}
+
+# pragma mark - IAuthenticationInteractor Methods
+
+- (void)newUserAuthenticated:(CLUser *)user {
+    // We have the new user authenticated now we can edit their profile with info or update profile picture
+    
+    // Launch interests controller
+    NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
+    interestsController.editModeOn = TRUE;
+    interestsController.topBarEnabled = TRUE;
+    interestsController.scrollEnabled = TRUE;
+    [self.navigationController pushViewController:interestsController animated:TRUE];
+}
+
+- (void)authenticationFailed {
+    NSLog(@"Auth failed");
 }
 
 # pragma mark - Picker Delegate

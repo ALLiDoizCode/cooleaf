@@ -232,6 +232,14 @@
     _signUpButton.hidden = NO;
 }
 
+- (void)registeredUser:(CLUser *)user {
+    
+}
+
+- (void)registerFailed {
+    
+}
+
 # pragma mark - IAuthenticationInteractor
 
 - (void)initUser:(CLUser *)user {
@@ -244,6 +252,10 @@
 }
 
 - (void)deAuthorized {
+    
+}
+
+- (void)newUserAuthenticated:(CLUser *)user {
     
 }
 

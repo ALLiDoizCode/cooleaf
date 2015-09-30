@@ -12,8 +12,14 @@
 
 @optional
 - (void)registrationCheckSuccess:(CLRegistration *)registration;
+
+@optional
 - (void)registrationCheckFailed;
+
+@optional
 - (void)registeredUser:(CLUser *)user;
+
+@optional
 - (void)registerFailed;
 
 @end

@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CLRegistration.h"
 #import "IRegistrationInteractor.h"
+#import "IAuthenticationInteractor.h"
 
-@interface NPRegistrationViewController : UIViewController <IRegistrationInteractor>
+@interface NPRegistrationViewController : UIViewController <IRegistrationInteractor, IAuthenticationInteractor>
 
 @property (nonatomic, strong) CLRegistration *registration;
 

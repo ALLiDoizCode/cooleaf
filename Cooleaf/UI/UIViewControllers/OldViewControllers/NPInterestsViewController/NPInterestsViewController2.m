@@ -17,8 +17,7 @@
 
 static NSString * const reuseIdentifier = @"Cell";
 
-@interface NPInterestsViewController2 ()
-{
+@interface NPInterestsViewController2() {
 	NSArray *_npinterests;
 	NSLayoutConstraint *_heightConstraint;
 }
@@ -28,8 +27,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark - UICollectionViewController
 
-- (id)init
-{
+- (id)init {
 	UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
 	layout.minimumInteritemSpacing = 0;
 	layout.minimumLineSpacing = 12.;
@@ -45,8 +43,7 @@ static NSString * const reuseIdentifier = @"Cell";
 	return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
 	[super viewDidLoad];
 	
 	self.collectionView.backgroundColor = UIColor.whiteColor;
@@ -61,25 +58,18 @@ static NSString * const reuseIdentifier = @"Cell";
 	[self.collectionView addConstraint:_heightConstraint];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
 	[self.navigationController setNavigationBarHidden:TRUE];
 	[self reload];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 }
 
-
-
-
-
 #pragma mark - Accessors
 
-- (void)reload
-{
+- (void)reload {
 	void (^handler)(NSArray*) = ^ (NSArray *npinterests) {
 		DLog(@"interests = %@", npinterests);
 		_npinterests = npinterests;
@@ -124,39 +114,26 @@ static NSString * const reuseIdentifier = @"Cell";
 	[self.collectionView reloadData];
 }
 
-
-
-
-
 #pragma mark - Actions
 
-- (void)doActionBack:(id)sender
-{
+- (void)doActionBack:(id)sender {
 	[self.navigationController popViewControllerAnimated:TRUE];
 }
 
-- (void)doActionNext:(id)sender
-{
+- (void)doActionNext:(id)sender {
 	NSArray *activeInterests = [_npinterests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isMember; }]];
 	[[NPCooleafClient sharedClient] setUserInterests:activeInterests completion:^ (BOOL success) {
 		[self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
 	}];
 }
 
-
-
-
-
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 	return _topBarEnabled ? 4 : 1;
 }
 
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 	if (_topBarEnabled && section == 0)
 		return 1;
 	else if (_topBarEnabled && section == 1)
@@ -167,8 +144,7 @@ static NSString * const reuseIdentifier = @"Cell";
 		return _npinterests.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 	if (_topBarEnabled && indexPath.section == 0) {
 		NPInterestsHeaderViewCell *cell = (NPInterestsHeaderViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"HeaderCell" forIndexPath:indexPath];
 		cell.backHandler = ^ { [self doActionBack:nil]; };
@@ -193,10 +169,6 @@ static NSString * const reuseIdentifier = @"Cell";
 	}
 }
 
-
-
-
-
 #pragma mark - UICollectionViewDelegate
 
 //- (UICollectionReusableView *)collectionView: (UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -205,13 +177,11 @@ static NSString * const reuseIdentifier = @"Cell";
 //	return self.trackHeader;
 //}
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 	// TODO: Select Item
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
 	// TODO: Deselect item
 }
 
@@ -244,13 +214,9 @@ static NSString * const reuseIdentifier = @"Cell";
 */
 
 
-
-
-
 #pragma mark - UICollectionViewDelegateFlowLayout
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
 	if (_topBarEnabled && indexPath.section == 0)
 		return CGSizeMake(320, 50);
 	else if (_topBarEnabled && indexPath.section == 1)
@@ -261,8 +227,7 @@ static NSString * const reuseIdentifier = @"Cell";
 		return CGSizeMake(145, 145 + 30);
 }
 
-- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
 	if (_topBarEnabled && section == 0)
 		return UIEdgeInsetsMake(0, 0, 0, 0);
 	else if (_topBarEnabled && section == 1)

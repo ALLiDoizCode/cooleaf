@@ -10,8 +10,10 @@
 
 @protocol IAuthenticationInteractor <NSObject>
 
+@optional
 - (void)initUser:(CLUser *)user;
 - (void)authenticationFailed;
 - (void)deAuthorized;
+- (void)newUserAuthenticated:(CLUser *)user;
 
 @end

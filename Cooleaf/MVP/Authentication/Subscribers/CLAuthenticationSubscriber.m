@@ -11,6 +11,8 @@
 #import "SSKeychain.h"
 #import "CLDeAuthorizedEvent.h"
 #import "CLAuthenticationFailedEvent.h"
+#import "CLAuthenticateNewUserEvent.h"
+#import "CLAuthenticatedNewUserEvent.h"
 
 static NSString *const kCLOrganizatonHeader = @"X-Organization";
 
@@ -86,6 +88,46 @@ SUBSCRIBE(CLDeAuthorizeEvent) {
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];
+}
+
+SUBSCRIBE(CLAuthenticateNewUserEvent) {
+    // Get the values
+    NSString *email = event.email;
+    NSString *password = event.password;
+        
+    // Create params, initialize email, password from the event, and device id from the client
+    NSDictionary *params = @{
+                             @"email": email,
+                             @"password": password,
+                             @"device_id": [CLClient getInstance].notificationUDID
+                             };
+    // Pass to controller
+    [_authenticationController authenticate:params success:^(id response) {
+        
+        // Catch cookies
+        [[CLClient getInstance] saveCookies];
+        
+        // Get user
+        CLUser *user = [response result];
+        NSDictionary *userDict = [user dictionaryValue];
+        
+        // Save user in NSUserDefaults
+        [self saveUser:userDict email:email password:password];
+        
+        // Set the organization header
+        NSString *organizationHeader = userDict[@"role"][@"organization"][@"subdomain"];
+        [CLClient setOrganizationHeader:organizationHeader];
+        
+        // Send out a successful authentication event
+        CLAuthenticatedNewUserEvent *authenticationSuccessEvent = [[CLAuthenticatedNewUserEvent alloc] initWithUser:user];
+        PUBLISH(authenticationSuccessEvent);
+    } failure:^(NSError *error) {
+        [self clearSensitiveUserDefaults];
+        [self showLoginFailedAlertView];
+        CLAuthenticationFailedEvent *authFailedEvent = [[CLAuthenticationFailedEvent alloc] init];
+        PUBLISH(authFailedEvent);
+    }];
+
 }
 
 # pragma mark - Accessory Methods

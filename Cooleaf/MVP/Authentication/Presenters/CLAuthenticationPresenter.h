@@ -20,5 +20,6 @@
 - (void)unregisterOnBus;
 - (void)authenticate:(NSString *)email :(NSString *)password;
 - (void)deauthenticate;
+- (void)authenticateNewUser:(NSString *)email password:(NSString *)password;
 
 @end
