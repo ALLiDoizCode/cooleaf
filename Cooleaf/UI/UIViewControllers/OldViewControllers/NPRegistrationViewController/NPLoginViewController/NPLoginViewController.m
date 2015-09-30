@@ -274,7 +274,7 @@
 	[_passwordField resignFirstResponder];
     
     // If textfield attributes are too short show an AlertView, else try to do a registration check
-	if (_usernameField.text.length < 5) {
+	if (_usernameField.text.length < 5 && _passwordField.text.length < 8) {
 		[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Registration failed", @"Registration failure alert title")
 																message:NSLocalizedString(@"Given username or password is too short. (minimum is 8 characters)", @"Invalid credentials given. Too little data")
 															 delegate:nil

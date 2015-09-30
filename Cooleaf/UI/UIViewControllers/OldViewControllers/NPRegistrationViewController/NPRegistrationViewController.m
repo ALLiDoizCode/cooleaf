@@ -248,103 +248,6 @@
 	
 	[self modalShow];
     [self setupTagGroups:_registration];
-	
-//	[[NPCooleafClient sharedClient] registerWithUsername:_username completion:^ (NSString *token, NSDictionary *tagGroups, NSDictionary *presets) {
-//		DLog(@"token = %@", token);
-//		DLog(@"tags = %@", tagGroups);
-//		DLog(@"presets = %@", presets);
-//		
-//		_tagGroups = tagGroups;
-//		
-//		NSArray *allStructureNames = [tagGroups allKeys];
-//		DLog(@" All the Structure names are %@", allStructureNames);
-//		
-//		
-//		[self modalHide];
-//		
-//		if (token != nil && tagGroups != nil) {
-//			_token = token;
-//
-//			
-//			NPTagGroup *the1stTagGroup = tagGroups[allStructureNames[0]];
-//			
-//			[self addPickerWithTitle:allStructureNames[0] tags:the1stTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the1stTagGroup.objectId).stringValue]).firstObject];
-//			
-//			
-//			if (allStructureNames.count > 1)
-//			{
-//				NPTagGroup *the2ndTagGroup = tagGroups[allStructureNames[1]];
-//				[self addPickerWithTitle:allStructureNames[1] tags:the2ndTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the2ndTagGroup.objectId).stringValue]).firstObject];
-//			}
-//			
-//			if (allStructureNames.count > 2)
-//			{
-//				NPTagGroup *the3rdTagGroup = tagGroups[allStructureNames[2]];
-//				[self addPickerWithTitle:allStructureNames[2] tags:the3rdTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the3rdTagGroup.objectId).stringValue]).firstObject];
-//			}
-//			
-//			
-//			if (allStructureNames.count > 3)
-//			{
-//				NPTagGroup *the4thTagGroup = tagGroups[allStructureNames[3]];
-//				[self addPickerWithTitle:allStructureNames[3] tags:the4thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the4thTagGroup.objectId).stringValue]).firstObject];
-//			}
-//			
-//			
-//			if (allStructureNames.count > 4)
-//			{
-//				NPTagGroup *the5thTagGroup = tagGroups[allStructureNames[4]];
-//				[self addPickerWithTitle:allStructureNames[4] tags:the5thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the5thTagGroup.objectId).stringValue]).firstObject];
-//			}
-//			
-//			
-//			if (allStructureNames.count > 5)
-//			{
-//				NPTagGroup *the6thTagGroup = tagGroups[allStructureNames[5]];
-//				[self addPickerWithTitle:allStructureNames[5] tags:the6thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the6thTagGroup.objectId).stringValue]).firstObject];
-//			}
-//			
-//			
-//			if (allStructureNames.count > 6)
-//			{
-//				NPTagGroup *the7thTagGroup = tagGroups[allStructureNames[6]];
-//				[self addPickerWithTitle:allStructureNames[6] tags:the7thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the7thTagGroup.objectId).stringValue]).firstObject];
-//			}
-//			
-//			
-//			if (allStructureNames.count > 7)
-//			{
-//				NPTagGroup *the8thTagGroup = tagGroups[allStructureNames[7]];
-//				[self addPickerWithTitle:allStructureNames[7] tags:the8thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the8thTagGroup.objectId).stringValue]).firstObject];
-//			}
-//			
-//			
-//			if (allStructureNames.count > 8)
-//			{
-//				NPTagGroup *the9thTagGroup = tagGroups[allStructureNames[8]];
-//				[self addPickerWithTitle:allStructureNames[8] tags:the9thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the9thTagGroup.objectId).stringValue]).firstObject];
-//			}
-//			
-//			
-//			if (allStructureNames.count > 9)
-//			{
-//				NPTagGroup *the10thTagGroup = tagGroups[allStructureNames[9]];
-//				[self addPickerWithTitle:allStructureNames[9] tags:the10thTagGroup.tags afterPicker:nil defaultValue:((NSArray *)presets[@(the10thTagGroup.objectId).stringValue]).firstObject];
-//			}
-//
-//			
-//			
-////			[self addPickerWithTitle:@"Gender"     tags:@[@"Male", @"Female"]   afterPicker:nil defaultValue:presets[@"Gender"]];
-//			
-//			_nameTxt.text = presets[@"Full Name"];
-//			
-//			[_contentView addConstraint:[NSLayoutConstraint constraintWithItem:((NPRegistrationPicker *)_pickers.lastObject)->_label attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:_contentView attribute:NSLayoutAttributeBottom multiplier:1 constant:-20]];
-//		}
-//		else {
-//			[[[UIAlertView alloc] initWithTitle:@"Registration Failed" message:@"Please make sure to use your corporate email or try to ‘Log In’ as you may have already activated your account." delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:nil] show];
-//			[self.navigationController popViewControllerAnimated:TRUE];
-//		}
-//	}];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -581,6 +484,8 @@
     NSDictionary *registrationDict = (NSDictionary *) registration;
     NSString *token = registrationDict[@"token"];
     
+    NSLog(@"%@", registrationDict);
+    
     // If token is not null then enumerate over parent tags, and child tags
     if (token) {
         // Add name to full name label
@@ -763,13 +668,11 @@
 #pragma mark - Actions
 
 - (void)doActionBack:(id)sender {
-	DLog(@"");
 	//[self.navigationController popViewControllerAnimated:TRUE];
     [self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (void)doActionNext:(id)sender {
-	DLog(@"");
 	
 	//Tag Groups Setup
 //	NSDictionary *uD = [NPCooleafClient sharedClient].userData;
