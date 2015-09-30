@@ -103,7 +103,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setupUI];
 }
 
@@ -111,6 +110,7 @@
     [super viewWillAppear:animated];
 	[self.navigationController setNavigationBarHidden:TRUE];
     [self setupAuthenticationPresenter];
+    [self setupRegistrationPresenter];
     [self checkLogin];
 }
 
@@ -257,7 +257,7 @@
 	[_passwordField resignFirstResponder];
     
     // If textfield attributes are too short show an AlertView, else try to do a registration check
-	if (_usernameField.text.length < 8 || _passwordField.text.length < 8) {
+	if (_usernameField.text.length < 5) {
 		[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Registration failed", @"Registration failure alert title")
 																message:NSLocalizedString(@"Given username or password is too short. (minimum is 8 characters)", @"Invalid credentials given. Too little data")
 															 delegate:nil
@@ -265,11 +265,13 @@
 											otherButtonTitles: nil] show];
 		return;
     } else {
-        
+        [_registrationPresenter checkRegistrationWithEmail:_usernameField.text];
+        _signUpButton.hidden = YES;
+        [_spinner startAnimating];
     }
     
-	NPRegistrationViewController *controller = [[NPRegistrationViewController alloc] initWithUsername:_usernameField.text andPassword:_passwordField.text];
-    [self presentViewController:controller animated:YES completion:nil];
+//	NPRegistrationViewController *controller = [[NPRegistrationViewController alloc] initWithUsername:_usernameField.text andPassword:_passwordField.text];
+//    [self presentViewController:controller animated:YES completion:nil];
 }
 
 # pragma mark - termsButtonTapped

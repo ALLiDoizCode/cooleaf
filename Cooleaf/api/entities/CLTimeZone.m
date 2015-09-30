@@ -10,6 +10,8 @@
 
 @implementation CLTimeZone
 
+# pragma mark - JSONKeyPathsByPropertyKey
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"name": @"name",

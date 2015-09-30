@@ -29,9 +29,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="aLc-60-9zd" userLabel="Global spinner">
-                    <rect key="frame" x="151" y="279" width="20" height="20"/>
-                </activityIndicatorView>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uo0-it-iqr">
                     <rect key="frame" x="30" y="400" width="260" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -46,9 +43,6 @@
                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Kj-Us-JC6" userLabel="Container view">
                     <rect key="frame" x="13" y="200" width="296" height="177"/>
                     <subviews>
-                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="OT1-7P-z3w" userLabel="Spinner">
-                            <rect key="frame" x="138" y="144" width="20" height="20"/>
-                        </activityIndicatorView>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWS-Zh-x6R">
                             <rect key="frame" x="0.0" y="139" width="296" height="30"/>
                             <color key="backgroundColor" red="0.30588235294117649" green="0.80392156862745101" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
@@ -101,6 +95,9 @@
                                 <outlet property="delegate" destination="-1" id="PQn-e0-CMm"/>
                             </connections>
                         </textField>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="OT1-7P-z3w" userLabel="Spinner">
+                            <rect key="frame" x="138" y="144" width="20" height="20"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
@@ -155,6 +152,9 @@
                         <action selector="termsButtonTapped:" destination="-1" eventType="touchUpInside" id="J4s-qP-14F"/>
                     </connections>
                 </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="aLc-60-9zd" userLabel="Global spinner">
+                    <rect key="frame" x="151" y="279" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>

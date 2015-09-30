@@ -10,6 +10,8 @@
 
 @implementation CLComment
 
+# pragma mark - JSONKeyPathsByPropertyKey
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"commentId": @"id",

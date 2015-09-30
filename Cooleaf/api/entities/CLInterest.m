@@ -10,6 +10,8 @@
 
 @implementation CLInterest
 
+# pragma mark - JSONKeyPathsByPropertyKey
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"interestId": @"id",
@@ -22,6 +24,8 @@
              @"member": @"member"
              };
 }
+
+# pragma mark - imageJSONTransformer
 
 - (NSValueTransformer *)imageJSONTransformer {
     return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSDictionary *imageDict) {

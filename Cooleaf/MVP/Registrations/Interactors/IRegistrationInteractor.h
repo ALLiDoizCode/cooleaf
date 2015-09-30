@@ -6,6 +6,9 @@
 //  Copyright © 2015 Nova Project. All rights reserved.
 //
 
+#import "CLRegistration.h"
 @protocol IRegistrationInteractor <NSObject>
+
+- (void)registrationCheckSuccess:(CLRegistration *)registration;
 
 @end

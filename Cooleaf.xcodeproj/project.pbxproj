@@ -107,6 +107,9 @@
 		4BC481BC1BB86D8600076A62 /* CLDeAuthorizedEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC481BB1BB86D8600076A62 /* CLDeAuthorizedEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4BC616311BB9198800EB9476 /* CLLoadMeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC616301BB9198800EB9476 /* CLLoadMeEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4BC616341BB9199800EB9476 /* CLLoadedMeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BC616331BB9199800EB9476 /* CLLoadedMeEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4BE1B2B51BBB569800A07DA1 /* CLRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1B2B41BBB569800A07DA1 /* CLRegistration.m */; settings = {ASSET_TAGS = (); }; };
+		4BE1B2B81BBB5B0500A07DA1 /* CLCheckRegistrationEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1B2B71BBB5B0500A07DA1 /* CLCheckRegistrationEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4BE1B2BB1BBB5FEF00A07DA1 /* CLCheckedRegistrationEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1B2BA1BBB5FEF00A07DA1 /* CLCheckedRegistrationEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4BE1DF3F1BABD12B009519CB /* CLGroupPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */; };
 		4BE1DF431BABD155009519CB /* CLGroupSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF421BABD155009519CB /* CLGroupSubscriber.m */; };
 		4BE1DF461BABD1D4009519CB /* CLGroupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1DF451BABD1D4009519CB /* CLGroupController.m */; };
@@ -469,6 +472,12 @@
 		4BE1B2901BBB3B6700A07DA1 /* IGroupDetailInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGroupDetailInteractor.h; sourceTree = "<group>"; };
 		4BE1B2911BBB3B8800A07DA1 /* IInterestDetailInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IInterestDetailInteractor.h; sourceTree = "<group>"; };
 		4BE1B2921BBB3BA400A07DA1 /* IEventDetailInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IEventDetailInteractor.h; sourceTree = "<group>"; };
+		4BE1B2B31BBB569800A07DA1 /* CLRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLRegistration.h; sourceTree = "<group>"; };
+		4BE1B2B41BBB569800A07DA1 /* CLRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLRegistration.m; sourceTree = "<group>"; };
+		4BE1B2B61BBB5B0500A07DA1 /* CLCheckRegistrationEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCheckRegistrationEvent.h; sourceTree = "<group>"; };
+		4BE1B2B71BBB5B0500A07DA1 /* CLCheckRegistrationEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCheckRegistrationEvent.m; sourceTree = "<group>"; };
+		4BE1B2B91BBB5FEF00A07DA1 /* CLCheckedRegistrationEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCheckedRegistrationEvent.h; sourceTree = "<group>"; };
+		4BE1B2BA1BBB5FEF00A07DA1 /* CLCheckedRegistrationEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCheckedRegistrationEvent.m; sourceTree = "<group>"; };
 		4BE1DF3D1BABD12B009519CB /* CLGroupPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLGroupPresenter.h; path = Cooleaf/MVP/Groups/Presenters/CLGroupPresenter.h; sourceTree = SOURCE_ROOT; };
 		4BE1DF3E1BABD12B009519CB /* CLGroupPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLGroupPresenter.m; path = Cooleaf/MVP/Groups/Presenters/CLGroupPresenter.m; sourceTree = SOURCE_ROOT; };
 		4BE1DF411BABD155009519CB /* CLGroupSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupSubscriber.h; sourceTree = "<group>"; };
@@ -920,6 +929,8 @@
 				4BE1DF721BABF6C9009519CB /* CLComment.m */,
 				4B3B36861BB20C7300C7AEE5 /* CLCategory.h */,
 				4B3B36871BB20C7300C7AEE5 /* CLCategory.m */,
+				4BE1B2B31BBB569800A07DA1 /* CLRegistration.h */,
+				4BE1B2B41BBB569800A07DA1 /* CLRegistration.m */,
 			);
 			name = Entities;
 			path = ../Api/Entities;
@@ -1573,6 +1584,10 @@
 		4BE1B29A1BBB40EC00A07DA1 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				4BE1B2B61BBB5B0500A07DA1 /* CLCheckRegistrationEvent.h */,
+				4BE1B2B71BBB5B0500A07DA1 /* CLCheckRegistrationEvent.m */,
+				4BE1B2B91BBB5FEF00A07DA1 /* CLCheckedRegistrationEvent.h */,
+				4BE1B2BA1BBB5FEF00A07DA1 /* CLCheckedRegistrationEvent.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -2242,6 +2257,7 @@
 				4B3F2E721BA78A4900D4934E /* CLLoadQueryEvent.m in Sources */,
 				4B3B36821BB1FC6200C7AEE5 /* CLParticipantSubscriber.m in Sources */,
 				4BE1DF861BAE9D96009519CB /* CLLoadEventComments.m in Sources */,
+				4BE1B2B51BBB569800A07DA1 /* CLRegistration.m in Sources */,
 				4BA4E30E1B8BC8F40089CB2B /* CLVersions.m in Sources */,
 				4BE1DF791BAC00F1009519CB /* CLLoadLeaveInterest.m in Sources */,
 				D93AAC9E187C29F000E9B96A /* NPTodoViewController.m in Sources */,
@@ -2356,6 +2372,7 @@
 				68DDFEFA1B9F443C00EDE1CF /* CLCommentViewController.m in Sources */,
 				F998F68F1AB3312500213240 /* NPInterest.m in Sources */,
 				4B2C13EE1BB948EE00DAA8F2 /* CLLoadedJoinInterest.m in Sources */,
+				4BE1B2B81BBB5B0500A07DA1 /* CLCheckRegistrationEvent.m in Sources */,
 				D94664F81863293C0084BBB2 /* UIBarButtonItem+NPBarButtonItems.m in Sources */,
 				4BA4E31D1B8BDC4B0089CB2B /* CLEdit.m in Sources */,
 				4BC481B91BB86D4E00076A62 /* CLDeAuthorizeEvent.m in Sources */,
@@ -2391,6 +2408,7 @@
 				4BA2A6591BA7F685004724EB /* CLLoadUsersEvent.m in Sources */,
 				68AB42001BAA02F2006495DC /* CLGroupEventCell.m in Sources */,
 				4BAE005D1B8EDEE200779E1F /* CLBaseNotificationRegistry.m in Sources */,
+				4BE1B2BB1BBB5FEF00A07DA1 /* CLCheckedRegistrationEvent.m in Sources */,
 				4B3B36781BB1F9A900C7AEE5 /* CLParticipantPresenter.m in Sources */,
 				4BA2A65C1BA7F8ED004724EB /* CLLoadedUsersEvent.m in Sources */,
 				4BE1DF731BABF6C9009519CB /* CLComment.m in Sources */,

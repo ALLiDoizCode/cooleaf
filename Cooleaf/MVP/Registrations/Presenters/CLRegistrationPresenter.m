@@ -8,6 +8,7 @@
 
 #import "CLRegistrationPresenter.h"
 #import "CLBus.h"
+#import "CLCheckRegistrationEvent.h"
 
 @implementation CLRegistrationPresenter
 
@@ -30,8 +31,8 @@
 
 # pragma mark - checkRegistrationWithEmail
 
-- (void)checkRegistrationWithEmail:(NSString *)email password:(NSString *)password {
-    
+- (void)checkRegistrationWithEmail:(NSString *)email {
+    PUBLISH([[CLCheckRegistrationEvent alloc] initWithEmail:email]);
 }
 
 @end

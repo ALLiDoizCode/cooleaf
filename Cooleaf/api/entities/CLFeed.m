@@ -12,6 +12,8 @@
 
 @implementation CLFeed
 
+# pragma mark - JSONKeyPathsByPropertyKey
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"feedId": @"id",

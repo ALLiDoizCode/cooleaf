@@ -7,7 +7,19 @@
 //
 
 #import "CLRegistrationController.h"
+#import "CLClient.h"
+
+static NSString *const kRegistrationsCheckPath = @"v2/registrations/check.json";
 
 @implementation CLRegistrationController
+
+- (void)checkRegistrationWithParams:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    [[CLClient getInstance] POST:kRegistrationsCheckPath parameters:params completion:^(id response, NSError *error) {
+        if (!error)
+            success(response);
+        else
+            failure(error);
+    }];
+}
 
 @end

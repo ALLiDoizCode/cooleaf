@@ -14,6 +14,7 @@
 #import "CLFeed.h"
 #import "CLComment.h"
 #import "SSKeychain.h"
+#import "CLRegistration.h"
 
 static NSString *const BASE_API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu";
 static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api";
@@ -56,6 +57,7 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
 + (NSDictionary *)modelClassesByResourcePath {
     return @{
              @"v2/authorize.json": [CLUser class],
+             @"v2/registrations/check.json": [CLRegistration class],
              @"v2/events/*": [CLEvent class],
              @"v2/events/ongoing.json": [CLEvent class],
              @"v2/events/user/*": [CLEvent class],

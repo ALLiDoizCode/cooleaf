@@ -16,6 +16,6 @@
 - (id)initWithInteractor:(id<IRegistrationInteractor>)interactor;
 - (void)registerOnBus;
 - (void)unregisterOnBus;
-- (void)checkRegistrationWithEmail:(NSString *)email password:(NSString *)password;
+- (void)checkRegistrationWithEmail:(NSString *)email;
 
 @end
