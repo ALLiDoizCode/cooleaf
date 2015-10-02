@@ -72,19 +72,23 @@ static NSInteger const PER_PAGE = 25;
 # pragma mark - Subscription Events
 
 SUBSCRIBE(CLLoadedInterests) {
-    [_interestInfo initInterests:event.interests];
+    if ([_interestInfo respondsToSelector:@selector(initInterests:)])
+        [_interestInfo initInterests:event.interests];
 }
 
 SUBSCRIBE(CLLoadedInterestMembers) {
-    [_interestDetailInfo initMembers:event.members];
+    if ([_interestInfo respondsToSelector:@selector(initMembers:)])
+        [_interestDetailInfo initMembers:event.members];
 }
 
 SUBSCRIBE(CLLoadedJoinInterest) {
-    [_interestDetailInfo joinedInterest];
+    if ([_interestInfo respondsToSelector:@selector(joinedInterest)])
+        [_interestDetailInfo joinedInterest];
 }
 
 SUBSCRIBE(CLLoadedLeaveInterest) {
-    [_interestDetailInfo leaveInterest];
+    if ([_interestInfo respondsToSelector:@selector(leaveInterest)])
+        [_interestDetailInfo leaveInterest];
 }
 
 @end

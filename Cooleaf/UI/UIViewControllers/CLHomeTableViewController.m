@@ -26,6 +26,7 @@
 #import "CLUserPresenter.h"
 #import "SSKeychain.h"
 #import "CLInterestsCollectionViewController.h"
+#import "NPInterestsViewController2.h"
 
 #define StringFromBoolean (return value ? @"YES" : @"NO")
 
@@ -90,6 +91,13 @@
     
     // Initialize Event presenter
     [self initEventPresenter];
+    
+    // Launch interests controller
+    NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
+    interestsController.editModeOn = TRUE;
+    interestsController.topBarEnabled = TRUE;
+    interestsController.scrollEnabled = TRUE;
+    [self.navigationController presentViewController:interestsController animated:YES completion:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

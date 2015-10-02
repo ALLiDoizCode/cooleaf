@@ -48,15 +48,18 @@
 # pragma mark - Subscription Methods
 
 SUBSCRIBE(CLCheckedRegistrationEvent) {
-    [_registrationInfo registrationCheckSuccess:event.registration];
+    if ([_registrationInfo respondsToSelector:@selector(registrationCheckSuccess:)])
+        [_registrationInfo registrationCheckSuccess:event.registration];
 }
 
 SUBSCRIBE(CLFailedRegistrationEvent) {
-    [_registrationInfo registrationCheckFailed];
+    if ([_registrationInfo respondsToSelector:@selector(registrationCheckFailed)])
+        [_registrationInfo registrationCheckFailed];
 }
 
 SUBSCRIBE(CLRegisteredUserEvent) {
-    [_registrationInfo registeredUser:event.user];
+    if ([_registrationInfo respondsToSelector:@selector(registeredUser:)])
+        [_registrationInfo registeredUser:event.user];
 }
 
 @end

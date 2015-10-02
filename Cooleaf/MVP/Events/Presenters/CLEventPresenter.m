@@ -79,21 +79,23 @@ static NSInteger const PER_PAGE = 25;
 # pragma mark - Subscription Methods
 
 SUBSCRIBE(CLLoadedEvents) {
-    if (_eventInfo != nil)
+    if ([_eventInfo respondsToSelector:@selector(initEvents:)])
         [_eventInfo initEvents:event.events];
 }
 
 SUBSCRIBE(CLLoadedUserEvents) {
-    if (_eventInfo != nil)
+    if ([_eventInfo respondsToSelector:@selector(initUserEvents:)])
         [_eventInfo initUserEvents:event.events];
 }
 
 SUBSCRIBE(CLLoadedJoinEvent) {
-    [_eventDetailInfo joinedEvent];
+    if ([_eventDetailInfo respondsToSelector:@selector(joinedEvent)])
+        [_eventDetailInfo joinedEvent];
 }
 
 SUBSCRIBE(CLLoadedLeaveEvent) {
-    [_eventDetailInfo leftEvent];
+    if ([_eventDetailInfo respondsToSelector:@selector(leftEvent)])
+        [_eventDetailInfo leftEvent];
 }
 
 @end

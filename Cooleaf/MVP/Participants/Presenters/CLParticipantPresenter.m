@@ -42,7 +42,8 @@ static NSInteger const PER_PAGE = 25;
 # pragma mark - Subscription Methods
 
 SUBSCRIBE(CLLoadedEventParticipants) {
-    [_participantInfo initParticipants:event.participants];
+    if ([_participantInfo respondsToSelector:@selector(initParticipants:)])
+        [_participantInfo initParticipants:event.participants];
 }
 
 @end

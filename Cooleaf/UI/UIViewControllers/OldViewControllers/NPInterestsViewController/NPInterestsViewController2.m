@@ -78,7 +78,6 @@ static NSString * const reuseIdentifier = @"Cell";
 # pragma mark - setupCollectionView
 
 - (void)setupCollectionView {
-    NSLog(@"SetupCollectionView");
     self.collectionView.backgroundColor = UIColor.whiteColor;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -89,6 +88,8 @@ static NSString * const reuseIdentifier = @"Cell";
     
     _heightConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:0];
     [self.collectionView addConstraint:_heightConstraint];
+    // TODO - Add 20 pts to top, but won't work well in landscape mode
+    self.collectionView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
 }
 
 # pragma mark - setupInterestPresenter
@@ -166,7 +167,7 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark - Actions
 
 - (void)doActionBack:(id)sender {
-	[self.navigationController popViewControllerAnimated:TRUE];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doActionNext:(id)sender {
@@ -179,15 +180,13 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-	return _topBarEnabled ? 4 : 1;
+	return 3;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 	if (_topBarEnabled && section == 0)
 		return 1;
 	else if (_topBarEnabled && section == 1)
-		return 1;
-	else if (_topBarEnabled && section == 3)
 		return 1;
 	else
 		return 20;
@@ -202,12 +201,6 @@ static NSString * const reuseIdentifier = @"Cell";
 	}
 	if (_topBarEnabled && indexPath.section == 1) {
 		NPPickYourInterestsLabelCell *cell = (NPPickYourInterestsLabelCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"NPPickYourInterestsLabelCell" forIndexPath:indexPath];
-		return cell;
-	}
-	else if (_topBarEnabled && indexPath.section == 3) {
-		NPInterestsHeaderViewCell *cell = (NPInterestsHeaderViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"HeaderCell" forIndexPath:indexPath];
-		cell.backHandler = ^ { [self doActionBack:nil]; };
-		cell.nextHandler = ^ { [self doActionNext:nil]; };
 		return cell;
 	}
 	else {

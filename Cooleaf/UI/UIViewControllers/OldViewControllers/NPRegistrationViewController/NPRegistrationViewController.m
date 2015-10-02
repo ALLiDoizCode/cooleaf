@@ -14,7 +14,6 @@
 #import "UIFont+ApplicationFont.h"
 #import "CLRegistrationPresenter.h"
 #import "CLAuthenticationPresenter.h"
-#import "CLInterestsCollectionViewController.h"
 
 @class NPRegistrationPicker;
 @interface NPRegistrationViewController (PrivateMethods)
@@ -184,7 +183,7 @@
 	UIActivityIndicatorView *_modalSpinner;
     
     /**
-     *
+     * Presenters
      */
     CLRegistrationPresenter *_registrationPresenter;
     CLAuthenticationPresenter *_authenticationPresenter;
@@ -573,12 +572,16 @@
 # pragma mark - IAuthenticationInteractor Methods
 
 - (void)newUserAuthenticated:(CLUser *)user {
-    NSLog(@"newUserAuthenticated");
     // We have the new user authenticated now we can edit their profile with info or update profile picture
     
     // Launch interests controller
-    CLInterestsCollectionViewController *interestsController = [[CLInterestsCollectionViewController alloc] init];
+    NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
+    interestsController.editModeOn = TRUE;
+    interestsController.topBarEnabled = FALSE;
+    interestsController.scrollEnabled = TRUE;
+    interestsController.userAvatar = _avatarImg.image;
     [self presentViewController:interestsController animated:YES completion:nil];
+    [interestsController viewWillAppear:YES];
 }
 
 - (void)authenticationFailed {
@@ -768,45 +771,6 @@
     
     [_modalSpinner startAnimating];
     [_registrationPresenter registerUserWithToken:token name:username password:password tags:tagsWithoutDuplicates];
-//	[[NPCooleafClient sharedClient] updateRegistrationWithToken:_token name:_nameTxt.text gender:gender password:_password tags:tags completion:^ (BOOL success, NSString *error) {
-//		DLog(@"Done! success = %@", NSStringFromBool(success));
-//		
-//		if (success == FALSE) {
-//			[[[UIAlertView alloc] initWithTitle:@"Registration Failed." message:error delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil] show];
-//			[self dismissViewControllerAnimated:YES completion:nil];
-//			return;
-//		}
-//		
-//		[[NPCooleafClient sharedClient] loginWithUsername:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"] password:_password completion:^(NSError *error) {
-//			
-//			NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
-//			interestsController.editModeOn = TRUE;
-//			interestsController.topBarEnabled = TRUE;
-//			interestsController.scrollEnabled = TRUE;
-//			[self.navigationController pushViewController:interestsController animated:TRUE];
-//			DLog(@"collectionView = %@", interestsController.collectionView);
-//			
-//			[[NPCooleafClient sharedClient] updatePictureWithImage:_avatarImg.image completion:^ (NSDictionary *unused) {
-//				DLog(@"Done! unused = %@", unused);
-//				
-//				if (unused != nil) {
-//					NSURL *avatarURL = [[NPCooleafClient sharedClient].baseURL URLByAppendingPathComponent:unused[@"versions"][@"big"]];
-//					DLog(@"avatarUrl = %@", avatarURL);
-//					[[NPCooleafClient sharedClient] fetchImage:avatarURL.absoluteString completion: ^ (NSString *imagePath, UIImage *image) {
-//						if (image && [imagePath isEqual:avatarURL.absoluteString])
-//							_avatarImg.image = image;
-//					}];
-//					
-//					NSDictionary *uD = [NPCooleafClient sharedClient].userData;
-//					[[NPCooleafClient sharedClient] updateProfileDataAllFields:_nameTxt.text email:nil password:nil tags:nil removed_picture:FALSE file_cache:unused[@"file_cache"] role_structure_required:uD[@"role"] profileDailyDigest:nil profileWeeklyDigest:nil profile:uD[@"profile"] completion:^{
-//						NSLog(@"Success");
-//						[[NSNotificationCenter defaultCenter] postNotificationName:kNPCooleafClientRefreshNotification object:nil];
-//
-//					}];
-//				}
-//			}];
-//		}];
-//	}];
 }
 
 - (void)doActionPicture:(id)sender {

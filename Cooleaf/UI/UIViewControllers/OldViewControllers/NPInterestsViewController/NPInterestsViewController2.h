@@ -11,6 +11,7 @@
 
 @interface NPInterestsViewController2 : UICollectionViewController <IInterestInteractor>
 
+@property (nonatomic, strong) UIImage *userAvatar;
 @property (readwrite, assign, nonatomic) BOOL editModeOn;
 @property (readwrite, assign, nonatomic) BOOL topBarEnabled;
 @property (readwrite, assign, nonatomic) BOOL scrollEnabled;

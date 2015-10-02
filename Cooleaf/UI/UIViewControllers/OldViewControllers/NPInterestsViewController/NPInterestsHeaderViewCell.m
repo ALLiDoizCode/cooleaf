@@ -105,12 +105,14 @@
 
 - (void)doActionBack:(id)sender {
 	DLog(@"");
+    NSLog(@"back action inside cell");
 	if (_backHandler)
 		_backHandler();
 }
 
 - (void)doActionNext:(id)sender {
 	DLog(@"");
+    NSLog(@"next action inside cell");
 	if (_nextHandler)
 		_nextHandler();
 }

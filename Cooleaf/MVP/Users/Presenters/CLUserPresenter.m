@@ -51,11 +51,13 @@ static NSInteger const PER_PAGE = 25;
 # pragma mark - Subscription Methods
 
 SUBSCRIBE(CLLoadedUsersEvent) {
-    [_userInfo initOrganizationUsers:event.users];
+    if ([_userInfo respondsToSelector:@selector(initOrganizationUsers:)])
+        [_userInfo initOrganizationUsers:event.users];
 }
 
 SUBSCRIBE(CLLoadedMeEvent) {
-    [_userInfo initMe:event.user];
+    if ([_userInfo respondsToSelector:@selector(initMe:)])
+        [_userInfo initMe:event.user];
 }
 
 @end

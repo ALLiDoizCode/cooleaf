@@ -43,7 +43,8 @@ static NSInteger const PER_PAGE = 25;
 # pragma mark - Subscription Methods
 
 SUBSCRIBE(CLLoadedQueryEvent) {
-    [_searchInfo initWithQueryResults:event.results];
+    if ([_searchInfo respondsToSelector:@selector(initWithQueryResults:)])
+        [_searchInfo initWithQueryResults:event.results];
 }
 
 @end
