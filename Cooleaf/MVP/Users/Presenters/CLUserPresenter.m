@@ -48,6 +48,8 @@ static NSInteger const PER_PAGE = 25;
     PUBLISH(loadUsersEvent);
 }
 
+# pragma mark - edut
+
 # pragma mark - Subscription Methods
 
 SUBSCRIBE(CLLoadedUsersEvent) {

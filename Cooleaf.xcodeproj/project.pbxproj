@@ -57,6 +57,7 @@
 		4B64D3771BBBA4A100DF4FF3 /* CLAuthenticatedNewUserEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D3761BBBA4A100DF4FF3 /* CLAuthenticatedNewUserEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4B64D37A1BBE283500DF4FF3 /* CLInterestsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D3791BBE283500DF4FF3 /* CLInterestsCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
 		4B64D37D1BBE298300DF4FF3 /* CLInterestCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D37C1BBE298300DF4FF3 /* CLInterestCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		4B64D3861BBE7B7D00DF4FF3 /* CLFilePreviewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D3851BBE7B7D00DF4FF3 /* CLFilePreviewsController.m */; settings = {ASSET_TAGS = (); }; };
 		4B6B56F01B98E0C8008DF039 /* CLProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56EF1B98E0C8008DF039 /* CLProfileTableViewController.m */; };
 		4B6B56F31B98E220008DF039 /* CLGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56F21B98E220008DF039 /* CLGroupTableViewCell.m */; };
 		4B6B56F61B98E859008DF039 /* CLGroupCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56F51B98E859008DF039 /* CLGroupCollectionViewCell.m */; };
@@ -367,6 +368,8 @@
 		4B64D3791BBE283500DF4FF3 /* CLInterestsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInterestsCollectionViewController.m; sourceTree = "<group>"; };
 		4B64D37B1BBE298300DF4FF3 /* CLInterestCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInterestCollectionViewCell.h; sourceTree = "<group>"; };
 		4B64D37C1BBE298300DF4FF3 /* CLInterestCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInterestCollectionViewCell.m; sourceTree = "<group>"; };
+		4B64D3841BBE7B7D00DF4FF3 /* CLFilePreviewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFilePreviewsController.h; sourceTree = "<group>"; };
+		4B64D3851BBE7B7D00DF4FF3 /* CLFilePreviewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFilePreviewsController.m; sourceTree = "<group>"; };
 		4B6B56EE1B98E0C8008DF039 /* CLProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProfileTableViewController.h; sourceTree = "<group>"; };
 		4B6B56EF1B98E0C8008DF039 /* CLProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLProfileTableViewController.m; sourceTree = "<group>"; };
 		4B6B56F11B98E220008DF039 /* CLGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupTableViewCell.h; sourceTree = "<group>"; };
@@ -888,6 +891,56 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
+		4B64D37E1BBE7AC700DF4FF3 /* FilePreviews */ = {
+			isa = PBXGroup;
+			children = (
+				4B64D3831BBE7B0D00DF4FF3 /* Controllers */,
+				4B64D3821BBE7B0700DF4FF3 /* Events */,
+				4B64D3811BBE7B0200DF4FF3 /* Interactors */,
+				4B64D3801BBE7AFC00DF4FF3 /* Presenters */,
+				4B64D37F1BBE7AF500DF4FF3 /* Subscribers */,
+			);
+			name = FilePreviews;
+			path = ../MVP/FilePreviews;
+			sourceTree = "<group>";
+		};
+		4B64D37F1BBE7AF500DF4FF3 /* Subscribers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Subscribers;
+			sourceTree = "<group>";
+		};
+		4B64D3801BBE7AFC00DF4FF3 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		4B64D3811BBE7B0200DF4FF3 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		4B64D3821BBE7B0700DF4FF3 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4B64D3831BBE7B0D00DF4FF3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4B64D3841BBE7B7D00DF4FF3 /* CLFilePreviewsController.h */,
+				4B64D3851BBE7B7D00DF4FF3 /* CLFilePreviewsController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		4BA4E2EF1B8BC5CA0089CB2B /* Api */ = {
 			isa = PBXGroup;
 			children = (
@@ -977,6 +1030,7 @@
 				4BE1B2551BBB2EDA00A07DA1 /* Comments */,
 				4BE1B24F1BBB2E9700A07DA1 /* Events */,
 				4BE1B2801BBB35D900A07DA1 /* Feeds */,
+				4B64D37E1BBE7AC700DF4FF3 /* FilePreviews */,
 				4BE1B27B1BBB352E00A07DA1 /* Groups */,
 				4BE1B2511BBB2EA600A07DA1 /* Interests */,
 				4BE1B2561BBB2EE400A07DA1 /* Participants */,
@@ -2411,6 +2465,7 @@
 				4BA4E3111B8BC9240089CB2B /* CLUser.m in Sources */,
 				4BAE00711B8EE06900779E1F /* CLUserSubscriber.m in Sources */,
 				4BBF2C331BA10A8F00ECC37F /* CLTagCollectionViewCell.m in Sources */,
+				4B64D3861BBE7B7D00DF4FF3 /* CLFilePreviewsController.m in Sources */,
 				68D85D351BA929EA00C4620A /* UIColor+BFPaperColors.m in Sources */,
 				432A499E1AE4FA2E001B3740 /* NPEditTagsViewController.m in Sources */,
 				68DDFEFA1B9F443C00EDE1CF /* CLCommentViewController.m in Sources */,
