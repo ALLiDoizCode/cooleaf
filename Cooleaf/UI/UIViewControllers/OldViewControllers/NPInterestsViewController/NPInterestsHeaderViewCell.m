@@ -22,8 +22,7 @@
 
 @implementation NPInterestsHeaderViewCell
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	
 	if (self) {
@@ -33,9 +32,7 @@
 	return self;
 }
 
-- (void)render
-{
-	//self.backgroundColor = UIColor.blueColor;
+- (void)render {
 	
 	// top bar view
 	_topBarView = [[UIView alloc] init];
@@ -106,15 +103,13 @@
 	}
 }
 
-- (void)doActionBack:(id)sender
-{
+- (void)doActionBack:(id)sender {
 	DLog(@"");
 	if (_backHandler)
 		_backHandler();
 }
 
-- (void)doActionNext:(id)sender
-{
+- (void)doActionNext:(id)sender {
 	DLog(@"");
 	if (_nextHandler)
 		_nextHandler();

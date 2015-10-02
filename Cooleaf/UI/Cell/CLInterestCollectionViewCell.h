@@ -1,15 +1,15 @@
 //
-//  NPInterestViewCell.h
+//  CLInterestCollectionViewCell.h
 //  Cooleaf
 //
-//  Created by Curtis Jones on 2015.03.12.
-//  Copyright (c) 2015 Nova Project. All rights reserved.
+//  Created by Haider Khan on 10/1/15.
+//  Copyright © 2015 Nova Project. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "CLInterest.h"
 
-@interface NPInterestViewCell : UICollectionViewCell
+@interface CLInterestCollectionViewCell : UICollectionViewCell
 
 @property (readwrite, assign, nonatomic) BOOL editModeOn;
 @property (readwrite, strong, nonatomic) CLInterest *interest;

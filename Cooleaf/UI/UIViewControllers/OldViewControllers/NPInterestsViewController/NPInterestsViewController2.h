@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IInterestInteractor.h"
 
-@interface NPInterestsViewController2 : UICollectionViewController
+@interface NPInterestsViewController2 : UICollectionViewController <IInterestInteractor>
 
 @property (readwrite, assign, nonatomic) BOOL editModeOn;
 @property (readwrite, assign, nonatomic) BOOL topBarEnabled;

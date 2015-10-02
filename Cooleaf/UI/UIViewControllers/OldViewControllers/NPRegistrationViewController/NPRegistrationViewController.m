@@ -14,6 +14,7 @@
 #import "UIFont+ApplicationFont.h"
 #import "CLRegistrationPresenter.h"
 #import "CLAuthenticationPresenter.h"
+#import "CLInterestsCollectionViewController.h"
 
 @class NPRegistrationPicker;
 @interface NPRegistrationViewController (PrivateMethods)
@@ -520,8 +521,6 @@
     NSDictionary *registrationDict = (NSDictionary *) registration;
     NSString *token = registrationDict[@"token"];
     
-    NSLog(@"%@", registrationDict);
-    
     // If token is not null then enumerate over parent tags, and child tags
     if (token) {
         // Add name to full name label
@@ -558,6 +557,7 @@
 }
 
 - (void)registeredUser:(CLUser *)user {
+    NSLog(@"registeredUser");
     // Get user email
     NSDictionary *userDict = (NSDictionary *) user;
     NSString *email = userDict[@"email"];
@@ -573,14 +573,12 @@
 # pragma mark - IAuthenticationInteractor Methods
 
 - (void)newUserAuthenticated:(CLUser *)user {
+    NSLog(@"newUserAuthenticated");
     // We have the new user authenticated now we can edit their profile with info or update profile picture
     
     // Launch interests controller
-    NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
-    interestsController.editModeOn = TRUE;
-    interestsController.topBarEnabled = TRUE;
-    interestsController.scrollEnabled = TRUE;
-    [self.navigationController pushViewController:interestsController animated:TRUE];
+    CLInterestsCollectionViewController *interestsController = [[CLInterestsCollectionViewController alloc] init];
+    [self presentViewController:interestsController animated:YES completion:nil];
 }
 
 - (void)authenticationFailed {

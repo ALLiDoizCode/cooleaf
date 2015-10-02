@@ -1,54 +1,52 @@
 //
-//  NPInterestViewCell.m
+//  CLInterestCollectionViewCell.m
 //  Cooleaf
 //
-//  Created by Curtis Jones on 2015.03.12.
-//  Copyright (c) 2015 Nova Project. All rights reserved.
+//  Created by Haider Khan on 10/1/15.
+//  Copyright © 2015 Nova Project. All rights reserved.
 //
 
-#import "NPInterestViewCell.h"
-#import "NPInterest.h"
+#import "CLInterestCollectionViewCell.h"
 #import "FXBlurView.h"
 
 static UIImage *gCheckboxOn;
 static UIImage *gCheckboxOff;
 
-@interface NPInterestViewCell() {
+@interface CLInterestCollectionViewCell() {
     FXBlurView *_blurView;
-	NSLayoutConstraint *_lblConstraint;
+    NSLayoutConstraint *_lblConstraint;
 }
+
 @end
 
-@implementation NPInterestViewCell
+@implementation CLInterestCollectionViewCell
 
 + (void)load {
-	gCheckboxOn = [UIImage imageNamed:@"CheckboxChecked"];
-	gCheckboxOff = [UIImage imageNamed:@"CheckboxUnchecked"];
+    gCheckboxOn = [UIImage imageNamed:@"CheckboxChecked"];
+    gCheckboxOff = [UIImage imageNamed:@"CheckboxUnchecked"];
 }
 
 - (id)initWithFrame:(CGRect)frame {
-	self = [super initWithFrame:frame];
-	
-	if (self) {
-		[self render];
-	}
-	
-	return self;
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self render];
+    }
+    return self;
 }
 
 - (void)render {
     
-	// interest image
-	_imageView = [[UIImageView alloc] init];
-	_imageView.translatesAutoresizingMaskIntoConstraints = FALSE;
-	_imageView.userInteractionEnabled = TRUE;
-	[_imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionToggleActive:)]];
-	[self.contentView addSubview:_imageView];
-	[self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop   multiplier:1 constant:0]];
-	[self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeft  multiplier:1 constant:0]];
-	[self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
-	[self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:_imageView       attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
-
+    // interest image
+    _imageView = [[UIImageView alloc] init];
+    _imageView.translatesAutoresizingMaskIntoConstraints = FALSE;
+    _imageView.userInteractionEnabled = TRUE;
+    [_imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionToggleActive:)]];
+    [self.contentView addSubview:_imageView];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeTop    relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop   multiplier:1 constant:0]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeft  multiplier:1 constant:0]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:_imageView       attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
+    
     // blur view
     _blurView = [[FXBlurView alloc] init];
     _blurView.backgroundColor = [UIColor clearColor];
@@ -60,17 +58,17 @@ static UIImage *gCheckboxOff;
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_blurView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_blurView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_blurView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:40]];
-	
-	// interest enabled -- in the footer, visible when the cell is in edit mode
-	_checkboxImg = [[UIImageView alloc] init];
-	_checkboxImg.translatesAutoresizingMaskIntoConstraints = FALSE;
-	_checkboxImg.userInteractionEnabled = TRUE;
-	[_checkboxImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionToggleActive:)]];
-	[_blurView addSubview:_checkboxImg];
-	[_blurView addConstraint:[NSLayoutConstraint constraintWithItem:_checkboxImg attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_blurView attribute:NSLayoutAttributeLeft           multiplier:1 constant:10]];
-	[_blurView addConstraint:[NSLayoutConstraint constraintWithItem:_checkboxImg attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_blurView attribute:NSLayoutAttributeCenterY        multiplier:1 constant: 0]];
-	[_blurView addConstraint:[NSLayoutConstraint constraintWithItem:_checkboxImg attribute:NSLayoutAttributeWidth   relatedBy:NSLayoutRelationEqual toItem:nil         attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:20]];
-	[_blurView addConstraint:[NSLayoutConstraint constraintWithItem:_checkboxImg attribute:NSLayoutAttributeHeight  relatedBy:NSLayoutRelationEqual toItem:nil         attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:20]];
+    
+    // interest enabled -- in the footer, visible when the cell is in edit mode
+    _checkboxImg = [[UIImageView alloc] init];
+    _checkboxImg.translatesAutoresizingMaskIntoConstraints = FALSE;
+    _checkboxImg.userInteractionEnabled = TRUE;
+    [_checkboxImg addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doActionToggleActive:)]];
+    [_blurView addSubview:_checkboxImg];
+    [_blurView addConstraint:[NSLayoutConstraint constraintWithItem:_checkboxImg attribute:NSLayoutAttributeLeft    relatedBy:NSLayoutRelationEqual toItem:_blurView attribute:NSLayoutAttributeLeft           multiplier:1 constant:10]];
+    [_blurView addConstraint:[NSLayoutConstraint constraintWithItem:_checkboxImg attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:_blurView attribute:NSLayoutAttributeCenterY        multiplier:1 constant: 0]];
+    [_blurView addConstraint:[NSLayoutConstraint constraintWithItem:_checkboxImg attribute:NSLayoutAttributeWidth   relatedBy:NSLayoutRelationEqual toItem:nil         attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:20]];
+    [_blurView addConstraint:[NSLayoutConstraint constraintWithItem:_checkboxImg attribute:NSLayoutAttributeHeight  relatedBy:NSLayoutRelationEqual toItem:nil         attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:20]];
     
     // interest title -- in the footer
     _titleLbl = [[UILabel alloc] init];
@@ -109,8 +107,8 @@ static UIImage *gCheckboxOff;
 }
 
 - (void)doActionToggleActive:(id)sender {
-	_interest.member = !_interest.member;
-	_checkboxImg.image = _interest.member ? gCheckboxOn : gCheckboxOff;
+    _interest.member = !_interest.member;
+    _checkboxImg.image = _interest.member ? gCheckboxOn : gCheckboxOff;
 }
 
 @end

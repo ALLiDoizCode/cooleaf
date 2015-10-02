@@ -55,6 +55,8 @@
 		4B64D3711BBB9E4400DF4FF3 /* CLRegisteredUserEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D3701BBB9E4400DF4FF3 /* CLRegisteredUserEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4B64D3741BBBA44300DF4FF3 /* CLAuthenticateNewUserEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D3731BBBA44300DF4FF3 /* CLAuthenticateNewUserEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4B64D3771BBBA4A100DF4FF3 /* CLAuthenticatedNewUserEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D3761BBBA4A100DF4FF3 /* CLAuthenticatedNewUserEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4B64D37A1BBE283500DF4FF3 /* CLInterestsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D3791BBE283500DF4FF3 /* CLInterestsCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		4B64D37D1BBE298300DF4FF3 /* CLInterestCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D37C1BBE298300DF4FF3 /* CLInterestCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		4B6B56F01B98E0C8008DF039 /* CLProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56EF1B98E0C8008DF039 /* CLProfileTableViewController.m */; };
 		4B6B56F31B98E220008DF039 /* CLGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56F21B98E220008DF039 /* CLGroupTableViewCell.m */; };
 		4B6B56F61B98E859008DF039 /* CLGroupCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56F51B98E859008DF039 /* CLGroupCollectionViewCell.m */; };
@@ -361,6 +363,10 @@
 		4B64D3731BBBA44300DF4FF3 /* CLAuthenticateNewUserEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAuthenticateNewUserEvent.m; sourceTree = "<group>"; };
 		4B64D3751BBBA4A100DF4FF3 /* CLAuthenticatedNewUserEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAuthenticatedNewUserEvent.h; sourceTree = "<group>"; };
 		4B64D3761BBBA4A100DF4FF3 /* CLAuthenticatedNewUserEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAuthenticatedNewUserEvent.m; sourceTree = "<group>"; };
+		4B64D3781BBE283500DF4FF3 /* CLInterestsCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInterestsCollectionViewController.h; sourceTree = "<group>"; };
+		4B64D3791BBE283500DF4FF3 /* CLInterestsCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInterestsCollectionViewController.m; sourceTree = "<group>"; };
+		4B64D37B1BBE298300DF4FF3 /* CLInterestCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLInterestCollectionViewCell.h; sourceTree = "<group>"; };
+		4B64D37C1BBE298300DF4FF3 /* CLInterestCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInterestCollectionViewCell.m; sourceTree = "<group>"; };
 		4B6B56EE1B98E0C8008DF039 /* CLProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProfileTableViewController.h; sourceTree = "<group>"; };
 		4B6B56EF1B98E0C8008DF039 /* CLProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLProfileTableViewController.m; sourceTree = "<group>"; };
 		4B6B56F11B98E220008DF039 /* CLGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupTableViewCell.h; sourceTree = "<group>"; };
@@ -832,6 +838,8 @@
 				68E1028F1BA2C141009033AD /* CLEventDetailViewController.m */,
 				68674F331BB4BC1C00ADB6F3 /* CLGroupEventsController.h */,
 				68674F341BB4BC1C00ADB6F3 /* CLGroupEventsController.m */,
+				4B64D3781BBE283500DF4FF3 /* CLInterestsCollectionViewController.h */,
+				4B64D3791BBE283500DF4FF3 /* CLInterestsCollectionViewController.m */,
 			);
 			path = UIViewControllers;
 			sourceTree = "<group>";
@@ -1977,6 +1985,8 @@
 				68DDFF021B9F681200EDE1CF /* CLCommentCell.m */,
 				68DE97EE1BA8DA8100E858F7 /* CLEventCollectionCell.h */,
 				68DE97EF1BA8DA8100E858F7 /* CLEventCollectionCell.m */,
+				4B64D37B1BBE298300DF4FF3 /* CLInterestCollectionViewCell.h */,
+				4B64D37C1BBE298300DF4FF3 /* CLInterestCollectionViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2417,6 +2427,7 @@
 				68D85D321BA929A300C4620A /* BFPaperCheckbox.m in Sources */,
 				4BA4E32C1B8BF8E00089CB2B /* CLTimeZone.m in Sources */,
 				4B3F2E6F1BA7884600D4934E /* CLSearchController.m in Sources */,
+				4B64D37D1BBE298300DF4FF3 /* CLInterestCollectionViewCell.m in Sources */,
 				680A64DD1BA255CE003C4B5E /* CLPeopleCell.m in Sources */,
 				4BE1DF7C1BAE9A04009519CB /* CLCommentPresenter.m in Sources */,
 				68012DD81B97519D00251544 /* CLTableViewHome.m in Sources */,
@@ -2443,6 +2454,7 @@
 				4BA4E2F31B8BC6E70089CB2B /*  in Sources */,
 				4BA2A6591BA7F685004724EB /* CLLoadUsersEvent.m in Sources */,
 				68AB42001BAA02F2006495DC /* CLGroupEventCell.m in Sources */,
+				4B64D37A1BBE283500DF4FF3 /* CLInterestsCollectionViewController.m in Sources */,
 				4BAE005D1B8EDEE200779E1F /* CLBaseNotificationRegistry.m in Sources */,
 				4BE1B2BB1BBB5FEF00A07DA1 /* CLCheckedRegistrationEvent.m in Sources */,
 				4B3B36781BB1F9A900C7AEE5 /* CLParticipantPresenter.m in Sources */,

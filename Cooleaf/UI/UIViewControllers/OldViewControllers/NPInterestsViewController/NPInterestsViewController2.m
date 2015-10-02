@@ -6,18 +6,22 @@
 //  Copyright (c) 2015 Nova Project. All rights reserved.
 //
 
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "NPInterestsViewController2.h"
 #import "NPInterestViewCell.h"
 #import "NPInterestsHeaderViewCell.h"
 #import "NPPickYourInterestsLabelCell.h"
 #import "NPCooleafClient.h"
 #import "NPInterest.h"
+#import "CLInterestPresenter.h"
+#import "CLInterest.h"
 
 #define CellHeight 145 + 30 + 10 + 2
 
 static NSString * const reuseIdentifier = @"Cell";
 
 @interface NPInterestsViewController2() {
+    CLInterestPresenter *_interestPresenter;
 	NSArray *_npinterests;
 	NSLayoutConstraint *_heightConstraint;
 }
@@ -31,7 +35,6 @@ static NSString * const reuseIdentifier = @"Cell";
 	UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
 	layout.minimumInteritemSpacing = 0;
 	layout.minimumLineSpacing = 12.;
-//layout.headerReferenceSize = CGSizeMake(SelfViewWidth, 145);
 	[layout setScrollDirection:UICollectionViewScrollDirectionVertical];
 	
 	self = [super initWithCollectionViewLayout:layout];
@@ -43,33 +46,77 @@ static NSString * const reuseIdentifier = @"Cell";
 	return self;
 }
 
+# pragma mark - LifeCycle Methods
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
-	self.collectionView.backgroundColor = UIColor.whiteColor;
-	self.collectionView.delegate = self;
-	self.collectionView.dataSource = self;
-	
-	[self.collectionView registerClass:[NPInterestViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-	[self.collectionView registerClass:[NPInterestsHeaderViewCell class] forCellWithReuseIdentifier:@"HeaderCell"];
-	[self.collectionView registerClass:[NPPickYourInterestsLabelCell class] forCellWithReuseIdentifier:@"NPPickYourInterestsLabelCell"];
-	
-	_heightConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:0];
-	[self.collectionView addConstraint:_heightConstraint];
+    [self setupCollectionView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	[self.navigationController setNavigationBarHidden:TRUE];
+	[self.navigationController setNavigationBarHidden:FALSE];
+    [self setupInterestPresenter];
 	[self reload];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 }
 
-#pragma mark - Accessors
+# pragma mark - setupCollectionView
+
+- (void)setupCollectionView {
+    NSLog(@"SetupCollectionView");
+    self.collectionView.backgroundColor = UIColor.whiteColor;
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    
+    [self.collectionView registerClass:[NPInterestViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerClass:[NPInterestsHeaderViewCell class] forCellWithReuseIdentifier:@"HeaderCell"];
+    [self.collectionView registerClass:[NPPickYourInterestsLabelCell class] forCellWithReuseIdentifier:@"NPPickYourInterestsLabelCell"];
+    
+    _heightConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:0];
+    [self.collectionView addConstraint:_heightConstraint];
+}
+
+# pragma mark - setupInterestPresenter
+
+- (void)setupInterestPresenter {
+    _interestPresenter = [[CLInterestPresenter alloc] initWithInteractor:self];
+    [_interestPresenter registerOnBus];
+}
+
+# pragma mark - IInterestInteractor Methods
+
+- (void)initInterests:(NSMutableArray *)interests {
+    _npinterests = interests;
+    [self.collectionView reloadData];
+}
+
+# pragma mark - Accessors
 
 - (void)reload {
+    if (_scrollEnabled == TRUE) {
+        self.collectionView.scrollEnabled = TRUE;
+        _heightConstraint.constant = self.view.window.frame.size.height;
+    }
+    else {
+        self.collectionView.scrollEnabled = FALSE;
+        //_heightConstraint.constant = ceilf((float) npinterests.count / 2.0) * (CellHeight);
+    }
+    [self.collectionView reloadData];
 	void (^handler)(NSArray*) = ^ (NSArray *npinterests) {
 		DLog(@"interests = %@", npinterests);
 		_npinterests = npinterests;
@@ -79,15 +126,18 @@ static NSString * const reuseIdentifier = @"Cell";
 		}
 		else {
 			self.collectionView.scrollEnabled = FALSE;
-			_heightConstraint.constant = ceilf((float)npinterests.count / 2.0) * (CellHeight);
+			_heightConstraint.constant = ceilf((float) npinterests.count / 2.0) * (CellHeight);
 		}
 		[self.collectionView reloadData];
 	};
 	
-	if (_editModeOn == TRUE)
-		[[NPCooleafClient sharedClient] getAllInterests:handler];
-	else
+    // If TRUE, user is editing interests during registration, else user is editing profile
+    if (_editModeOn == TRUE) {
+        [_interestPresenter loadInterests];
+		//[[NPCooleafClient sharedClient] getAllInterests:handler];
+    } else {
 		[[NPCooleafClient sharedClient] getUserInterests:handler];
+    }
 }
 
 /**
@@ -95,8 +145,7 @@ static NSString * const reuseIdentifier = @"Cell";
  * the complete set of interests. If we're disabling edit mode, then we need to take the current
  * interests, filter it to the enabled set, and update the user's profile; and then reload.
  */
-- (void)setEditModeOn:(BOOL)editModeOn
-{
+- (void)setEditModeOn:(BOOL)editModeOn {
 	_editModeOn = editModeOn;
 	
 	if (_editModeOn == TRUE) {
@@ -141,7 +190,7 @@ static NSString * const reuseIdentifier = @"Cell";
 	else if (_topBarEnabled && section == 3)
 		return 1;
 	else
-		return _npinterests.count;
+		return 20;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -164,7 +213,38 @@ static NSString * const reuseIdentifier = @"Cell";
 	else {
 		NPInterestViewCell *cell = (NPInterestViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 		cell.editModeOn = _editModeOn;
-		cell.interest = _npinterests[indexPath.row];
+        
+        // Get the interest
+        CLInterest *interest = [_npinterests objectAtIndex:[indexPath row]];
+        
+        // Set the interest in the cell
+        [cell setInterest:interest];
+        
+        // Get name and image
+        NSString *name = [interest name];
+        CLImage *image = [interest image];
+        
+        // Get image path
+        if ([image url]) {
+            NSString *url = [image url];
+            NSString *fullPath = [NSString stringWithFormat:@"%@%@", @"http:", url];
+            fullPath = [fullPath stringByReplacingOccurrencesOfString:@"{{SIZE}}" withString:@"164x164"];
+            
+            // Set image
+            [cell.imageView sd_setImageWithURL:[NSURL URLWithString:fullPath]
+                                   placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+            
+            cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+            [cell.imageView setClipsToBounds:YES];
+        }
+        
+        // Set name
+        cell.titleLbl.text = [NSString stringWithFormat:@"%@%@", @"#", name];
+        
+        // If active set as checked
+        BOOL active = [interest member];
+        [cell toggleCheckBox:active];
+
 		return cell;
 	}
 }
@@ -224,7 +304,7 @@ static NSString * const reuseIdentifier = @"Cell";
 	else if (_topBarEnabled && indexPath.section == 3)
 		return CGSizeMake(320, 50);
 	else
-		return CGSizeMake(145, 145 + 30);
+		return CGSizeMake(145, 145);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {

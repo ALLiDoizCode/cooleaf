@@ -36,6 +36,7 @@
 
 SUBSCRIBE(CLLoadInterests) {
     [_interestController getInterests:nil success:^(id JSON) {
+        NSLog(@"success");
         NSMutableArray *interests = [JSON result];
         CLLoadedInterests *loadedInterests = [[CLLoadedInterests alloc] initWithInterests:interests];
         PUBLISH(loadedInterests);

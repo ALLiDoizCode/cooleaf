@@ -25,6 +25,7 @@
 #import "NPLoginViewController.h"
 #import "CLUserPresenter.h"
 #import "SSKeychain.h"
+#import "CLInterestsCollectionViewController.h"
 
 #define StringFromBoolean (return value ? @"YES" : @"NO")
 
