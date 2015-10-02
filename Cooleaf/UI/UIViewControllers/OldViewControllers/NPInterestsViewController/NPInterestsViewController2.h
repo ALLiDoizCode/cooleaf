@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "IInterestInteractor.h"
+#import "IFilePreviewInteractor.h"
 
-@interface NPInterestsViewController2 : UICollectionViewController <IInterestInteractor>
+@interface NPInterestsViewController2 : UICollectionViewController <IInterestInteractor, IFilePreviewInteractor>
 
 @property (nonatomic, strong) UIImage *userAvatar;
 @property (readwrite, assign, nonatomic) BOOL editModeOn;

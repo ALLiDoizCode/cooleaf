@@ -58,6 +58,10 @@
 		4B64D37A1BBE283500DF4FF3 /* CLInterestsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D3791BBE283500DF4FF3 /* CLInterestsCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
 		4B64D37D1BBE298300DF4FF3 /* CLInterestCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D37C1BBE298300DF4FF3 /* CLInterestCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		4B64D3861BBE7B7D00DF4FF3 /* CLFilePreviewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D3851BBE7B7D00DF4FF3 /* CLFilePreviewsController.m */; settings = {ASSET_TAGS = (); }; };
+		4B64D3891BBF260000DF4FF3 /* CLUploadPhotoEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D3881BBF260000DF4FF3 /* CLUploadPhotoEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4B64D38C1BBF265D00DF4FF3 /* CLUploadedPhotoEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D38B1BBF265D00DF4FF3 /* CLUploadedPhotoEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4B64D38F1BBF26A900DF4FF3 /* CLFilePreviewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D38E1BBF26A900DF4FF3 /* CLFilePreviewPresenter.m */; settings = {ASSET_TAGS = (); }; };
+		4B64D3921BBF26BF00DF4FF3 /* CLFilePreviewSubscriber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B64D3911BBF26BF00DF4FF3 /* CLFilePreviewSubscriber.m */; settings = {ASSET_TAGS = (); }; };
 		4B6B56F01B98E0C8008DF039 /* CLProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56EF1B98E0C8008DF039 /* CLProfileTableViewController.m */; };
 		4B6B56F31B98E220008DF039 /* CLGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56F21B98E220008DF039 /* CLGroupTableViewCell.m */; };
 		4B6B56F61B98E859008DF039 /* CLGroupCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B6B56F51B98E859008DF039 /* CLGroupCollectionViewCell.m */; };
@@ -370,6 +374,15 @@
 		4B64D37C1BBE298300DF4FF3 /* CLInterestCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLInterestCollectionViewCell.m; sourceTree = "<group>"; };
 		4B64D3841BBE7B7D00DF4FF3 /* CLFilePreviewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFilePreviewsController.h; sourceTree = "<group>"; };
 		4B64D3851BBE7B7D00DF4FF3 /* CLFilePreviewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFilePreviewsController.m; sourceTree = "<group>"; };
+		4B64D3871BBF260000DF4FF3 /* CLUploadPhotoEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUploadPhotoEvent.h; sourceTree = "<group>"; };
+		4B64D3881BBF260000DF4FF3 /* CLUploadPhotoEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLUploadPhotoEvent.m; sourceTree = "<group>"; };
+		4B64D38A1BBF265D00DF4FF3 /* CLUploadedPhotoEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUploadedPhotoEvent.h; sourceTree = "<group>"; };
+		4B64D38B1BBF265D00DF4FF3 /* CLUploadedPhotoEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLUploadedPhotoEvent.m; sourceTree = "<group>"; };
+		4B64D38D1BBF26A900DF4FF3 /* CLFilePreviewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFilePreviewPresenter.h; sourceTree = "<group>"; };
+		4B64D38E1BBF26A900DF4FF3 /* CLFilePreviewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFilePreviewPresenter.m; sourceTree = "<group>"; };
+		4B64D3901BBF26BF00DF4FF3 /* CLFilePreviewSubscriber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFilePreviewSubscriber.h; sourceTree = "<group>"; };
+		4B64D3911BBF26BF00DF4FF3 /* CLFilePreviewSubscriber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFilePreviewSubscriber.m; sourceTree = "<group>"; };
+		4B64D3931BBF26E400DF4FF3 /* IFilePreviewInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFilePreviewInteractor.h; sourceTree = "<group>"; };
 		4B6B56EE1B98E0C8008DF039 /* CLProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProfileTableViewController.h; sourceTree = "<group>"; };
 		4B6B56EF1B98E0C8008DF039 /* CLProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLProfileTableViewController.m; sourceTree = "<group>"; };
 		4B6B56F11B98E220008DF039 /* CLGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupTableViewCell.h; sourceTree = "<group>"; };
@@ -907,6 +920,8 @@
 		4B64D37F1BBE7AF500DF4FF3 /* Subscribers */ = {
 			isa = PBXGroup;
 			children = (
+				4B64D3901BBF26BF00DF4FF3 /* CLFilePreviewSubscriber.h */,
+				4B64D3911BBF26BF00DF4FF3 /* CLFilePreviewSubscriber.m */,
 			);
 			path = Subscribers;
 			sourceTree = "<group>";
@@ -914,6 +929,8 @@
 		4B64D3801BBE7AFC00DF4FF3 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				4B64D38D1BBF26A900DF4FF3 /* CLFilePreviewPresenter.h */,
+				4B64D38E1BBF26A900DF4FF3 /* CLFilePreviewPresenter.m */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -921,6 +938,7 @@
 		4B64D3811BBE7B0200DF4FF3 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
+				4B64D3931BBF26E400DF4FF3 /* IFilePreviewInteractor.h */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -928,6 +946,10 @@
 		4B64D3821BBE7B0700DF4FF3 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				4B64D3871BBF260000DF4FF3 /* CLUploadPhotoEvent.h */,
+				4B64D3881BBF260000DF4FF3 /* CLUploadPhotoEvent.m */,
+				4B64D38A1BBF265D00DF4FF3 /* CLUploadedPhotoEvent.h */,
+				4B64D38B1BBF265D00DF4FF3 /* CLUploadedPhotoEvent.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -2375,6 +2397,7 @@
 				68AB42061BAA23AB006495DC /* CLGroupDetailCollectionCell.m in Sources */,
 				430936491AD1FBBA00E568CD /* NPSeriesEventSelectionViewController.m in Sources */,
 				D93AAC74187B170C00E9B96A /* NPAttendeesCell.m in Sources */,
+				4B64D38C1BBF265D00DF4FF3 /* CLUploadedPhotoEvent.m in Sources */,
 				4BA4E3491B8D133F0089CB2B /* CLAuthenticationController.m in Sources */,
 				4BE1DF5D1BABE0DB009519CB /* CLLoadedInterestMembers.m in Sources */,
 				D93AACA2187C300E00E9B96A /* NPTodoCell.m in Sources */,
@@ -2502,6 +2525,7 @@
 				D94664FE18634DEB0084BBB2 /* NPGradientView.m in Sources */,
 				4BA2A6541BA7F57D004724EB /* CLUserPresenter.m in Sources */,
 				4B64D3771BBBA4A100DF4FF3 /* CLAuthenticatedNewUserEvent.m in Sources */,
+				4B64D3921BBF26BF00DF4FF3 /* CLFilePreviewSubscriber.m in Sources */,
 				4BC616341BB9199800EB9476 /* CLLoadedMeEvent.m in Sources */,
 				68674F351BB4BC1C00ADB6F3 /* CLGroupEventsController.m in Sources */,
 				D9809558185CA557008F2B61 /* NPAppDelegate.m in Sources */,
@@ -2517,7 +2541,9 @@
 				4BE1DF731BABF6C9009519CB /* CLComment.m in Sources */,
 				D93AACA9187C351500E9B96A /* NPNewTodoViewController.m in Sources */,
 				523096C51AA2907600649FB7 /* NPChallengesViewController.m in Sources */,
+				4B64D3891BBF260000DF4FF3 /* CLUploadPhotoEvent.m in Sources */,
 				4BAE00741B8F909500779E1F /* CLAuthenticationSuccessEvent.m in Sources */,
+				4B64D38F1BBF26A900DF4FF3 /* CLFilePreviewPresenter.m in Sources */,
 				4B3F2E751BA78C1100D4934E /* CLLoadedQueryEvent.m in Sources */,
 				4BE63A4C1B94E9D800231222 /* CLMenuViewController.m in Sources */,
 				D9809554185CA557008F2B61 /* main.m in Sources */,

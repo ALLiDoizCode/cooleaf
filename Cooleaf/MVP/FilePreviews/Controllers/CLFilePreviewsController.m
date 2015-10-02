@@ -13,8 +13,14 @@ static NSString *const kFilePreviewsPath = @"v2/file_previews.json";
 
 @implementation CLFilePreviewsController
 
-- (void)uploadFile:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
-    [[CLClient getInstance] POST:kFilePreviewsPath parameters:params constructingBodyWithBlock:<#^(id<AFMultipartFormData> formData)block#> completion:<#^(id response, NSError *error)completion#>]
+- (void)uploadPhoto:(NSData *)data params:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    [[CLClient getInstance] POST:kFilePreviewsPath
+                      parameters:params
+       constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+           
+       } completion:^(id response, NSError *error) {
+        
+    }];
 }
 
 @end

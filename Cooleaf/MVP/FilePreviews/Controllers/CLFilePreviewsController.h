@@ -10,7 +10,7 @@
 
 @interface CLFilePreviewsController : NSObject
 
-- (void)uploadFile:(NSDictionary *)params success:(void (^)(id JSON))success
+- (void)uploadPhoto:(NSData *)data params:(NSDictionary *)params success:(void (^)(id JSON))success
            failure:(void (^)(NSError *error))failure;
 
 @end

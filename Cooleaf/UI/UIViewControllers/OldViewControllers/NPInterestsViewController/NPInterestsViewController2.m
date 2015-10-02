@@ -15,6 +15,8 @@
 #import "NPInterest.h"
 #import "CLInterestPresenter.h"
 #import "CLInterest.h"
+#import "CLFilePreviewPresenter.h"
+#import "CLFilePreview.h"
 
 #define CellHeight 145 + 30 + 10 + 2
 
@@ -22,8 +24,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 @interface NPInterestsViewController2() {
     CLInterestPresenter *_interestPresenter;
+    CLFilePreviewPresenter *_filePreviewPresenter;
 	NSArray *_npinterests;
 	NSLayoutConstraint *_heightConstraint;
+    CLFilePreview *_filePreview;
 }
 @end
 
@@ -99,12 +103,23 @@ static NSString * const reuseIdentifier = @"Cell";
     [_interestPresenter registerOnBus];
 }
 
+# pragma mark - setupFilePreviewPresenter
+
+- (void)setupFilePreviewPresenter {
+    _filePreviewPresenter = [[CLFilePreviewPresenter alloc] initWithInteractor:self];
+    [_filePreviewPresenter registerOnBus];
+}
+
 # pragma mark - IInterestInteractor Methods
 
 - (void)initInterests:(NSMutableArray *)interests {
     _npinterests = interests;
     [self.collectionView reloadData];
 }
+
+# pragma mark - IFilePreviewInteractor Methods
+
+
 
 # pragma mark - Accessors
 
