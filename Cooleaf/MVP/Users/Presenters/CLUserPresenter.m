@@ -12,6 +12,8 @@
 #import "CLLoadedUsersEvent.h"
 #import "CLLoadMeEvent.h"
 #import "CLLoadedMeEvent.h"
+#import "CLSaveUserInterestsEvent.h"
+#import "CLSavedUserInterestsEvent.h"
 
 static NSInteger const PAGE = 1;
 static NSInteger const PER_PAGE = 25;
@@ -50,8 +52,8 @@ static NSInteger const PER_PAGE = 25;
 
 # pragma mark - saveUserInterests
 
-- (void)saveUserInterests:(CLUser *)user activeInterests:(NSMutableArray *)activeInterests {
-    
+- (void)saveUserInterests:(CLUser *)user activeInterests:(NSMutableArray *)activeInterests fileCache:(NSString *)fileCache {
+    PUBLISH([[CLSaveUserInterestsEvent alloc] initWithUser:user activeInterests:activeInterests fileCache:fileCache]);
 }
 
 # pragma mark - Subscription Methods
@@ -64,6 +66,12 @@ SUBSCRIBE(CLLoadedUsersEvent) {
 SUBSCRIBE(CLLoadedMeEvent) {
     if ([_userInfo respondsToSelector:@selector(initMe:)])
         [_userInfo initMe:event.user];
+}
+
+SUBSCRIBE(CLSavedUserInterestsEvent) {
+    NSLog(@"CLSavedUserInterestsEvent in presenter");
+    if ([_userInfo respondsToSelector:@selector(initSavedUser:)])
+        [_userInfo initSavedUser:event.user];
 }
 
 @end

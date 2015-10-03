@@ -20,17 +20,17 @@ static NSString *const kImageMimeType = @"image/jpeg";
     int file = arc4random_uniform(742904857);
     NSString *fileNameString = [NSString stringWithFormat:@"%d.jpg", file];
     
-    // Append NSData and uploader path with file name
-    [[CLClient getInstance] POST:kFilePreviewsPath
-                      parameters:params
-       constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-           [formData appendPartWithFormData:[NSData dataWithBytes:@"profile_picture" length:15] name:@"uploader"];
-           [formData appendPartWithFileData:data name:@"file" fileName:fileNameString mimeType:kImageMimeType];
-       } completion:^(id response, NSError *error) {
-           if (!error)
-               success(response);
-           else
-               failure(error);
+    [[CLClient getInstance] POST:kFilePreviewsPath parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        // Set the uploader form data
+        NSString *uploader = @"profile_picture";
+        [formData appendPartWithFormData:[uploader dataUsingEncoding:NSUTF8StringEncoding] name:@"uploader"];
+        
+        // Set the file in the formdata
+        [formData appendPartWithFileData:data name:@"file" fileName:fileNameString mimeType:kImageMimeType];
+    } success:^(AFHTTPRequestOperation *operation, id response) {
+        success(response);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(error);
     }];
 }
 

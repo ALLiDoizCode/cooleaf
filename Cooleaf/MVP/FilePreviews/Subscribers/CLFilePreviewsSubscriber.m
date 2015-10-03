@@ -11,7 +11,7 @@
 #import "CLBus.h"
 #import "CLUploadProfilePhotoEvent.h"
 #import "CLFilePreview.h"
-
+#import "CLUploadedProfilePhotoEvent.h"
 
 @interface CLFilePreviewsSubscriber() {
     @private
@@ -37,9 +37,11 @@ SUBSCRIBE(CLUploadProfilePhotoEvent) {
     
     [_filePreviewController uploadProfilePhoto:data params:nil success:^(id JSON) {
         CLFilePreview *filePreview = [JSON result];
-        NSLog(@"%@", filePreview);
+        CLUploadedProfilePhotoEvent *uploadedProfilePhoto = [[CLUploadedProfilePhotoEvent alloc] initWithFilePreview:filePreview];
+        PUBLISH(uploadedProfilePhoto);
     } failure:^(NSError *error) {
         NSString *errorMessage = [error localizedDescription];
+        NSLog(@"%@", error);
         [self showUploadProfileErrorAlert:errorMessage];
     }];
 }
@@ -47,7 +49,7 @@ SUBSCRIBE(CLUploadProfilePhotoEvent) {
 # pragma mark - Accessory Methods
 
 - (void)showUploadProfileErrorAlert:(NSString *)errorMessage {
-    [[[UIAlertView alloc] initWithTitle:@"Upload Photo Failed" message:errorMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    [[[UIAlertView alloc] initWithTitle:@"Upload Photo Failed" message:@"Something went wrong while uploading your profile photo." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 @end

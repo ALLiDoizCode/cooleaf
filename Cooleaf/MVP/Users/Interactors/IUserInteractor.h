@@ -12,5 +12,6 @@
 
 - (void)initMe:(CLUser *)user;
 - (void)initOrganizationUsers:(NSMutableArray *)organizationUsers;
+- (void)initSavedUser:(CLUser *)savedUser;
 
 @end

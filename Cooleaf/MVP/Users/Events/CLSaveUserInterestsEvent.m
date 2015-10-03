@@ -10,4 +10,11 @@
 
 @implementation CLSaveUserInterestsEvent
 
+- (id)initWithUser:(CLUser *)user activeInterests:(NSMutableArray *)activeInterests fileCache:(NSString *)fileCache {
+    _user = user;
+    _activeInterests = activeInterests;
+    _fileCache = fileCache;
+    return self;
+}
+
 @end

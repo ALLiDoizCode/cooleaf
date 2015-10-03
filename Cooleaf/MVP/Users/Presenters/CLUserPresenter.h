@@ -18,6 +18,6 @@
 - (void)unregisterOnBus;
 - (void)loadMe;
 - (void)loadOrganizationUsers;
-- (void)saveUserIntersts:(CLUser *)user activeInterests:(NSMutableArray *)activeInterests;
+- (void)saveUserInterests:(CLUser *)user activeInterests:(NSMutableArray *)activeInterests fileCache:(NSString *)fileCache;
 
 @end

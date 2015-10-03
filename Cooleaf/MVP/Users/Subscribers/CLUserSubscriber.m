@@ -12,6 +12,8 @@
 #import "CLLoadMeEvent.h"
 #import "CLLoadedMeEvent.h"
 #import "CLUser.h"
+#import "CLSaveUserInterestsEvent.h"
+#import "CLSavedUserInterestsEvent.h"
 
 @interface CLUserSubscriber() {
     @private
@@ -56,5 +58,38 @@ SUBSCRIBE(CLLoadUsersEvent) {
         NSLog(@"%@", error);
     }];
 }
+
+SUBSCRIBE(CLSaveUserInterestsEvent) {
+    // Get values
+    NSDictionary *userDict = (NSDictionary *) event.user;
+    NSMutableArray *activeInterests = event.activeInterests;
+    NSString *fileCache = event.fileCache;
+    
+    // Set the params
+    NSDictionary *params = @{
+                             @"name": userDict[@"name"],
+                             @"email": userDict[@"email"],
+                             @"category_ids": activeInterests,
+                             @"file_cache": fileCache,
+                             @"role": userDict[@"role"],
+                             @"profile": userDict[@"profile"]
+                             };
+    
+    [_userController saveUserInterests:params success:^(id JSON) {
+        CLUser *user = [JSON result];
+        CLSavedUserInterestsEvent *savedUserInterestsEvent = [[CLSavedUserInterestsEvent alloc] initWithUser:user];
+        PUBLISH(savedUserInterestsEvent);
+    } failure:^(NSError *error) {
+        NSString *errorMessage = [error localizedDescription];
+        [self showUpdateProfileErrorAlert:errorMessage];
+    }];
+}
+
+# pragma mark - Accessory Methods
+
+- (void)showUpdateProfileErrorAlert:(NSString *)errorMessage {
+    [[[UIAlertView alloc] initWithTitle:@"Update Failed" message:@"Something went wrong while updating your profile." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+}
+
 
 @end

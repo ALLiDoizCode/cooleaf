@@ -9,6 +9,7 @@
 #import "CLFilePreviewsPresenter.h"
 #import "CLBus.h"
 #import "CLUploadProfilePhotoEvent.h"
+#import "CLUploadedProfilePhotoEvent.h"
 
 @implementation CLFilePreviewsPresenter
 
@@ -32,8 +33,16 @@
 # pragma mark - uploadPhoto
 
 - (void)uploadProfilePhoto:(UIImage *)image {
-    NSData *imageData = UIImagePNGRepresentation(image);
+    NSLog(@"uploadProfilePhoto");
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
     PUBLISH([[CLUploadProfilePhotoEvent alloc] initWithData:imageData]);
+}
+
+# pragma mark - Subscription Methods
+
+SUBSCRIBE(CLUploadedProfilePhotoEvent) {
+    if ([_filePreviewInfo respondsToSelector:@selector(initWithFilePreview:)])
+        [_filePreviewInfo initWithFilePreview:event.filePreview];
 }
 
 @end

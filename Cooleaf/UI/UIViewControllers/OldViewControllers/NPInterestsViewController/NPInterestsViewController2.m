@@ -16,6 +16,7 @@
 #import "CLInterest.h"
 #import "CLFilePreviewsPresenter.h"
 #import "CLFilePreview.h"
+#import "CLUserPresenter.h"
 
 #define CellHeight 145 + 30 + 10 + 2
 
@@ -23,10 +24,13 @@ static NSString * const reuseIdentifier = @"Cell";
 
 @interface NPInterestsViewController2() {
     CLInterestPresenter *_interestPresenter;
+    CLFilePreviewsPresenter *_filePreviewPresenter;
+    CLUserPresenter *_userPresenter;
 	NSMutableArray *_interests;
     NSMutableArray *_activeInterestIds;
 	NSLayoutConstraint *_heightConstraint;
     CLFilePreview *_filePreview;
+    UIActivityIndicatorView *_activityView;
 }
 @end
 
@@ -59,6 +63,8 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewWillAppear:(BOOL)animated {
 	[self.navigationController setNavigationBarHidden:FALSE];
     [self setupInterestPresenter];
+    [self setupFilePreviewPresenter];
+    [self setupUserPresenter];
 	[self reload];
     _activeInterestIds = [NSMutableArray new];
 }
@@ -69,6 +75,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    NSLog(@"viewWillDisappear");
+    [_interestPresenter unregisterOnBus];
+    [_filePreviewPresenter unregisterOnBus];
+    [_userPresenter unregisterOnBus];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -103,6 +113,17 @@ static NSString * const reuseIdentifier = @"Cell";
     [_interestPresenter registerOnBus];
 }
 
+# pragma mark - setupFilePreviewPresenter
+
+- (void)setupFilePreviewPresenter {
+    _filePreviewPresenter = [[CLFilePreviewsPresenter alloc] initWithInteractor:self];
+    [_filePreviewPresenter registerOnBus];
+}
+
+- (void)setupUserPresenter {
+    _userPresenter = [[CLUserPresenter alloc] initWithInteractor:self];
+}
+
 # pragma mark - IInterestInteractor Methods
 
 - (void)initInterests:(NSMutableArray *)interests {
@@ -118,27 +139,36 @@ static NSString * const reuseIdentifier = @"Cell";
     [self.collectionView reloadData];
 }
 
+# pragma mark - IFilePreviewInteractor Methods
+
+- (void)initWithFilePreview:(CLFilePreview *)filePreview {
+    NSString *fileCache = [filePreview fileCache];
+    [_userPresenter saveUserInterests:_user activeInterests:_activeInterestIds fileCache:fileCache];
+}
+
+# pragma mark - IUserInteractor Methods
+
+- (void)initSavedUser:(CLUser *)savedUser {
+    NSLog(@"initSavedUser");
+    [(UINavigationController *) self.presentingViewController popViewControllerAnimated:NO];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 # pragma mark - NPInterestViewCellDelegate 
 
 - (void)toggleCheckBox:(NPInterestViewCell *)interestViewCell {
-    
-    NSInteger interestId = [interestViewCell.interest.interestId integerValue];
-    BOOL isMember = interestViewCell.interest.member;
-    if (isMember) {
-        if (![_activeInterestIds containsObject:@(interestId)])
-            [_activeInterestIds addObject:@(interestId)];
-    } else {
-        if ([_activeInterestIds containsObject:@(interestId)])
-            [_activeInterestIds removeObject:@(interestId)];
+    // Set the active interests in the array if the interestViewCell has an interest
+    if (interestViewCell.interest) {
+        NSInteger interestId = [interestViewCell.interest.interestId integerValue];
+        BOOL isMember = interestViewCell.interest.member;
+        if (isMember) {
+            if (![_activeInterestIds containsObject:@(interestId)])
+                [_activeInterestIds addObject:@(interestId)];
+        } else {
+            if ([_activeInterestIds containsObject:@(interestId)])
+                [_activeInterestIds removeObject:@(interestId)];
+        }
     }
-    
-//    if ([_interests containsObject:interestViewCell.interest]) {
-//        int index = (int) [_interests indexOfObject:interestViewCell.interest];
-//        [_interests removeObjectAtIndex:index];
-//        [_interests insertObject:interestViewCell.interest atIndex:index];
-//    }
-//    
-    
 }
 
 # pragma mark - Accessors
@@ -196,10 +226,11 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)doActionNext:(id)sender {
-    NSLog(@"%@", _activeInterestIds);
-//	[[NPCooleafClient sharedClient] setUserInterests:activeInterests completion:^ (BOOL success) {
-//		[self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
-//	}];
+    [self createActivityIndicator];
+    if (_userAvatar)
+        [_filePreviewPresenter uploadProfilePhoto:_userAvatar];
+    else
+        [_userPresenter saveUserInterests:_user activeInterests:_activeInterestIds fileCache:nil];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -279,8 +310,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     // User clicked on fxblurview toggle cell
-    NPInterestViewCell *interestCell = (NPInterestViewCell *) [self.collectionView cellForItemAtIndexPath:indexPath];
-    [self toggleCheckBox:interestCell];
+    if ([indexPath section] == 3) {
+        NPInterestViewCell *interestCell = (NPInterestViewCell *) [self.collectionView cellForItemAtIndexPath:indexPath];
+        [self toggleCheckBox:interestCell];
+    }
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -338,6 +371,28 @@ static NSString * const reuseIdentifier = @"Cell";
 		return UIEdgeInsetsMake(0, 0, 0, 0);
 	else
 		return UIEdgeInsetsMake(10, 10, 10, 10);
+}
+
+# pragma mark - createActivityIndicator
+
+- (void)createActivityIndicator {
+    _activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [_activityView startAnimating];
+    [self.view addSubview:_activityView];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_activityView
+                                                          attribute:NSLayoutAttributeCenterX
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.collectionView
+                                                          attribute:NSLayoutAttributeCenterX
+                                                         multiplier:1.0
+                                                           constant:0.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_activityView
+                                                          attribute:NSLayoutAttributeCenterY
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.collectionView
+                                                          attribute:NSLayoutAttributeCenterY
+                                                         multiplier:1.0
+                                                           constant:0.0]];
 }
 
 @end

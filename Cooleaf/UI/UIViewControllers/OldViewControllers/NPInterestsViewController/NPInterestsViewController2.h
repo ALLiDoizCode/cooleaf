@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "IInterestInteractor.h"
+#import "IFilePreviewInteractor.h"
+#import "IUserInteractor.h"
 #import "NPInterestViewCell.h"
 #import "CLUser.h"
 
-@interface NPInterestsViewController2 : UICollectionViewController <IInterestInteractor, NPInterestViewCellDelegate>
+@interface NPInterestsViewController2 : UICollectionViewController <IInterestInteractor, IFilePreviewsInteractor, IUserInteractor, NPInterestViewCellDelegate>
 
 @property (readwrite, strong, nonatomic) CLUser *user;
+@property (nonatomic, strong) UIImage *userAvatar;
 @property (readwrite, assign, nonatomic) BOOL editModeOn;
 @property (readwrite, assign, nonatomic) BOOL topBarEnabled;
 @property (readwrite, assign, nonatomic) BOOL scrollEnabled;

@@ -19,6 +19,7 @@
 #import "MainViewController.h"
 #import "UIColor+CustomColors.h"
 #import "CLClient.h"
+#import "AFHTTPRequestOperationLogger.h"
 
 #define kAppleLookupURLTemplate     @"http://itunes.apple.com/lookup?id=%@"
 #define kAppStoreURLTemplate        @"https://itunes.apple.com/app/id"
@@ -64,6 +65,10 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // Set the AFHTTPRequestOperationLogger, this logs HTTP calls
+    [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
+    [[AFHTTPRequestOperationLogger sharedLogger] setLevel:AFLoggerLevelDebug];
     
     // Setup Keyboard Manager for automanaging keyboard
     [IQKeyboardManager sharedManager].enable = YES;

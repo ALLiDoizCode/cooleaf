@@ -189,7 +189,6 @@
      */
     CLRegistrationPresenter *_registrationPresenter;
     CLAuthenticationPresenter *_authenticationPresenter;
-    CLFilePreviewsPresenter *_filePreviewsPresenter;
 }
 @end
 
@@ -265,7 +264,6 @@
 	[self.navigationController setNavigationBarHidden:TRUE];
     [self setupRegistrationPresenter];
     [self setupAuthPresenter];
-    [self setupFilePreviewPresenter];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -296,13 +294,6 @@
 - (void)setupAuthPresenter {
     _authenticationPresenter = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
     [_authenticationPresenter registerOnBus];
-}
-
-# pragma mark - setupFilePreviewPresenter
-
-- (void)setupFilePreviewPresenter {
-    _filePreviewsPresenter = [[CLFilePreviewsPresenter alloc] initWithInteractor:self];
-    [_filePreviewsPresenter registerOnBus];
 }
 
 # pragma mark - Rendering Methods
@@ -584,27 +575,19 @@
 # pragma mark - IAuthenticationInteractor Methods
 
 - (void)newUserAuthenticated:(CLUser *)user {
-    // We have the new user, now we can update their profile picture
-    [_filePreviewsPresenter uploadProfilePhoto:_avatarImg.image];
-    
     // Launch interests controller
     NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
     interestsController.editModeOn = TRUE;
-    interestsController.topBarEnabled = FALSE;
+    interestsController.topBarEnabled = TRUE;
     interestsController.scrollEnabled = TRUE;
     interestsController.user = _user;
+    interestsController.userAvatar = _avatarImg.image;
     [self presentViewController:interestsController animated:YES completion:nil];
     [interestsController viewWillAppear:YES];
 }
 
 - (void)authenticationFailed {
     NSLog(@"Auth failed");
-}
-
-# pragma mark - IFilePreviewsInteractor Methods
-
-- (void)initWithFilePreview:(CLFilePreview *)filePreview {
-    
 }
 
 # pragma mark - Picker Delegate

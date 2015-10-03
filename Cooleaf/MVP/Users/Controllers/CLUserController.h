@@ -14,5 +14,7 @@
       failure:(void (^)(NSError *error))failure;
 - (void)getUsers:(NSDictionary *)params success:(void (^)(id JSON))success
              failure:(void (^)(NSError *error))failure;
+- (void)saveUserInterests:(NSDictionary *)params success:(void (^)(id JSON))success
+                  failure:(void (^)(NSError *error))failure;
 
 @end

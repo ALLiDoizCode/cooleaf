@@ -100,6 +100,8 @@
 		4BA4E3941B8D4CF60089CB2B /* CLEventPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3931B8D4CF60089CB2B /* CLEventPresenter.m */; };
 		4BA61B0B1B94CC6800774CC2 /* CLProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA61B0A1B94CC6800774CC2 /* CLProfileHeaderView.m */; };
 		4BA9066B1BBF76A9004D0AAD /* CLSaveUserInterestsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA9066A1BBF76A9004D0AAD /* CLSaveUserInterestsEvent.m */; settings = {ASSET_TAGS = (); }; };
+		4BA906711BBF97E0004D0AAD /* AFHTTPRequestOperationLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA906701BBF97E0004D0AAD /* AFHTTPRequestOperationLogger.m */; settings = {ASSET_TAGS = (); }; };
+		4BA906741BBF9C6F004D0AAD /* CLSavedUserInterestsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA906731BBF9C6F004D0AAD /* CLSavedUserInterestsEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4BAE00551B8EDE2E00779E1F /* CLBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE00541B8EDE2E00779E1F /* CLBus.m */; };
 		4BAE00591B8EDE8600779E1F /* CLAuthenticationEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE00581B8EDE8600779E1F /* CLAuthenticationEvent.m */; };
 		4BAE005D1B8EDEE200779E1F /* CLBaseNotificationRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE005C1B8EDEE200779E1F /* CLBaseNotificationRegistry.m */; };
@@ -460,6 +462,10 @@
 		4BA61B0A1B94CC6800774CC2 /* CLProfileHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLProfileHeaderView.m; sourceTree = "<group>"; };
 		4BA906691BBF76A9004D0AAD /* CLSaveUserInterestsEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSaveUserInterestsEvent.h; sourceTree = "<group>"; };
 		4BA9066A1BBF76A9004D0AAD /* CLSaveUserInterestsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSaveUserInterestsEvent.m; sourceTree = "<group>"; };
+		4BA9066F1BBF97E0004D0AAD /* AFHTTPRequestOperationLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationLogger.h; sourceTree = "<group>"; };
+		4BA906701BBF97E0004D0AAD /* AFHTTPRequestOperationLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationLogger.m; sourceTree = "<group>"; };
+		4BA906721BBF9C6F004D0AAD /* CLSavedUserInterestsEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSavedUserInterestsEvent.h; sourceTree = "<group>"; };
+		4BA906731BBF9C6F004D0AAD /* CLSavedUserInterestsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSavedUserInterestsEvent.m; sourceTree = "<group>"; };
 		4BAE00531B8EDE2E00779E1F /* CLBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBus.h; sourceTree = "<group>"; };
 		4BAE00541B8EDE2E00779E1F /* CLBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBus.m; sourceTree = "<group>"; };
 		4BAE00571B8EDE8600779E1F /* CLAuthenticationEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAuthenticationEvent.h; sourceTree = "<group>"; };
@@ -810,6 +816,8 @@
 				4B3B368B1BB21E5700C7AEE5 /* CLDateUtil.m */,
 				D980958B185F2C5D008F2B61 /* NSFileManager+ImageCaching.h */,
 				D980958C185F2C5D008F2B61 /* NSFileManager+ImageCaching.m */,
+				4BA9066F1BBF97E0004D0AAD /* AFHTTPRequestOperationLogger.h */,
+				4BA906701BBF97E0004D0AAD /* AFHTTPRequestOperationLogger.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1733,6 +1741,8 @@
 				4BC616331BB9199800EB9476 /* CLLoadedMeEvent.m */,
 				4BA906691BBF76A9004D0AAD /* CLSaveUserInterestsEvent.h */,
 				4BA9066A1BBF76A9004D0AAD /* CLSaveUserInterestsEvent.m */,
+				4BA906721BBF9C6F004D0AAD /* CLSavedUserInterestsEvent.h */,
+				4BA906731BBF9C6F004D0AAD /* CLSavedUserInterestsEvent.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -2412,6 +2422,8 @@
 				4BE1DF431BABD155009519CB /* CLGroupSubscriber.m in Sources */,
 				D9507ADA187EE22C0020498A /* NPOtherEventCell.m in Sources */,
 				D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */,
+				4BA906711BBF97E0004D0AAD /* AFHTTPRequestOperationLogger.m in Sources */,
+				4BA906741BBF9C6F004D0AAD /* CLSavedUserInterestsEvent.m in Sources */,
 				68AB42031BAA1D26006495DC /* LabelWidth.m in Sources */,
 				523096DC1AA3E1A600649FB7 /* NPOtherHomeCell.m in Sources */,
 				4BA9066B1BBF76A9004D0AAD /* CLSaveUserInterestsEvent.m in Sources */,

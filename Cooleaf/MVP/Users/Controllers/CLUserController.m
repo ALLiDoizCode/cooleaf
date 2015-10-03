@@ -10,6 +10,7 @@
 #import "CLCLient.h"
 
 static NSString *const kUsersPath = @"v2/users.json";
+static NSString *const kUserEditPath = @"v2/users/edit.json";
 
 @implementation CLUserController
 
@@ -26,6 +27,15 @@ static NSString *const kUsersPath = @"v2/users.json";
 
 - (void)getUsers:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     [[CLClient getInstance] GET:kUsersPath parameters:params completion:^(id response, NSError *error) {
+        if (!error)
+            success(response);
+        else
+            failure(error);
+    }];
+}
+
+- (void)saveUserInterests:(NSDictionary *)params success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    [[CLClient getInstance] PUT:kUserEditPath parameters:params completion:^(id response, NSError *error) {
         if (!error)
             success(response);
         else
