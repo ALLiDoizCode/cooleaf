@@ -6,9 +6,9 @@
 //  Copyright © 2015 Nova Project. All rights reserved.
 //
 
-#import "CLUploadedPhotoEvent.h"
+#import "CLUploadedProfilePhotoEvent.h"
 
-@implementation CLUploadedPhotoEvent
+@implementation CLUploadedProfilePhotoEvent
 
 - (id)initWithFilePreview:(CLFilePreview *)filePreview {
     _filePreview = filePreview;

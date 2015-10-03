@@ -6,9 +6,9 @@
 //  Copyright © 2015 Nova Project. All rights reserved.
 //
 
-#import "CLUploadPhotoEvent.h"
+#import "CLUploadProfilePhotoEvent.h"
 
-@implementation CLUploadPhotoEvent
+@implementation CLUploadProfilePhotoEvent
 
 - (id)initWithData:(NSData *)data {
     _data = data;

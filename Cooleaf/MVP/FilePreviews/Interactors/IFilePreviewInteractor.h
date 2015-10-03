@@ -8,7 +8,7 @@
 
 #import "CLFilePreview.h"
 
-@protocol IFilePreviewInteractor <NSObject>
+@protocol IFilePreviewsInteractor <NSObject>
 
 - (void)initWithFilePreview:(CLFilePreview *)filePreview;
 

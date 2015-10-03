@@ -18,6 +18,7 @@
 #import "CLCommentSubscriber.h"
 #import "CLParticipantSubscriber.h"
 #import "CLRegistrationSubscriber.h"
+#import "CLFilePreviewsSubscriber.h"
 
 @implementation CLBaseNotificationRegistry
 
@@ -104,6 +105,7 @@
     CLCommentSubscriber *commentSubscriber = [[CLCommentSubscriber alloc] init];
     CLParticipantSubscriber *participantSubscriber = [[CLParticipantSubscriber alloc] init];
     CLRegistrationSubscriber *registrationSubscriber = [[CLRegistrationSubscriber alloc] init];
+    CLFilePreviewsSubscriber *filePreviewsSubscriber = [[CLFilePreviewsSubscriber alloc] init];
     
     // Add subscribers to registry to be able to recieve events
     [defaultSubscribers addObject:authenticationSubcriber];
@@ -116,6 +118,7 @@
     [defaultSubscribers addObject:commentSubscriber];
     [defaultSubscribers addObject:participantSubscriber];
     [defaultSubscribers addObject:registrationSubscriber];
+    [defaultSubscribers addObject:filePreviewsSubscriber];
     
     return defaultSubscribers;
 }

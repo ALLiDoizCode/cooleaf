@@ -6,15 +6,15 @@
 //  Copyright © 2015 Nova Project. All rights reserved.
 //
 
-#import "CLFilePreviewPresenter.h"
+#import "CLFilePreviewsPresenter.h"
 #import "CLBus.h"
-#import "CLUploadPhotoEvent.h"
+#import "CLUploadProfilePhotoEvent.h"
 
-@implementation CLFilePreviewPresenter
+@implementation CLFilePreviewsPresenter
 
 # pragma mark - Init
 
-- (id)initWithInteractor:(id<IFilePreviewInteractor>)interactor {
+- (id)initWithInteractor:(id<IFilePreviewsInteractor>)interactor {
     _filePreviewInfo = interactor;
     return self;
 }
@@ -31,9 +31,9 @@
 
 # pragma mark - uploadPhoto
 
-- (void)uploadPhoto:(UIImage *)image {
+- (void)uploadProfilePhoto:(UIImage *)image {
     NSData *imageData = UIImagePNGRepresentation(image);
-    PUBLISH([[CLUploadPhotoEvent alloc] initWithData:imageData]);
+    PUBLISH([[CLUploadProfilePhotoEvent alloc] initWithData:imageData]);
 }
 
 @end

@@ -9,14 +9,22 @@
 #import <UIKit/UIKit.h>
 #import "CLInterest.h"
 
+@class NPInterestViewCell;
+@protocol NPInterestViewCellDelegate <NSObject>
+
+- (void)toggleCheckBox:(NPInterestViewCell *)interestViewCell;
+
+@end
+
 @interface NPInterestViewCell : UICollectionViewCell
 
+@property (nonatomic, assign) id<NPInterestViewCellDelegate> delegate;
 @property (readwrite, assign, nonatomic) BOOL editModeOn;
 @property (readwrite, strong, nonatomic) CLInterest *interest;
 @property (nonatomic) UIImageView *imageView;
 @property (nonatomic) UILabel *titleLbl;
 @property (nonatomic) UIImageView *checkboxImg;
 
-- (void)toggleCheckBox:(BOOL)isMember;
+- (void)toggleCheckbox:(BOOL)isMember;
 
 @end

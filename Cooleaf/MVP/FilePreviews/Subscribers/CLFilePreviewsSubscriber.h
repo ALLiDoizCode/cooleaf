@@ -8,7 +8,7 @@
 
 #import "CLBaseSubscriber.h"
 
-@interface CLFilePreviewSubscriber : CLBaseSubscriber
+@interface CLFilePreviewsSubscriber : CLBaseSubscriber
 
 - (id)init;
 

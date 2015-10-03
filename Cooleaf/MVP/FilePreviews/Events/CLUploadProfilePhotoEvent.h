@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CLUploadPhotoEvent : NSObject
+@interface CLUploadProfilePhotoEvent : NSObject
 
 @property (nonatomic, strong) NSData *data;
 

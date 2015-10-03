@@ -32,11 +32,13 @@ static UIImage *gCheckboxOff;
 	if (self) {
 		[self render];
 	}
-	
+    NSLog(@"initWithFrame");
 	return self;
 }
 
 - (void)render {
+    
+    NSLog(@"render cell");
     
 	// interest image
 	_imageView = [[UIImageView alloc] init];
@@ -48,7 +50,7 @@ static UIImage *gCheckboxOff;
 	[self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeLeft   relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeft  multiplier:1 constant:0]];
 	[self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeRight  relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
 	[self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:_imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:_imageView       attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
-
+    
     // blur view
     _blurView = [[FXBlurView alloc] init];
     _blurView.backgroundColor = [UIColor clearColor];
@@ -104,13 +106,15 @@ static UIImage *gCheckboxOff;
     }
 }
 
-- (void)toggleCheckBox:(BOOL)isMember {
+- (void)toggleCheckbox:(BOOL)isMember {
     _checkboxImg.image = isMember ? gCheckboxOn : gCheckboxOff;
 }
 
 - (void)doActionToggleActive:(id)sender {
 	_interest.member = !_interest.member;
 	_checkboxImg.image = _interest.member ? gCheckboxOn : gCheckboxOff;
+    if (self.delegate && [self.delegate respondsToSelector:@selector(toggleCheckBox:)])
+        [self.delegate toggleCheckBox:self];
 }
 
 @end

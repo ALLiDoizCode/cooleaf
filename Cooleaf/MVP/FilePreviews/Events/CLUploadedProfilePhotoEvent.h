@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CLFilePreview.h"
 
-@interface CLUploadedPhotoEvent : NSObject
+@interface CLUploadedProfilePhotoEvent : NSObject
 
 @property (nonatomic, strong) CLFilePreview *filePreview;
 

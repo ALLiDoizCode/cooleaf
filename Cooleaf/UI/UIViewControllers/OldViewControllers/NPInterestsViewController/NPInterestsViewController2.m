@@ -8,14 +8,13 @@
 
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NPInterestsViewController2.h"
-#import "NPInterestViewCell.h"
 #import "NPInterestsHeaderViewCell.h"
 #import "NPPickYourInterestsLabelCell.h"
 #import "NPCooleafClient.h"
 #import "NPInterest.h"
 #import "CLInterestPresenter.h"
 #import "CLInterest.h"
-#import "CLFilePreviewPresenter.h"
+#import "CLFilePreviewsPresenter.h"
 #import "CLFilePreview.h"
 
 #define CellHeight 145 + 30 + 10 + 2
@@ -24,8 +23,9 @@ static NSString * const reuseIdentifier = @"Cell";
 
 @interface NPInterestsViewController2() {
     CLInterestPresenter *_interestPresenter;
-    CLFilePreviewPresenter *_filePreviewPresenter;
-	NSArray *_npinterests;
+    CLFilePreviewsPresenter *_filePreviewPresenter;
+	NSMutableArray *_interests;
+    NSMutableArray *_activeInterestIds;
 	NSLayoutConstraint *_heightConstraint;
     CLFilePreview *_filePreview;
 }
@@ -61,6 +61,7 @@ static NSString * const reuseIdentifier = @"Cell";
 	[self.navigationController setNavigationBarHidden:FALSE];
     [self setupInterestPresenter];
 	[self reload];
+    _activeInterestIds = [NSMutableArray new];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -106,53 +107,73 @@ static NSString * const reuseIdentifier = @"Cell";
 # pragma mark - setupFilePreviewPresenter
 
 - (void)setupFilePreviewPresenter {
-    _filePreviewPresenter = [[CLFilePreviewPresenter alloc] initWithInteractor:self];
+    _filePreviewPresenter = [[CLFilePreviewsPresenter alloc] initWithInteractor:self];
     [_filePreviewPresenter registerOnBus];
 }
 
 # pragma mark - IInterestInteractor Methods
 
 - (void)initInterests:(NSMutableArray *)interests {
-    _npinterests = interests;
+    _interests = interests;
+    for (CLInterest *interest in _interests) {
+        NSInteger interestId = [[interest interestId] integerValue];
+        BOOL isMember = interest.member;
+        if (isMember) {
+            if (![_activeInterestIds containsObject:@(interestId)])
+                [_activeInterestIds addObject:@(interestId)];
+        }
+    }
     [self.collectionView reloadData];
 }
 
 # pragma mark - IFilePreviewInteractor Methods
 
+- (void)initWithFilePreview:(CLFilePreview *)filePreview {
+    
+}
 
+# pragma mark - NPInterestViewCellDelegate 
+
+- (void)toggleCheckBox:(NPInterestViewCell *)interestViewCell {
+    
+    NSInteger interestId = [interestViewCell.interest.interestId integerValue];
+    BOOL isMember = interestViewCell.interest.member;
+    if (isMember) {
+        if (![_activeInterestIds containsObject:@(interestId)])
+            [_activeInterestIds addObject:@(interestId)];
+    } else {
+        if ([_activeInterestIds containsObject:@(interestId)])
+            [_activeInterestIds removeObject:@(interestId)];
+    }
+    
+//    if ([_interests containsObject:interestViewCell.interest]) {
+//        int index = (int) [_interests indexOfObject:interestViewCell.interest];
+//        [_interests removeObjectAtIndex:index];
+//        [_interests insertObject:interestViewCell.interest atIndex:index];
+//    }
+//    
+    
+}
 
 # pragma mark - Accessors
 
 - (void)reload {
+    
     if (_scrollEnabled == TRUE) {
         self.collectionView.scrollEnabled = TRUE;
         _heightConstraint.constant = self.view.window.frame.size.height;
     }
     else {
         self.collectionView.scrollEnabled = FALSE;
-        //_heightConstraint.constant = ceilf((float) npinterests.count / 2.0) * (CellHeight);
     }
+    
     [self.collectionView reloadData];
-	void (^handler)(NSArray*) = ^ (NSArray *npinterests) {
-		DLog(@"interests = %@", npinterests);
-		_npinterests = npinterests;
-		if (_scrollEnabled == TRUE) {
-			self.collectionView.scrollEnabled = TRUE;
-			_heightConstraint.constant = self.view.window.frame.size.height;
-		}
-		else {
-			self.collectionView.scrollEnabled = FALSE;
-			_heightConstraint.constant = ceilf((float) npinterests.count / 2.0) * (CellHeight);
-		}
-		[self.collectionView reloadData];
-	};
-	
+    
     // If TRUE, user is editing interests during registration, else user is editing profile
     if (_editModeOn == TRUE) {
         [_interestPresenter loadInterests];
-		//[[NPCooleafClient sharedClient] getAllInterests:handler];
     } else {
-		[[NPCooleafClient sharedClient] getUserInterests:handler];
+		//[[NPCooleafClient sharedClient] getUserInterests:handler];
     }
 }
 
@@ -168,28 +189,31 @@ static NSString * const reuseIdentifier = @"Cell";
 		[self reload];
 	}
 	else {
-		NSArray *activeInterests = [_npinterests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isMember; }]];
-		[[NPCooleafClient sharedClient] setUserInterests:activeInterests completion:^ (BOOL success) { [self reload]; }];
+		NSArray *activeInterests = [_interests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isMember; }]];
+		//[[NPCooleafClient sharedClient] setUserInterests:activeInterests completion:^ (BOOL success) { [self reload]; }];
 	}
 }
 
-- (void)setTopBarEnabled:(BOOL)topBarEnabled
-{
+- (void)setTopBarEnabled:(BOOL)topBarEnabled {
 	_topBarEnabled = topBarEnabled;
 	[self.collectionView reloadData];
 }
 
 #pragma mark - Actions
 
+- (void)doToggleInterest:(id)sender {
+    NSLog(@"doToggleInterest");
+}
+
 - (void)doActionBack:(id)sender {
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doActionNext:(id)sender {
-	NSArray *activeInterests = [_npinterests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isMember; }]];
-	[[NPCooleafClient sharedClient] setUserInterests:activeInterests completion:^ (BOOL success) {
-		[self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
-	}];
+	NSArray *activeInterests = [_interests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isMember; }]];
+//	[[NPCooleafClient sharedClient] setUserInterests:activeInterests completion:^ (BOOL success) {
+//		[self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
+//	}];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -222,8 +246,11 @@ static NSString * const reuseIdentifier = @"Cell";
 		NPInterestViewCell *cell = (NPInterestViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 		cell.editModeOn = _editModeOn;
         
+        // Set the delegate
+        cell.delegate = self;
+        
         // Get the interest
-        CLInterest *interest = [_npinterests objectAtIndex:[indexPath row]];
+        CLInterest *interest = [_interests objectAtIndex:[indexPath row]];
         
         // Set the interest in the cell
         [cell setInterest:interest];
@@ -246,12 +273,11 @@ static NSString * const reuseIdentifier = @"Cell";
             [cell.imageView setClipsToBounds:YES];
         }
         
+        // Set checkbox
+        [cell toggleCheckbox:[interest member]];
+        
         // Set name
         cell.titleLbl.text = [NSString stringWithFormat:@"%@%@", @"#", name];
-        
-        // If active set as checked
-        BOOL active = [interest member];
-        [cell toggleCheckBox:active];
 
 		return cell;
 	}
@@ -266,7 +292,9 @@ static NSString * const reuseIdentifier = @"Cell";
 //}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-	// TODO: Select Item
+    // User clicked on fxblurview toggle cell
+    NPInterestViewCell *interestCell = (NPInterestViewCell *) [self.collectionView cellForItemAtIndexPath:indexPath];
+    [self toggleCheckBox:interestCell];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {

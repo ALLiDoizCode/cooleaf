@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "IFilePreviewInteractor.h"
 
-@interface CLFilePreviewPresenter : NSObject
+@interface CLFilePreviewsPresenter : NSObject
 
-@property (nonatomic, assign) id<IFilePreviewInteractor> filePreviewInfo;
+@property (nonatomic, assign) id<IFilePreviewsInteractor> filePreviewInfo;
 
-- (id)initWithInteractor:(id<IFilePreviewInteractor>)interactor;
+- (id)initWithInteractor:(id<IFilePreviewsInteractor>)interactor;
 - (void)registerOnBus;
 - (void)unregisterOnBus;
-- (void)uploadPhoto:(UIImage *)image;
+- (void)uploadProfilePhoto:(UIImage *)image;
 
 @end
