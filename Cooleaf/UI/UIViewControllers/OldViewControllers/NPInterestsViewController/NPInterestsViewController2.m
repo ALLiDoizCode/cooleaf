@@ -149,6 +149,7 @@ static NSString * const reuseIdentifier = @"Cell";
 # pragma mark - IUserInteractor Methods
 
 - (void)initSavedUser:(CLUser *)savedUser {
+    [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"Profile updated!" type:TWMessageBarMessageTypeSuccess];
     if (self.presentingViewController.presentingViewController)
         [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     else
