@@ -17,6 +17,7 @@
 #import "CLFilePreviewsPresenter.h"
 #import "CLFilePreview.h"
 #import "CLUserPresenter.h"
+#import "TWMessageBarManager.h"
 
 #define CellHeight 145 + 30 + 10 + 2
 
@@ -30,7 +31,6 @@ static NSString * const reuseIdentifier = @"Cell";
     NSMutableArray *_activeInterestIds;
 	NSLayoutConstraint *_heightConstraint;
     CLFilePreview *_filePreview;
-    UIActivityIndicatorView *_activityView;
 }
 @end
 
@@ -66,7 +66,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [self setupFilePreviewPresenter];
     [self setupUserPresenter];
 	[self reload];
-    [self createActivityIndicator];
     _activeInterestIds = [NSMutableArray new];
 }
 
@@ -150,7 +149,6 @@ static NSString * const reuseIdentifier = @"Cell";
 # pragma mark - IUserInteractor Methods
 
 - (void)initSavedUser:(CLUser *)savedUser {
-    [_activityView stopAnimating];
     if (self.presentingViewController.presentingViewController)
         [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     else
@@ -229,7 +227,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)doActionNext:(id)sender {
-    [_activityView startAnimating];
+    [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Updating..." description:@"We're updating your profile." type:TWMessageBarMessageTypeInfo];
     if (_userAvatar)
         [_filePreviewPresenter uploadProfilePhoto:_userAvatar];
     else
@@ -374,47 +372,6 @@ static NSString * const reuseIdentifier = @"Cell";
 		return UIEdgeInsetsMake(0, 0, 0, 0);
 	else
 		return UIEdgeInsetsMake(10, 10, 10, 10);
-}
-
-# pragma mark - createActivityIndicator
-
-- (void)createActivityIndicator {
-    // Initialize activity indicator
-    _activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    _activityView.frame = CGRectMake(0, 0, self.view.frame.size.height, self.view.frame.size.height );
-    _activityView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    _activityView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:_activityView];
-    
-    // Create label
-    CGFloat labelX = _activityView.bounds.size.width + 2;
-    
-    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(labelX, 0.0f, self.view.bounds.size.width - (labelX + 2), self.view.frame.size.height)];
-    label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    label.font = [UIFont boldSystemFontOfSize:12.0f];
-    label.numberOfLines = 1;
-    
-    label.backgroundColor = [UIColor clearColor];
-    label.textColor = [UIColor whiteColor];
-    label.text = @"Updating Profile...";
-    
-    [self.view addSubview:label];
-    
-    // Set constraints
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_activityView
-                                                          attribute:NSLayoutAttributeCenterX
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterX
-                                                         multiplier:1.0
-                                                           constant:0.0]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_activityView
-                                                          attribute:NSLayoutAttributeCenterY
-                                                          relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterY
-                                                         multiplier:1.0
-                                                           constant:0.0]];
 }
 
 @end

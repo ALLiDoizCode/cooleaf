@@ -15,6 +15,7 @@
 #import "CLRegistrationPresenter.h"
 #import "CLAuthenticationPresenter.h"
 #import "CLFilePreviewsPresenter.h"
+#import "TWMessageBarManager.h"
 
 @class NPRegistrationPicker;
 @interface NPRegistrationViewController (PrivateMethods)
@@ -558,6 +559,7 @@
 }
 
 - (void)registeredUser:(CLUser *)user {
+    [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Success" description:@"You were successfully registered!" type:TWMessageBarMessageTypeSuccess];
     _user = user;
     
     // Get user email
@@ -569,7 +571,7 @@
 }
 
 - (void)registerFailed {
-    
+    [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Registration Failed" description:@"Sorry something went wrong and we couldn't register you." type:TWMessageBarMessageTypeError];
 }
 
 # pragma mark - IAuthenticationInteractor Methods
@@ -587,7 +589,7 @@
 }
 
 - (void)authenticationFailed {
-    NSLog(@"Auth failed");
+    [[TWMessageBarManager sharedInstance] showMessageWithTitle:@"Authentication Failed" description:@"Sorry something went wrong and we couldn't authenticate you." type:TWMessageBarMessageTypeError];
 }
 
 # pragma mark - Picker Delegate

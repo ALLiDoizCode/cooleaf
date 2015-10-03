@@ -9,3 +9,4 @@ pod 'SDWebImage'
 pod 'Mantle', '~> 1.5.4’
 pod 'FXBlurView'
 pod 'IQKeyboardManager'
+pod 'TWMessageBarManager'
