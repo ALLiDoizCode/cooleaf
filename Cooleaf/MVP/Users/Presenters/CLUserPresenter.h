@@ -18,5 +18,6 @@
 - (void)unregisterOnBus;
 - (void)loadMe;
 - (void)loadOrganizationUsers;
+- (void)saveUserIntersts:(CLUser *)user activeInterests:(NSMutableArray *)activeInterests;
 
 @end

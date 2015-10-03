@@ -10,8 +10,9 @@
 #import "CLRegistration.h"
 #import "IRegistrationInteractor.h"
 #import "IAuthenticationInteractor.h"
+#import "IFilePreviewInteractor.h"
 
-@interface NPRegistrationViewController : UIViewController <IRegistrationInteractor, IAuthenticationInteractor>
+@interface NPRegistrationViewController : UIViewController <IRegistrationInteractor, IAuthenticationInteractor, IFilePreviewsInteractor>
 
 @property (nonatomic, strong) CLRegistration *registration;
 

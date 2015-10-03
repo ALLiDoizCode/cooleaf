@@ -48,7 +48,11 @@ static NSInteger const PER_PAGE = 25;
     PUBLISH(loadUsersEvent);
 }
 
-# pragma mark - edut
+# pragma mark - saveUserInterests
+
+- (void)saveUserInterests:(CLUser *)user activeInterests:(NSMutableArray *)activeInterests {
+    
+}
 
 # pragma mark - Subscription Methods
 

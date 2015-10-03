@@ -14,6 +14,7 @@
 #import "UIFont+ApplicationFont.h"
 #import "CLRegistrationPresenter.h"
 #import "CLAuthenticationPresenter.h"
+#import "CLFilePreviewsPresenter.h"
 
 @class NPRegistrationPicker;
 @interface NPRegistrationViewController (PrivateMethods)
@@ -140,6 +141,7 @@
 	NSString *_password;
 	NSString *_token;
 	NSDictionary *_tagGroups;
+    CLUser *_user;
 
 	/**
 	 * Main
@@ -187,6 +189,7 @@
      */
     CLRegistrationPresenter *_registrationPresenter;
     CLAuthenticationPresenter *_authenticationPresenter;
+    CLFilePreviewsPresenter *_filePreviewsPresenter;
 }
 @end
 
@@ -262,6 +265,7 @@
 	[self.navigationController setNavigationBarHidden:TRUE];
     [self setupRegistrationPresenter];
     [self setupAuthPresenter];
+    [self setupFilePreviewPresenter];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -292,6 +296,13 @@
 - (void)setupAuthPresenter {
     _authenticationPresenter = [[CLAuthenticationPresenter alloc] initWithInteractor:self];
     [_authenticationPresenter registerOnBus];
+}
+
+# pragma mark - setupFilePreviewPresenter
+
+- (void)setupFilePreviewPresenter {
+    _filePreviewsPresenter = [[CLFilePreviewsPresenter alloc] initWithInteractor:self];
+    [_filePreviewsPresenter registerOnBus];
 }
 
 # pragma mark - Rendering Methods
@@ -556,7 +567,8 @@
 }
 
 - (void)registeredUser:(CLUser *)user {
-    NSLog(@"registeredUser");
+    _user = user;
+    
     // Get user email
     NSDictionary *userDict = (NSDictionary *) user;
     NSString *email = userDict[@"email"];
@@ -572,20 +584,27 @@
 # pragma mark - IAuthenticationInteractor Methods
 
 - (void)newUserAuthenticated:(CLUser *)user {
-    // We have the new user authenticated now we can edit their profile with info or update profile picture
+    // We have the new user, now we can update their profile picture
+    [_filePreviewsPresenter uploadProfilePhoto:_avatarImg.image];
     
     // Launch interests controller
     NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
     interestsController.editModeOn = TRUE;
     interestsController.topBarEnabled = FALSE;
     interestsController.scrollEnabled = TRUE;
-    interestsController.userAvatar = _avatarImg.image;
+    interestsController.user = _user;
     [self presentViewController:interestsController animated:YES completion:nil];
     [interestsController viewWillAppear:YES];
 }
 
 - (void)authenticationFailed {
     NSLog(@"Auth failed");
+}
+
+# pragma mark - IFilePreviewsInteractor Methods
+
+- (void)initWithFilePreview:(CLFilePreview *)filePreview {
+    
 }
 
 # pragma mark - Picker Delegate

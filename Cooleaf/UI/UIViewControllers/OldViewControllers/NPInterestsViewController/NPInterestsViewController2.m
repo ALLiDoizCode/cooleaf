@@ -23,7 +23,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 @interface NPInterestsViewController2() {
     CLInterestPresenter *_interestPresenter;
-    CLFilePreviewsPresenter *_filePreviewPresenter;
 	NSMutableArray *_interests;
     NSMutableArray *_activeInterestIds;
 	NSLayoutConstraint *_heightConstraint;
@@ -104,13 +103,6 @@ static NSString * const reuseIdentifier = @"Cell";
     [_interestPresenter registerOnBus];
 }
 
-# pragma mark - setupFilePreviewPresenter
-
-- (void)setupFilePreviewPresenter {
-    _filePreviewPresenter = [[CLFilePreviewsPresenter alloc] initWithInteractor:self];
-    [_filePreviewPresenter registerOnBus];
-}
-
 # pragma mark - IInterestInteractor Methods
 
 - (void)initInterests:(NSMutableArray *)interests {
@@ -124,12 +116,6 @@ static NSString * const reuseIdentifier = @"Cell";
         }
     }
     [self.collectionView reloadData];
-}
-
-# pragma mark - IFilePreviewInteractor Methods
-
-- (void)initWithFilePreview:(CLFilePreview *)filePreview {
-    
 }
 
 # pragma mark - NPInterestViewCellDelegate 
@@ -210,7 +196,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)doActionNext:(id)sender {
-	NSArray *activeInterests = [_interests filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^ BOOL (NPInterest *npinterest, NSDictionary *bindings) { return npinterest.isMember; }]];
+    NSLog(@"%@", _activeInterestIds);
 //	[[NPCooleafClient sharedClient] setUserInterests:activeInterests completion:^ (BOOL success) {
 //		[self.navigationController dismissViewControllerAnimated:TRUE completion:nil];
 //	}];

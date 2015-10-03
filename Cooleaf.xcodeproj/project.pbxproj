@@ -99,6 +99,7 @@
 		4BA4E35A1B8D1E4C0089CB2B /* CLAuthenticationPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3591B8D1E4C0089CB2B /* CLAuthenticationPresenter.m */; };
 		4BA4E3941B8D4CF60089CB2B /* CLEventPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA4E3931B8D4CF60089CB2B /* CLEventPresenter.m */; };
 		4BA61B0B1B94CC6800774CC2 /* CLProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA61B0A1B94CC6800774CC2 /* CLProfileHeaderView.m */; };
+		4BA9066B1BBF76A9004D0AAD /* CLSaveUserInterestsEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA9066A1BBF76A9004D0AAD /* CLSaveUserInterestsEvent.m */; settings = {ASSET_TAGS = (); }; };
 		4BAE00551B8EDE2E00779E1F /* CLBus.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE00541B8EDE2E00779E1F /* CLBus.m */; };
 		4BAE00591B8EDE8600779E1F /* CLAuthenticationEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE00581B8EDE8600779E1F /* CLAuthenticationEvent.m */; };
 		4BAE005D1B8EDEE200779E1F /* CLBaseNotificationRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BAE005C1B8EDEE200779E1F /* CLBaseNotificationRegistry.m */; };
@@ -457,6 +458,8 @@
 		4BA4E3931B8D4CF60089CB2B /* CLEventPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLEventPresenter.m; sourceTree = "<group>"; };
 		4BA61B091B94CC6800774CC2 /* CLProfileHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLProfileHeaderView.h; sourceTree = "<group>"; };
 		4BA61B0A1B94CC6800774CC2 /* CLProfileHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLProfileHeaderView.m; sourceTree = "<group>"; };
+		4BA906691BBF76A9004D0AAD /* CLSaveUserInterestsEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSaveUserInterestsEvent.h; sourceTree = "<group>"; };
+		4BA9066A1BBF76A9004D0AAD /* CLSaveUserInterestsEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSaveUserInterestsEvent.m; sourceTree = "<group>"; };
 		4BAE00531B8EDE2E00779E1F /* CLBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLBus.h; sourceTree = "<group>"; };
 		4BAE00541B8EDE2E00779E1F /* CLBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLBus.m; sourceTree = "<group>"; };
 		4BAE00571B8EDE8600779E1F /* CLAuthenticationEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAuthenticationEvent.h; sourceTree = "<group>"; };
@@ -1728,6 +1731,8 @@
 				4BC616301BB9198800EB9476 /* CLLoadMeEvent.m */,
 				4BC616321BB9199800EB9476 /* CLLoadedMeEvent.h */,
 				4BC616331BB9199800EB9476 /* CLLoadedMeEvent.m */,
+				4BA906691BBF76A9004D0AAD /* CLSaveUserInterestsEvent.h */,
+				4BA9066A1BBF76A9004D0AAD /* CLSaveUserInterestsEvent.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -2409,6 +2414,7 @@
 				D94664FB186339360084BBB2 /* UIFont+ApplicationFont.m in Sources */,
 				68AB42031BAA1D26006495DC /* LabelWidth.m in Sources */,
 				523096DC1AA3E1A600649FB7 /* NPOtherHomeCell.m in Sources */,
+				4BA9066B1BBF76A9004D0AAD /* CLSaveUserInterestsEvent.m in Sources */,
 				6877AFB11B9905DF00113B86 /* CLPostViewController.m in Sources */,
 				4BAE006B1B8EE00D00779E1F /* CLEventSubscriber.m in Sources */,
 				4B7A62971BB0ACE100DF7A36 /* CLDeletedEventComment.m in Sources */,
