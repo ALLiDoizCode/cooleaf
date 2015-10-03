@@ -185,6 +185,7 @@
 		680A64DA1BA251D4003C4B5E /* CLPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 680A64D91BA251D4003C4B5E /* CLPeopleViewController.m */; };
 		680A64DD1BA255CE003C4B5E /* CLPeopleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 680A64DC1BA255CE003C4B5E /* CLPeopleCell.m */; };
 		68674F351BB4BC1C00ADB6F3 /* CLGroupEventsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68674F341BB4BC1C00ADB6F3 /* CLGroupEventsController.m */; };
+		68674F381BB4F1D800ADB6F3 /* CLPostView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68674F371BB4F1D800ADB6F3 /* CLPostView.m */; };
 		6877AFAE1B98EF9300113B86 /* CLSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFAD1B98EF9300113B86 /* CLSearchCell.m */; };
 		6877AFB11B9905DF00113B86 /* CLPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFB01B9905DF00113B86 /* CLPostViewController.m */; };
 		6877AFBD1B99423600113B86 /* CLGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6877AFBC1B99423600113B86 /* CLGroupViewController.m */; };
@@ -201,6 +202,7 @@
 		68B07EAA1BA1313000FCF806 /* CCLocalMaximum.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B07EA81BA1313000FCF806 /* CCLocalMaximum.m */; };
 		68CDDC401B8EC0F8004C2897 /* CLInterestPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CDDC3F1B8EC0F8004C2897 /* CLInterestPresenter.m */; };
 		68CDDC4C1B8ED353004C2897 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68CDDC4B1B8ED353004C2897 /* libPods.a */; };
+		68D5EBDA1BB3C94A007F8F77 /* CLPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D5EBD91BB3C94A007F8F77 /* CLPostCell.m */; };
 		68D85D321BA929A300C4620A /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D85D311BA929A300C4620A /* BFPaperCheckbox.m */; };
 		68D85D351BA929EA00C4620A /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D85D341BA929EA00C4620A /* UIColor+BFPaperColors.m */; };
 		68DDFEFA1B9F443C00EDE1CF /* CLCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68DDFEF91B9F443C00EDE1CF /* CLCommentViewController.m */; };
@@ -634,6 +636,8 @@
 		680A64DC1BA255CE003C4B5E /* CLPeopleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPeopleCell.m; sourceTree = "<group>"; };
 		68674F331BB4BC1C00ADB6F3 /* CLGroupEventsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLGroupEventsController.h; sourceTree = "<group>"; };
 		68674F341BB4BC1C00ADB6F3 /* CLGroupEventsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLGroupEventsController.m; sourceTree = "<group>"; };
+		68674F361BB4F1D800ADB6F3 /* CLPostView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPostView.h; sourceTree = "<group>"; };
+		68674F371BB4F1D800ADB6F3 /* CLPostView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPostView.m; sourceTree = "<group>"; };
 		6877AFAC1B98EF9300113B86 /* CLSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSearchCell.h; sourceTree = "<group>"; };
 		6877AFAD1B98EF9300113B86 /* CLSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSearchCell.m; sourceTree = "<group>"; };
 		6877AFAF1B9905DF00113B86 /* CLPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPostViewController.h; sourceTree = "<group>"; };
@@ -667,6 +671,8 @@
 		68CDDC471B8ED17D004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		68CDDC491B8ED33F004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		68CDDC4B1B8ED353004C2897 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		68D5EBD81BB3C94A007F8F77 /* CLPostCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPostCell.h; sourceTree = "<group>"; };
+		68D5EBD91BB3C94A007F8F77 /* CLPostCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPostCell.m; sourceTree = "<group>"; };
 		68D85D301BA929A300C4620A /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
 		68D85D311BA929A300C4620A /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
 		68D85D331BA929EA00C4620A /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
@@ -886,6 +892,8 @@
 				68DDFEFF1B9F4AC500EDE1CF /* CLCommentTableView.m */,
 				68E102911BA2C19C009033AD /* CLEventDetail.h */,
 				68E102921BA2C19C009033AD /* CLEventDetail.m */,
+				68674F361BB4F1D800ADB6F3 /* CLPostView.h */,
+				68674F371BB4F1D800ADB6F3 /* CLPostView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2076,6 +2084,8 @@
 				68DDFF021B9F681200EDE1CF /* CLCommentCell.m */,
 				68DE97EE1BA8DA8100E858F7 /* CLEventCollectionCell.h */,
 				68DE97EF1BA8DA8100E858F7 /* CLEventCollectionCell.m */,
+				68D5EBD81BB3C94A007F8F77 /* CLPostCell.h */,
+				68D5EBD91BB3C94A007F8F77 /* CLPostCell.m */,
 				4B64D37B1BBE298300DF4FF3 /* CLInterestCollectionViewCell.h */,
 				4B64D37C1BBE298300DF4FF3 /* CLInterestCollectionViewCell.m */,
 			);
@@ -2390,6 +2400,7 @@
 				4BE1DF861BAE9D96009519CB /* CLLoadEventComments.m in Sources */,
 				4BE1B2B51BBB569800A07DA1 /* CLRegistration.m in Sources */,
 				4BA4E30E1B8BC8F40089CB2B /* CLVersions.m in Sources */,
+				68674F381BB4F1D800ADB6F3 /* CLPostView.m in Sources */,
 				4BE1DF791BAC00F1009519CB /* CLLoadLeaveInterest.m in Sources */,
 				D93AAC9E187C29F000E9B96A /* NPTodoViewController.m in Sources */,
 				4BE1DF3F1BABD12B009519CB /* CLGroupPresenter.m in Sources */,
@@ -2405,6 +2416,7 @@
 				68012DE71B978E7200251544 /* CLSearchViewController.m in Sources */,
 				4BE1B2BE1BBB64CF00A07DA1 /* CLFailedRegistrationEvent.m in Sources */,
 				4BA4E2FF1B8BC7D70089CB2B /* CLPicture.m in Sources */,
+				68D5EBDA1BB3C94A007F8F77 /* CLPostCell.m in Sources */,
 				D9809588185CCFFB008F2B61 /* NPEventCell.m in Sources */,
 				D9809581185CA7D2008F2B61 /* NPLoginViewController.m in Sources */,
 				4BA4E2F91B8BC76B0089CB2B /* CLOrganization.m in Sources */,

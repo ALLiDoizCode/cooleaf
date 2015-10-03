@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eIY-Me-YIN">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -946,6 +945,34 @@
                                                                 <constraint firstItem="Ye1-HF-CBH" firstAttribute="top" secondItem="OXL-nf-tnY" secondAttribute="bottom" constant="8" id="zl6-No-P6k"/>
                                                             </constraints>
                                                         </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bft-f1-Fnq">
+                                                            <rect key="frame" x="546" y="426" width="30" height="30"/>
+                                                            <state key="normal" title="Join">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59k-tM-FAQ">
+                                                            <rect key="frame" x="470" y="426" width="68" height="30"/>
+                                                            <state key="normal" title="Comment">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" misplaced="YES" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRm-6l-djP">
+                                                            <rect key="frame" x="8" y="308" width="584" height="98"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="zRm-6l-djP" secondAttribute="height" multiplier="7:1" id="7d0-w0-2IF"/>
+                                                                <constraint firstAttribute="width" secondItem="zRm-6l-djP" secondAttribute="height" multiplier="6:1" id="zu5-j6-oWn"/>
+                                                            </constraints>
+                                                            <string key="text">asdlkajsd aldkja dlkajsd aldkja lsdka das dla asdakdjahd akdha d;kjad ;asdlkajsd aldkja dlkajsd aldkja lsdka das dla asdakdjahd akdha d;kjad ;asdlkajsd aldkja dlkajsd aldkja lsdka das dla asdakdjahd akdha d;kjad ;asdlkajsd aldkja dlkajsd aldkja lsdka das dla asdakdjahd akdha d;kjad ;asdlkajsd aldkja dlkajsd aldkja lsdka das dla asdakdjahd akdha d;kjad ;</string>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="7d0-w0-2IF"/>
+                                                                    <exclude reference="zu5-j6-oWn"/>
+                                                                </mask>
+                                                            </variation>
+                                                        </textView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.87825311942958995" green="0.87825311942958995" blue="0.87825311942958995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -1246,11 +1273,80 @@
                     <view key="view" contentMode="scaleToFill" id="arB-OD-3UM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="guT-9I-Hgn">
+                                <rect key="frame" x="0.0" y="115" width="600" height="485"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oQF-rO-WhH">
+                                    <size key="itemSize" width="102" height="98"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="postCell" id="8SP-db-Oqt" customClass="CLPostCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="102" height="98"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="102" height="98"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wVZ-JW-bW9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="102" height="98"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="images" destination="wVZ-JW-bW9" id="jGm-0S-mJe"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y1d-8n-tmI" id="QOQ-V2-eq8"/>
+                                    <outlet property="delegate" destination="Y1d-8n-tmI" id="MmT-wn-TE8"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6A-d3-H0c" customClass="CLPostView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.0" green="0.95686274510000002" blue="0.0054740344939999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="j6A-d3-H0c" firstAttribute="leading" secondItem="arB-OD-3UM" secondAttribute="leading" id="Aoe-it-ubf"/>
+                            <constraint firstItem="j6A-d3-H0c" firstAttribute="top" secondItem="arB-OD-3UM" secondAttribute="top" id="XdH-wt-cCz"/>
+                            <constraint firstItem="j6A-d3-H0c" firstAttribute="bottom" secondItem="sLU-Bd-k1I" secondAttribute="top" id="jD9-gA-Rnu"/>
+                            <constraint firstAttribute="trailing" secondItem="j6A-d3-H0c" secondAttribute="trailing" id="mzo-Ma-thK"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="j6A-d3-H0c"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Aoe-it-ubf"/>
+                                <exclude reference="XdH-wt-cCz"/>
+                                <exclude reference="jD9-gA-Rnu"/>
+                                <exclude reference="mzo-Ma-thK"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="j6A-d3-H0c"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Aoe-it-ubf"/>
+                                <include reference="XdH-wt-cCz"/>
+                                <include reference="jD9-gA-Rnu"/>
+                                <include reference="mzo-Ma-thK"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="postView" destination="j6A-d3-H0c" id="nlM-nA-9S7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLL-fJ-2hr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4819" y="799"/>
+            <point key="canvasLocation" x="4818" y="798.75"/>
         </scene>
         <!--Comment View Controller-->
         <scene sceneID="vwX-NT-vC2">

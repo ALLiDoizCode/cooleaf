@@ -11,7 +11,6 @@
 #import "CLHomeTableViewController.h"
 #import "UIColor+CustomColors.h"
 #import "CLProfileTableViewController.h"
-#import "CLPostViewController.h"
 #import "CLAuthenticationPresenter.h"
 #import "CLEventPresenter.h"
 #import "CLEvent.h"
@@ -27,6 +26,7 @@
 #import "SSKeychain.h"
 #import "CLInterestsCollectionViewController.h"
 #import "NPInterestsViewController2.h"
+#import "CLPostViewController.h"
 
 #define StringFromBoolean (return value ? @"YES" : @"NO")
 
@@ -91,13 +91,6 @@
     
     // Initialize Event presenter
     [self initEventPresenter];
-    
-//    // Launch interests controller
-//    NPInterestsViewController2 *interestsController = [[NPInterestsViewController2 alloc] init];
-//    interestsController.editModeOn = TRUE;
-//    interestsController.topBarEnabled = TRUE;
-//    interestsController.scrollEnabled = TRUE;
-//    [self.navigationController presentViewController:interestsController animated:YES completion:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -157,15 +150,11 @@
     // Create right navbar buttons
     UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchViewController)];
     
-    UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(postViewController)];
-    NSArray *rightButtons = [NSArray arrayWithObjects:searchBtn, commentBtn, nil];
-    
-    // Set navbar buttons
+    NSArray *rightButtons = [NSArray arrayWithObjects:searchBtn, nil];
     [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
     [[self navigationItem] setLeftBarButtonItem:drawerButton];
     
     searchBtn.tintColor = [UIColor whiteColor];
-    commentBtn.tintColor = [UIColor whiteColor];
 }
 
 # pragma mark - setupNavBar

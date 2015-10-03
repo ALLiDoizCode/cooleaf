@@ -23,6 +23,7 @@
 #import "CLFeed.h"
 #import "CLNavigation.h"
 #import "CLGroupEventCell.h"
+#import "CLPostViewController.h"
 
 @interface CLGroupDetailViewController()
 
@@ -108,15 +109,21 @@
     self.navigationController.navigationBar.barTintColor = _barColor;
     
     // Set buttons
-    UIBarButtonItem *searchBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchViewController)];
-    UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:nil];
-    NSArray * rightButtons = [NSArray arrayWithObjects:searchBtn,commentBtn, nil];
+    UIBarButtonItem *commentBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(postViewController)];
+    NSArray * rightButtons = [NSArray arrayWithObjects:commentBtn, nil];
     [[self navigationItem] setRightBarButtonItems:(rightButtons) animated:YES];
     
     // Set nav bar button colors
-    searchBtn.tintColor = [UIColor whiteColor];
     commentBtn.tintColor = [UIColor whiteColor];
 }
+
+# pragma mark - postViewController
+
+- (void)postViewController {
+    CLPostViewController *post = [self.storyboard instantiateViewControllerWithIdentifier:@"Post"];
+    [[self navigationController] presentViewController:post animated:YES completion:nil];
+}
+
 
 # pragma mark - setupTableView
 
