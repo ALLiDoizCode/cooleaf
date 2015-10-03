@@ -68,7 +68,7 @@
     
     // Set the AFHTTPRequestOperationLogger, this logs HTTP calls
     [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
-    [[AFHTTPRequestOperationLogger sharedLogger] setLevel:AFLoggerLevelDebug];
+    //[[AFHTTPRequestOperationLogger sharedLogger] setLevel:AFLoggerLevelDebug];
     
     // Setup Keyboard Manager for automanaging keyboard
     [IQKeyboardManager sharedManager].enable = YES;

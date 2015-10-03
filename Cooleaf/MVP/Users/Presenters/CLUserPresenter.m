@@ -31,10 +31,12 @@ static NSInteger const PER_PAGE = 25;
 
 - (void)registerOnBus {
     REGISTER();
+    NSLog(@"Registered on bus");
 }
 
 - (void)unregisterOnBus {
     UNREGISTER();
+    NSLog(@"Unregistered on bus");
 }
 
 # pragma mark - loadMe

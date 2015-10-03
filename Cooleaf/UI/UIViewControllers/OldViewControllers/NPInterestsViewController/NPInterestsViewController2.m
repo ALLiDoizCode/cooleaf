@@ -66,6 +66,7 @@ static NSString * const reuseIdentifier = @"Cell";
     [self setupFilePreviewPresenter];
     [self setupUserPresenter];
 	[self reload];
+    [self createActivityIndicator];
     _activeInterestIds = [NSMutableArray new];
 }
 
@@ -75,7 +76,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    NSLog(@"viewWillDisappear");
     [_interestPresenter unregisterOnBus];
     [_filePreviewPresenter unregisterOnBus];
     [_userPresenter unregisterOnBus];
@@ -122,6 +122,7 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)setupUserPresenter {
     _userPresenter = [[CLUserPresenter alloc] initWithInteractor:self];
+    [_userPresenter registerOnBus];
 }
 
 # pragma mark - IInterestInteractor Methods
@@ -149,9 +150,11 @@ static NSString * const reuseIdentifier = @"Cell";
 # pragma mark - IUserInteractor Methods
 
 - (void)initSavedUser:(CLUser *)savedUser {
-    NSLog(@"initSavedUser");
-    [(UINavigationController *) self.presentingViewController popViewControllerAnimated:NO];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [_activityView stopAnimating];
+    if (self.presentingViewController.presentingViewController)
+        [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    else
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 # pragma mark - NPInterestViewCellDelegate 
@@ -226,7 +229,7 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (void)doActionNext:(id)sender {
-    [self createActivityIndicator];
+    [_activityView startAnimating];
     if (_userAvatar)
         [_filePreviewPresenter uploadProfilePhoto:_userAvatar];
     else
@@ -376,20 +379,39 @@ static NSString * const reuseIdentifier = @"Cell";
 # pragma mark - createActivityIndicator
 
 - (void)createActivityIndicator {
-    _activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [_activityView startAnimating];
+    // Initialize activity indicator
+    _activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    _activityView.frame = CGRectMake(0, 0, self.view.frame.size.height, self.view.frame.size.height );
+    _activityView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    _activityView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_activityView];
+    
+    // Create label
+    CGFloat labelX = _activityView.bounds.size.width + 2;
+    
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(labelX, 0.0f, self.view.bounds.size.width - (labelX + 2), self.view.frame.size.height)];
+    label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    label.font = [UIFont boldSystemFontOfSize:12.0f];
+    label.numberOfLines = 1;
+    
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    label.text = @"Updating Profile...";
+    
+    [self.view addSubview:label];
+    
+    // Set constraints
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_activityView
                                                           attribute:NSLayoutAttributeCenterX
                                                           relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.collectionView
+                                                             toItem:self.view
                                                           attribute:NSLayoutAttributeCenterX
                                                          multiplier:1.0
                                                            constant:0.0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_activityView
                                                           attribute:NSLayoutAttributeCenterY
                                                           relatedBy:NSLayoutRelationEqual
-                                                             toItem:self.collectionView
+                                                             toItem:self.view
                                                           attribute:NSLayoutAttributeCenterY
                                                          multiplier:1.0
                                                            constant:0.0]];
