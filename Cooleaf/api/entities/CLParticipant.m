@@ -12,6 +12,8 @@
 
 @implementation CLParticipant
 
+# pragma mark - JSONKeyPathsByPropertyKey
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"participantId": @"id",

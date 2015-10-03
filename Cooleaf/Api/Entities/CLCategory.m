@@ -10,6 +10,8 @@
 
 @implementation CLCategory
 
+# pragma mark - JSONKeyPathsByPropertyKey
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"tagId": @"id",

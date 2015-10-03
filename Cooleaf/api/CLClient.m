@@ -14,6 +14,8 @@
 #import "CLFeed.h"
 #import "CLComment.h"
 #import "SSKeychain.h"
+#import "CLRegistration.h"
+#import "CLFilePreview.h"
 
 static NSString *const BASE_API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu";
 static NSString *const API_URL = @"http://testorg.staging.do.cooleaf.monterail.eu/api";
@@ -66,7 +68,8 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
              @"memberlist.json": [CLUser class],
              @"v2/search.json": [CLQuery class],
              @"v2/feeds/*": [CLFeed class],
-             @"v2/comments/*": [CLComment class]
+             @"v2/comments/*": [CLComment class],
+             @"v2/file_previews.json": [CLFilePreview class]
              };
 }
 
@@ -95,7 +98,7 @@ static NSString *const X_ORGANIZATION = @"X-Organization";
 # pragma mark - Cookie Persistence - SWITCH OVER TO SSKEYCHAIN INSTEAD OF NSUSERDEFAULTS
 
 - (void)saveCookies {
-    NSString *username = [[SSKeychain accountsForService:@"cooleaf"] valueForKey:@"acct"];
+    //NSString *username = [[SSKeychain accountsForService:@"cooleaf"] valueForKey:@"acct"];
     
     NSData *cookiesData = [NSKeyedArchiver archivedDataWithRootObject: [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

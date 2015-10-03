@@ -10,6 +10,8 @@
 
 @implementation CLSeries
 
+# pragma mark - JSONKeyPathsByPropertyKey
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"seriesId": @"id",
@@ -18,9 +20,9 @@
 }
 
 
-# pragma eventIdJSONTransformer
+# pragma mark - eventIdJSONTransformer
 
-- (NSValueTransformer *)eventIdJSONTransformer {
+- (NSValueTransformer *)eventIdsJSONTransformer {
     return [NSValueTransformer mtl_JSONArrayTransformerWithModelClass:NSNumber.class];
 }
 

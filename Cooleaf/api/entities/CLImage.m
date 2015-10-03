@@ -10,6 +10,8 @@
 
 @implementation CLImage
 
+# pragma mark - JSONKeyPathsByPropertyKey
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
       @"url": @"url",

@@ -10,6 +10,8 @@
 
 @implementation CLFilePreview
 
+# pragma mark - JSONKeyPathsByPropertyKey
+
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"fileCache": @"file_cache",
